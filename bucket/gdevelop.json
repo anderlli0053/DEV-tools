@@ -6,16 +6,14 @@
     "hash": "b16c428028d9538fb0e9759603b958e066fb3674435503cbf8da63d44f84dcfe",
     "url": "https://github.com/4ian/GDevelop/releases/download/v5.0.138/GDevelop-5-Setup-5.0.138.exe",
 
-    "extract_dir": "$PLUGINSDIR",
+    "installer": {
+        "script": [
+            "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+            "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse"
+        ]
+    },
 
-    "pre_install": [
-
-    "Expand-7zipArchive \"$dir\\$PLUGINSDIR\app-64.7z\" \"$dir\""
-
-    ],
-
-
-    "bin": "",
+    "bin": "GDevelop.exe",
 
     "shortcuts": [
 
