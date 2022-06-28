@@ -8,12 +8,12 @@
 
     "extract_dir": "$PLUGINSDIR",
 
-    "pre_install": ["Get-ChildItem \"$dir\" -Exclude 'app-64.7z' | Remove-Item -Force -Recurse",
-                    "Expand-7zipArchive \"$dir\\$PLUGINSDIR\\app-64.7z\" \"$dir\""
+    "pre_install": [
 
-
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+    "Remove-Item \"$dir\\`$*\" -Recurse"
     ],
-    "post_install": "Remove-Item \"$dir\\app-64.7z\" -Force -ErrorAction SilentlyContinue",
+
 
 
     "checkver": {
