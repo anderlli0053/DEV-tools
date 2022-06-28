@@ -1,6 +1,6 @@
 scoop-bucket
 
-### Scoop bucket for development tools, be it game dev or just regular software development.
+### Scoop bucket for development tools, be it game dev or just regular software development, and of course because i am not so well organized as it look like, there are also some games in here... 
 
 
 Add this bucket after installing Scoop by typing: ```scoop bucket add DEV-Tools https://github.com/anderlli0053/DEV-tools.git```
