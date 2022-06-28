@@ -19,3 +19,8 @@
 * GIMP
 * Steam
 * JPEXS Free Flash Decompiler
+
+
+Games:
+
+Plazma Burst 2 (added)
