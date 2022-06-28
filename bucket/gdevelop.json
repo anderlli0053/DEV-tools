@@ -4,16 +4,15 @@
     "description": "GDevelop is an open-source, cross-platform game engine designed to be used by everyone.",
     "license": "MIT",
     "hash": "b16c428028d9538fb0e9759603b958e066fb3674435503cbf8da63d44f84dcfe",
-    "url": "https://github.com/4ian/GDevelop/releases/download/v5.0.138/GDevelop-5-Setup-5.0.138.exe",
+    "url": "https://github.com/4ian/GDevelop/releases/download/v5.0.138/GDevelop-5-Setup-5.0.138.exe#/dl.7z",
 
-    "installer": {
-        "script": [
-            "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-            "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse"
-        ]
-    },
+    "pre_install": [
 
-    "bin": "GDevelop.exe",
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+    "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse"
+
+    ],
+
 
     "shortcuts": [
 
@@ -22,10 +21,11 @@
     ],
 
     "checkver": {
-        "github": "https://github.com/4ian/GDevelop/releases/download/v5.0.138/GDevelop-5-Setup-5.0.138.exe"
+        "github": "https://github.com/4ian/GDevelop/releases/download/v5.0.138/GDevelop-5-Setup-5.0.138.exe",
+        "jsonpath": "$.version"
     },
     "autoupdate": {
-        "url": "https://github.com/4ian/GDevelop/releases/download/$version/GDevelop-5-Setup.exe"
+        "url": "https://github.com/4ian/GDevelop/releases/download/v5.0.138/GDevelop-5-Setup-5.0.138.exe#/dl.7z"
     },
 
 
