@@ -4,7 +4,7 @@
 * Duality Engine
 * NeoAxis
 * Stride(Xenko)
-* Unity Hub
+* Unity Hub (partially supported)
 * Visual Studio Code
 * VSCodium
 * Notepad++
