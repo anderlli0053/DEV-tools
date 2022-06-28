@@ -8,13 +8,13 @@
 * Visual Studio Code
 * VSCodium
 * Notepad++
-* HxD editor
+* HxD editor (partially supported)
 * Apache NetBeans
 * Github Desktop
 * Blender
 * Godot Engine
 * Defold
-* Hourglass version manager
+* Hourglass version manager (partially supported)
 * Audacity
 * GIMP
 * Steam
