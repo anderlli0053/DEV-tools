@@ -1,0 +1,32 @@
+{
+    "version": "6.2",
+    "description": "Fast, lightweight, distributed source control management system designed for easy and efficient handling of very large distributed projects.",
+    "homepage": "https://www.mercurial-scm.org/",
+    "license": "GPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.mercurial-scm.org/release/windows/Mercurial-6.2-x64.exe",
+            "hash": "506240e788d02cab372821987ee5dfb7e71f5f76f4d4b818358b194153103fdc"
+        },
+        "32bit": {
+            "url": "https://www.mercurial-scm.org/release/windows/Mercurial-6.2-x86.exe",
+            "hash": "38ffad89aa5594fb74578ea38469f68b78915c1e4914c364c796fb3212300835"
+        }
+    },
+    "innosetup": true,
+    "bin": "hg.exe",
+    "checkver": {
+        "url": "https://www.mercurial-scm.org/release/windows/latest.dat",
+        "regex": "Mercurial-([\\w.]+)-x"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.mercurial-scm.org/release/windows/Mercurial-$version-x64.exe"
+            },
+            "32bit": {
+                "url": "https://www.mercurial-scm.org/release/windows/Mercurial-$version-x86.exe"
+            }
+        }
+    }
+}

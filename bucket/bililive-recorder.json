@@ -1,0 +1,22 @@
+{
+    "version": "2.1.1",
+    "description": "B站录播姬（BiliBili Stream Recorder），哔哩哔哩直播自动录制工具",
+    "homepage": "https://rec.danmuji.org/",
+    "license": "GPL-3.0-only",
+    "url": "https://github.com/Bililive/BililiveRecorder/releases/download/v2.1.1/BililiveRecorder-WPF-Portable.zip",
+    "hash": "e0fca6d228c5c0c122c6e7cd342440cb26dc0f43524846152613379f2f486c60",
+    "shortcuts": [
+        [
+            "BililiveRecorder.WPF.exe",
+            "B站录播姬"
+        ]
+    ],
+    "pre_install": "if (!(Test-Path \"$persist_dir\\lastdir.txt\")) { Set-Content -Encoding ASCII -Path \"$dir\\lastdir.txt\" -Value $null }",
+    "persist": "lastdir.txt",
+    "checkver": {
+        "github": "https://github.com/Bililive/BililiveRecorder"
+    },
+    "autoupdate": {
+        "url": "https://github.com/Bililive/BililiveRecorder/releases/download/v$version/BililiveRecorder-WPF-Portable.zip"
+    }
+}

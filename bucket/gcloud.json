@@ -1,0 +1,44 @@
+{
+    "version": "394.0.0",
+    "description": "Command-line interface for Google Cloud Platform products and services.",
+    "homepage": "https://cloud.google.com/sdk/",
+    "license": "Proprietary",
+    "notes": "To initialize Cloud SDK, you will need to run: 'gcloud init'",
+    "depends": "7zip19.00-helper",
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-394.0.0-windows-x86_64-bundled-python.zip#/dl.zip_",
+            "hash": "2eb3f3e1b11dc1fe1f998f6e1770ed5cf49cf920aeb589f96a5cda6b18a951e8"
+        },
+        "32bit": {
+            "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-394.0.0-windows-x86-bundled-python.zip#/dl.zip_",
+            "hash": "462e89ea5c570226d4778c5e0726cc70d2d03cda3541ffbec63e71e1de68a858"
+        }
+    },
+    "pre_install": [
+        "Invoke-ExternalCommand 7z1900-helper -ArgumentList @('x', '-bso0', \"`\"$dir\\dl.zip_`\"\", \"`\"-o$dir`\"\") | Out-Null",
+        "Move-Item \"$dir\\google-cloud-sdk\\*\" \"$dir\\\" | Out-Null",
+        "Remove-Item \"$dir\\google-cloud-sdk\", \"$dir\\dl.zip_\" -Force -Recurse"
+    ],
+    "bin": [
+        "bin\\gcloud.cmd",
+        "bin\\gsutil.cmd",
+        "bin\\bq.cmd",
+        "bin\\docker-credential-gcloud.cmd",
+        "bin\\git-credential-gcloud.cmd"
+    ],
+    "checkver": {
+        "url": "https://cloud.google.com/sdk/docs/downloads-versioned-archives",
+        "regex": "google-cloud-sdk-([\\d.]+)-windows-x86_64-bundled"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-$version-windows-x86_64-bundled-python.zip#/dl.zip_"
+            },
+            "32bit": {
+                "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-$version-windows-x86-bundled-python.zip#/dl.zip_"
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "version": "5.2.4",
+    "description": "SCIntilla based Text Editor",
+    "homepage": "https://www.scintilla.org/SciTE.html",
+    "license": "HPND",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.scintilla.org/wscite524.zip",
+            "hash": "63f470bd5ce5f762b2ee4016b5cf927b84c5440e5d4ef9a9d77fab446fa9e8ab"
+        },
+        "32bit": {
+            "url": "https://www.scintilla.org/wscite32_524.zip",
+            "hash": "341cde3858791b75b9a65d9e2b9b43b601f6ec5b0f103e173f5767bc1a1b649a",
+            "pre_install": "Rename-Item \"$dir\\SciTE32.exe\" 'SciTE.exe'"
+        }
+    },
+    "extract_dir": "wscite",
+    "bin": "SciTE.exe",
+    "shortcuts": [
+        [
+            "SciTE.exe",
+            "SciTE"
+        ]
+    ],
+    "checkver": "Release version ([\\d.]+)",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.scintilla.org/wscite$cleanVersion.zip"
+            },
+            "32bit": {
+                "url": "https://www.scintilla.org/wscite32_$cleanVersion.zip"
+            }
+        }
+    }
+}

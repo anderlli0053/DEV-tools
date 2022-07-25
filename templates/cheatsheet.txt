@@ -1,0 +1,197 @@
+==================================================
+Variables
+==================================================
+
+https://docs.microsoft.com/en-us/dotnet/api/system.environment.specialfolder?view=netframework-4.8
+"$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")"
+"$ProgramFilesX86 = [Environment]::GetFolderPath(\"ProgramFilesX86\")"
+"$LocalAppData = [Environment]::GetFolderPath(\"LocalApplicationData\")"
+"$AppData = [Environment]::GetFolderPath(\"ApplicationData\")"
+"$ProgramFiles = [System.Environment]::GetEnvironmentVariable(\'ProgramFiles\')"
+"$ProgramFilesX86 = [System.Environment]::GetEnvironmentVariable(\'ProgramFiles(x86)\')"
+
+"if ([System.Environment]::Is64BitOperatingSystem){",
+"   $ShortcutTarget = \"$ProgramFilesPath\\IrfanView\\i_view64.exe\"",
+"}else{",
+"   $ShortcutTarget = \"$ProgramFilesPath\\IrfanView\\i_view.exe\"",
+"}",
+
+[version]"81.0.4044.92" -ge [version]"81.0.4044"
+$a = "3.0.2.2.0"
+$b = "3.0.2.3.0"
+([version]('{0}.{1}.{2}.{3}' -f $a.split('.')) -ge [version]('{0}.{1}.{2}.{3}' -f $b.split('.')))
+
+==================================================
+Process Wait Then Close
+==================================================
+
+            "while ((Get-Process -Name 'SUMo' -ErrorAction SilentlyContinue).Count -eq 0) {",
+            "   Start-Sleep -Milliseconds 50",
+            "}",
+            "taskkill /F /IM $processname /FI 'status eq running'"
+
+==================================================
+Pre_Install Scripts
+==================================================
+
+    "pre_install": [
+        "$processname = \"processname\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
+
+==================================================
+Post_Install Scripts
+==================================================
+
+    "post_install": [
+        "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
+        "if (Test-Path \"$CommonDesktopPath\\qbittorrent.lnk\") {Remove-Item \"$CommonDesktopPath\\qbittorrent.lnk\" -Force}",
+        "",
+        "Remove-Variable process"
+    ],
+
+    "post_install": [
+        "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
+        "if (Test-Path \"$CommonDesktopPath\\qbittorrent.lnk\") {Remove-Item \"$CommonDesktopPath\\qbittorrent.lnk\" -Force}"
+    ],
+
+==================================================
+Install Scripts
+==================================================
+
+    "installer": {
+        "script": [
+            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFilesX86\")",
+            "$filepath = \"$ProgramFiles\\folder\\file.exe\"",
+            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "{",
+            "   &\"$dir\\setup.exe\" /VERYSILENT /SUPPRESSMSGBOXES /FORCECLOSEAPPLICATIONS /NORESTART /SP- | Out-Null",
+            "   Start-Sleep -Seconds 30",
+            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}",
+            "Remove-Item \"$dir\\setup.exe\" -Force"
+        ]
+    },
+
+    "installer": {
+        "script": [
+            "$AppData = [Environment]::GetFolderPath(\"ApplicationData\")",
+            "$filepath = \"$AppData\\folder\\file.exe\"",
+            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "{",
+            "   &\"$dir\\setup.exe\" /VERYSILENT /SUPPRESSMSGBOXES /FORCECLOSEAPPLICATIONS /NORESTART /SP- | Out-Null",
+            "   Start-Sleep -Seconds 30",
+            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}",
+            "Remove-Item \"$dir\\setup.exe\" -Force"
+        ]
+    },
+
+    "installer": {
+        "script": [
+            "$programname = \"programname*\"",
+            "$ProgramFilesX86 = [Environment]::GetFolderPath(\"ProgramFilesX86\")",
+            "$filepath = \"$ProgramFilesX86\\folder\\file.exe\"",
+            "$regPath = \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{99999999-9999-9999-9999-999999999999}\"",
+            "if((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\")",
+            "or !((Get-Command \"$filepath\").Version.ToString() -ge \"$version\"))",
+            "{",
+            "   &\"$dir\\setup.exe\" /S | Out-Null",
+            "   if((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\")",
+            "   or !((Get-Command \"$filepath\").Version.ToString() -ge \"$version\"))",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}",
+            "Remove-Item \"$dir\\setup.exe\" -Force"
+        ]
+    },
+
+    "installer": {
+        "script": [
+            "$programname = \"qbittorrent*\"",
+            "$installpath = \"$dir\\setup.exe\"",
+            "$installargs = '/S'",
+            "$regPath = \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{99999999-9999-9999-9999-999999999999}\"",
+            "if((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\")",
+            "{",
+            "   Invoke-ExternalCommand \"$installpath\" -ArgumentList @($installargs) -RunAs | Out-Null",
+            "   if((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\")",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}",
+            "Remove-Item \"$dir\\setup.exe\" -Force"
+        ]
+    },
+
+
+==================================================
+Checkver Scripts
+==================================================
+    "checkver": {
+        "script": [
+            "$dl_url = 'download_url'",
+            "$dl = cache_path 'app_name' 'unknown' $dl_url",
+            "do_dl $dl_url $dl",
+            "$version = (Get-Item $dl).VersionInfo.FileVersion",
+            "return $version"
+        ]
+    },
+
+==================================================
+Uninstall Scripts
+==================================================
+    "uninstaller": {
+        "script": [
+            "$programname = \"qbittorrent*\"",
+            "$ProgramFilesPath = [Environment]::GetFolderPath(\"ProgramFiles\")",
+            "$processname = \"qbittorrent.exe\"",
+            "$uninstallpath = \"$ProgramFilesPath\\qBittorrent\\uninst.exe\"",
+            "$uninstallargs = '/S'",
+            "$regPath = \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{99999999-9999-9999-9999-999999999999}\"",
+            "if((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\")",
+            "{",
+            "   taskkill /F /IM $processname /FI 'status eq running'",
+            "   Invoke-ExternalCommand \"$uninstallpath\" -ArgumentList @($uninstallargs) -RunAs | Out-Null",
+            "   if((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\")",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}"
+        ]
+    },
+
+    "uninstaller": {
+        "script": [
+            "$ProgramFilesPath = [Environment]::GetFolderPath(\"ProgramFiles\")",
+            "$processname = \"qbittorrent.exe\"",
+            "$uninstallpath = \"$ProgramFilesPath\\qBittorrent\\uninst.exe\"",
+            "$uninstallargs = '/S'",
+            "taskkill /F /IM $processname /FI 'status eq running'",
+            "Invoke-ExternalCommand \"$uninstallpath\" -ArgumentList @($uninstallargs) -RunAs | Out-Null"
+        ]
+    },
+
+    "uninstaller": {
+        "script": [
+            "$processname = \"qbittorrent.exe\"",
+            "taskkill /F /IM $processname /FI 'status eq running'",
+            "$ProgramFilesPath = [Environment]::GetFolderPath(\"ProgramFiles\")",
+            "Invoke-ExternalCommand \"$ProgramFilesPath\\qBittorrent\\uninst.exe\" -ArgumentList @('/S') -RunAs | Out-Null"
+        ]
+    },

@@ -1,0 +1,38 @@
+{
+    "version": "1.167.5.1",
+    "description": "Text editor",
+    "homepage": "http://uvviewsoft.com/cudatext/",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.fosshub.com/CudaText.html/cudatext-win-x64-1.167.5.1.zip",
+            "hash": "eb2a0584209e05bd3690d7a3a71ec11af2dc6f2f2210786d8d7a35eb6569d56d"
+        },
+        "32bit": {
+            "url": "https://www.fosshub.com/CudaText.html/cudatext-win-x32-1.167.5.1.zip",
+            "hash": "0ea71a833c6b2fbb9ff2329b80289d4080ecc6d136a477d070c3784399fa309e"
+        }
+    },
+    "bin": "cudatext.exe",
+    "shortcuts": [
+        [
+            "cudatext.exe",
+            "CudaText"
+        ]
+    ],
+    "persist": "settings",
+    "checkver": {
+        "url": "https://www.fosshub.com/CudaText.html",
+        "regex": "cudatext-win-x64-([\\d.]+)\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.fosshub.com/CudaText.html/cudatext-win-x64-$version.zip"
+            },
+            "32bit": {
+                "url": "https://www.fosshub.com/CudaText.html/cudatext-win-x32-$version.zip"
+            }
+        }
+    }
+}

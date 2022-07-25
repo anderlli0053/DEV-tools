@@ -1,0 +1,45 @@
+{
+    "version": "2.2228.1",
+    "description": "A cross-platform messaging and Voice over IP service.",
+    "homepage": "https://www.whatsapp.com",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.whatsapp.com/legal/"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://web.whatsapp.com/desktop-beta/windows/release/x64/WhatsApp-2.2228.1-full.nupkg#/dl.7z",
+            "hash": "sha1:03e18d99b5a1f368acd4892a237688cbbda6e340"
+        },
+        "32bit": {
+            "url": "https://web.whatsapp.com/desktop-beta/windows/release/ia32/WhatsApp-2.2228.1-full.nupkg#/dl.7z",
+            "hash": "sha1:d91d6017f8f986fe2442e9404daef8f31da5efbc"
+        }
+    },
+    "extract_dir": "lib\\net45",
+    "bin": "whatsapp.exe",
+    "shortcuts": [
+        [
+            "whatsapp.exe",
+            "WhatsApp"
+        ]
+    ],
+    "checkver": {
+        "url": "https://web.whatsapp.com/desktop-beta/windows/release/x64/RELEASES",
+        "regex": "WhatsApp-([\\d.]+)-full\\.nupkg",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://web.whatsapp.com/desktop-beta/windows/release/x64/WhatsApp-$version-full.nupkg#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://web.whatsapp.com/desktop-beta/windows/release/ia32/WhatsApp-$version-full.nupkg#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/RELEASES"
+        }
+    }
+}

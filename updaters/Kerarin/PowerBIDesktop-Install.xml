@@ -1,0 +1,156 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Jobs>
+  <ApplicationJob xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Guid="4a5413ed-63a2-4e96-8b8a-d10481caeed2">
+    <WebsiteUrl />
+    <UserAgent />
+    <UserNotes />
+    <LastFileSize>811</LastFileSize>
+    <LastFileDate>2021-08-30T17:49:46.0075525+09:30</LastFileDate>
+    <IgnoreFileInformation>false</IgnoreFileInformation>
+    <DownloadBeta>Default</DownloadBeta>
+    <DownloadDate xsi:nil="true" />
+    <CheckForUpdatesOnly>false</CheckForUpdatesOnly>
+    <VariableChangeIndicator />
+    <HashVariable />
+    <HashType>None</HashType>
+    <CanBeShared>true</CanBeShared>
+    <ShareApplication>false</ShareApplication>
+    <ExclusiveDownload>false</ExclusiveDownload>
+    <HttpReferer />
+    <SetupInstructions />
+    <Variables>
+      <item>
+        <key>
+          <string>version</string>
+        </key>
+        <value>
+          <UrlVariable>
+            <RegexRightToLeft>true</RegexRightToLeft>
+            <VariableType>RegularExpression</VariableType>
+            <Regex>/microsoft/winget-pkgs/tree/master/manifests/m/Microsoft/PowerBI/([\d.]+)</Regex>
+            <Url>https://github.com/microsoft/winget-pkgs/tree/master/manifests/m/Microsoft/PowerBI</Url>
+            <StartText>/microsoft/winget-pkgs/tree/master/manifests/m/Microsoft/PowerBI/</StartText>
+            <EndText>"</EndText>
+            <Name>version</Name>
+          </UrlVariable>
+        </value>
+      </item>
+      <item>
+        <key>
+          <string>manifest</string>
+        </key>
+        <value>
+          <UrlVariable>
+            <RegexRightToLeft>false</RegexRightToLeft>
+            <VariableType>Textual</VariableType>
+            <Regex />
+            <TextualContent>https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/m/Microsoft/PowerBI/{version}/Microsoft.PowerBI.installer.yaml</TextualContent>
+            <Name>manifest</Name>
+          </UrlVariable>
+        </value>
+      </item>
+      <item>
+        <key>
+          <string>download64</string>
+        </key>
+        <value>
+          <UrlVariable>
+            <RegexRightToLeft>false</RegexRightToLeft>
+            <VariableType>Textual</VariableType>
+            <Regex />
+            <Url>{manifest}</Url>
+            <StartText>x64
+  InstallerUrl: </StartText>
+            <EndText>
+</EndText>
+            <TextualContent>{download32}</TextualContent>
+            <Name>download64</Name>
+          </UrlVariable>
+        </value>
+      </item>
+      <item>
+        <key>
+          <string>download32</string>
+        </key>
+        <value>
+          <UrlVariable>
+            <RegexRightToLeft>false</RegexRightToLeft>
+            <VariableType>StartEnd</VariableType>
+            <Regex />
+            <Url>{manifest}</Url>
+            <StartText>x86
+  InstallerUrl: </StartText>
+            <EndText>
+</EndText>
+            <Name>download32</Name>
+          </UrlVariable>
+        </value>
+      </item>
+      <item>
+        <key>
+          <string>sha25664</string>
+        </key>
+        <value>
+          <UrlVariable>
+            <RegexRightToLeft>false</RegexRightToLeft>
+            <VariableType>Textual</VariableType>
+            <Regex>InstallerSha256: ([\w.]+)</Regex>
+            <Url>{manifest}</Url>
+            <StartText>InstallerSha256: </StartText>
+            <EndText>
+</EndText>
+            <TextualContent>{sha25632}</TextualContent>
+            <Name>sha25664</Name>
+          </UrlVariable>
+        </value>
+      </item>
+      <item>
+        <key>
+          <string>sha25632</string>
+        </key>
+        <value>
+          <UrlVariable>
+            <RegexRightToLeft>true</RegexRightToLeft>
+            <VariableType>RegularExpression</VariableType>
+            <Regex>InstallerSha256: ([\w.]+)</Regex>
+            <Url>{manifest}</Url>
+            <StartText>InstallerSha256: </StartText>
+            <Name>sha25632</Name>
+          </UrlVariable>
+        </value>
+      </item>
+      <item>
+        <key>
+          <string>filepath</string>
+        </key>
+        <value>
+          <UrlVariable>
+            <RegexRightToLeft>false</RegexRightToLeft>
+            <VariableType>Textual</VariableType>
+            <Regex />
+            <TextualContent>{localgithubpath}\scoop-apps\bucket\PowerBIDesktop-Install.json</TextualContent>
+            <Name>filepath</Name>
+          </UrlVariable>
+        </value>
+      </item>
+    </Variables>
+    <ExecuteCommand>jj -i "{filepath}" -o "{filepath}" -v {version} version
+jj -i "{filepath}" -o "{filepath}" -v {download64}#/setup.exe -O architecture.64bit.url
+jj -i "{filepath}" -o "{filepath}" -v {sha25664} -O architecture.64bit.hash
+jj -i "{filepath}" -o "{filepath}" -v {download32}#/setup.exe -O architecture.32bit.url
+jj -i "{filepath}" -o "{filepath}" -v {sha25632} -O architecture.32bit.hash</ExecuteCommand>
+    <ExecutePreCommand />
+    <ExecuteCommandType>Batch</ExecuteCommandType>
+    <ExecutePreCommandType>Batch</ExecutePreCommandType>
+    <Category>Install</Category>
+    <SourceType>FixedUrl</SourceType>
+    <PreviousLocation>C:\Users\Adrian\Downloads\PowerBIDersktop-Install-2.96.901.0.yaml</PreviousLocation>
+    <DeletePreviousFile>true</DeletePreviousFile>
+    <Enabled>true</Enabled>
+    <FileHippoId />
+    <LastUpdated>2021-08-30T17:49:46.02413+09:30</LastUpdated>
+    <TargetPath>{downloadpath}\PowerBIDersktop-Install-{version}.yaml</TargetPath>
+    <FixedDownloadUrl>{manifest}</FixedDownloadUrl>
+    <Name>PowerBIDersktop-Install</Name>
+  </ApplicationJob>
+</Jobs>

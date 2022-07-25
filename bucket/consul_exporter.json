@@ -1,0 +1,35 @@
+{
+    "version": "0.8.0",
+    "description": "A Prometheus exporter for Consul service health.",
+    "homepage": "https://github.com/prometheus/consul_exporter",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/prometheus/consul_exporter/releases/download/v0.8.0/consul_exporter-0.8.0.windows-amd64.tar.gz",
+            "hash": "c5c2108d310ee7798d33f26d59d2acee383cabaad917935d4daddbe5eefc8ecd",
+            "extract_dir": "consul_exporter-0.8.0.windows-amd64"
+        },
+        "32bit": {
+            "url": "https://github.com/prometheus/consul_exporter/releases/download/v0.8.0/consul_exporter-0.8.0.windows-386.tar.gz",
+            "hash": "928f3bcd718fac25a94396898270dfe9c4a68fa0a49fa1d709eafd5d6e88a7e5",
+            "extract_dir": "consul_exporter-0.8.0.windows-386"
+        }
+    },
+    "bin": "consul_exporter.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/prometheus/consul_exporter/releases/download/v$version/consul_exporter-$version.windows-amd64.tar.gz",
+                "extract_dir": "consul_exporter-$version.windows-amd64"
+            },
+            "32bit": {
+                "url": "https://github.com/prometheus/consul_exporter/releases/download/v$version/consul_exporter-$version.windows-386.tar.gz",
+                "extract_dir": "consul_exporter-$version.windows-386"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sums.txt"
+        }
+    }
+}

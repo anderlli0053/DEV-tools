@@ -1,0 +1,46 @@
+{
+    "version": "7.1.0",
+    "description": "A high-level language primarily intended for numerical computations.",
+    "homepage": "https://www.gnu.org/software/octave/",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://ftp.gnu.org/gnu/octave/windows/octave-7.1.0-w64.zip",
+            "hash": "f6ce276a455d23e71c00d26f4742eae5d72e420e0920dee9af62622b9ff2b028",
+            "extract_dir": "octave-7.1.0-w64",
+            "bin": [
+                "mingw64\\bin\\octave.bat",
+                "mingw64\\bin\\octave-gui.exe",
+                "mingw64\\bin\\octave-cli.exe",
+                "mingw64\\bin\\octave-config.exe"
+            ]
+        },
+        "32bit": {
+            "url": "https://ftp.gnu.org/gnu/octave/windows/octave-7.1.0-w32.zip",
+            "hash": "2f04d1d2c1027ac6e4108799172a7925b134a7f730f3ac5a4cc054e706f05a66",
+            "extract_dir": "octave-7.1.0-w32",
+            "bin": [
+                "mingw32\\bin\\octave.bat",
+                "mingw32\\bin\\octave-gui.exe",
+                "mingw32\\bin\\octave-cli.exe",
+                "mingw32\\bin\\octave-config.exe"
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://wiki.octave.org/GNU_Octave_Wiki",
+        "regex": "GNU Octave ([\\d.]+).*is the current stable release"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ftp.gnu.org/gnu/octave/windows/octave-$version-w64.zip",
+                "extract_dir": "octave-$version-w64"
+            },
+            "32bit": {
+                "url": "https://ftp.gnu.org/gnu/octave/windows/octave-$version-w32.zip",
+                "extract_dir": "octave-$version-w32"
+            }
+        }
+    }
+}

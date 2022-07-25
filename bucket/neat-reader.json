@@ -1,0 +1,34 @@
+{
+    "version": "8.1.3",
+    "description": "Neat Reader is specially designed for reading ePub files.",
+    "homepage": "https://www.neat-reader.cn/",
+    "license": "Shareware",
+    "url": "https://neat-reader-app-release.oss-cn-beijing.aliyuncs.com/NeatReader%20Setup%208.1.3.exe#/dl.7z",
+    "hash": "e6e86cbae25f1ea55f333666b270ff45c1c1c99302d6943ef7e0a42f82039d06",
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
+    ],
+    "bin": [
+        [
+            "NeatReader.exe",
+            "NeatReader",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "NeatReader.exe",
+            "Neat Reader",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://www.neat-reader.cn/downloads/windows",
+        "regex": "NeatReader%20Setup%20([\\d.]+).exe"
+    },
+    "autoupdate": {
+        "url": "https://neat-reader-app-release.oss-cn-beijing.aliyuncs.com/NeatReader%20Setup%20$version.exe#/dl.7z"
+    }
+}

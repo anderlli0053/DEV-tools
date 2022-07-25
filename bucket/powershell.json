@@ -1,0 +1,41 @@
+{
+    "homepage": "https://github.com/PowerShell/PowerShell",
+    "description": "PowerShell Core, the cross-platform task automation and configuration management framework/tool.",
+    "version": "7.2.5",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.2.5/PowerShell-7.2.5-win-x64.zip",
+            "hash": "b686207d13d728f44df2bacb676d77ef4bd142a739a96798ebd85fdb5467866c"
+        },
+        "32bit": {
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.2.5/PowerShell-7.2.5-win-x86.zip",
+            "hash": "e6f898e3c348a9dcbddbc76787bf4031dbb68a5946dc6e9fd4310ee06b264cff"
+        }
+    },
+    "bin": "pwsh.exe",
+    "shortcuts": [
+        [
+            "pwsh.exe",
+            "PowerShell"
+        ]
+    ],
+    "checkver": {
+        "url": "https://raw.githubusercontent.com/PowerShell/PowerShell/master/README.md",
+        "regex": "\\[rl-windows-64\\].*releases/download/v([\\d.]+)/PowerShell"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x86.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/PowerShell/PowerShell/releases/tag/v$version/",
+            "find": "$basename\\s*<ul>\\s*<li>([A-Fa-f\\d]{64})"
+        }
+    }
+}

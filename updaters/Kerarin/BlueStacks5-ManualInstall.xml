@@ -1,0 +1,110 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<Jobs>
+  <ApplicationJob xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Guid="0f54cccb-4ec9-4436-b0b0-796524a32a0d">
+    <WebsiteUrl />
+    <UserAgent />
+    <UserNotes />
+    <LastFileSize>1168640</LastFileSize>
+    <LastFileDate>2021-09-07T18:51:58+09:30</LastFileDate>
+    <IgnoreFileInformation>false</IgnoreFileInformation>
+    <DownloadBeta>Default</DownloadBeta>
+    <DownloadDate xsi:nil="true" />
+    <CheckForUpdatesOnly>false</CheckForUpdatesOnly>
+    <VariableChangeIndicator />
+    <HashVariable />
+    <HashType>None</HashType>
+    <CanBeShared>true</CanBeShared>
+    <ShareApplication>false</ShareApplication>
+    <ExclusiveDownload>false</ExclusiveDownload>
+    <HttpReferer />
+    <SetupInstructions />
+    <Variables>
+      <item>
+        <key>
+          <string>version</string>
+        </key>
+        <value>
+          <UrlVariable>
+            <RegexRightToLeft>false</RegexRightToLeft>
+            <VariableType>RegularExpression</VariableType>
+            <Regex>BlueStacks version ([\d.]+)</Regex>
+            <Url>https://support.bluestacks.com{ReleaseNotes}</Url>
+            <StartText>/microsoft/winget-pkgs/tree/master/manifests/m/Microsoft/PowerBI/</StartText>
+            <EndText>"</EndText>
+            <Name>version</Name>
+          </UrlVariable>
+        </value>
+      </item>
+      <item>
+        <key>
+          <string>download</string>
+        </key>
+        <value>
+          <UrlVariable>
+            <RegexRightToLeft>false</RegexRightToLeft>
+            <VariableType>StartEnd</VariableType>
+            <Regex />
+            <Url>https://support.bluestacks.com{ReleaseNotes}</Url>
+            <StartText>&lt;/h3&gt;
+&lt;p&gt;&lt;a href="</StartText>
+            <EndText>"</EndText>
+            <TextualContent>https://www.ipvanish.com/software/setup-prod-v2/ipvanish-setup.exe</TextualContent>
+            <Name>download</Name>
+          </UrlVariable>
+        </value>
+      </item>
+      <item>
+        <key>
+          <string>filepath</string>
+        </key>
+        <value>
+          <UrlVariable>
+            <RegexRightToLeft>false</RegexRightToLeft>
+            <VariableType>Textual</VariableType>
+            <Regex />
+            <TextualContent>{localgithubpath}\scoop-apps\bucket\BlueStacks5-ManualInstall.json</TextualContent>
+            <Name>filepath</Name>
+          </UrlVariable>
+        </value>
+      </item>
+      <item>
+        <key>
+          <string>ReleaseNotes</string>
+        </key>
+        <value>
+          <UrlVariable>
+            <RegexRightToLeft>false</RegexRightToLeft>
+            <VariableType>StartEnd</VariableType>
+            <Regex />
+            <Url>https://support.bluestacks.com/hc/en-us/sections/360012290292-Release-Notes5.2</Url>
+            <StartText>&lt;a class="article-list-item__link" href="</StartText>
+            <EndText>"</EndText>
+            <Name>ReleaseNotes</Name>
+          </UrlVariable>
+        </value>
+      </item>
+    </Variables>
+    <ExecuteCommand>$localgithubpath = $globalvars.localgithubpath.CachedContent
+$filepath = $localgithubpath + "\scoop-apps\bucket\BlueStacks5-ManualInstall.json"
+$version = $app.variables.version.CachedContent
+$download = $app.variables.download.CachedContent + "#/setup.exe"
+$downloadfile = $app.CurrentLocation
+$sha256 = (Get-FileHash "$downloadfile" -Algorithm SHA256).Hash
+jj -i "$filepath" -o "$filepath" -v $version version
+jj -i "$filepath" -o "$filepath" -v $download url
+jj -i "$filepath" -o "$filepath" -v $sha256 hash</ExecuteCommand>
+    <ExecutePreCommand />
+    <ExecuteCommandType>PowerShell</ExecuteCommandType>
+    <ExecutePreCommandType>Batch</ExecutePreCommandType>
+    <Category>Install</Category>
+    <SourceType>FixedUrl</SourceType>
+    <PreviousLocation>C:\Users\Adrian\Downloads\BlueStacks5 5.3.10.exe</PreviousLocation>
+    <DeletePreviousFile>true</DeletePreviousFile>
+    <Enabled>true</Enabled>
+    <FileHippoId />
+    <LastUpdated>2021-09-09T22:54:41.233302+09:30</LastUpdated>
+    <TargetPath>{downloadpath}\BlueStacks5 {version}.exe</TargetPath>
+    <FixedDownloadUrl>{download}</FixedDownloadUrl>
+    <Name>BlueStacks5-ManualInstall</Name>
+  </ApplicationJob>
+</Jobs>

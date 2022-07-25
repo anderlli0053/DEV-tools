@@ -1,0 +1,45 @@
+{
+    "version": "4.55",
+    "description": "SoftwareOK GetWindowText. Windows read out the window text on all OS!",
+    "homepage": "http://www.softwareok.com/?seite=Microsoft/GetWindowText",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.softwareok.com/Download/GetWindowText_x64.zip",
+            "hash": "a2121366ecda71f021dec632bc2caa6b029e444c403c7691301580471e19c236",
+            "shortcuts": [
+                [
+                    "GetWindowText_x64.exe",
+                    "SoftwareOK\\GetWindowText"
+                ]
+            ]
+        },
+        "32bit": {
+            "url": "https://www.softwareok.com/Download/GetWindowText.zip",
+            "hash": "1792b708fd1edd60eeb9c13d548e74f72d44bea48e50c12a36f2279cfac18f1b",
+            "shortcuts": [
+                [
+                    "GetWindowText.exe",
+                    "SoftwareOK\\GetWindowText"
+                ]
+            ]
+        }
+    },
+    "pre_install": "if (-not (Test-Path \"$dir\\GetWindowText.ini\")) { Set-Content \"$dir\\GetWindowText.ini\" '[Program]' -Encoding Ascii }",
+    "persist": "GetWindowText.ini",
+    "checkver": "New in version ([\\d.]+)",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.softwareok.com/Download/GetWindowText_x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.softwareok.com/Download/GetWindowText.zip"
+            }
+        },
+        "hash": {
+            "url": "https://www.softwareok.com/?Download=GetWindowText",
+            "regex": "$basename.*?$sha256.*?$basename/GetWindowText_"
+        }
+    }
+}

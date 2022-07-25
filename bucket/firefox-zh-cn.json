@@ -1,0 +1,54 @@
+{
+    "description": "Popular open source web browser. Cross-platform and available in many languages.",
+    "homepage": "https://www.mozilla.org/zh-CN/firefox/new/",
+    "version": "102.0.1",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/102.0.1/win64/zh-CN/Firefox%20Setup%20102.0.1.exe#/firefox.7z",
+            "hash": "sha512:333b9fbae5a0ccacfe443e9896a12a86b40820b730b902ba5be1168dbd200f22865f946825b8d90f43fb0953f38257c9fea0292d65d8b029d51be88f51556204"
+        },
+        "32bit": {
+            "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/102.0.1/win32/zh-CN/Firefox%20Setup%20102.0.1.exe#/firefox.7z",
+            "hash": "sha512:358184bff634bb4ff5d082f5186eda2b4db61a22d486e24783d10164a3fb646a889aadc8caaaff505983a298ffcfe296c66001889dd113ff10117d4a6c02f7ae"
+        }
+    },
+    "extract_dir": "core",
+    "bin": [
+        [
+            "firefox.exe",
+            "firefox",
+            "-profile \"$dir\\profile\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "firefox.exe",
+            "Mozilla Firefox",
+            "-profile \"$dir\\profile\""
+        ]
+    ],
+    "persist": "profile",
+    "checkver": {
+        "url": "https://www.mozilla.org/zh-CN/firefox/all/",
+        "re": "data-latest-firefox=\"([\\d.]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/win64/zh-CN/Firefox%20Setup%20$version.exe#/firefox.7z",
+                "hash": {
+                    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win64/zh-CN/$basename"
+                }
+            },
+            "32bit": {
+                "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/win32/zh-CN/Firefox%20Setup%20$version.exe#/firefox.7z",
+                "hash": {
+                    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win32/zh-CN/$basename"
+                }
+            }
+        }
+    }
+}

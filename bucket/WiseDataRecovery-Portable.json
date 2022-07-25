@@ -1,0 +1,28 @@
+{
+    "version": "6.0.3",
+    "description": "Wise Data Recovery. Data and file recovery",
+    "homepage": "https://portableapps.com/apps/utilities/wise-data-recovery-portable",
+    "license": "",
+    "url": "https://download3.portableapps.com/portableapps/WiseDataRecoveryPortable/WiseDataRecoveryPortable_6.0.3.paf.exe#/dl.7z",
+    "hash": "235344556f3411a0224fd7230b4f83376bb284deb542d6e3faba58702eff5502",
+    "bin": "WiseDataRecoveryPortable.exe",
+    "shortcuts": [
+        [
+            "WiseDataRecoveryPortable.exe",
+            "WiseDataRecovery"
+        ]
+    ],
+    "persist": "Data",
+    "checkver": {
+        "url": "https://portableapps.com/apps/utilities/wise-data-recovery-portable",
+        "regex": "Version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download3.portableapps.com/portableapps/WiseDataRecoveryPortable/WiseDataRecoveryPortable_$version.paf.exe#/dl.7z",
+        "hash": {
+            "url": "https://portableapps.com/apps/utilities/wise-data-recovery-portable",
+            "regex": "MD5 Hash: +[\\w]{32}"
+        }
+    },
+    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
+}

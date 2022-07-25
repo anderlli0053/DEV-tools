@@ -1,0 +1,47 @@
+{
+    "version": "4.7.3.0",
+    "description": "Computer monitoring and classroom management software.",
+    "homepage": "https://veyon.io/",
+    "license": "GPL-2.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/veyon/veyon/releases/download/v4.7.3/veyon-4.7.3.0-win64-setup.exe#/setup.exe",
+            "hash": "f8c2867d55d1b2cb02eb2c9507415420e0c911cb011afd5aa9e7dc6f1864ee07"
+        },
+        "32bit": {
+            "url": "https://github.com/veyon/veyon/releases/download/v4.7.3/veyon-4.7.3.0-win32-setup.exe#/setup.exe",
+            "hash": "47c8ddeee3132608ea15c7bbeb4465af6653a8a36cd222c260518a3d76d04322"
+        }
+    },
+    "pre_download": "Assert-Administrator",
+    "installer": {
+        "script": [
+            "$programname = \"Veyon*\"",
+            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
+            "$filepath = \"$ProgramFiles\\Veyon\\veyon-configurator.exe\"",
+            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ([System.Diagnostics.FileVersionInfo]::GetVersionInfo($filepath).FileVersionRaw -lt [System.Version]\"$version\"))",
+            "{",
+            "   &\"$dir\\setup.exe\" /S /NoMaster | Out-Null",
+            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ([System.Diagnostics.FileVersionInfo]::GetVersionInfo($filepath).FileVersionRaw -lt [System.Version]\"$version\"))",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}",
+            "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
+        ]
+    },
+    "checkver": {
+        "url": "https://veyon.io/download/",
+        "regex": "veyon-([\\d.]+)-win64-setup.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/veyon/veyon/releases/download/v$majorVersion.$minorVersion.$patchVersion/veyon-$version-win64-setup.exe#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/veyon/veyon/releases/download/v$majorVersion.$minorVersion.$patchVersion/veyon-$version-win32-setup.exe#/setup.exe"
+            }
+        }
+    }
+}

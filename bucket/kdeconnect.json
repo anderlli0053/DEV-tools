@@ -1,0 +1,39 @@
+{
+    "version": "22.04.1",
+    "description": "Communications and data transfer between devices over local networks",
+    "homepage": "https://kdeconnect.kde.org/",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.kde.org/stable/release-service/22.04.1/windows/kdeconnect-kde-22.04.1-986-windows-msvc2019_64-cl.exe#/dl.7z",
+            "hash": "37f5315ed8724a2edb37ca5f1ba1ec3ffa0a8a609d9474b3015e58dfed15152b"
+        }
+    },
+    "pre_install": [
+        "Remove-Item \"$dir\\*\" -Exclude kdeconnect-*.7z -Recurse",
+        "Expand-7ZipArchive \"$dir\\kdeconnect-*.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\kdeconnect-*.7z\""
+    ],
+    "bin": "bin\\kdeconnect-cli.exe",
+    "shortcuts": [
+        [
+            "bin\\kdeconnect-app.exe",
+            "KDEConnect"
+        ]
+    ],
+    "checkver": {
+        "url": "https://apps.kde.org/kdeconnect",
+        "regex": "kdeconnect-kde-([\\d.]+)-(?<build>[\\d]+)-windows-(?<lib>\\w+)-cl\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.kde.org/stable/release-service/$version/windows/kdeconnect-kde-$version-$matchBuild-windows-$matchLib-cl.exe#/dl.7z",
+                "hash": {
+                    "url": "https://apps.kde.org/kdeconnect",
+                    "regex": "sha256:</strong> $sha256</div>"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "version": "8.3.2",
+    "description": "An open source analytics and visualization platform designed to work with Elasticsearch.",
+    "homepage": "https://www.elastic.co/products/kibana",
+    "license": {
+        "identifier": "Freeware|Apache-2.0",
+        "url": "https://github.com/elastic/kibana/blob/7.2/licenses/ELASTIC-LICENSE.txt"
+    },
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ]
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://artifacts.elastic.co/downloads/kibana/kibana-8.3.2-windows-x86_64.zip",
+            "hash": "sha512:3d75586050760b9b5118374a6458324e69113f9340ed67435076fb5b988fbf3bc3c560e471cdc42097d7126ba9f4975bc8df2919666dd9b91619fab8cdcfdbdc",
+            "extract_dir": "kibana-8.3.2"
+        }
+    },
+    "bin": [
+        "bin\\kibana.bat",
+        "bin\\kibana-plugin.bat"
+    ],
+    "persist": [
+        "config",
+        "data",
+        "plugins"
+    ],
+    "checkver": {
+        "url": "https://www.elastic.co/downloads/kibana",
+        "regex": "kibana-([\\d.]+)-windows-x86_64\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://artifacts.elastic.co/downloads/kibana/kibana-$version-windows-x86_64.zip",
+                "extract_dir": "kibana-$version"
+            }
+        },
+        "hash": {
+            "url": "$url.sha512"
+        }
+    }
+}

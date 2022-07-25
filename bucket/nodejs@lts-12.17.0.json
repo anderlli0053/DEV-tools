@@ -1,0 +1,52 @@
+{
+	"homepage": "https://nodejs.org",
+	"description": "As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.",
+	"version": "12.17.0",
+	"license": "MIT",
+	"architecture": {
+		"64bit": {
+			"url": "https://nodejs.org/dist/v12.17.0/node-v12.17.0-win-x64.zip",
+			"hash": "sha256:f3a64dc6ad48577f1f81521aa144c028beb7e353d0fcd05d7b420a72a84f50fc",
+			"extract_dir": "node-v12.17.0-win-x64"
+		},
+		"32bit": {
+			"url": "https://nodejs.org/dist/v12.17.0/node-v12.17.0-win-x86.zip",
+			"hash": "sha256:9ae66ef3abb38c54679d8a5d971870353a80f466a24404b5d8b880e049f5fb8c",
+			"extract_dir": "node-v12.17.0-win-x86"
+		}
+	},
+	"persist": ["bin", "cache"],
+	"env_add_path": [".", "bin"],
+	"## maint! [2020-05-31; rivy]": "maybe we don't need `yarn` to hold the `npm` dependency anymore? ref: <https://github.com/npm/cli/issues/713>)",
+	// "## maint! [2019-03-17; rivy]": "depend on `yarn` to install and update `npm` and `npx` as the current `npm` upgrade system fails (see <https://stackoverflow.com/questions/18412129/how-can-i-update-npm-on-windows/31520672#31520672>)",
+	// "post_install": [ ""
+	//     , "# install yarn, if needed; doing it here avoids a circular dependency between nodejs and yarn"
+	//     , "# * finalize current install prior to installing `yarn` (which requires nodejs) to avoid circular dependency issues"
+	//     , "env_add_path $manifest $dir $global; env_set $manifest $dir $global; save_installed_manifest $app $dir $url"
+	//     , "$null, $bucket, $null = app_parse $app ; save_install_info @{ 'architecture' = $architecture; 'url' = $url; 'bucket' = $bucket } $dir"
+	//     , "if ( -not $( get-command yarn -ea silent ) ) { scoop install rivy/yarn; }"
+	//     , "env 'PATH' $env:PATH" // reset PATH to current value; pipes current value (including `yarn` PATH additions) up to parent process
+	//     , "yarn global add npm npx"
+	//     // * removal *after* yarn npm/npx install; some package rebuilds (eg, `esy`), which are done at the end of the npm/npx install, require a prior working `npm`
+	//     , "# Remove broken included `npm` and `npx`; replacing them with `yarn`-installed versions"
+	//     , "$path = \"$dir\\npm\" ; if (test-path $path) { echo $('removing ' + $path); remove-item $path }"
+	//     , "$path = \"$dir\\npm.cmd\" ; if (test-path $path) { echo $('removing ' + $path); remove-item $path }"
+	//     , "$path = \"$dir\\npx\" ; if (test-path $path) { echo $('removing ' + $path); remove-item $path }"
+	//     , "$path = \"$dir\\npx.cmd\" ; if (test-path $path) { echo $('removing ' + $path); remove-item $path }"
+	//     , "$path = \"$dir\\node_modules\\npm\" ; if (test-path $path) { echo $('removing ' + $path); remove-item $path -recurse }"
+	// ],
+	"checkver": { "url": "https://nodejs.org/dist/latest/", "re": "node-v([\\d.]+)-x86.msi" },
+	"autoupdate": {
+		"architecture": {
+			"64bit": {
+				"url": "https://nodejs.org/dist/v$version/node-v$version-win-x64.7z",
+				"extract_dir": "node-v$version-win-x64"
+			},
+			"32bit": {
+				"url": "https://nodejs.org/dist/v$version/node-v$version-win-x86.7z",
+				"extract_dir": "node-v$version-win-x86"
+			}
+		},
+		"hash": { "url": "$baseurl/SHASUMS256.txt.asc" }
+	}
+}

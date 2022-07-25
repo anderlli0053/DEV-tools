@@ -1,0 +1,67 @@
+{
+    "version": "7.2.5",
+    "description": "Cross-platform automation and configuration tool/framework, known as Powershell Core, that works well with existing tools and is optimized for dealing with structured data.",
+    "homepage": "https://github.com/PowerShell/PowerShell",
+    "license": "MIT",
+    "notes": [
+        "Since Scoop uses pwsh.exe internally, to update PowerShell Core itself,",
+        "run `scoop update pwsh` from Windows PowerShell, i.e. powershell.exe.",
+        "",
+        "Add PowerShell Core as a explorer context menu by running: '$dir\\install-explorer-context.reg'",
+        "For file context menu, run '$dir\\install-file-context.reg'"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.2.5/PowerShell-7.2.5-win-x64.zip",
+            "hash": "b686207d13d728f44df2bacb676d77ef4bd142a739a96798ebd85fdb5467866c"
+        },
+        "32bit": {
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.2.5/PowerShell-7.2.5-win-x86.zip",
+            "hash": "e6f898e3c348a9dcbddbc76787bf4031dbb68a5946dc6e9fd4310ee06b264cff"
+        }
+    },
+    "pre_install": [
+        "'Microsoft.PowerShell_profile.ps1', 'profile.ps1' | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
+        "}"
+    ],
+    "post_install": [
+        "if ($architecture -eq '32bit') { $pwshArch = 'x86' } else { $pwshArch = 'x64' }",
+        "$pwshPath = \"$dir\\pwsh.exe\".Replace('\\', '\\\\')",
+        "'install-explorer-context', 'uninstall-explorer-context', 'install-file-context' , 'uninstall-file-context' | ForEach-Object {",
+        "    if (Test-Path \"$bucketsdir\\main\\scripts\\pwsh\\$_.reg\") {",
+        "        $content = (Get-Content \"$bucketsdir\\main\\scripts\\pwsh\\$_.reg\").Replace('$pwshPath', $pwshPath)",
+        "        $content = $content.Replace('$pwshArch', $pwshArch)",
+        "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
+        "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
+        "    }",
+        "}"
+    ],
+    "bin": "pwsh.exe",
+    "shortcuts": [
+        [
+            "pwsh.exe",
+            "PowerShell Core",
+            "-WorkingDirectory ~"
+        ]
+    ],
+    "persist": [
+        "Microsoft.PowerShell_profile.ps1",
+        "profile.ps1"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x86.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/PowerShell/PowerShell/releases/tag/v$version/",
+            "regex": "$basename\\s*<ul>\\s*<li>$sha256"
+        }
+    }
+}

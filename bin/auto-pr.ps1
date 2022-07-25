@@ -1,8 +1,6 @@
-#Requires -Version 5
-
 param(
     # overwrite upstream param
-    [String]$upstream = "anderlli0053/DEV-tools:master"
+    [String]$upstream = "ScoopInstaller/Main:master"
 )
 
 if(!$env:SCOOP_HOME) { $env:SCOOP_HOME = Resolve-Path (scoop prefix scoop) }

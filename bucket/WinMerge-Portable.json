@@ -1,0 +1,41 @@
+{
+    "version": "2.16.20",
+    "description": "WinMerge. Differencing and merging tool, that compares both folders and files, presenting differences in a visual text format that is easy to understand and handle.",
+    "homepage": "https://winmerge.org",
+    "license": "GPL-2.0-only",
+    "changelog": "https://winmerge.org/docs/changelog.php?lang=en",
+    "suggest": {
+        "vcredist2008": "extras/vcredist2008"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/WinMerge/winmerge/releases/download/v2.16.20/winmerge-2.16.20-x64-exe.zip",
+            "hash": "39a70e3634995c89fb67a9fab02bf7176add8ad196d0b4fbea6a46cc524f1f43"
+        },
+        "32bit": {
+            "url": "https://github.com/WinMerge/winmerge/releases/download/v2.16.20/winmerge-2.16.20-exe.zip",
+            "hash": "56f194c48afe91d1b56b7ff0d35da9d5ae20e550fed6e7816c833190a3ef8c22"
+        }
+    },
+    "extract_dir": "WinMerge",
+    "bin": "WinMergeU.exe",
+    "shortcuts": [
+        [
+            "WinMergeU.exe",
+            "WinMerge"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/WinMerge/winmerge/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/WinMerge/winmerge/releases/download/v$version/winmerge-$version-x64-exe.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/WinMerge/winmerge/releases/download/v$version/winmerge-$version-exe.zip"
+            }
+        }
+    }
+}

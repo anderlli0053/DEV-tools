@@ -1,0 +1,28 @@
+{
+    "version": "2.04",
+    "description": "1by1. Directory Player: directly plays folder contents.",
+    "homepage": "https://mpesch3.de/1by1.html",
+    "license": "freeware",
+    "changelog": "https://mpesch3.de/1by1.html",
+    "url": "https://www.videohelp.com/download/1by1_204.exe#/dl.7z",
+    "hash": "7d80bc7e7358dab02b546027dbabfc9f64a5f56e656e8b4babb777985cae05bf",
+    "shortcuts": [
+        [
+            "1by1.exe",
+            "1by1"
+        ]
+    ],
+    "pre_install": "if(!(Test-Path \"$dir/1by1.ini\")) { Add-Content \"$dir/1by1.ini\" $null }",
+    "persist": "1by1.ini",
+    "checkver": {
+        "url": "https://mpesch3.de/1by1.html",
+        "regex": "Version\\s([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://www.videohelp.com/download/1by1_$cleanVersion.exe#/dl.7z",
+        "hash": {
+            "url": "https://www.fosshub.com/1by1.html",
+            "regex": "(?sm)$basename.*?\"sha256\":\"$sha256\""
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "version": "0.27.0",
+    "description": "The kubectl plugin for KubeDB by AppsCode.",
+    "homepage": "https://kubedb.com/docs/latest/setup/install/kubectl_plugin/",
+    "license": {
+        "identifier": "AppsCode-Community-1.0.0",
+        "url": "https://github.com/appscode/licenses/raw/1.0.0/AppsCode-Community-1.0.0.md"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/kubedb/cli/releases/download/v0.27.0/kubectl-dba-windows-amd64.zip",
+            "hash": "a1ac1457968ee1141c9edd6c78d47af49ef2574e05339d78d61dfd269872fe73"
+        }
+    },
+    "bin": "kubectl-dba.exe",
+    "pre_install": "Rename-Item -Path \"$dir\\kubectl-dba-windows-amd64.exe\" -NewName 'kubectl-dba.exe'",
+    "checkver": {
+        "github": "https://github.com/kubedb/cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/kubedb/cli/releases/download/v$version/kubectl-dba-windows-amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/kubectl-dba-checksums.txt"
+        }
+    }
+}

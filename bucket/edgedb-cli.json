@@ -1,0 +1,28 @@
+{
+    "version": "1.2.2",
+    "description": "Command-line tools for EdgeDB.",
+    "homepage": "https://www.edgedb.com/docs/cli/index",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-1.2.2+6865761.exe#/edgedb.exe",
+            "hash": "21529bd3b41682825b3253b3e594152932cf0cf3313c28d96cced664c5e11b78"
+        }
+    },
+    "bin": "edgedb.exe",
+    "checkver": {
+        "script": [
+            "$indexes = Invoke-RestMethod 'https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json'",
+            "$latest = $indexes.packages | Sort-Object -Property revision | Select-Object -Last 1",
+            "return $latest.version"
+        ],
+        "regex": "(.+)\\+(?<commit>.+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-$version+$matchCommit.exe#/edgedb.exe"
+            }
+        }
+    }
+}
