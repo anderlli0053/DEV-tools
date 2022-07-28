@@ -9,7 +9,8 @@
         "vcredist": "extras/vcredist2012"
     },
 	
-	"pre_install":"Expand-7zipArchive \"$dir\\B1FreeArchiver_1.7.120.exe\" \"$dir\\B1FA""",
+	"pre_install":"Expand-7zipArchive \"$dir\\B1FreeArchiver_1.7.120.exe\" \"$dir\" -Removal | Out-Null",
+	"post_install": ""
 	
 	
 	
@@ -18,12 +19,12 @@
 	
 	"shortcuts": [
         [
-            "B1FA/B1Manager.exe",
+            "B1Manager.exe",
             "B1 Free Archiver"
         ]
     ],
 	
-	"bin": "B1FA/b1.exe",
+	"bin": "b1.exe",
 	
     
     "notes": [
