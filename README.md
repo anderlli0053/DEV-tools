@@ -16,3 +16,7 @@ For updating the bucket with the upstream use ```scoop update```, for other comm
 
 Once the Scoop is sucessfully installed and in the System PATH, you can use whatever command-line you like, CMD, PowerShell,...
 
+
+
+
+___It started as a collection of manifests for development tools that i wrote, but then turned into a container of pretty much everything. Apps, Games, ... you name it!.___
