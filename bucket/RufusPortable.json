@@ -1,28 +1,28 @@
 {
-    "homepage": "https://portableapps.com/apps/utilities/rufus-portable",
-    "description": "Format and create bootable USB drives",
-    "version": "3.19",
-    "license": "",
-    "url": "https://svwh.dl.sourceforge.net/project/portableapps/Rufus%20Portable/RufusPortable_3.19.paf.exe",
-    "hash": "5eac0039a7902c9e67edfe8a474fa1013902ed89900ab8d41f5b5fa3938c1854",
-    "bin": "RufusPortable.exe",
-    "shortcuts": [
-        [
-            "RufusPortable.exe",
-            "RufusPortable"
-        ]
-    ],
-    "persist": "Data",
-    "checkver": {
-        "url": "https://portableapps.com/apps/utilities/rufus-portable",
-        "re": "Version \\s+([\\w\\.]* for Win"
-    },
-    "autoupdate": {
-        "url": "https://svwh.dl.sourceforge.net/project/portableapps/Rufus%20Portable/RufusPortable_$version.paf.exe",
-        "hash": {
-            "url": "https://portableapps.com/apps/utilities/rufus-portable",
-            "regex": "MD5 Hash: +[\\w]{32}"
-        }
-    },
-    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
+ "autoupdate": {
+  "hash": {
+   "regex": "MD5 Hash: +[\\w]{32}",
+   "url": "https://portableapps.com/apps/utilities/rufus-portable"
+  },
+  "url": "https://svwh.dl.sourceforge.net/project/portableapps/Rufus%20Portable/RufusPortable_$version.paf.exe"
+ },
+ "bin": "RufusPortable.exe",
+ "checkver": {
+  "re": "Version \\s+([\\w\\.]* for Win",
+  "url": "https://portableapps.com/apps/utilities/rufus-portable"
+ },
+ "description": "Format and create bootable USB drives",
+ "hash": "5eac0039a7902c9e67edfe8a474fa1013902ed89900ab8d41f5b5fa3938c1854",
+ "homepage": "https://portableapps.com/apps/utilities/rufus-portable",
+ "license": "",
+ "persist": "Data",
+ "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+ "shortcuts": [
+  [
+   "RufusPortable.exe",
+   "RufusPortable"
+  ]
+ ],
+ "url": "https://svwh.dl.sourceforge.net/project/portableapps/Rufus%20Portable/RufusPortable_3.19.paf.exe",
+ "version": "3.19"
 }

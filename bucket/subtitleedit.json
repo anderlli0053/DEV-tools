@@ -1,27 +1,27 @@
 {
-    "version": "3.6.6",
-    "description": "Video subtitles editor",
-    "homepage": "http://www.nikse.dk/subtitleedit/",
-    "license": "GPL-3.0-only",
-    "url": "https://github.com/SubtitleEdit/subtitleedit/releases/download/3.6.6/SE366.zip",
-    "hash": "3d7a6e3ba5ca2d085b4bda38b40f6f539d6236d5c7139501a568e9ebf2e609a2",
-    "pre_install": "if (!(Test-Path \"$persist_dir\\Settings.xml\")) { New-Item \"$dir\\Settings.xml\" | Out-Null }",
-    "bin": "SubtitleEdit.exe",
-    "shortcuts": [
-        [
-            "SubtitleEdit.exe",
-            "SubtitleEdit"
-        ]
-    ],
-    "persist": "Settings.xml",
-    "checkver": {
-        "github": "https://github.com/SubtitleEdit/subtitleedit"
-    },
-    "autoupdate": {
-        "url": "https://github.com/SubtitleEdit/subtitleedit/releases/download/$version/SE$cleanVersion.zip",
-        "hash": {
-            "url": "https://github.com/SubtitleEdit/subtitleedit/releases/tag/$version/",
-            "regex": "(?sm)$basename.*?SHA256 Checksum:\\s*<code>$sha256</"
-        }
-    }
+ "autoupdate": {
+  "hash": {
+   "regex": "(?sm)$basename.*?SHA256 Checksum:\\s*<code>$sha256</",
+   "url": "https://github.com/SubtitleEdit/subtitleedit/releases/tag/$version/"
+  },
+  "url": "https://github.com/SubtitleEdit/subtitleedit/releases/download/$version/SE$cleanVersion.zip"
+ },
+ "bin": "SubtitleEdit.exe",
+ "checkver": {
+  "github": "https://github.com/SubtitleEdit/subtitleedit"
+ },
+ "description": "Video subtitles editor",
+ "hash": "3d7a6e3ba5ca2d085b4bda38b40f6f539d6236d5c7139501a568e9ebf2e609a2",
+ "homepage": "http://www.nikse.dk/subtitleedit/",
+ "license": "GPL-3.0-only",
+ "persist": "Settings.xml",
+ "pre_install": "if (!(Test-Path \"$persist_dir\\Settings.xml\")) { New-Item \"$dir\\Settings.xml\" | Out-Null }",
+ "shortcuts": [
+  [
+   "SubtitleEdit.exe",
+   "SubtitleEdit"
+  ]
+ ],
+ "url": "https://github.com/SubtitleEdit/subtitleedit/releases/download/3.6.6/SE366.zip",
+ "version": "3.6.6"
 }

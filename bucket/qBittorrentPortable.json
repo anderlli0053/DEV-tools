@@ -1,28 +1,28 @@
 {
-    "homepage": "https://portableapps.com/apps/internet/qbittorrent_portable",
-    "description": "Lightweight bittorrent client",
-    "version": "4.4.3.1",
-    "license": "",
-    "url": "https://versaweb.dl.sourceforge.net/project/portableapps/qBittorrent%20Portable/qBittorrentPortable_4.4.3.1.paf.exe",
-    "hash": "dab2bbc0bcc2f1c1acab7b1342e548e212ee2191138506b1d55923f074d9dd89",
-    "bin": "qBittorrentPortable.exe",
-    "shortcuts": [
-        [
-            "qBittorrentPortable.exe",
-            "qBittorrentPortable"
-        ]
-    ],
-    "persist": "Data",
-    "checkver": {
-        "url": "https://portableapps.com/apps/internet/qbittorrent_portable",
-        "re": "Version \\s+([\\w\\.]* for Win"
-    },
-    "autoupdate": {
-        "url": "https://versaweb.dl.sourceforge.net/project/portableapps/qBittorrent%20Portable/qBittorrentPortable_$version.paf.exe",
-        "hash": {
-            "url": "https://portableapps.com/apps/internet/qbittorrent_portable",
-            "regex": "MD5 Hash: +[\\w]{32}"
-        }
-    },
-    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
+ "autoupdate": {
+  "hash": {
+   "regex": "MD5 Hash: +[\\w]{32}",
+   "url": "https://portableapps.com/apps/internet/qbittorrent_portable"
+  },
+  "url": "https://versaweb.dl.sourceforge.net/project/portableapps/qBittorrent%20Portable/qBittorrentPortable_$version.paf.exe"
+ },
+ "bin": "qBittorrentPortable.exe",
+ "checkver": {
+  "re": "Version \\s+([\\w\\.]* for Win",
+  "url": "https://portableapps.com/apps/internet/qbittorrent_portable"
+ },
+ "description": "Lightweight bittorrent client",
+ "hash": "dab2bbc0bcc2f1c1acab7b1342e548e212ee2191138506b1d55923f074d9dd89",
+ "homepage": "https://portableapps.com/apps/internet/qbittorrent_portable",
+ "license": "",
+ "persist": "Data",
+ "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+ "shortcuts": [
+  [
+   "qBittorrentPortable.exe",
+   "qBittorrentPortable"
+  ]
+ ],
+ "url": "https://versaweb.dl.sourceforge.net/project/portableapps/qBittorrent%20Portable/qBittorrentPortable_4.4.3.1.paf.exe",
+ "version": "4.4.3.1"
 }

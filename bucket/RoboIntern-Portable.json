@@ -1,50 +1,50 @@
 {
-    "version": "1.32",
-    "description": "RoboIntern. Automate repetitive tasks at ease",
-    "homepage": "https://robointern.tech/index.html",
-    "license": "",
-    "changelog": "https://robointern.tech/release-log.html",
-    "architecture": {
-        "64bit": {
-            "url": "https://robointern.tech/release/x64/RoboIntern.zip",
-            "hash": "46d10ab1f503c254f274684877040c0fb3436eeba5f990337ff1898351e05e28"
-        },
-        "32bit": {
-            "url": "https://robointern.tech/release/RoboIntern.zip",
-            "hash": "2e6a2cb7970b0f96428ee9a2ab1f8abaa4653a88951ac241e44634a842f69449"
-        }
-    },
-    "pre_install": [
-        "$path = \"$dir\\Backup\"",
-        "If(!(test-path $path))",
-        "{",
-        "   New-Item -ItemType Directory -Force -Path $path",
-        "}"
-    ],
-    "persist": [
-        "Backup",
-        "config",
-        "RoboIntern.exe.manifest"
-    ],
-    "bin": "RoboIntern.exe",
-    "shortcuts": [
-        [
-            "RoboIntern.exe",
-            "RoboIntern"
-        ]
-    ],
-    "checkver": {
-        "url": "https://robointern.tech/download.html",
-        "regex": "version ([\\d.]+) <br>"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://robointern.tech/release/x64/RoboIntern.zip"
-            },
-            "32bit": {
-                "url": "https://robointern.tech/release/RoboIntern.zip"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "2e6a2cb7970b0f96428ee9a2ab1f8abaa4653a88951ac241e44634a842f69449",
+   "url": "https://robointern.tech/release/RoboIntern.zip"
+  },
+  "64bit": {
+   "hash": "46d10ab1f503c254f274684877040c0fb3436eeba5f990337ff1898351e05e28",
+   "url": "https://robointern.tech/release/x64/RoboIntern.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://robointern.tech/release/RoboIntern.zip"
+   },
+   "64bit": {
+    "url": "https://robointern.tech/release/x64/RoboIntern.zip"
+   }
+  }
+ },
+ "bin": "RoboIntern.exe",
+ "changelog": "https://robointern.tech/release-log.html",
+ "checkver": {
+  "regex": "version ([\\d.]+) <br>",
+  "url": "https://robointern.tech/download.html"
+ },
+ "description": "RoboIntern. Automate repetitive tasks at ease",
+ "homepage": "https://robointern.tech/index.html",
+ "license": "",
+ "persist": [
+  "Backup",
+  "config",
+  "RoboIntern.exe.manifest"
+ ],
+ "pre_install": [
+  "$path = \"$dir\\Backup\"",
+  "If(!(test-path $path))",
+  "{",
+  "   New-Item -ItemType Directory -Force -Path $path",
+  "}"
+ ],
+ "shortcuts": [
+  [
+   "RoboIntern.exe",
+   "RoboIntern"
+  ]
+ ],
+ "version": "1.32"
 }

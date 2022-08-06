@@ -1,53 +1,53 @@
 {
-    "version": "2.40",
-    "description": "PsExec. Execute processes on remote systems.",
-    "homepage": "https://docs.microsoft.com/en-us/sysinternals/downloads/psexec",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://docs.microsoft.com/en-us/sysinternals/license-terms"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://live.sysinternals.com/PsExec64.exe",
-            "hash": "5910b49c041b80f6e8d2e8e10752a9062febe4a2edd15f07c6b1961b3c79c129",
-            "bin": [
-                "PsExec64.exe",
-                [
-                    "PsExec64.exe",
-                    "PsExec"
-                ]
-            ]
-        },
-        "32bit": {
-            "url": "https://live.sysinternals.com/PsExec.exe",
-            "hash": "08c6e20b1785d4ec4e3f9956931d992377963580b4b2c6579fd9930e08882b1c",
-            "bin": "PsExec.exe"
-        }
-    },
-    "pre_install": [
-        "$sysint = 'HKCU:\\SOFTWARE\\Sysinternals'",
-        "$fin = \"$sysint\\PsExec\"",
-        "New-Item $sysint, $fin -ErrorAction 'SilentlyContinue' | Out-Null",
-        "Set-ItemProperty -Path $fin -Name 'EulaAccepted' -Value 1 -Type 'DWord' -Force | Out-Null"
-    ],
-    "uninstaller": {
-        "script": [
-            "if ($purge) {",
-            "    $sysInt = 'HKCU:\\SOFTWARE\\Sysinternals'",
-            "    Remove-Item \"$sysInt\\PsExec\" -ErrorAction 'SilentlyContinue' -Force -Recurse",
-            "    if ((Get-ChildItem $sysInt).Count -eq 0) { Remove-Item $sysInt -ErrorAction 'SilentlyContinue' -Force -Recurse }",
-            "}"
-        ]
-    },
-    "checkver": "PsExec\\s+v([\\d.]+)</h1",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://live.sysinternals.com/PsExec64.exe"
-            },
-            "32bit": {
-                "url": "https://live.sysinternals.com/PsExec.exe"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "bin": "PsExec.exe",
+   "hash": "08c6e20b1785d4ec4e3f9956931d992377963580b4b2c6579fd9930e08882b1c",
+   "url": "https://live.sysinternals.com/PsExec.exe"
+  },
+  "64bit": {
+   "bin": [
+    "PsExec64.exe",
+    [
+     "PsExec64.exe",
+     "PsExec"
+    ]
+   ],
+   "hash": "5910b49c041b80f6e8d2e8e10752a9062febe4a2edd15f07c6b1961b3c79c129",
+   "url": "https://live.sysinternals.com/PsExec64.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://live.sysinternals.com/PsExec.exe"
+   },
+   "64bit": {
+    "url": "https://live.sysinternals.com/PsExec64.exe"
+   }
+  }
+ },
+ "checkver": "PsExec\\s+v([\\d.]+)</h1",
+ "description": "PsExec. Execute processes on remote systems.",
+ "homepage": "https://docs.microsoft.com/en-us/sysinternals/downloads/psexec",
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://docs.microsoft.com/en-us/sysinternals/license-terms"
+ },
+ "pre_install": [
+  "$sysint = 'HKCU:\\SOFTWARE\\Sysinternals'",
+  "$fin = \"$sysint\\PsExec\"",
+  "New-Item $sysint, $fin -ErrorAction 'SilentlyContinue' | Out-Null",
+  "Set-ItemProperty -Path $fin -Name 'EulaAccepted' -Value 1 -Type 'DWord' -Force | Out-Null"
+ ],
+ "uninstaller": {
+  "script": [
+   "if ($purge) {",
+   "    $sysInt = 'HKCU:\\SOFTWARE\\Sysinternals'",
+   "    Remove-Item \"$sysInt\\PsExec\" -ErrorAction 'SilentlyContinue' -Force -Recurse",
+   "    if ((Get-ChildItem $sysInt).Count -eq 0) { Remove-Item $sysInt -ErrorAction 'SilentlyContinue' -Force -Recurse }",
+   "}"
+  ]
+ },
+ "version": "2.40"
 }

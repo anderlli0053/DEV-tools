@@ -1,43 +1,43 @@
 {
-    "version": "2022.2.52874",
-    "description": "Web-based issue tracking and agile project management tool by JetBrains.",
-    "homepage": "https://jetbrains.com/youtrack/",
-    "license": {
-        "identifier": "Proprietary",
-        "url": "https://jetbrains.com/youtrack/buy/license.html"
-    },
-    "notes": "YouTrack can be started from anywhere using 'youtrack' command.",
-    "url": "https://download.jetbrains.com/charisma/youtrack-2022.2.52874.zip",
-    "hash": "c2ba78c40cf91b199e6de9cca59e61c6c9ad4d91411682fa67c0dfa399799160",
-    "extract_dir": "youtrack-2022.2.52874",
-    "installer": {
-        "script": [
-            "$ver_path = \"$dir\\bin\"",
-            "$cont = @(",
-            "    \"Push-Location \"\"$ver_path\"\"\"",
-            "    '& .\\youtrack.bat @args'",
-            "    'Pop-Location'",
-            ")",
-            "Set-Content \"$dir\\youtrack.ps1\" $cont -Encoding Ascii"
-        ]
-    },
-    "bin": "youtrack.ps1",
-    "persist": [
-        "backup",
-        "conf",
-        "data",
-        "logs"
-    ],
-    "checkver": {
-        "url": "https://data.services.jetbrains.com/products/releases?code=YTD&platform=zip&latest=true&type=release",
-        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d]+)\"",
-        "replace": "${ver}.${build}"
-    },
-    "autoupdate": {
-        "url": "https://download.jetbrains.com/charisma/youtrack-$version.zip",
-        "hash": {
-            "url": "$url.sha256"
-        },
-        "extract_dir": "youtrack-$version"
-    }
+ "autoupdate": {
+  "extract_dir": "youtrack-$version",
+  "hash": {
+   "url": "$url.sha256"
+  },
+  "url": "https://download.jetbrains.com/charisma/youtrack-$version.zip"
+ },
+ "bin": "youtrack.ps1",
+ "checkver": {
+  "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d]+)\"",
+  "replace": "${ver}.${build}",
+  "url": "https://data.services.jetbrains.com/products/releases?code=YTD&platform=zip&latest=true&type=release"
+ },
+ "description": "Web-based issue tracking and agile project management tool by JetBrains.",
+ "extract_dir": "youtrack-2022.2.52874",
+ "hash": "c2ba78c40cf91b199e6de9cca59e61c6c9ad4d91411682fa67c0dfa399799160",
+ "homepage": "https://jetbrains.com/youtrack/",
+ "installer": {
+  "script": [
+   "$ver_path = \"$dir\\bin\"",
+   "$cont = @(",
+   "    \"Push-Location \"\"$ver_path\"\"\"",
+   "    '& .\\youtrack.bat @args'",
+   "    'Pop-Location'",
+   ")",
+   "Set-Content \"$dir\\youtrack.ps1\" $cont -Encoding Ascii"
+  ]
+ },
+ "license": {
+  "identifier": "Proprietary",
+  "url": "https://jetbrains.com/youtrack/buy/license.html"
+ },
+ "notes": "YouTrack can be started from anywhere using 'youtrack' command.",
+ "persist": [
+  "backup",
+  "conf",
+  "data",
+  "logs"
+ ],
+ "url": "https://download.jetbrains.com/charisma/youtrack-2022.2.52874.zip",
+ "version": "2022.2.52874"
 }

@@ -1,55 +1,55 @@
 {
-    "version": "102.1.1",
-    "description": "Thunderbird. A free email application that is easy to set up and customize.",
-    "homepage": "https://www.thunderbird.net",
-    "license": "MPL-2.0",
-    "changelog": "https://www.thunderbird.net/en-US/thunderbird/91.3.2/releasenotes/#changes",
-    "architecture": {
-        "64bit": {
-            "url": "https://archive.mozilla.org/pub/thunderbird/releases/102.1.1/win64/en-US/Thunderbird%20Setup%20102.1.1.exe#/dl.7z",
-            "hash": "sha512:434b8dfed8b8c0eb846983bef8121f95dac2f9c52d74101c7bf5d54e7e71bcd3f6584e5ab2d9c1b21a082a466b86688eeba36738b9f73a34dcd76ff4e349bdf7"
-        },
-        "32bit": {
-            "url": "https://archive.mozilla.org/pub/thunderbird/releases/102.1.1/win32/en-US/Thunderbird%20Setup%20102.1.1.exe#/dl.7z",
-            "hash": "sha512:474d47b152ebb1922487821aecbabfcecc60c77d29262dc90e4e37eb98e755b0cd2faafd11f441b21ae1fb3b146910612bc7adb8635d3dc27766f25102076364"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:474d47b152ebb1922487821aecbabfcecc60c77d29262dc90e4e37eb98e755b0cd2faafd11f441b21ae1fb3b146910612bc7adb8635d3dc27766f25102076364",
+   "url": "https://archive.mozilla.org/pub/thunderbird/releases/102.1.1/win32/en-US/Thunderbird%20Setup%20102.1.1.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "sha512:434b8dfed8b8c0eb846983bef8121f95dac2f9c52d74101c7bf5d54e7e71bcd3f6584e5ab2d9c1b21a082a466b86688eeba36738b9f73a34dcd76ff4e349bdf7",
+   "url": "https://archive.mozilla.org/pub/thunderbird/releases/102.1.1/win64/en-US/Thunderbird%20Setup%20102.1.1.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "regex": "$sha512\\s+win32/en-US/$basename",
+     "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/SHA512SUMS"
     },
-    "extract_dir": "core",
-    "bin": [
-        [
-            "thunderbird.exe",
-            "thunderbird",
-            "-profile \"$dir\\profile\""
-        ]
-    ],
-    "shortcuts": [
-        [
-            "thunderbird.exe",
-            "Mozilla Thunderbird",
-            "-profile \"$dir\\profile\""
-        ]
-    ],
-    "persist": "profile",
-    "checkver": {
-        "url": "https://www.thunderbird.net/thunderbird/all/",
-        "regex": "thunderbird/([\\d.]+)/"
+    "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/win32/en-US/Thunderbird%20Setup%20$version.exe#/dl.7z"
+   },
+   "64bit": {
+    "hash": {
+     "regex": "$sha512\\s+win64/en-US/$basename",
+     "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/SHA512SUMS"
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/win64/en-US/Thunderbird%20Setup%20$version.exe#/dl.7z",
-                "hash": {
-                    "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/SHA512SUMS",
-                    "regex": "$sha512\\s+win64/en-US/$basename"
-                }
-            },
-            "32bit": {
-                "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/win32/en-US/Thunderbird%20Setup%20$version.exe#/dl.7z",
-                "hash": {
-                    "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/SHA512SUMS",
-                    "regex": "$sha512\\s+win32/en-US/$basename"
-                }
-            }
-        }
-    }
+    "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/win64/en-US/Thunderbird%20Setup%20$version.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": [
+  [
+   "thunderbird.exe",
+   "thunderbird",
+   "-profile \"$dir\\profile\""
+  ]
+ ],
+ "changelog": "https://www.thunderbird.net/en-US/thunderbird/91.3.2/releasenotes/#changes",
+ "checkver": {
+  "regex": "thunderbird/([\\d.]+)/",
+  "url": "https://www.thunderbird.net/thunderbird/all/"
+ },
+ "description": "Thunderbird. A free email application that is easy to set up and customize.",
+ "extract_dir": "core",
+ "homepage": "https://www.thunderbird.net",
+ "license": "MPL-2.0",
+ "persist": "profile",
+ "shortcuts": [
+  [
+   "thunderbird.exe",
+   "Mozilla Thunderbird",
+   "-profile \"$dir\\profile\""
+  ]
+ ],
+ "version": "102.1.1"
 }

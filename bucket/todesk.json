@@ -1,45 +1,45 @@
 {
-    "version": "4.3.2.0",
-    "description": "ToDesk is a stable and smooth remote control, remote office and remote assistance software. With end-to-end encryption, it makes every remote access safe and secure.",
-    "homepage": "https://www.todesk.com/",
-    "license": {
-        "identifier": "Proprietary",
-        "url": "https://www.todesk.com/licence.html"
-    },
-    "url": "https://dl.todesk.com/windows/ToDesk_Setup.exe#/dl.7z",
-    "hash": "de7a1921ca5c6f75a55a99817982516cc77cf41bcec5b8e3b88332fd00d55813",
-    "pre_install": [
-        "info '[Portable Mode]: Copying user data...'",
-        "'config.ini' | ForEach-Object {",
-        "    if (Test-Path \"$persist_dir\\$_\") { Copy-Item \"$persist_dir\\$_\" \"$dir\\\" -Force | Out-Null }",
-        "}"
-    ],
-    "post_install": "@('$PLUGINSDIR', '[NSIS].nsi', 'uninst.exe') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force -ErrorAction SilentlyContinue }",
-    "uninstaller": {
-        "script": [
-            "info '[Portable Mode]: Backing up user data...'",
-            "'config.ini' | ForEach-Object {",
-            "    if (Test-Path \"$dir\\$_\") { Copy-Item \"$dir\\$_\" \"$persist_dir\\\" -Force | Out-Null }",
-            "}"
-        ]
-    },
-    "bin": "ToDesk.exe",
-    "shortcuts": [
-        [
-            "ToDesk.exe",
-            "ToDesk"
-        ]
-    ],
-    "persist": [
-        "ImageResources",
-        "Logs",
-        "record"
-    ],
-    "checkver": {
-        "url": "https://www.todesk.com/js/common.js",
-        "regex": "WIN_VERSION = '([\\d.]+)'"
-    },
-    "autoupdate": {
-        "url": "https://dl.todesk.com/windows/ToDesk_Setup.exe#/dl.7z"
-    }
+ "autoupdate": {
+  "url": "https://dl.todesk.com/windows/ToDesk_Setup.exe#/dl.7z"
+ },
+ "bin": "ToDesk.exe",
+ "checkver": {
+  "regex": "WIN_VERSION = '([\\d.]+)'",
+  "url": "https://www.todesk.com/js/common.js"
+ },
+ "description": "ToDesk is a stable and smooth remote control, remote office and remote assistance software. With end-to-end encryption, it makes every remote access safe and secure.",
+ "hash": "de7a1921ca5c6f75a55a99817982516cc77cf41bcec5b8e3b88332fd00d55813",
+ "homepage": "https://www.todesk.com/",
+ "license": {
+  "identifier": "Proprietary",
+  "url": "https://www.todesk.com/licence.html"
+ },
+ "persist": [
+  "ImageResources",
+  "Logs",
+  "record"
+ ],
+ "post_install": "@('$PLUGINSDIR', '[NSIS].nsi', 'uninst.exe') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force -ErrorAction SilentlyContinue }",
+ "pre_install": [
+  "info '[Portable Mode]: Copying user data...'",
+  "'config.ini' | ForEach-Object {",
+  "    if (Test-Path \"$persist_dir\\$_\") { Copy-Item \"$persist_dir\\$_\" \"$dir\\\" -Force | Out-Null }",
+  "}"
+ ],
+ "shortcuts": [
+  [
+   "ToDesk.exe",
+   "ToDesk"
+  ]
+ ],
+ "uninstaller": {
+  "script": [
+   "info '[Portable Mode]: Backing up user data...'",
+   "'config.ini' | ForEach-Object {",
+   "    if (Test-Path \"$dir\\$_\") { Copy-Item \"$dir\\$_\" \"$persist_dir\\\" -Force | Out-Null }",
+   "}"
+  ]
+ },
+ "url": "https://dl.todesk.com/windows/ToDesk_Setup.exe#/dl.7z",
+ "version": "4.3.2.0"
 }

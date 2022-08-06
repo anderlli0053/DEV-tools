@@ -1,44 +1,44 @@
 {
-    "version": "10.21",
-    "description": "Object-relational database management system based on POSTGRES. (version 10)",
-    "homepage": "https://www.postgresql.org/",
-    "license": "PostgreSQL",
-    "architecture": {
-        "64bit": {
-            "url": "https://get.enterprisedb.com/postgresql/postgresql-10.21-1-windows-x64-binaries.zip",
-            "hash": "85b3350760c0c9e42c07bffcd70e831ff1671cb12bf693987eac670cbd5839b0"
-        },
-        "32bit": {
-            "url": "https://get.enterprisedb.com/postgresql/postgresql-10.21-1-windows-binaries.zip",
-            "hash": "1123cf2680482c4729f9df9c0afb3c3ca46bf5be018d8d734bd418a5dbc5b0a9"
-        }
-    },
-    "extract_dir": "pgsql",
-    "env_add_path": "bin",
-    "shortcuts": [
-        [
-            "pgAdmin 4\\bin\\pgAdmin4.exe",
-            "pgAdmin 4"
-        ]
-    ],
-    "persist": "data",
-    "env_set": {
-        "PGDATA": "$dir\\data"
-    },
-    "post_install": "if (!(Test-Path \"$dir\\data\\pg_hba.conf\")) { iex \"initdb --username=postgres --encoding=UTF8 --locale=en --lc-collate=C\" }",
-    "notes": "To start/stop service, run `pg_ctl start`, `pg_ctl stop`.",
-    "checkver": {
-        "url": "https://www.postgresql.org/ftp/source/",
-        "regex": "v(10\\.[\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-x64-binaries.zip"
-            },
-            "32bit": {
-                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-binaries.zip"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "1123cf2680482c4729f9df9c0afb3c3ca46bf5be018d8d734bd418a5dbc5b0a9",
+   "url": "https://get.enterprisedb.com/postgresql/postgresql-10.21-1-windows-binaries.zip"
+  },
+  "64bit": {
+   "hash": "85b3350760c0c9e42c07bffcd70e831ff1671cb12bf693987eac670cbd5839b0",
+   "url": "https://get.enterprisedb.com/postgresql/postgresql-10.21-1-windows-x64-binaries.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-binaries.zip"
+   },
+   "64bit": {
+    "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-x64-binaries.zip"
+   }
+  }
+ },
+ "checkver": {
+  "regex": "v(10\\.[\\d.]+)",
+  "url": "https://www.postgresql.org/ftp/source/"
+ },
+ "description": "Object-relational database management system based on POSTGRES. (version 10)",
+ "env_add_path": "bin",
+ "env_set": {
+  "PGDATA": "$dir\\data"
+ },
+ "extract_dir": "pgsql",
+ "homepage": "https://www.postgresql.org/",
+ "license": "PostgreSQL",
+ "notes": "To start/stop service, run `pg_ctl start`, `pg_ctl stop`.",
+ "persist": "data",
+ "post_install": "if (!(Test-Path \"$dir\\data\\pg_hba.conf\")) { iex \"initdb --username=postgres --encoding=UTF8 --locale=en --lc-collate=C\" }",
+ "shortcuts": [
+  [
+   "pgAdmin 4\\bin\\pgAdmin4.exe",
+   "pgAdmin 4"
+  ]
+ ],
+ "version": "10.21"
 }

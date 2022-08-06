@@ -1,27 +1,27 @@
 {
-    "version": "0.9.1",
-    "description": "Rekor CLI to make a provenance entry into the rekor transparency log.",
-    "homepage": "https://docs.sigstore.dev/rekor/CLI",
-    "license": "Apache-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/sigstore/rekor/releases/download/v0.9.1/rekor-cli-windows-amd64.exe#/rekor-cli.exe",
-            "hash": "f2f698d9210e85cd8264a45faec9afcb7907dd02614bdde96a5004bd5c1816e0"
-        }
-    },
-    "bin": "rekor-cli.exe",
-    "checkver": {
-        "github": "https://github.com/sigstore/rekor"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/sigstore/rekor/releases/download/v$version/rekor-cli-windows-amd64.exe#/rekor-cli.exe"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/rekor_checksums.txt",
-            "regex": "$sha256\\s+$basename[\\s$]"
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "f2f698d9210e85cd8264a45faec9afcb7907dd02614bdde96a5004bd5c1816e0",
+   "url": "https://github.com/sigstore/rekor/releases/download/v0.9.1/rekor-cli-windows-amd64.exe#/rekor-cli.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/sigstore/rekor/releases/download/v$version/rekor-cli-windows-amd64.exe#/rekor-cli.exe"
+   }
+  },
+  "hash": {
+   "regex": "$sha256\\s+$basename[\\s$]",
+   "url": "$baseurl/rekor_checksums.txt"
+  }
+ },
+ "bin": "rekor-cli.exe",
+ "checkver": {
+  "github": "https://github.com/sigstore/rekor"
+ },
+ "description": "Rekor CLI to make a provenance entry into the rekor transparency log.",
+ "homepage": "https://docs.sigstore.dev/rekor/CLI",
+ "license": "Apache-2.0",
+ "version": "0.9.1"
 }
