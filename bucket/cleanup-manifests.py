@@ -13,6 +13,7 @@
 import json
 import json_minify
 import os
+from os import path
 
 borked_json_files = [
     # courtesy of Andrew Pozenel (shame on you)
