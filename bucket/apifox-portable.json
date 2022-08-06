@@ -1,55 +1,55 @@
 {
-    "version": "2.1.29",
-    "description": "Apifox = Postman + Swagger + Mock + JMeter",
-    "homepage": "https://www.apifox.cn/",
-    "license": {
-        "identifier": "Freeware"
+ "architecture": {
+  "64bit": {
+   "hash": "sha512:7a58f891506fb69d8eeacfabdf3e3cc0901cb3d73463836db4bc5b855c3a205844ac1551b86ea71948ccb556ed22c5e30eaf66d4407f7b63cd93b9c6938b3767",
+   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal",
+   "url": "http://cdn.apifox.cn/download/2.1.29/Apifox-2.1.29.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "mode": "extract",
+     "regex": "sha512.*?$base64",
+     "url": "http://cdn.apifox.cn/download/latest.yml"
     },
-    "depends": "sudo",
-    "architecture": {
-        "64bit": {
-            "url": "http://cdn.apifox.cn/download/2.1.29/Apifox-2.1.29.exe#/dl.7z",
-            "hash": "sha512:7a58f891506fb69d8eeacfabdf3e3cc0901cb3d73463836db4bc5b855c3a205844ac1551b86ea71948ccb556ed22c5e30eaf66d4407f7b63cd93b9c6938b3767",
-            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal"
-        }
-    },
-    "hash": "",
-    "pre_install": [
-        "info '[Portable Mode]: Copying user data...'",
-        "if (Test-Path \"$persist_dir\\User Data\\*\") {",
-        "    Copy-Item \"$persist_dir\\User Data\\*\" \"$env:AppData\\apifox\\\" -Recurse -Force | Out-Null",
-        "}"
-    ],
-    "post_install": "@('$PLUGINSDIR', '[NSIS].nsi', 'Uninstall Apifox.exe', 'uninstallerIcon.ico') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force -ErrorAction SilentlyContinue }",
-    "uninstaller": {
-        "script": [
-            "info '[Portable Mode]: Backing up user data...'",
-            "if (Test-Path \"$env:AppData\\apifox\\*\") {",
-            "    Copy-Item \"$env:AppData\\apifox\\*\" \"$persist_dir\\User Data\\\" -Recurse -Force | Out-Null",
-            "}"
-        ]
-    },
-    "bin": "Apifox.exe",
-    "shortcuts": [
-        [
-            "Apifox.exe",
-            "Apifox"
-        ]
-    ],
-    "checkver": {
-        "url": "http://cdn.apifox.cn/download/latest.yml",
-        "regex": "(?sm)version:[\\s]+([\\d.]+).*?http://(?<url>.*?\\.exe)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "http://$matchUrl#/dl.7z",
-                "hash": {
-                    "url": "http://cdn.apifox.cn/download/latest.yml",
-                    "mode": "extract",
-                    "regex": "sha512.*?$base64"
-                }
-            }
-        }
-    }
+    "url": "http://$matchUrl#/dl.7z"
+   }
+  }
+ },
+ "bin": "Apifox.exe",
+ "checkver": {
+  "regex": "(?sm)version:[\\s]+([\\d.]+).*?http://(?<url>.*?\\.exe)",
+  "url": "http://cdn.apifox.cn/download/latest.yml"
+ },
+ "depends": "sudo",
+ "description": "Apifox = Postman + Swagger + Mock + JMeter",
+ "hash": "",
+ "homepage": "https://www.apifox.cn/",
+ "license": {
+  "identifier": "Freeware"
+ },
+ "post_install": "@('$PLUGINSDIR', '[NSIS].nsi', 'Uninstall Apifox.exe', 'uninstallerIcon.ico') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force -ErrorAction SilentlyContinue }",
+ "pre_install": [
+  "info '[Portable Mode]: Copying user data...'",
+  "if (Test-Path \"$persist_dir\\User Data\\*\") {",
+  "    Copy-Item \"$persist_dir\\User Data\\*\" \"$env:AppData\\apifox\\\" -Recurse -Force | Out-Null",
+  "}"
+ ],
+ "shortcuts": [
+  [
+   "Apifox.exe",
+   "Apifox"
+  ]
+ ],
+ "uninstaller": {
+  "script": [
+   "info '[Portable Mode]: Backing up user data...'",
+   "if (Test-Path \"$env:AppData\\apifox\\*\") {",
+   "    Copy-Item \"$env:AppData\\apifox\\*\" \"$persist_dir\\User Data\\\" -Recurse -Force | Out-Null",
+   "}"
+  ]
+ },
+ "version": "2.1.29"
 }

@@ -1,44 +1,44 @@
 {
-    "version": "102.0.1-1",
-    "description": "A fork of Firefox, focused on privacy, security and freedom.",
-    "homepage": "https://librewolf.net/",
-    "license": "MPL-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/721e7e647b4a2853e7a11e91f409be96/librewolf-102.0.1-1.en-US.win64-portable.zip",
-            "hash": "03f0b55d869911e2c6ccb8bd1c129e8a31988657f691c10b7a5a27e46fecece2"
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "03f0b55d869911e2c6ccb8bd1c129e8a31988657f691c10b7a5a27e46fecece2",
+   "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/721e7e647b4a2853e7a11e91f409be96/librewolf-102.0.1-1.en-US.win64-portable.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/$matchRandidsha/sha256sums.txt"
     },
-    "pre_install": [
-        "$lw_name = (Get-Item \"$dir\\librewolf-*\").FullName",
-        "Move-Item \"$lw_name\\*\" \"$dir\"",
-        "Remove-Item \"$lw_name\""
-    ],
-    "bin": [
-        [
-            "librewolf-portable.exe",
-            "librewolf"
-        ]
-    ],
-    "shortcuts": [
-        [
-            "librewolf-portable.exe",
-            "LibreWolf"
-        ]
-    ],
-    "persist": "Profiles",
-    "checkver": {
-        "url": "https://gitlab.com/api/v4/projects/13852981/releases",
-        "regex": "/uploads/(?<randidzip>[a-z0-9]+)/librewolf-([\\d.-]+)\\.en-US\\.win64-portable\\.zip.*?/uploads/(?<randidsha>[a-z0-9]+)/sha256sums\\.txt"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/$matchRandidzip/librewolf-$version.en-US.win64-portable.zip",
-                "hash": {
-                    "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/$matchRandidsha/sha256sums.txt"
-                }
-            }
-        }
-    }
+    "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/$matchRandidzip/librewolf-$version.en-US.win64-portable.zip"
+   }
+  }
+ },
+ "bin": [
+  [
+   "librewolf-portable.exe",
+   "librewolf"
+  ]
+ ],
+ "checkver": {
+  "regex": "/uploads/(?<randidzip>[a-z0-9]+)/librewolf-([\\d.-]+)\\.en-US\\.win64-portable\\.zip.*?/uploads/(?<randidsha>[a-z0-9]+)/sha256sums\\.txt",
+  "url": "https://gitlab.com/api/v4/projects/13852981/releases"
+ },
+ "description": "A fork of Firefox, focused on privacy, security and freedom.",
+ "homepage": "https://librewolf.net/",
+ "license": "MPL-2.0",
+ "persist": "Profiles",
+ "pre_install": [
+  "$lw_name = (Get-Item \"$dir\\librewolf-*\").FullName",
+  "Move-Item \"$lw_name\\*\" \"$dir\"",
+  "Remove-Item \"$lw_name\""
+ ],
+ "shortcuts": [
+  [
+   "librewolf-portable.exe",
+   "LibreWolf"
+  ]
+ ],
+ "version": "102.0.1-1"
 }

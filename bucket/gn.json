@@ -1,33 +1,33 @@
 {
-    "version": "Y4CNiE",
-    "description": "GN is a meta-build system that generates build files for Ninja.",
-    "homepage": "https://gn.googlesource.com/gn",
-    "license": "BSD-3-Clause",
-    "suggest": {
-        "ninja": "ninja",
-        "Python3": "python"
+ "architecture": {
+  "64bit": {
+   "hash": "63808d884bf3023f9567b548fde799cc29a38337a9548a8ddf9574043a2b87c7",
+   "url": "https://chrome-infra-packages.appspot.com/dl/gn/gn/windows-amd64/+/Y4CNiEvzAj-VZ7VI_eeZzCmjgzepVIqN35V0BDorh8cC#/gn-windows-amd64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "regex": "<b>SHA256</b>\\S+\\s+<td class=\"user-select-all\">$sha256",
+     "url": "https://chrome-infra-packages.appspot.com/p/gn/gn/windows-amd64/+/latest"
     },
-    "architecture": {
-        "64bit": {
-            "url": "https://chrome-infra-packages.appspot.com/dl/gn/gn/windows-amd64/+/Y4CNiEvzAj-VZ7VI_eeZzCmjgzepVIqN35V0BDorh8cC#/gn-windows-amd64.zip",
-            "hash": "63808d884bf3023f9567b548fde799cc29a38337a9548a8ddf9574043a2b87c7"
-        }
-    },
-    "bin": "gn.exe",
-    "checkver": {
-        "url": "https://chrome-infra-packages.appspot.com/p/gn/gn/windows-amd64/+/latest",
-        "regex": "Instance ID\\S+\\s+<td class=\"user-select-all\">(?<instanceId>(?<short>[\\w-]{6})[\\w-]+)",
-        "replace": "${short}"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://chrome-infra-packages.appspot.com/dl/gn/gn/windows-amd64/+/$matchInstanceid#/gn-windows-amd64.zip",
-                "hash": {
-                    "url": "https://chrome-infra-packages.appspot.com/p/gn/gn/windows-amd64/+/latest",
-                    "regex": "<b>SHA256</b>\\S+\\s+<td class=\"user-select-all\">$sha256"
-                }
-            }
-        }
-    }
+    "url": "https://chrome-infra-packages.appspot.com/dl/gn/gn/windows-amd64/+/$matchInstanceid#/gn-windows-amd64.zip"
+   }
+  }
+ },
+ "bin": "gn.exe",
+ "checkver": {
+  "regex": "Instance ID\\S+\\s+<td class=\"user-select-all\">(?<instanceId>(?<short>[\\w-]{6})[\\w-]+)",
+  "replace": "${short}",
+  "url": "https://chrome-infra-packages.appspot.com/p/gn/gn/windows-amd64/+/latest"
+ },
+ "description": "GN is a meta-build system that generates build files for Ninja.",
+ "homepage": "https://gn.googlesource.com/gn",
+ "license": "BSD-3-Clause",
+ "suggest": {
+  "Python3": "python",
+  "ninja": "ninja"
+ },
+ "version": "Y4CNiE"
 }

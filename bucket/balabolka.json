@@ -1,31 +1,31 @@
 {
-    "version": "2.15.0.823",
-    "description": "Text-To-Speech software based on SAPI",
-    "homepage": "http://balabolka.site/balabolka.htm",
-    "license": "Freeware",
-    "url": "http://balabolka.site/balabolka_portable.zip",
-    "hash": "a9159500a124d46b72b20cb1198dd0f39160e417aadc61dbb4cf69ceab8fd5d6",
-    "extract_dir": "Balabolka",
-    "post_install": "Get-ChildItem \"$persist_dir\\*\" -Include 'balabolka.dat', 'balabolka.pcfg', 'balabolka.echo' -Force | Copy-Item -Destination \"$dir\" -ErrorAction SilentlyContinue",
-    "uninstaller": {
-        "script": "Get-ChildItem \"$dir\\*\" -Include 'balabolka.dat', 'balabolka.pcfg', 'balabolka.echo' -Force | Copy-Item -Destination \"$persist_dir\" -ErrorAction SilentlyContinue -Force"
-    },
-    "shortcuts": [
-        [
-            "balabolka.exe",
-            "Balabolka"
-        ]
-    ],
-    "persist": [
-        "dictionaries",
-        "hunspell",
-        "skins"
-    ],
-    "checkver": {
-        "url": "http://balabolka.site/changelog.txt",
-        "regex": "[\\d-]+\\s+v([\\d.]+)"
-    },
-    "autoupdate": {
-        "url": "http://balabolka.site/balabolka_portable.zip"
-    }
+ "autoupdate": {
+  "url": "http://balabolka.site/balabolka_portable.zip"
+ },
+ "checkver": {
+  "regex": "[\\d-]+\\s+v([\\d.]+)",
+  "url": "http://balabolka.site/changelog.txt"
+ },
+ "description": "Text-To-Speech software based on SAPI",
+ "extract_dir": "Balabolka",
+ "hash": "a9159500a124d46b72b20cb1198dd0f39160e417aadc61dbb4cf69ceab8fd5d6",
+ "homepage": "http://balabolka.site/balabolka.htm",
+ "license": "Freeware",
+ "persist": [
+  "dictionaries",
+  "hunspell",
+  "skins"
+ ],
+ "post_install": "Get-ChildItem \"$persist_dir\\*\" -Include 'balabolka.dat', 'balabolka.pcfg', 'balabolka.echo' -Force | Copy-Item -Destination \"$dir\" -ErrorAction SilentlyContinue",
+ "shortcuts": [
+  [
+   "balabolka.exe",
+   "Balabolka"
+  ]
+ ],
+ "uninstaller": {
+  "script": "Get-ChildItem \"$dir\\*\" -Include 'balabolka.dat', 'balabolka.pcfg', 'balabolka.echo' -Force | Copy-Item -Destination \"$persist_dir\" -ErrorAction SilentlyContinue -Force"
+ },
+ "url": "http://balabolka.site/balabolka_portable.zip",
+ "version": "2.15.0.823"
 }

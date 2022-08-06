@@ -1,40 +1,40 @@
 {
-    "version": "2.0.0",
-    "description": "A Monero SPV Wallet",
-    "homepage": "https://featherwallet.org/",
-    "license": {
-        "identifier": "BSD-3-Clause",
-        "url": "https://git.featherwallet.org/feather/feather/raw/branch/master/LICENSE"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://featherwallet.org/files/releases/win/feather-2.0.0-win.zip",
-            "hash": "f887d722b8f609d5faf8646e6b95df67422263997ad44ce155c793f719961b8e"
-        }
-    },
-    "pre_install": [
-        "Rename-Item \"$dir\\feather-$version.exe\" \"$dir\\feather.exe\"",
-        "New-Item \"$dir\\.portable\" -Force | Out-Null",
-        "if (!(Test-Path \"$persist_dir\\feather_data\")) {",
-        "   ensure \"$dir\\feather_data\" | Out-Null",
-        "}"
-    ],
-    "shortcuts": [
-        [
-            "feather.exe",
-            "Feather Wallet"
-        ]
-    ],
-    "persist": "feather_data",
-    "checkver": "The latest version is <code>([\\d.]+)</code>",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://featherwallet.org/files/releases/win/feather-$version-win.zip"
-            }
-        },
-        "hash": {
-            "url": "https://featherwallet.org/files/releases/hashes-$version.txt"
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "f887d722b8f609d5faf8646e6b95df67422263997ad44ce155c793f719961b8e",
+   "url": "https://featherwallet.org/files/releases/win/feather-2.0.0-win.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://featherwallet.org/files/releases/win/feather-$version-win.zip"
+   }
+  },
+  "hash": {
+   "url": "https://featherwallet.org/files/releases/hashes-$version.txt"
+  }
+ },
+ "checkver": "The latest version is <code>([\\d.]+)</code>",
+ "description": "A Monero SPV Wallet",
+ "homepage": "https://featherwallet.org/",
+ "license": {
+  "identifier": "BSD-3-Clause",
+  "url": "https://git.featherwallet.org/feather/feather/raw/branch/master/LICENSE"
+ },
+ "persist": "feather_data",
+ "pre_install": [
+  "Rename-Item \"$dir\\feather-$version.exe\" \"$dir\\feather.exe\"",
+  "New-Item \"$dir\\.portable\" -Force | Out-Null",
+  "if (!(Test-Path \"$persist_dir\\feather_data\")) {",
+  "   ensure \"$dir\\feather_data\" | Out-Null",
+  "}"
+ ],
+ "shortcuts": [
+  [
+   "feather.exe",
+   "Feather Wallet"
+  ]
+ ],
+ "version": "2.0.0"
 }

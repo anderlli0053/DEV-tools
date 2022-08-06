@@ -1,40 +1,40 @@
 {
-    "version": "2.0.29",
-    "description": "Collaborative note taking",
-    "homepage": "https://www.notion.so/",
-    "license": {
-        "identifier": "Proprietary",
-        "url": "https://www.notion.so/Terms-and-Privacy-28ffdd083dc3473e9c2da6ec011b58ac"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://desktop-release.notion-static.com/Notion%20Setup%202.0.29.exe#/dl.7z",
-            "hash": "sha512:cc5bd2fee2375ca0fa4643a3b316df330fd387fb71fd21929d999375520f729b24226c4cffe3f3672ef3fef3d25372d5deb1d3aa95b7701a061a93b253a3a364",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$*\" -Recurse"
-            ]
-        }
-    },
-    "shortcuts": [
-        [
-            "Notion.exe",
-            "Notion"
-        ]
-    ],
-    "checkver": {
-        "url": "https://desktop-release.notion-static.com/latest.yml",
-        "regex": "version:\\s+([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://desktop-release.notion-static.com/Notion%20Setup%20$version.exe#/dl.7z"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/latest.yml",
-            "regex": "sha512:\\s+$base64"
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "sha512:cc5bd2fee2375ca0fa4643a3b316df330fd387fb71fd21929d999375520f729b24226c4cffe3f3672ef3fef3d25372d5deb1d3aa95b7701a061a93b253a3a364",
+   "pre_install": [
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+    "Remove-Item \"$dir\\`$*\" -Recurse"
+   ],
+   "url": "https://desktop-release.notion-static.com/Notion%20Setup%202.0.29.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://desktop-release.notion-static.com/Notion%20Setup%20$version.exe#/dl.7z"
+   }
+  },
+  "hash": {
+   "regex": "sha512:\\s+$base64",
+   "url": "$baseurl/latest.yml"
+  }
+ },
+ "checkver": {
+  "regex": "version:\\s+([\\d.]+)",
+  "url": "https://desktop-release.notion-static.com/latest.yml"
+ },
+ "description": "Collaborative note taking",
+ "homepage": "https://www.notion.so/",
+ "license": {
+  "identifier": "Proprietary",
+  "url": "https://www.notion.so/Terms-and-Privacy-28ffdd083dc3473e9c2da6ec011b58ac"
+ },
+ "shortcuts": [
+  [
+   "Notion.exe",
+   "Notion"
+  ]
+ ],
+ "version": "2.0.29"
 }

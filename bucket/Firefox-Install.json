@@ -1,61 +1,61 @@
 {
-    "version": "103.0.1",
-    "description": "Firefox. Popular open source web browser.",
-    "homepage": "https://www.mozilla.org/firefox/",
-    "license": "MPL-2.0",
-    "changelog": "https://www.mozilla.org/en-US/firefox/103.0.1/releasenotes/",
-    "architecture": {
-        "64bit": {
-            "url": "https://archive.mozilla.org/pub/firefox/releases/103.0.1/win64/en-US/Firefox%20Setup%20103.0.1.exe#/setup.exe",
-            "hash": "sha512:957b36261472247bd3062c2cf26fbbe81cc89c898a3837d2d4292d93e6d0ca6f2ea090335ed7eb7643d2499e1c19835d36e83c64ab79f178a6feca75213705f5"
-        },
-        "32bit": {
-            "url": "https://archive.mozilla.org/pub/firefox/releases/103.0.1/win32/en-US/Firefox%20Setup%20103.0.1.exe#/setup.exe",
-            "hash": "sha512:d7db4d46f30d39fdcde39bec305596160b783b7a2c496aad07b2a398ce58b4ecf1c09d80be5bebe72a7d90e59b54284ef334ac91d9bf6066192c44d517eaeb44"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:d7db4d46f30d39fdcde39bec305596160b783b7a2c496aad07b2a398ce58b4ecf1c09d80be5bebe72a7d90e59b54284ef334ac91d9bf6066192c44d517eaeb44",
+   "url": "https://archive.mozilla.org/pub/firefox/releases/103.0.1/win32/en-US/Firefox%20Setup%20103.0.1.exe#/setup.exe"
+  },
+  "64bit": {
+   "hash": "sha512:957b36261472247bd3062c2cf26fbbe81cc89c898a3837d2d4292d93e6d0ca6f2ea090335ed7eb7643d2499e1c19835d36e83c64ab79f178a6feca75213705f5",
+   "url": "https://archive.mozilla.org/pub/firefox/releases/103.0.1/win64/en-US/Firefox%20Setup%20103.0.1.exe#/setup.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "regex": "$sha512\\s+win32/en-US/$basename",
+     "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS"
     },
-    "pre_download": "Assert-Administrator",
-    "installer": {
-        "script": [
-            "$programname = \"Mozilla Firefox*\"",
-            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
-            "$filepath = \"$ProgramFiles\\Mozilla Firefox\\firefox.exe\"",
-            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-            "{",
-            "   &\"$dir\\setup.exe\" -ms | Out-Null",
-            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-            "   {",
-            "       exit 1",
-            "   }",
-            "}",
-            "Remove-Item \"$dir\\setup.exe\" -Force"
-        ]
+    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/en-US/Firefox%20Setup%20$version.exe#/setup.exe"
+   },
+   "64bit": {
+    "hash": {
+     "regex": "$sha512\\s+win64/en-US/$basename",
+     "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS"
     },
-    "post_install": [
-        "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
-        "if (Test-Path \"$CommonDesktopPath\\Firefox.lnk\") {Remove-Item \"$CommonDesktopPath\\Firefox.lnk\" -Force}"
-    ],
-    "checkver": {
-        "url": "https://www.mozilla.org/en-US/firefox/notes/",
-        "regex": "<div class=\"c-release-version\">([\\d.]+)</div>"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/en-US/Firefox%20Setup%20$version.exe#/setup.exe",
-                "hash": {
-                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
-                    "regex": "$sha512\\s+win64/en-US/$basename"
-                }
-            },
-            "32bit": {
-                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/en-US/Firefox%20Setup%20$version.exe#/setup.exe",
-                "hash": {
-                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
-                    "regex": "$sha512\\s+win32/en-US/$basename"
-                }
-            }
-        },
-        "changelog": "https://www.mozilla.org/en-US/firefox/$version/releasenotes/"
-    }
+    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/en-US/Firefox%20Setup%20$version.exe#/setup.exe"
+   }
+  },
+  "changelog": "https://www.mozilla.org/en-US/firefox/$version/releasenotes/"
+ },
+ "changelog": "https://www.mozilla.org/en-US/firefox/103.0.1/releasenotes/",
+ "checkver": {
+  "regex": "<div class=\"c-release-version\">([\\d.]+)</div>",
+  "url": "https://www.mozilla.org/en-US/firefox/notes/"
+ },
+ "description": "Firefox. Popular open source web browser.",
+ "homepage": "https://www.mozilla.org/firefox/",
+ "installer": {
+  "script": [
+   "$programname = \"Mozilla Firefox*\"",
+   "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
+   "$filepath = \"$ProgramFiles\\Mozilla Firefox\\firefox.exe\"",
+   "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+   "{",
+   "   &\"$dir\\setup.exe\" -ms | Out-Null",
+   "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+   "   {",
+   "       exit 1",
+   "   }",
+   "}",
+   "Remove-Item \"$dir\\setup.exe\" -Force"
+  ]
+ },
+ "license": "MPL-2.0",
+ "post_install": [
+  "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
+  "if (Test-Path \"$CommonDesktopPath\\Firefox.lnk\") {Remove-Item \"$CommonDesktopPath\\Firefox.lnk\" -Force}"
+ ],
+ "pre_download": "Assert-Administrator",
+ "version": "103.0.1"
 }

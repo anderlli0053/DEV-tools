@@ -31,7 +31,7 @@ borked_json_files_incomplete = [
     "processing.json"                       # JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 1402 (char 1401)"
 ]
 
-clean_directory = "C:\Users\ander\Desktop\DEV-tools\bucket"
+clean_directory = (r"C:\\Users\\ander\\Desktop\\DEV-tools\\bucket")
 
 def cleanup_json(jsonfile, strip_space=False):
     with open(jsonfile, "r", encoding="utf-8") as jf:

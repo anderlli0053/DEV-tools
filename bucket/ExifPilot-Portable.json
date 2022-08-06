@@ -1,40 +1,40 @@
 {
-    "version": "6.14.1",
-    "description": "Exif Pilot. EXIF/IPTC data viewer, EXIF data editor & creator",
-    "homepage": "https://www.colorpilot.com/exif.html",
-    "license": "freeware",
-    "changelog": "https://www.colorpilot.com/exif_history.html",
-    "architecture": {
-        "64bit": {
-            "url": "https://www.two-pilots.com/colorpilot.com/load/exif_64.exe",
-            "hash": "c04f2dd2363b1a6bf762bdb65640a0fe789d76c5d66d57ae4497486b7ebbe0eb"
-        },
-        "32bit": {
-            "url": "https://www.two-pilots.com/colorpilot.com/load/exif.exe",
-            "hash": "6f7c1ce2563b3777fc99a4f2e6a777c5ef0334cc8929b48218779505e26d0332"
-        }
-    },
-    "innosetup": true,
-    "pre_install": "if(!(Test-Path \"$dir/ExifPilot.tags\")) { Add-Content \"$dir/ExifPilot.tags\" $null }",
-    "persist": "ExifPilot.tags",
-    "shortcuts": [
-        [
-            "ExifPilot.exe",
-            "Exif Pilot"
-        ]
-    ],
-    "checkver": {
-        "url": "https://www.colorpilot.com/exif.html",
-        "regex": ":: Version ([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://www.two-pilots.com/colorpilot.com/load/exif_64.exe"
-            },
-            "32bit": {
-                "url": "https://www.two-pilots.com/colorpilot.com/load/exif.exe"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "6f7c1ce2563b3777fc99a4f2e6a777c5ef0334cc8929b48218779505e26d0332",
+   "url": "https://www.two-pilots.com/colorpilot.com/load/exif.exe"
+  },
+  "64bit": {
+   "hash": "c04f2dd2363b1a6bf762bdb65640a0fe789d76c5d66d57ae4497486b7ebbe0eb",
+   "url": "https://www.two-pilots.com/colorpilot.com/load/exif_64.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://www.two-pilots.com/colorpilot.com/load/exif.exe"
+   },
+   "64bit": {
+    "url": "https://www.two-pilots.com/colorpilot.com/load/exif_64.exe"
+   }
+  }
+ },
+ "changelog": "https://www.colorpilot.com/exif_history.html",
+ "checkver": {
+  "regex": ":: Version ([\\d.]+)",
+  "url": "https://www.colorpilot.com/exif.html"
+ },
+ "description": "Exif Pilot. EXIF/IPTC data viewer, EXIF data editor & creator",
+ "homepage": "https://www.colorpilot.com/exif.html",
+ "innosetup": true,
+ "license": "freeware",
+ "persist": "ExifPilot.tags",
+ "pre_install": "if(!(Test-Path \"$dir/ExifPilot.tags\")) { Add-Content \"$dir/ExifPilot.tags\" $null }",
+ "shortcuts": [
+  [
+   "ExifPilot.exe",
+   "Exif Pilot"
+  ]
+ ],
+ "version": "6.14.1"
 }

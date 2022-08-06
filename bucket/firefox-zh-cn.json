@@ -1,54 +1,54 @@
 {
-    "description": "Popular open source web browser. Cross-platform and available in many languages.",
-    "homepage": "https://www.mozilla.org/zh-CN/firefox/new/",
-    "version": "103.0.1",
-    "license": "MPL-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/103.0.1/win64/zh-CN/Firefox%20Setup%20103.0.1.exe#/firefox.7z",
-            "hash": "sha512:73cb330e3a4102fbac824e52634ff95fb8c777289cf2bedb1b934ff702e8064a9dd014936e1ac90b92a777b1be5c32ebd0525c8031a4cc1ecbc6267c3e9d1a7f"
-        },
-        "32bit": {
-            "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/103.0.1/win32/zh-CN/Firefox%20Setup%20103.0.1.exe#/firefox.7z",
-            "hash": "sha512:a21bb4755a4b18203910ce497b28fc5f116a77a5b9a0d6988421b01eebf2b80a6b3c384614a1603bfa05986157bfa387c218886cec5f6b0a0b159aa0a7075315"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:a21bb4755a4b18203910ce497b28fc5f116a77a5b9a0d6988421b01eebf2b80a6b3c384614a1603bfa05986157bfa387c218886cec5f6b0a0b159aa0a7075315",
+   "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/103.0.1/win32/zh-CN/Firefox%20Setup%20103.0.1.exe#/firefox.7z"
+  },
+  "64bit": {
+   "hash": "sha512:73cb330e3a4102fbac824e52634ff95fb8c777289cf2bedb1b934ff702e8064a9dd014936e1ac90b92a777b1be5c32ebd0525c8031a4cc1ecbc6267c3e9d1a7f",
+   "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/103.0.1/win64/zh-CN/Firefox%20Setup%20103.0.1.exe#/firefox.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "regex": "$sha512\\s+win32/zh-CN/$basename",
+     "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA512SUMS"
     },
-    "extract_dir": "core",
-    "bin": [
-        [
-            "firefox.exe",
-            "firefox",
-            "-profile \"$dir\\profile\""
-        ]
-    ],
-    "shortcuts": [
-        [
-            "firefox.exe",
-            "Mozilla Firefox",
-            "-profile \"$dir\\profile\""
-        ]
-    ],
-    "persist": "profile",
-    "checkver": {
-        "url": "https://www.mozilla.org/zh-CN/firefox/all/",
-        "re": "data-latest-firefox=\"([\\d.]+)\""
+    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/win32/zh-CN/Firefox%20Setup%20$version.exe#/firefox.7z"
+   },
+   "64bit": {
+    "hash": {
+     "regex": "$sha512\\s+win64/zh-CN/$basename",
+     "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA512SUMS"
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/win64/zh-CN/Firefox%20Setup%20$version.exe#/firefox.7z",
-                "hash": {
-                    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA512SUMS",
-                    "regex": "$sha512\\s+win64/zh-CN/$basename"
-                }
-            },
-            "32bit": {
-                "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/win32/zh-CN/Firefox%20Setup%20$version.exe#/firefox.7z",
-                "hash": {
-                    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA512SUMS",
-                    "regex": "$sha512\\s+win32/zh-CN/$basename"
-                }
-            }
-        }
-    }
+    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/win64/zh-CN/Firefox%20Setup%20$version.exe#/firefox.7z"
+   }
+  }
+ },
+ "bin": [
+  [
+   "firefox.exe",
+   "firefox",
+   "-profile \"$dir\\profile\""
+  ]
+ ],
+ "checkver": {
+  "re": "data-latest-firefox=\"([\\d.]+)\"",
+  "url": "https://www.mozilla.org/zh-CN/firefox/all/"
+ },
+ "description": "Popular open source web browser. Cross-platform and available in many languages.",
+ "extract_dir": "core",
+ "homepage": "https://www.mozilla.org/zh-CN/firefox/new/",
+ "license": "MPL-2.0",
+ "persist": "profile",
+ "shortcuts": [
+  [
+   "firefox.exe",
+   "Mozilla Firefox",
+   "-profile \"$dir\\profile\""
+  ]
+ ],
+ "version": "103.0.1"
 }

@@ -1,48 +1,48 @@
 {
-    "version": "10.1.0",
-    "description": "Multiplayer-oriented source port for Doom",
-    "homepage": "https://odamex.net/",
-    "license": "GPL-2.0-or-later",
-    "notes": [
-        "Place WAD files (game data) in:",
-        "",
-        "    $persist_dir\\..\\_doom"
-    ],
-    "architecture": {
-        "32bit": {
-            "url": "https://downloads.sourceforge.net/project/odamex/Odamex/10.1.0/odamex-win32-10.1.0.zip",
-            "hash": "sha1:7125ce63a8498500b6292daeec507dfee862f5f9"
-        },
-        "64bit": {
-            "url": "https://downloads.sourceforge.net/project/odamex/Odamex/10.1.0/odamex-win64-10.1.0.zip",
-            "hash": "sha1:99d3ec274087de32fee4a4b2fbde30904c2c57fa"
-        }
-    },
-    "pre_install": "New-Item -ItemType Directory -Force -Path $persist_dir\\..\\_doom | Out-Null",
-    "env_set": {
-        "DOOMWADDIR": "$persist_dir\\..\\_doom"
-    },
-    "shortcuts": [
-        [
-            "odamex.exe",
-            "Odamex"
-        ],
-        [
-            "odalaunch.exe",
-            "Odalaunch"
-        ]
-    ],
-    "checkver": {
-        "regex": ">Version ([a-zA-Z\\d.\\-_]+):"
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://downloads.sourceforge.net/project/odamex/Odamex/$version/odamex-win32-$version.zip"
-            },
-            "64bit": {
-                "url": "https://downloads.sourceforge.net/project/odamex/Odamex/$version/odamex-win64-$version.zip"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "sha1:7125ce63a8498500b6292daeec507dfee862f5f9",
+   "url": "https://downloads.sourceforge.net/project/odamex/Odamex/10.1.0/odamex-win32-10.1.0.zip"
+  },
+  "64bit": {
+   "hash": "sha1:99d3ec274087de32fee4a4b2fbde30904c2c57fa",
+   "url": "https://downloads.sourceforge.net/project/odamex/Odamex/10.1.0/odamex-win64-10.1.0.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://downloads.sourceforge.net/project/odamex/Odamex/$version/odamex-win32-$version.zip"
+   },
+   "64bit": {
+    "url": "https://downloads.sourceforge.net/project/odamex/Odamex/$version/odamex-win64-$version.zip"
+   }
+  }
+ },
+ "checkver": {
+  "regex": ">Version ([a-zA-Z\\d.\\-_]+):"
+ },
+ "description": "Multiplayer-oriented source port for Doom",
+ "env_set": {
+  "DOOMWADDIR": "$persist_dir\\..\\_doom"
+ },
+ "homepage": "https://odamex.net/",
+ "license": "GPL-2.0-or-later",
+ "notes": [
+  "Place WAD files (game data) in:",
+  "",
+  "    $persist_dir\\..\\_doom"
+ ],
+ "pre_install": "New-Item -ItemType Directory -Force -Path $persist_dir\\..\\_doom | Out-Null",
+ "shortcuts": [
+  [
+   "odamex.exe",
+   "Odamex"
+  ],
+  [
+   "odalaunch.exe",
+   "Odalaunch"
+  ]
+ ],
+ "version": "10.1.0"
 }

@@ -1,34 +1,34 @@
 {
-    "version": "2.0.460",
-    "description": "A JSON viewer that gives a new approach to process JSON Data files.",
-    "homepage": "https://dadroit.com/",
-    "license": {
-        "identifier": "Proprietary",
-        "url": "https://dadroit.com/legal"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://dadroit.com/releases/win/Dadroit%20Viewer%202.0%20Build%20460%20x64%20Setup.exe",
-            "hash": "7f92f06f54f6d8b32881d97c38b054e942dc3d3a8e52f7cdde10a161ff65d630"
-        }
-    },
-    "innosetup": true,
-    "shortcuts": [
-        [
-            "DadroitViewer.exe",
-            "Dadroit JSON Viewer"
-        ]
-    ],
-    "checkver": {
-        "url": "https://dadroit.com/js/app.js",
-        "regex": "Viewer (?<main>[\\d.]+)\\s+Build\\s+(?<build>\\d+)\\s+x64",
-        "replace": "${main}.${build}"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://dadroit.com/releases/win/Dadroit%20Viewer%20$majorVersion.$minorVersion%20Build%20$patchVersion%20x64%20Setup.exe"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "7f92f06f54f6d8b32881d97c38b054e942dc3d3a8e52f7cdde10a161ff65d630",
+   "url": "https://dadroit.com/releases/win/Dadroit%20Viewer%202.0%20Build%20460%20x64%20Setup.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://dadroit.com/releases/win/Dadroit%20Viewer%20$majorVersion.$minorVersion%20Build%20$patchVersion%20x64%20Setup.exe"
+   }
+  }
+ },
+ "checkver": {
+  "regex": "Viewer (?<main>[\\d.]+)\\s+Build\\s+(?<build>\\d+)\\s+x64",
+  "replace": "${main}.${build}",
+  "url": "https://dadroit.com/js/app.js"
+ },
+ "description": "A JSON viewer that gives a new approach to process JSON Data files.",
+ "homepage": "https://dadroit.com/",
+ "innosetup": true,
+ "license": {
+  "identifier": "Proprietary",
+  "url": "https://dadroit.com/legal"
+ },
+ "shortcuts": [
+  [
+   "DadroitViewer.exe",
+   "Dadroit JSON Viewer"
+  ]
+ ],
+ "version": "2.0.460"
 }

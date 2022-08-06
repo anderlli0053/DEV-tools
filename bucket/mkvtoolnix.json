@@ -1,59 +1,59 @@
 {
-    "version": "69.0.0",
-    "description": "A set of tools to create, alter and inspect Matroska files.",
-    "homepage": "https://mkvtoolnix.download",
-    "license": "GPL-2.0-only",
-    "architecture": {
-        "64bit": {
-            "url": "https://mkvtoolnix.download/windows/releases/69.0.0/mkvtoolnix-64-bit-69.0.0.7z",
-            "hash": "sha512:ea09fbc5668afb5fc2e6ce948161156d7c8e5eabb0ba0acc67f83ee12136008e26b3b27d3133bff2d684bf783c2359cf3512e922a8c3609dd50485e031fc9135"
-        },
-        "32bit": {
-            "url": "https://mkvtoolnix.download/windows/releases/69.0.0/mkvtoolnix-32-bit-69.0.0.7z",
-            "hash": "sha512:d6fef5012afaf3c22543a6123b186c98585e2ea5a25136f7a9d0b44cf4c088135096e271aa784a5709d6a58a147e56bf189958d1083a5b5a5f8c9051f727c49a"
-        }
-    },
-    "extract_dir": "mkvtoolnix",
-    "pre_install": [
-        "if (Test-Path \"$persist_dir\\mkvtoolnix-gui.ini\") {",
-        "    # Persist mkvtoolnix-gui.ini manully because symlink doesn't work.",
-        "    Copy-Item \"$persist_dir\\mkvtoolnix-gui.ini\" \"$dir\"",
-        "} else {",
-        "    Set-Content \"$dir\\mkvtoolnix-gui.ini\" @('[settings]', 'updates\\checkForUpdates=false') -Encoding Ascii",
-        "}"
-    ],
-    "uninstaller": {
-        "script": "Copy-Item \"$dir\\mkvtoolnix-gui.ini\" \"$persist_dir\" -ErrorAction 'SilentlyContinue' -Force"
-    },
-    "bin": [
-        "mkvextract.exe",
-        "mkvinfo.exe",
-        "mkvmerge.exe",
-        "mkvpropedit.exe",
-        "mkvtoolnix-gui.exe"
-    ],
-    "shortcuts": [
-        [
-            "mkvtoolnix-gui.exe",
-            "MKVToolNix GUI"
-        ]
-    ],
-    "persist": [
-        "cache",
-        "jobQueue"
-    ],
-    "checkver": "Released v?([\\d.]+)",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://mkvtoolnix.download/windows/releases/$version/mkvtoolnix-64-bit-$version.7z"
-            },
-            "32bit": {
-                "url": "https://mkvtoolnix.download/windows/releases/$version/mkvtoolnix-32-bit-$version.7z"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/sha512sums.txt"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:d6fef5012afaf3c22543a6123b186c98585e2ea5a25136f7a9d0b44cf4c088135096e271aa784a5709d6a58a147e56bf189958d1083a5b5a5f8c9051f727c49a",
+   "url": "https://mkvtoolnix.download/windows/releases/69.0.0/mkvtoolnix-32-bit-69.0.0.7z"
+  },
+  "64bit": {
+   "hash": "sha512:ea09fbc5668afb5fc2e6ce948161156d7c8e5eabb0ba0acc67f83ee12136008e26b3b27d3133bff2d684bf783c2359cf3512e922a8c3609dd50485e031fc9135",
+   "url": "https://mkvtoolnix.download/windows/releases/69.0.0/mkvtoolnix-64-bit-69.0.0.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://mkvtoolnix.download/windows/releases/$version/mkvtoolnix-32-bit-$version.7z"
+   },
+   "64bit": {
+    "url": "https://mkvtoolnix.download/windows/releases/$version/mkvtoolnix-64-bit-$version.7z"
+   }
+  },
+  "hash": {
+   "url": "$baseurl/sha512sums.txt"
+  }
+ },
+ "bin": [
+  "mkvextract.exe",
+  "mkvinfo.exe",
+  "mkvmerge.exe",
+  "mkvpropedit.exe",
+  "mkvtoolnix-gui.exe"
+ ],
+ "checkver": "Released v?([\\d.]+)",
+ "description": "A set of tools to create, alter and inspect Matroska files.",
+ "extract_dir": "mkvtoolnix",
+ "homepage": "https://mkvtoolnix.download",
+ "license": "GPL-2.0-only",
+ "persist": [
+  "cache",
+  "jobQueue"
+ ],
+ "pre_install": [
+  "if (Test-Path \"$persist_dir\\mkvtoolnix-gui.ini\") {",
+  "    # Persist mkvtoolnix-gui.ini manully because symlink doesn't work.",
+  "    Copy-Item \"$persist_dir\\mkvtoolnix-gui.ini\" \"$dir\"",
+  "} else {",
+  "    Set-Content \"$dir\\mkvtoolnix-gui.ini\" @('[settings]', 'updates\\checkForUpdates=false') -Encoding Ascii",
+  "}"
+ ],
+ "shortcuts": [
+  [
+   "mkvtoolnix-gui.exe",
+   "MKVToolNix GUI"
+  ]
+ ],
+ "uninstaller": {
+  "script": "Copy-Item \"$dir\\mkvtoolnix-gui.ini\" \"$persist_dir\" -ErrorAction 'SilentlyContinue' -Force"
+ },
+ "version": "69.0.0"
 }

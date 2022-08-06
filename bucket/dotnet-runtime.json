@@ -1,48 +1,48 @@
 {
-    "version": "6.0.7",
-    "description": "The dotnet desktop runtime enables you to run dotnet desktop applications. This release includes the .NET Core Runtime, you do not need to install it separately.",
-    "homepage": "https://dotnet.microsoft.com/",
-    "license": "MIT",
-    "notes": "This package only contains the .NET Core runtime, install 'dotnet-sdk' instead if you need .NET Core SDK",
-    "depends": "dark",
-    "architecture": {
-        "64bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.7/windowsdesktop-runtime-6.0.7-win-x64.exe",
-            "hash": "sha512:b38fb7edb21348b1cf6ee7310dd7fe03a10844f47418d993aa8145d7232a4e2d22a3388b591bdb9c3bfbd9c7456a538ac299beb93f180f6cca73cb41f1ef6596"
-        },
-        "32bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.7/windowsdesktop-runtime-6.0.7-win-x86.exe",
-            "hash": "sha512:33f65f54f979689122cbbbab700b7de90226088d29a6069f31f69b980c023fcaea4b822562018f8b450509925c5ea295e06a2424366f75088522d1c3d5409852"
-        }
-    },
-    "installer": {
-        "script": [
-            "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\extracted\" -Removal",
-            "Get-ChildItem \"$dir\\extracted\\AttachedContainer\\*.msi\" | ForEach-Object { Expand-MsiArchive $_ \"$dir\" }",
-            "Move-Item \"$dir\\dotnet\\*\" \"$dir\" -Force",
-            "@('dotnet', 'extracted') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse }"
-        ]
-    },
-    "bin": "dotnet.exe",
-    "env_set": {
-        "DOTNET_ROOT": "$dir"
-    },
-    "checkver": {
-        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
-        "regex": "(?s)([\\d.]+)[^\\d]*?(?<sdkversion>[\\d.]+)[^\\d]*?(?:current|lts)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe"
-            },
-            "32bit": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe"
-            }
-        },
-        "hash": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$version-sha.txt",
-            "mode": "extract"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:33f65f54f979689122cbbbab700b7de90226088d29a6069f31f69b980c023fcaea4b822562018f8b450509925c5ea295e06a2424366f75088522d1c3d5409852",
+   "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.7/windowsdesktop-runtime-6.0.7-win-x86.exe"
+  },
+  "64bit": {
+   "hash": "sha512:b38fb7edb21348b1cf6ee7310dd7fe03a10844f47418d993aa8145d7232a4e2d22a3388b591bdb9c3bfbd9c7456a538ac299beb93f180f6cca73cb41f1ef6596",
+   "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.7/windowsdesktop-runtime-6.0.7-win-x64.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe"
+   },
+   "64bit": {
+    "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe"
+   }
+  },
+  "hash": {
+   "mode": "extract",
+   "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$version-sha.txt"
+  }
+ },
+ "bin": "dotnet.exe",
+ "checkver": {
+  "regex": "(?s)([\\d.]+)[^\\d]*?(?<sdkversion>[\\d.]+)[^\\d]*?(?:current|lts)",
+  "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json"
+ },
+ "depends": "dark",
+ "description": "The dotnet desktop runtime enables you to run dotnet desktop applications. This release includes the .NET Core Runtime, you do not need to install it separately.",
+ "env_set": {
+  "DOTNET_ROOT": "$dir"
+ },
+ "homepage": "https://dotnet.microsoft.com/",
+ "installer": {
+  "script": [
+   "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\extracted\" -Removal",
+   "Get-ChildItem \"$dir\\extracted\\AttachedContainer\\*.msi\" | ForEach-Object { Expand-MsiArchive $_ \"$dir\" }",
+   "Move-Item \"$dir\\dotnet\\*\" \"$dir\" -Force",
+   "@('dotnet', 'extracted') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse }"
+  ]
+ },
+ "license": "MIT",
+ "notes": "This package only contains the .NET Core runtime, install 'dotnet-sdk' instead if you need .NET Core SDK",
+ "version": "6.0.7"
 }
