@@ -1,46 +1,46 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "2ca4ce7e74a34f0d5ea73aa1a82c532bfff23c6e69a66d5fa2c011959b6af9a3",
-   "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.5.4.2753.19.exe#/dl.7z"
-  },
-  "64bit": {
-   "hash": "3d35d9fab2eead7483a5287ac9cf34e307e85027bb5618321c2fb9ba144321c8",
-   "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.5.4.2753.19.x64.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.$version.exe#/dl.7z"
-   },
-   "64bit": {
-    "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.$version.x64.exe#/dl.7z"
-   }
-  }
- },
- "checkver": {
-  "regex": "snapshot/Vivaldi.([\\d.]+).x64.exe",
-  "url": "https://vivaldi.com/blog/feed/"
- },
- "description": "An innovatively designed web browser, based on Blink, for users in Vivaldi.net community that replaced departed My Opera",
- "homepage": "https://vivaldi.com/",
- "installer": {
-  "script": [
-   "Expand-7zipArchive \"$dir\\vivaldi.7z\" \"$dir\"",
-   "Move-Item \"$dir\\Vivaldi-bin\" \"$dir\\Application\"",
-   "Remove-Item \"$dir\\vivaldi.7z\"",
-   "Remove-Item \"$dir\\Application\\update_notifier.exe\"",
-   "Write-Output \"// Vivaldi Standalone\" | Set-Content \"$dir\\Application\\stp.viv\""
-  ]
- },
- "license": "https://vivaldi.com/privacy/vivaldi-end-user-license-agreement/",
- "persist": "User Data",
- "shortcuts": [
-  [
-   "Application\\vivaldi.exe",
-   "Vivaldi Snapshot"
-  ]
- ],
- "version": "5.4.2753.19"
+    "architecture": {
+        "32bit": {
+            "hash": "e3e2bbf09cced265bd6d28ecd4600f15492bc56b8f0f8df04ec1e3031c0f6f6f",
+            "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.5.4.2753.21.exe#/dl.7z"
+        },
+        "64bit": {
+            "hash": "6c948826ce65f33c4fe8cc0398792ba3079dcfd3333eb5cd99ccbecec627f5a2",
+            "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.5.4.2753.21.x64.exe#/dl.7z"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.$version.exe#/dl.7z"
+            },
+            "64bit": {
+                "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.$version.x64.exe#/dl.7z"
+            }
+        }
+    },
+    "checkver": {
+        "regex": "snapshot/Vivaldi.([\\d.]+).x64.exe",
+        "url": "https://vivaldi.com/blog/feed/"
+    },
+    "description": "An innovatively designed web browser, based on Blink, for users in Vivaldi.net community that replaced departed My Opera",
+    "homepage": "https://vivaldi.com/",
+    "installer": {
+        "script": [
+            "Expand-7zipArchive \"$dir\\vivaldi.7z\" \"$dir\"",
+            "Move-Item \"$dir\\Vivaldi-bin\" \"$dir\\Application\"",
+            "Remove-Item \"$dir\\vivaldi.7z\"",
+            "Remove-Item \"$dir\\Application\\update_notifier.exe\"",
+            "Write-Output \"// Vivaldi Standalone\" | Set-Content \"$dir\\Application\\stp.viv\""
+        ]
+    },
+    "license": "https://vivaldi.com/privacy/vivaldi-end-user-license-agreement/",
+    "persist": "User Data",
+    "shortcuts": [
+        [
+            "Application\\vivaldi.exe",
+            "Vivaldi Snapshot"
+        ]
+    ],
+    "version": "5.4.2753.21"
 }
