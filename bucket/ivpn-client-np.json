@@ -1,38 +1,38 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "45194bc1c45a0a71919ff8a65d873c116011d7c639f4ba51634d7ca99871755c",
-   "url": "https://repo.ivpn.net/windows/bin/IVPN-Client-v3.9.0.exe#/setup.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "hash": {
-     "regex": "$basename.*?$sha256",
-     "url": "https://api.github.com/repos/ivpn/desktop-app/releases/latest"
+    "architecture": {
+        "64bit": {
+            "hash": "0b6ab6256a142070d0fb0244234ccd1ec1ddbe0fc631f6ab3c1cc04b035c30a2",
+            "url": "https://repo.ivpn.net/windows/bin/IVPN-Client-v3.9.8.exe#/setup.exe"
+        }
     },
-    "url": "https://repo.ivpn.net/windows/bin/IVPN-Client-v$version.exe#/setup.exe"
-   }
-  }
- },
- "checkver": {
-  "github": "https://github.com/ivpn/desktop-app"
- },
- "description": "Open-source VPN software",
- "homepage": "https://www.ivpn.net/apps-windows/",
- "license": "GPL-3.0-only",
- "pre_install": [
-  "if (!(is_admin)) {error 'This package requires admin rights to install'; break}",
-  "# IVPN service will only work if 'IVPN Service.exe' is under ProgramFiles. Therefore we cannot use INSTALLDIR here.",
-  "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList '/S' -RunAs | Out-Null",
-  "Remove-Item \"$dir\\setup.exe\""
- ],
- "uninstaller": {
-  "script": [
-   "if (!(is_admin)) {error 'This package requires admin rights to uninstall'; break}",
-   "Invoke-ExternalCommand \"$($Env:ProgramFiles)\\IVPN Client\\Uninstall.exe\" -ArgumentList '/S' -RunAs | Out-Null"
-  ]
- },
- "version": "3.9.0"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "hash": {
+                    "regex": "$basename.*?$sha256",
+                    "url": "https://api.github.com/repos/ivpn/desktop-app/releases/latest"
+                },
+                "url": "https://repo.ivpn.net/windows/bin/IVPN-Client-v$version.exe#/setup.exe"
+            }
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/ivpn/desktop-app"
+    },
+    "description": "Open-source VPN software",
+    "homepage": "https://www.ivpn.net/apps-windows/",
+    "license": "GPL-3.0-only",
+    "pre_install": [
+        "if (!(is_admin)) {error 'This package requires admin rights to install'; break}",
+        "# IVPN service will only work if 'IVPN Service.exe' is under ProgramFiles. Therefore we cannot use INSTALLDIR here.",
+        "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList '/S' -RunAs | Out-Null",
+        "Remove-Item \"$dir\\setup.exe\""
+    ],
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) {error 'This package requires admin rights to uninstall'; break}",
+            "Invoke-ExternalCommand \"$($Env:ProgramFiles)\\IVPN Client\\Uninstall.exe\" -ArgumentList '/S' -RunAs | Out-Null"
+        ]
+    },
+    "version": "3.9.8"
 }
