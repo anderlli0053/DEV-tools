@@ -1,57 +1,57 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "sha512:6c63400b8daaf58c9ac12753fd713da61e5abad55c264dfd3b348c965db03589d43eebc0e16ae4b27ac1e4fc6e91af8ae2ea3b251e47e44fa1b7fefd3e4da5cf",
-   "installer": {
-    "script": "Start-Process -filepath \"$dir\\installer.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"/S /D=$dir\" -Wait"
-   },
-   "post_install": "@('installer.exe', 'uninstallerIcon.ico') | ForEach-Object { Remove-Item \"$dir\\$_\" -Force -ErrorAction SilentlyContinue }",
-   "pre_install": [
-    "info 'Copying user data...'",
-    "if (Test-Path \"$persist_dir\\User Data\\*\") {",
-    "    Copy-Item \"$persist_dir\\User Data\\*\" \"$env:AppData\\apifox\\\" -Recurse -Force | Out-Null",
-    "}"
-   ],
-   "uninstaller": {
-    "script": [
-     "Start-Process -filepath \"$dir\\Uninstall Apifox.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"/S\" -Wait",
-     "info 'Backing up user data...'",
-     "if (Test-Path \"$env:AppData\\apifox\\*\") {",
-     "    Copy-Item \"$env:AppData\\apifox\\*\" \"$persist_dir\\User Data\\\" -Recurse -Force | Out-Null",
-     "}"
-    ]
-   },
-   "url": "http://cdn.apifox.cn/download/2.1.32/Apifox-2.1.32.exe#/installer.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "hash": {
-     "mode": "extract",
-     "regex": "sha512.*?$base64",
-     "url": "http://cdn.apifox.cn/download/latest.yml"
+    "architecture": {
+        "64bit": {
+            "hash": "sha512:7a58f891506fb69d8eeacfabdf3e3cc0901cb3d73463836db4bc5b855c3a205844ac1551b86ea71948ccb556ed22c5e30eaf66d4407f7b63cd93b9c6938b3767",
+            "installer": {
+                "script": "Start-Process -filepath \"$dir\\installer.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"/S /D=$dir\" -Wait"
+            },
+            "post_install": "@('installer.exe', 'uninstallerIcon.ico') | ForEach-Object { Remove-Item \"$dir\\$_\" -Force -ErrorAction SilentlyContinue }",
+            "pre_install": [
+                "info 'Copying user data...'",
+                "if (Test-Path \"$persist_dir\\User Data\\*\") {",
+                "    Copy-Item \"$persist_dir\\User Data\\*\" \"$env:AppData\\apifox\\\" -Recurse -Force | Out-Null",
+                "}"
+            ],
+            "uninstaller": {
+                "script": [
+                    "Start-Process -filepath \"$dir\\Uninstall Apifox.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"/S\" -Wait",
+                    "info 'Backing up user data...'",
+                    "if (Test-Path \"$env:AppData\\apifox\\*\") {",
+                    "    Copy-Item \"$env:AppData\\apifox\\*\" \"$persist_dir\\User Data\\\" -Recurse -Force | Out-Null",
+                    "}"
+                ]
+            },
+            "url": "http://cdn.apifox.cn/download/2.1.29/Apifox-2.1.29.exe#/installer.exe"
+        }
     },
-    "url": "http://$matchUrl#/installer.exe"
-   }
-  }
- },
- "bin": "Apifox.exe",
- "checkver": {
-  "regex": "(?sm)version:[\\s]+([\\d.]+).*?http://(?<url>.*?\\.exe)",
-  "url": "http://cdn.apifox.cn/download/latest.yml"
- },
- "depends": "sudo",
- "description": "Apifox = Postman + Swagger + Mock + JMeter",
- "homepage": "https://www.apifox.cn/",
- "license": {
-  "identifier": "Freeware"
- },
- "shortcuts": [
-  [
-   "Apifox.exe",
-   "Apifox"
-  ]
- ],
- "version": "2.1.32"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "hash": {
+                    "mode": "extract",
+                    "regex": "sha512.*?$base64",
+                    "url": "http://cdn.apifox.cn/download/latest.yml"
+                },
+                "url": "http://$matchUrl#/installer.exe"
+            }
+        }
+    },
+    "bin": "Apifox.exe",
+    "checkver": {
+        "regex": "(?sm)version:[\\s]+([\\d.]+).*?http://(?<url>.*?\\.exe)",
+        "url": "http://cdn.apifox.cn/download/latest.yml"
+    },
+    "depends": "sudo",
+    "description": "Apifox = Postman + Swagger + Mock + JMeter",
+    "homepage": "https://www.apifox.cn/",
+    "license": {
+        "identifier": "Freeware"
+    },
+    "shortcuts": [
+        [
+            "Apifox.exe",
+            "Apifox"
+        ]
+    ],
+    "version": "2.1.29"
 }
