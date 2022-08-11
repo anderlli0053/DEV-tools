@@ -1,57 +1,57 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "ae383b85ffd88d0fa6d335f98d49aa6266debf3625dcb88c78006add68ebc76e",
-            "url": "https://dl.google.com/release2/chrome/ac2eni5fwqxefbtq66mulqnvuwnq_105.0.5195.28/105.0.5195.28_chrome_installer.exe#/dl.7z"
-        },
-        "64bit": {
-            "hash": "e96ab94bac247384ddbe7bd1ea6d1e4d7a3d033db1636e1c56c64b72c6ecf9bc",
-            "url": "https://dl.google.com/release2/chrome/acptoylgmvl5tcm27wvl7rwieifq_105.0.5195.28/105.0.5195.28_chrome_installer.exe#/dl.7z"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "ae383b85ffd88d0fa6d335f98d49aa6266debf3625dcb88c78006add68ebc76e",
+   "url": "https://dl.google.com/release2/chrome/ac2eni5fwqxefbtq66mulqnvuwnq_105.0.5195.28/105.0.5195.28_chrome_installer.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "e96ab94bac247384ddbe7bd1ea6d1e4d7a3d033db1636e1c56c64b72c6ecf9bc",
+   "url": "https://dl.google.com/release2/chrome/acptoylgmvl5tcm27wvl7rwieifq_105.0.5195.28/105.0.5195.28_chrome_installer.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
+     "xpath": "/chromechecker/beta32[version='$version']/sha256"
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
-                    "xpath": "/chromechecker/beta32[version='$version']/sha256"
-                },
-                "url": "https://dl.google.com/release2/chrome/$match32_$version/$version_chrome_installer.exe#/dl.7z"
-            },
-            "64bit": {
-                "hash": {
-                    "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
-                    "xpath": "/chromechecker/beta64[version='$version']/sha256"
-                },
-                "url": "https://dl.google.com/release2/chrome/$match64_$version/$version_chrome_installer.exe#/dl.7z"
-            }
-        }
+    "url": "https://dl.google.com/release2/chrome/$match32_$version/$version_chrome_installer.exe#/dl.7z"
+   },
+   "64bit": {
+    "hash": {
+     "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
+     "xpath": "/chromechecker/beta64[version='$version']/sha256"
     },
-    "bin": [
-        [
-            "chrome.exe",
-            "chrome-beta"
-        ]
-    ],
-    "changelog": "https://chromereleases.googleblog.com/",
-    "checkver": {
-        "regex": "(?sm)<beta32><version>(?<version>[\\d.]+)</version>.+release2/chrome/(?<32>[\\w-]+)_.+<beta64>.+release2/chrome/(?<64>[\\w-]+)_.+</beta64>",
-        "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml"
-    },
-    "description": "Google Chrome Beta. Fast, secure, and free web browser, built for the modern web.",
-    "homepage": "https://www.google.com/chrome/beta",
-    "installer": {
-        "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
-    },
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.google.com/chrome/privacy/eula_text.html"
-    },
-    "shortcuts": [
-        [
-            "chrome.exe",
-            "Google Chrome Beta"
-        ]
-    ],
-    "version": "105.0.5195.28"
+    "url": "https://dl.google.com/release2/chrome/$match64_$version/$version_chrome_installer.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": [
+  [
+   "chrome.exe",
+   "chrome-beta"
+  ]
+ ],
+ "changelog": "https://chromereleases.googleblog.com/",
+ "checkver": {
+  "regex": "(?sm)<beta32><version>(?<version>[\\d.]+)</version>.+release2/chrome/(?<32>[\\w-]+)_.+<beta64>.+release2/chrome/(?<64>[\\w-]+)_.+</beta64>",
+  "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml"
+ },
+ "description": "Google Chrome Beta. Fast, secure, and free web browser, built for the modern web.",
+ "homepage": "https://www.google.com/chrome/beta",
+ "installer": {
+  "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
+ },
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://www.google.com/chrome/privacy/eula_text.html"
+ },
+ "shortcuts": [
+  [
+   "chrome.exe",
+   "Google Chrome Beta"
+  ]
+ ],
+ "version": "105.0.5195.28"
 }
