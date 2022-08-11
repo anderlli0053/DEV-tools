@@ -1,49 +1,49 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "7a0a80926f25a8dc925be9bcd394b8f0271a329e0f562beb3a1bf6e76ca06110",
-   "url": "https://nightly.link/olive-editor/olive/workflows/ci/master/Olive-920a2943-Windows-x86_64.zip.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://nightly.link/olive-editor/olive/workflows/ci/master/Olive-$version-Windows-x86_64.zip.zip"
-   }
-  }
- },
- "bin": "olive-editor.exe",
- "checkver": {
-  "regex": ">Olive-([\\d\\w]{8})-Windows-x86_64\\.zip</a>",
-  "url": "https://nightly.link/olive-editor/olive/workflows/ci/master"
- },
- "description": "Non-linear video editor aiming to provide a fully-featured alternative to high-end professional video editing software.",
- "homepage": "https://olivevideoeditor.org",
- "license": "GPL-3.0-only",
- "persist": [
-  "config.xml",
-  "shortcuts"
- ],
- "pre_install": [
-  "Expand-7zipArchive -Path \"$dir\\Olive*.zip\" -ExtractDir 'olive-editor' -Removal",
-  "if (!(Test-Path \"$persist_dir\\config.xml\")) {",
-  "   '<Configuration></Configuration>' | Out-File -FilePath \"$dir\\config.xml\"",
-  "   New-Item \"$dir\\shortcuts\" -ItemType File | Out-Null",
-  "}",
-  "New-Item \"$dir\\portable\" -ErrorAction SilentlyContinue | Out-Null"
- ],
- "pre_uninstall": [
-  "# The following must be done as Olive Editor Nightly deletes the original file which was linked to the persist folder when it saves settings, rather than editing the file. It also deletes the shortcut file if it is empty, previously causing errors on uninstallation.",
-  "Copy-Item \"$dir\\config.xml\" \"$persist_dir\\config.xml\" -ErrorAction SilentlyContinue",
-  "if (!(Test-Path \"$dir\\shortcuts\")) {",
-  "   New-Item \"$dir\\shortcuts\" -ItemType File | Out-Null",
-  "}"
- ],
- "shortcuts": [
-  [
-   "olive-editor.exe",
-   "Olive Editor Nightly"
-  ]
- ],
- "version": "920a2943"
+    "architecture": {
+        "64bit": {
+            "hash": "f5243ab11ddd763522ba4ff4e6a6b84bd62b3880f6b6f5b042a46ebb67320567",
+            "url": "https://nightly.link/olive-editor/olive/workflows/ci/master/Olive-409f24be-Windows-x86_64.zip.zip"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nightly.link/olive-editor/olive/workflows/ci/master/Olive-$version-Windows-x86_64.zip.zip"
+            }
+        }
+    },
+    "bin": "olive-editor.exe",
+    "checkver": {
+        "regex": ">Olive-([\\d\\w]{8})-Windows-x86_64\\.zip</a>",
+        "url": "https://nightly.link/olive-editor/olive/workflows/ci/master"
+    },
+    "description": "Non-linear video editor aiming to provide a fully-featured alternative to high-end professional video editing software.",
+    "homepage": "https://olivevideoeditor.org",
+    "license": "GPL-3.0-only",
+    "persist": [
+        "config.xml",
+        "shortcuts"
+    ],
+    "pre_install": [
+        "Expand-7zipArchive -Path \"$dir\\Olive*.zip\" -ExtractDir 'olive-editor' -Removal",
+        "if (!(Test-Path \"$persist_dir\\config.xml\")) {",
+        "   '<Configuration></Configuration>' | Out-File -FilePath \"$dir\\config.xml\"",
+        "   New-Item \"$dir\\shortcuts\" -ItemType File | Out-Null",
+        "}",
+        "New-Item \"$dir\\portable\" -ErrorAction SilentlyContinue | Out-Null"
+    ],
+    "pre_uninstall": [
+        "# The following must be done as Olive Editor Nightly deletes the original file which was linked to the persist folder when it saves settings, rather than editing the file. It also deletes the shortcut file if it is empty, previously causing errors on uninstallation.",
+        "Copy-Item \"$dir\\config.xml\" \"$persist_dir\\config.xml\" -ErrorAction SilentlyContinue",
+        "if (!(Test-Path \"$dir\\shortcuts\")) {",
+        "   New-Item \"$dir\\shortcuts\" -ItemType File | Out-Null",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "olive-editor.exe",
+            "Olive Editor Nightly"
+        ]
+    ],
+    "version": "409f24be"
 }
