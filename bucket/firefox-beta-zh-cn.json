@@ -1,0 +1,54 @@
+{
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:c42911b44c5dcace9e2b4ad6719cd07c10c4020f3dd3d4f6f7a0bc3237fd0ffb8b8b9c4dd958184c6295d08c0993f7ca24da54599586fe9ed352e7e9aaf4a2b1",
+   "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/104.0b8/win32/zh-CN/Firefox%20Setup%20104.0b8.exe#/firefox-beta.7z"
+  },
+  "64bit": {
+   "hash": "sha512:4b5cc2a4b7bb4db045a9c8e9ad2590b0e96d08186602ac77bb609b6a7c6d0046b46b0924af4b621f8eb976c7c1fc2239eba2c32f76943f2cf6d6dc5c007cd58a",
+   "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/104.0b8/win64/zh-CN/Firefox%20Setup%20104.0b8.exe#/firefox-beta.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "regex": "$sha512\\s+win32/zh-CN/$basename",
+     "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA512SUMS"
+    },
+    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/win32/zh-CN/Firefox%20Setup%20$version.exe#/firefox-beta.7z"
+   },
+   "64bit": {
+    "hash": {
+     "regex": "$sha512\\s+win64/zh-CN/$basename",
+     "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA512SUMS"
+    },
+    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/win64/zh-CN/Firefox%20Setup%20$version.exe#/firefox-beta.7z"
+   }
+  }
+ },
+ "bin": [
+  [
+   "firefox.exe",
+   "firefox-beta"
+  ]
+ ],
+ "checkver": {
+  "regex": "firefox-([\\db.]+)-",
+  "url": "https://aus5.mozilla.org/update/6/Firefox/93.0/_/WINNT_x86_64-msvc-x64/en-US/beta/_/_/_/_/update.xml",
+  "xpath": "/updates/update/patch/@URL"
+ },
+ "description": "Beta builds of Firefox: the popular open source web browser.",
+ "extract_dir": "core",
+ "homepage": "https://www.mozilla.org/zh-CN/firefox/beta/",
+ "license": "MPL-2.0",
+ "notes": "To recover persisted profile, you need to open the Profile Manager with `firefox-beta -P` and create by selecting the portable profile directory.",
+ "persist": "profile-portable",
+ "shortcuts": [
+  [
+   "firefox.exe",
+   "Firefox Beta"
+  ]
+ ],
+ "version": "104.0b8"
+}

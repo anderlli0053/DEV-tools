@@ -1,10 +1,11 @@
 {
  "autoupdate": {
   "hash": {
-   "url": "https://raw.githubusercontent.com/Electron-Cash/keys-n-hashes/master/sigs-and-sums/$version/win-linux/SHA256.$basename.txt"
+   "url": "https://github.com/Electron-Cash/Electron-Cash/releases/download/$version/SHA256.Electron-Cash-$version-portable.exe.txt"
   },
-  "url": "https://github.com/Electron-Cash/Electron-Cash/releases/download/$version/Electron-Cash-$version-portable.exe#/Electron-Cash.exe"
+  "url": "https://github.com/Electron-Cash/Electron-Cash/releases/download/$version/Electron-Cash-$version-portable.exe#/electron-cash.exe"
  },
+ "bin": "electron-cash.exe",
  "checkver": {
   "github": "https://github.com/Electron-Cash/Electron-Cash"
  },
@@ -13,12 +14,18 @@
  "homepage": "https://electroncash.org",
  "license": "MIT",
  "persist": "electron_cash_data",
+ "pre_install": [
+  "if (!(Test-Path \"$persist_dir\\electron_cash_data\\config\")) {",
+  "   ensure \"$dir\\electron_cash_data\" | Out-Null",
+  "   Set-Content \"$dir\\electron_cash_data\\config\" '{ \"check_updates\": false }' -Encoding Ascii",
+  "}"
+ ],
  "shortcuts": [
   [
-   "Electron-Cash.exe",
+   "electron-cash.exe",
    "Electron Cash"
   ]
  ],
- "url": "https://github.com/Electron-Cash/Electron-Cash/releases/download/4.2.10/Electron-Cash-4.2.10-portable.exe#/Electron-Cash.exe",
+ "url": "https://github.com/Electron-Cash/Electron-Cash/releases/download/4.2.10/Electron-Cash-4.2.10-portable.exe#/electron-cash.exe",
  "version": "4.2.10"
 }

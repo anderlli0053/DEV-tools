@@ -12,41 +12,60 @@
  "autoupdate": {
   "architecture": {
    "32bit": {
-    "url": "https://bitbucket.org/liule/snipaste/downloads/Snipaste-$matchMain-Beta$matchBuild-x86.zip"
+    "url": "https://bitbucket.org/liule/snipaste/downloads/Snipaste-$version-x86.zip"
    },
    "64bit": {
-    "url": "https://bitbucket.org/liule/snipaste/downloads/Snipaste-$matchMain-Beta$matchBuild-x64.zip"
+    "url": "https://bitbucket.org/liule/snipaste/downloads/Snipaste-$version-x64.zip"
    }
   },
   "hash": {
-   "regex": "$sha1.*?$basename",
    "url": "https://dl.snipaste.com/sha-1.txt"
   }
  },
- "bin": "Snipaste.exe",
  "checkver": {
-  "regex": "Snipaste-(?<main>[\\d.]+)-Beta(?<build>[\\d]*)-x86\\.zip",
-  "replace": "${main}${build}",
-  "url": "https://bitbucket.org/liule/snipaste/downloads"
+  "regex": "Snipaste-(([\\d.]+)-Beta[\\d]*?)-x64.zip",
+  "url": "https://bitbucket.org/liule/snipaste/downloads/"
  },
- "description": "Snipaste is a simple but powerful snipping tool, and also allows you to pin the screenshot back onto the screen.",
+ "description": "A snipping tool, which allows you to pin the screenshot back onto the screen.",
  "homepage": "https://www.snipaste.com/",
- "license": {
-  "identifier": "Freeware"
+ "installer": {
+  "script": [
+   "function CreateFile([String] $file, [String] $content = $null) {",
+   "    if (!(Test-Path \"$persist_dir\\$file\")) {",
+   "        New-Item -Force -Path \"$persist_dir\\$file\" -ItemType file -Value $content | Out-Null",
+   "    }",
+   "}",
+   "CreateFile 'config.ini'",
+   "CreateFile 'splog.txt'"
+  ]
  },
+ "license": "Proprietary",
  "persist": [
+  "crashes",
   "history",
-  "config.ini"
+  "config.ini",
+  "splog.txt"
  ],
- "pre_install": "if (!(Test-Path \"$persist_dir\\config.ini\")) { Set-Content \"$dir\\config.ini\" '' -Encoding ASCII }",
  "shortcuts": [
   [
    "Snipaste.exe",
-   "Snipaste Beta"
+   "Snipaste"
   ]
  ],
  "suggest": {
-  "vcredist": "extras/vcredist2022"
+  "vcredist": "extras/vcredist2015"
  },
- "version": "2.7.3"
+ "uninstaller": {
+  "script": [
+   "function BackupFile([String] $file) {",
+   "    if (Test-Path \"$persist_dir\\$file\") {",
+   "        Remove-Item \"$persist_dir\\$file\" -Force",
+   "    }",
+   "    Copy-Item \"$dir\\$file\" \"$persist_dir\" -Force -ErrorAction SilentlyContinue",
+   "}",
+   "BackupFile 'config.ini'",
+   "BackupFile 'splog.txt'"
+  ]
+ },
+ "version": "2.7.3-Beta"
 }

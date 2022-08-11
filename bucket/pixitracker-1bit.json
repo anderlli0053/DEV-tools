@@ -1,29 +1,21 @@
 {
  "autoupdate": {
-  "url": "https://warmplace.ru/soft/pixitracker/pixitracker_1bit-$version.zip"
+  "url": "https://www.warmplace.ru/soft/pixitracker/pixitracker_1bit.zip"
  },
- "checkver": "pixitracker_1bit-([\\d.]+)\\.zip",
- "description": "A simple tool to quickly create musical sketches, chiptunes and sound experiments, without requiring a lot of musical knowledge. (retro-style 1bit version)",
- "extract_dir": "pixitracker_1bit",
- "hash": "d29d0cca59d176d4d2dd065b23ee3f5da9fbe5a08eadbaf15c70a618858d8baf",
- "homepage": "https://warmplace.ru/soft/pixitracker/",
+ "checkver": {
+  "regex": ">Latest release - ([\\d.]+)"
+ },
+ "description": "PixiTracker is a simple and fun tool to quickly create musical sketches, chiptunes and sound experiments.",
+ "hash": "74cdb2d79c15b1275ba6794f678437c239de294ce70047234d07147f7fa297cb",
+ "homepage": "https://www.warmplace.ru/soft/pixitracker/",
  "license": "Freeware",
- "persist": "pixilang_config.ini",
- "pre_install": [
-  "if (!(Test-Path \"$persist_dir\\pixilang_log.txt\")) { New-Item \"$dir\\pixilang_log.txt\" | Out-Null }",
-  "if (Test-Path \"$persist_dir\\.pxtracker1bit_backup.piximod\") { Copy-Item \"$persist_dir\\.pxtracker1bit_backup.piximod\" \"$dir\\\" }"
- ],
- "pre_uninstall": "if (Test-Path \"$dir\\.pxtracker1bit_backup.piximod\") { Copy-Item \"$dir\\.pxtracker1bit_backup.piximod\" \"$persist_dir\\\" }",
+ "persist": "pixitracker_1bit\\pixilang_config.ini",
  "shortcuts": [
   [
-   "START_WINDOWS.exe",
-   "PixiTracker (1 Bit)"
-  ],
-  [
-   "START_WINDOWS_NO_OPENGL.exe",
-   "PixiTracker (1 Bit) (No OpenGL)"
+   "pixitracker_1bit\\START_WINDOWS.exe",
+   "PixiTracker 1bit"
   ]
  ],
- "url": "https://warmplace.ru/soft/pixitracker/pixitracker_1bit-1.6.5.zip",
+ "url": "https://www.warmplace.ru/soft/pixitracker/pixitracker_1bit.zip",
  "version": "1.6.5"
 }

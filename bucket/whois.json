@@ -1,31 +1,18 @@
 {
- "architecture": {
-  "32bit": {
-   "post_install": "@('whois64.exe', 'whois64a.exe') | ForEach-Object { Remove-Item \"$dir\\$_\" -Force -ErrorAction SilentlyContinue }"
-  },
-  "64bit": {
-   "post_install": [
-    "@('whois.exe', 'whois64a.exe') | ForEach-Object { Remove-Item \"$dir\\$_\" -Force -ErrorAction SilentlyContinue }",
-    "Rename-Item \"$dir\\whois64.exe\" 'whois.exe' -Force -ErrorAction SilentlyContinue"
-   ]
-  }
- },
  "autoupdate": {
   "url": "https://download.sysinternals.com/files/WhoIs.zip"
  },
  "bin": "whois.exe",
  "checkver": {
-  "regex": "Whois v([\\d.]+)",
-  "url": "https://docs.microsoft.com/en-us/sysinternals/downloads/whois"
+  "re": "Whois v([\\d.]+)"
  },
- "description": "See who owns an Internet address.",
+ "description": "Whois performs the registration record for the domain name or IP address that you specify",
  "hash": "43d82eb09a93c788030b31668a1b578d4953c52875dccf5c5ebc98059fa834a1",
  "homepage": "https://docs.microsoft.com/en-us/sysinternals/downloads/whois",
  "license": {
-  "identifier": "Proprietary",
+  "identifier": "Microsoft SysInternals EULA",
   "url": "https://docs.microsoft.com/en-us/sysinternals/license-terms"
  },
- "notes": "Usage: <https://docs.microsoft.com/en-us/sysinternals/downloads/whois#usage>",
  "url": "https://download.sysinternals.com/files/WhoIs.zip",
  "version": "1.21"
 }

@@ -14,6 +14,7 @@
  },
  "bin": [
   "bin\\wax.cmd",
+  "bin\\wapm.exe",
   "bin\\wasmer.exe"
  ],
  "checkver": {
@@ -28,5 +29,14 @@
  "homepage": "https://wasmer.io/",
  "innosetup": true,
  "license": "MIT",
+ "persist": [
+  "globals",
+  "wapm.toml"
+ ],
+ "pre_install": [
+  "if (!(Test-Path \"$persist_dir\\wapm.toml\")) {",
+  "    New-Item -Force -Path \"$persist_dir\\wapm.toml\" -ItemType File -Value \"[registry]`nurl = 'https://registry.wapm.io'\" | Out-Null",
+  "}"
+ ],
  "version": "2.3.0"
 }

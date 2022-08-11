@@ -1,34 +1,34 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "sha512:f0ba745095a5c723a4e5ea993aaa62287aedcac81f376ae23a0a13cca887171262983f15755d617ca9ee20bcb281053302dcce4d522319aa317f5b225c133ec3",
-            "installer": {
-                "script": "Expand-7zipArchive -Path \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
-            },
-            "url": "https://github.com/ThaUnknown/miru/releases/download/v3.0.3/win-Miru-3.0.3.exe#/dl.7z"
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "sha512:f0ba745095a5c723a4e5ea993aaa62287aedcac81f376ae23a0a13cca887171262983f15755d617ca9ee20bcb281053302dcce4d522319aa317f5b225c133ec3",
+   "installer": {
+    "script": "Expand-7zipArchive -Path \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+   },
+   "url": "https://github.com/ThaUnknown/miru/releases/download/v3.0.3/win-Miru-3.0.3.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "regex": "sha512:\\s+$base64",
+     "url": "$baseurl/latest.yml"
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "hash": {
-                    "regex": "sha512:\\s+$base64",
-                    "url": "$baseurl/latest.yml"
-                },
-                "url": "https://github.com/ThaUnknown/miru/releases/download/v$version/win-Miru-$version.exe#/dl.7z"
-            }
-        }
-    },
-    "checkver": "github",
-    "description": "Stream anime torrents, real-time with no waiting for downloads",
-    "homepage": "https://github.com/ThaUnknown/miru",
-    "license": "GPL-3.0-or-later",
-    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Recurse -Force",
-    "shortcuts": [
-        [
-            "Miru.exe",
-            "Miru"
-        ]
-    ],
-    "version": "3.0.3"
+    "url": "https://github.com/ThaUnknown/miru/releases/download/v$version/win-Miru-$version.exe#/dl.7z"
+   }
+  }
+ },
+ "checkver": "github",
+ "description": "Stream anime torrents, real-time with no waiting for downloads",
+ "homepage": "https://github.com/ThaUnknown/miru",
+ "license": "GPL-3.0-or-later",
+ "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Recurse -Force",
+ "shortcuts": [
+  [
+   "Miru.exe",
+   "Miru"
+  ]
+ ],
+ "version": "3.0.3"
 }

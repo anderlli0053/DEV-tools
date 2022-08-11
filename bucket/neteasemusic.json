@@ -1,27 +1,41 @@
 {
  "autoupdate": {
-  "url": "https://d1.music.126.net/dmusic/cloudmusicsetup$version$matchBug.exe#/dl.7z"
+  "url": "https://d1.music.126.net/dmusic/NeteaseCloudMusic_Music_official_$version.exe#/dl.7z"
  },
  "bin": "cloudmusic.exe",
  "checkver": {
-  "regex": "cloudmusicsetup(?<version>[\\d.]+\\d)(?<bug>.*?).exe",
+  "regex": "(?<version>[\\d.]+\\d).exe",
   "script": "return (iwr -useb 'https://music.163.com/api/pc/package/download/latest' -Method Head).Headers['x-nos-object-name']"
  },
  "description": "The official NetEase Cloud Music client.",
- "hash": "dfa07efeb984fe10dc2527461a4ea34121f3d8b42b5cda6ee61beabec12e9e2e",
+ "hash": "913457ec7a4d8ced097b18be1d2a987b6cc8426c70bf564ce56db786f3629021",
  "homepage": "https://music.163.com/",
+ "installer": {
+  "script": [
+   "Get-ChildItem \"$dir\\redist_packages\" | Move-Item -Destination \"$dir\" -Force",
+   "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name dorado) scripts/DoradoUtils.psm1)",
+   "Mount-ExternalRuntimeData -Source \"$persist_dir\\appdata\" -Target \"$env:LOCALAPPDATA\\Netease\\CloudMusic\"",
+   "Remove-Module -Name DoradoUtils"
+  ]
+ },
  "license": {
   "identifier": "EULA",
   "url": "https://music.163.com/html/web2/service.html"
  },
- "notes": "Scoop doesn't persist your CloudMusic data, they are still storaged in '%LOCALAPPDATA%\\Netease\\CloudMusic'.",
- "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+ "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\",\"$dir\\redist_packages\" -Force -Recurse",
  "shortcuts": [
   [
    "cloudmusic.exe",
    "\u7f51\u6613\u4e91\u97f3\u4e50"
   ]
  ],
- "url": "https://d1.music.126.net/dmusic/cloudmusicsetup2.9.9.199909.exe#/dl.7z",
- "version": "2.9.9.199909"
+ "uninstaller": {
+  "script": [
+   "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name dorado) scripts/DoradoUtils.psm1)",
+   "Dismount-ExternalRuntimeData -Target \"$env:LOCALAPPDATA\\Netease\\CloudMusic\"",
+   "Remove-Module -Name DoradoUtils"
+  ]
+ },
+ "url": "https://d1.music.126.net/dmusic/NeteaseCloudMusic_Music_official_2.10.3.200198.exe#/dl.7z",
+ "version": "2.10.3.200198"
 }

@@ -1,6 +1,18 @@
 {
+ "autoupdate": {
+  "hash": {
+   "mode": "extract",
+   "regex": "sha512: $base64",
+   "url": "https://g.alicdn.com/aliyun-drive-fe/aliyun-drive-desktop-version/$version/win32/ia32/latest.yml"
+  },
+  "url": "https://cdn.aliyundrive.net/downloads/apps/desktop/update/$version/win32/ia32/aDrive-$version.exe#/aDrive-$version.7z"
+ },
+ "checkver": {
+  "re": "version: ([\\d.]+)",
+  "script": "return (iwr -useb \"$($(iwr -useb 'https://www.aliyundrive.com/desktop/version/update.json' | ConvertFrom-Json).url)/win32/ia32/latest.yml\")"
+ },
  "description": "The official client for Alibaba's cloud dirve service",
- "hash": "sha512:F213EEC6C8AC23617F2FDBAFB7BE4F5DFB7D46E357E0413999097BE646D7BDB7FB766A74C9E907EAFA1C2D5AA1DEB03A690D3268D971F73C297D82B72E79676A",
+ "hash": "sha512:294c21da9174f051afdf5b34b1888eec31a9cddc3b866c24c6d614bd5fc23885df65fa965725efa9bc5a9c806a3671da243d6a9d93a36924535d4fd02c900fdc",
  "homepage": "https://www.aliyundrive.com/",
  "license": {
   "identifier": "EULA",
@@ -17,6 +29,6 @@
    "\u963f\u91cc\u4e91\u76d8"
   ]
  ],
- "url": "https://aki-1258833316.cos.ap-shanghai.myqcloud.com/aDrive.exe#/aDrive-2.3.4.7z",
- "version": "2.3.4"
+ "url": "https://cdn.aliyundrive.net/downloads/apps/desktop/update/3.7.1/win32/ia32/aDrive-3.7.1.exe#/aDrive-3.7.1.7z",
+ "version": "3.7.1"
 }

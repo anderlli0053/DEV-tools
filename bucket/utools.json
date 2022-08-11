@@ -20,40 +20,29 @@
    "32bit": {
     "hash": {
      "mode": "extract",
-     "regex": "(?sm)$basename.+sha512:\\s+$base64",
-     "url": "https://res.u-tools.cn/version2/latest-ia32.yml"
+     "regex": "(?sm)$version-ia32.exe.*?sha512: $base64",
+     "url": "https://res.u-tools.cn/version2/latest-ia32.yml?"
     },
     "url": "https://res.u-tools.cn/version2/uTools-$version-ia32.exe#/dl.7z"
    },
    "64bit": {
     "hash": {
      "mode": "extract",
-     "regex": "(?sm)$basename.+sha512:\\s+$base64",
-     "url": "https://res.u-tools.cn/version2/latest.yml"
+     "regex": "(?sm)$version.exe.*?sha512: $base64",
+     "url": "https://res.u-tools.cn/version2/latest.yml?"
     },
     "url": "https://res.u-tools.cn/version2/uTools-$version.exe#/dl.7z"
    }
   }
  },
- "bin": "uTools.exe",
  "checkver": {
-  "regex": "version:\\s+([\\d.]+)",
+  "regex": "version: ([\\d.]+)",
   "url": "https://res.u-tools.cn/version2/latest.yml"
  },
- "description": "A plug-in desktop software.",
- "homepage": "https://u.tools",
- "license": {
-  "identifier": "Proprietary",
-  "url": "http://u.tools/agreement.html"
- },
- "persist": "User Data",
- "post_install": [
-  "@('$PLUGINSDIR', '[NSIS].nsi', 'Uninstall uTools.exe') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force -ErrorAction SilentlyContinue }",
-  "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:AppData\\uTools\")) {",
-  "    info '[Portable Mode]: Copying user data...'",
-  "    Copy-Item \"$env:AppData\\uTools\\*\" \"$dir\\User Data\" -Recurse",
-  "}"
- ],
+ "description": "Your productive tools set and launcher.",
+ "homepage": "https://u.tools/",
+ "license": "Proprietary",
+ "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse",
  "shortcuts": [
   [
    "uTools.exe",

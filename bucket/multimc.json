@@ -2,14 +2,25 @@
  "autoupdate": {
   "url": "https://files.multimc.org/downloads/mmc-stable-win32.zip"
  },
- "bin": "MultiMC.exe",
  "checkver": {
-  "github": "https://github.com/MultiMC/MultiMC5"
+  "github": "https://github.com/MultiMC/Launcher"
  },
- "description": "Launcher for Minecraft that allows for multiple, cleanly separated instances of Minecraft.",
+ "description": "A custom launcher for Minecraft that allows you to easily manage multiple installations of Minecraft at once",
  "extract_dir": "MultiMC",
  "hash": "2ef69f36d3a99e423ae6b8de52168fd26656d0c274845270000b013043daac7e",
  "homepage": "https://multimc.org/",
+ "installer": {
+  "script": [
+   "function CreateFile([String] $file, [String] $content = $null) {",
+   "    if (!(Test-Path \"$persist_dir\\$file\")) {",
+   "        New-Item -Force -Path \"$persist_dir\\$file\" -ItemType file -Value $content | Out-Null",
+   "    }",
+   "}",
+   "CreateFile 'accounts.json'",
+   "CreateFile 'multimc.cfg' 'UpdateChannel=stable'",
+   "CreateFile 'notifications.json'"
+  ]
+ },
  "license": "Apache-2.0",
  "persist": [
   "accounts",
@@ -23,17 +34,28 @@
   "multimc.cfg",
   "notifications.json"
  ],
- "pre_install": [
-  "if (-not (Test-Path \"$dir\\accounts.json\")) { New-Item \"$dir\\accounts.json\" -ItemType File | Out-Null }",
-  "if (-not (Test-Path \"$dir\\multimc.cfg\")) { New-Item \"$dir\\multimc.cfg\" -ItemType File -Value \"Analytics=false`r`nAutoUpdate=false`r`nIconTheme=pe_colored`r`nLaunchMaximized=true\" | Out-Null }",
-  "if (-not (Test-Path \"$dir\\notifications.json\")) { New-Item \"$dir\\notifications.json\" -ItemType File | Out-Null }"
- ],
  "shortcuts": [
   [
    "MultiMC.exe",
    "MultiMC"
   ]
  ],
+ "suggest": {
+  "MCEdit": "dorado/mcedit"
+ },
+ "uninstaller": {
+  "script": [
+   "function BackupFile([String] $file) {",
+   "    if (!(Test-Path \"$persist_dir\\$file\")) {",
+   "        Remove-Item \"$persist_dir\\$file\" -Force",
+   "    }",
+   "    Move-Item \"$dir\\$file\" \"$persist_dir\" -Force",
+   "}",
+   "BackupFile 'accounts.json'",
+   "BackupFile 'multimc.cfg'",
+   "BackupFile 'notifications.json'"
+  ]
+ },
  "url": "https://files.multimc.org/downloads/mmc-stable-win32.zip",
  "version": "0.6.14"
 }

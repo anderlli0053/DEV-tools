@@ -1,25 +1,21 @@
 {
  "architecture": {
   "32bit": {
-   "extract_dir": "geth-alltools-windows-386-1.10.20-8f2416a8",
-   "hash": "md5:278326561010ffbf925d5732888d5417",
-   "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-386-1.10.20-8f2416a8.zip"
+   "hash": "md5:b3147dd1ade9f91977383ed891abd0c9",
+   "url": "https://gethstore.blob.core.windows.net/builds/geth-windows-386-1.10.21-67109427.exe#/geth.zip"
   },
   "64bit": {
-   "extract_dir": "geth-alltools-windows-amd64-1.10.20-8f2416a8",
-   "hash": "md5:95d8681649d54252bc4b933d8e92eac7",
-   "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-amd64-1.10.20-8f2416a8.zip"
+   "hash": "md5:63ac9db01d2d51f6361a5b223f60688c",
+   "url": "https://gethstore.blob.core.windows.net/builds/geth-windows-amd64-1.10.21-67109427.exe#/geth.zip"
   }
  },
  "autoupdate": {
   "architecture": {
    "32bit": {
-    "extract_dir": "geth-alltools-windows-386-$version-$matchSha",
-    "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-386-$version-$matchSha.zip"
+    "url": "https://gethstore.blob.core.windows.net/builds/geth-windows-386-$version-$matchCommit.exe#/geth.zip"
    },
    "64bit": {
-    "extract_dir": "geth-alltools-windows-amd64-$version-$matchSha",
-    "url": "https://gethstore.blob.core.windows.net/builds/geth-alltools-windows-amd64-$version-$matchSha.zip"
+    "url": "https://gethstore.blob.core.windows.net/builds/geth-windows-amd64-$version-$matchCommit.exe#/geth.zip"
    }
   },
   "hash": {
@@ -37,11 +33,13 @@
   "rlpdump.exe"
  ],
  "checkver": {
-  "regex": "(?sm)/tree/v([\\d.]+).*?/commit/(?<sha>[a-z\\d]{8})",
+  "regex": "(?sm)/tree/v(?<version>[\\d.]+).*?/commit/(?<commit>[a-z0-9]{8})",
   "url": "https://github.com/ethereum/go-ethereum/releases/latest"
  },
  "description": "Official Go implementation of the Ethereum protocol",
- "homepage": "https://geth.ethereum.org",
+ "homepage": "https://geth.ethereum.org/",
  "license": "MIT",
- "version": "1.10.20"
+ "notes": "CAUTION: by default all your Ethereum data are stored in '$env:LOCALAPPDATA\\Ethereum', TAKE CARE!",
+ "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\",\"$dir\\uninstall.exe\" -Recurse",
+ "version": "1.10.21"
 }

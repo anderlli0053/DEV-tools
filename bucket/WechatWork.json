@@ -1,22 +1,20 @@
 {
- "autoupdate": {
-  "url": "https://dldir1.qq.com/wework/work_weixin/WeCom_$version.exe#/wechat.7z"
- },
- "checkver": {
-  "regex": "WeCom_([\\d.]+).exe",
-  "url": "http://scoop-zapps.ziiyc.com/WechatWork/WechatWork.latest"
- },
- "description": "\u4f01\u4e1a\u5fae\u4fe1",
- "hash": "ef82ffdd6d7b1c502ddfd896c9a99ee9b1acf9dd92680ec593897c8d8107e8c2",
+ "description": "Connection Makes a Smarter Business",
  "homepage": "https://work.weixin.qq.com/",
- "license": "Freeware",
- "post_install": "Start-Process -Wait \"$dir\\$version\\wxdriveinstaller.exe\" -Verb RunAs",
+ "license": {
+  "identifier": "EULA",
+  "url": "https://work.weixin.qq.com/nl/eula"
+ },
+ "post_install": [
+  "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+  "Remove-Item \"$dir\\Uninstall.exe\" -Force -Recurse"
+ ],
  "shortcuts": [
   [
    "WXWork.exe",
-   "\u4f01\u4e1a\u5fae\u4fe1"
+   "WeChat Work"
   ]
  ],
- "url": "https://dldir1.qq.com/wework/work_weixin/WeCom_3.1.23.6025.exe#/wechat.7z",
- "version": "3.1.23.6025"
+ "url": "https://work.weixin.qq.com/wework_admin/commdownload?platform=win&from=wwindex#/dl.7z",
+ "version": "nightly"
 }

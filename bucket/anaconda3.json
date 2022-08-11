@@ -1,62 +1,66 @@
 {
  "architecture": {
   "32bit": {
-   "hash": "cd8c688349bcd1f429e3b383620fb0d19f52be0f765b2eae78d63b41aefb2e73",
+   "hash": "md5:f581359e0f0081a8cc83071556f9fd1d",
    "url": "https://repo.anaconda.com/archive/Anaconda3-2022.05-Windows-x86.exe"
   },
   "64bit": {
-   "hash": "2766eb102f9d65da36d262b651777358de39fbe5f1a74f9854a2e5e29caeeeec",
+   "hash": "md5:9dec53982beb2659b65107a6ad10e863",
    "url": "https://repo.anaconda.com/archive/Anaconda3-2022.05-Windows-x86_64.exe"
   }
  },
  "autoupdate": {
   "architecture": {
    "32bit": {
-    "hash": {
-     "regex": "$sha256",
-     "url": "http://docs.anaconda.com/anaconda/install/hashes/Anaconda3-$version-Windows-x86.exe-hash/"
-    },
     "url": "https://repo.anaconda.com/archive/Anaconda3-$version-Windows-x86.exe"
    },
    "64bit": {
-    "hash": {
-     "regex": "$sha256",
-     "url": "http://docs.anaconda.com/anaconda/install/hashes/Anaconda3-$version-Windows-x86_64.exe-hash/"
-    },
     "url": "https://repo.anaconda.com/archive/Anaconda3-$version-Windows-x86_64.exe"
    }
+  },
+  "hash": {
+   "find": "$basename<.*\\s+<.*\\s+<.*\\s+<td>([a-fA-F0-9]{32})</td>",
+   "url": "$baseurl"
   }
  },
- "bin": [
-  "python.exe",
-  "pythonw.exe",
-  [
-   "python.exe",
-   "python3"
-  ]
- ],
+ "bin": "scripts\\conda.exe",
  "checkver": {
-  "regex": "Anaconda3-([\\d.]+)-Windows",
-  "url": "https://docs.anaconda.com/anaconda/install/hashes/win-3-64/"
+  "re": "Anaconda3-(\\d{4}.[\\d.]+)-Windows",
+  "reverse": true,
+  "url": "https://repo.anaconda.com/archive"
  },
- "description": "The most popular Python distribution for data science.",
- "env_add_path": "Scripts",
+ "description": "The most popular Python distribution for data science",
  "homepage": "https://www.anaconda.com/",
  "installer": {
   "args": [
    "/S",
    "/InstallationType=JustMe",
-   "/RegisterPython=1",
+   "/RegisterPython=0",
    "/AddToPath=0",
+   "/NoRegistry=1",
+   "/NoShortcuts=1",
    "/D=$dir"
   ]
  },
  "license": "BSD-3-Clause",
- "persist": "envs",
- "pre_install": "Write-Host 'Installing Anaconda 3. This can take up to 30 minutes on an HDD.' -ForegroundColor Magenta",
- "uninstaller": {
-  "args": "/S",
-  "file": "Uninstall-Anaconda3.exe"
- },
+ "notes": [
+  "This variant does not add the default venv into your PATH unless you activate it with 'conda activate base'.",
+  "You may choose to install the one from the official bucket if you do not care about python PATH pollution.",
+  "",
+  "Conda base env is not persisted by Scoop, packages installed to the base env will be removed when upgrading the app.",
+  "We advice to setup 'envs_dirs' to use a seperated path like '~/.conda/envs' and avoid using the base env.",
+  "https://conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html#specify-environment-directories-envs-dirs",
+  "",
+  "To enable conda tab-completion autoload, you can add the following code to your PowerShell $PROFILE:",
+  "(& conda 'shell.powershell' 'hook') | Out-String | Invoke-Expression"
+ ],
+ "post_install": [
+  "# Prevent creating shortcuts (/NoShortcuts is not supported currently: https://github.com/conda/constructor/pull/466#issuecomment-1132732254=)",
+  "(& $dir\\_conda.exe constructor --prefix $dir --rm-menus) | Out-Null",
+  "# Set auto_activate_base to false",
+  "(& $dir\\scripts\\conda.exe config --system --set auto_activate_base false) | Out-Null",
+  "# Invoke hook for current shell session",
+  "(& $dir\\scripts\\conda.exe shell.powershell hook) | Out-String | Invoke-Expression"
+ ],
  "version": "2022.05"
 }

@@ -1,36 +1,31 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "e8ddab7ca6dd7dcf27ca119ae14b1b2a2892caf98d0ec2f51999aee1eec4c847",
-   "url": "https://yydl.yy.com/4/setup/YYSetup-9.4.0.0-zh-CN.exe#/dl.7z"
-  }
- },
  "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://yydl.yy.com/4/setup/YYSetup-$version-zh-CN.exe#/dl.7z"
-   }
-  }
+  "url": "https://yydl.yy.com/4/setup/YYSetup-$version-zh-CN.exe#/dl.7z"
  },
- "bin": "YY.exe",
  "checkver": {
-  "regex": "<dd>([\\d.]+)</dd>",
-  "url": "https://baoku.360.cn/soft/show/appid/105192"
+  "regex": "YYSetup-([\\d.]+)-zh-CN.exe",
+  "script": [
+   "$content = irm 'https://www.yy.com/web/pcyy_download/'",
+   "$jsPathname = 'https://web.yystatic.com/project/pcyy_download/pc/assets/'",
+   "$jsChunk = (Select-String -InputObject $content -Pattern 'js/index.*chunk.js').Matches.Value",
+   "$content = irm \"$jsPathname$jsChunk\"",
+   "return (Select-String -InputObject $content -Pattern 'YYSetup-([\\d.]+)-zh-CN.exe').Matches.Value"
+  ]
  },
- "description": "A game voice communication platform",
+ "description": "The official client of YY, a Chinese video-based social network.",
  "extract_dir": "InstallDir",
- "homepage": "https://www.yy.com/yy8/",
+ "hash": "f039a52b6c72c28a5cc72a4837574072e8a154b55ecd1e66a3e8dff899139f50",
+ "homepage": "https://www.yy.com/",
  "license": {
-  "identifier": "Proprietary",
+  "identifier": "EULA",
   "url": "https://zc.yy.com/license.html"
  },
- "notes": "We don't persist your yy data, they are still storaged in '$env:APPDATA\\duowan\\yy'.",
- "post_install": "@('Uninstall.exe', 'yylauncher.exe') | ForEach-Object { Remove-Item \"$dir\\$_\" -Force -ErrorAction SilentlyContinue }",
  "shortcuts": [
   [
    "YY.exe",
-   "YY"
+   "YY\u8bed\u97f3"
   ]
  ],
- "version": "9.4.0.0"
+ "url": "https://yydl.yy.com/4/setup/YYSetup-9.8.0.0-zh-CN.exe#/dl.7z",
+ "version": "9.8.0.0"
 }

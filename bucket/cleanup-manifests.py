@@ -1,5 +1,7 @@
 # Written by shakeyourbunny ( https://github.com/shakeyourbunny )
 
+## Modified by Andrew Poženel ( https://github.com/anderlli0053 ) 
+
 
 #!/usr/bin/env python3
 #
