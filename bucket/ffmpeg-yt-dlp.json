@@ -1,59 +1,59 @@
 {
- "architecture": {
-  "32bit": {
-   "extract_dir": "ffmpeg-n5.1-6-gffaf606130-win32-gpl-5.1",
-   "hash": "b820f33d195513774f6707db4196a8bfd339ca0cad29123725d0f9a11a80a9ca",
-   "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2022-08-09-13-05/ffmpeg-n5.1-6-gffaf606130-win32-gpl-5.1.zip"
-  },
-  "64bit": {
-   "extract_dir": "ffmpeg-n5.1-6-gffaf606130-win64-gpl-5.1",
-   "hash": "00208de890ce2fc634fe03a9e9f67cf1f7ada8198bcc89fa61b6e12e74001dae",
-   "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2022-08-09-13-05/ffmpeg-n5.1-6-gffaf606130-win64-gpl-5.1.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "extract_dir": "$matchFilename32bit",
-    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-$matchBuildtime/$matchFilename32bit.zip"
-   },
-   "64bit": {
-    "extract_dir": "$matchFilename64bit",
-    "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-$matchBuildtime/$matchFilename64bit.zip"
-   }
-  }
- },
- "bin": [
-  "bin\\ffmpeg.exe",
-  "bin\\ffplay.exe",
-  "bin\\ffprobe.exe"
- ],
- "checkver": {
-  "regex": "([\\w.-]+) (?<buildtime>[\\w.-]+) (?<filename64bit>[\\w.-]+) (?<filename32bit>[\\w.-]+)",
-  "script": [
-   "# 32-bit file is either listed above or below the 64-bit one. Therefore we need a checkver script to match it.",
-   "$url = 'https://api.github.com/repos/yt-dlp/FFmpeg-Builds/releases'",
-   "$regex_64bit = 'autobuild-(?<buildtime>(?<builddate>\\d{4}-\\d{2}-\\d{2})-\\d{2}-\\d{2})/(?<filename>ffmpeg-n(?<ffmpegver>[\\d.-]+)-\\w+-win64-gpl-[\\d.]+)\\.zip'",
-   "$regex_32bit = $regex_64bit.replace('win64', 'win32')",
-   "$cont = $(Invoke-WebRequest($url)).Content | ConvertFrom-Json",
-   "$file_urls = @()",
-   "$cont[1].assets | ForEach-Object { $file_urls += $_.browser_download_url }",
-   "$file_urls | ForEach-Object {",
-   "    if ($_ -match $regex_64bit) {",
-   "        $ffmpegver = $matches.ffmpegver",
-   "        $buildtime = $matches.buildtime",
-   "        $builddate = $matches.builddate.Replace('-', '')",
-   "        $filename64bit = $matches.filename",
-   "    } elseif ($_ -match $regex_32bit) { $filename32bit = $matches.filename }",
-   "}",
-   "Write-Output $ffmpegver-$builddate $buildtime $filename64bit $filename32bit"
-  ]
- },
- "description": "FFMpeg builds of latest release branch with patches necessary for smooth integration with yt-dlp",
- "homepage": "https://github.com/yt-dlp/FFmpeg-Builds",
- "license": "MIT",
- "suggest": {
-  "yt-dlp": "yt-dlp"
- },
- "version": "5.1-6-20220809"
+    "architecture": {
+        "32bit": {
+            "extract_dir": "ffmpeg-n5.1-7-g1ad802c45c-win32-gpl-5.1",
+            "hash": "f6e4eb029375c1652f349efa3836b9a377d71194d656bd3d0e0ddf0736d2a284",
+            "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2022-08-11-13-07/ffmpeg-n5.1-7-g1ad802c45c-win32-gpl-5.1.zip"
+        },
+        "64bit": {
+            "extract_dir": "ffmpeg-n5.1-7-g1ad802c45c-win64-gpl-5.1",
+            "hash": "256488969e28633670688f27eee6e3437af7a7391897bc77ffd23d375558a2e5",
+            "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2022-08-11-13-07/ffmpeg-n5.1-7-g1ad802c45c-win64-gpl-5.1.zip"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "extract_dir": "$matchFilename32bit",
+                "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-$matchBuildtime/$matchFilename32bit.zip"
+            },
+            "64bit": {
+                "extract_dir": "$matchFilename64bit",
+                "url": "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-$matchBuildtime/$matchFilename64bit.zip"
+            }
+        }
+    },
+    "bin": [
+        "bin\\ffmpeg.exe",
+        "bin\\ffplay.exe",
+        "bin\\ffprobe.exe"
+    ],
+    "checkver": {
+        "regex": "([\\w.-]+) (?<buildtime>[\\w.-]+) (?<filename64bit>[\\w.-]+) (?<filename32bit>[\\w.-]+)",
+        "script": [
+            "# 32-bit file is either listed above or below the 64-bit one. Therefore we need a checkver script to match it.",
+            "$url = 'https://api.github.com/repos/yt-dlp/FFmpeg-Builds/releases'",
+            "$regex_64bit = 'autobuild-(?<buildtime>(?<builddate>\\d{4}-\\d{2}-\\d{2})-\\d{2}-\\d{2})/(?<filename>ffmpeg-n(?<ffmpegver>[\\d.-]+)-\\w+-win64-gpl-[\\d.]+)\\.zip'",
+            "$regex_32bit = $regex_64bit.replace('win64', 'win32')",
+            "$cont = $(Invoke-WebRequest($url)).Content | ConvertFrom-Json",
+            "$file_urls = @()",
+            "$cont[1].assets | ForEach-Object { $file_urls += $_.browser_download_url }",
+            "$file_urls | ForEach-Object {",
+            "    if ($_ -match $regex_64bit) {",
+            "        $ffmpegver = $matches.ffmpegver",
+            "        $buildtime = $matches.buildtime",
+            "        $builddate = $matches.builddate.Replace('-', '')",
+            "        $filename64bit = $matches.filename",
+            "    } elseif ($_ -match $regex_32bit) { $filename32bit = $matches.filename }",
+            "}",
+            "Write-Output $ffmpegver-$builddate $buildtime $filename64bit $filename32bit"
+        ]
+    },
+    "description": "FFMpeg builds of latest release branch with patches necessary for smooth integration with yt-dlp",
+    "homepage": "https://github.com/yt-dlp/FFmpeg-Builds",
+    "license": "MIT",
+    "suggest": {
+        "yt-dlp": "yt-dlp"
+    },
+    "version": "5.1-7-20220811"
 }
