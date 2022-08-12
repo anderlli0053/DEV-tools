@@ -1,20 +1,26 @@
 {
- 
- "bin": "",
+ "architecture": {
+  "64bit": {
+   "hash": "9348c4b28762c9e852429105c20babdb94414524eb03a03e20efd66db5fcabbd",
+   "url": "https://sliksvn.com/pub/Slik-Subversion-1.14.2-x64.zip"
+  }
+ },
+ "bin": "Wind/wmain.exe",
  "description": "A financial date tool",
  "hash": "sha256:0117E5A6AFB98022A540DDE63983527B63B256B08035B0F8E5B94672DEDA93F0",
  "homepage": "https://choice.eastmoney.com/",
  "license": "Free",
- "extract_to": "wind",
- 
- 
  "notes": [
   "\nAdded by Andrew Pozenel - anderlli0053\n "
  ],
+ "pre_install": [
+  "Get-ChildItem \"$dir\\WFT_Setup_CHS.msi\" | Select-Object -First 1 | ForEach-Object {Rename-Item $_ 'dl.msi'}",
+  "Expand-MsiArchive \"$dir\\dl.msi\" \"$dir\" -ExtractDir 'Wind' -Removal | Out-Null"
+ ],
  "shortcuts": [
   [
-   "",
-   ""
+   "Wind/wmain.exe",
+   "Wind"
   ]
  ],
  "url": "https://choiceupdates.eastmoney.com/Choice/OfflinePackage/6.2.0.0/ChoiceSetupLocal.exe#/dl.7z",

@@ -1,57 +1,57 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "sha512:250f38b3099174492d04681491a7d50bb35816308273165f203e1231c10ca14a688d1c356a2c01c544dbe40ae18298a8ce5c11cec35f2da17e71634b379f52a7",
-            "installer": {
-                "script": "Start-Process -filepath \"$dir\\installer.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"/S /D=$dir\" -Wait"
-            },
-            "post_install": "@('installer.exe', 'uninstallerIcon.ico') | ForEach-Object { Remove-Item \"$dir\\$_\" -Force -ErrorAction SilentlyContinue }",
-            "pre_install": [
-                "info 'Copying user data...'",
-                "if (Test-Path \"$persist_dir\\User Data\\*\") {",
-                "    Copy-Item \"$persist_dir\\User Data\\*\" \"$env:AppData\\apifox\\\" -Recurse -Force | Out-Null",
-                "}"
-            ],
-            "uninstaller": {
-                "script": [
-                    "Start-Process -filepath \"$dir\\Uninstall Apifox.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"/S\" -Wait",
-                    "info 'Backing up user data...'",
-                    "if (Test-Path \"$env:AppData\\apifox\\*\") {",
-                    "    Copy-Item \"$env:AppData\\apifox\\*\" \"$persist_dir\\User Data\\\" -Recurse -Force | Out-Null",
-                    "}"
-                ]
-            },
-            "url": "http://cdn.apifox.cn/download/2.1.33/Apifox-2.1.33.exe#/installer.exe"
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "sha512:250f38b3099174492d04681491a7d50bb35816308273165f203e1231c10ca14a688d1c356a2c01c544dbe40ae18298a8ce5c11cec35f2da17e71634b379f52a7",
+   "installer": {
+    "script": "Start-Process -filepath \"$dir\\installer.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"/S /D=$dir\" -Wait"
+   },
+   "post_install": "@('installer.exe', 'uninstallerIcon.ico') | ForEach-Object { Remove-Item \"$dir\\$_\" -Force -ErrorAction SilentlyContinue }",
+   "pre_install": [
+    "info 'Copying user data...'",
+    "if (Test-Path \"$persist_dir\\User Data\\*\") {",
+    "    Copy-Item \"$persist_dir\\User Data\\*\" \"$env:AppData\\apifox\\\" -Recurse -Force | Out-Null",
+    "}"
+   ],
+   "uninstaller": {
+    "script": [
+     "Start-Process -filepath \"$dir\\Uninstall Apifox.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"/S\" -Wait",
+     "info 'Backing up user data...'",
+     "if (Test-Path \"$env:AppData\\apifox\\*\") {",
+     "    Copy-Item \"$env:AppData\\apifox\\*\" \"$persist_dir\\User Data\\\" -Recurse -Force | Out-Null",
+     "}"
+    ]
+   },
+   "url": "http://cdn.apifox.cn/download/2.1.33/Apifox-2.1.33.exe#/installer.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "mode": "extract",
+     "regex": "sha512.*?$base64",
+     "url": "http://cdn.apifox.cn/download/latest.yml"
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "hash": {
-                    "mode": "extract",
-                    "regex": "sha512.*?$base64",
-                    "url": "http://cdn.apifox.cn/download/latest.yml"
-                },
-                "url": "http://$matchUrl#/installer.exe"
-            }
-        }
-    },
-    "bin": "Apifox.exe",
-    "checkver": {
-        "regex": "(?sm)version:[\\s]+([\\d.]+).*?http://(?<url>.*?\\.exe)",
-        "url": "http://cdn.apifox.cn/download/latest.yml"
-    },
-    "depends": "sudo",
-    "description": "Apifox = Postman + Swagger + Mock + JMeter",
-    "homepage": "https://www.apifox.cn/",
-    "license": {
-        "identifier": "Freeware"
-    },
-    "shortcuts": [
-        [
-            "Apifox.exe",
-            "Apifox"
-        ]
-    ],
-    "version": "2.1.33"
+    "url": "http://$matchUrl#/installer.exe"
+   }
+  }
+ },
+ "bin": "Apifox.exe",
+ "checkver": {
+  "regex": "(?sm)version:[\\s]+([\\d.]+).*?http://(?<url>.*?\\.exe)",
+  "url": "http://cdn.apifox.cn/download/latest.yml"
+ },
+ "depends": "sudo",
+ "description": "Apifox = Postman + Swagger + Mock + JMeter",
+ "homepage": "https://www.apifox.cn/",
+ "license": {
+  "identifier": "Freeware"
+ },
+ "shortcuts": [
+  [
+   "Apifox.exe",
+   "Apifox"
+  ]
+ ],
+ "version": "2.1.33"
 }
