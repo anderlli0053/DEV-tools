@@ -4,7 +4,7 @@
    "url": "https://d-cdn.wind.com.cn/windnet/WFT_Setup_CHS.zip"
   }
  },
- "bin": "Wind/wmain.exe",
+ "bin": "WindInstall/wmain.exe",
  "description": "A financial date tool",
  "homepage": "https://www.wind.com.cn",
  "license": "Free",
@@ -12,12 +12,12 @@
   "\nAdded by Andrew Pozenel - anderlli0053\n "
  ],
  "pre_install": [
-  "Get-ChildItem \"$dir\\WFT_Setup_CHS.msi\" | Select-Object -First 1 | ForEach-Object {Rename-Item $_ 'dl.msi'}",
-  "Expand-MsiArchive \"$dir\\dl.msi\" \"$dir\" -ExtractDir 'Wind' -Removal | Out-Null"
+  "extract_to":"Wind",
+  "Expand-MsiArchive \"$dir\\Wind\WFT_Setup_CHS.msi\" \"$dir\" -ExtractDir 'WindInstall' -Removal | Out-Null"
  ],
  "shortcuts": [
   [
-   "Wind/wmain.exe",
+   "WindInstall/wmain.exe",
    "Wind"
   ]
  ],
