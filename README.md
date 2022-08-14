@@ -20,3 +20,5 @@ Once the Scoop is sucessfully installed and in the System PATH, you can use what
 
 
 ___It started as a collection of manifests for development tools that i wrote, but then turned into a container of pretty much everything. Apps, Games, ... you name it!.___
+
+× Andrew Poženel (SloDevTeam) AKA anderlli0053 ×
