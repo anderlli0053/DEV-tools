@@ -1,42 +1,42 @@
 {
- "##": "TODO: There will be an option for portable mode in the near future. See #3424 for details.",
- "architecture": {
-  "32bit": {
-   "pre_install": [
-    "Get-ChildItem \"$dir\" '*,1.*' | Rename-Item -NewName { $_.FullName -replace ',1\\.', '.' }",
-    "Remove-Item \"$dir\\*,2.*\""
-   ]
-  },
-  "64bit": {
-   "pre_install": [
-    "Get-ChildItem \"$dir\" '*,2.*' | Rename-Item -NewName { $_.FullName -replace ',2\\.', '.' }",
-    "Remove-Item \"$dir\\*,1.*\""
-   ]
-  }
- },
- "autoupdate": {
-  "url": "https://download.tableplus.com/windows/$matchHead/TablePlusSetup.exe"
- },
- "bin": "TablePlus.exe",
- "checkver": {
-  "regex": "sparkle:version=\"(?<build>\\d+)\"\\s+sparkle:shortVersionString=\"([\\d.]+)\"",
-  "replace": "$1.${build}",
-  "url": "https://tableplus.com/win/version.xml?sign=&version=x64"
- },
- "description": "Relational database explorer",
- "hash": "94309ce15987a54f8ca00da9d6d6852c02a350c7fc2b847909f3d3d5ce5b6ef9",
- "homepage": "https://tableplus.com",
- "innosetup": true,
- "license": {
-  "identifier": "Proprietary",
-  "url": "https://tableplus.com/blog/2018/01/license-agreement.html"
- },
- "shortcuts": [
-  [
-   "TablePlus.exe",
-   "TablePlus"
-  ]
- ],
- "url": "https://download.tableplus.com/windows/4.10.2/TablePlusSetup.exe",
- "version": "4.10.2.202"
+    "##": "TODO: There will be an option for portable mode in the near future. See #3424 for details.",
+    "architecture": {
+        "32bit": {
+            "pre_install": [
+                "Get-ChildItem \"$dir\" '*,1.*' | Rename-Item -NewName { $_.FullName -replace ',1\\.', '.' }",
+                "Remove-Item \"$dir\\*,2.*\""
+            ]
+        },
+        "64bit": {
+            "pre_install": [
+                "Get-ChildItem \"$dir\" '*,2.*' | Rename-Item -NewName { $_.FullName -replace ',2\\.', '.' }",
+                "Remove-Item \"$dir\\*,1.*\""
+            ]
+        }
+    },
+    "autoupdate": {
+        "url": "https://download.tableplus.com/windows/$matchHead/TablePlusSetup.exe"
+    },
+    "bin": "TablePlus.exe",
+    "checkver": {
+        "regex": "sparkle:version=\"(?<build>\\d+)\"\\s+sparkle:shortVersionString=\"([\\d.]+)\"",
+        "replace": "$1.${build}",
+        "url": "https://tableplus.com/win/version.xml?sign=&version=x64"
+    },
+    "description": "Relational database explorer",
+    "hash": "502b3d05c8852c266d72f8ded0ed5851fdabf7d230ece6faeca286e1c9808fcd",
+    "homepage": "https://tableplus.com",
+    "innosetup": true,
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://tableplus.com/blog/2018/01/license-agreement.html"
+    },
+    "shortcuts": [
+        [
+            "TablePlus.exe",
+            "TablePlus"
+        ]
+    ],
+    "url": "https://download.tableplus.com/windows/4.10.3/TablePlusSetup.exe",
+    "version": "4.10.3.202"
 }
