@@ -1,52 +1,52 @@
 {
-    "autoupdate": {
-        "url": "https://www.foobar2000.org/files/foobar2000_v$version.exe#/dl.7z"
-    },
-    "bin": "foobar2000.exe",
-    "checkver": {
-        "regex": "foobar2000_v([\\d.]+)\\.",
-        "url": "https://www.foobar2000.org/download"
-    },
-    "description": "An advanced freeware audio player for the Windows platform.",
-    "hash": "075fdb9963459f1d7971fc719a1c2a7ad1f9af1b684bfd7ee778d6f5f79c95ba",
-    "homepage": "https://www.foobar2000.org/",
-    "installer": {
-        "script": [
-            "Remove-Item \"$dir\\`$*\", \"$dir\\uninstall.exe\" -Force -Recurse",
-            "New-Item \"$dir\\portable_mode_enabled\" -Force | Out-Null",
-            "$EncodersDir = $(appdir foobar2000-encoders $global)",
-            "if (Test-Path \"$EncodersDir\") {",
-            "    New-Item \"$dir\\encoders\" -ItemType Junction -Target \"$EncodersDir\\current\" | Out-Null",
-            "}"
-        ]
-    },
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.foobar2000.org/license"
-    },
-    "persist": "profile",
-    "post_install": [
-        "if (!(Test-Path \"$persist_dir\\profile\\*\")) {",
-        "    Get-ChildItem -Path \"$persist_dir\" -Exclude \"profile\" | Move-Item -Destination \"$persist_dir\\profile\" -Force",
-        "}",
-        "if (!(Test-Path \"$persist_dir\\profile\\*\") -and (Test-Path \"$env:AppData\\foobar2000\")) {",
-        "    info '[Portable Mode]: Copying user data...'",
-        "    Copy-Item \"$env:AppData\\foobar2000\\*\" -Destination \"$persist_dir\\profile\" -Force -Recurse",
-        "}",
-        "if (!(Test-Path \"$persist_dir\\profile\\playlists-v1.4\")) {",
-        "    Get-ChildItem -Path \"$persist_dir\\profile\" -Filter \"playlists\" -Directory | Rename-Item -NewName \"playlists-v1.4\" -Force",
-        "}",
-        "Get-ChildItem -Path \"$persist_dir\\profile\" -Filter \"playlists\" | Remove-Item -Force -Recurse"
-    ],
-    "shortcuts": [
-        [
-            "foobar2000.exe",
-            "Foobar2000"
-        ]
-    ],
-    "suggest": {
-        "Encoders": "extras/foobar2000-encoders"
-    },
-    "url": "https://www.foobar2000.org/files/foobar2000_v1.6.12.exe#/dl.7z",
-    "version": "1.6.12"
+ "autoupdate": {
+  "url": "https://www.foobar2000.org/files/foobar2000_v$version.exe#/dl.7z"
+ },
+ "bin": "foobar2000.exe",
+ "checkver": {
+  "regex": "foobar2000_v([\\d.]+)\\.",
+  "url": "https://www.foobar2000.org/download"
+ },
+ "description": "An advanced freeware audio player for the Windows platform.",
+ "hash": "075fdb9963459f1d7971fc719a1c2a7ad1f9af1b684bfd7ee778d6f5f79c95ba",
+ "homepage": "https://www.foobar2000.org/",
+ "installer": {
+  "script": [
+   "Remove-Item \"$dir\\`$*\", \"$dir\\uninstall.exe\" -Force -Recurse",
+   "New-Item \"$dir\\portable_mode_enabled\" -Force | Out-Null",
+   "$EncodersDir = $(appdir foobar2000-encoders $global)",
+   "if (Test-Path \"$EncodersDir\") {",
+   "    New-Item \"$dir\\encoders\" -ItemType Junction -Target \"$EncodersDir\\current\" | Out-Null",
+   "}"
+  ]
+ },
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://www.foobar2000.org/license"
+ },
+ "persist": "profile",
+ "post_install": [
+  "if (!(Test-Path \"$persist_dir\\profile\\*\")) {",
+  "    Get-ChildItem -Path \"$persist_dir\" -Exclude \"profile\" | Move-Item -Destination \"$persist_dir\\profile\" -Force",
+  "}",
+  "if (!(Test-Path \"$persist_dir\\profile\\*\") -and (Test-Path \"$env:AppData\\foobar2000\")) {",
+  "    info '[Portable Mode]: Copying user data...'",
+  "    Copy-Item \"$env:AppData\\foobar2000\\*\" -Destination \"$persist_dir\\profile\" -Force -Recurse",
+  "}",
+  "if (!(Test-Path \"$persist_dir\\profile\\playlists-v1.4\")) {",
+  "    Get-ChildItem -Path \"$persist_dir\\profile\" -Filter \"playlists\" -Directory | Rename-Item -NewName \"playlists-v1.4\" -Force",
+  "}",
+  "Get-ChildItem -Path \"$persist_dir\\profile\" -Filter \"playlists\" | Remove-Item -Force -Recurse"
+ ],
+ "shortcuts": [
+  [
+   "foobar2000.exe",
+   "Foobar2000"
+  ]
+ ],
+ "suggest": {
+  "Encoders": "extras/foobar2000-encoders"
+ },
+ "url": "https://www.foobar2000.org/files/foobar2000_v1.6.12.exe#/dl.7z",
+ "version": "1.6.12"
 }

@@ -1,64 +1,64 @@
 {
-    "##": "Download url https://code.visualstudio.com/download#",
-    "architecture": {
-        "32bit": {
-            "hash": "42abb46b8d15fdbadb358d11df4b09171646463191be0f629cdba0d723227efc",
-            "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32#/setup.exe"
-        },
-        "64bit": {
-            "hash": "d4808bbcc8de7879eb84b8dfcbd23542e3e38502690c299078a497d23839e625",
-            "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64#/setup.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32#/setup.exe"
-            },
-            "64bit": {
-                "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64#/setup.exe"
-            }
-        },
-        "changelog": "https://code.visualstudio.com/updates/v$majorVersion_$minorVersion"
-    },
-    "changelog": "https://code.visualstudio.com/updates/v1_70",
-    "checkver": {
-        "github": "https://github.com/microsoft/vscode"
-    },
-    "description": "Visual Studio Code. is a lightweight but powerful source code editor.",
-    "homepage": "https://code.visualstudio.com/",
-    "installer": {
-        "script": [
-            "$programname = \"Microsoft Visual Studio Code\"",
-            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
-            "$filepath = \"$ProgramFiles\\Microsoft VS Code\\Code.exe\"",
-            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-            "{",
-            "   &\"$dir\\setup.exe\" /VERYSILENT /MERGETASKS=!runcode,!desktopicon,!quicklaunchicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath | Out-Null",
-            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-            "   {",
-            "       exit 1",
-            "   }",
-            "}",
-            "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
-        ]
-    },
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://code.visualstudio.com/License/"
-    },
-    "pre_download": "Assert-Administrator",
-    "pre_install": [
-        "$processname = \"Code\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "version": "1.70.2"
+ "##": "Download url https://code.visualstudio.com/download#",
+ "architecture": {
+  "32bit": {
+   "hash": "42abb46b8d15fdbadb358d11df4b09171646463191be0f629cdba0d723227efc",
+   "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32#/setup.exe"
+  },
+  "64bit": {
+   "hash": "d4808bbcc8de7879eb84b8dfcbd23542e3e38502690c299078a497d23839e625",
+   "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64#/setup.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32#/setup.exe"
+   },
+   "64bit": {
+    "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64#/setup.exe"
+   }
+  },
+  "changelog": "https://code.visualstudio.com/updates/v$majorVersion_$minorVersion"
+ },
+ "changelog": "https://code.visualstudio.com/updates/v1_70",
+ "checkver": {
+  "github": "https://github.com/microsoft/vscode"
+ },
+ "description": "Visual Studio Code. is a lightweight but powerful source code editor.",
+ "homepage": "https://code.visualstudio.com/",
+ "installer": {
+  "script": [
+   "$programname = \"Microsoft Visual Studio Code\"",
+   "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
+   "$filepath = \"$ProgramFiles\\Microsoft VS Code\\Code.exe\"",
+   "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+   "{",
+   "   &\"$dir\\setup.exe\" /VERYSILENT /MERGETASKS=!runcode,!desktopicon,!quicklaunchicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath | Out-Null",
+   "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+   "   {",
+   "       exit 1",
+   "   }",
+   "}",
+   "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
+  ]
+ },
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://code.visualstudio.com/License/"
+ },
+ "pre_download": "Assert-Administrator",
+ "pre_install": [
+  "$processname = \"Code\"",
+  "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+  "if ($process) {",
+  "   $process.CloseMainWindow()",
+  "   Start-Sleep -Seconds 5",
+  "   if (!$process.HasExited) {",
+  "       Start-Sleep -Seconds 25",
+  "       $process | Stop-Process -Force",
+  "   }",
+  "}"
+ ],
+ "version": "1.70.2"
 }

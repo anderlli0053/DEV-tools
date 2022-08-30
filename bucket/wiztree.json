@@ -1,54 +1,54 @@
 {
-    "architecture": {
-        "32bit": {
-            "bin": "WizTree.exe",
-            "shortcuts": [
-                [
-                    "WizTree.exe",
-                    "WizTree"
-                ]
-            ]
-        },
-        "64bit": {
-            "bin": [
-                "WizTree64.exe",
-                [
-                    "WizTree64.exe",
-                    "WizTree"
-                ]
-            ],
-            "shortcuts": [
-                [
-                    "WizTree64.exe",
-                    "WizTree"
-                ]
-            ]
-        }
-    },
-    "autoupdate": {
-        "url": "https://www.diskanalyzer.com/files/wiztree_$underscoreVersion_portable.zip"
-    },
-    "checkver": {
-        "regex": "V(?:&nbsp;|\\s+)([\\d.]+)(?:&nbsp;|\\s+)",
-        "url": "https://www.diskanalyzer.com/download"
-    },
-    "description": "A hard drive disk space analyser that finds the files and folders using the most space.",
-    "hash": "50a4b87d5858fb491b3f763d4be1418d75fd31720291be6b5d21c7c605e4af94",
-    "homepage": "https://www.diskanalyzer.com",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.diskanalyzer.com/eula"
-    },
-    "persist": "WizTree3.ini",
-    "pre_install": [
-        "$default_content = \"[frmWizTreeMain]`r`nactWindowsContextMenu_Checked=FALSE`r`nactRunAsAdmin_Checked=FALSE\"",
-        "if (!(Test-Path \"$persist_dir\\WizTree3.ini\")) {",
-        "    Set-Content \"$dir\\WizTree3.ini\" $default_content -Encoding ascii",
-        "# This applies the fix when WizTree3.ini exist but is empty, see #8404 for details",
-        "} elseif ($(Get-Content \"$persist_dir\\WizTree3.ini\") -eq $null) {",
-        "    Set-Content \"$persist_dir\\WizTree3.ini\" $default_content -Encoding ascii",
-        "}"
-    ],
-    "url": "https://www.diskanalyzer.com/files/wiztree_4_10_portable.zip",
-    "version": "4.10"
+ "architecture": {
+  "32bit": {
+   "bin": "WizTree.exe",
+   "shortcuts": [
+    [
+     "WizTree.exe",
+     "WizTree"
+    ]
+   ]
+  },
+  "64bit": {
+   "bin": [
+    "WizTree64.exe",
+    [
+     "WizTree64.exe",
+     "WizTree"
+    ]
+   ],
+   "shortcuts": [
+    [
+     "WizTree64.exe",
+     "WizTree"
+    ]
+   ]
+  }
+ },
+ "autoupdate": {
+  "url": "https://www.diskanalyzer.com/files/wiztree_$underscoreVersion_portable.zip"
+ },
+ "checkver": {
+  "regex": "V(?:&nbsp;|\\s+)([\\d.]+)(?:&nbsp;|\\s+)",
+  "url": "https://www.diskanalyzer.com/download"
+ },
+ "description": "A hard drive disk space analyser that finds the files and folders using the most space.",
+ "hash": "50a4b87d5858fb491b3f763d4be1418d75fd31720291be6b5d21c7c605e4af94",
+ "homepage": "https://www.diskanalyzer.com",
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://www.diskanalyzer.com/eula"
+ },
+ "persist": "WizTree3.ini",
+ "pre_install": [
+  "$default_content = \"[frmWizTreeMain]`r`nactWindowsContextMenu_Checked=FALSE`r`nactRunAsAdmin_Checked=FALSE\"",
+  "if (!(Test-Path \"$persist_dir\\WizTree3.ini\")) {",
+  "    Set-Content \"$dir\\WizTree3.ini\" $default_content -Encoding ascii",
+  "# This applies the fix when WizTree3.ini exist but is empty, see #8404 for details",
+  "} elseif ($(Get-Content \"$persist_dir\\WizTree3.ini\") -eq $null) {",
+  "    Set-Content \"$persist_dir\\WizTree3.ini\" $default_content -Encoding ascii",
+  "}"
+ ],
+ "url": "https://www.diskanalyzer.com/files/wiztree_4_10_portable.zip",
+ "version": "4.10"
 }

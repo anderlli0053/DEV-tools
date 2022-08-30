@@ -1,57 +1,57 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "sha512:f871c181c530a7cc6e5f0ff1472890e07ba7eccb79d63d49e34c426a4f875e669f9395092e169fac0da822bd01cdeaf8ec8ba6db1747820c13147377d4a206e4",
-            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
-            "url": "https://downloads.npass.app/windows_x86/NordPassSetup_x86.exe#/dl.7z"
-        },
-        "64bit": {
-            "hash": "sha512:346fef2e95e873b9e52cf336e1f32657437fa838752ec9d8a716843d7f1ce8ca1a947c0f11acef17576d32fe6921754671f5adfe86d36ed766cd779177cada8c",
-            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-            "url": "https://downloads.npass.app/windows/NordPassSetup.exe#/dl.7z"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:f871c181c530a7cc6e5f0ff1472890e07ba7eccb79d63d49e34c426a4f875e669f9395092e169fac0da822bd01cdeaf8ec8ba6db1747820c13147377d4a206e4",
+   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+   "url": "https://downloads.npass.app/windows_x86/NordPassSetup_x86.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "sha512:346fef2e95e873b9e52cf336e1f32657437fa838752ec9d8a716843d7f1ce8ca1a947c0f11acef17576d32fe6921754671f5adfe86d36ed766cd779177cada8c",
+   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+   "url": "https://downloads.npass.app/windows/NordPassSetup.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "regex": "sha512:\\s*$base64",
+     "url": "https://downloads.npass.app/windows_x86/latest.yml"
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "regex": "sha512:\\s*$base64",
-                    "url": "https://downloads.npass.app/windows_x86/latest.yml"
-                },
-                "url": "https://downloads.npass.app/windows_x86/NordPassSetup_x86.exe#/dl.7z"
-            },
-            "64bit": {
-                "hash": {
-                    "regex": "sha512:\\s*$base64",
-                    "url": "https://downloads.npass.app/windows/latest.yml"
-                },
-                "url": "https://downloads.npass.app/windows/NordPassSetup.exe#/dl.7z"
-            }
-        }
+    "url": "https://downloads.npass.app/windows_x86/NordPassSetup_x86.exe#/dl.7z"
+   },
+   "64bit": {
+    "hash": {
+     "regex": "sha512:\\s*$base64",
+     "url": "https://downloads.npass.app/windows/latest.yml"
     },
-    "bin": [
-        [
-            "NordPass.exe",
-            "NordPass",
-            "--user-data-dir=\"$dir\\User Data\""
-        ]
-    ],
-    "changelog": "https://nordpass.com/blog/desktop-app-update-notes/",
-    "checkver": {
-        "regex": "version: ([\\d.]+)",
-        "url": "https://downloads.npass.app/windows/latest.yml"
-    },
-    "description": "NordPass. A password management solution for a secure digital life.",
-    "homepage": "https://nordpass.com/",
-    "license": "Shareware",
-    "persist": "User Data",
-    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\", \"$dir\\resources\\app-update.yml\"  -Force -Recurse",
-    "shortcuts": [
-        [
-            "NordPass.exe",
-            "NordPass",
-            "--user-data-dir=\"$dir\\User Data\""
-        ]
-    ],
-    "version": "4.29.7"
+    "url": "https://downloads.npass.app/windows/NordPassSetup.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": [
+  [
+   "NordPass.exe",
+   "NordPass",
+   "--user-data-dir=\"$dir\\User Data\""
+  ]
+ ],
+ "changelog": "https://nordpass.com/blog/desktop-app-update-notes/",
+ "checkver": {
+  "regex": "version: ([\\d.]+)",
+  "url": "https://downloads.npass.app/windows/latest.yml"
+ },
+ "description": "NordPass. A password management solution for a secure digital life.",
+ "homepage": "https://nordpass.com/",
+ "license": "Shareware",
+ "persist": "User Data",
+ "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\", \"$dir\\resources\\app-update.yml\"  -Force -Recurse",
+ "shortcuts": [
+  [
+   "NordPass.exe",
+   "NordPass",
+   "--user-data-dir=\"$dir\\User Data\""
+  ]
+ ],
+ "version": "4.29.7"
 }
