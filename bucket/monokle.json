@@ -1,52 +1,52 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "sha512:d5cf0d05b48bb3579f4dd84c2d32f239edffa9f3156b9003c959b0a27f07b419c71d7b58e5d374b1ed44f91c2256686114c33bad108184532343feb384b54468",
-            "url": "https://github.com/kubeshop/monokle/releases/download/v1.10.3/Monokle-win-1.10.3-x64.exe#/dl.7z"
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "sha512:d5cf0d05b48bb3579f4dd84c2d32f239edffa9f3156b9003c959b0a27f07b419c71d7b58e5d374b1ed44f91c2256686114c33bad108184532343feb384b54468",
+   "url": "https://github.com/kubeshop/monokle/releases/download/v1.10.3/Monokle-win-1.10.3-x64.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "regex": "sha512:\\s+$base64",
+     "url": "$baseurl/latest.yml"
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "hash": {
-                    "regex": "sha512:\\s+$base64",
-                    "url": "$baseurl/latest.yml"
-                },
-                "url": "https://github.com/kubeshop/monokle/releases/download/v$version/Monokle-win-$version-x64.exe#/dl.7z"
-            }
-        }
-    },
-    "checkver": {
-        "github": "https://github.com/kubeshop/monokle"
-    },
-    "depends": "kubectl",
-    "description": "K8s tool for creating, validating, debugging and managing manifests.",
-    "homepage": "https://kubeshop.github.io/monokle",
-    "installer": {
-        "script": [
-            "if (!(Test-Path \"$persist_dir\")) {",
-            "    ensure \"$persist_dir\" | Out-Null",
-            "}",
-            "New-Item $env:AppData\\monokle -ItemType Junction -Target \"$persist_dir\" | Out-Null"
-        ]
-    },
-    "license": "MIT",
-    "pre_install": [
-        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-        "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
-    ],
-    "shortcuts": [
-        [
-            "Monokle.exe",
-            "Monokle"
-        ]
-    ],
-    "suggest": {
-        "helm": "helm",
-        "kustomize": "kustomize"
-    },
-    "uninstaller": {
-        "script": "Remove-Item $env:APPDATA\\monokle -Force -Recurse"
-    },
-    "version": "1.10.3"
+    "url": "https://github.com/kubeshop/monokle/releases/download/v$version/Monokle-win-$version-x64.exe#/dl.7z"
+   }
+  }
+ },
+ "checkver": {
+  "github": "https://github.com/kubeshop/monokle"
+ },
+ "depends": "kubectl",
+ "description": "K8s tool for creating, validating, debugging and managing manifests.",
+ "homepage": "https://kubeshop.github.io/monokle",
+ "installer": {
+  "script": [
+   "if (!(Test-Path \"$persist_dir\")) {",
+   "    ensure \"$persist_dir\" | Out-Null",
+   "}",
+   "New-Item $env:AppData\\monokle -ItemType Junction -Target \"$persist_dir\" | Out-Null"
+  ]
+ },
+ "license": "MIT",
+ "pre_install": [
+  "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+  "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
+ ],
+ "shortcuts": [
+  [
+   "Monokle.exe",
+   "Monokle"
+  ]
+ ],
+ "suggest": {
+  "helm": "helm",
+  "kustomize": "kustomize"
+ },
+ "uninstaller": {
+  "script": "Remove-Item $env:APPDATA\\monokle -Force -Recurse"
+ },
+ "version": "1.10.3"
 }
