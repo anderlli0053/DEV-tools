@@ -1,59 +1,59 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "767f10e3759f5dcff11bd5c8a03c646751e2662fd59af541c839d36640e9a186",
-   "url": "https://github.com/VSCodium/vscodium/releases/download/1.70.2.22230/VSCodium-win32-x64-1.70.2.22230.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://github.com/VSCodium/vscodium/releases/download/$version/VSCodium-win32-x64-$version.zip"
-   }
-  },
-  "hash": {
-   "url": "$url.sha256"
-  }
- },
- "checkver": "github",
- "description": "Binary releases of VS Code without MS branding/telemetry/licensing.",
- "env_add_path": "bin",
- "homepage": "https://github.com/VSCodium/vscodium",
- "license": "MIT",
- "notes": [
-  "Add VSCodium as a context menu option by running: '$dir\\install-context.reg'",
-  "For file associations, run '$dir\\install-associations.reg'"
- ],
- "persist": "data",
- "post_install": [
-  "$dirpath = \"$dir\".Replace('\\', '\\\\')",
-  "$exepath = \"$dir\\VSCodium.exe\".Replace('\\', '\\\\')",
-  "'install-associations', 'uninstall-associations', 'install-context', 'uninstall-context' | ForEach-Object {",
-  "  if (Test-Path \"$bucketsdir\\extras\\scripts\\vscode\\$_.reg\") {",
-  "    $content = Get-Content \"$bucketsdir\\extras\\scripts\\vscode\\$_.reg\"",
-  "    $content = $content.Replace('$codedir', $dirpath)",
-  "    $content = $content.Replace('$code', $exepath)",
-  "    $content = $content.Replace('&Code', '&VSCodium')",
-  "    if ($global) {",
-  "      $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
-  "    }",
-  "    $content | Set-Content -Path \"$dir\\$_.reg\"",
-  "  }",
-  "}",
-  "if (!(Test-Path \"$dir\\data\\extensions\") -and (Test-Path \"$env:USERPROFILE\\.vscode-oss\\extensions\")) {",
-  "    info '[Portable Mode] Copying extensions...'",
-  "    Copy-Item \"$env:USERPROFILE\\.vscode-oss\\extensions\" \"$dir\\data\" -Recurse",
-  "}",
-  "if (!(Test-Path \"$dir\\data\\user-data\") -and (Test-Path \"$env:AppData\\VSCodium\")) {",
-  "    info '[Portable Mode] Copying user data...'",
-  "    Copy-Item \"$env:AppData\\VSCodium\" \"$dir\\data\\user-data\" -Recurse",
-  "}"
- ],
- "shortcuts": [
-  [
-   "VSCodium.exe",
-   "VSCodium"
-  ]
- ],
- "version": "1.70.2.22230"
+    "architecture": {
+        "64bit": {
+            "hash": "08426e22c75c49ba4e252539eb0d6f9c0a25658b0c15a4d93e4175aca81afffe",
+            "url": "https://github.com/VSCodium/vscodium/releases/download/1.71.0.22245/VSCodium-win32-x64-1.71.0.22245.zip"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/VSCodium/vscodium/releases/download/$version/VSCodium-win32-x64-$version.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    },
+    "checkver": "github",
+    "description": "Binary releases of VS Code without MS branding/telemetry/licensing.",
+    "env_add_path": "bin",
+    "homepage": "https://github.com/VSCodium/vscodium",
+    "license": "MIT",
+    "notes": [
+        "Add VSCodium as a context menu option by running: '$dir\\install-context.reg'",
+        "For file associations, run '$dir\\install-associations.reg'"
+    ],
+    "persist": "data",
+    "post_install": [
+        "$dirpath = \"$dir\".Replace('\\', '\\\\')",
+        "$exepath = \"$dir\\VSCodium.exe\".Replace('\\', '\\\\')",
+        "'install-associations', 'uninstall-associations', 'install-context', 'uninstall-context' | ForEach-Object {",
+        "  if (Test-Path \"$bucketsdir\\extras\\scripts\\vscode\\$_.reg\") {",
+        "    $content = Get-Content \"$bucketsdir\\extras\\scripts\\vscode\\$_.reg\"",
+        "    $content = $content.Replace('$codedir', $dirpath)",
+        "    $content = $content.Replace('$code', $exepath)",
+        "    $content = $content.Replace('&Code', '&VSCodium')",
+        "    if ($global) {",
+        "      $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "    }",
+        "    $content | Set-Content -Path \"$dir\\$_.reg\"",
+        "  }",
+        "}",
+        "if (!(Test-Path \"$dir\\data\\extensions\") -and (Test-Path \"$env:USERPROFILE\\.vscode-oss\\extensions\")) {",
+        "    info '[Portable Mode] Copying extensions...'",
+        "    Copy-Item \"$env:USERPROFILE\\.vscode-oss\\extensions\" \"$dir\\data\" -Recurse",
+        "}",
+        "if (!(Test-Path \"$dir\\data\\user-data\") -and (Test-Path \"$env:AppData\\VSCodium\")) {",
+        "    info '[Portable Mode] Copying user data...'",
+        "    Copy-Item \"$env:AppData\\VSCodium\" \"$dir\\data\\user-data\" -Recurse",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "VSCodium.exe",
+            "VSCodium"
+        ]
+    ],
+    "version": "1.71.0.22245"
 }
