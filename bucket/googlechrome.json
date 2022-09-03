@@ -1,68 +1,68 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "1c8c7fc711fdc1db76b77c22a0ed0665d84ec83d2f909bbe674bb92a584438e7",
-   "url": "https://dl.google.com/release2/chrome/bk3xuut7lwgkcvklbxck7sdzty_105.0.5195.54/105.0.5195.54_chrome_installer.exe#/dl.7z"
-  },
-  "64bit": {
-   "hash": "d7cb824c2c4242a21f79d40e97510ccbeda45cba2531594d16fddf4d22767ed5",
-   "url": "https://dl.google.com/release2/chrome/py2qiqmnw7a52kiayjadgamcxq_105.0.5195.54/105.0.5195.54_chrome_installer.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "hash": {
-     "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
-     "xpath": "/chromechecker/stable32[version='$version']/sha256"
+    "architecture": {
+        "32bit": {
+            "hash": "1aad19d9e743da1af3b28c3c8025090134adcd2a9e056d271f24a98538c3b528",
+            "url": "https://dl.google.com/release2/chrome/ac5fmvm3onpyw7fsckmcbaek3z3q_105.0.5195.102/105.0.5195.102_chrome_installer.exe#/dl.7z"
+        },
+        "64bit": {
+            "hash": "c7d6b85253d9c4868012a7d056a592ba6179bc4e4e8ff261f926e5750eb5d8f8",
+            "url": "https://dl.google.com/release2/chrome/fdxizo4c4cqsdov54q2nste54u_105.0.5195.102/105.0.5195.102_chrome_installer.exe#/dl.7z"
+        }
     },
-    "url": "https://dl.google.com/release2/chrome/$match32_$version/$version_chrome_installer.exe#/dl.7z"
-   },
-   "64bit": {
-    "hash": {
-     "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
-     "xpath": "/chromechecker/stable64[version='$version']/sha256"
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "hash": {
+                    "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
+                    "xpath": "/chromechecker/stable32[version='$version']/sha256"
+                },
+                "url": "https://dl.google.com/release2/chrome/$match32_$version/$version_chrome_installer.exe#/dl.7z"
+            },
+            "64bit": {
+                "hash": {
+                    "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
+                    "xpath": "/chromechecker/stable64[version='$version']/sha256"
+                },
+                "url": "https://dl.google.com/release2/chrome/$match64_$version/$version_chrome_installer.exe#/dl.7z"
+            }
+        }
     },
-    "url": "https://dl.google.com/release2/chrome/$match64_$version/$version_chrome_installer.exe#/dl.7z"
-   }
-  }
- },
- "bin": [
-  [
-   "chrome.exe",
-   "chrome",
-   "--user-data-dir=\"$dir\\User Data\""
-  ]
- ],
- "checkver": {
-  "regex": "(?sm)<stable32><version>(?<version>[\\d.]+)</version>.+release2/chrome/(?<32>[\\w-]+)_.+<stable64>.+release2/chrome/(?<64>[\\w-]+)_.+</stable64>",
-  "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml"
- },
- "description": "Fast, secure, and free web browser, built for the modern web.",
- "env_set": {
-  "CHROME_EXECUTABLE": "$dir\\chrome.exe"
- },
- "homepage": "https://www.google.com/chrome/",
- "installer": {
-  "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
- },
- "license": {
-  "identifier": "Freeware",
-  "url": "https://www.google.com/chrome/privacy/eula_text.html"
- },
- "persist": "User Data",
- "post_install": [
-  "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\Google\\Chrome\\User Data\")) {",
-  "    info '[Portable Mode]: Copying user data...'",
-  "    Copy-Item \"$env:LocalAppData\\Google\\Chrome\\User Data\\*\" \"$dir\\User Data\" -Recurse",
-  "}"
- ],
- "shortcuts": [
-  [
-   "chrome.exe",
-   "Google Chrome",
-   "--user-data-dir=\"$dir\\User Data\""
-  ]
- ],
- "version": "105.0.5195.54"
+    "bin": [
+        [
+            "chrome.exe",
+            "chrome",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "checkver": {
+        "regex": "(?sm)<stable32><version>(?<version>[\\d.]+)</version>.+release2/chrome/(?<32>[\\w-]+)_.+<stable64>.+release2/chrome/(?<64>[\\w-]+)_.+</stable64>",
+        "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml"
+    },
+    "description": "Fast, secure, and free web browser, built for the modern web.",
+    "env_set": {
+        "CHROME_EXECUTABLE": "$dir\\chrome.exe"
+    },
+    "homepage": "https://www.google.com/chrome/",
+    "installer": {
+        "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
+    },
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.google.com/chrome/privacy/eula_text.html"
+    },
+    "persist": "User Data",
+    "post_install": [
+        "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\Google\\Chrome\\User Data\")) {",
+        "    info '[Portable Mode]: Copying user data...'",
+        "    Copy-Item \"$env:LocalAppData\\Google\\Chrome\\User Data\\*\" \"$dir\\User Data\" -Recurse",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "chrome.exe",
+            "Google Chrome",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "version": "105.0.5195.102"
 }
