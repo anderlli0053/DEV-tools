@@ -1,58 +1,58 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "e13021dbd66c4d8b395f76ea060274896895e677be4cf16380483edb69849d51",
-   "url": "https://mirrors.kodi.tv/nightlies/windows/win32/master/KodiSetup-20220830-1ade57db-master-x86.exe#/dl.7z"
-  },
-  "64bit": {
-   "hash": "970e8295cbdab8bdea2c9d03fd85dc9ef257606c89455c325a377648beda259a",
-   "url": "https://mirrors.kodi.tv/nightlies/windows/win64/master/KodiSetup-20220830-1ade57db-master-x64.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://mirrors.kodi.tv/nightlies/windows/win32/master/$matchWin32bit#/dl.7z"
-   },
-   "64bit": {
-    "url": "https://mirrors.kodi.tv/nightlies/windows/win64/master/$matchWin64bit#/dl.7z"
-   }
-  },
-  "hash": {
-   "regex": "$sha256",
-   "url": "$url?mirrorlist"
-  }
- },
- "checkver": {
-  "regex": "version:\"(?<version>\\d+)\"\\surls:\"(?<win32bit>.+)\\s(?<win64bit>.+)\"",
-  "script": [
-   "$builds = 'win32', 'win64'",
-   "$script_ver = ''",
-   "$urls =  @()",
-   "foreach ($build in $builds) {",
-   "   $base_url = 'https://mirrors.kodi.tv/nightlies/windows/'+ $build + '/master/'",
-   "   $dl_page = Invoke-WebRequest $base_url -UseBasicParsing",
-   "   $full_version = $dl_page.links | Where-Object href -match '\\.exe$' | Select-Object -first 1 -expand href",
-   "   $script_ver = $full_version -split '-' | Select-Object -Skip 1 | Select-Object -First 1",
-   "   $urls += $full_version",
-   "}",
-   "Write-Output ('version:\"' + $script_ver + '\"') ('urls:\"' + $urls + '\"')"
-  ]
- },
- "description": "Open source home theater/media center software and entertainment hub for digital media",
- "homepage": "https://kodi.tv/",
- "license": "GPL-2.0-or-later",
- "persist": "portable_data",
- "post_install": "'$PLUGINSDIR', '$TEMP', 'AppxManifest.xml', 'Uninstall.exe' | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force }",
- "shortcuts": [
-  [
-   "kodi.exe",
-   "Kodi Dev",
-   "-p"
-  ]
- ],
- "suggest": {
-  "Visual C++ Redistributable": "extras/vcredist2022"
- },
- "version": "20220830"
+    "architecture": {
+        "32bit": {
+            "hash": "682ceb4dcf5c8e754b023ebed35b1d093da314e724aa7fb56c29026e2771bb2f",
+            "url": "https://mirrors.kodi.tv/nightlies/windows/win32/master/KodiSetup-20220903-b9f72b53-master-x86.exe#/dl.7z"
+        },
+        "64bit": {
+            "hash": "3a76ec00e5313cd630560908538e6ad83ce35a9bfcd2e7ac7b96bba2cc8fc380",
+            "url": "https://mirrors.kodi.tv/nightlies/windows/win64/master/KodiSetup-20220903-b9f72b53-master-x64.exe#/dl.7z"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://mirrors.kodi.tv/nightlies/windows/win32/master/$matchWin32bit#/dl.7z"
+            },
+            "64bit": {
+                "url": "https://mirrors.kodi.tv/nightlies/windows/win64/master/$matchWin64bit#/dl.7z"
+            }
+        },
+        "hash": {
+            "regex": "$sha256",
+            "url": "$url?mirrorlist"
+        }
+    },
+    "checkver": {
+        "regex": "version:\"(?<version>\\d+)\"\\surls:\"(?<win32bit>.+)\\s(?<win64bit>.+)\"",
+        "script": [
+            "$builds = 'win32', 'win64'",
+            "$script_ver = ''",
+            "$urls =  @()",
+            "foreach ($build in $builds) {",
+            "   $base_url = 'https://mirrors.kodi.tv/nightlies/windows/'+ $build + '/master/'",
+            "   $dl_page = Invoke-WebRequest $base_url -UseBasicParsing",
+            "   $full_version = $dl_page.links | Where-Object href -match '\\.exe$' | Select-Object -first 1 -expand href",
+            "   $script_ver = $full_version -split '-' | Select-Object -Skip 1 | Select-Object -First 1",
+            "   $urls += $full_version",
+            "}",
+            "Write-Output ('version:\"' + $script_ver + '\"') ('urls:\"' + $urls + '\"')"
+        ]
+    },
+    "description": "Open source home theater/media center software and entertainment hub for digital media",
+    "homepage": "https://kodi.tv/",
+    "license": "GPL-2.0-or-later",
+    "persist": "portable_data",
+    "post_install": "'$PLUGINSDIR', '$TEMP', 'AppxManifest.xml', 'Uninstall.exe' | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force }",
+    "shortcuts": [
+        [
+            "kodi.exe",
+            "Kodi Dev",
+            "-p"
+        ]
+    ],
+    "suggest": {
+        "Visual C++ Redistributable": "extras/vcredist2022"
+    },
+    "version": "20220903"
 }
