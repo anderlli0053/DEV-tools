@@ -1,54 +1,54 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "0941303bee76f1912cdec9a290cb626fd5b189a2e446476c2448f448c2dd746a",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal",
-                "info '[Portable Mode]: Copying user data...'",
-                "if (Test-Path \"$persist_dir\\User Data\\*\") {",
-                "    Copy-Item \"$persist_dir\\User Data\\*\" \"$env:AppData\\yuque-desktop\\\" -Recurse -Force | Out-Null",
-                "}"
-            ],
-            "url": "https://app.nlark.com/yuque-desktop/1.6.3/Yuque-1.6.3.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://app.nlark.com/yuque-desktop/$version/Yuque-$version.exe#/dl.7z"
-            }
-        }
-    },
-    "bin": [
-        [
-            "语雀.exe",
-            "yuque"
-        ]
-    ],
-    "checkver": {
-        "regex": "desktopDownloadVersion%22%3A%22([\\d.]+)",
-        "url": "https://www.yuque.com/download"
-    },
-    "description": "Personal notetaking, knowledge creation, group collaboration, and knowledge management.",
-    "homepage": "https://www.yuque.com",
-    "license": {
-        "identifier": "Proprietary",
-        "url": "https://www.yuque.com/terms"
-    },
-    "post_install": "@('$PLUGINSDIR', '[NSIS].nsi', 'Uninstall 语雀.exe') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force -ErrorAction SilentlyContinue }",
-    "shortcuts": [
-        [
-            "语雀.exe",
-            "Alibaba\\Yuque"
-        ]
-    ],
-    "uninstaller": {
-        "script": [
-            "info '[Portable Mode]: Backing up user data...'",
-            "if (Test-Path \"$env:AppData\\yuque-desktop\\*\") {",
-            "    Copy-Item \"$env:AppData\\yuque-desktop\\*\" \"$persist_dir\\User Data\\\" -Recurse -Force | Out-Null",
-            "}"
-        ]
-    },
-    "version": "1.6.3"
+ "architecture": {
+  "64bit": {
+   "hash": "0941303bee76f1912cdec9a290cb626fd5b189a2e446476c2448f448c2dd746a",
+   "pre_install": [
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal",
+    "info '[Portable Mode]: Copying user data...'",
+    "if (Test-Path \"$persist_dir\\User Data\\*\") {",
+    "    Copy-Item \"$persist_dir\\User Data\\*\" \"$env:AppData\\yuque-desktop\\\" -Recurse -Force | Out-Null",
+    "}"
+   ],
+   "url": "https://app.nlark.com/yuque-desktop/1.6.3/Yuque-1.6.3.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://app.nlark.com/yuque-desktop/$version/Yuque-$version.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": [
+  [
+   "\u8bed\u96c0.exe",
+   "yuque"
+  ]
+ ],
+ "checkver": {
+  "regex": "desktopDownloadVersion%22%3A%22([\\d.]+)",
+  "url": "https://www.yuque.com/download"
+ },
+ "description": "Personal notetaking, knowledge creation, group collaboration, and knowledge management.",
+ "homepage": "https://www.yuque.com",
+ "license": {
+  "identifier": "Proprietary",
+  "url": "https://www.yuque.com/terms"
+ },
+ "post_install": "@('$PLUGINSDIR', '[NSIS].nsi', 'Uninstall \u8bed\u96c0.exe') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force -ErrorAction SilentlyContinue }",
+ "shortcuts": [
+  [
+   "\u8bed\u96c0.exe",
+   "Alibaba\\Yuque"
+  ]
+ ],
+ "uninstaller": {
+  "script": [
+   "info '[Portable Mode]: Backing up user data...'",
+   "if (Test-Path \"$env:AppData\\yuque-desktop\\*\") {",
+   "    Copy-Item \"$env:AppData\\yuque-desktop\\*\" \"$persist_dir\\User Data\\\" -Recurse -Force | Out-Null",
+   "}"
+  ]
+ },
+ "version": "1.6.3"
 }

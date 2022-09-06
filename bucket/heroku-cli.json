@@ -1,51 +1,51 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "f62afcd7042fb378ed17372a9bd76798f4a412c67d5230d119fda5e09a713a7b",
-            "url": "https://cli-assets.heroku.com/heroku-win32-x86.tar.xz#/dl.xz"
-        },
-        "64bit": {
-            "hash": "15b78263b3822c35e44c884c20384f5174d29852c73f1606d1af02271408da32",
-            "url": "https://cli-assets.heroku.com/heroku-win32-x64.tar.xz#/dl.xz"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "f62afcd7042fb378ed17372a9bd76798f4a412c67d5230d119fda5e09a713a7b",
+   "url": "https://cli-assets.heroku.com/heroku-win32-x86.tar.xz#/dl.xz"
+  },
+  "64bit": {
+   "hash": "15b78263b3822c35e44c884c20384f5174d29852c73f1606d1af02271408da32",
+   "url": "https://cli-assets.heroku.com/heroku-win32-x64.tar.xz#/dl.xz"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "jsonpath": "$.sha256xz",
+     "url": "https://cli-assets.heroku.com/win32-x86"
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "jsonpath": "$.sha256xz",
-                    "url": "https://cli-assets.heroku.com/win32-x86"
-                },
-                "url": "https://cli-assets.heroku.com/heroku-win32-x86.tar.xz#/dl.xz"
-            },
-            "64bit": {
-                "hash": {
-                    "jsonpath": "$.sha256xz",
-                    "url": "https://cli-assets.heroku.com/win32-x64"
-                },
-                "url": "https://cli-assets.heroku.com/heroku-win32-x64.tar.xz#/dl.xz"
-            }
-        }
+    "url": "https://cli-assets.heroku.com/heroku-win32-x86.tar.xz#/dl.xz"
+   },
+   "64bit": {
+    "hash": {
+     "jsonpath": "$.sha256xz",
+     "url": "https://cli-assets.heroku.com/win32-x64"
     },
-    "bin": "bin\\heroku.cmd",
-    "checkver": {
-        "jsonpath": "$.version",
-        "url": "https://cli-assets.heroku.com/version"
-    },
-    "description": "An essential part of using Heroku, which can perform nearly any Heroku-related task right from your terminal.",
-    "homepage": "https://devcenter.heroku.com/articles/heroku-cli",
-    "license": "ISC",
-    "pre_install": [
-        "Invoke-ExternalCommand (Get-HelperPath '7zip') -ArgumentList @(",
-        "    'x'",
-        "    \"$dir\\dl\"",
-        "    \"-o`\"$dir\\dlo`\"\"",
-        "    '-bso0'",
-        "    '-bd'",
-        "    '-bse0'",
-        ") -ContinueExitCodes @{ 2 = 'Can not create symlink while running from un-elevated prompt. Installation is not affected.'} | Out-Null",
-        "Move-Item \"$dir\\dlo\\heroku\\*\" \"$dir\"",
-        "Remove-Item \"$dir\\dl*\" -Recurse"
-    ],
-    "version": "7.63.0"
+    "url": "https://cli-assets.heroku.com/heroku-win32-x64.tar.xz#/dl.xz"
+   }
+  }
+ },
+ "bin": "bin\\heroku.cmd",
+ "checkver": {
+  "jsonpath": "$.version",
+  "url": "https://cli-assets.heroku.com/version"
+ },
+ "description": "An essential part of using Heroku, which can perform nearly any Heroku-related task right from your terminal.",
+ "homepage": "https://devcenter.heroku.com/articles/heroku-cli",
+ "license": "ISC",
+ "pre_install": [
+  "Invoke-ExternalCommand (Get-HelperPath '7zip') -ArgumentList @(",
+  "    'x'",
+  "    \"$dir\\dl\"",
+  "    \"-o`\"$dir\\dlo`\"\"",
+  "    '-bso0'",
+  "    '-bd'",
+  "    '-bse0'",
+  ") -ContinueExitCodes @{ 2 = 'Can not create symlink while running from un-elevated prompt. Installation is not affected.'} | Out-Null",
+  "Move-Item \"$dir\\dlo\\heroku\\*\" \"$dir\"",
+  "Remove-Item \"$dir\\dl*\" -Recurse"
+ ],
+ "version": "7.63.0"
 }

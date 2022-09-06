@@ -1,40 +1,40 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "713b208b5e8a8e6f9fded18477e0a0febbf15f666dbec181eb51d7d464b19ab3",
-            "url": "https://github.com/cryptomator/cryptomator/releases/download/1.6.14/Cryptomator-1.6.14-x64.msi"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/cryptomator/cryptomator/releases/download/$version/Cryptomator-$version-x64.msi"
-            }
-        },
-        "hash": {
-            "regex": "$sha256\\s*\\./$basename",
-            "url": "https://github.com/cryptomator/cryptomator/releases/tag/$version"
-        }
-    },
-    "bin": "Cryptomator.exe",
-    "checkver": {
-        "regex": "Cryptomator-([\\d.]+)-x64\\.msi",
-        "url": "https://github.com/cryptomator/cryptomator/releases"
-    },
-    "description": "Multi-platform transparent client-side encryption of files in the cloud",
-    "extract_dir": "Cryptomator",
-    "homepage": "https://cryptomator.org",
-    "license": "GPL-3.0-only",
-    "persist": "data",
-    "post_install": [
-        "    # Change appdata settings folder",
-        "(Get-Content \"$dir\\app\\Cryptomator.cfg\" -Encoding ASCII).replace('~/AppData/Roaming/Cryptomator', './data') | Set-Content \"$dir\\app\\Cryptomator.cfg\" -Encoding ASCII"
-    ],
-    "shortcuts": [
-        [
-            "Cryptomator.exe",
-            "Cryptomator"
-        ]
-    ],
-    "version": "1.6.14"
+ "architecture": {
+  "64bit": {
+   "hash": "713b208b5e8a8e6f9fded18477e0a0febbf15f666dbec181eb51d7d464b19ab3",
+   "url": "https://github.com/cryptomator/cryptomator/releases/download/1.6.14/Cryptomator-1.6.14-x64.msi"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/cryptomator/cryptomator/releases/download/$version/Cryptomator-$version-x64.msi"
+   }
+  },
+  "hash": {
+   "regex": "$sha256\\s*\\./$basename",
+   "url": "https://github.com/cryptomator/cryptomator/releases/tag/$version"
+  }
+ },
+ "bin": "Cryptomator.exe",
+ "checkver": {
+  "regex": "Cryptomator-([\\d.]+)-x64\\.msi",
+  "url": "https://github.com/cryptomator/cryptomator/releases"
+ },
+ "description": "Multi-platform transparent client-side encryption of files in the cloud",
+ "extract_dir": "Cryptomator",
+ "homepage": "https://cryptomator.org",
+ "license": "GPL-3.0-only",
+ "persist": "data",
+ "post_install": [
+  "    # Change appdata settings folder",
+  "(Get-Content \"$dir\\app\\Cryptomator.cfg\" -Encoding ASCII).replace('~/AppData/Roaming/Cryptomator', './data') | Set-Content \"$dir\\app\\Cryptomator.cfg\" -Encoding ASCII"
+ ],
+ "shortcuts": [
+  [
+   "Cryptomator.exe",
+   "Cryptomator"
+  ]
+ ],
+ "version": "1.6.14"
 }

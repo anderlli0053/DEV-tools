@@ -1,34 +1,34 @@
 {
-    "architecture": {
-        "32bit": {
-            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
-        },
-        "64bit": {
-            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
-        }
-    },
-    "autoupdate": {
-        "hash": {
-            "regex": "sha512:\\s+$base64",
-            "url": "$baseurl/latest.yml"
-        },
-        "url": "https://autoupdate.termius.com/windows/Termius.exe#/dl.7z"
-    },
-    "checkver": {
-        "regex": "version:\\s*([\\d.]+)",
-        "url": "https://autoupdate.termius.com/windows/latest.yml"
-    },
-    "description": "Modern SSH client",
-    "hash": "sha512:966a7ee320a8621198b27ac390b167fe9c232a4b7382060bbf3623742b19c2e9b65a0a086aa6518bb88fc5e654f6cb0088c9579dde88132ef43a5bd416dd62a6",
-    "homepage": "https://www.termius.com",
-    "license": "Unknown",
-    "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Recurse",
-    "shortcuts": [
-        [
-            "Termius.exe",
-            "Termius"
-        ]
-    ],
-    "url": "https://autoupdate.termius.com/windows/Termius.exe#/dl.7z",
-    "version": "7.47.3"
+ "architecture": {
+  "32bit": {
+   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
+  },
+  "64bit": {
+   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+  }
+ },
+ "autoupdate": {
+  "hash": {
+   "regex": "sha512:\\s+$base64",
+   "url": "$baseurl/latest.yml"
+  },
+  "url": "https://autoupdate.termius.com/windows/Termius.exe#/dl.7z"
+ },
+ "checkver": {
+  "regex": "version:\\s*([\\d.]+)",
+  "url": "https://autoupdate.termius.com/windows/latest.yml"
+ },
+ "description": "Modern SSH client",
+ "hash": "sha512:966a7ee320a8621198b27ac390b167fe9c232a4b7382060bbf3623742b19c2e9b65a0a086aa6518bb88fc5e654f6cb0088c9579dde88132ef43a5bd416dd62a6",
+ "homepage": "https://www.termius.com",
+ "license": "Unknown",
+ "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Recurse",
+ "shortcuts": [
+  [
+   "Termius.exe",
+   "Termius"
+  ]
+ ],
+ "url": "https://autoupdate.termius.com/windows/Termius.exe#/dl.7z",
+ "version": "7.47.3"
 }

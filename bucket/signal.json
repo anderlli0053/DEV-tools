@@ -1,38 +1,38 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "sha512:964f67d184c029683a4fe1f449b0ce7fd257a8c06dbf99847a9eb15c64f88dcf42609eb67eb42432bca3340f1fb4efeca402259d65b2a0870e3980dd65e1bd9c",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*.exe\" -Recurse -Force"
-            ],
-            "url": "https://updates.signal.org/desktop/signal-desktop-win-5.57.0.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://updates.signal.org/desktop/signal-desktop-win-$version.exe#/dl.7z"
-            }
-        },
-        "hash": {
-            "regex": "sha512:\\s$base64",
-            "url": "$baseurl/latest.yml"
-        }
-    },
-    "bin": "signal.exe",
-    "checkver": {
-        "regex": "version:\\s([\\d.]+)",
-        "url": "https://updates.signal.org/desktop/latest.yml"
-    },
-    "description": "A cross-platform encrypted messaging service.",
-    "homepage": "https://signal.org",
-    "license": "GPL-3.0-only",
-    "shortcuts": [
-        [
-            "signal.exe",
-            "Signal"
-        ]
-    ],
-    "version": "5.57.0"
+ "architecture": {
+  "64bit": {
+   "hash": "sha512:964f67d184c029683a4fe1f449b0ce7fd257a8c06dbf99847a9eb15c64f88dcf42609eb67eb42432bca3340f1fb4efeca402259d65b2a0870e3980dd65e1bd9c",
+   "pre_install": [
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+    "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*.exe\" -Recurse -Force"
+   ],
+   "url": "https://updates.signal.org/desktop/signal-desktop-win-5.57.0.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://updates.signal.org/desktop/signal-desktop-win-$version.exe#/dl.7z"
+   }
+  },
+  "hash": {
+   "regex": "sha512:\\s$base64",
+   "url": "$baseurl/latest.yml"
+  }
+ },
+ "bin": "signal.exe",
+ "checkver": {
+  "regex": "version:\\s([\\d.]+)",
+  "url": "https://updates.signal.org/desktop/latest.yml"
+ },
+ "description": "A cross-platform encrypted messaging service.",
+ "homepage": "https://signal.org",
+ "license": "GPL-3.0-only",
+ "shortcuts": [
+  [
+   "signal.exe",
+   "Signal"
+  ]
+ ],
+ "version": "5.57.0"
 }
