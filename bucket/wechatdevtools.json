@@ -1,45 +1,45 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "e9f3100d26e9b31807e1008455b0ac5b722aa8455171123c177c6542937899ad",
-   "url": "https://servicewechat.com/wxa-dev-logic/download_redirect?type=ia32&from=mpwiki&download_version=1062209060&version_type=1#/installer.exe"
-  },
-  "64bit": {
-   "hash": "5966fb854acdbddb3835dd466a11fdea428eacd9b6cd0df0b361455460c74744",
-   "url": "https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=1062209060&version_type=1#/installer.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://servicewechat.com/wxa-dev-logic/download_redirect?type=ia32&from=mpwiki&download_version=$majorVersion$minorVersion$patchVersion$buildVersion&version_type=1#/installer.exe"
-   },
-   "64bit": {
-    "url": "https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=$majorVersion$minorVersion$patchVersion$buildVersion&version_type=1#/installer.exe"
-   }
-  }
- },
- "checkver": {
-  "regex": "#</a> ([\\d.]+) <a href=\"https://.*?Windows",
-  "url": "https://developers.weixin.qq.com/miniprogram/dev/devtools/stable.html"
- },
- "description": "The official devtool to develop and debug WeChat Mini Programs",
- "homepage": "https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html",
- "installer": {
-  "script": [
-   "Expand-7zipArchive \"$dir\\installer.exe\" \"$dir\\app\" -Removal",
-   "@('$PLUGINSDIR', '\u5378\u8f7d\u5fae\u4fe1\u5f00\u53d1\u8005\u5de5\u5177.exe.nsis') | ForEach-Object {",
-   "    Remove-Item \"$dir\\app\\$_\" -Recurse -Force",
-   "}"
-  ]
- },
- "license": "Freeware",
- "notes": "We don't persist your WeChat DevTool data, they are still storaged in '%APPDATA%\\\u5fae\u4fe1\u5f00\u53d1\u8005\u5de5\u5177'.",
- "shortcuts": [
-  [
-   "app\\\u5fae\u4fe1\u5f00\u53d1\u8005\u5de5\u5177.exe",
-   "\u5fae\u4fe1\u5f00\u53d1\u8005\u5de5\u5177"
-  ]
- ],
- "version": "1.06.2209060"
+    "architecture": {
+        "32bit": {
+            "hash": "7a22d2c9e4419f07efc0f43921addd57a2c5b0e847c18c8ff97e4ccb802c95fb",
+            "url": "https://servicewechat.com/wxa-dev-logic/download_redirect?type=ia32&from=mpwiki&download_version=1062209070&version_type=1#/installer.exe"
+        },
+        "64bit": {
+            "hash": "0b6a2c07f813486d9b664f66d756a408aa2ca4a66303b8c291930a23f980c8a2",
+            "url": "https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=1062209070&version_type=1#/installer.exe"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://servicewechat.com/wxa-dev-logic/download_redirect?type=ia32&from=mpwiki&download_version=$majorVersion$minorVersion$patchVersion$buildVersion&version_type=1#/installer.exe"
+            },
+            "64bit": {
+                "url": "https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=$majorVersion$minorVersion$patchVersion$buildVersion&version_type=1#/installer.exe"
+            }
+        }
+    },
+    "checkver": {
+        "regex": "#</a> ([\\d.]+) <a href=\"https://.*?Windows",
+        "url": "https://developers.weixin.qq.com/miniprogram/dev/devtools/stable.html"
+    },
+    "description": "The official devtool to develop and debug WeChat Mini Programs",
+    "homepage": "https://developers.weixin.qq.com/miniprogram/dev/devtools/devtools.html",
+    "installer": {
+        "script": [
+            "Expand-7zipArchive \"$dir\\installer.exe\" \"$dir\\app\" -Removal",
+            "@('$PLUGINSDIR', '卸载微信开发者工具.exe.nsis') | ForEach-Object {",
+            "    Remove-Item \"$dir\\app\\$_\" -Recurse -Force",
+            "}"
+        ]
+    },
+    "license": "Freeware",
+    "notes": "We don't persist your WeChat DevTool data, they are still storaged in '%APPDATA%\\微信开发者工具'.",
+    "shortcuts": [
+        [
+            "app\\微信开发者工具.exe",
+            "微信开发者工具"
+        ]
+    ],
+    "version": "1.06.2209070"
 }
