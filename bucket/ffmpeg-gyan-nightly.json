@@ -1,37 +1,37 @@
 {
- "architecture": {
-  "64bit": {
-   "extract_dir": "ffmpeg-2022-09-05-git-2ed5925e26-full_build",
-   "hash": "7e78bdcb8dd7081ae4d686bf1304572d4a81799f09116cb5fe5b692521ec9abd",
-   "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-2022-09-05-git-2ed5925e26-full_build.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "extract_dir": "ffmpeg-$version-git-$matchCommit-full_build",
-    "hash": {
-     "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-$version-git-$matchCommit-full_build.7z.sha256"
+    "architecture": {
+        "64bit": {
+            "extract_dir": "ffmpeg-2022-09-07-git-e4c1272711-full_build",
+            "hash": "28278f04134344f4004f605bf4baa34546f55d289db9753938d659a0810885ea",
+            "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-2022-09-07-git-e4c1272711-full_build.7z"
+        }
     },
-    "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-$version-git-$matchCommit-full_build.7z"
-   }
-  }
- },
- "bin": [
-  "bin\\ffmpeg.exe",
-  "bin\\ffplay.exe",
-  "bin\\ffprobe.exe"
- ],
- "checkver": {
-  "regex": "([\\d-]+)-git-(?<commit>[a-z\\d]+)",
-  "url": "https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z.ver"
- },
- "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
- "homepage": "https://ffmpeg.org",
- "license": "GPL-3.0-or-later",
- "post_install": [
-  "# Workaround for https://github.com/ScoopInstaller/Main/issues/2611",
-  "Remove-Item \"$scoopdir\\shims\\ffmpeg.ps1\", \"$scoopdir\\shims\\ffplay.ps1\", \"$scoopdir\\shims\\ffprobe.ps1\" -ErrorAction SilentlyContinue"
- ],
- "version": "2022-09-05"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "extract_dir": "ffmpeg-$version-git-$matchCommit-full_build",
+                "hash": {
+                    "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-$version-git-$matchCommit-full_build.7z.sha256"
+                },
+                "url": "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-$version-git-$matchCommit-full_build.7z"
+            }
+        }
+    },
+    "bin": [
+        "bin\\ffmpeg.exe",
+        "bin\\ffplay.exe",
+        "bin\\ffprobe.exe"
+    ],
+    "checkver": {
+        "regex": "([\\d-]+)-git-(?<commit>[a-z\\d]+)",
+        "url": "https://www.gyan.dev/ffmpeg/builds/ffmpeg-git-full.7z.ver"
+    },
+    "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "homepage": "https://ffmpeg.org",
+    "license": "GPL-3.0-or-later",
+    "post_install": [
+        "# Workaround for https://github.com/ScoopInstaller/Main/issues/2611",
+        "Remove-Item \"$scoopdir\\shims\\ffmpeg.ps1\", \"$scoopdir\\shims\\ffplay.ps1\", \"$scoopdir\\shims\\ffprobe.ps1\" -ErrorAction SilentlyContinue"
+    ],
+    "version": "2022-09-07"
 }
