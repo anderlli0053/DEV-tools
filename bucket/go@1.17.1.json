@@ -1,60 +1,60 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "bc7043e7a9a8d34aacd06f8c2f70e166d1d148f6800814cff790c45b9ab31cee",
-            "url": "https://dl.google.com/go/go1.19.1.windows-386.zip"
-        },
-        "64bit": {
-            "hash": "b33584c1d93b0e9c783de876b7aa99d3018bdeccd396aeb6d516a74e9d88d55f",
-            "url": "https://dl.google.com/go/go1.19.1.windows-amd64.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://dl.google.com/go/go$version.windows-386.zip"
-            },
-            "64bit": {
-                "url": "https://dl.google.com/go/go$version.windows-amd64.zip"
-            }
-        },
-        "hash": {
-            "url": "$url.sha256"
-        }
-    },
-    "bin": [
-        "bin/go.exe",
-        "bin/gofmt.exe"
-    ],
-    "checkver": {
-        "regex": "go([\\d.]+)\\.windows-",
-        "url": "https://golang.org/dl/"
-    },
-    "description": "An open source programming language that makes it easy to build simple, reliable, and efficient software.",
-    "extract_dir": "go",
-    "homepage": "https://golang.org",
-    "license": "BSD-3-Clause",
-    "post_install": [
-        "",
-        "$default_dirs = @( $env:GOPATH, \"$env:USERPROFILE\\go\", \"$env:USERPROFILE\\.go\" )",
-        "$val = $( @($default_dirs |% { get-item $_ -ea silent }) + $default_dirs[0] ) | select -first 1",
-        "ensure_in_path \"$val\\bin\" $global",
-        ""
-    ],
-    "pre_install": [
-        "",
-        "# GOPATH",
-        "# respect USER value, if defined",
-        "if ($env:GOPATH) { } else {",
-        "# otherwise, 1st existing known default; otherwise, 1st of known defaults",
-        "$default_dirs = @( \"$env:USERPROFILE\\go\", \"$env:USERPROFILE\\.go\" )",
-        "$val = $( @($default_dirs |% { get-item $_ -ea silent }) + $default_dirs[0] ) | select -first 1",
-        "# ensure directory exists",
-        "new-item $val -type directory -force | out-null",
-        "env GOPATH -t $global $val",
-        "env GOPATH $val",
-        "}",
-        ""
-    ],
-    "version": "1.19.1"
+ "architecture": {
+  "32bit": {
+   "hash": "bc7043e7a9a8d34aacd06f8c2f70e166d1d148f6800814cff790c45b9ab31cee",
+   "url": "https://dl.google.com/go/go1.19.1.windows-386.zip"
+  },
+  "64bit": {
+   "hash": "b33584c1d93b0e9c783de876b7aa99d3018bdeccd396aeb6d516a74e9d88d55f",
+   "url": "https://dl.google.com/go/go1.19.1.windows-amd64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://dl.google.com/go/go$version.windows-386.zip"
+   },
+   "64bit": {
+    "url": "https://dl.google.com/go/go$version.windows-amd64.zip"
+   }
+  },
+  "hash": {
+   "url": "$url.sha256"
+  }
+ },
+ "bin": [
+  "bin/go.exe",
+  "bin/gofmt.exe"
+ ],
+ "checkver": {
+  "regex": "go([\\d.]+)\\.windows-",
+  "url": "https://golang.org/dl/"
+ },
+ "description": "An open source programming language that makes it easy to build simple, reliable, and efficient software.",
+ "extract_dir": "go",
+ "homepage": "https://golang.org",
+ "license": "BSD-3-Clause",
+ "post_install": [
+  "",
+  "$default_dirs = @( $env:GOPATH, \"$env:USERPROFILE\\go\", \"$env:USERPROFILE\\.go\" )",
+  "$val = $( @($default_dirs |% { get-item $_ -ea silent }) + $default_dirs[0] ) | select -first 1",
+  "ensure_in_path \"$val\\bin\" $global",
+  ""
+ ],
+ "pre_install": [
+  "",
+  "# GOPATH",
+  "# respect USER value, if defined",
+  "if ($env:GOPATH) { } else {",
+  "# otherwise, 1st existing known default; otherwise, 1st of known defaults",
+  "$default_dirs = @( \"$env:USERPROFILE\\go\", \"$env:USERPROFILE\\.go\" )",
+  "$val = $( @($default_dirs |% { get-item $_ -ea silent }) + $default_dirs[0] ) | select -first 1",
+  "# ensure directory exists",
+  "new-item $val -type directory -force | out-null",
+  "env GOPATH -t $global $val",
+  "env GOPATH $val",
+  "}",
+  ""
+ ],
+ "version": "1.19.1"
 }

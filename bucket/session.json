@@ -1,39 +1,39 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "sha512:2ddaf7afa70e5f3eaf3ccc417fa2e59083775b509253b72630c0c5dabdfd709ad3359d06206ee3724d2b02355465eda6613fd128694bdd81bd8653ad88cb3891",
-            "installer": {
-                "script": [
-                    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                    "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse"
-                ]
-            },
-            "url": "https://github.com/oxen-io/session-desktop/releases/download/v1.10.0/session-desktop-win-1.10.0.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/oxen-io/session-desktop/releases/download/v$version/session-desktop-win-$version.exe#/dl.7z"
-            }
-        },
-        "hash": {
-            "regex": "sha512:\\s+$base64",
-            "url": "$baseurl/latest.yml"
-        }
-    },
-    "bin": "Session.exe",
-    "checkver": {
-        "github": "https://github.com/oxen-io/session-desktop"
-    },
-    "description": "End-to-end encrypted messenger",
-    "homepage": "https://getsession.org",
-    "license": "GPL-3.0-only",
-    "shortcuts": [
-        [
-            "Session.exe",
-            "Session"
-        ]
-    ],
-    "version": "1.10.0"
+ "architecture": {
+  "64bit": {
+   "hash": "sha512:2ddaf7afa70e5f3eaf3ccc417fa2e59083775b509253b72630c0c5dabdfd709ad3359d06206ee3724d2b02355465eda6613fd128694bdd81bd8653ad88cb3891",
+   "installer": {
+    "script": [
+     "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+     "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse"
+    ]
+   },
+   "url": "https://github.com/oxen-io/session-desktop/releases/download/v1.10.0/session-desktop-win-1.10.0.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/oxen-io/session-desktop/releases/download/v$version/session-desktop-win-$version.exe#/dl.7z"
+   }
+  },
+  "hash": {
+   "regex": "sha512:\\s+$base64",
+   "url": "$baseurl/latest.yml"
+  }
+ },
+ "bin": "Session.exe",
+ "checkver": {
+  "github": "https://github.com/oxen-io/session-desktop"
+ },
+ "description": "End-to-end encrypted messenger",
+ "homepage": "https://getsession.org",
+ "license": "GPL-3.0-only",
+ "shortcuts": [
+  [
+   "Session.exe",
+   "Session"
+  ]
+ ],
+ "version": "1.10.0"
 }

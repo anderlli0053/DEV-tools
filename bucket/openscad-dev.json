@@ -1,54 +1,54 @@
 {
-    "architecture": {
-        "32bit": {
-            "extract_dir": "openscad-2022.09.05.ci12120",
-            "hash": "sha512:da13e5bc0ea6c7aeff4bdfb9bebbd9d2211073099e0134844c7d8a3ac10977efecd395013fdcc23b24e461d9fdf0429e57e64efdadf5b9b460f97e361b7bbcbf",
-            "url": "https://files.openscad.org/snapshots/OpenSCAD-2022.09.05.ci12120-x86-32.zip"
-        },
-        "64bit": {
-            "extract_dir": "openscad-2022.09.05.ci12121",
-            "hash": "sha512:61c280c33bf24f6cce2fc6bdfae5d720baf7119198b0c38374ad4c0492fa24cbca4374e2f8905e26d40ce4e8d8d19361e9496bf649e27927d97952433ce94de8",
-            "url": "https://files.openscad.org/snapshots/OpenSCAD-2022.09.05.ci12121-x86-64.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "extract_dir": "openscad-$matchWin32bit",
-                "url": "https://files.openscad.org/snapshots/OpenSCAD-$matchWin32bit-x86-32.zip"
-            },
-            "64bit": {
-                "extract_dir": "openscad-$matchWin64bit",
-                "url": "https://files.openscad.org/snapshots/OpenSCAD-$matchWin64bit-x86-64.zip"
-            }
-        },
-        "hash": {
-            "url": "$url.sha512"
-        }
-    },
-    "checkver": {
-        "regex": "version:\"(?<version>[\\d.]+)\"\\sbuild_ids:\"(?<win32bit>.+)\\s(?<win64bit>.+)\"",
-        "script": [
-            "$builds = 'x86-32', 'x86-64'",
-            "$script_ver = ''",
-            "$build_ids =  @()",
-            "foreach ($build in $builds) {",
-            "    $page = Invoke-WebRequest 'https://files.openscad.org/snapshots/' -UseBasicParsing",
-            "    $dl_file = $page.links | Where-Object href -match \"OpenSCAD-[\\w.]+-$build.zip$\" | Select-Object -last 1 -expand href",
-            "    $script_ver = ($dl_file | Select-String -Pattern 'OpenSCAD-([\\d.]+)\\.').Matches.Groups[1].Value",
-            "    $build_ids += ($dl_file | Select-String -Pattern 'OpenSCAD-([\\w.]+)-').Matches.Groups[1].Value",
-            "}",
-            "Write-Output ('version:\"' + $script_ver + '\"') ('build_ids:\"' + $build_ids + '\"')"
-        ]
-    },
-    "description": "The Programmers Solid 3D CAD Modeller",
-    "homepage": "https://www.openscad.org/",
-    "license": "GPL-2.0-or-later",
-    "shortcuts": [
-        [
-            "openscad.exe",
-            "OpenSCAD Snapshot"
-        ]
-    ],
-    "version": "2022.09.05"
+ "architecture": {
+  "32bit": {
+   "extract_dir": "openscad-2022.09.05.ci12120",
+   "hash": "sha512:da13e5bc0ea6c7aeff4bdfb9bebbd9d2211073099e0134844c7d8a3ac10977efecd395013fdcc23b24e461d9fdf0429e57e64efdadf5b9b460f97e361b7bbcbf",
+   "url": "https://files.openscad.org/snapshots/OpenSCAD-2022.09.05.ci12120-x86-32.zip"
+  },
+  "64bit": {
+   "extract_dir": "openscad-2022.09.05.ci12121",
+   "hash": "sha512:61c280c33bf24f6cce2fc6bdfae5d720baf7119198b0c38374ad4c0492fa24cbca4374e2f8905e26d40ce4e8d8d19361e9496bf649e27927d97952433ce94de8",
+   "url": "https://files.openscad.org/snapshots/OpenSCAD-2022.09.05.ci12121-x86-64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "extract_dir": "openscad-$matchWin32bit",
+    "url": "https://files.openscad.org/snapshots/OpenSCAD-$matchWin32bit-x86-32.zip"
+   },
+   "64bit": {
+    "extract_dir": "openscad-$matchWin64bit",
+    "url": "https://files.openscad.org/snapshots/OpenSCAD-$matchWin64bit-x86-64.zip"
+   }
+  },
+  "hash": {
+   "url": "$url.sha512"
+  }
+ },
+ "checkver": {
+  "regex": "version:\"(?<version>[\\d.]+)\"\\sbuild_ids:\"(?<win32bit>.+)\\s(?<win64bit>.+)\"",
+  "script": [
+   "$builds = 'x86-32', 'x86-64'",
+   "$script_ver = ''",
+   "$build_ids =  @()",
+   "foreach ($build in $builds) {",
+   "    $page = Invoke-WebRequest 'https://files.openscad.org/snapshots/' -UseBasicParsing",
+   "    $dl_file = $page.links | Where-Object href -match \"OpenSCAD-[\\w.]+-$build.zip$\" | Select-Object -last 1 -expand href",
+   "    $script_ver = ($dl_file | Select-String -Pattern 'OpenSCAD-([\\d.]+)\\.').Matches.Groups[1].Value",
+   "    $build_ids += ($dl_file | Select-String -Pattern 'OpenSCAD-([\\w.]+)-').Matches.Groups[1].Value",
+   "}",
+   "Write-Output ('version:\"' + $script_ver + '\"') ('build_ids:\"' + $build_ids + '\"')"
+  ]
+ },
+ "description": "The Programmers Solid 3D CAD Modeller",
+ "homepage": "https://www.openscad.org/",
+ "license": "GPL-2.0-or-later",
+ "shortcuts": [
+  [
+   "openscad.exe",
+   "OpenSCAD Snapshot"
+  ]
+ ],
+ "version": "2022.09.05"
 }

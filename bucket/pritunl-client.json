@@ -1,50 +1,50 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "7d18f1169fcd70dcda59a82f8a5fc897c5ad2c8fe7c7b2335687ac79e1485dee",
-            "url": "https://github.com/pritunl/pritunl-client-electron/releases/download/1.3.3283.46/Pritunl.exe#/dl.exe"
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "7d18f1169fcd70dcda59a82f8a5fc897c5ad2c8fe7c7b2335687ac79e1485dee",
+   "url": "https://github.com/pritunl/pritunl-client-electron/releases/download/1.3.3283.46/Pritunl.exe#/dl.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "regex": "$version[\\r\\n]+$sha256.*?$basename",
+     "url": "https://raw.githubusercontent.com/pritunl/pritunl-client-electron/master/SHA256"
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "hash": {
-                    "regex": "$version[\\r\\n]+$sha256.*?$basename",
-                    "url": "https://raw.githubusercontent.com/pritunl/pritunl-client-electron/master/SHA256"
-                },
-                "url": "https://github.com/pritunl/pritunl-client-electron/releases/download/$version/Pritunl.exe#/dl.exe"
-            }
-        }
-    },
-    "bin": [
-        [
-            "pritunl.exe",
-            "pritunl",
-            "--no-main"
-        ]
-    ],
-    "checkver": "([\\d.]+)/Pritunl.exe",
-    "description": "OpenVPN Client",
-    "homepage": "https://client.pritunl.com",
-    "innosetup": true,
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://github.com/pritunl/pritunl-client-electron/blob/master/LICENSE"
-    },
-    "post_install": "Invoke-ExternalCommand \"$dir\\post_install.exe\" -RunAs | Out-Null",
-    "pre_install": "if (-not (is_admin)) { error 'This package requires admin privileges to install'; break }",
-    "shortcuts": [
-        [
-            "pritunl.exe",
-            "Pritunl"
-        ]
-    ],
-    "uninstaller": {
-        "script": [
-            "if (-not (is_admin)) { error 'This package requires admin privileges to uninstall'; break }",
-            "Invoke-ExternalCommand \"$dir\\pre_uninstall.exe\" -RunAs | Out-Null",
-            "Remove-Item 'C:\\ProgramData\\Pritunl' -Recurse -Force"
-        ]
-    },
-    "version": "1.3.3283.46"
+    "url": "https://github.com/pritunl/pritunl-client-electron/releases/download/$version/Pritunl.exe#/dl.exe"
+   }
+  }
+ },
+ "bin": [
+  [
+   "pritunl.exe",
+   "pritunl",
+   "--no-main"
+  ]
+ ],
+ "checkver": "([\\d.]+)/Pritunl.exe",
+ "description": "OpenVPN Client",
+ "homepage": "https://client.pritunl.com",
+ "innosetup": true,
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://github.com/pritunl/pritunl-client-electron/blob/master/LICENSE"
+ },
+ "post_install": "Invoke-ExternalCommand \"$dir\\post_install.exe\" -RunAs | Out-Null",
+ "pre_install": "if (-not (is_admin)) { error 'This package requires admin privileges to install'; break }",
+ "shortcuts": [
+  [
+   "pritunl.exe",
+   "Pritunl"
+  ]
+ ],
+ "uninstaller": {
+  "script": [
+   "if (-not (is_admin)) { error 'This package requires admin privileges to uninstall'; break }",
+   "Invoke-ExternalCommand \"$dir\\pre_uninstall.exe\" -RunAs | Out-Null",
+   "Remove-Item 'C:\\ProgramData\\Pritunl' -Recurse -Force"
+  ]
+ },
+ "version": "1.3.3283.46"
 }

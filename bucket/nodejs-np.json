@@ -1,42 +1,42 @@
 {
-    "architecture": {
-        "64bit": {
-            "extract_dir": "node-v18.9.0-win-x64",
-            "hash": "bae2d3417a9e1c4cc7145801e428c13e9fce006044258194d073207efd1b736b",
-            "url": "https://nodejs.org/dist/v18.9.0/node-v18.9.0-win-x64.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "extract_dir": "node-v$version-win-x64",
-                "url": "https://nodejs.org/dist/v$version/node-v$version-win-x64.7z"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/SHASUMS256.txt.asc"
-        }
-    },
-    "bin": [
-        "node.exe",
-        "npm.cmd"
-    ],
-    "checkver": {
-        "regex": "node-v([\\d.]+)-win-x64\\.7z",
-        "url": "https://nodejs.org/dist/latest/"
-    },
-    "description": "JavaScript runtime environment.",
-    "homepage": "https://nodejs.org",
-    "installer": {
-        "script": [
-            "add_first_in_path \"$env:APPDATA\\npm\" $global",
-            "& \"$dir\\npm.cmd\" config set prefix \"$env:APPDATA\\npm\""
-        ]
-    },
-    "license": "MIT",
-    "notes": "npm global prefix set to: $env:APPDATA\\npm",
-    "uninstaller": {
-        "script": "remove_from_path \"$env:APPDATA\\npm\" $global"
-    },
-    "version": "18.9.0"
+ "architecture": {
+  "64bit": {
+   "extract_dir": "node-v18.9.0-win-x64",
+   "hash": "bae2d3417a9e1c4cc7145801e428c13e9fce006044258194d073207efd1b736b",
+   "url": "https://nodejs.org/dist/v18.9.0/node-v18.9.0-win-x64.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "extract_dir": "node-v$version-win-x64",
+    "url": "https://nodejs.org/dist/v$version/node-v$version-win-x64.7z"
+   }
+  },
+  "hash": {
+   "url": "$baseurl/SHASUMS256.txt.asc"
+  }
+ },
+ "bin": [
+  "node.exe",
+  "npm.cmd"
+ ],
+ "checkver": {
+  "regex": "node-v([\\d.]+)-win-x64\\.7z",
+  "url": "https://nodejs.org/dist/latest/"
+ },
+ "description": "JavaScript runtime environment.",
+ "homepage": "https://nodejs.org",
+ "installer": {
+  "script": [
+   "add_first_in_path \"$env:APPDATA\\npm\" $global",
+   "& \"$dir\\npm.cmd\" config set prefix \"$env:APPDATA\\npm\""
+  ]
+ },
+ "license": "MIT",
+ "notes": "npm global prefix set to: $env:APPDATA\\npm",
+ "uninstaller": {
+  "script": "remove_from_path \"$env:APPDATA\\npm\" $global"
+ },
+ "version": "18.9.0"
 }

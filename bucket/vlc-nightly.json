@@ -1,68 +1,68 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "sha512:d83921409785c0dbeb33db32841a77d86a9402bfd839809f08f90ae950795763c1bfbef7b0b611266127b33c79783fe3ca03a34e6b5d7d48c76f980c887ef74c",
-            "url": "https://artifacts.videolan.org/vlc/nightly-win32/20220908-0423/vlc-4.0.0-dev-win32-2f4ba073.7z"
-        },
-        "64bit": {
-            "hash": "sha512:8b0115acc01ad998c5c0bd6ef07d09deac0a7b655571a5311fb6f7a553d0bdbc8f67994aae682799616642fe3618fd53e68e7682b92a41ca0c2701e136db5121",
-            "url": "https://artifacts.videolan.org/vlc/nightly-win64/20220908-0425/vlc-4.0.0-dev-win64-2f4ba073.7z"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:d83921409785c0dbeb33db32841a77d86a9402bfd839809f08f90ae950795763c1bfbef7b0b611266127b33c79783fe3ca03a34e6b5d7d48c76f980c887ef74c",
+   "url": "https://artifacts.videolan.org/vlc/nightly-win32/20220908-0423/vlc-4.0.0-dev-win32-2f4ba073.7z"
+  },
+  "64bit": {
+   "hash": "sha512:8b0115acc01ad998c5c0bd6ef07d09deac0a7b655571a5311fb6f7a553d0bdbc8f67994aae682799616642fe3618fd53e68e7682b92a41ca0c2701e136db5121",
+   "url": "https://artifacts.videolan.org/vlc/nightly-win64/20220908-0425/vlc-4.0.0-dev-win64-2f4ba073.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "url": "https://artifacts.videolan.org/vlc/nightly-win32/$matchWin32bitverSHA512SUM"
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "url": "https://artifacts.videolan.org/vlc/nightly-win32/$matchWin32bitverSHA512SUM"
-                },
-                "url": "https://artifacts.videolan.org/vlc/nightly-win32/$matchWin32bitver$matchWin32bitfile"
-            },
-            "64bit": {
-                "hash": {
-                    "url": "https://artifacts.videolan.org/vlc/nightly-win64/$matchWin64bitverSHA512SUM"
-                },
-                "url": "https://artifacts.videolan.org/vlc/nightly-win64/$matchWin64bitver$matchWin64bitfile"
-            }
-        },
-        "extract_dir": "$matchFolderversion"
+    "url": "https://artifacts.videolan.org/vlc/nightly-win32/$matchWin32bitver$matchWin32bitfile"
+   },
+   "64bit": {
+    "hash": {
+     "url": "https://artifacts.videolan.org/vlc/nightly-win64/$matchWin64bitverSHA512SUM"
     },
-    "bin": "vlc.exe",
-    "checkver": {
-        "regex": "version:\"(?<version>\\d+)\"\\surls:\"(?<win32bitver>.+\\/)(?<win32bitfile>(?<folderversion>vlc-[\\d.]+-dev).+)\\s(?<win64bitver>.+\\/)(?<win64bitfile>.+)\"",
-        "script": [
-            "$builds = 'win32', 'win64'",
-            "$scriptver = ''",
-            "$urls =  @()",
-            "foreach ($build in $builds) {",
-            "   $base_url = 'https://artifacts.videolan.org/vlc/nightly-' + $build + '/'",
-            "   $page = Invoke-WebRequest $base_url -UseBasicParsing",
-            "   $full_version = $page.links | Where-Object href -match '\\d+-\\d+' | Select-Object -first 1 -expand href",
-            "   $dl_page = Invoke-WebRequest ($base_url + $full_version) -UseBasicParsing",
-            "   $scriptver = $full_version -split '-' | Select-Object -first 1",
-            "   $dl = $full_version + ($dl_page.links | Where-Object href -match '\\.7z$' | Select-Object -first 1 -expand href)",
-            "   $urls += $dl",
-            "}",
-            "Write-Output ('version:\"' + $scriptver + '\"') ('urls:\"' + $urls + '\"')"
-        ]
-    },
-    "description": "A free and open source multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols.",
-    "extract_dir": "vlc-4.0.0-dev",
-    "homepage": "https://www.videolan.org/",
-    "license": "GPL-2.0-only",
-    "persist": "portable",
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\portable\") -and (Test-Path \"$env:APPDATA\\vlc\")) {",
-        "    info \"Copying old '$env:APPDATA\\vlc' to '$persist_dir\\portable'\"",
-        "    ensure \"$dir\\portable\\vlc\" | Out-Null",
-        "    Copy-Item \"$env:APPDATA\\vlc\\*\" \"$dir\\portable\" -Recurse -Force",
-        "    Move-Item \"$dir\\portable\\vlc-qt-interface.ini\" \"$dir\\portable\\vlc\"",
-        "}"
-    ],
-    "shortcuts": [
-        [
-            "vlc.exe",
-            "VLC media player"
-        ]
-    ],
-    "version": "20220908"
+    "url": "https://artifacts.videolan.org/vlc/nightly-win64/$matchWin64bitver$matchWin64bitfile"
+   }
+  },
+  "extract_dir": "$matchFolderversion"
+ },
+ "bin": "vlc.exe",
+ "checkver": {
+  "regex": "version:\"(?<version>\\d+)\"\\surls:\"(?<win32bitver>.+\\/)(?<win32bitfile>(?<folderversion>vlc-[\\d.]+-dev).+)\\s(?<win64bitver>.+\\/)(?<win64bitfile>.+)\"",
+  "script": [
+   "$builds = 'win32', 'win64'",
+   "$scriptver = ''",
+   "$urls =  @()",
+   "foreach ($build in $builds) {",
+   "   $base_url = 'https://artifacts.videolan.org/vlc/nightly-' + $build + '/'",
+   "   $page = Invoke-WebRequest $base_url -UseBasicParsing",
+   "   $full_version = $page.links | Where-Object href -match '\\d+-\\d+' | Select-Object -first 1 -expand href",
+   "   $dl_page = Invoke-WebRequest ($base_url + $full_version) -UseBasicParsing",
+   "   $scriptver = $full_version -split '-' | Select-Object -first 1",
+   "   $dl = $full_version + ($dl_page.links | Where-Object href -match '\\.7z$' | Select-Object -first 1 -expand href)",
+   "   $urls += $dl",
+   "}",
+   "Write-Output ('version:\"' + $scriptver + '\"') ('urls:\"' + $urls + '\"')"
+  ]
+ },
+ "description": "A free and open source multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols.",
+ "extract_dir": "vlc-4.0.0-dev",
+ "homepage": "https://www.videolan.org/",
+ "license": "GPL-2.0-only",
+ "persist": "portable",
+ "pre_install": [
+  "if (!(Test-Path \"$persist_dir\\portable\") -and (Test-Path \"$env:APPDATA\\vlc\")) {",
+  "    info \"Copying old '$env:APPDATA\\vlc' to '$persist_dir\\portable'\"",
+  "    ensure \"$dir\\portable\\vlc\" | Out-Null",
+  "    Copy-Item \"$env:APPDATA\\vlc\\*\" \"$dir\\portable\" -Recurse -Force",
+  "    Move-Item \"$dir\\portable\\vlc-qt-interface.ini\" \"$dir\\portable\\vlc\"",
+  "}"
+ ],
+ "shortcuts": [
+  [
+   "vlc.exe",
+   "VLC media player"
+  ]
+ ],
+ "version": "20220908"
 }

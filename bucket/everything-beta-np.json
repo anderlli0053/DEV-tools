@@ -1,52 +1,52 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "c968ae47cd72e533a51d069b13d373de5f6a379da0cfedb04a4365bd41dbaf6a",
-            "url": "http://www.voidtools.com/Everything-1.4.1.1020.x86-Setup.exe"
-        },
-        "64bit": {
-            "hash": "b641da481ab58b0e1c8a1d2c372700455a9bbf9243b3548f29d39538aaa45c0d",
-            "url": "http://www.voidtools.com/Everything-1.4.1.1020.x64-Setup.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "http://www.voidtools.com/Everything-$version.x86-Setup.exe"
-            },
-            "64bit": {
-                "url": "http://www.voidtools.com/Everything-$version.x64-Setup.exe"
-            }
-        },
-        "hash": {
-            "url": "https://www.voidtools.com/Everything-$version.sha256"
-        }
-    },
-    "bin": "Everything.exe",
-    "checkver": {
-        "regex": "Everything-([\\d.]+)\\.x86",
-        "url": "https://www.voidtools.com/forum/viewtopic.php?f=2&t=5718"
-    },
-    "description": "Locate files and folders by name instantly.",
-    "homepage": "https://www.voidtools.com",
-    "installer": {
-        "args": [
-            "/S",
-            "/D=$dir"
-        ]
-    },
-    "license": "MIT",
-    "post_install": "Remove-Item -Recurse \"$([Environment]::GetFolderPath('startmenu'))\\Programs\\Everything\"",
-    "pre_uninstall": "Stop-Process -Name 'everything' -ErrorAction SilentlyContinue",
-    "shortcuts": [
-        [
-            "Everything.exe",
-            "Everything"
-        ]
-    ],
-    "uninstaller": {
-        "args": "/S",
-        "file": "Uninstall.exe"
-    },
-    "version": "1.4.1.1020"
+ "architecture": {
+  "32bit": {
+   "hash": "c968ae47cd72e533a51d069b13d373de5f6a379da0cfedb04a4365bd41dbaf6a",
+   "url": "http://www.voidtools.com/Everything-1.4.1.1020.x86-Setup.exe"
+  },
+  "64bit": {
+   "hash": "b641da481ab58b0e1c8a1d2c372700455a9bbf9243b3548f29d39538aaa45c0d",
+   "url": "http://www.voidtools.com/Everything-1.4.1.1020.x64-Setup.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "http://www.voidtools.com/Everything-$version.x86-Setup.exe"
+   },
+   "64bit": {
+    "url": "http://www.voidtools.com/Everything-$version.x64-Setup.exe"
+   }
+  },
+  "hash": {
+   "url": "https://www.voidtools.com/Everything-$version.sha256"
+  }
+ },
+ "bin": "Everything.exe",
+ "checkver": {
+  "regex": "Everything-([\\d.]+)\\.x86",
+  "url": "https://www.voidtools.com/forum/viewtopic.php?f=2&t=5718"
+ },
+ "description": "Locate files and folders by name instantly.",
+ "homepage": "https://www.voidtools.com",
+ "installer": {
+  "args": [
+   "/S",
+   "/D=$dir"
+  ]
+ },
+ "license": "MIT",
+ "post_install": "Remove-Item -Recurse \"$([Environment]::GetFolderPath('startmenu'))\\Programs\\Everything\"",
+ "pre_uninstall": "Stop-Process -Name 'everything' -ErrorAction SilentlyContinue",
+ "shortcuts": [
+  [
+   "Everything.exe",
+   "Everything"
+  ]
+ ],
+ "uninstaller": {
+  "args": "/S",
+  "file": "Uninstall.exe"
+ },
+ "version": "1.4.1.1020"
 }

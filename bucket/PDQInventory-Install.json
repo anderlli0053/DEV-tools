@@ -1,46 +1,46 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "e894e3ae4246d5dc614b05c20b201896a1de085daa77406d351af0ead9af4a6d",
-            "url": "https://download.pdq.com/release/19/Inventory_19.3.350.0.exe#/setup.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://download.pdq.com/release/$majorVersion/Inventory_$version.exe#/setup.exe"
-            }
-        }
-    },
-    "changelog": "https://www.pdq.com/releases/",
-    "checkver": {
-        "regex": "/Inventory_([\\d.]+).exe",
-        "url": "https://www.pdq.com/releases/"
-    },
-    "description": "PDQ Inventory. Scan, collect, and organize your machines so deployments go exactly where you need them to.",
-    "homepage": "https://www.pdq.com/pdq-inventory/",
-    "installer": {
-        "script": [
-            "$programname = \"PDQ Inventory*\"",
-            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFilesX86\")",
-            "$filepath = \"$ProgramFiles\\Admin Arsenal\\PDQ Inventory\\PDQInventoryConsole.exe\"",
-            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-            "{",
-            "   &\"$dir\\setup.exe\" /S | Out-Null",
-            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-            "   {",
-            "       exit 1",
-            "   }",
-            "}",
-            "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
-        ]
-    },
-    "license": "Proprietary",
-    "post_install": [
-        "$programname = \"PDQ Inventory\"",
-        "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
-        "if (Test-Path \"$CommonDesktopPath\\$programname.lnk\") {Remove-Item \"$CommonDesktopPath\\$programname.lnk\" -Force}"
-    ],
-    "pre_download": "Assert-Administrator",
-    "version": "19.3.350.0"
+ "architecture": {
+  "64bit": {
+   "hash": "e894e3ae4246d5dc614b05c20b201896a1de085daa77406d351af0ead9af4a6d",
+   "url": "https://download.pdq.com/release/19/Inventory_19.3.350.0.exe#/setup.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://download.pdq.com/release/$majorVersion/Inventory_$version.exe#/setup.exe"
+   }
+  }
+ },
+ "changelog": "https://www.pdq.com/releases/",
+ "checkver": {
+  "regex": "/Inventory_([\\d.]+).exe",
+  "url": "https://www.pdq.com/releases/"
+ },
+ "description": "PDQ Inventory. Scan, collect, and organize your machines so deployments go exactly where you need them to.",
+ "homepage": "https://www.pdq.com/pdq-inventory/",
+ "installer": {
+  "script": [
+   "$programname = \"PDQ Inventory*\"",
+   "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFilesX86\")",
+   "$filepath = \"$ProgramFiles\\Admin Arsenal\\PDQ Inventory\\PDQInventoryConsole.exe\"",
+   "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+   "{",
+   "   &\"$dir\\setup.exe\" /S | Out-Null",
+   "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+   "   {",
+   "       exit 1",
+   "   }",
+   "}",
+   "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
+  ]
+ },
+ "license": "Proprietary",
+ "post_install": [
+  "$programname = \"PDQ Inventory\"",
+  "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
+  "if (Test-Path \"$CommonDesktopPath\\$programname.lnk\") {Remove-Item \"$CommonDesktopPath\\$programname.lnk\" -Force}"
+ ],
+ "pre_download": "Assert-Administrator",
+ "version": "19.3.350.0"
 }
