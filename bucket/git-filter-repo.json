@@ -14,7 +14,10 @@
  "homepage": "https://github.com/newren/git-filter-repo",
  "license": "MIT",
  "post_install": "Copy-Item \"$dir\\git-filter-repo\" \"$dir\\contrib\\filter-repo-demos\" | Out-Null",
- "pre_install": "Move-Item \"$dir\\git-filter-repo-*\\*\" \"$dir\"; Remove-Item \"$dir\\git-filter-repo-*\"",
+ 
+ "pre_install":["if(!(is_admin)) { error \"$App requires admin rights to install and uninstall!\"; break }",
+ "Move-Item \"$dir\\git-filter-repo-*\\*\" \"$dir\"; Remove-Item \"$dir\\git-filter-repo-*\""
+ ] 
  "suggest": {
   "Python 3": "python"
  },
