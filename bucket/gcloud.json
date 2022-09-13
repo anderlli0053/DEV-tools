@@ -1,44 +1,44 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "fc2354554a4b604704252c6770e8978fe330cde63e79cfb06dcdad5a96d27702",
-   "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-401.0.0-windows-x86-bundled-python.zip#/dl.zip_"
-  },
-  "64bit": {
-   "hash": "26ac86dff1d04a1e814cf084ae717059ee9e4ded6397c20c39fc1b699f40c4a2",
-   "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-401.0.0-windows-x86_64-bundled-python.zip#/dl.zip_"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-$version-windows-x86-bundled-python.zip#/dl.zip_"
-   },
-   "64bit": {
-    "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-$version-windows-x86_64-bundled-python.zip#/dl.zip_"
-   }
-  }
- },
- "bin": [
-  "bin\\gcloud.cmd",
-  "bin\\gsutil.cmd",
-  "bin\\bq.cmd",
-  "bin\\docker-credential-gcloud.cmd",
-  "bin\\git-credential-gcloud.cmd"
- ],
- "checkver": {
-  "regex": "google-cloud-sdk-([\\d.]+)-windows-x86_64-bundled",
-  "url": "https://cloud.google.com/sdk/docs/downloads-versioned-archives"
- },
- "depends": "7zip19.00-helper",
- "description": "Command-line interface for Google Cloud Platform products and services.",
- "homepage": "https://cloud.google.com/sdk/",
- "license": "Proprietary",
- "notes": "To initialize Cloud SDK, you will need to run: 'gcloud init'",
- "pre_install": [
-  "Invoke-ExternalCommand 7z1900-helper -ArgumentList @('x', '-bso0', \"`\"$dir\\dl.zip_`\"\", \"`\"-o$dir`\"\") | Out-Null",
-  "Move-Item \"$dir\\google-cloud-sdk\\*\" \"$dir\\\" | Out-Null",
-  "Remove-Item \"$dir\\google-cloud-sdk\", \"$dir\\dl.zip_\" -Force -Recurse"
- ],
- "version": "401.0.0"
+    "architecture": {
+        "32bit": {
+            "hash": "607e70cc11ee7eefdf8c16bde25fe9ff77adeb7c877b16058790a247052f15e3",
+            "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-402.0.0-windows-x86-bundled-python.zip#/dl.zip_"
+        },
+        "64bit": {
+            "hash": "87d8e95c851c06ab0298b9a03cc021a1d580536ad0259a9bc49bc486feadcaeb",
+            "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-402.0.0-windows-x86_64-bundled-python.zip#/dl.zip_"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-$version-windows-x86-bundled-python.zip#/dl.zip_"
+            },
+            "64bit": {
+                "url": "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-$version-windows-x86_64-bundled-python.zip#/dl.zip_"
+            }
+        }
+    },
+    "bin": [
+        "bin\\gcloud.cmd",
+        "bin\\gsutil.cmd",
+        "bin\\bq.cmd",
+        "bin\\docker-credential-gcloud.cmd",
+        "bin\\git-credential-gcloud.cmd"
+    ],
+    "checkver": {
+        "regex": "google-cloud-sdk-([\\d.]+)-windows-x86_64-bundled",
+        "url": "https://cloud.google.com/sdk/docs/downloads-versioned-archives"
+    },
+    "depends": "7zip19.00-helper",
+    "description": "Command-line interface for Google Cloud Platform products and services.",
+    "homepage": "https://cloud.google.com/sdk/",
+    "license": "Proprietary",
+    "notes": "To initialize Cloud SDK, you will need to run: 'gcloud init'",
+    "pre_install": [
+        "Invoke-ExternalCommand 7z1900-helper -ArgumentList @('x', '-bso0', \"`\"$dir\\dl.zip_`\"\", \"`\"-o$dir`\"\") | Out-Null",
+        "Move-Item \"$dir\\google-cloud-sdk\\*\" \"$dir\\\" | Out-Null",
+        "Remove-Item \"$dir\\google-cloud-sdk\", \"$dir\\dl.zip_\" -Force -Recurse"
+    ],
+    "version": "402.0.0"
 }
