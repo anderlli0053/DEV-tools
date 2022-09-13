@@ -1,48 +1,48 @@
 {
- "autoupdate": {
-  "url": "https://dl.dolphin-emu.org/builds/$matchRand1/$matchRand2/dolphin-master-$matchMajor-$matchBuild-x64.7z"
- },
- "bin": [
-  [
-   "Dolphin.exe",
-   "dolphin-dev"
-  ]
- ],
- "checkver": {
-  "regex": "\\/(?<rand1>.{2})\\/(?<rand2>.{2})\\/dolphin-master-(?<major>[\\d\\.]+)-(?<build>[\\d]+)",
-  "replace": "${major}-${build}",
-  "url": "https://dolphin-emu.org/download/list/master/1/"
- },
- "description": "A Nintendo GameCube and Wii emulator, with enhancements and Netplay. (development version)",
- "extract_dir": "Dolphin-x64",
- "hash": "ca1e807719492e33b6de87ae7398c2f5994017a2bcf272fc3c7423ef5d147fed",
- "homepage": "https://dolphin-emu.org/",
- "license": {
-  "identifier": "GPL-2.0-or-later",
-  "url": "https://github.com/dolphin-emu/dolphin/blob/master/COPYING"
- },
- "persist": "User",
- "post_install": "Set-Content -Value $null -Path \"$dir\\portable.txt\"",
- "pre_install": [
-  "if (!(Test-Path \"$persist_dir\")) {",
-  "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
-  "   New-item \"$persist_dir\\User\" -ItemType Directory | Out-Null",
-  "   if (Test-Path \"$env:USERPROFILE\\Documents\\Dolphin Emulator\") {",
-  "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
-  "       Copy-Item -Path \"$env:USERPROFILE\\Documents\\Dolphin Emulator\\*\" -Destination \"$persist_dir\\User\" -Recurse",
-  "       Remove-Item -Path \"$env:USERPROFILE\\Documents\\Dolphin Emulator\" -Recurse",
-  "   }",
-  "}"
- ],
- "shortcuts": [
-  [
-   "Dolphin.exe",
-   "Dolphin (Development)"
-  ]
- ],
- "suggest": {
-  "Microsoft Visual C++ Runtime 2022": "extras/vcredist2022"
- },
- "url": "https://dl.dolphin-emu.org/builds/54/0b/dolphin-master-5.0-17340-x64.7z",
- "version": "5.0-17340"
+    "autoupdate": {
+        "url": "https://dl.dolphin-emu.org/builds/$matchRand1/$matchRand2/dolphin-master-$matchMajor-$matchBuild-x64.7z"
+    },
+    "bin": [
+        [
+            "Dolphin.exe",
+            "dolphin-dev"
+        ]
+    ],
+    "checkver": {
+        "regex": "\\/(?<rand1>.{2})\\/(?<rand2>.{2})\\/dolphin-master-(?<major>[\\d\\.]+)-(?<build>[\\d]+)",
+        "replace": "${major}-${build}",
+        "url": "https://dolphin-emu.org/download/list/master/1/"
+    },
+    "description": "A Nintendo GameCube and Wii emulator, with enhancements and Netplay. (development version)",
+    "extract_dir": "Dolphin-x64",
+    "hash": "7c9f016d99f8557327ccbba0c8cf7472151a966c9ccb5cb44b2ae235b78918de",
+    "homepage": "https://dolphin-emu.org/",
+    "license": {
+        "identifier": "GPL-2.0-or-later",
+        "url": "https://github.com/dolphin-emu/dolphin/blob/master/COPYING"
+    },
+    "persist": "User",
+    "post_install": "Set-Content -Value $null -Path \"$dir\\portable.txt\"",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   New-item \"$persist_dir\\User\" -ItemType Directory | Out-Null",
+        "   if (Test-Path \"$env:USERPROFILE\\Documents\\Dolphin Emulator\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:USERPROFILE\\Documents\\Dolphin Emulator\\*\" -Destination \"$persist_dir\\User\" -Recurse",
+        "       Remove-Item -Path \"$env:USERPROFILE\\Documents\\Dolphin Emulator\" -Recurse",
+        "   }",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "Dolphin.exe",
+            "Dolphin (Development)"
+        ]
+    ],
+    "suggest": {
+        "Microsoft Visual C++ Runtime 2022": "extras/vcredist2022"
+    },
+    "url": "https://dl.dolphin-emu.org/builds/ca/43/dolphin-master-5.0-17344-x64.7z",
+    "version": "5.0-17344"
 }
