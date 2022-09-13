@@ -1,57 +1,57 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/2dust/clashN/releases/download/$version/clashN.zip"
-    },
-    "bin": "clashN.ps1",
-    "checkver": {
-        "jsonpath": "$[0].tag_name",
-        "url": "https://api.github.com/repos/2dust/clashN/releases"
-    },
-    "depends": [
-        "sudo",
-        "meta/clash",
-        "meta/clash-premium",
-        "meta/clash-meta"
-    ],
-    "description": "A clash client for Windows, support clash core and Clash.Meta core",
-    "extract_dir": "clashN-Core",
-    "hash": "989ff19e03694cd3f3757bfe6305ed9528ed7084219583d8c99601f85065f635",
-    "homepage": "https://github.com/2dust/clashN",
-    "license": {
-        "identifier": "GPL-3.0-only",
-        "url": "https://github.com/2dust/clashN/blob/main/LICENSE"
-    },
-    "persist": [
-        "guiBackups",
-        "guiConfigs",
-        "guiLogs",
-        "data"
-    ],
-    "pre_install": [
-        "Copy-Item \"$(appdir clash $global)\\current\\Clash.exe\" \"$dir\" -Force | Out-Null",
-        "Copy-Item \"$(appdir clash-premium $global)\\current\\Clash.Premium.exe\" \"$dir\" -Force | Out-Null",
-        "Copy-Item \"$(appdir clash-meta $global)\\current\\Clash.Meta.exe\" \"$dir\" -Force | Out-Null",
-        "'config.yaml', 'guiNConfig.json' | ForEach-Object {",
-        "    if (Test-Path \"$persist_dir\\$_\") { Copy-Item \"$persist_dir\\$_\" \"$dir\\\" -Force | Out-Null }",
-        "}",
-        "Set-Content \"$dir\\clashN.ps1\" -Value 'sudo Start-Process -FilePath \"$env:SCOOP\\apps\\clashn\\current\\clashN.exe\" -WorkingDirectory \"$env:SCOOP\\apps\\clashn\\current\\\" -WindowStyle Hidden' -Encoding Ascii"
-    ],
-    "shortcuts": [
-        [
-            "clashN.ps1",
-            "clashN"
-        ]
-    ],
-    "suggest": {
-        "dotnet-runtime": "meta/dotnet-runtime"
-    },
-    "uninstaller": {
-        "script": [
-            "'config.yaml', 'guiNConfig.json' | ForEach-Object {",
-            "    if (Test-Path \"$dir\\$_\") { Copy-Item \"$dir\\$_\" \"$persist_dir\\\" -Force | Out-Null }",
-            "}"
-        ]
-    },
-    "url": "https://github.com/2dust/clashN/releases/download/1.22/clashN.zip",
-    "version": "1.22"
+ "autoupdate": {
+  "url": "https://github.com/2dust/clashN/releases/download/$version/clashN.zip"
+ },
+ "bin": "clashN.ps1",
+ "checkver": {
+  "jsonpath": "$[0].tag_name",
+  "url": "https://api.github.com/repos/2dust/clashN/releases"
+ },
+ "depends": [
+  "sudo",
+  "meta/clash",
+  "meta/clash-premium",
+  "meta/clash-meta"
+ ],
+ "description": "A clash client for Windows, support clash core and Clash.Meta core",
+ "extract_dir": "clashN-Core",
+ "hash": "989ff19e03694cd3f3757bfe6305ed9528ed7084219583d8c99601f85065f635",
+ "homepage": "https://github.com/2dust/clashN",
+ "license": {
+  "identifier": "GPL-3.0-only",
+  "url": "https://github.com/2dust/clashN/blob/main/LICENSE"
+ },
+ "persist": [
+  "guiBackups",
+  "guiConfigs",
+  "guiLogs",
+  "data"
+ ],
+ "pre_install": [
+  "Copy-Item \"$(appdir clash $global)\\current\\Clash.exe\" \"$dir\" -Force | Out-Null",
+  "Copy-Item \"$(appdir clash-premium $global)\\current\\Clash.Premium.exe\" \"$dir\" -Force | Out-Null",
+  "Copy-Item \"$(appdir clash-meta $global)\\current\\Clash.Meta.exe\" \"$dir\" -Force | Out-Null",
+  "'config.yaml', 'guiNConfig.json' | ForEach-Object {",
+  "    if (Test-Path \"$persist_dir\\$_\") { Copy-Item \"$persist_dir\\$_\" \"$dir\\\" -Force | Out-Null }",
+  "}",
+  "Set-Content \"$dir\\clashN.ps1\" -Value 'sudo Start-Process -FilePath \"$env:SCOOP\\apps\\clashn\\current\\clashN.exe\" -WorkingDirectory \"$env:SCOOP\\apps\\clashn\\current\\\" -WindowStyle Hidden' -Encoding Ascii"
+ ],
+ "shortcuts": [
+  [
+   "clashN.ps1",
+   "clashN"
+  ]
+ ],
+ "suggest": {
+  "dotnet-runtime": "meta/dotnet-runtime"
+ },
+ "uninstaller": {
+  "script": [
+   "'config.yaml', 'guiNConfig.json' | ForEach-Object {",
+   "    if (Test-Path \"$dir\\$_\") { Copy-Item \"$dir\\$_\" \"$persist_dir\\\" -Force | Out-Null }",
+   "}"
+  ]
+ },
+ "url": "https://github.com/2dust/clashN/releases/download/1.22/clashN.zip",
+ "version": "1.22"
 }

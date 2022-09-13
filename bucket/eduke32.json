@@ -1,63 +1,63 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "0b7ec8d4e6c9c8ef57a531ceccb33b26b0fc7184adc78372a97d2963e059c716",
-            "url": "https://dukeworld.com/eduke32/synthesis/20220911-10160-b55eca7f8/eduke32_win32_20220911-10160-b55eca7f8.7z"
-        },
-        "64bit": {
-            "hash": "8c7a6c69d539e7b6dd8f58744fd7dba62154b2667e594f546f14b4101992d115",
-            "url": "https://dukeworld.com/eduke32/synthesis/20220911-10160-b55eca7f8/eduke32_win64_20220911-10160-b55eca7f8.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://dukeworld.com/eduke32/synthesis/$version/eduke32_win32_$version.7z"
-            },
-            "64bit": {
-                "url": "https://dukeworld.com/eduke32/synthesis/$version/eduke32_win64_$version.7z"
-            }
-        }
-    },
-    "bin": [
-        [
-            "eduke32.exe",
-            "eduke32",
-            "-j $persist_dir\\data"
-        ]
-    ],
-    "checkver": {
-        "regex": "<strong>(\\d{8}-\\d{4,}-[a-z0-9]{9})</strong>",
-        "url": "https://dukeworld.com/eduke32/synthesis/"
-    },
-    "description": "Modern source port for Duke Nukem 3D",
-    "homepage": "https://www.eduke32.com/",
-    "license": "http://www.eduke32.com/buildlic.txt",
-    "notes": [
-        "Place GRP and RTS files (game data) in:",
-        "",
-        "    $persist_dir\\data",
-        "",
-        "Place mods, music packs, and other files to auto-load in:",
-        "",
-        "    $persist_dir\\autoload"
-    ],
-    "persist": [
-        "autoload",
-        "data",
-        "eduke32.cfg",
-        "settings.cfg"
-    ],
-    "pre_install": [
-        "New-Item -Path $dir -Name eduke32.cfg -ItemType File -ErrorAction Ignore | Out-Null",
-        "New-Item -Path $dir -Name settings.cfg -ItemType File -ErrorAction Ignore | Out-Null"
-    ],
-    "shortcuts": [
-        [
-            "eduke32.exe",
-            "EDuke32",
-            "-j data"
-        ]
-    ],
-    "version": "20220911-10160-b55eca7f8"
+ "architecture": {
+  "32bit": {
+   "hash": "0b7ec8d4e6c9c8ef57a531ceccb33b26b0fc7184adc78372a97d2963e059c716",
+   "url": "https://dukeworld.com/eduke32/synthesis/20220911-10160-b55eca7f8/eduke32_win32_20220911-10160-b55eca7f8.7z"
+  },
+  "64bit": {
+   "hash": "8c7a6c69d539e7b6dd8f58744fd7dba62154b2667e594f546f14b4101992d115",
+   "url": "https://dukeworld.com/eduke32/synthesis/20220911-10160-b55eca7f8/eduke32_win64_20220911-10160-b55eca7f8.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://dukeworld.com/eduke32/synthesis/$version/eduke32_win32_$version.7z"
+   },
+   "64bit": {
+    "url": "https://dukeworld.com/eduke32/synthesis/$version/eduke32_win64_$version.7z"
+   }
+  }
+ },
+ "bin": [
+  [
+   "eduke32.exe",
+   "eduke32",
+   "-j $persist_dir\\data"
+  ]
+ ],
+ "checkver": {
+  "regex": "<strong>(\\d{8}-\\d{4,}-[a-z0-9]{9})</strong>",
+  "url": "https://dukeworld.com/eduke32/synthesis/"
+ },
+ "description": "Modern source port for Duke Nukem 3D",
+ "homepage": "https://www.eduke32.com/",
+ "license": "http://www.eduke32.com/buildlic.txt",
+ "notes": [
+  "Place GRP and RTS files (game data) in:",
+  "",
+  "    $persist_dir\\data",
+  "",
+  "Place mods, music packs, and other files to auto-load in:",
+  "",
+  "    $persist_dir\\autoload"
+ ],
+ "persist": [
+  "autoload",
+  "data",
+  "eduke32.cfg",
+  "settings.cfg"
+ ],
+ "pre_install": [
+  "New-Item -Path $dir -Name eduke32.cfg -ItemType File -ErrorAction Ignore | Out-Null",
+  "New-Item -Path $dir -Name settings.cfg -ItemType File -ErrorAction Ignore | Out-Null"
+ ],
+ "shortcuts": [
+  [
+   "eduke32.exe",
+   "EDuke32",
+   "-j data"
+  ]
+ ],
+ "version": "20220911-10160-b55eca7f8"
 }
