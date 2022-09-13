@@ -1,57 +1,57 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "40af2eee0a2c0c80076e50e22b941bdd431e29927bcb1bfdf9dfb3cd449af9a6",
-   "url": "https://gms.yoyogames.com/GameMaker-Installer-2022.8.0.34.exe#/setup.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://gms.yoyogames.com/GameMaker-Installer-$version.exe#/setup.exe"
-   }
-  }
- },
- "changelog": "https://gms.yoyogames.com/ReleaseNotes.html",
- "checkver": {
-  "regex": "Current version is <b>([\\d.]+)",
-  "url": "https://gmapi.gnysek.pl/"
- },
- "description": "GameMaker Studio 2. GameMaker has helped developers create much-loved and multi-million seller games",
- "homepage": "https://www.yoyogames.com/en/gamemaker",
- "installer": {
-  "script": [
-   "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
-   "$filepath = \"$ProgramFiles\\GameMaker Studio 2\\GameMaker.exe\"",
-   "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-   "{",
-   "   &\"$dir\\setup.exe\" /S | Out-Null",
-   "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-   "   {",
-   "       exit 1",
-   "   }",
-   "}",
-   "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
-  ]
- },
- "license": "Proprietary",
- "post_install": [
-  "$programname = \"GameMaker\"",
-  "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
-  "if (Test-Path \"$CommonDesktopPath\\$programname.lnk\") {Remove-Item \"$CommonDesktopPath\\$programname.lnk\" -Force}"
- ],
- "pre_download": "Assert-Administrator",
- "pre_install": [
-  "$processname = \"GameMakerStudio\"",
-  "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-  "if ($process) {",
-  "   $process.CloseMainWindow()",
-  "   Start-Sleep -Seconds 5",
-  "   if (!$process.HasExited) {",
-  "       Start-Sleep -Seconds 25",
-  "       $process | Stop-Process -Force",
-  "   }",
-  "}"
- ],
- "version": "2022.8.0.34"
+    "architecture": {
+        "64bit": {
+            "hash": "411e03b23fafac9a32e1477c7372180e19afecccd49bd872777dd4f07c6f521c",
+            "url": "https://gms.yoyogames.com/GameMaker-Installer-2022.8.1.37.exe#/setup.exe"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gms.yoyogames.com/GameMaker-Installer-$version.exe#/setup.exe"
+            }
+        }
+    },
+    "changelog": "https://gms.yoyogames.com/ReleaseNotes.html",
+    "checkver": {
+        "regex": "Current version is <b>([\\d.]+)",
+        "url": "https://gmapi.gnysek.pl/"
+    },
+    "description": "GameMaker Studio 2. GameMaker has helped developers create much-loved and multi-million seller games",
+    "homepage": "https://www.yoyogames.com/en/gamemaker",
+    "installer": {
+        "script": [
+            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
+            "$filepath = \"$ProgramFiles\\GameMaker Studio 2\\GameMaker.exe\"",
+            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "{",
+            "   &\"$dir\\setup.exe\" /S | Out-Null",
+            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}",
+            "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
+        ]
+    },
+    "license": "Proprietary",
+    "post_install": [
+        "$programname = \"GameMaker\"",
+        "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
+        "if (Test-Path \"$CommonDesktopPath\\$programname.lnk\") {Remove-Item \"$CommonDesktopPath\\$programname.lnk\" -Force}"
+    ],
+    "pre_download": "Assert-Administrator",
+    "pre_install": [
+        "$processname = \"GameMakerStudio\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
+    "version": "2022.8.1.37"
 }
