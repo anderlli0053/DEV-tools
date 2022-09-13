@@ -1,64 +1,64 @@
 {
- "autoupdate": {
-  "hash": {
-   "regex": "Windows SHA-256: ($sha256)",
-   "url": "https://rpcs3.net/compatibility?b"
-  },
-  "url": "https://github.com/rpcs3/rpcs3-binaries-win/releases/download/build-$matchFullhash/rpcs3-v$matchBuild-$matchShorthash_win64.7z"
- },
- "bin": "rpcs3.exe",
- "checkver": {
-  "regex": "/rpcs3-binaries-win/releases/download/build-(?<fullhash>[0-9a-f]+)/rpcs3-v(?<build>[0-9]+\\.[0-9]+\\.[0-9]+\\-[0-9]+)-(?<shorthash>[0-9a-f]{8})",
-  "replace": "${build}",
-  "url": "https://rpcs3.net/compatibility?b"
- },
- "depends": "ps3-system-software",
- "description": "Open-source Sony PlayStation 3 emulator",
- "hash": "a5a3f381d5a924cd6af78045338a6a757f5d60d484bd3c7e142be361c9ef724a",
- "homepage": "https://rpcs3.net/",
- "license": {
-  "identifier": "GPL-2.0",
-  "url": "https://github.com/RPCS3/rpcs3/blob/master/LICENSE"
- },
- "notes": [
-  "ATTENTION: RPCS3 requires a copy of the official PS3 firmware to function.",
-  "Install the ps3-system-software package.  You must still manually load PS3UPDAT.PUP",
-  "See the official quickstart guide for further instructions: https://rpcs3.net/quickstart"
- ],
- "persist": [
-  "dev_flash",
-  "dev_flash2",
-  "dev_flash3",
-  "dev_hdd0",
-  "dev_hdd1",
-  "dev_usb000",
-  "cache",
-  "captures",
-  "config.yml",
-  "config",
-  "firmware",
-  "games.yml",
-  "GuiConfigs",
-  "Icons",
-  "patches"
- ],
- "pre_install": [
-  "if (!(Test-Path \"$persist_dir\")) {",
-  "   New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
-  "   New-Item \"$persist_dir\\config.yml\" -ItemType File | Out-Null",
-  "   New-Item \"$persist_dir\\games.yml\" -ItemType File | Out-Null",
-  "   '[Meta]', 'checkUpdateStart=false' | Set-Content \"$dir\\GuiConfigs\\CurrentSettings.ini\"",
-  "}"
- ],
- "shortcuts": [
-  [
-   "rpcs3.exe",
-   "RPCS3"
-  ]
- ],
- "suggest": {
-  "Microsoft Visual C++ Runtime 2022": "extras/vcredist2022"
- },
- "url": "https://github.com/rpcs3/rpcs3-binaries-win/releases/download/build-cfdc852f033223104f9d83bd1bb83fe619ba518f/rpcs3-v0.0.24-14150-cfdc852f_win64.7z",
- "version": "0.0.24-14150"
+    "autoupdate": {
+        "hash": {
+            "regex": "Windows SHA-256: ($sha256)",
+            "url": "https://rpcs3.net/compatibility?b"
+        },
+        "url": "https://github.com/rpcs3/rpcs3-binaries-win/releases/download/build-$matchFullhash/rpcs3-v$matchBuild-$matchShorthash_win64.7z"
+    },
+    "bin": "rpcs3.exe",
+    "checkver": {
+        "regex": "/rpcs3-binaries-win/releases/download/build-(?<fullhash>[0-9a-f]+)/rpcs3-v(?<build>[0-9]+\\.[0-9]+\\.[0-9]+\\-[0-9]+)-(?<shorthash>[0-9a-f]{8})",
+        "replace": "${build}",
+        "url": "https://rpcs3.net/compatibility?b"
+    },
+    "depends": "ps3-system-software",
+    "description": "Open-source Sony PlayStation 3 emulator",
+    "hash": "add4d78112376019d81fec9656bddcaf34b89d4659748f5b5fd8f08a1ebba321",
+    "homepage": "https://rpcs3.net/",
+    "license": {
+        "identifier": "GPL-2.0",
+        "url": "https://github.com/RPCS3/rpcs3/blob/master/LICENSE"
+    },
+    "notes": [
+        "ATTENTION: RPCS3 requires a copy of the official PS3 firmware to function.",
+        "Install the ps3-system-software package.  You must still manually load PS3UPDAT.PUP",
+        "See the official quickstart guide for further instructions: https://rpcs3.net/quickstart"
+    ],
+    "persist": [
+        "dev_flash",
+        "dev_flash2",
+        "dev_flash3",
+        "dev_hdd0",
+        "dev_hdd1",
+        "dev_usb000",
+        "cache",
+        "captures",
+        "config.yml",
+        "config",
+        "firmware",
+        "games.yml",
+        "GuiConfigs",
+        "Icons",
+        "patches"
+    ],
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   New-Item \"$persist_dir\\config.yml\" -ItemType File | Out-Null",
+        "   New-Item \"$persist_dir\\games.yml\" -ItemType File | Out-Null",
+        "   '[Meta]', 'checkUpdateStart=false' | Set-Content \"$dir\\GuiConfigs\\CurrentSettings.ini\"",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "rpcs3.exe",
+            "RPCS3"
+        ]
+    ],
+    "suggest": {
+        "Microsoft Visual C++ Runtime 2022": "extras/vcredist2022"
+    },
+    "url": "https://github.com/rpcs3/rpcs3-binaries-win/releases/download/build-b9e20dc5c9d7776ff27923600da004a8a57bc132/rpcs3-v0.0.24-14151-b9e20dc5_win64.7z",
+    "version": "0.0.24-14151"
 }
