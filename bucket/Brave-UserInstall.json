@@ -1,67 +1,67 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "1948608276c3675cbd1b28c17ff3ef033371157a9e95d875b5a2e31149cd20b2",
-   "url": "https://github.com/brave/brave-browser/releases/download/v1.43.89/BraveBrowserStandaloneSilentSetup32.exe#/setup.exe"
-  },
-  "64bit": {
-   "hash": "7ec2a4350df27601294a74043e5fd4e2696bbb000c99a6946eb8e575cfb04369",
-   "url": "https://github.com/brave/brave-browser/releases/download/v1.43.89/BraveBrowserStandaloneSilentSetup.exe#/setup.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://github.com/brave/brave-browser/releases/download/v$version/BraveBrowserStandaloneSilentSetup32.exe#/setup.exe"
-   },
-   "64bit": {
-    "url": "https://github.com/brave/brave-browser/releases/download/v$version/BraveBrowserStandaloneSilentSetup.exe#/setup.exe"
-   }
-  }
- },
- "changelog": "https://brave.com/latest/",
- "checkver": {
-  "regex": "releases/tag/v([\\d.]+)",
-  "url": "https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md"
- },
- "description": "Brave. Secure, Fast & Private Web Browser with Adblocker",
- "homepage": "https://brave.com/",
- "installer": {
-  "script": [
-   "$LocalApplicationData = [Environment]::GetFolderPath(\"LocalApplicationData\")",
-   "$filepath = \"$LocalApplicationData\\BraveSoftware\\Brave-Browser\\Application\\brave.exe\"",
-   "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version.ToString().Substring(4) -lt [System.Version]\"$version\"))",
-   "{",
-   "   &\"$dir\\setup.exe\" | Out-Null",
-   "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version.ToString().Substring(4) -lt [System.Version]\"$version\"))",
-   "   {",
-   "       exit 1",
-   "   }",
-   "}",
-   "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
-  ]
- },
- "license": {
-  "identifier": "Freeware,BSD-3-Clause,GPL-3.0-only,...",
-  "url": "https://github.com/brave/brave-browser/blob/master/LICENSE"
- },
- "post_install": [
-  "$programname = \"Brave\"",
-  "$DesktopPath = [Environment]::GetFolderPath(\"DesktopDirectory\")",
-  "if (Test-Path \"$DesktopPath\\$programname.lnk\") {Remove-Item \"$DesktopPath\\$programname.lnk\" -Force}"
- ],
- "pre_download": "Assert-Administrator",
- "pre_install": [
-  "$processname = \"Brave\"",
-  "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-  "if ($process) {",
-  "   $process.CloseMainWindow()",
-  "   Start-Sleep -Seconds 5",
-  "   if (!$process.HasExited) {",
-  "       Start-Sleep -Seconds 25",
-  "       $process | Stop-Process -Force",
-  "   }",
-  "}"
- ],
- "version": "1.43.89"
+    "architecture": {
+        "32bit": {
+            "hash": "3ecdc5e3460f4bfb7d6d4f565afe78d857465168608876c3d6130f6aa94d0810",
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.43.93/BraveBrowserStandaloneSilentSetup32.exe#/setup.exe"
+        },
+        "64bit": {
+            "hash": "29213ad5150984dbc9e8c278d5af8f2cb790fb4e9d4a8415be59322b4fdd1733",
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.43.93/BraveBrowserStandaloneSilentSetup.exe#/setup.exe"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/BraveBrowserStandaloneSilentSetup32.exe#/setup.exe"
+            },
+            "64bit": {
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/BraveBrowserStandaloneSilentSetup.exe#/setup.exe"
+            }
+        }
+    },
+    "changelog": "https://brave.com/latest/",
+    "checkver": {
+        "regex": "releases/tag/v([\\d.]+)",
+        "url": "https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md"
+    },
+    "description": "Brave. Secure, Fast & Private Web Browser with Adblocker",
+    "homepage": "https://brave.com/",
+    "installer": {
+        "script": [
+            "$LocalApplicationData = [Environment]::GetFolderPath(\"LocalApplicationData\")",
+            "$filepath = \"$LocalApplicationData\\BraveSoftware\\Brave-Browser\\Application\\brave.exe\"",
+            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version.ToString().Substring(4) -lt [System.Version]\"$version\"))",
+            "{",
+            "   &\"$dir\\setup.exe\" | Out-Null",
+            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version.ToString().Substring(4) -lt [System.Version]\"$version\"))",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}",
+            "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
+        ]
+    },
+    "license": {
+        "identifier": "Freeware,BSD-3-Clause,GPL-3.0-only,...",
+        "url": "https://github.com/brave/brave-browser/blob/master/LICENSE"
+    },
+    "post_install": [
+        "$programname = \"Brave\"",
+        "$DesktopPath = [Environment]::GetFolderPath(\"DesktopDirectory\")",
+        "if (Test-Path \"$DesktopPath\\$programname.lnk\") {Remove-Item \"$DesktopPath\\$programname.lnk\" -Force}"
+    ],
+    "pre_download": "Assert-Administrator",
+    "pre_install": [
+        "$processname = \"Brave\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
+    "version": "1.43.93"
 }
