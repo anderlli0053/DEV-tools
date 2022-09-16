@@ -1,58 +1,58 @@
 {
- "##": "Checkver URL https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel",
- "architecture": {
-  "32bit": {
-   "hash": "a7b997e90ab6f8ca9e9d90f83785a676f90518678fecf0a2801dde5c5849e725",
-   "url": "http://go.microsoft.com/fwlink/?LinkID=2093505#/setup.msi_"
-  },
-  "64bit": {
-   "hash": "1972c2e7bc8bd2a7c815eabd6c77936caff09dd9f214b2100de5c948504e54b8",
-   "url": "http://go.microsoft.com/fwlink/?LinkID=2093437#/setup.msi_"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "http://go.microsoft.com/fwlink/?LinkID=2093505#/setup.msi_"
-   },
-   "64bit": {
-    "url": "http://go.microsoft.com/fwlink/?LinkID=2093437#/setup.msi_"
-   }
-  }
- },
- "changelog": "https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel",
- "checkver": {
-  "regex": "Version ([\\d.]+)",
-  "url": "https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnotes-security"
- },
- "description": "Microsoft Edge. The chromium based Microsoft Edge browser.",
- "homepage": "https://www.microsoft.com/en-us/edge/business",
- "installer": {
-  "script": [
-   "$programname = \"Microsoft Edge*\"",
-   "$installpath = \"$dir\\setup.msi_\"",
-   "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFilesX86\")",
-   "$exepath = \"$ProgramFiles\\Microsoft\\Edge\\Application\\msedge.exe\"",
-   "$filepath = \"$ProgramFiles\\Microsoft\\Edge\\Application\\$version\\msedge.dll\"",
-   "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -and ((Get-Command $exepath).Version -lt [System.Version]\"$version\"))",
-   "{",
-   "   Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn') -RunAs | Out-Null",
-   "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -and ((Get-Command $exepath).Version -lt [System.Version]\"$version\"))",
-   "   {",
-   "       exit 1",
-   "   }",
-   "}",
-   "if (Test-Path -Path \"$dir\\setup.msi_\") { Remove-Item \"$dir\\setup.msi_\" -Force }"
-  ]
- },
- "license": {
-  "identifier": "Freeware",
-  "url": "https://www.microsoft.com/en-us/servicesagreement/"
- },
- "post_install": [
-  "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
-  "if (Test-Path \"$CommonDesktopPath\\Microsoft Edge.lnk\") {Remove-Item \"$CommonDesktopPath\\Microsoft Edge.lnk\" -Force}"
- ],
- "pre_download": "Assert-Administrator",
- "version": "105.0.1343.27"
+    "##": "Checkver URL https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel",
+    "architecture": {
+        "32bit": {
+            "hash": "bbd331c17260721585d15b3e1056d72a283cd18f4d874fa131af05c3c988c5fe",
+            "url": "http://go.microsoft.com/fwlink/?LinkID=2093505#/setup.msi_"
+        },
+        "64bit": {
+            "hash": "9c27bcd80ea170a6e4cb44c8443f239896949e3065ddb46c5383d1b905898e52",
+            "url": "http://go.microsoft.com/fwlink/?LinkID=2093437#/setup.msi_"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "http://go.microsoft.com/fwlink/?LinkID=2093505#/setup.msi_"
+            },
+            "64bit": {
+                "url": "http://go.microsoft.com/fwlink/?LinkID=2093437#/setup.msi_"
+            }
+        }
+    },
+    "changelog": "https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel",
+    "checkver": {
+        "regex": "Version ([\\d.]+)",
+        "url": "https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnotes-security"
+    },
+    "description": "Microsoft Edge. The chromium based Microsoft Edge browser.",
+    "homepage": "https://www.microsoft.com/en-us/edge/business",
+    "installer": {
+        "script": [
+            "$programname = \"Microsoft Edge*\"",
+            "$installpath = \"$dir\\setup.msi_\"",
+            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFilesX86\")",
+            "$exepath = \"$ProgramFiles\\Microsoft\\Edge\\Application\\msedge.exe\"",
+            "$filepath = \"$ProgramFiles\\Microsoft\\Edge\\Application\\$version\\msedge.dll\"",
+            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -and ((Get-Command $exepath).Version -lt [System.Version]\"$version\"))",
+            "{",
+            "   Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn') -RunAs | Out-Null",
+            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -and ((Get-Command $exepath).Version -lt [System.Version]\"$version\"))",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}",
+            "if (Test-Path -Path \"$dir\\setup.msi_\") { Remove-Item \"$dir\\setup.msi_\" -Force }"
+        ]
+    },
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.microsoft.com/en-us/servicesagreement/"
+    },
+    "post_install": [
+        "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
+        "if (Test-Path \"$CommonDesktopPath\\Microsoft Edge.lnk\") {Remove-Item \"$CommonDesktopPath\\Microsoft Edge.lnk\" -Force}"
+    ],
+    "pre_download": "Assert-Administrator",
+    "version": "105.0.1343.42"
 }
