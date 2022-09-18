@@ -1,62 +1,62 @@
 {
-    "##": "Check chromium.woolyss.com for different versions of Chromium releases.",
-    "architecture": {
-        "32bit": {
-            "hash": "sha1:2daa11833a3e6683fc7e8a51f8066617b8c72f28",
-            "url": "https://github.com/Hibbiki/chromium-win32/releases/download/v105.0.5195.127-r1027018/chrome.sync.7z"
-        },
-        "64bit": {
-            "hash": "sha1:621193c54bc3d8bc5d2d98f36b2e8dd2b3ef63f8",
-            "url": "https://github.com/Hibbiki/chromium-win64/releases/download/v105.0.5195.127-r1027018/chrome.sync.7z"
-        }
+ "##": "Check chromium.woolyss.com for different versions of Chromium releases.",
+ "architecture": {
+  "32bit": {
+   "hash": "sha1:2daa11833a3e6683fc7e8a51f8066617b8c72f28",
+   "url": "https://github.com/Hibbiki/chromium-win32/releases/download/v105.0.5195.127-r1027018/chrome.sync.7z"
+  },
+  "64bit": {
+   "hash": "sha1:621193c54bc3d8bc5d2d98f36b2e8dd2b3ef63f8",
+   "url": "https://github.com/Hibbiki/chromium-win64/releases/download/v105.0.5195.127-r1027018/chrome.sync.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "regex": "$sha1 \\.\\./out/x86/chrome.sync.7z",
+     "url": "https://github.com/Hibbiki/chromium-win32/releases/tag/v$version"
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "regex": "$sha1 \\.\\./out/x86/chrome.sync.7z",
-                    "url": "https://github.com/Hibbiki/chromium-win32/releases/tag/v$version"
-                },
-                "url": "https://github.com/Hibbiki/chromium-win32/releases/download/v$version/chrome.sync.7z"
-            },
-            "64bit": {
-                "hash": {
-                    "regex": "$sha1 \\.\\./out/x64/chrome.sync.7z",
-                    "url": "https://github.com/Hibbiki/chromium-win64/releases/tag/v$version"
-                },
-                "url": "https://github.com/Hibbiki/chromium-win64/releases/download/v$version/chrome.sync.7z"
-            }
-        }
+    "url": "https://github.com/Hibbiki/chromium-win32/releases/download/v$version/chrome.sync.7z"
+   },
+   "64bit": {
+    "hash": {
+     "regex": "$sha1 \\.\\./out/x64/chrome.sync.7z",
+     "url": "https://github.com/Hibbiki/chromium-win64/releases/tag/v$version"
     },
-    "bin": [
-        [
-            "chrome.exe",
-            "chromium",
-            "--user-data-dir=\"$dir\\User Data\""
-        ]
-    ],
-    "checkver": {
-        "jsonpath": "$..name",
-        "regex": "v([\\d.\\-r]+)",
-        "url": "https://api.github.com/repos/Hibbiki/chromium-win64/tags"
-    },
-    "description": "Browser aiming for safer, faster, and more stable way for all users to experience the web.",
-    "extract_dir": "Chrome-bin",
-    "homepage": "https://www.chromium.org",
-    "license": "BSD-3-Clause",
-    "persist": "User Data",
-    "post_install": [
-        "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\Chromium\\User Data\")) {",
-        "    info '[Portable Mode]: Copying user data...'",
-        "    Copy-Item \"$env:LocalAppData\\Chromium\\User Data\\*\" \"$dir\\User Data\" -Recurse",
-        "}"
-    ],
-    "shortcuts": [
-        [
-            "chrome.exe",
-            "Chromium",
-            "--user-data-dir=\"$dir\\User Data\""
-        ]
-    ],
-    "version": "105.0.5195.127-r1027018"
+    "url": "https://github.com/Hibbiki/chromium-win64/releases/download/v$version/chrome.sync.7z"
+   }
+  }
+ },
+ "bin": [
+  [
+   "chrome.exe",
+   "chromium",
+   "--user-data-dir=\"$dir\\User Data\""
+  ]
+ ],
+ "checkver": {
+  "jsonpath": "$..name",
+  "regex": "v([\\d.\\-r]+)",
+  "url": "https://api.github.com/repos/Hibbiki/chromium-win64/tags"
+ },
+ "description": "Browser aiming for safer, faster, and more stable way for all users to experience the web.",
+ "extract_dir": "Chrome-bin",
+ "homepage": "https://www.chromium.org",
+ "license": "BSD-3-Clause",
+ "persist": "User Data",
+ "post_install": [
+  "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\Chromium\\User Data\")) {",
+  "    info '[Portable Mode]: Copying user data...'",
+  "    Copy-Item \"$env:LocalAppData\\Chromium\\User Data\\*\" \"$dir\\User Data\" -Recurse",
+  "}"
+ ],
+ "shortcuts": [
+  [
+   "chrome.exe",
+   "Chromium",
+   "--user-data-dir=\"$dir\\User Data\""
+  ]
+ ],
+ "version": "105.0.5195.127-r1027018"
 }

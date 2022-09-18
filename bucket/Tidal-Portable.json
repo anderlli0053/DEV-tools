@@ -1,34 +1,34 @@
 {
-    "autoupdate": {
-        "url": "https://download.tidal.com/desktop/TIDALSetup.exe"
-    },
-    "changelog": "",
-    "checkver": {
-        "script": [
-            "$dl_url = 'https://download.tidal.com/desktop/TIDALSetup.exe'",
-            "$dl = cache_path 'Tidal' 'unknown' $dl_url",
-            "do_dl $dl_url $dl",
-            "$version = (Get-Item $dl).VersionInfo.ProductVersion",
-            "return $version"
-        ]
-    },
-    "description": "TIDAL Desktop. TIDAL is the first global music streaming service with high fidelity sound, hi-def video quality, along with expertly curated playlists and original content",
-    "hash": "06f4bd3536d5d8329830f9458fcdd75d494c60c6c38866e1893c1b2856d8e6d8",
-    "homepage": "https://block.xyz/",
-    "installer": {
-        "script": [
-            "Expand-7zipArchive \"$dir\\TIDALSetup.exe\"",
-            "Expand-7zipArchive \"$dir\\TIDAL-*-full.nupkg\" -ExtractDir 'lib\\net45' -Removal"
-        ]
-    },
-    "license": "Propritary",
-    "post_install": "Remove-Item \"$dir\\TIDALSetup.exe\" -Force",
-    "shortcuts": [
-        [
-            "TIDAL.exe",
-            "TIDAL"
-        ]
-    ],
-    "url": "https://download.tidal.com/desktop/TIDALSetup.exe",
-    "version": "2.33.2.0"
+ "autoupdate": {
+  "url": "https://download.tidal.com/desktop/TIDALSetup.exe"
+ },
+ "changelog": "",
+ "checkver": {
+  "script": [
+   "$dl_url = 'https://download.tidal.com/desktop/TIDALSetup.exe'",
+   "$dl = cache_path 'Tidal' 'unknown' $dl_url",
+   "do_dl $dl_url $dl",
+   "$version = (Get-Item $dl).VersionInfo.ProductVersion",
+   "return $version"
+  ]
+ },
+ "description": "TIDAL Desktop. TIDAL is the first global music streaming service with high fidelity sound, hi-def video quality, along with expertly curated playlists and original content",
+ "hash": "06f4bd3536d5d8329830f9458fcdd75d494c60c6c38866e1893c1b2856d8e6d8",
+ "homepage": "https://block.xyz/",
+ "installer": {
+  "script": [
+   "Expand-7zipArchive \"$dir\\TIDALSetup.exe\"",
+   "Expand-7zipArchive \"$dir\\TIDAL-*-full.nupkg\" -ExtractDir 'lib\\net45' -Removal"
+  ]
+ },
+ "license": "Propritary",
+ "post_install": "Remove-Item \"$dir\\TIDALSetup.exe\" -Force",
+ "shortcuts": [
+  [
+   "TIDAL.exe",
+   "TIDAL"
+  ]
+ ],
+ "url": "https://download.tidal.com/desktop/TIDALSetup.exe",
+ "version": "2.33.2.0"
 }

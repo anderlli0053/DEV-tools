@@ -1,50 +1,50 @@
 {
-    "##": "Download URL https://dotnet.microsoft.com/download/dotnet/6.0/runtime",
-    "architecture": {
-        "32bit": {
-            "hash": "3fdbbfb02b71188ab72ca929a85d6d17c40a53710911fe9c2d35254f3df5c7d7",
-            "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-6.0.9-windows-x86-installer#/setup.exe"
-        },
-        "64bit": {
-            "hash": "7159d18e0b2e59c4d6fd342c29174c55dbb7b3e93928b3c4c843050d4bfce4bb",
-            "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-6.0.9-windows-x64-installer#/setup.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-$version-windows-x86-installer#/setup.exe"
-            },
-            "64bit": {
-                "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-$version-windows-x64-installer#/setup.exe"
-            }
-        }
-    },
-    "changelog": "https://github.com/dotnet/core/blob/master/release-notes/5.0/5.0.6/5.0.6.md",
-    "checkver": {
-        "regex": "(?s)([\\d.]+)[^\\d]*?(?<sdkversion>[\\d.]+)[^\\d]*?(?:current|lts)",
-        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json"
-    },
-    "description": "Microsoft .NET Core Runtime. The .NET Runtime contains just the components needed to run a console app.",
-    "homepage": "https://dotnet.microsoft.com/",
-    "installer": {
-        "script": [
-            "$programname = \"Microsoft .NET Runtime*\"",
-            "$downloadlink = \"https://dotnet.microsoft.com/download/dotnet-core/current/runtime\"",
-            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
-            "$filepath = \"$ProgramFiles\\dotnet\\shared\\Microsoft.NETCore.App\\$version\\System.Core.dll\"",
-            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-            "{",
-            "   &\"$dir\\setup.exe\" /quiet | Out-Null",
-            "   if((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\")",
-            "   {",
-            "       exit 1",
-            "   }",
-            "}",
-            "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
-        ]
-    },
-    "license": "Freeware",
-    "pre_download": "Assert-Administrator",
-    "version": "6.0.9"
+ "##": "Download URL https://dotnet.microsoft.com/download/dotnet/6.0/runtime",
+ "architecture": {
+  "32bit": {
+   "hash": "3fdbbfb02b71188ab72ca929a85d6d17c40a53710911fe9c2d35254f3df5c7d7",
+   "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-6.0.9-windows-x86-installer#/setup.exe"
+  },
+  "64bit": {
+   "hash": "7159d18e0b2e59c4d6fd342c29174c55dbb7b3e93928b3c4c843050d4bfce4bb",
+   "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-6.0.9-windows-x64-installer#/setup.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-$version-windows-x86-installer#/setup.exe"
+   },
+   "64bit": {
+    "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-$version-windows-x64-installer#/setup.exe"
+   }
+  }
+ },
+ "changelog": "https://github.com/dotnet/core/blob/master/release-notes/5.0/5.0.6/5.0.6.md",
+ "checkver": {
+  "regex": "(?s)([\\d.]+)[^\\d]*?(?<sdkversion>[\\d.]+)[^\\d]*?(?:current|lts)",
+  "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json"
+ },
+ "description": "Microsoft .NET Core Runtime. The .NET Runtime contains just the components needed to run a console app.",
+ "homepage": "https://dotnet.microsoft.com/",
+ "installer": {
+  "script": [
+   "$programname = \"Microsoft .NET Runtime*\"",
+   "$downloadlink = \"https://dotnet.microsoft.com/download/dotnet-core/current/runtime\"",
+   "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
+   "$filepath = \"$ProgramFiles\\dotnet\\shared\\Microsoft.NETCore.App\\$version\\System.Core.dll\"",
+   "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+   "{",
+   "   &\"$dir\\setup.exe\" /quiet | Out-Null",
+   "   if((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\")",
+   "   {",
+   "       exit 1",
+   "   }",
+   "}",
+   "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
+  ]
+ },
+ "license": "Freeware",
+ "pre_download": "Assert-Administrator",
+ "version": "6.0.9"
 }

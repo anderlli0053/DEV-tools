@@ -1,80 +1,80 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "sha512:3fd23aec0f16a36e64a5af88bdaa32019bb4fcaad843cd72fa8bbad9d5a24cacda8e0950536f843ec3dfd3b7123bf74379005f19666c3667938832060b93cc0f",
-            "url": "https://download.calibre-ebook.com/6.5.0/calibre-portable-installer-6.5.0.exe"
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "sha512:3fd23aec0f16a36e64a5af88bdaa32019bb4fcaad843cd72fa8bbad9d5a24cacda8e0950536f843ec3dfd3b7123bf74379005f19666c3667938832060b93cc0f",
+   "url": "https://download.calibre-ebook.com/6.5.0/calibre-portable-installer-6.5.0.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "url": "https://calibre-ebook.com/signatures/calibre-portable-installer-$version.exe.sha512"
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "hash": {
-                    "url": "https://calibre-ebook.com/signatures/calibre-portable-installer-$version.exe.sha512"
-                },
-                "url": "https://download.calibre-ebook.com/$version/calibre-portable-installer-$version.exe"
-            }
-        }
-    },
-    "bin": [
-        [
-            "calibre-portable.exe",
-            "calibre"
-        ],
-        "calibre-portable.exe",
-        "Calibre\\calibre-complete.exe",
-        "Calibre\\calibre-customize.exe",
-        "Calibre\\calibredb.exe",
-        "Calibre\\calibre-debug.exe",
-        "Calibre\\calibre-parallel.exe",
-        "Calibre\\calibre-server.exe",
-        "Calibre\\calibre-smtp.exe",
-        "Calibre\\ebook-convert.exe",
-        "Calibre\\ebook-device.exe",
-        "Calibre\\ebook-edit.exe",
-        "Calibre\\ebook-meta.exe",
-        "Calibre\\ebook-polish.exe",
-        "Calibre\\ebook-viewer.exe",
-        "Calibre\\fetch-ebook-metadata.exe",
-        "Calibre\\lrf2lrs.exe",
-        "Calibre\\lrs2lrf.exe",
-        "Calibre\\lrfviewer.exe",
-        "Calibre\\markdown-calibre.exe",
-        "Calibre\\web2disk.exe"
-    ],
-    "checkver": {
-        "github": "https://github.com/kovidgoyal/calibre"
-    },
-    "description": "Powerful and easy to use e-book manager",
-    "homepage": "https://calibre-ebook.com",
-    "installer": {
-        "script": [
-            "Start-Process \"$dir\\calibre-portable-installer-$version.exe\" @(\"$dir\") -Wait",
-            "Move-Item \"$dir\\Calibre Portable\\**\" \"$dir\"",
-            "Remove-Item \"$dir\\Calibre Portable\""
-        ]
-    },
-    "license": "GPL-3.0-only",
-    "persist": [
-        "Calibre Library",
-        "Calibre Settings"
-    ],
-    "shortcuts": [
-        [
-            "calibre-portable.exe",
-            "Calibre"
-        ],
-        [
-            "Calibre\\ebook-edit.exe",
-            "Calibre E-Book Editor"
-        ],
-        [
-            "Calibre\\ebook-viewer.exe",
-            "Calibre E-Book Viewer"
-        ],
-        [
-            "Calibre\\lrfviewer.exe",
-            "Calibre LRF Viewer"
-        ]
-    ],
-    "version": "6.5.0"
+    "url": "https://download.calibre-ebook.com/$version/calibre-portable-installer-$version.exe"
+   }
+  }
+ },
+ "bin": [
+  [
+   "calibre-portable.exe",
+   "calibre"
+  ],
+  "calibre-portable.exe",
+  "Calibre\\calibre-complete.exe",
+  "Calibre\\calibre-customize.exe",
+  "Calibre\\calibredb.exe",
+  "Calibre\\calibre-debug.exe",
+  "Calibre\\calibre-parallel.exe",
+  "Calibre\\calibre-server.exe",
+  "Calibre\\calibre-smtp.exe",
+  "Calibre\\ebook-convert.exe",
+  "Calibre\\ebook-device.exe",
+  "Calibre\\ebook-edit.exe",
+  "Calibre\\ebook-meta.exe",
+  "Calibre\\ebook-polish.exe",
+  "Calibre\\ebook-viewer.exe",
+  "Calibre\\fetch-ebook-metadata.exe",
+  "Calibre\\lrf2lrs.exe",
+  "Calibre\\lrs2lrf.exe",
+  "Calibre\\lrfviewer.exe",
+  "Calibre\\markdown-calibre.exe",
+  "Calibre\\web2disk.exe"
+ ],
+ "checkver": {
+  "github": "https://github.com/kovidgoyal/calibre"
+ },
+ "description": "Powerful and easy to use e-book manager",
+ "homepage": "https://calibre-ebook.com",
+ "installer": {
+  "script": [
+   "Start-Process \"$dir\\calibre-portable-installer-$version.exe\" @(\"$dir\") -Wait",
+   "Move-Item \"$dir\\Calibre Portable\\**\" \"$dir\"",
+   "Remove-Item \"$dir\\Calibre Portable\""
+  ]
+ },
+ "license": "GPL-3.0-only",
+ "persist": [
+  "Calibre Library",
+  "Calibre Settings"
+ ],
+ "shortcuts": [
+  [
+   "calibre-portable.exe",
+   "Calibre"
+  ],
+  [
+   "Calibre\\ebook-edit.exe",
+   "Calibre E-Book Editor"
+  ],
+  [
+   "Calibre\\ebook-viewer.exe",
+   "Calibre E-Book Viewer"
+  ],
+  [
+   "Calibre\\lrfviewer.exe",
+   "Calibre LRF Viewer"
+  ]
+ ],
+ "version": "6.5.0"
 }
