@@ -1,6 +1,6 @@
 {
  "autoupdate": {
-  "url": "https://download.overwolf.com/installer/prod/29714f52c58d291fd2c06036294bb0a2/AlecaFrame%20-%20Installer.exe"
+  "url": "https://download.overwolf.com/installer/prod/29714f52c58d291fd2c06036294bb0a2/AlecaFrame%20-%20Installer.exe#/dl.7z"
  },
  "bin": "AF\\AlecaFrame - Installer.exe",
  "description": "The most advanced WarFrame companion app",
@@ -11,12 +11,17 @@
  "notes": [
   "The most advanced WarFrame companion app\n"
  ],
+ 
+  "pre_install": [
+  "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\\" \"$dir\"",
+  "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse"
+ ],
  "shortcuts": [
   [
    "AF\\AlecaFrame - Installer.exe",
    "Install AlecaFrame"
   ]
  ],
- "url": "https://download.overwolf.com/installer/prod/29714f52c58d291fd2c06036294bb0a2/AlecaFrame%20-%20Installer.exe",
+ "url": "https://download.overwolf.com/installer/prod/29714f52c58d291fd2c06036294bb0a2/AlecaFrame%20-%20Installer.exe#/dl.7z",
  "version": "2.0.30"
 }
