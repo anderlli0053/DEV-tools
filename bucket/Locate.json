@@ -19,20 +19,15 @@
    }
   }
  },
- "bin": [
-  "locate32.exe",
-  "updtdb32.exe",
-  "locate.exe",
-  "SetTool.exe"
- ],
+ "bin": "locate.exe",
  "checkver": "class=\"highlight\">Version&nbsp;([\\d.]+)</a>",
  "homepage": "http://locate32.cogit.net/",
  "license": "freeware",
  "persist": [
-  "portable.ini",
-  "locate.ini"
+  "locate.ini",
+  "databases"
  ],
- "pre_install": "if(!(Test-Path \"$persist_dir\\locate.ini\")) { Copy-Item \"$dir\\locate-example.ini\" \"$dir\\locate.ini\" | Out-Null }",
+ "pre_install": "if(!(Test-Path \"$persist_dir\\locate.ini\")) { Copy-Item \"$dir\\portable.ini\" \"$dir\\locate.ini\" | Out-Null }",
  "shortcuts": [
   [
    "locate32.exe",

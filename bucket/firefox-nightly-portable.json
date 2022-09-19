@@ -1,0 +1,53 @@
+{
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:d414d9b56bdce31a915543532f79c5240390b2a02c7ce622386efa871f70a2ae159a6a0f4258661322f024fb2a4da2e5aff5c68ce1eb969989fb1fd31abce103",
+   "url": "https://archive.mozilla.org/pub/firefox/nightly/2022/09/2022-09-18-21-45-03-mozilla-central/firefox-106.0a1.en-US.win32.installer.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "sha512:8b23001c165094a06ae7a71453930e523f36c491a3abca18853ded41d3433c576e054d306e0e1a5a39a4ceb8a94889430d0ca73ea24f652908e9731779793b61",
+   "url": "https://archive.mozilla.org/pub/firefox/nightly/2022/09/2022-09-18-21-45-03-mozilla-central/firefox-106.0a1.en-US.win64.installer.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "url": "$baseurl/firefox-$majorVersion.$minorVersion.en-US.win32.checksums"
+    },
+    "url": "https://archive.mozilla.org/pub/firefox/nightly/$matchYyyy/$matchMm/$matchYyyy-$matchMm-$matchDd-$matchHr-$matchMi-$matchSe-mozilla-central/firefox-$majorVersion.$minorVersion.en-US.win32.installer.exe#/dl.7z"
+   },
+   "64bit": {
+    "hash": {
+     "url": "$baseurl/firefox-$majorVersion.$minorVersion.en-US.win64.checksums"
+    },
+    "url": "https://archive.mozilla.org/pub/firefox/nightly/$matchYyyy/$matchMm/$matchYyyy-$matchMm-$matchDd-$matchHr-$matchMi-$matchSe-mozilla-central/firefox-$majorVersion.$minorVersion.en-US.win64.installer.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": [
+  [
+   "firefox.exe",
+   "firefox-nightly",
+   "-profile \"$dir\\profile\""
+  ]
+ ],
+ "checkver": {
+  "regex": "appVersion=\"([\\w.]+)\".*?buildID=\"((?<yyyy>\\d{4})(?<mm>\\d{2})(?<dd>\\d{2})(?<hr>\\d{2})(?<mi>\\d{2})(?<se>\\d{2}))",
+  "replace": "${1}.${2}",
+  "url": "https://aus5.mozilla.org/update/6/Firefox/60.0/_/WINNT_x86_64-msvc-x64/en-US/nightly/_/_/_/_/update.xml"
+ },
+ "description": "Nightly builds of Firefox: the popular open source web browser.",
+ "extract_dir": "core",
+ "homepage": "https://www.mozilla.org/en-US/firefox/nightly/",
+ "license": "MPL-2.0",
+ "persist": "profile",
+ "shortcuts": [
+  [
+   "firefox.exe",
+   "Firefox Nightly",
+   "-profile \"$dir\\profile\""
+  ]
+ ],
+ "version": "106.0a1.20220918214503"
+}

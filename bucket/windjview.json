@@ -2,16 +2,14 @@
  "autoupdate": {
   "url": "https://downloads.sourceforge.net/project/windjview/WinDjView/$version/WinDjView-$version-Setup.exe#/dl.7z"
  },
- "bin": "WinDjView.exe",
  "checkver": {
-  "regex": "files/WinDjView/([\\d.]+)",
-  "url": "https://sourceforge.net/projects/windjview/files/WinDjView/"
+  "regex": "WinDjView/([\\d.]+)/WinDjView-[\\d.]+-Setup\\.exe",
+  "url": "https://sourceforge.net/projects/windjview/rss?path=/WinDjView"
  },
- "description": "A fast, compact, and powerful DjVu viewer",
- "hash": "sha1:742cee128eb976a372dcf9a1121eb0736e1df75d",
- "homepage": "https://sourceforge.net/projects/windjview/",
- "license": "GPL-2.0",
- "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninstall.exe\" -Force -Recurse",
+ "hash": "sha1:bca30c4d9ac7ab418bff5bba4c78170b0050ac9e",
+ "homepage": "https://windjview.sourceforge.io/",
+ "license": "GPL-2.0-or-later",
+ "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninstall.exe\" -Force -Recurse",
  "shortcuts": [
   [
    "WinDjView.exe",

@@ -17,7 +17,12 @@
  "license": "GPL-2.0-only",
  "persist": [
   "coolplayer.ini",
-  "default.m3u"
+  "default.m3u",
+  "skins"
+ ],
+ "pre_install": [
+  "if(!(Test-Path \"$dir/coolplayer.ini\")) { Add-Content \"$dir/coolplayer.ini\" $null }",
+  "if(!(Test-Path \"$dir/default.m3u\")) { Add-Content \"$dir/default.m3u\" $null }"
  ],
  "shortcuts": [
   [

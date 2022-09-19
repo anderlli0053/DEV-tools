@@ -25,23 +25,29 @@
     },
     "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/en-US/Firefox%20Setup%20$version.exe#/dl.7z"
    }
-  },
-  "changelog": "https://www.mozilla.org/en-US/firefox/$version/releasenotes/"
+  }
  },
- "bin": "firefox.exe",
- "changelog": "https://www.mozilla.org/en-US/firefox/104.0.2/releasenotes/",
+ "bin": [
+  [
+   "firefox.exe",
+   "firefox",
+   "-profile \"$dir\\profile\""
+  ]
+ ],
  "checkver": {
   "regex": "<div class=\"c-release-version\">([\\d.]+)</div>",
   "url": "https://www.mozilla.org/en-US/firefox/notes/"
  },
- "description": "Firefox. Popular open source web browser.",
+ "description": "Popular open source web browser.",
  "extract_dir": "core",
  "homepage": "https://www.mozilla.org/firefox/",
  "license": "MPL-2.0",
+ "persist": "Profile",
  "shortcuts": [
   [
    "firefox.exe",
-   "Firefox"
+   "Firefox",
+   "-profile \"$dir\\profile\""
   ]
  ],
  "version": "104.0.2"

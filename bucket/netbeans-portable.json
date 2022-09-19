@@ -1,0 +1,49 @@
+{
+ "architecture": {
+  "32bit": {
+   "shortcuts": [
+    [
+     "bin/netbeans.exe",
+     "NetBeans",
+     "--userdir \"\\apps\\.config\\NetBeans\\config\" --cachedir \"\\apps\\.config\\NetBeans\\cache\" --console suppress"
+    ]
+   ]
+  },
+  "64bit": {
+   "shortcuts": [
+    [
+     "bin/netbeans64.exe",
+     "NetBeans",
+     "--userdir \"\\apps\\.config\\NetBeans\\config\" --cachedir \"\\apps\\.config\\NetBeans\\cache\" --console suppress"
+    ]
+   ]
+  }
+ },
+ "autoupdate": {
+  "hash": {
+   "url": "$url.sha512"
+  },
+  "url": "https://www.apache.org/dist/netbeans/netbeans/$version/netbeans-$version-bin.zip"
+ },
+ "checkver": {
+  "regex": "<h1>Apache NetBeans ([\\d.]+)</h1>",
+  "url": "https://netbeans.apache.org/download/index.html"
+ },
+ "depends": "microsoft-jdk",
+ "description": "Quickly and easily develop desktop, mobile, and web applications with Java, JavaScript, HTML5, PHP, C/C++ and more.",
+ "extract_dir": "netbeans",
+ "hash": "sha512:5b1a804223ca74c7d00b0f47c5a6bb2b6548193263f87bbd58ed9e846e3241490705dfa5d1fd2c88b2a4fe2db1a8b135640e76dabc4ab9dea2c170ee02c8e30e",
+ "homepage": "https://netbeans.org",
+ "installer": {
+  "script": [
+   "$conf = Get-Content \"$dir\\etc\\netbeans.conf\"",
+   "$jdk = Get-Item \"$scoopdir\\apps\\microsoft-jdk\\current\"",
+   "Set-Content \"$dir\\etc\\netbeans.conf\" (",
+   "  $conf -replace '#netbeans_jdkhome=.*',\"netbeans_jdkhome=`\"$jdk`\"\")",
+   "if (-not $?) { exit 1 }"
+  ]
+ },
+ "license": "Apache-2.0",
+ "url": "https://www.apache.org/dist/netbeans/netbeans/15/netbeans-15-bin.zip",
+ "version": "15"
+}

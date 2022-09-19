@@ -1,7 +1,6 @@
 {
  "architecture": {
   "64bit": {
-   "extract_dir": "securefs-windows-amd64",
    "hash": "6d1dd1f560c6c8b559b3432299a29e9ab12012ba60c5ba7a3c66b0d3e663a09d",
    "url": "https://github.com/netheril96/securefs/releases/download/0.13.0/securefs-windows-amd64.7z"
   }
@@ -9,13 +8,22 @@
  "autoupdate": {
   "architecture": {
    "64bit": {
+    "hash": {
+     "mode": "github"
+    },
     "url": "https://github.com/netheril96/securefs/releases/download/$version/securefs-windows-amd64.7z"
    }
   }
  },
- "bin": "securefs.exe",
+ "bin": [
+  [
+   "securefs.exe",
+   "securefs"
+  ]
+ ],
  "checkver": "github",
- "description": "A filesystem in userspace (FUSE) with transparent encryption (when writing) and decryption (when reading).",
+ "description": "securefs is a filesystem in userspace (FUSE) with transparent encryption (when writing) and decryption (when reading).",
+ "extract_dir": "securefs-windows-amd64",
  "homepage": "https://github.com/netheril96/securefs",
  "license": "MIT",
  "version": "0.13.0"

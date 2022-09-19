@@ -1,0 +1,53 @@
+{
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:964421db28ae8128972ff9acc5d0d0c384f7fe2ac2e0656945f4422fceb9ef3cc8e3f8ad8134ecab1c0c96af9b3d2d41f09a460175589fad7eb408f48292c50f",
+   "url": "https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-106.0a1.fa.win32.zip"
+  },
+  "64bit": {
+   "hash": "sha512:584b476f2946164d68ff259fca37dd0ce09979f12f96dd5530880771b1176d9b6fa71d71129ebe37fc7ce1032d4ad6934046ce2fe7eae8deda8de02c1166005c",
+   "url": "https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-106.0a1.fa.win64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "url": "$baseurl/firefox-$majorVersion.$minorVersion.fa.win32.checksums"
+    },
+    "url": "https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-$majorVersion.$minorVersion.fa.win32.zip"
+   },
+   "64bit": {
+    "hash": {
+     "url": "$baseurl/firefox-$majorVersion.$minorVersion.fa.win64.checksums"
+    },
+    "url": "https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/firefox-$majorVersion.$minorVersion.fa.win64.zip"
+   }
+  }
+ },
+ "bin": [
+  [
+   "firefox.exe",
+   "firefox-nightly-fa",
+   "-profile \"$dir\\profile\""
+  ]
+ ],
+ "checkver": {
+  "regex": "appVersion=\"([\\w.]+)\".*?buildID=\"((?<yyyy>\\d{4})(?<mm>\\d{2})(?<dd>\\d{2})(?<hr>\\d{2})(?<mi>\\d{2})(?<se>\\d{2}))",
+  "replace": "${1}.${2}",
+  "url": "https://aus5.mozilla.org/update/6/Firefox/60.0/_/WINNT_x86_64-msvc-x64/en-US/nightly/_/_/_/_/update.xml"
+ },
+ "description": "Nightly builds of Firefox: the popular open source web browser.",
+ "extract_dir": "firefox",
+ "homepage": "https://www.mozilla.org/fa-IR/firefox/nightly/",
+ "license": "MPL-2.0",
+ "persist": "profile",
+ "shortcuts": [
+  [
+   "firefox.exe",
+   "Firefox Nightly (fa)",
+   "-profile \"$dir\\profile\""
+  ]
+ ],
+ "version": "106.0a1.20220918214503"
+}

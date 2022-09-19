@@ -2,12 +2,11 @@
  "autoupdate": {
   "url": "https://download.teamviewer.com/download/version_$majorVersionx/TeamViewerPortable.zip"
  },
- "changelog": "https://community.teamviewer.com/English/categories/change-logs-en",
  "checkver": {
-  "regex": "\\[Windows\\].*?([\\d.]+)",
+  "re": "\\[Windows\\].*?([\\d.]+)",
   "url": "https://community.teamviewer.com/English/categories/change-logs-en"
  },
- "description": "TeamViewer. Software for remote control, desktop sharing, online meetings, web conferencing and file transfer between computers.",
+ "description": "TeamViewer is proprietary computer software for remote control, desktop sharing, online meetings, web conferencing and file transfer between computers.",
  "hash": "6492da7262330a5698942c643888c5772cec577f53941ff27eeb3a12027d325c",
  "homepage": "https://www.teamviewer.com",
  "license": {
@@ -18,13 +17,16 @@
  "shortcuts": [
   [
    "TeamViewer.exe",
-   "TeamViewer"
+   "TeamViewer Portable"
   ]
  ],
  "uninstaller": {
   "script": [
-   "icacls \"$dir\\rolloutfile.tv13\" /reset",
-   "Remove-Item \"$dir\\rolloutfile.tv13\" -Force"
+   "if (Test-Path \"$dir\\rolloutfile.tv13\") {",
+   "    Write-Host 'Removing rolloutfile.tv13.' -f Yellow",
+   "    icacls \"$dir\\rolloutfile.tv13\" /reset",
+   "    Remove-Item \"$dir\\rolloutfile.tv13\" -Force",
+   "}"
   ]
  },
  "url": "https://download.teamviewer.com/download/version_15x/TeamViewerPortable.zip",

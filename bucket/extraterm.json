@@ -1,7 +1,7 @@
 {
  "architecture": {
   "64bit": {
-   "extract_dir": "extratermqt-0.66.0-win32-x64",
+   "extract_dir": "extraterm-0.66.0-win32-x64",
    "hash": "670d9a9983bcdd74d6a38cd4e2c2c37c3d043e04bbd2e01134fa9697f4ab4e0c",
    "url": "https://github.com/sedwards2009/extraterm/releases/download/v0.66.0/extratermqt-0.66.0-win32-x64.zip"
   }
@@ -9,19 +9,22 @@
  "autoupdate": {
   "architecture": {
    "64bit": {
-    "extract_dir": "extratermqt-$version-win32-x64",
+    "extract_dir": "extraterm-$version-win32-x64",
     "url": "https://github.com/sedwards2009/extraterm/releases/download/v$version/extratermqt-$version-win32-x64.zip"
    }
   }
  },
- "bin": "extratermqt.exe",
  "checkver": {
-  "regex": "Extraterm\\s+v([\\d.]+)",
-  "url": "https://github.com/sedwards2009/extraterm/releases/"
+  "github": "https://github.com/sedwards2009/extraterm"
  },
- "description": "The swiss army chainsaw of terminal emulators",
- "homepage": "https://extraterm.org",
+ "description": "The swiss army chainsaw of terminal emulators.",
+ "homepage": "http://extraterm.org/",
  "license": "MIT",
+ "persist": [
+  "application_paths.json",
+  "config"
+ ],
+ "pre_install": "if (!(Test-Path \"$persist_dir\\application_paths.json\")) {Set-Content \"$dir\\application_paths.json\" (@('{', '  \"userSettingsPath\": \"./config\"','}') -join \"`r`n\") -Encoding ASCII}",
  "shortcuts": [
   [
    "extratermqt.exe",

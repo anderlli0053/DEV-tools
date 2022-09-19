@@ -1,7 +1,7 @@
 {
  "architecture": {
   "32bit": {
-   "hash": "7327d9458e79926cbfc9042d824729d166727e47f6f0b5b2f75eaac1a94ae548",
+   "hash": "9fe82232c4426c43211de324368b6b79ef5dd768fb299df90b81daec970f4eb9",
    "shortcuts": [
     [
      "PotPlayer.exe",
@@ -12,10 +12,10 @@
      "PotPlayer Mini"
     ]
    ],
-   "url": "https://t1.daumcdn.net/potplayer/PotPlayer/Version/220831/PotPlayerSetup.exe#/dl.7z"
+   "url": "https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup.exe#/cosi.7z"
   },
   "64bit": {
-   "hash": "411cccdf3ca41e4f9b986a7896a5d12c8be793bb527dff9a97693e0116a8f325",
+   "hash": "e71ac81a4d345e75c82ddc7b1e594cabdc4fe24b770b0a8ac21f4fd842fecb68",
    "shortcuts": [
     [
      "PotPlayer64.exe",
@@ -26,60 +26,75 @@
      "PotPlayer Mini"
     ]
    ],
-   "url": "https://t1.daumcdn.net/potplayer/PotPlayer/Version/220831/PotPlayerSetup64.exe#/dl.7z"
+   "url": "https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup64.exe#/cosi.7z"
   }
  },
  "autoupdate": {
   "architecture": {
    "32bit": {
-    "url": "https://t1.daumcdn.net/potplayer/PotPlayer/Version/$version/PotPlayerSetup.exe#/dl.7z"
+    "url": "https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup.exe#/cosi.7z"
    },
    "64bit": {
-    "url": "https://t1.daumcdn.net/potplayer/PotPlayer/Version/$version/PotPlayerSetup64.exe#/dl.7z"
+    "url": "https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup64.exe#/cosi.7z"
    }
   }
  },
- "changelog": "https://t1.daumcdn.net/potplayer/PotPlayer/v4/Update2/UpdateEng.html",
  "checkver": {
-  "regex": "\\[(\\d+)\\]",
+  "regex": "\\[([\\d.]+)\\]",
   "url": "https://t1.daumcdn.net/potplayer/PotPlayer/v4/Update2/UpdateEng.html"
  },
- "description": "PotPlayer. Highly customizable media player",
- "homepage": "https://potplayer.daum.net",
+ "description": "PotPlayer. A multimedia software player developed for the Microsoft Windows operating system.",
+ "homepage": "https://potplayer.daum.net/",
+ "installer": {
+  "script": [
+   "Remove-Item \"$dir\\`$*\" -Force -Recurse",
+   "$setFiles = @('PotPlayerMini64.ini', 'PotPlayerMini.ini', 'PotPlayer64.ini', 'PotPlayer.ini')",
+   "$CONT = @(",
+   "    '[Settings]'",
+   "    'AutoAddPL=1'",
+   "    'AutoDetectTimePL=1'",
+   "    'AutoDownloadFile=0'",
+   "    'AutoPlayOnStart=1'",
+   "    'AutoUpdateStart=0'",
+   "    'AppendFilePL=1'",
+   "    'CheckAutoUpdate=0'",
+   "    'DropMousePos=1'",
+   "    'FastAutoUpdate=0'",
+   "    'MediaKeyGlobal=1'",
+   "    'nVideoRen2=15'",
+   "    'RememberPosition=1'",
+   "    'RememberPositionAudio=1'",
+   "    'SavePlayPosPL=1'",
+   "    'ScreenFitMode=2'",
+   "    'SkinPopupMenuStyle=2'",
+   "    ''",
+   "    '[MainShortCutList]'",
+   "    '0=74,4,10069,0'",
+   "    '1=72,6,10863,0'",
+   "    '2='",
+   ")",
+   "$finalFile = $CONT -join \"`r`n\"",
+   "    # Set Configs for all executables",
+   "foreach ($f in $setFiles) {",
+   "    if (-not (Test-Path \"$persist_dir\\$f\")) {",
+   "        Write-Host 'File' $f 'does not exists. Creating' -f Yellow",
+   "        Set-Content \"$dir\\$f\" $finalFile -Encoding Ascii",
+   "    }",
+   "}"
+  ]
+ },
  "license": {
   "identifier": "Freeware",
   "url": "https://potplayer.daum.net/publicRelation"
  },
  "persist": [
   "Capture",
-  "Extension",
-  "Extention",
-  "IconPack",
-  "Logos",
   "Module",
   "Playlist",
-  "Skins",
-  "UrlList",
   "PotPlayer.ini",
   "PotPlayer64.ini",
   "PotPlayerMini.ini",
   "PotPlayerMini64.ini"
- ],
- "pre_install": [
-  "Remove-Item \"$dir\\`$*\" -Force -Recurse",
-  "$CONT = @(",
-  "    '[Settings]'",
-  "    'AutoUpdateStart=0'",
-  "    'CheckAutoUpdate=0'",
-  "    'FastAutoUpdate=0'",
-  ")",
-  "    # Set Configs for all executables",
-  "foreach ($f in @('PotPlayerMini64.ini', 'PotPlayerMini.ini', 'PotPlayer64.ini', 'PotPlayer.ini')) {",
-  "    if (-not (Test-Path \"$persist_dir\\$f\")) {",
-  "        Write-Host 'File' $f 'does not exists. Creating' -f Yellow",
-  "        Set-Content \"$dir\\$f\" $CONT -Encoding Ascii",
-  "    }",
-  "}"
  ],
  "version": "220831"
 }

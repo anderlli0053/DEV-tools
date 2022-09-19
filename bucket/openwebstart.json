@@ -1,0 +1,49 @@
+{
+ "architecture": {
+  "32bit": {
+   "hash": "0201ef84de65923b797ab2bb4470ea1130a77c92e64fda8aa6cd727584faf8b4",
+   "url": "https://github.com/karakun/OpenWebStart/releases/download/v1.6.0/OpenWebStart_windows-x32_1_6_0.exe"
+  },
+  "64bit": {
+   "hash": "eca646e8ffc30a34ee017e183d23ee7739c4d69bf1333ded96c211e908df6953",
+   "url": "https://github.com/karakun/OpenWebStart/releases/download/v1.6.0/OpenWebStart_windows-x64_1_6_0.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/karakun/OpenWebStart/releases/download/v$version/OpenWebStart_windows-x32_$underscoreVersion.exe"
+   },
+   "64bit": {
+    "url": "https://github.com/karakun/OpenWebStart/releases/download/v$version/OpenWebStart_windows-x64_$underscoreVersion.exe"
+   }
+  }
+ },
+ "bin": "javaws.exe",
+ "checkver": {
+  "regex": "Latest stable release: ([\\d.]+)",
+  "url": "https://openwebstart.com/download/"
+ },
+ "description": "Run JNLP files with the latest Java version",
+ "homepage": "https://openwebstart.com/",
+ "installer": {
+  "args": [
+   "-q",
+   "-dir \"$dir\""
+  ],
+  "keep": true
+ },
+ "license": "GNU General Public License, version 2",
+ "post_install": "Remove-Item \"$dir\\OpenWebStart_windows-x64*.exe\" -Force",
+ "shortcuts": [
+  [
+   "itw-settings.exe",
+   "OpenWebStart Settings"
+  ]
+ ],
+ "uninstaller": {
+  "args": "-q",
+  "file": "uninstall.exe"
+ },
+ "version": "1.6.0"
+}

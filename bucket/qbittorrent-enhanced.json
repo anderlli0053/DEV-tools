@@ -1,31 +1,39 @@
 {
  "architecture": {
+  "32bit": {
+   "hash": "164e5a4600226b738e4efdc68b6a3b36a2537b49ac17efd45baf6616c612e8c8",
+   "url": "https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/download/release-4.4.5.10/qbittorrent_enhanced_4.4.5.10_setup.exe#/dl.7z"
+  },
   "64bit": {
-   "hash": "fe00d2cb12b2e690e1817d8e075acd97db6a2432e1a9d18ededa01c64130aa79",
-   "url": "https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/download/release-4.4.5.10/qbittorrent_enhanced_4.4.5.10_Qt6_setup.exe#/dl.7z"
+   "hash": "9e9a3389da5724b6f36d84b98f8a457561788381715e28a7e938d6ce7a0adafa",
+   "url": "https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/download/release-4.4.5.10/qbittorrent_enhanced_4.4.5.10_x64_setup.exe#/dl.7z"
   }
  },
  "autoupdate": {
   "architecture": {
+   "32bit": {
+    "url": "https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/download/release-$version/qbittorrent_enhanced_$version_setup.exe#/dl.7z"
+   },
    "64bit": {
-    "url": "https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/download/release-$version/qbittorrent_enhanced_$version_Qt6_setup.exe#/dl.7z"
+    "url": "https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/download/release-$version/qbittorrent_enhanced_$version_x64_setup.exe#/dl.7z"
    }
   }
  },
- "bin": "qbittorrent.exe",
  "checkver": {
-  "github": "https://github.com/c0re100/qBittorrent-Enhanced-Edition",
-  "regex": "releases/tag/release-([\\d.]+)"
+  "regex": "/releases/tag/release-([\\d.]+)",
+  "url": "https://github.com/c0re100/qBittorrent-Enhanced-Edition/releases/latest"
  },
- "description": "qBittorrent BitTorrent client with anti-leech enhancements",
+ "description": "qBittorrent BitTorrent client with anti-leech enhancement.",
  "homepage": "https://github.com/c0re100/qBittorrent-Enhanced-Edition",
- "license": "GPL-2.0-or-later",
- "persist": "profile",
- "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst.exe\" -Force -Recurse",
+ "license": {
+  "identifier": "GPL-2.0-only",
+  "url": "https://github.com/qbittorrent/qBittorrent/blob/master/COPYING"
+ },
+ "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
  "shortcuts": [
   [
    "qbittorrent.exe",
-   "qBittorrent Enhanced Edition"
+   "qBittorrent"
   ]
  ],
  "version": "4.4.5.10"

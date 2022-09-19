@@ -1,5 +1,9 @@
 {
  "architecture": {
+  "32bit": {
+   "hash": "bf7f0d7c9a9c38c1ebf2c4a49c36656e80cb5b433de5b36d12692c985b62bf42",
+   "url": "https://github.com/stsaz/fmedia/releases/download/v1.6/fmedia-1.6-win-x86.zip"
+  },
   "64bit": {
    "hash": "6afef47da2806056a1ae3c641a27563e0f400098a370bcb89accf738ab55ca28",
    "url": "https://github.com/stsaz/fmedia/releases/download/v1.29/fmedia-1.29-win-x64.zip"
@@ -7,6 +11,9 @@
  },
  "autoupdate": {
   "architecture": {
+   "32bit": {
+    "url": "https://github.com/stsaz/fmedia/releases/download/v1.6/fmedia-1.6-win-x86.zip"
+   },
    "64bit": {
     "url": "https://github.com/stsaz/fmedia/releases/download/v$version/fmedia-$version-win-x64.zip"
    }
@@ -14,14 +21,18 @@
  },
  "bin": "fmedia.exe",
  "checkver": {
-  "github": "https://github.com/stsaz/fmedia"
+  "regex": "/releases/tag/v([\\d.]+[\\w]*)",
+  "url": "https://github.com/stsaz/fmedia/tags"
  },
  "description": "A fast media player/recorder/converter",
  "extract_dir": "fmedia",
  "homepage": "https://stsaz.github.io/fmedia/",
  "license": "GPL-3.0-only",
- "notes": "For 32bit, use 'versions/fmedia16' instead.",
- "persist": "fmedia.conf",
+ "persist": [
+  "fmedia.conf",
+  "fmedia.gui.conf",
+  "fmedia-user.conf"
+ ],
  "shortcuts": [
   [
    "fmedia-gui.exe",

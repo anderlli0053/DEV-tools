@@ -11,6 +11,7 @@
     "url": "https://github.com/HandBrake/HandBrake/releases/download/$version/HandBrake-$version-x86_64-Win_GUI.zip"
    }
   },
+  "extract_dir": "HandBrake",
   "hash": {
    "regex": "<td>$sha256</td>",
    "url": "https://handbrake.fr/rotation.php?file=$basename"
@@ -19,17 +20,18 @@
  "checkver": {
   "github": "https://github.com/HandBrake/HandBrake"
  },
- "description": "HandBrake. A tool for converting video from nearly any format to a selection of modern, widely supported codecs.",
+ "description": "A tool for converting video from nearly any format to a selection of modern, widely supported codecs.",
+ "extract_dir": "HandBrake",
  "homepage": "https://handbrake.fr",
  "license": "GPL-2.0-only",
  "persist": [
   "tmp",
   "storage"
  ],
- "post_install": "Move-Item \"$dir\\HandBrake\\portable.ini.template\" \"$dir\\HandBrake\\portable.ini\"",
+ "post_install": "Move-Item \"$dir\\portable.ini.template\" \"$dir\\portable.ini\"",
  "shortcuts": [
   [
-   "HandBrake\\HandBrake.exe",
+   "HandBrake.exe",
    "HandBrake"
   ]
  ],

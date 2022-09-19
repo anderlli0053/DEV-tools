@@ -12,29 +12,30 @@
  "autoupdate": {
   "architecture": {
    "32bit": {
-    "url": "https://download.tsi.telecom-paristech.fr/gpac/release/$matchHead/gpac-$version-$matchRevision-master-win32.exe#/dl.7z"
+    "url": "https://download.tsi.telecom-paristech.fr/gpac/release/$matchHead/gpac-$version-$matchRev-master-win32.exe#/dl.7z"
    },
    "64bit": {
-    "url": "https://download.tsi.telecom-paristech.fr/gpac/release/$matchHead/gpac-$version-$matchRevision-master-x64.exe#/dl.7z"
+    "url": "https://download.tsi.telecom-paristech.fr/gpac/release/$matchHead/gpac-$version-$matchRev-master-x64.exe#/dl.7z"
    }
   }
  },
  "bin": [
   "mp4box.exe",
-  "gpac.exe"
+  "dashcast.exe",
+  "mp42ts.exe",
+  "mp4client.exe"
  ],
  "checkver": {
-  "regex": "gpac-([\\d.]+)-(?<revision>rev\\d-[0-9a-z]+)-master-win32.exe",
+  "regex": "The current GPAC release is <strong>[\\w\\W]+?gpac-([\\d.]+)-(?<rev>rev\\d-[\\d\\w]+)-master-win32.exe",
   "url": "https://gpac.wp.imt.fr/downloads/"
  },
- "description": "Modular Multimedia framework for packaging, streaming and playing your favorite content.",
  "homepage": "http://gpac.io",
- "license": "LGPL-2.1-only",
- "post_install": [
-  "@('$PLUGINSDIR', '$TEMP', 'uninstall.exe') | ForEach-Object {",
-  "    Remove-Item \"$dir\\$_\" -Recurse -Force",
-  "}"
+ "license": "LGPL-2.1",
+ "persist": [
+  "GPAC.cfg",
+  "Storage"
  ],
+ "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$TEMP\", \"$dir\\Uninstall.exe\" -Force -Recurse",
  "shortcuts": [
   [
    "mp4client.exe",

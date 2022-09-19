@@ -1,22 +1,48 @@
 {
  "architecture": {
   "32bit": {
-   "hash": "721ef2b7c564ff4171942d2c0dc653fd752ad4a27e3993bcab911d3936f5e4c7",
+   "hash": "sha1:4122a6c5943a4113197a31a27ed6ce140fe2f1c8",
    "url": "https://downloads.sourceforge.net/project/console/console-devel/2.00/Console-2.00b148-Beta_32bit.zip"
   },
   "64bit": {
-   "hash": "675c3c82695a97dafe164960a50dfbe6c13d0a900b382efb7090090138d22933",
+   "hash": "sha1:df443db68ead8114ecca02ce2f5ef4088948ff45",
    "url": "https://downloads.sourceforge.net/project/console/console-devel/2.00/Console-2.00b148-Beta_64bit.zip"
   }
  },
- "bin": "Console.exe",
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "mode": "sourceforge"
+    },
+    "url": "https://downloads.sourceforge.net/project/console/console-devel/2.00/Console-$version_32bit.zip"
+   },
+   "64bit": {
+    "hash": {
+     "mode": "sourceforge"
+    },
+    "url": "https://downloads.sourceforge.net/project/console/console-devel/2.00/Console-$version_64bit.zip"
+   }
+  }
+ },
+ "checkver": {
+  "regex": "Console-([\\d.\\w-]+)_src\\.zip",
+  "url": "https://sourceforge.net/projects/console/rss?path=/"
+ },
  "description": "A Windows console window enhancement.",
  "extract_dir": "Console2",
  "homepage": "https://sourceforge.net/projects/console/",
  "license": "GPL-2.0-only",
  "notes": "Console 2 development stopped in 2011. You might consider installing the fork ConsoleZ.",
+ "persist": "console.xml",
+ "shortcuts": [
+  [
+   "Console.exe",
+   "Console2"
+  ]
+ ],
  "suggest": {
   "ConsoleZ": "extras/consolez"
  },
- "version": "2.0.0.148"
+ "version": "2.00b148-Beta"
 }

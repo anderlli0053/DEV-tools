@@ -1,0 +1,35 @@
+{
+ "architecture": {
+  "32bit": {
+   "hash": "f7776ab1d0a7053e998ee00f3c6f97cd4644eb22b1cc35c982a204515b8c61e1",
+   "url": "https://github.com/cryfs/cryfs/releases/download/0.11.2/cryfs-0.11.2-win32.msi"
+  },
+  "64bit": {
+   "hash": "a8d3c65f4ac56e490fa6c11fb1e9f01e7c7be998c721b707438f42f3b9ea03ac",
+   "url": "https://github.com/cryfs/cryfs/releases/download/0.11.2/cryfs-0.11.2-win64.msi"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/cryfs/cryfs/releases/download/$version/cryfs-$matchBuild-win32.msi"
+   },
+   "64bit": {
+    "url": "https://github.com/cryfs/cryfs/releases/download/$version/cryfs-$matchBuild-win64.msi"
+   }
+  },
+  "extract_dir": "CryFS\\$version\\bin"
+ },
+ "bin": [
+  "cryfs.exe",
+  "cryfs-unmount.exe"
+ ],
+ "checkver": {
+  "re": "/cryfs/cryfs/releases/download/?([\\d.]+).+?cryfs-(?<build>[\\d.]+)",
+  "url": "https://github.com/cryfs/cryfs/releases"
+ },
+ "description": "CryFS encrypts your files, so you can safely store them anywhere.",
+ "extract_dir": "CryFS\\0.11.2\\bin",
+ "homepage": "https://www.cryfs.org/",
+ "version": "0.11.2"
+}

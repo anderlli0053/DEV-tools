@@ -2,14 +2,21 @@
  "autoupdate": {
   "url": "http://home.hccnet.nl/s.j.francke/csved/CSVed.zip"
  },
- "bin": "CSVed.exe",
- "checkver": "<a href=\"#csved\">CSVed ([\\d.\\w]+)</a>",
+ "checkver": {
+  "regex": "version.+?([\\d.]+)",
+  "url": "https://csved.sjfrancke.nl",
+  "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36"
+ },
  "hash": "7fb0b1e0d312268bc448706ed5c3e744d42811c2d76743c6f453fb52b38df48e",
- "homepage": "https://csved.sjfrancke.nl/",
+ "homepage": "https://csved.sjfrancke.nl",
  "license": "cardware",
  "persist": [
   "CSVed.ini",
-  "csved.tbx"
+  "CSVed.tbx"
+ ],
+ "pre_install": [
+  "if(!(Test-Path \"$dir/CSVed.ini\")) { Add-Content \"$dir/CSVed.ini\" $null }",
+  "if(!(Test-Path \"$dir/CSVed.tbx\")) { Add-Content \"$dir/CSVed.tbx\" $null }"
  ],
  "shortcuts": [
   [

@@ -2,7 +2,7 @@
  "autoupdate": {
   "url": "https://github.com/subhra74/xdm/releases/download/$version/xdmsetup.msi"
  },
- "bin": "XDM.bat",
+ "bin": "xdman.bat",
  "checkver": {
   "github": "https://github.com/subhra74/xdm"
  },
@@ -10,12 +10,12 @@
  "hash": "0d22399b98f996d9c44ba072a3baf6f1669b6a4562139d7334188ee1b2541e63",
  "homepage": "https://subhra74.github.io/xdm/",
  "installer": {
-  "script": "Set-Content \"$dir\\XDM.bat\" '@\"%~dp0java-runtime\\bin\\javaw.exe\" -jar \"%~dp0xdman.jar\" %*' -Encoding Ascii"
+  "script": "Set-Content \"$dir\\xdman.bat\" (@('@echo off', 'start %~dp0\\java-runtime\\bin\\javaw.exe -jar %~dp0\\xdman.jar %*') -join \"`r`n\") -Encoding ASCII"
  },
  "license": "GPL-3.0-only",
  "shortcuts": [
   [
-   "XDM.bat",
+   "xdman.bat",
    "Xtreme Download Manager"
   ]
  ],
