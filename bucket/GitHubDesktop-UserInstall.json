@@ -1,58 +1,58 @@
 {
- "##": [
-  "$processname = \"GitHubDesktop\"",
-  "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-  "if ($process) {",
-  "   $process.CloseMainWindow()",
-  "   Start-Sleep -Seconds 5",
-  "   if (!$process.HasExited) {",
-  "       Start-Sleep -Seconds 25",
-  "       $process | Stop-Process -Force",
-  "   }",
-  "}"
- ],
- "architecture": {
-  "64bit": {
-   "hash": "1acb504116aaa60eef031422286bcc2921047ba85a4ee8fe9d231e7db1c5d785",
-   "url": "https://central.github.com/deployments/desktop/desktop/latest/win32?format=msi#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://central.github.com/deployments/desktop/desktop/latest/win32?format=msi#/dl.7z"
-   }
-  }
- },
- "checkver": {
-  "regex": "GitHubDesktop-([\\d.]+)-full.nupkg",
-  "reverse": true,
-  "url": "https://central.github.com/api/deployments/desktop/desktop/latest/RELEASES"
- },
- "description": "GitHub Desktop. Extend your GitHub workflow beyond your browser.",
- "homepage": "https://desktop.github.com/",
- "installer": {
-  "script": [
-   "$programname = \"GitHub Desktop\"",
-   "$installpath = \"$dir\\GitHubDesktop.exe\"",
-   "$LocalAppData = [Environment]::GetFolderPath(\"LocalApplicationData\")",
-   "$regPath = \"HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GitHubDesktop\"",
-   "if(((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\") -or !(Test-Path \"$LocalAppData\\GitHubDesktop\\app-$version\\GitHubDesktop.exe\"))",
-   "{",
-   "   &\"$installpath\" -s | Out-Null",
-   "   Start-Sleep -s 30",
-   "   if(((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\") -or !(Test-Path \"$LocalAppData\\GitHubDesktop\\app-$version\\GitHubDesktop.exe\"))",
-   "   {",
-   "       exit 1",
-   "   }",
-   "}",
-   "if (Test-Path -Path \"$dir\\GitHubDesktop.exe\") { Remove-Item \"$dir\\GitHubDesktop.exe\" -Force }"
-  ]
- },
- "license": "MIT",
- "post_install": [
-  "$DesktopDirectory = [Environment]::GetFolderPath(\"DesktopDirectory\")",
-  "if (Test-Path \"$DesktopDirectory\\GitHub Desktop.lnk\") {Remove-Item \"$DesktopDirectory\\GitHub Desktop.lnk\" -Force}"
- ],
- "version": "3.0.7"
+    "##": [
+        "$processname = \"GitHubDesktop\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
+    "architecture": {
+        "64bit": {
+            "hash": "f241cdee5e9ee0438ff4602d341120ca3f0da6d8d709e58a09456da17ed85e5f",
+            "url": "https://central.github.com/deployments/desktop/desktop/latest/win32?format=msi#/dl.7z"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://central.github.com/deployments/desktop/desktop/latest/win32?format=msi#/dl.7z"
+            }
+        }
+    },
+    "checkver": {
+        "regex": "GitHubDesktop-([\\d.]+)-full.nupkg",
+        "reverse": true,
+        "url": "https://central.github.com/api/deployments/desktop/desktop/latest/RELEASES"
+    },
+    "description": "GitHub Desktop. Extend your GitHub workflow beyond your browser.",
+    "homepage": "https://desktop.github.com/",
+    "installer": {
+        "script": [
+            "$programname = \"GitHub Desktop\"",
+            "$installpath = \"$dir\\GitHubDesktop.exe\"",
+            "$LocalAppData = [Environment]::GetFolderPath(\"LocalApplicationData\")",
+            "$regPath = \"HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\GitHubDesktop\"",
+            "if(((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\") -or !(Test-Path \"$LocalAppData\\GitHubDesktop\\app-$version\\GitHubDesktop.exe\"))",
+            "{",
+            "   &\"$installpath\" -s | Out-Null",
+            "   Start-Sleep -s 30",
+            "   if(((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\") -or !(Test-Path \"$LocalAppData\\GitHubDesktop\\app-$version\\GitHubDesktop.exe\"))",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}",
+            "if (Test-Path -Path \"$dir\\GitHubDesktop.exe\") { Remove-Item \"$dir\\GitHubDesktop.exe\" -Force }"
+        ]
+    },
+    "license": "MIT",
+    "post_install": [
+        "$DesktopDirectory = [Environment]::GetFolderPath(\"DesktopDirectory\")",
+        "if (Test-Path \"$DesktopDirectory\\GitHub Desktop.lnk\") {Remove-Item \"$DesktopDirectory\\GitHub Desktop.lnk\" -Force}"
+    ],
+    "version": "3.0.8"
 }
