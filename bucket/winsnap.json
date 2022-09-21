@@ -1,0 +1,25 @@
+{
+    "version": "5.3.4",
+    "description": "WinSnap is a fast and user-friendly utility for taking and editing screenshots.",
+    "homepage": "https://www.ntwind.com/software/winsnap.html",
+    "url": "https://www.ntwind.com/files/WinSnap_5.3.4-setup.exe#/dl.7z",
+    "hash": "c05cfa9538ed53a36238e75234d5dfab242d00d9a1e9a54c58fc00432c641a4b",
+    "checkver": {
+        "url": "https://www.ntwind.com/software/winsnap.html",
+        "regex": "WinSnap_(\\d+.\\d+.\\d+)-setup.exe"
+    },
+    "autoupdate": {
+        "url": "https://www.ntwind.com/files/WinSnap_$version-setup.exe#/dl.7z"
+    },
+    "post_install": [
+        "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
+        "Remove-Item \"$dir\\`$TEMP\" -Recurse",
+        "Remove-Item \"$dir\\`$2.nsis\" -Recurse"
+    ],
+    "shortcuts": [
+        [
+            "WinSnap64.exe",
+            "WinSnap"
+        ]
+    ]
+}
