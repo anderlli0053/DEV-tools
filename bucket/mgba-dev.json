@@ -1,84 +1,84 @@
 {
- "architecture": {
-  "32bit": {
-   "extract_dir": "mGBA-build-2022-09-21-win32-7677-084b56b3bfc66eda7576bfdee26a18785afa6707",
-   "hash": "7394d219239ea6fcc22a49cdffee4a382b697768308eede86dba8af34c14d2c2",
-   "url": "https://s3.amazonaws.com/mgba/build/mGBA-build-2022-09-21-win32-7677-084b56b3bfc66eda7576bfdee26a18785afa6707.7z"
-  },
-  "64bit": {
-   "extract_dir": "mGBA-build-2022-09-21-win64-7677-084b56b3bfc66eda7576bfdee26a18785afa6707",
-   "hash": "6c4f0ebaa42a53d046ea57e741d0192e7ca844e275a5d75c5f00fe9a66a5b776",
-   "url": "https://s3.amazonaws.com/mgba/build/mGBA-build-2022-09-21-win64-7677-084b56b3bfc66eda7576bfdee26a18785afa6707.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "extract_dir": "mGBA-build-$matchYear-$matchMonth-$matchDay-win32-$matchVer-$matchGit",
-    "url": "https://s3.amazonaws.com/mgba/build/mGBA-build-$matchYear-$matchMonth-$matchDay-win32-$matchVer-$matchGit.7z"
-   },
-   "64bit": {
-    "extract_dir": "mGBA-build-$matchYear-$matchMonth-$matchDay-win64-$matchVer-$matchGit",
-    "url": "https://s3.amazonaws.com/mgba/build/mGBA-build-$matchYear-$matchMonth-$matchDay-win64-$matchVer-$matchGit.7z"
-   }
-  }
- },
- "bin": [
-  [
-   "mGBA.exe",
-   "mgba-dev"
-  ],
-  [
-   "mgba-sdl.exe",
-   "mgba-sdl-dev"
-  ]
- ],
- "checkver": {
-  "regex": "build-(?<year>20\\d{2})-(?<month>\\d{2})-(?<day>\\d{2})-win32-(?<ver>[\\d]+)-(?<git>\\w{40})\\.7z",
-  "replace": "$4-$1$2$3",
-  "url": "https://mgba.io/builds/1/"
- },
- "description": "A fast, accurate, and portable GBA emulator (development version)",
- "homepage": "https://mgba.io/",
- "license": {
-  "identifier": "MPL-2.0",
-  "url": "https://github.com/mgba-emu/mgba/blob/master/LICENSE"
- },
- "persist": [
-  "bios",
-  "cheats",
-  "patch",
-  "savegame",
-  "savestate",
-  "screenshot",
-  "shaders",
-  "qt.ini",
-  "config.ini",
-  "portable.ini"
- ],
- "pre_install": [
-  "if (!(Test-Path \"$persist_dir\\qt.ini\")) {",
-  "   New-Item \"$dir\\qt.ini\" -Type File | Out-Null",
-  "}",
-  "if (!(Test-Path \"$persist_dir\\config.ini\")) {",
-  "   New-Item \"$dir\\config.ini\" -Type File | Out-Null",
-  "   Set-Content \"$dir\\config.ini\" '[ports.qt]'",
-  "   Add-Content \"$dir\\config.ini\" 'savestatePath=savestate'",
-  "   Add-Content \"$dir\\config.ini\" 'patchPath=patch'",
-  "   Add-Content \"$dir\\config.ini\" 'screenshotPath=screenshot'",
-  "   Add-Content \"$dir\\config.ini\" 'cheatsPath=cheats'",
-  "   Add-Content \"$dir\\config.ini\" 'savegamePath=savegame'",
-  "   Add-Content \"$dir\\config.ini\" 'gba.bios=bios/gba_bios.bin'",
-  "   Add-Content \"$dir\\config.ini\" 'gb.bios=bios/gb_bios.bin'",
-  "   Add-Content \"$dir\\config.ini\" 'gbc.bios=bios/gbc_bios.bin'",
-  "   Add-Content \"$dir\\config.ini\" 'sgb.bios=bios/sgb_bios.bin'",
-  "}"
- ],
- "shortcuts": [
-  [
-   "mGBA.exe",
-   "mGBA (dev)"
-  ]
- ],
- "version": "7677-20220921"
+    "architecture": {
+        "32bit": {
+            "extract_dir": "mGBA-build-2022-09-22-win32-7684-d4b3bcde0faa13dc5f749c41877156007932a4f0",
+            "hash": "9b223d35bc7106610d1694584032c35f1fc60d27139b6fac1ea341496235d2de",
+            "url": "https://s3.amazonaws.com/mgba/build/mGBA-build-2022-09-22-win32-7684-d4b3bcde0faa13dc5f749c41877156007932a4f0.7z"
+        },
+        "64bit": {
+            "extract_dir": "mGBA-build-2022-09-22-win64-7684-d4b3bcde0faa13dc5f749c41877156007932a4f0",
+            "hash": "96c21b73af7f5229fcfa3f86332561ac0e721c806091ac58ccf6934a4943be1b",
+            "url": "https://s3.amazonaws.com/mgba/build/mGBA-build-2022-09-22-win64-7684-d4b3bcde0faa13dc5f749c41877156007932a4f0.7z"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "extract_dir": "mGBA-build-$matchYear-$matchMonth-$matchDay-win32-$matchVer-$matchGit",
+                "url": "https://s3.amazonaws.com/mgba/build/mGBA-build-$matchYear-$matchMonth-$matchDay-win32-$matchVer-$matchGit.7z"
+            },
+            "64bit": {
+                "extract_dir": "mGBA-build-$matchYear-$matchMonth-$matchDay-win64-$matchVer-$matchGit",
+                "url": "https://s3.amazonaws.com/mgba/build/mGBA-build-$matchYear-$matchMonth-$matchDay-win64-$matchVer-$matchGit.7z"
+            }
+        }
+    },
+    "bin": [
+        [
+            "mGBA.exe",
+            "mgba-dev"
+        ],
+        [
+            "mgba-sdl.exe",
+            "mgba-sdl-dev"
+        ]
+    ],
+    "checkver": {
+        "regex": "build-(?<year>20\\d{2})-(?<month>\\d{2})-(?<day>\\d{2})-win32-(?<ver>[\\d]+)-(?<git>\\w{40})\\.7z",
+        "replace": "$4-$1$2$3",
+        "url": "https://mgba.io/builds/1/"
+    },
+    "description": "A fast, accurate, and portable GBA emulator (development version)",
+    "homepage": "https://mgba.io/",
+    "license": {
+        "identifier": "MPL-2.0",
+        "url": "https://github.com/mgba-emu/mgba/blob/master/LICENSE"
+    },
+    "persist": [
+        "bios",
+        "cheats",
+        "patch",
+        "savegame",
+        "savestate",
+        "screenshot",
+        "shaders",
+        "qt.ini",
+        "config.ini",
+        "portable.ini"
+    ],
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\qt.ini\")) {",
+        "   New-Item \"$dir\\qt.ini\" -Type File | Out-Null",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\config.ini\")) {",
+        "   New-Item \"$dir\\config.ini\" -Type File | Out-Null",
+        "   Set-Content \"$dir\\config.ini\" '[ports.qt]'",
+        "   Add-Content \"$dir\\config.ini\" 'savestatePath=savestate'",
+        "   Add-Content \"$dir\\config.ini\" 'patchPath=patch'",
+        "   Add-Content \"$dir\\config.ini\" 'screenshotPath=screenshot'",
+        "   Add-Content \"$dir\\config.ini\" 'cheatsPath=cheats'",
+        "   Add-Content \"$dir\\config.ini\" 'savegamePath=savegame'",
+        "   Add-Content \"$dir\\config.ini\" 'gba.bios=bios/gba_bios.bin'",
+        "   Add-Content \"$dir\\config.ini\" 'gb.bios=bios/gb_bios.bin'",
+        "   Add-Content \"$dir\\config.ini\" 'gbc.bios=bios/gbc_bios.bin'",
+        "   Add-Content \"$dir\\config.ini\" 'sgb.bios=bios/sgb_bios.bin'",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "mGBA.exe",
+            "mGBA (dev)"
+        ]
+    ],
+    "version": "7684-20220922"
 }
