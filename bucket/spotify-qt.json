@@ -1,0 +1,31 @@
+{
+    "version": "3.8-1",
+    "description": "An unofficial Spotify client using Qt as a simpler, lighter alternative to the official client, inspired by spotify-tui.",
+    "homepage": "https://github.com/kraxarn/spotify-qt",
+    "license": {
+        "identifier": "GPL-3.0-or-later"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/kraxarn/spotify-qt/releases/download/v3.8/spotify-qt-mingw64-v3.8-1.zip",
+            "hash": "ef2b8e5e141a7621e910f952789bd13229d50b58e94f1d0a1eace871a47b14f9"
+        }
+    },
+    "shortcuts": [
+        [
+            "spotify-qt.exe",
+            "Spotify Qt"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/kraxarn/spotify-qt/releases",
+        "regex": "releases/download/v(?<tag>.*?)/spotify-qt-mingw64-v([\\d.-]+).zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/kraxarn/spotify-qt/releases/download/v$matchTag/spotify-qt-mingw64-v$version.zip"
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "version": "2022.8.26.5230",
+    "description": "A Genshin Impact game launcher, with a lot of features.",
+    "homepage": "https://www.snapgenshin.com",
+    "license": {
+        "identifier": "MIT"
+    },
+    "suggest": {
+        "dotnet-6.0": [
+            "dotnet-6.0-desktopruntime-np",
+            "dotnet-6.0-desktopruntime"
+        ]
+    },
+    "url": "https://github.com/DGP-Studio/Snap.Genshin/releases/latest/download/Publish.zip",
+    "hash": "8d5b5c1a920e75146dd9f03a9164c99ce4ced19cd9163cdf75048d3a4ab2b01f",
+    "shortcuts": [
+        [
+            "DGP.Genshin.exe",
+            "Snap Genshin"
+        ]
+    ],
+    "pre_install": [
+        "@('accounts.json', 'achievements.json', 'achievementsteps.json', 'cookie.dat', 'cookielist.dat', 'implementations.json', 'settings.json', 'MaterialList.json', 'WebviewEntries.json') | ForEach-Object {",
+        "    if (Test-Path \"$persist_dir\\$_\") { Copy-Item \"$persist_dir\\$_\" \"$dir\\\" | Out-Null }",
+        "}"
+    ],
+    "uninstaller": {
+        "script": [
+            "@('accounts.json', 'achievements.json', 'achievementsteps.json', 'cookie.dat', 'cookielist.dat', 'implementations.json', 'settings.json', 'MaterialList.json', 'WebviewEntries.json') | ForEach-Object {",
+            "    if (Test-Path \"$dir\\$_\") {",
+            "        ensure \"$persist_dir\" | Out-Null",
+            "        Copy-Item \"$dir\\$_\" \"$persist_dir\\\" | Out-Null",
+            "    }",
+            "}"
+        ]
+    },
+    "persist": "GachaStatistic",
+    "checkver": {
+        "github": "https://github.com/DGP-Studio/Snap.Genshin"
+    },
+    "autoupdate": {
+        "url": "https://github.com/DGP-Studio/Snap.Genshin/releases/latest/download/Publish.zip"
+    }
+}

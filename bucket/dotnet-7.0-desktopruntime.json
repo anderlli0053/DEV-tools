@@ -1,0 +1,46 @@
+{
+    "version": "7.0.0-rc.1.22427.1",
+    "description": "Microsoft .NET 7 Desktop Runtime.",
+    "homepage": "https://dotnet.microsoft.com/download/dotnet-core",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx"
+    },
+    "notes": "You can now remove this installer with 'scoop uninstall windowsdesktop-runtime-7'",
+    "architecture": {
+        "64bit": {
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/7.0.0-rc.1.22427.1/windowsdesktop-runtime-7.0.0-rc.1.22427.1-win-x64.exe",
+            "hash": "sha512:d56fee40bfeaf4b5f170668f7e07eea7ce2dfaa7e70d46a238ced19327dd1171f697170acf4db7dd26ecf64b92045beca979e7f7ccc78fad68d992589544d347"
+        },
+        "32bit": {
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/7.0.0-rc.1.22427.1/windowsdesktop-runtime-7.0.0-rc.1.22427.1-win-x86.exe",
+            "hash": "sha512:0f97e1b09cf76f7abcecfabef651daaf82669c32af6b335cf26378e640d382d59317c04fefccbf8748558434bab7689060cec89bff88e9e365a486dae7bab110"
+        }
+    },
+    "pre_install": "if (!(is_admin)) { throw 'Admin privileges are required.' }",
+    "installer": {
+        "script": "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList '/install', '/passive', '/norestart' -RunAs | Out-Null"
+    },
+    "checkver": {
+        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/7.0/releases.json",
+        "jsonpath": "$.releases[0].windowsdesktop.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe",
+                "hash": {
+                    "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/7.0/releases.json",
+                    "jsonpath": "$.releases[0].windowsdesktop.files[?(@.name == 'windowsdesktop-runtime-win-x64.exe')].hash"
+                }
+            },
+            "32bit": {
+                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe",
+                "hash": {
+                    "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/7.0/releases.json",
+                    "jsonpath": "$.releases[0].windowsdesktop.files[?(@.name == 'windowsdesktop-runtime-win-x86.exe')].hash"
+                }
+            }
+        }
+    }
+}

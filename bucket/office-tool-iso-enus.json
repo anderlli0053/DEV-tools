@@ -1,0 +1,49 @@
+{
+    "version": "16.0.15427.20210",
+    "description": "Offline installation package contains Office Tool Plus.",
+    "homepage": "https://download.coolhub.top",
+    "license": {
+        "identifier": "Freeware"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/Current/Office_Tool_Plus_16.0.15427.20210_x64_en-us.iso#/Office_Tool_Plus_en-us.iso",
+            "hash": "619384eb4e6c74eda9b64ee11abe88d4d7bd63f3398f63ac1cece3546dadde75"
+        },
+        "32bit": {
+            "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/Current/Office_Tool_Plus_16.0.15427.20210_x86_en-us.iso#/Office_Tool_Plus_en-us.iso",
+            "hash": "8f8592a64dab5e90765b5b3edfcadbdc6684ba6464bc275a981772933f949230"
+        }
+    },
+    "shortcuts": [
+        [
+            "Office Tool Plus.exe",
+            "Office Tool Plus"
+        ]
+    ],
+    "persist": "Office",
+    "checkver": {
+        "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/Current/",
+        "regex": "Office_Tool_Plus_([\\d.]+)_x64_en-us.iso"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/Current/Office_Tool_Plus_$version_x64_en-us.iso#/Office_Tool_Plus_en-us.iso",
+                "hash": {
+                    "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/Current/Hash.md",
+                    "mode": "extract",
+                    "regex": "(?s)$basename.*?$sha256"
+                }
+            },
+            "32bit": {
+                "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/Current/Office_Tool_Plus_$version_x86_en-us.iso#/Office_Tool_Plus_en-us.iso",
+                "hash": {
+                    "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/Current/Hash.md",
+                    "mode": "extract",
+                    "regex": "(?s)$basename.*?$sha256"
+                }
+            }
+        }
+    }
+}

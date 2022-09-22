@@ -1,0 +1,35 @@
+{
+    "version": "1.0.9.9",
+    "description": "Bing Wallpaper includes a collection of beautiful images from around the world that have been featured on the Bing homepage. Not only will you see a new image on your desktop each day, but you can also browse images and learn where they're from.",
+    "homepage": "https://www.microsoft.com/en-us/bing/bing-wallpaper",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.microsoft.com/servicesagreement"
+    },
+    "url": "https://download.microsoft.com/download/9/1/1/911276db-dcd3-4129-9639-375613697b11/Installer/1.0.9.9/Bing/W011/BingWallpaper.exe",
+    "hash": "5136b82637e843ca226945a318d945543f82bcc895e71f33e3abe6cfd2f2d8f1",
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\$fname\" \"$dir\\extracted\" -Removal",
+        "Expand-MsiArchive \"$dir\\extracted\\BWCInstaller.msi\" \"$dir\" -ExtractDir 'Microsoft\\BingWallpaperApp' -Removal"
+    ],
+    "shortcuts": [
+        [
+            "BingWallpaperApp.exe",
+            "Bing Wallpaper"
+        ],
+        [
+            "BingVisualSearchLauncher.exe",
+            "Bing Visual Search"
+        ]
+    ],
+    "checkver": {
+        "script": [
+            "#(Invoke-WebRequest -Uri 'https://go.microsoft.com/fwlink/?linkid=2126594'-MaximumRedirection 0 -SkipHttpErrorCheck -ErrorAction:SilentlyContinue).Headers.Location",
+            "return (Invoke-WebRequest -Uri 'https://bingwallpaper.microsoft.com/api/BWC/downloadPackage?brand=bing'-MaximumRedirection 0 -SkipHttpErrorCheck -ErrorAction:SilentlyContinue).Headers.Location"
+        ],
+        "regex": "download/(?<path>[\\w-/]+)/Installer/([\\d.]+)/Bing/W011/BingWallpaper.exe"
+    },
+    "autoupdate": {
+        "url": "https://download.microsoft.com/download/$matchPath/Installer/$version/Bing/W011/BingWallpaper.exe"
+    }
+}

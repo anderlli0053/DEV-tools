@@ -1,0 +1,31 @@
+{
+    "version": "0.2.25",
+    "description": "CNKI Express integrates academic communication, reading, Q&A, sync, personalization, intelligent pushing and instant messaging in one, making academics more efficient and convenient.",
+    "homepage": "https://m.cnki.net/mcnkidown",
+    "license": {
+        "identifier": "Proprietary"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.cnki.net/cnkiexpress/%E5%85%A8%E7%90%83%E5%AD%A6%E6%9C%AF%E5%BF%AB%E6%8A%A5%20Setup%200.2.25.exe#/dl.7z",
+            "hash": "3190adb1157a5be580a06b01fca1746685ef2ff7bb7b68a6301888304917b996",
+            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal",
+            "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\resources\" -ErrorAction 'SilentlyContinue' -Force -Recurse"
+        }
+    },
+    "shortcuts": [
+        [
+            "全球学术快报.exe",
+            "CNKI Express",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://cajviewer.cnki.net/download.html",
+        "regex": "cnkiexpress/%E5%85%A8%E7%90%83%E5%AD%A6%E6%9C%AF%E5%BF%AB%E6%8A%A5%20Setup%20([\\d.]+).exe"
+    },
+    "autoupdate": {
+        "url": "https://download.cnki.net/cnkiexpress/%E5%85%A8%E7%90%83%E5%AD%A6%E6%9C%AF%E5%BF%AB%E6%8A%A5%20Setup%20$version.exe#/dl.7z"
+    }
+}

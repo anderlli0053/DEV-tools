@@ -1,0 +1,41 @@
+{
+    "version": "5.35.1.0",
+    "description": "Huya is a pop-up interactive live streaming platform with a focus on live games.",
+    "homepage": "https://www.huya.com",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://hd.huya.com/huyaDIYzt/6811/pc/index.html#diySetTab=4"
+    },
+    "url": "https://download.huya.com/huyapc/install/HuyaClientInstall.exe#/dl.7z",
+    "hash": "32fed0ac418b842bbdf2b72ea5d37f6812d4e4bd910518b48e4bc9d0d64a8df2",
+    "installer": {
+        "script": [
+            "ensure \"$persist_dir\" | Out-Null",
+            "New-Item \"$env:AppData\\HuyaPCLive\" -ItemType Junction -Target \"$persist_dir\" | Out-Null"
+        ]
+    },
+    "uninstaller": {
+        "script": "Remove-Item \"$env:AppData\\HuyaPCLive\" -ErrorAction 'SilentlyContinue' -Force -Recurse"
+    },
+    "shortcuts": [
+        [
+            "huya.exe",
+            "Huya\\Huya"
+        ],
+        [
+            "Client\\HuyaMini.exe",
+            "Huya\\Huya Mini"
+        ],
+        [
+            "Repair\\HuyaRepair.exe",
+            "Huya\\Huya Repair"
+        ]
+    ],
+    "checkver": {
+        "url": "https://baoku.360.cn/soft/show/appid/1900021484",
+        "regex": "(?sm)版本.*?([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.huya.com/huyapc/install/HuyaClientInstall.exe#/dl.7z"
+    }
+}

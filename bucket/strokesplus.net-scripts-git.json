@@ -1,0 +1,20 @@
+{
+    "version": "0.2022.04.30.6846cd7",
+    "description": "StrokesPlus.net Scripts, maintained by @lyscop.",
+    "homepage": "https://github.com/lyscop/Strokesplus.Net-Scripts",
+    "license": {
+        "identifier": "Freeware"
+    },
+    "url": "https://github.com/lyscop/Strokesplus.Net-Scripts/archive/6846cd7ad008dff439f4276cab60bdfe39660101.zip",
+    "hash": "1dbaac0e064df670fd613dacd1b0708f0e6caabf21562e346da3f1ee2e1b9dff",
+    "extract_dir": "Strokesplus.Net-Scripts-6846cd7ad008dff439f4276cab60bdfe39660101",
+    "checkver": {
+        "url": "https://github.com/lyscop/Strokesplus.Net-Scripts/commits/main.atom",
+        "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>(?<short>[0-9a-f]{7})[0-9a-f]{33})",
+        "replace": "0.${1}.${2}.${3}.${short}"
+    },
+    "autoupdate": {
+        "url": "https://github.com/lyscop/Strokesplus.Net-Scripts/archive/$matchSha.zip",
+        "extract_dir": "Strokesplus.Net-Scripts-$matchSha"
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "version": "9.8.0.0",
+    "description": "Entertainment live streaming platform and high-quality voice chat service.",
+    "homepage": "https://www.yy.com",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://zc.yy.com/license.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://yydl.yy.com/4/setup/YYSetup-9.8.0.0-zh-CN.exe#/dl.7z",
+            "hash": "f039a52b6c72c28a5cc72a4837574072e8a154b55ecd1e66a3e8dff899139f50"
+        }
+    },
+    "extract_dir": "InstallDir",
+    "installer": {
+        "script": [
+            "ensure \"$persist_dir\" | Out-Null",
+            "New-Item \"$env:AppData\\duowan\\yy\" -ItemType Junction -Target \"$persist_dir\" | Out-Null"
+        ]
+    },
+    "post_install": "@('Uninstall.exe', 'yylauncher.exe') | ForEach-Object { Remove-Item \"$dir\\$_\" -Force -ErrorAction SilentlyContinue }",
+    "uninstaller": {
+        "script": "Remove-Item \"$env:AppData\\duowan\\yy\" -ErrorAction 'SilentlyContinue' -Force -Recurse"
+    },
+    "shortcuts": [
+        [
+            "YY.exe",
+            "YY"
+        ]
+    ],
+    "checkver": {
+        "script": "Write-Output $(Invoke-WebRequest -Uri 'https://baoku.360.cn/soft/show/appid/105192').Content",
+        "regex": "(?sm)版本.*?([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://yydl.yy.com/4/setup/YYSetup-$version-zh-CN.exe#/dl.7z"
+            }
+        }
+    }
+}

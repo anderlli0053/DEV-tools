@@ -1,0 +1,63 @@
+{
+    "version": "0.20.3",
+    "description": "Clash For Windows Chs Portable.",
+    "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
+    "license": {
+        "identifier": "Freeware"
+    },
+    "notes": [
+        "Wiki: <https://github.com/Fndroid/clash_for_windows_pkg/wiki>",
+        "Docs: <https://docs.cfw.lbyczf.com/contents/quickstart.html>"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.3/Clash.for.Windows-0.20.3-win.7z",
+                "https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases/latest/download/app.7z"
+            ],
+            "hash": [
+                "94a84cc824ecb772987321682032c5e585f11233f00fc5ce6cbd30d58b3d736d",
+                "5252b361f351780196008466a194ad335b2b3832c84089bbb681e062f18496c6"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.3/Clash.for.Windows-0.20.3-ia32-win.7z",
+                "https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases/latest/download/app.7z"
+            ],
+            "hash": [
+                "c35c1148441bb1dd2e94378e3a3810df2c5325452f1fbb2535b5b0dfc811047e",
+                "5252b361f351780196008466a194ad335b2b3832c84089bbb681e062f18496c6"
+            ]
+        }
+    },
+    "post_install": "Move-Item \"$dir\\app.asar\" \"$dir\\resources\" -Force",
+    "shortcuts": [
+        [
+            "Clash for Windows.exe",
+            "Clash for Windows"
+        ]
+    ],
+    "persist": "data",
+    "checkver": {
+        "url": "https://api.github.com/repos/ender-zhao/Clash-for-Windows_Chinese/releases?per_page=1",
+        "jsonpath": "$[0].tag_name",
+        "regex": "CFW-V([\\d.]+)_CN"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows-$version-win.7z",
+                    "https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases/latest/download/app.7z"
+                ]
+            },
+            "32bit": {
+                "url": [
+                    "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows-$version-ia32-win.7z",
+                    "https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases/latest/download/app.7z"
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "version": "1.4.0",
+    "description": "Chanify is a safe and simple notification tools. For developers, system administrators, and everyone can push notifications with API.",
+    "homepage": "https://www.chanify.net",
+    "license": {
+        "identifier": "MIT"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/chanify/chanify/releases/download/v1.4.0/chanify_Windows_x86_64.zip",
+            "hash": "043f61bd0738be48c56314990cf975e7fe565ef275d47f2d3cbde7d245a35171"
+        },
+        "32bit": {
+            "url": "https://github.com/chanify/chanify/releases/download/v1.4.0/chanify_Windows_i386.zip",
+            "hash": "a502dfff44d64af554a0f3dbefebf50142b810d55fd0589aba370030fff72308"
+        }
+    },
+    "pre_install": [
+        "if (Test-Path \"$persist_dir\\chanify.yml\") {",
+        "    Copy-Item \"$persist_dir\\chanify.yml\" \"$dir\\\" | Out-Null",
+        "}"
+    ],
+    "uninstaller": {
+        "script": [
+            "if (Test-Path \"$dir\\chanify.yml\") {",
+            "    ensure \"$persist_dir\" | Out-Null",
+            "    Copy-Item \"$dir\\chanify.yml\" \"$persist_dir\\\" | Out-Null",
+            "}"
+        ]
+    },
+    "bin": "chanify.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/chanify/chanify/releases?per_page=1",
+        "jsonpath": "$[0].tag_name",
+        "regex": "^v(.+)$"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/chanify/chanify/releases/download/v$version/chanify_Windows_x86_64.zip",
+                "hash": {
+                    "url": "$baseurl/chanify_$version_checksums.txt",
+                    "mode": "extract",
+                    "regex": "$sha256\\s+$basename"
+                }
+            },
+            "32bit": {
+                "url": "https://github.com/chanify/chanify/releases/download/v$version/chanify_Windows_i386.zip",
+                "hash": {
+                    "url": "$baseurl/chanify_$version_checksums.txt",
+                    "mode": "extract",
+                    "regex": "$sha256\\s+$basename"
+                }
+            }
+        }
+    }
+}

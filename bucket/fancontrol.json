@@ -1,0 +1,36 @@
+{
+    "version": "129",
+    "description": "This is the release repository for Fan Control, a focused and highly customizable fan controlling software for Windows.",
+    "homepage": "https://github.com/Rem0o/FanControl.Releases",
+    "license": {
+        "identifier": "Freeware"
+    },
+    "url": "https://github.com/Rem0o/FanControl.Releases/raw/V129/FanControl.zip",
+    "hash": "f9fbd4a6566965801244b6e884e97995783eade5c297a8f24e92e27325b672cb",
+    "pre_install": [
+        "if (Test-Path \"$persist_dir\\userConfig.json\") {",
+        "    Copy-Item \"$persist_dir\\userConfig.json\" \"$dir\\\" | Out-Null",
+        "}"
+    ],
+    "uninstaller": {
+        "script": [
+            "if (Test-Path \"$dir\\userConfig.json\") {",
+            "    ensure \"$persist_dir\" | Out-Null",
+            "    Copy-Item \"$dir\\userConfig.json\" \"$persist_dir\\\" | Out-Null",
+            "}"
+        ]
+    },
+    "shortcuts": [
+        [
+            "FanControl.exe",
+            "Fan Control"
+        ]
+    ],
+    "persist": "Plugins",
+    "checkver": {
+        "github": "https://github.com/Rem0o/FanControl.Releases"
+    },
+    "autoupdate": {
+        "url": "https://github.com/Rem0o/FanControl.Releases/raw/V$version/FanControl.zip"
+    }
+}

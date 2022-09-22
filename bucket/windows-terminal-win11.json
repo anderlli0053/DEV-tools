@@ -1,0 +1,35 @@
+{
+    "version": "1.15.2525.0",
+    "description": "Windows Terminal is a new, modern, feature-rich, productive terminal application for command-line users. It includes many of the features most frequently requested by the Windows command-line community including support for tabs, rich text, globalization, configurability, theming & styling, and more.",
+    "homepage": "https://github.com/microsoft/terminal",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/microsoft/terminal/raw/main/LICENSE"
+    },
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "url": "https://github.com/microsoft/terminal/releases/download/v1.15.2524.0/Microsoft.WindowsTerminal_Win11_1.15.2525.0_8wekyb3d8bbwe.msixbundle",
+    "hash": "a7080e93608b823dd27faa68d3583b59a49a64bcc9c38e89b7020c503c8aa0f6",
+    "installer": {
+        "script": [
+            "$winVer = [Environment]::OSVersion.Version",
+            "if (($winver.Major -lt '10') -or ($winVer.Build -lt 22000)) { error 'This package requires at least Windows 11 version 21H2/OS build 22000.x.'; break }",
+            "if($PSVersionTable.PSVersion.Major -ge 6) { Import-Module Appx -UseWindowsPowershell | Out-Null }",
+            "Add-AppxPackage -Path \"$dir\\$fname\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if($PSVersionTable.PSVersion.Major -ge 6) { Import-Module Appx -UseWindowsPowershell | Out-Null }",
+            "Get-AppxPackage -Name Microsoft.WindowsTerminal | Remove-AppxPackage"
+        ]
+    },
+    "checkver": {
+        "url": "https://api.github.com/repos/microsoft/terminal/releases",
+        "regex": "releases/download/v(?<tag>[\\d.]+)/Microsoft.WindowsTerminal_Win11_([\\d.]+)_8wekyb3d8bbwe.msixbundle"
+    },
+    "autoupdate": {
+        "url": "https://github.com/microsoft/terminal/releases/download/v$matchTag/Microsoft.WindowsTerminal_Win11_$version_8wekyb3d8bbwe.msixbundle"
+    }
+}

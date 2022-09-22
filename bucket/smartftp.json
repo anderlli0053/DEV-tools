@@ -1,0 +1,32 @@
+{
+    "version": "10.0.3008.0",
+    "description": "SmartFTP is a fast and reliable FTP, FTPS, SFTP, HTTP, Amazon S3, WebDAV, Google Drive, Google Cloud Storage, Microsoft OneDrive, Backblaze B2, Telnet, Terminal client with lots of features and a modern user interface.",
+    "homepage": "https://www.smartftp.com",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.smartftp.com/static/Products/Client/License.txt"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://static.smartftp.com/static/Products/Client/10.0.3008.0/x64/SmartFTP.msi",
+            "hash": "59b69f71a603d1df9ff1a6d35687e8c5242f0058a11c7626f78ac35d42c376e6"
+        }
+    },
+    "shortcuts": [
+        [
+            "SmartFTP.exe",
+            "SmartFTP"
+        ]
+    ],
+    "checkver": {
+        "script": "return (Invoke-WebRequest -Uri 'https://www.smartftp.com/get/SmartFTP64.msi' -MaximumRedirection 0 -SkipHttpErrorCheck -ErrorAction:SilentlyContinue).Headers.Location",
+        "regex": "Products/Client/([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://static.smartftp.com/static/Products/Client/$version/x64/SmartFTP.msi"
+            }
+        }
+    }
+}

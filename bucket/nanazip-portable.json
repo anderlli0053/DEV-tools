@@ -1,0 +1,34 @@
+{
+    "version": "1.2.252.0",
+    "description": "NanaZip is an open source file archiver, forked from the source code of well-known file archiver 7-Zip.",
+    "homepage": "https://github.com/M2Team/NanaZip",
+    "license": {
+        "identifier": "Freeware"
+    },
+    "url": "https://github.com/M2Team/NanaZipreleases/download/1.2/40174MouriNaruto.NanaZip_1.2.252.0_gnj4mf6z9tkrc.msixbundle#/dl.7z",
+    "hash": "2fb1d5a28bcf181e814ac1d99a586abfaa3a3a152e693b59614ad2be450477f5",
+    "architecture": {
+        "64bit": {
+            "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x64.msix' | Remove-Item -Force -Recurse"
+        },
+        "32bit": {
+            "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x86.msix' | Remove-Item -Force -Recurse"
+        }
+    },
+    "installer": {
+        "script": "Get-ChildItem \"$dir\" '*.msix' | Select-Object -ExpandProperty Fullname | Expand-7zipArchive -DestinationPath \"$dir\" -Removal"
+    },
+    "shortcuts": [
+        [
+            "NanaZip.exe",
+            "NanaZip"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/M2Team/NanaZip/releases",
+        "regex": "releases/download/(?<tag>[\\w-.]+)/40174MouriNaruto.NanaZip_([\\d.]+)_gnj4mf6z9tkrc.msixbundle"
+    },
+    "autoupdate": {
+        "url": "https://github.com/M2Team/NanaZip/releases/download/$matchTag/40174MouriNaruto.NanaZip_$version_gnj4mf6z9tkrc.msixbundle#/dl.7z"
+    }
+}

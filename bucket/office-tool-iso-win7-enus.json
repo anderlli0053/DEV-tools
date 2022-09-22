@@ -1,0 +1,49 @@
+{
+    "version": "16.0.12527.22197",
+    "description": "Offline installation package contains Office Tool Plus.",
+    "homepage": "https://download.coolhub.top",
+    "license": {
+        "identifier": "Freeware"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/Win7/Office_Tool_Plus_16.0.12527.22197_x64_en-us.iso#/Office_Tool_Plus_en-us.iso",
+            "hash": "36fa74f831913b0be117e79aa6e9513a545d7253051bf583df19d3fcae1211f1"
+        },
+        "32bit": {
+            "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/Win7/Office_Tool_Plus_16.0.12527.22197_x86_en-us.iso#/Office_Tool_Plus_en-us.iso",
+            "hash": "eb30bc715a65ab19e40a7aed55a53ccb70be441b2c8447d197d73ea5ced1406f"
+        }
+    },
+    "shortcuts": [
+        [
+            "Office Tool Plus.exe",
+            "Office Tool Plus"
+        ]
+    ],
+    "persist": "Office",
+    "checkver": {
+        "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/Win7/",
+        "regex": "Office_Tool_Plus_([\\d.]+)_x64_en-us.iso"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/Win7/Office_Tool_Plus_$version_x64_en-us.iso#/Office_Tool_Plus_en-us.iso",
+                "hash": {
+                    "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/Win7/Hash.md",
+                    "mode": "extract",
+                    "regex": "(?s)$basename.*?$sha256"
+                }
+            },
+            "32bit": {
+                "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/Win7/Office_Tool_Plus_$version_x86_en-us.iso#/Office_Tool_Plus_en-us.iso",
+                "hash": {
+                    "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/Win7/Hash.md",
+                    "mode": "extract",
+                    "regex": "(?s)$basename.*?$sha256"
+                }
+            }
+        }
+    }
+}

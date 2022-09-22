@@ -1,0 +1,49 @@
+{
+    "version": "2.37.1",
+    "description": "Systems monitoring and alerting toolkit(Download from TUNA mirror).",
+    "homepage": "https://prometheus.io",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/prometheus/prometheus/LatestRelease/prometheus-2.37.1.windows-amd64.tar.gz",
+            "hash": "099ea240418febf4bcf714c2a754f5b8cc414bda9c98c8b717fb911184af1a56",
+            "extract_dir": "prometheus-2.37.1.windows-amd64"
+        },
+        "32bit": {
+            "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/prometheus/prometheus/LatestRelease/prometheus-2.37.1.windows-386.tar.gz",
+            "hash": "0afbce7a0458059626226013e38681e9b3c7410e76c8ef1c07406475c4ea45e0",
+            "extract_dir": "prometheus-2.37.1.windows-386"
+        }
+    },
+    "bin": [
+        [
+            "prometheus.exe",
+            "prometheus",
+            "--config.file \"$persist_dir\\prometheus.yml\""
+        ],
+        "promtool.exe"
+    ],
+    "persist": [
+        "data",
+        "prometheus.yml"
+    ],
+    "checkver": {
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/prometheus/prometheus/LatestRelease/",
+        "regex": "prometheus-([\\d.]+).windows-amd64"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/prometheus/prometheus/LatestRelease/prometheus-$version.windows-amd64.tar.gz",
+                "extract_dir": "prometheus-$version.windows-amd64"
+            },
+            "32bit": {
+                "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/prometheus/prometheus/LatestRelease/prometheus-$version.windows-386.tar.gz",
+                "extract_dir": "prometheus-$version.windows-386"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sums.txt"
+        }
+    }
+}

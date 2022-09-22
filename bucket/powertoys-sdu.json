@@ -1,0 +1,43 @@
+{
+    "version": "0.62.1",
+    "description": "A set of utilities for power users to tune and streamline their Windows experience for greater productivity.",
+    "homepage": "https://github.com/microsoft/PowerToys",
+    "license": {
+        "identifier": "MIT"
+    },
+    "notes": "To run this application, you must install .Net Core: https://dotnet.microsoft.com/download",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirrors.sdu.edu.cn/github-release/microsoft_PowerToys/v0.62.1/PowerToysSetup-0.62.1-x64.exe",
+            "hash": "db42a587d9241b99d069de03d9e456083e141c392b35e05c9ad0177baa4a37fe"
+        }
+    },
+    "installer": {
+        "script": [
+            "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\.tmp\"",
+            "Expand-MsiArchive \"$dir\\.tmp\\AttachedContainer\\PowerToysSetup-$version-x64.msi\" \"$dir\" -ExtractDir 'PowerToys'",
+            "Remove-Item \"$dir\\.tmp\", \"$dir\\$fname\" -Force -Recurse"
+        ]
+    },
+    "shortcuts": [
+        [
+            "PowerToys.exe",
+            "PowerToys"
+        ]
+    ],
+    "checkver": {
+        "url": "https://mirrors.sdu.edu.cn/github-release/microsoft_PowerToys",
+        "regex": "v(\\d[\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirrors.sdu.edu.cn/github-release/microsoft_PowerToys/v$version/PowerToysSetup-$version-x64.exe",
+                "hash": {
+                    "url": "https://github.com/microsoft/PowerToys/releases/tag/v$version",
+                    "regex": ">$sha256<"
+                }
+            }
+        }
+    }
+}

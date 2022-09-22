@@ -1,0 +1,25 @@
+{
+    "version": "2022-09-19",
+    "description": "An experimental Rust compiler front-end for IDEs(Download from TUNA mirror).",
+    "homepage": "https://rust-analyzer.github.io/",
+    "license": "Apache-2.0|MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/rust-analyzer/rust-analyzer/2022-09-19/rust-analyzer-x86_64-pc-windows-msvc.gz",
+            "hash": "2ede55d1fd05ed5d0ab6370f4e8aa7df433c68226cf0d672328fb4d386c38c3a"
+        }
+    },
+    "pre_install": "Rename-Item \"$dir\\$($fname -replace '\\.gz$')\" 'rust-analyzer.exe'",
+    "bin": "rust-analyzer.exe",
+    "checkver": {
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/rust-analyzer/rust-analyzer/",
+        "regex": "a href=\"([\\d-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/rust-analyzer/rust-analyzer/$version/rust-analyzer-x86_64-pc-windows-msvc.gz"
+            }
+        }
+    }
+}

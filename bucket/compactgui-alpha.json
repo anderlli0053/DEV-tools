@@ -1,0 +1,30 @@
+{
+    "version": "3.0.0-alpha.7",
+    "description": "CompactGUI transparently compresses your games and programs reducing the space they use without affecting their functionality. It used to use the Windows 10 compact.exe function but now works directly with the Win32 API to be much more efficient.",
+    "homepage": "https://github.com/ImminentFate/CompactGUI",
+    "license": {
+        "identifier": "GPL-3.0-only"
+    },
+    "url": "https://github.com/ImminentFate/CompactGUI/releases/download/v3.0.0-alpha.7/CompactGUI.exe",
+    "hash": "9e0138f3330f524851c0eae6dc24499bbacd3eaee9fdd1418dac1c714e8bfcb7",
+    "bin": "CompactGUI.exe",
+    "shortcuts": [
+        [
+            "CompactGUI.exe",
+            "CompactGUI"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/ImminentFate/CompactGUI/releases?per_page=1",
+        "jsonpath": "$[0].tag_name",
+        "regex": "v(.*)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/ImminentFate/CompactGUI/releases/download/v$version/CompactGUI.exe",
+        "hash": {
+            "url": "https://github.com/ImminentFate/CompactGUI/releases/tag/v$version/",
+            "mode": "extract",
+            "regex": "SHA-256</span>:\\s+<span\\sclass=\"pl-s\">([a-fA-F0-9]{64})"
+        }
+    }
+}

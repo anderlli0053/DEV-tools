@@ -1,0 +1,37 @@
+{
+    "version": "8.1",
+    "description": "GestureSign is a gesture recognition software for Windows tablet. You can automate repetitive tasks by simply drawing a gesture with your fingers or mouse.",
+    "homepage": "https://github.com/TransposonY/GestureSign",
+    "license": {
+        "identifier": "GPL-2.0-or-later",
+        "url": "https://github.com/TransposonY/GestureSign/raw/master/LICENSE"
+    },
+    "url": "https://github.com/TransposonY/GestureSign/releases/download/v8.1/GestureSignSetup-8.1.0.0.zip",
+    "hash": "c981c6728a01dca74344049ef7325389c78cd34a327222713c4cbc2aca39b42b",
+    "pre_install": "Rename-Item \"$dir\\GestureSignSetup-*.exe\" 'setup.exe' -Force",
+    "installer": {
+        "file": "setup.exe",
+        "args": [
+            "/S",
+            "/D=$dir"
+        ]
+    },
+    "post_install": [
+        "Remove-Item \"$([Environment]::GetFolderPath('Desktop'))\\GestureSign.lnk\" -ErrorAction SilentlyContinue -Force",
+        "Remove-Item \"$([Environment]::GetFolderPath('startmenu'))\\Programs\\GestureSign\" -ErrorAction SilentlyContinue -Recurse -Force"
+    ],
+    "uninstaller": {
+        "file": "uninst.exe",
+        "args": "/S"
+    },
+    "shortcuts": [
+        [
+            "GestureSign.ControlPanel.exe",
+            "GestureSign"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/TransposonY/GestureSign/releases/download/v$version/GestureSignSetup-$version.0.0.zip"
+    }
+}

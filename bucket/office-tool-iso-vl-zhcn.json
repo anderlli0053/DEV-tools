@@ -1,0 +1,49 @@
+{
+    "version": "16.0.14332.20358",
+    "description": "Offline installation package contains Office Tool Plus(Simplified Chinese Edition).",
+    "homepage": "https://download.coolhub.top/",
+    "license": {
+        "identifier": "Freeware"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/PerpetualVL2021/Office_Tool_Plus_16.0.14332.20358_x64_zh-cn.iso#/Office_Tool_Plus_zh-cn.iso",
+            "hash": "ebbb43efd57b01f607625cd1db892230cd7785ddf485a4019263c015363d8fe9"
+        },
+        "32bit": {
+            "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/PerpetualVL2021/Office_Tool_Plus_16.0.14332.20358_x86_zh-cn.iso#/Office_Tool_Plus_zh-cn.iso",
+            "hash": "6ce4cbed3777cdfe649fabf5bd676594646640f7e616ce7deb2b54c548ae677a"
+        }
+    },
+    "shortcuts": [
+        [
+            "Office Tool Plus.exe",
+            "Office Tool Plus VL"
+        ]
+    ],
+    "persist": "Office",
+    "checkver": {
+        "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/PerpetualVL2021/",
+        "regex": "Office_Tool_Plus_([\\d.]+)_x64_zh-cn.iso"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/PerpetualVL2021/Office_Tool_Plus_$version_x64_zh-cn.iso#/Office_Tool_Plus_zh-cn.iso",
+                "hash": {
+                    "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/PerpetualVL2021/Hash.md",
+                    "mode": "extract",
+                    "regex": "(?s)$basename.*?$sha256"
+                }
+            },
+            "32bit": {
+                "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/PerpetualVL2021/Office_Tool_Plus_$version_x86_zh-cn.iso#/Office_Tool_Plus_zh-cn.iso",
+                "hash": {
+                    "url": "https://www.coolhub.top/one-index/?/Office_Tool/Office_ISO/PerpetualVL2021/Hash.md",
+                    "mode": "extract",
+                    "regex": "(?s)$basename.*?$sha256"
+                }
+            }
+        }
+    }
+}

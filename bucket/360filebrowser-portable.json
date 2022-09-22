@@ -1,0 +1,35 @@
+{
+    "version": "1.0.0.1050",
+    "description": "360FileBrowser is a single window multi-label resource manager, which improves the operational efficiency of using all kinds of folders.",
+    "homepage": "https://bbs.360.cn/thread-16040300-1-1.html",
+    "license": {
+        "identifier": "Proprietary"
+    },
+    "url": "http://down.360safe.com/pcnewapp/360FileSetup.exe#/dl.7z",
+    "hash": "cf5731369c642fcae4f6c76e03ad7707623a1910719c0b74b1abac8cd38b2862",
+    "architecture": {
+        "64bit": {
+            "shortcuts": [
+                [
+                    "360FileBrowser.exe",
+                    "360FileBrowser"
+                ]
+            ]
+        },
+        "32bit": {
+            "shortcuts": [
+                [
+                    "360FileBrowser64.exe",
+                    "360FileBrowser"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "script": "Write-Output $(Invoke-WebRequest -Uri 'https://baoku.360.cn/soft/show/appid/2000003908').Content",
+        "regex": "(?sm)版本.*?([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "http://down.360safe.com/pcnewapp/360FileSetup.exe#/dl.7z"
+    }
+}

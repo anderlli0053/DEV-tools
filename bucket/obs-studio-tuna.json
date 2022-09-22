@@ -1,0 +1,39 @@
+{
+    "version": "28.0.1",
+    "description": "Video recording and live streaming software(Download from TUNA mirror).",
+    "homepage": "https://obsproject.com",
+    "license": "GPL-2.0-only",
+    "notes": [
+        "Add Virtual Camera module by running: \"$dir\\data\\obs-plugins\\win-dshow\\virtualcam-install.bat\"",
+        "Remove it by running: \"$dir\\data\\obs-plugins\\win-dshow\\virtualcam-uninstall.bat\""
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/obsproject/obs-studio/OBS%20Studio%2028.0.1/OBS-Studio-28.0.1-Full-x64.zip",
+            "hash": "9eced54529b3ed64b872730116322b073348a1a4c6503b3a488d8ff01958e878",
+            "shortcuts": [
+                [
+                    "bin\\64bit\\obs64.exe",
+                    "OBS Studio"
+                ]
+            ]
+        }
+    },
+    "pre_install": "if (!(Test-Path \"$persist_dir\\portable_mode.txt\")) { New-Item \"$dir\\portable_mode.txt\" | Out-Null }",
+    "persist": [
+        "config",
+        "portable_mode.txt"
+    ],
+    "checkver": {
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/obsproject/obs-studio/",
+        "regex": "OBS Studio ([\\d.]+)",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/obsproject/obs-studio/OBS%20Studio%20$version/OBS-Studio-$version-Full-x64.zip"
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "version": "11.4.0",
+    "description": "Free online PDF tools to merge, compress, create, edit and convert PDFs. Quick and Easy. Without installation. Without registration.",
+    "homepage": "https://tools.pdf24.org/en/creator/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.pdf24.org/en/terms-of-use"
+    },
+    "url": "https://stx.pdf24.org/products/pdf-creator/download/pdf24-creator-11.4.0.msi#/setup.msi_",
+    "hash": "11a2e59c1100ef416da7d3716c4cfa91bb2da9a6d692b8054edf544144831d98",
+    "installer": {
+        "script": [
+            "# For error codes, see https://docs.microsoft.com/en-us/windows/win32/msi/error-codes",
+            "$ec = @{",
+            "    0 = 'This product has been installed successfully, a reboot is not required.';",
+            "    1638 = 'This product is already installed';",
+            "    3010 = 'This product has been installed, but a reboot is required to finalize the installation. Until the computer is rebooted, dependent packages may fail to install or function properly.';",
+            "}",
+            "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList '/install', '/quiet', '/norestart' -ContinueExitCodes $ec -RunAs | Out-Null"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "# For error codes, see https://docs.microsoft.com/en-us/windows/win32/msi/error-codes",
+            "$ec = @{",
+            "    0 = 'This product has been uninstalled successfully, a reboot is not required.';",
+            "    3010 = 'This product has been uninstalled, but a reboot is required to finalize the uninstallation.';",
+            "}",
+            "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList '/x', '/quiet', '/norestart' -ContinueExitCodes $ec -RunAs | Out-Null"
+        ]
+    },
+    "checkver": "Version\\s+([\\d.]+)",
+    "autoupdate": {
+        "url": "https://stx.pdf24.org/products/pdf-creator/download/pdf24-creator-$version.msi#/setup.msi_"
+    }
+}
