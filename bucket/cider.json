@@ -1,0 +1,38 @@
+{
+    "version": "1.5.7",
+    "description": "Cross-platform Apple Music client",
+    "license": "AGPL-3.0-or-later",
+    "homepage": "https://cider.sh",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ciderapp/cider-releases/releases/download/v1.5.7/Cider-Setup-winget-1.5.7.exe#/dl.7z",
+            "hash": "sha512:30eeff390bae654adb680c5a5e280150d6efe8c0d29a2dc29779d7ac175bef03ac181b17a2fcb61c4db0c78c04807e434039421134720565520c3f1eb575f28a"
+        }
+    },
+    "pre_install": [
+        "# There is a symlink 'python3' in node_modules that points to '/usr/python3'",
+        "# ,which is not applicable on Windows and cause error in 7-zip extraction",
+        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Switches '-xr!python3'",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Recurse -Force"
+    ],
+    "shortcuts": [
+        [
+            "Cider.exe",
+            "Cider"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/ciderapp/cider-releases"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ciderapp/cider-releases/releases/download/v$version/Cider-Setup-winget-$version.exe#/dl.7z",
+                "hash": {
+                    "url": "$baseurl/latest.yml",
+                    "regex": "sha512:\\s+$base64"
+                }
+            }
+        }
+    }
+}

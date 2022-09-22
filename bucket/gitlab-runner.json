@@ -1,32 +1,5 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "ad876510bdf4a8bc1e172925b0252fca9b9e207960ef4bfa83f59f9232a73f99",
-            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v15.2.2/binaries/gitlab-runner-windows-386.exe#/gitlab-runner.exe"
-        },
-        "64bit": {
-            "hash": "ef014ade02ac987e52fa99fe36ff5df079e9a74873618c0e1cb36d348ed63043",
-            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v15.2.2/binaries/gitlab-runner-windows-amd64.exe#/gitlab-runner.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v$version/binaries/gitlab-runner-windows-386.exe#/gitlab-runner.exe"
-            },
-            "64bit": {
-                "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v$version/binaries/gitlab-runner-windows-amd64.exe#/gitlab-runner.exe"
-            }
-        },
-        "hash": {
-            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v$version/release.sha256"
-        }
-    },
-    "bin": "gitlab-runner.exe",
-    "checkver": {
-        "regex": "/tags/v([\\d.]+)<",
-        "url": "https://gitlab.com/gitlab-org/gitlab-runner/-/tags?format=atom"
-    },
+    "version": "15.2.2",
     "description": "Run your jobs and send the results back to GitLab",
     "homepage": "https://docs.gitlab.com/runner/",
     "license": "MIT",
@@ -41,5 +14,32 @@
         "7. Check your runner's signal in the GitLab. If it isn't green or doesn't exist, check the official documentation",
         "8. Run it once from your project's pipeline. If you're prompted to choose a credential helper, select 'manager-core' (or whichever desired) with 'Always use this from now on' checked"
     ],
-    "version": "15.2.2"
+    "architecture": {
+        "64bit": {
+            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v15.2.2/binaries/gitlab-runner-windows-amd64.exe#/gitlab-runner.exe",
+            "hash": "ef014ade02ac987e52fa99fe36ff5df079e9a74873618c0e1cb36d348ed63043"
+        },
+        "32bit": {
+            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v15.2.2/binaries/gitlab-runner-windows-386.exe#/gitlab-runner.exe",
+            "hash": "ad876510bdf4a8bc1e172925b0252fca9b9e207960ef4bfa83f59f9232a73f99"
+        }
+    },
+    "bin": "gitlab-runner.exe",
+    "checkver": {
+        "url": "https://gitlab.com/gitlab-org/gitlab-runner/-/tags?format=atom",
+        "regex": "/tags/v([\\d.]+)<"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v$version/binaries/gitlab-runner-windows-amd64.exe#/gitlab-runner.exe"
+            },
+            "32bit": {
+                "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v$version/binaries/gitlab-runner-windows-386.exe#/gitlab-runner.exe"
+            }
+        },
+        "hash": {
+            "url": "https://gitlab-runner-downloads.s3.amazonaws.com/v$version/release.sha256"
+        }
+    }
 }

@@ -1,32 +1,16 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "fb8b091ea33a5fb0765a63a12ae1fe7ca90aaa0e732d8a20a49e1ab3d8b0bd7f",
-            "url": "https://kicad-downloads.s3.cern.ch/windows/nightly/kicad-nightly-r29205.fc10db25ba-x86_64.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://kicad-downloads.s3.cern.ch/windows/nightly/kicad-nightly-r$version-x86_64.exe#/dl.7z"
-            }
-        }
-    },
-    "bin": "bin\\kicad.exe",
-    "checkver": {
-        "regex": "kicad-.*r([\\d]+.[a-f0-9]+)-x86_64",
-        "reverse": true,
-        "url": "https://kicad-downloads.s3.cern.ch/?prefix=windows/nightly"
-    },
+    "version": "29205.fc10db25ba",
     "description": "Nightly build of KiCAD, an electronics design automation (EDA) suite.",
-    "env_set": {
-        "KICAD_PTEMPLATES": "$dir\\share\\kicad\\template\\",
-        "KISYS3DMOD": "$dir\\share\\kicad\\modules\\packages3d\\",
-        "KISYSMOD": "$dir\\share\\kicad\\modules\\"
-    },
     "homepage": "https://kicad-pcb.org",
     "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://kicad-downloads.s3.cern.ch/windows/nightly/kicad-nightly-r29205.fc10db25ba-x86_64.exe#/dl.7z",
+            "hash": "fb8b091ea33a5fb0765a63a12ae1fe7ca90aaa0e732d8a20a49e1ab3d8b0bd7f"
+        }
+    },
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Recurse",
+    "bin": "bin\\kicad.exe",
     "shortcuts": [
         [
             "bin\\kicad.exe",
@@ -45,5 +29,21 @@
             "Gerbview nightly"
         ]
     ],
-    "version": "29205.fc10db25ba"
+    "env_set": {
+        "KICAD_PTEMPLATES": "$dir\\share\\kicad\\template\\",
+        "KISYS3DMOD": "$dir\\share\\kicad\\modules\\packages3d\\",
+        "KISYSMOD": "$dir\\share\\kicad\\modules\\"
+    },
+    "checkver": {
+        "url": "https://kicad-downloads.s3.cern.ch/?prefix=windows/nightly",
+        "regex": "kicad-.*r([\\d]+.[a-f0-9]+)-x86_64",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://kicad-downloads.s3.cern.ch/windows/nightly/kicad-nightly-r$version-x86_64.exe#/dl.7z"
+            }
+        }
+    }
 }

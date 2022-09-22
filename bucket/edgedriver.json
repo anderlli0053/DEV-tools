@@ -1,29 +1,5 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "84c1bf793d73603972a17ed976555c0e7410bf741cd6cee6cb9d7212fbdc989c",
-            "url": "https://msedgedriver.azureedge.net/107.0.1393.0/edgedriver_win32.zip"
-        },
-        "64bit": {
-            "hash": "64ffd415b8b8555c2e30d3b890da6cb04c0c91b2dd38f92bee6784832a98314a",
-            "url": "https://msedgedriver.azureedge.net/107.0.1393.0/edgedriver_win64.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://msedgedriver.azureedge.net/$version/edgedriver_win32.zip"
-            },
-            "64bit": {
-                "url": "https://msedgedriver.azureedge.net/$version/edgedriver_win64.zip"
-            }
-        }
-    },
-    "bin": "msedgedriver.exe",
-    "checkver": {
-        "regex": "([\\d.]+)",
-        "script": "Write-Output $([System.Text.Encoding]::Unicode.GetString((Invoke-WebRequest -URI https://msedgedriver.azureedge.net/LATEST_CANARY).Content))"
-    },
+    "version": "107.0.1393.0",
     "description": "Close the loop on your developer cycle by automating testing of your website in Microsoft Edge (Chromium).",
     "homepage": "https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver",
     "license": {
@@ -31,5 +7,29 @@
         "url": "https://az813057.vo.msecnd.net/webdriver/license.html"
     },
     "notes": "For legacy (EdgeHTML) version, see 'versions/edgedriver-legacy'.",
-    "version": "107.0.1393.0"
+    "architecture": {
+        "64bit": {
+            "url": "https://msedgedriver.azureedge.net/107.0.1393.0/edgedriver_win64.zip",
+            "hash": "64ffd415b8b8555c2e30d3b890da6cb04c0c91b2dd38f92bee6784832a98314a"
+        },
+        "32bit": {
+            "url": "https://msedgedriver.azureedge.net/107.0.1393.0/edgedriver_win32.zip",
+            "hash": "84c1bf793d73603972a17ed976555c0e7410bf741cd6cee6cb9d7212fbdc989c"
+        }
+    },
+    "bin": "msedgedriver.exe",
+    "checkver": {
+        "script": "Write-Output $([System.Text.Encoding]::Unicode.GetString((Invoke-WebRequest -URI https://msedgedriver.azureedge.net/LATEST_CANARY).Content))",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://msedgedriver.azureedge.net/$version/edgedriver_win64.zip"
+            },
+            "32bit": {
+                "url": "https://msedgedriver.azureedge.net/$version/edgedriver_win32.zip"
+            }
+        }
+    }
 }

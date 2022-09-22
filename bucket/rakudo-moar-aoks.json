@@ -1,0 +1,39 @@
+{
+    "version": "2022.07-01",
+    "description": "The most mature, production-ready implementation of the Raku language.",
+    "homepage": "https://rakudo.org/",
+    "license": "Artistic-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://rakudo.org/dl/rakudo/rakudo-moar-2022.07-01-win-x86_64-msvc.zip",
+            "hash": "69e34fa0ead0d714088008d245ce7ff5d54e856e7b28f81d56a5c83a649e4680"
+        }
+    },
+    "extract_dir": "rakudo-moar-2022.07-01-win-x86_64-msvc",
+    "bin": [
+        "bin\\nqp.exe",
+        "bin\\perl6.exe",
+        "bin\\perl6w.exe",
+        "bin\\raku.exe",
+        "bin\\rakuw.exe",
+        "bin\\rakudo.exe",
+        "bin\\rakudow.exe",
+        "bin\\perl6-debug.exe",
+        "bin\\raku-debug.exe",
+        "bin\\rakudo-debug.exe",
+        "share\\perl6\\site\\bin\\zef.bat"
+    ],
+    "checkver": {
+        "url": "https://rakudo.org/downloads/rakudo",
+        "regex": "rakudo-moar-(?<version>[\\d]{4}.[\\d]{2})(?<patch>.[\\d]+)?-(?<revision>[\\d]+)-win-x86_64-msvc.zip",
+        "replace": "${version}${patch}-${revision}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://rakudo.org/dl/rakudo/rakudo-moar-$matchVersion$matchPatch-$matchRevision-win-x86_64-msvc.zip"
+            }
+        },
+        "extract_dir": "rakudo-moar-$matchVersion$matchPatch-$matchRevision-win-x86_64-msvc"
+    }
+}

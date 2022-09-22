@@ -1,23 +1,23 @@
 {
- "autoupdate": {
-  "url": "https://www.voidtools.com/ES-$version.zip"
- },
- "bin": "es.exe",
- "checkver": {
-  "regex": "ES-([\\d.]+)\\.zip",
-  "url": "https://www.voidtools.com/downloads/"
- },
- "depends": "extras/everything",
- "description": "Command line interface to Everyting.",
- "hash": "75bfc0737905408798b6ffa6bf51496df3c162f7da9b01927b8393d249e143e8",
- "homepage": "https://www.voidtools.com/support/everything/command_line_interface/",
- "license": "MIT",
- "persist": "es.ini",
- "pre_install": [
-  "$manifest.persist | ForEach-Object {",
-  "    if (-not (Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" -ItemType file | Out-Null }",
-  "}"
- ],
- "url": "https://www.voidtools.com/ES-1.1.0.24.zip",
- "version": "1.1.0.24"
+    "version": "1.1.0.24",
+    "description": "Command line interface to Everyting.",
+    "homepage": "https://www.voidtools.com/support/everything/command_line_interface/",
+    "license": "MIT",
+    "depends": "extras/everything",
+    "url": "https://www.voidtools.com/ES-1.1.0.24.zip",
+    "hash": "bb17b7c5b4f94eb73384656c32f04634289413f78f81d73d67d72d8526e0e4d8",
+    "pre_install": [
+        "$manifest.persist | ForEach-Object {",
+        "    if (-not (Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" -ItemType file | Out-Null }",
+        "}"
+    ],
+    "bin": "es.exe",
+    "persist": "es.ini",
+    "checkver": {
+        "url": "https://www.voidtools.com/downloads/",
+        "regex": "ES-([\\d.]+)\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://www.voidtools.com/ES-$version.zip"
+    }
 }

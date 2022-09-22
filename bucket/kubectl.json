@@ -1,35 +1,35 @@
 {
+    "version": "1.25.2",
+    "description": "Control the Kubernetes cluster manager.",
+    "homepage": "https://kubernetes.io/docs/user-guide/kubectl-overview/",
+    "license": "Apache-2.0",
     "architecture": {
-        "32bit": {
-            "hash": "863c116049a5582eb493acf5cc822e05969028de0c27ac04da6142d437d338ef",
-            "url": "https://storage.googleapis.com/kubernetes-release/release/v1.25.2/kubernetes-client-windows-386.tar.gz"
-        },
         "64bit": {
-            "hash": "44030a7f875d1cb7a49a274ba1af1c0db6183af08eec1b5d92b4b0c03fb8ce09",
-            "url": "https://storage.googleapis.com/kubernetes-release/release/v1.25.2/kubernetes-client-windows-amd64.tar.gz"
+            "url": "https://storage.googleapis.com/kubernetes-release/release/v1.25.2/kubernetes-client-windows-amd64.tar.gz",
+            "hash": "44030a7f875d1cb7a49a274ba1af1c0db6183af08eec1b5d92b4b0c03fb8ce09"
+        },
+        "32bit": {
+            "url": "https://storage.googleapis.com/kubernetes-release/release/v1.25.2/kubernetes-client-windows-386.tar.gz",
+            "hash": "863c116049a5582eb493acf5cc822e05969028de0c27ac04da6142d437d338ef"
         }
+    },
+    "extract_dir": "kubernetes\\client",
+    "bin": "bin\\kubectl.exe",
+    "checkver": {
+        "url": "https://storage.googleapis.com/kubernetes-release/release/stable.txt",
+        "regex": "v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "https://storage.googleapis.com/kubernetes-release/release/v$version/kubernetes-client-windows-386.tar.gz"
-            },
             "64bit": {
                 "url": "https://storage.googleapis.com/kubernetes-release/release/v$version/kubernetes-client-windows-amd64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://storage.googleapis.com/kubernetes-release/release/v$version/kubernetes-client-windows-386.tar.gz"
             }
         },
         "hash": {
             "url": "$url.sha1"
         }
-    },
-    "bin": "bin\\kubectl.exe",
-    "checkver": {
-        "regex": "v([\\d.]+)",
-        "url": "https://storage.googleapis.com/kubernetes-release/release/stable.txt"
-    },
-    "description": "Control the Kubernetes cluster manager.",
-    "extract_dir": "kubernetes\\client",
-    "homepage": "https://kubernetes.io/docs/user-guide/kubectl-overview/",
-    "license": "Apache-2.0",
-    "version": "1.25.2"
+    }
 }

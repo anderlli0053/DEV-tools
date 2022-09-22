@@ -1,0 +1,71 @@
+{
+    "version": "1360-bef4e80e",
+    "description": "Nintendo NES and Famicom emulator",
+    "homepage": "http://www.fceux.com",
+    "license": {
+        "url": "https://github.com/detain/fceux/blob/master/COPYING",
+        "identifier": "GPL-2.0"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/detain/scoop-emulators-cache/raw/master/fceux-dev/fceux64.zip",
+            "hash": "d35657c0812b1399cfd0169baf0691375c2a2bafe4925bf9760d15598fccef44",
+            "bin": [
+                [
+                    "fceux64.exe",
+                    "fceux-dev"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "fceux64.exe",
+                    "FCEUX (dev)"
+                ]
+            ]
+        },
+        "64bit": {
+            "url": "https://github.com/detain/scoop-emulators-cache/raw/master/fceux-dev/fceux64.zip",
+            "hash": "d35657c0812b1399cfd0169baf0691375c2a2bafe4925bf9760d15598fccef44",
+            "bin": [
+                [
+                    "fceux64.exe",
+                    "fceux-dev"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "fceux64.exe",
+                    "FCEUX (dev)"
+                ]
+            ]
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\fceux.cfg\")) {",
+        "    New-Item \"$dir\\fceux.cfg\" -Type File | Out-Null",
+        "}"
+    ],
+    "depends": "scoop-validator",
+    "persist": [
+        "cheats",
+        "fcs",
+        "movies",
+        "sav",
+        "snaps",
+        "fceux.cfg"
+    ],
+    "checkver": {
+        "url": "https://ci.appveyor.com/api/projects/detain/fceux",
+        "regex": "\"jobId\":\"(?<win32>.*?)\".*?arch=win32,.*?\"jobId\":\"(?<x64>.*?)\".*?arch=win32-x64,.*\"version\":\"(?<version>.*?)\".*\"commitId\":\"(?<commit>.{7}).*\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ci.appveyor.com/api/buildjobs/$matchWin32/artifacts/fceux.zip"
+            },
+            "64bit": {
+                "url": "https://ci.appveyor.com/api/buildjobs/$matchX64/artifacts/fceux64.zip"
+            }
+        }
+    }
+}

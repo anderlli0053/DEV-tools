@@ -1,0 +1,55 @@
+{
+    "version": "9.0.22.0",
+    "description": "An Android emulator optimized for mobile gaming with lower resource consumption",
+    "homepage": "https://www.ldmnq.com",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.ldmnq.com/ldy/userXieyi.html"
+    },
+    "notes": "Administrator privileges are required to run repairer",
+    "url": "https://res.ldmnq.com/download/leidian9/ldinst9_9.0.22.0.exe#/dl.7z",
+    "hash": "9f150bb7a7fde56421ef728b248b252fd91c5166d45572085b5c15cd5d26d430",
+    "pre_install": [
+        "Copy-Item \"$bucketsdir\\ownscoop\\scripts\\ldmnq9\\install.bat\" \"$dir\\\" | Out-Null",
+        "Copy-Item \"$bucketsdir\\ownscoop\\scripts\\ldmnq9\\uninstall.bat\" \"$dir\\\" | Out-Null"
+    ],
+    "post_install": [
+        "Remove-Item \"$dir\\log\" -Force -Recurse",
+        "Remove-Item \"$dir\\upload\" -Force -Recurse",
+        "Remove-Item \"$dir\\*report*\" -Force",
+        "Remove-Item \"$dir\\dnuninst.exe\" -Force",
+        "Remove-Item \"$dir\\ldnews.exe\" -Force",
+        "Remove-Item \"$dir\\ldremoteinst.exe\" -Force"
+    ],
+    "installer": {
+        "script": "Start-Process -Wait \"$dir\\install.bat\""
+    },
+    "uninstaller": {
+        "script": "Start-Process -Wait \"$dir\\uninstall.bat\""
+    },
+    "shortcuts": [
+        [
+            "dnplayer.exe",
+            "LDPlayer\\LDPlayer"
+        ],
+        [
+            "dnmultiplayer.exe",
+            "LDPlayer\\LDMultiPlayer"
+        ],
+        [
+            "dnrepairer.exe",
+            "LDPlayer\\LDPlayer Repairer"
+        ]
+    ],
+    "persist": [
+        "ldrecord\\video",
+        "vms"
+    ],
+    "checkver": {
+        "url": "https://www.ldmnq.com",
+        "regex": "V(9[\\d.]+)<"
+    },
+    "autoupdate": {
+        "url": "https://res.ldmnq.com/download/leidian9/ldinst9_$version.exe#/dl.7z"
+    }
+}

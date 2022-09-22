@@ -1,42 +1,54 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "6080a28959881dd7f83e2a9315afec3189f5b965bc1f6e16573758383c7e342c",
-   "url": "https://www.softwareok.de/Download/ProcessKO.zip"
-  },
-  "64bit": {
-   "hash": "f0d9df791a4c8ec3f1e21a8712d0af5a15977d340aadab0aba57bb6a649f79d3",
-   "url": "https://www.softwareok.de/Download/ProcessKO_x64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://www.softwareok.de/Download/ProcessKO.zip"
-   },
-   "64bit": {
-    "url": "https://www.softwareok.de/Download/ProcessKO_x64.zip"
-   }
-  }
- },
- "bin": "ProcessKO.exe",
- "checkver": {
-  "regex": "Download ProcessKO ([\\d\\.]+)",
-  "url": "https://www.softwareok.de/?Download=ProcessKO"
- },
- "description": "Close / Terminate hanging programs, apps, processes on MS Windows",
- "homepage": "https://www.softwareok.de/?seite=Freeware/ProcessKO",
- "license": "Proprietary",
- "persist": "ProcessKO.ini",
- "pre_install": [
-  "Get-ChildItem \"$dir\\ProcessKO*.exe\" | Rename-Item -NewName 'ProcessKO.exe'",
-  "if(!(Test-Path \"$persist_dir\\ProcessKO.ini\")) { New-Item \"$dir\\ProcessKO.ini\" | Out-Null }"
- ],
- "shortcuts": [
-  [
-   "ProcessKO.exe",
-   "ProcessKO"
-  ]
- ],
- "version": "6.06"
+    "homepage": "http://www.softwareok.com/?seite=Freeware/ProcessKO",
+    "version": "6.06",
+    "license": "freeware",
+    "architecture": {
+        "64bit": {
+            "url": "http://www.softwareok.com/Download/ProcessKO_x64.zip",
+            "hash": "f0d9df791a4c8ec3f1e21a8712d0af5a15977d340aadab0aba57bb6a649f79d3",
+            "bin": [
+                [
+                    "ProcessKO_x64.exe",
+                    "ProcessKO"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "ProcessKO_x64.exe",
+                    "ProcessKO"
+                ]
+            ]
+        },
+        "32bit": {
+            "url": "http://www.softwareok.com/Download/ProcessKO_Unicode.zip",
+            "hash": "4dc504ddcddf991a79e22039e79557614f387a5b894931d0faed2b68c41fcf41",
+            "bin": [
+                [
+                    "ProcessKO_Unicode.exe",
+                    "ProcessKO"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "ProcessKO_Unicode.exe",
+                    "ProcessKO"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "ProcessKO.ini",
+        "Settings.cfi"
+    ],
+    "checkver": "ProcessKO ([\\d.]+) Fast close and terminate programs",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://www.softwareok.com/Download/ProcessKO_x64.zip"
+            },
+            "32bit": {
+                "url": "http://www.softwareok.com/Download/ProcessKO_Unicode.zip"
+            }
+        }
+    }
 }

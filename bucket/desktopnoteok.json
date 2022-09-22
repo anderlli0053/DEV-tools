@@ -1,43 +1,50 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "12088034d99091c47160b97f334ec5f4b4cb2295e449f3f19213e48b131133fd",
-   "shortcuts": [
-    [
-     "DNOK.exe",
-     "DesktopNoteOK"
-    ]
-   ],
-   "url": "http://www.softwareok.com/Download/DesktopNoteOK.zip"
-  },
-  "64bit": {
-   "hash": "ade40895fdbf02ad4116c1bd5f96193b7ce0e9ca479cf21c7884a8992bc488b5",
-   "shortcuts": [
-    [
-     "DNOK_x64.exe",
-     "DesktopNoteOK"
-    ]
-   ],
-   "url": "http://www.softwareok.com/Download/DesktopNoteOK_x64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "http://www.softwareok.com/Download/DesktopNoteOK.zip"
-   },
-   "64bit": {
-    "url": "http://www.softwareok.com/Download/DesktopNoteOK_x64.zip"
-   }
-  }
- },
- "checkver": {
-  "regex": "DesktopNoteOK ([\\d.]+)"
- },
- "description": "For quick creation of desktop notes on the Windows desktop, with beautiful random options and various customization options.",
- "homepage": "http://www.softwareok.com/?seite=Freeware/DesktopNoteOK",
- "license": "Freeware",
- "persist": "DesktopNoteOK.ini",
- "pre_install": "if (!(Test-Path \"$persist_dir\\DesktopNoteOK.ini\")) { Set-Content -Encoding ASCII -Path \"$dir\\DesktopNoteOK.ini\" -Value $null }",
- "version": "3.61"
+    "homepage": "http://softwareok.com/?seite=Microsoft/DesktopNoteOK",
+    "description": "Desktop notes",
+    "license": "freeware",
+    "version": "3.61",
+    "architecture": {
+        "64bit": {
+            "url": "http://softwareok.com/Download/DesktopNoteOK_x64_Portable.zip",
+            "hash": "77206e8ef5b35e78e021a12cd5d045944ba417d76624cd50af1b6e13a15cdf25"
+        },
+        "32bit": {
+            "url": "http://softwareok.com/Download/DesktopNoteOK_Portable.zip",
+            "hash": "7e5763887432396317a7966982d3e52803f826240b93b0203f71a47bd3bc9f78"
+        }
+    },
+    "pre_install": [
+        "$exefile = (Get-ChildItem \"$dir\" '*.exe' | Select-Object -First 1).FullName",
+        "Rename-Item \"$exefile\" \"$dir\\DesktopNoteOK.exe\"",
+        "if(!(Test-Path \"$persist_dir\\DesktopNoteOK.ini\")) {",
+        "    New-Item \"$dir\\DesktopNoteOK.ini\" -Type File -Force | Out-Null",
+        "}"
+    ],
+    "bin": "DesktopNoteOK.exe",
+    "shortcuts": [
+        [
+            "DesktopNoteOK.exe",
+            "DesktopNoteOK"
+        ]
+    ],
+    "persist": "DesktopNoteOK.ini",
+    "checkver": "DesktopNoteOK ([\\d.]+)",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://softwareok.com/Download/DesktopNoteOK_x64_Portable.zip",
+                "hash": {
+                    "url": "http://softwareok.com/?Download=DesktopNoteOK",
+                    "find": "DesktopNoteOK_x64_Portable\\.zip.+?target=_blank>($sha256)"
+                }
+            },
+            "32bit": {
+                "url": "http://softwareok.com/Download/DesktopNoteOK_Portable.zip",
+                "hash": {
+                    "url": "http://softwareok.com/?Download=DesktopNoteOK",
+                    "find": "DesktopNoteOK_Portable\\.zip.+?target=_blank>($sha256)"
+                }
+            }
+        }
+    }
 }

@@ -1,53 +1,49 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "sha512:24757e80b4346493de5a9910dcc55adf4407de1da98a967f5c9310fc311f4b969474b28477292daf60d569aec053fead6435cb36c13de210aa742e13d02719d3",
-   "url": "https://github.com/v2fly/v2ray-core/releases/download/v5.1.0/v2ray-windows-32.zip"
-  },
-  "64bit": {
-   "hash": "sha512:2f747212d8d375feb48983fa94fc8047a2d74109aeb796732c70835ca81280eff641830d1aa25fe5441fea54091ce25bb300f707fc7cbcdda822163696eacc51",
-   "url": "https://github.com/v2fly/v2ray-core/releases/download/v5.1.0/v2ray-windows-64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://github.com/v2fly/v2ray-core/releases/download/v$version/v2ray-windows-32.zip"
-   },
-   "64bit": {
-    "url": "https://github.com/v2fly/v2ray-core/releases/download/v$version/v2ray-windows-64.zip"
-   }
-  },
-  "hash": {
-   "regex": "SHA512= $sha512",
-   "url": "$url.dgst"
-  }
- },
- "bin": [
-  "v2ctl.exe",
-  "v2ray.exe",
-  "wv2ray.exe"
- ],
- "checkver": {
-  "github": "https://github.com/v2fly/v2ray-core"
- },
- "description": "A platform for building proxies to bypass network restrictions.",
- "homepage": "https://www.v2fly.org/en_US/",
- "installer": {
-  "script": [
-   "#v2ctl.exe cannot recognize signature file when there are spaces in path. This is a workaround to eliminate spaces.",
-   "Write-Host 'Verifying V2Ray binary...' -f Yellow",
-   "$sig_dir = \"$Env:SystemRoot\\Temp\\v2ray\"",
-   "ensure $sig_dir | Out-Null",
-   "Invoke-WebRequest \"https://github.com/v2fly/v2ray-core/releases/download/v$version/Release\" -OutFile $sig_dir\\Release",
-   "if (!(Invoke-Expression \"&`\"$dir\\v2ctl.exe`\" verify --sig=$sig_dir\\Release `\"$dir\\v2ray.exe`\"\" | Select-String 'OK')) {",
-   "    Write-Host 'V2Ray binary is corrupted!' -f Red",
-   "    break",
-   "}",
-   "Remove-Item $sig_dir -Force -Recurse | Out-Null"
-  ]
- },
- "license": "MIT",
- "persist": "config.json",
- "version": "5.1.0"
+    "version": "5.1.0",
+    "description": "A platform for building proxies to bypass network restrictions.",
+    "homepage": "https://www.v2fly.org/en_US/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/v2fly/v2ray-core/releases/download/v5.1.0/v2ray-windows-64.zip",
+            "hash": "sha512:2f747212d8d375feb48983fa94fc8047a2d74109aeb796732c70835ca81280eff641830d1aa25fe5441fea54091ce25bb300f707fc7cbcdda822163696eacc51"
+        },
+        "32bit": {
+            "url": "https://github.com/v2fly/v2ray-core/releases/download/v5.1.0/v2ray-windows-32.zip",
+            "hash": "sha512:24757e80b4346493de5a9910dcc55adf4407de1da98a967f5c9310fc311f4b969474b28477292daf60d569aec053fead6435cb36c13de210aa742e13d02719d3"
+        }
+    },
+    "installer": {
+        "script": [
+            "#v2ray.exe cannot recognize signature file when there are spaces in path. This is a workaround to eliminate spaces.",
+            "Write-Host 'Verifying V2Ray binary...' -f Yellow",
+            "$sig_dir = \"$Env:SystemRoot\\Temp\\v2ray\"",
+            "ensure $sig_dir | Out-Null",
+            "Invoke-WebRequest \"https://github.com/v2fly/v2ray-core/releases/download/v$version/Release\" -OutFile $sig_dir\\Release",
+            "if (!(Invoke-Expression \"&`\"$dir\\v2ray.exe`\" verify --sig=$sig_dir\\Release `\"$dir\\v2ray.exe`\"\" | Select-String 'OK')) {",
+            "    Write-Host 'V2Ray binary is corrupted!' -f Red",
+            "    break",
+            "}",
+            "Remove-Item $sig_dir -Force -Recurse | Out-Null"
+        ]
+    },
+    "bin": "v2ray.exe",
+    "persist": "config.json",
+    "checkver": {
+        "github": "https://github.com/v2fly/v2ray-core"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/v2fly/v2ray-core/releases/download/v$version/v2ray-windows-64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/v2fly/v2ray-core/releases/download/v$version/v2ray-windows-32.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.dgst",
+            "regex": "SHA512= $sha512"
+        }
+    }
 }

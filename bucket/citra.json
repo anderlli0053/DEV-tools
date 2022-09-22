@@ -1,26 +1,14 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/citra-emu/citra-nightly/releases/download/nightly-$matchBuild/citra-windows-$matchEnv-$matchDate-$matchCommit.$matchZip"
-    },
-    "bin": [
-        "citra.exe",
-        "citra-qt.exe",
-        "citra-room.exe"
-    ],
-    "checkver": {
-        "github": "https://github.com/citra-emu/citra-nightly",
-        "regex": "download/nightly-(?<build>[\\d]+)/citra-windows-(?<env>[\\w]+)-(?<date>[\\d]+)-(?<commit>[\\da-f]{7})\\.(?<zip>7z|zip)",
-        "replace": "${build}-${date}"
-    },
+    "version": "1786-20220921",
     "description": "Emulator for Nintendo 3DS, capable of playing many of your favorite games",
-    "extract_dir": "nightly-mingw",
-    "hash": "18f9f21241a06604a8cfbd7d8dfee752809223dc26598a2e44971d0bf297add0",
     "homepage": "https://citra-emu.org/",
     "license": {
         "identifier": "GPL-2.0",
         "url": "https://github.com/citra-emu/citra-nightly/blob/master/license.txt"
     },
-    "persist": "user",
+    "url": "https://github.com/citra-emu/citra-nightly/releases/download/nightly-1786/citra-windows-mingw-20220921-cbd5d1c.7z",
+    "hash": "18f9f21241a06604a8cfbd7d8dfee752809223dc26598a2e44971d0bf297add0",
+    "extract_dir": "nightly-mingw",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\user\")) {",
         "   New-Item -Path \"$persist_dir\" -Name \"user\" -ItemType \"directory\" | Out-Null",
@@ -31,12 +19,24 @@
         "   }",
         "}"
     ],
+    "bin": [
+        "citra.exe",
+        "citra-qt.exe",
+        "citra-room.exe"
+    ],
     "shortcuts": [
         [
             "citra-qt.exe",
             "Citra"
         ]
     ],
-    "url": "https://github.com/citra-emu/citra-nightly/releases/download/nightly-1786/citra-windows-mingw-20220921-cbd5d1c.7z",
-    "version": "1786-20220921"
+    "persist": "user",
+    "checkver": {
+        "github": "https://github.com/citra-emu/citra-nightly",
+        "regex": "download/nightly-(?<build>[\\d]+)/citra-windows-(?<env>[\\w]+)-(?<date>[\\d]+)-(?<commit>[\\da-f]{7})\\.(?<zip>7z|zip)",
+        "replace": "${build}-${date}"
+    },
+    "autoupdate": {
+        "url": "https://github.com/citra-emu/citra-nightly/releases/download/nightly-$matchBuild/citra-windows-$matchEnv-$matchDate-$matchCommit.$matchZip"
+    }
 }

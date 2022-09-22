@@ -1,0 +1,51 @@
+{
+    "version": "1.18.6",
+    "description": "The Syncthing relay server",
+    "homepage": "https://syncthing.net/",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/syncthing/relaysrv/releases/download/v1.18.6/strelaysrv-windows-amd64-v1.18.6.zip",
+            "hash": "df3390b84b45f8f27a210dabb1441a914abd710cb6bd7d850f9f7be1f7538e47",
+            "extract_dir": "strelaysrv-windows-amd64-v1.18.6"
+        },
+        "32bit": {
+            "url": "https://github.com/syncthing/relaysrv/releases/download/v1.18.6/strelaysrv-windows-386-v1.18.6.zip",
+            "hash": "884c9a73f226c56a20315f16f37f1f940edade8672cd23806d6f0eebdd740130",
+            "extract_dir": "strelaysrv-windows-386-v1.18.6"
+        }
+    },
+    "bin": [
+        [
+            "strelaysrv.exe",
+            "strelaysrv",
+            "-keys \"$dir\""
+        ]
+    ],
+    "persist": [
+        "cert.pem",
+        "key.pem"
+    ],
+    "pre_install": [
+        "foreach ($name in @('cert.pem', 'key.pem')) {",
+        "    if (!(Test-Path \"$persist_dir\\$name\")) {",
+        "        New-Item -Force -Path \"$dir\" -Name $name | Out-Null",
+        "    }",
+        "}"
+    ],
+    "checkver": {
+        "github": "https://github.com/syncthing/relaysrv"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/syncthing/relaysrv/releases/download/v$version/strelaysrv-windows-amd64-v$version.zip",
+                "extract_dir": "strelaysrv-windows-amd64-v$version"
+            },
+            "32bit": {
+                "url": "https://github.com/syncthing/relaysrv/releases/download/v$version/strelaysrv-windows-386-v$version.zip",
+                "extract_dir": "strelaysrv-windows-386-v$version"
+            }
+        }
+    }
+}

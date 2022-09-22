@@ -1,29 +1,29 @@
 {
- "autoupdate": {
-  "extract_dir": "vcpkg-$version",
-  "url": "https://github.com/microsoft/vcpkg/archive/refs/tags/$version.zip"
- },
- "bin": "vcpkg.exe",
- "checkver": {
-  "github": "https://github.com/microsoft/vcpkg/"
- },
- "description": "C/C++ dependency manager from Microsoft For all platforms, buildsystems, and workflows",
- "extract_dir": "vcpkg-2022.08.15",
- "hash": "cdc4f501413c51dd7fbc21969eaa3355393c3a0d4e2b861f1bbef95416f3465c",
- "homepage": "https://vcpkg.io/",
- "installer": {
-  "file": "bootstrap-vcpkg.bat",
-  "keep": true
- },
- "license": "MIT",
- "persist": [
-  "downloads",
-  "installed"
- ],
- "post_install": "vcpkg integrate install",
- "uninstaller": {
-  "script": "vcpkg integrate remove"
- },
- "url": "https://github.com/microsoft/vcpkg/archive/refs/tags/2022.08.15.zip",
- "version": "2022.08.15"
+    "version": "2022.08.15",
+    "description": "C/C++ dependency manager from Microsoft For all platforms, buildsystems, and workflows",
+    "homepage": "https://vcpkg.io/",
+    "license": "MIT",
+    "url": "https://github.com/microsoft/vcpkg/archive/refs/tags/2022.08.15.zip",
+    "hash": "cdc4f501413c51dd7fbc21969eaa3355393c3a0d4e2b861f1bbef95416f3465c",
+    "extract_dir": "vcpkg-2022.08.15",
+    "installer": {
+        "file": "bootstrap-vcpkg.bat",
+        "keep": true
+    },
+    "bin": "vcpkg.exe",
+    "post_install": "vcpkg integrate install",
+    "uninstaller": {
+        "script": "vcpkg integrate remove"
+    },
+    "persist": [
+        "downloads",
+        "installed"
+    ],
+    "checkver": {
+        "github": "https://github.com/microsoft/vcpkg/"
+    },
+    "autoupdate": {
+        "url": "https://github.com/microsoft/vcpkg/archive/refs/tags/$version.zip",
+        "extract_dir": "vcpkg-$version"
+    }
 }

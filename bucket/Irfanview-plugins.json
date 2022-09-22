@@ -1,0 +1,37 @@
+{
+    "version": "4.60",
+    "description": "Plugins for image viewer Irfanview.",
+    "homepage": "https://www.irfanview.com",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.irfanview.com/eula.htm"
+    },
+    "depends": "Irfanview",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.irfanview.info/files/iview460_plugins_x64.zip",
+            "hash": "e381a6993baacc40c4b1851e914e5c35bf5523716a2b3b9e53ec112b6809dc26"
+        },
+        "32bit": {
+            "url": "https://www.irfanview.info/files/iview460_plugins.zip",
+            "hash": "628a088067c0e4baf02ab87698fc0bf66b2b59cb1eee9ff08c95535e741cd654"
+        }
+    },
+    "installer": {
+        "script": "Copy-Item \"$dir\\*\" \"$(appdir Irfanview $global)\\current\\Plugins\" -Force -Recurse"
+    },
+    "checkver": {
+        "url": "https://www.irfanview.com",
+        "regex": ">\\s*version\\s+([\\d\\.-]+)\\s*<"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.irfanview.info/files/iview$cleanVersion_plugins_x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.irfanview.info/files/iview$cleanVersion_plugins.zip"
+            }
+        }
+    }
+}

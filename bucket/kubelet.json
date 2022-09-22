@@ -1,9 +1,18 @@
 {
+    "version": "1.25.2",
+    "description": "Kubernetes node agent",
+    "homepage": "https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/",
+    "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "hash": "7d8b7f30caae9b43c1d403913b155a585603e7a7bcac7cfddddf786d5b12eae8",
-            "url": "https://dl.k8s.io/v1.25.2/bin/windows/amd64/kubelet.exe"
+            "url": "https://dl.k8s.io/v1.25.2/bin/windows/amd64/kubelet.exe",
+            "hash": "7d8b7f30caae9b43c1d403913b155a585603e7a7bcac7cfddddf786d5b12eae8"
         }
+    },
+    "bin": "kubelet.exe",
+    "checkver": {
+        "url": "https://storage.googleapis.com/kubernetes-release/release/stable.txt",
+        "regex": "v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
@@ -14,14 +23,5 @@
         "hash": {
             "url": "$url.sha1"
         }
-    },
-    "bin": "kubelet.exe",
-    "checkver": {
-        "regex": "v([\\d.]+)",
-        "url": "https://storage.googleapis.com/kubernetes-release/release/stable.txt"
-    },
-    "description": "Kubernetes node agent",
-    "homepage": "https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/",
-    "license": "Apache-2.0",
-    "version": "1.25.2"
+    }
 }

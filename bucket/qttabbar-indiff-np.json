@@ -1,0 +1,37 @@
+{
+    "version": "1.5.5-beta.6",
+    "description": "Fork of QTTabBar that focuses on localization and other improvements.",
+    "homepage": "https://www.yuque.com/indiff/qttabbar",
+    "license": "Freeware | GPL-3.0-or-later",
+    "url": "https://github.com/indiff/qttabbar/releases/download/v1.5.5-beta.6/QTTabBar.Setup_1.5.5.6Beta_de.2022.zip",
+    "hash": "453f7e960eaba015bfd852349cad94532e21ff221b0496ecf99ec562ea27b2ed",
+    "installer": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires administrator rights to $cmd\"; break }",
+            "# Remove previous installations to avoid error",
+            "Get-ChildItem \"$env:TEMP\\QTTabBar_*.*\" | ForEach-Object { Remove-Item -ErrorAction Ignore -Recurse $_ }",
+            "",
+            "Get-ChildItem \"$dir\\*.msi\" | Rename-Item -NewName 'setup.msi'",
+            "Start-Process msiexec -ArgumentList @('/i', \"`\"$dir\\setup.msi`\"\", '/qn', '/l*v', 'test.log') -Wait -Verb RunAs | Out-Null",
+            "Stop-Process -Name explorer; Start-Sleep -Seconds 2",
+            "info 'Restarting explorer...'",
+            "if (!(Get-Process -Name 'explorer' -ErrorAction SilentlyContinue)) { explorer }"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires administrator rights to $cmd\"; break }",
+            "Start-Process msiexec -ArgumentList @('/x', \"`\"$dir\\setup.msi`\"\", '/qn') -Wait -Verb RunAs | Out-Null",
+            "info 'Restarting explorer...'",
+            "Stop-Process -Name explorer; Start-Sleep -Seconds 2",
+            "if (!(Get-Process -Name 'explorer' -ErrorAction SilentlyContinue)) { explorer }"
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/indiff/qttabbar",
+        "regex": "download/v([\\w.-]+)/(?<filename>[\\w._-]+)\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://github.com/indiff/qttabbar/releases/download/v$version/$matchFilename.zip"
+    }
+}

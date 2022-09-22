@@ -1,0 +1,44 @@
+{
+    "version": "1.0.11451",
+    "description": "Windows Package Manager CLI (aka winget)",
+    "homepage": "https://github.com/microsoft/winget-cli",
+    "license": "MIT",
+    "notes": [
+        "The settings file will be saved here : %LOCALAPPDATA%\\Microsoft\\WinGet\\Settings\\settings.json",
+        "For documentation on these settings, see: https://aka.ms/winget-settings"
+    ],
+    "suggest": {
+        "vcredist": "vcredist2019"
+    },
+    "url": "https://github.com/microsoft/winget-cli/releases/download/v1.0.11451/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.appxbundle#/dl.7z",
+    "hash": "cee94db96eb0995ba36faa3d6417ca908c368a2829d4f24791d96d83bde6f724",
+    "architecture": {
+        "64bit": {
+            "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x64.appx' | Remove-Item -Force -Recurse"
+        },
+        "32bit": {
+            "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x86.appx' | Remove-Item -Force -Recurse"
+        }
+    },
+    "installer": {
+        "script": [
+            "$winVer = [Environment]::OSVersion.Version",
+            "if (($winver.Major -lt '10') -or ($winVer.Build -lt 17763)) { throw 'At least Windows 10 17763 is required.' }",
+            "Get-ChildItem \"$dir\" '*.appx' | Select-Object -ExpandProperty Fullname | Expand-7zipArchive -DestinationPath \"$dir\" -Removal"
+        ]
+    },
+    "bin": [
+        [
+            "AppInstallerCLI.exe",
+            "winget"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/microsoft/winget-cli/releases/download/v$version/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.appxbundle#/dl.7z",
+        "hash": {
+            "url": "https://github.com/microsoft/winget-cli/releases/download/v$version/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.txt",
+            "find": "^([a-fA-F0-9]{64})"
+        }
+    }
+}

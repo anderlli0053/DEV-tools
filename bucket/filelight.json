@@ -1,39 +1,38 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "86719ea027adafe7e3e8f3b8fb6b186b0c1aec274b713b18a351d76f4cc11dc8",
-   "url": "https://download.kde.org/stable/release-service/21.12.3/windows/filelight-21.12.3-915-windows-msvc2019_64-cl.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "hash": {
-     "regex": "sha256:</strong> $sha256</div>",
-     "url": "https://apps.kde.org/filelight"
+    "version": "22.08.1-1113",
+    "description": "Disk usage visualizer",
+    "homepage": "https://apps.kde.org/filelight",
+    "license": "GPL-2.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://binary-factory.kde.org/job/Filelight_Release_win64/lastSuccessfulBuild/artifact/filelight-22.08.1-1113-windows-msvc2019_64-cl.exe#/dl.7z",
+            "hash": "7c473056d6c2f35c2fb3e58a155e0087436f93bab0f6d3dadcf69e74607f175c"
+        }
     },
-    "url": "https://download.kde.org/stable/release-service/$version/windows/filelight-$version-$matchBuild-windows-$matchLib-cl.exe#/dl.7z"
-   }
-  }
- },
- "bin": "bin\\filelight.exe",
- "checkver": {
-  "regex": "filelight-([\\d.]+)-(?<build>[\\d]+)-windows-(?<lib>\\w+)-cl\\.exe",
-  "url": "https://apps.kde.org/filelight"
- },
- "description": "Disk usage visualizer",
- "homepage": "https://apps.kde.org/filelight",
- "license": "GPL-2.0-or-later",
- "pre_install": [
-  "Remove-Item \"$dir\\*\" -Exclude filelight-*.7z -Recurse",
-  "Expand-7ZipArchive \"$dir\\filelight-*.7z\" \"$dir\"",
-  "Remove-Item \"$dir\\filelight-*.7z\""
- ],
- "shortcuts": [
-  [
-   "bin\\filelight.exe",
-   "Filelight"
-  ]
- ],
- "version": "21.12.3"
+    "pre_install": [
+        "Remove-Item \"$dir\\*\" -Exclude filelight-*.7z -Recurse",
+        "Expand-7ZipArchive \"$dir\\filelight-*.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\filelight-*.7z\""
+    ],
+    "bin": "bin\\filelight.exe",
+    "shortcuts": [
+        [
+            "bin\\filelight.exe",
+            "Filelight"
+        ]
+    ],
+    "checkver": {
+        "url": "https://binary-factory.kde.org/job/Filelight_Release_win64/lastSuccessfulBuild/artifact/",
+        "regex": "filelight-([\\d.-]+)-windows-msvc(?<msvcver>\\d+)_64-cl\\.7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://binary-factory.kde.org/job/Filelight_Release_win64/lastSuccessfulBuild/artifact/filelight-$version-windows-msvc$matchMsvcver_64-cl.exe#/dl.7z",
+                "hash": {
+                    "url": "$url.sha256"
+                }
+            }
+        }
+    }
 }

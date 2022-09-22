@@ -1,44 +1,47 @@
 {
- "architecture": {
-  "32bit": {
-   "bin": "Win32\\TeraCopy.exe",
-   "pre_install": [
-    "if(!(Test-Path \"$dir/Options.ini\")) { Add-Content \"$dir/Options.ini\" $null }",
-    "if(!(Test-Path \"$dir/main.db\")) { Add-Content \"$dir/main.db\" $null }"
-   ],
-   "shortcuts": [
-    [
-     "Win32\\TeraCopy.exe",
-     "TeraCopy"
-    ]
-   ]
-  },
-  "64bit": {
-   "bin": "TeraCopy.exe",
-   "pre_install": [
-    "if(!(Test-Path \"$dir/Options.ini\")) { Add-Content \"$dir/Options.ini\" $null }",
-    "if(!(Test-Path \"$dir/main.db\")) { Add-Content \"$dir/main.db\" $null }"
-   ],
-   "shortcuts": [
-    [
-     "TeraCopy.exe",
-     "TeraCopy"
-    ]
-   ]
-  }
- },
- "autoupdate": {
-  "url": "https://www.codesector.com/files/teracopy.zip"
- },
- "checkver": "TeraCopy ([\\d.]+)",
- "extract_dir": "TeraCopy",
- "hash": "2f38a23c854b953238030864e9ed3c39fd8f158fac480191b539efef349fb0c9",
- "homepage": "http://www.codesector.com/teracopy",
- "license": "free for home users",
- "persist": [
-  "Options.ini",
-  "main.db"
- ],
- "url": "https://www.codesector.com/files/teracopy.zip",
- "version": "3.9.2"
+    "homepage": "http://www.codesector.com/teracopy",
+    "version": "3.9.2",
+    "license": "free for home users",
+    "url": "http://www.codesector.com/files/teracopy.exe#tera.exe",
+    "hash": "e2dfc14c3b143e1d8d98305bf118651e433d053a437e13f4f5c463bede692ac5",
+    "innosetup": true,
+    "bin": "TeraCopy.exe",
+    "architecture": {
+        "64bit": {
+            "installer": {
+                "script": [
+                    "Rename-Item \"$dir\\TeraCopy,1.exe\" \"TeraCopy.exe\"",
+                    "Rename-Item \"$dir\\TeraCopyService,1.exe\" \"TeraCopyService.exe\"",
+                    "Rename-Item \"$dir\\TeraCopy,1.dll\" \"TeraCopyExt.dll\"",
+                    "Rename-Item \"$dir\\Context,1.dll\" \"Context.dll\"",
+                    "Remove-Item \"$dir\\TeraCopy,2.exe\",\"$dir\\TeraCopy,2.dll\",\"$dir\\TeraCopyService,2.exe\",\"$dir\\Context,2.dll\" -Force"
+                ]
+            }
+        },
+        "32bit": {
+            "installer": {
+                "script": [
+                    "Rename-Item \"$dir\\TeraCopy,2.exe\" \"TeraCopy.exe\"",
+                    "Rename-Item \"$dir\\TeraCopyService,2.exe\" \"TeraCopyService.exe\"",
+                    "Rename-Item \"$dir\\TeraCopy,2.dll\" \"TeraCopyExt.dll\"",
+                    "Rename-Item \"$dir\\Context,2.dll\" \"Context.dll\"",
+                    "Remove-Item \"$dir\\TeraCopy,1.exe\",\"$dir\\TeraCopy,1.dll\",\"$dir\\TeraCopyService,1.exe\",\"$dir\\Context,1.dll\""
+                ]
+            }
+        }
+    },
+    "persist": [
+        "Options.ini",
+        "main.db"
+    ],
+    "shortcuts": [
+        [
+            "TeraCopy.exe",
+            "TeraCopy"
+        ]
+    ],
+    "checkver": "TeraCopy ([\\d.]+)",
+    "autoupdate": {
+        "url": "http://www.codesector.com/files/teracopy.exe#tera.exe"
+    }
 }

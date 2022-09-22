@@ -1,35 +1,28 @@
 {
- "architecture": {
-  "32bit": {
-   "extract_dir": "osslsigncode-1.7.1-1-win32/bin",
-   "hash": "sha1:b02dd2ac3ae5962253a11d76766fb63a314f845e",
-   "url": "https://downloads.sourceforge.net/project/unix-utils/osslsigncode/osslsigncode-1.7.1-1-win32.zip"
-  },
-  "64bit": {
-   "extract_dir": "osslsigncode-1.7.1-1-x86_64/bin",
-   "hash": "sha1:2b45c724569c564adbe6546e7c13f4305340d8f0",
-   "url": "https://downloads.sourceforge.net/project/unix-utils/osslsigncode/osslsigncode-1.7.1-1-x86_64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "extract_dir": "osslsigncode-$version-win32/bin",
-    "url": "https://downloads.sourceforge.net/project/unix-utils/osslsigncode/osslsigncode-$version-win32.zip"
-   },
-   "64bit": {
-    "extract_dir": "osslsigncode-$version-x86_64/bin",
-    "url": "https://downloads.sourceforge.net/project/unix-utils/osslsigncode/osslsigncode-$version-x86_64.zip"
-   }
-  }
- },
- "bin": "osslsigncode.exe",
- "checkver": {
-  "regex": "osslsigncode-([\\d.-]+)-x86_64",
-  "url": "https://sourceforge.net/projects/unix-utils/files/osslsigncode/"
- },
- "description": "Platform-independent tool for Authenticode signing of PE(EXE/SYS/DLL/etc), CAB and MSI files - uses OpenSSL and libcurl. It also supports timestamping (Authenticode and RFC3161).",
- "homepage": "https://sourceforge.net/projects/osslsigncode/",
- "license": "GPL-3.0-or-later",
- "version": "1.7.1-1"
+    "version": "2.5",
+    "description": "OpenSSL based Authenticode signing for PE/MSI/Java CAB files",
+    "homepage": "https://github.com/mtrojnar/osslsigncode",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/mtrojnar/osslsigncode/releases/download/2.5/osslsigncode-2.5-windows-x64-vs.zip",
+            "hash": "cc50954fbf034a6390f555dd60fbdf4ac9e1c27f90f947901870c2302c9032d8"
+        },
+        "32bit": {
+            "url": "https://github.com/mtrojnar/osslsigncode/releases/download/2.5/osslsigncode-2.5-windows-x86-vs.zip",
+            "hash": "7a7d59f7816d7c46a6c61b072c50c95af4f24ed954b1a398363e0df002b52155"
+        }
+    },
+    "bin": "bin\\osslsigncode.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mtrojnar/osslsigncode/releases/download/$version/osslsigncode-$version-windows-x64-vs.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/mtrojnar/osslsigncode/releases/download/$version/osslsigncode-$version-windows-x86-vs.zip"
+            }
+        }
+    }
 }

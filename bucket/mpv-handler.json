@@ -1,0 +1,28 @@
+{
+    "version": "0.2.16",
+    "description": "Play videos and songs on the website with mpv player without any background service",
+    "homepage": "https://github.com/akiirui/mpv-handler",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/akiirui/mpv-handler/releases/download/v0.2.16/mpv-handler-windows-x64.zip",
+            "hash": "sha512:a36f30a507d7bee6bb90d79d13190b06a2164ebde8168e6b35edb2d5584e0c83af39da81c3ffda0e1ff03dd4f00a99d0a12e0580f37e5b46ee3baa219c6946ab"
+        }
+    },
+    "bin": "mpv-handler.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/akiirui/mpv-handler/releases/download/v$version/mpv-handler-windows-x64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha512sum"
+        }
+    },
+    "notes": [
+        "Run '$dir\\handler-install.bat' as Administrator to register the protocol of mpv-handler.",
+        "Run '$dir\\handler-uninstall.bat' as Administrator to Unregister the protocol of mpv-handler."
+    ]
+}

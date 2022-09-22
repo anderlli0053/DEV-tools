@@ -1,28 +1,33 @@
 {
- "autoupdate": {
-  "hash": {
-   "regex": "MD5 Hash: +[\\w]{32}",
-   "url": "https://portableapps.com/apps/utilities/OpenJDK"
-  },
-  "url": "https://downloads.sourceforge.net/portableapps/OpenJDK_$underscoreVersion.paf.exe"
- },
- "bin": "OpenJDK.exe",
- "checkver": {
-  "re": "Version \\s+([\\w\\.]* for Win",
-  "url": "https://portableapps.com/apps/utilities/OpenJDK"
- },
- "description": "Java development kit (JDK)",
- "hash": "md5:03dff197047761805a4552b08f374f95",
- "homepage": "https://portableapps.com/apps/utilities/OpenJDK",
- "license": "",
- "persist": "Data",
- "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
- "shortcuts": [
-  [
-   "OpenJDK.exe",
-   "OpenJDK"
-  ]
- ],
- "url": "https://downloads.sourceforge.net/portableapps/OpenJDK_14.0.1_Build_7.paf.exe#/dl.7z",
- "version": "14.0.1_Build_7"
+    "description": "Official General-Availability Release of OpenJDK",
+    "homepage": "https://jdk.java.net/",
+    "version": "18.0.2.1-1",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.java.net/java/GA/jdk18.0.2.1/db379da656dc47308e138f21b33976fa/1/GPL/openjdk-18.0.2.1_windows-x64_bin.zip",
+            "hash": "fc08052175eb2f66cedfcca368ab5d51c55f50d6f440b124e4512499825cb7b1"
+        }
+    },
+    "extract_dir": "jdk-18.0.2.1",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://jdk.java.net/18/",
+        "re": "/(?<type>early_access|GA)/(?<path>jdk(?<major>[\\d.]+)(?:.*)?/(?<build>[\\d]+)(?:/GPL|/binaries)?)/(?<file>openjdk-(?<version>[\\d.]+)(?<ea>-ea)?(?:\\+[\\d]+)?_windows-x64_bin.(zip|tar.gz))",
+        "replace": "${version}-${build}${ea}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.java.net/java/$matchType/$matchPath/$matchFile"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        },
+        "extract_dir": "jdk-$matchVersion"
+    }
 }

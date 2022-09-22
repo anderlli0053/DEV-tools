@@ -1,46 +1,52 @@
 {
- "architecture": {
-  "32bit": {
-   "shortcuts": [
-    [
-     "BitComet.exe",
-     "BitComet"
-    ]
-   ]
-  },
-  "64bit": {
-   "shortcuts": [
-    [
-     "BitComet_x64.exe",
-     "BitComet"
-    ]
-   ]
-  }
- },
- "autoupdate": {
-  "hash": {
-   "find": "BitComet_$version.zip.*?($sha256)",
-   "url": "https://www.bitcomet.com/en/archive"
-  },
-  "url": "https://download.bitcomet.com/achive/BitComet_$version.zip"
- },
- "checkver": {
-  "regex": "BitComet_([\\d.]+)\\.zip",
-  "url": "https://www.bitcomet.com/en/archive"
- },
- "hash": "9b0f9b613e69b0a5b92e82216a133b57f196aed6665aa6aea167cffe7223a159",
- "homepage": "https://www.bitcomet.com/",
- "license": {
-  "identifier": "freeware for non-commercial use",
-  "url": "https://www.bitcomet.com/en/license"
- },
- "persist": [
-  "BitComet.xml",
-  "Downloads.xml",
-  "torrents",
-  "share",
-  "archive"
- ],
- "url": "https://download.bitcomet.com/achive/BitComet_1.94.zip",
- "version": "1.94"
+    "homepage": "https://www.bitcomet.com/",
+    "version": "1.94",
+    "license": {
+        "identifier": "freeware for non-commercial use",
+        "url": "https://www.bitcomet.com/en/license"
+    },
+    "url": "https://download.bitcomet.com/achive/BitComet_1.94.zip",
+    "hash": "9b0f9b613e69b0a5b92e82216a133b57f196aed6665aa6aea167cffe7223a159",
+    "bin": "BitComet.exe",
+    "pre_install": [
+        "'BitComet.xml', 'Downloads.xml' | ForEach-Object {",
+        "   if(!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
+        "}"
+    ],
+    "persist": [
+        "BitComet.xml",
+        "Downloads.xml",
+        "torrents",
+        "share",
+        "archive"
+    ],
+    "architecture": {
+        "64bit": {
+            "shortcuts": [
+                [
+                    "BitComet_x64.exe",
+                    "BitComet"
+                ]
+            ]
+        },
+        "32bit": {
+            "shortcuts": [
+                [
+                    "BitComet.exe",
+                    "BitComet"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://www.bitcomet.com/en/archive",
+        "regex": "BitComet_([\\d.]+)\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://download.bitcomet.com/achive/BitComet_$version.zip",
+        "hash": {
+            "url": "https://www.bitcomet.com/en/archive",
+            "find": "BitComet_$version.zip.*?($sha256)"
+        }
+    }
 }

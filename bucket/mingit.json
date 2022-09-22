@@ -1,46 +1,46 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "cac833cce9d71b96520418551c03e9dd377293da64a146f1603efb71ddc7771a",
-   "url": "https://github.com/git-for-windows/git/releases/download/v2.37.3.windows.1/MinGit-2.37.3-32-bit.zip"
-  },
-  "64bit": {
-   "hash": "cec8d038fadbdd82e269a5c458fd2a62711c1bb9a76c85f07c46de3bff6cdf32",
-   "url": "https://github.com/git-for-windows/git/releases/download/v2.37.3.windows.1/MinGit-2.37.3-64-bit.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchFull-32-bit.zip"
-   },
-   "64bit": {
-    "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchFull-64-bit.zip"
-   }
-  },
-  "hash": {
-   "regex": "<td>$basename</td>\\s*<td>$sha256</td>",
-   "url": "https://github.com/git-for-windows/git/releases/tag/v$version"
-  }
- },
- "bin": "cmd\\git.exe",
- "checkver": {
-  "github": "https://github.com/git-for-windows/git",
-  "regex": "v([\\w.]+)/MinGit-(?<full>[\\w.]+)-64-bit"
- },
- "description": "Minimal Git for Windows (MinGit) is a reduced sized package designed to support application integration (like integrated development environments, graph visualizers, etc.) where full console support (colorization, pagniation, etc.) is not needed.",
- "env_set": {
-  "GIT_INSTALL_ROOT": "$dir"
- },
- "homepage": "https://git-for-windows.github.io/",
- "license": "GPL-2.0-only",
- "notes": [
-  "To get Git to recognise OpenSSH, you will need to run",
-  "",
-  "scoop install openssh",
-  "[environment]::setenvironmentvariable('GIT_SSH', (resolve-path (scoop which ssh)), 'USER')",
-  "",
-  "and then restart powershell."
- ],
- "version": "2.37.3.windows.1"
+    "version": "2.37.3.windows.1",
+    "description": "Minimal Git for Windows (MinGit) is a reduced sized package designed to support application integration (like integrated development environments, graph visualizers, etc.) where full console support (colorization, pagniation, etc.) is not needed.",
+    "homepage": "https://git-for-windows.github.io/",
+    "license": "GPL-2.0-only",
+    "notes": [
+        "To get Git to recognise OpenSSH, you will need to run",
+        "",
+        "scoop install openssh",
+        "[environment]::setenvironmentvariable('GIT_SSH', (resolve-path (scoop which ssh)), 'USER')",
+        "",
+        "and then restart powershell."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.37.3.windows.1/MinGit-2.37.3-64-bit.zip",
+            "hash": "cec8d038fadbdd82e269a5c458fd2a62711c1bb9a76c85f07c46de3bff6cdf32"
+        },
+        "32bit": {
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.37.3.windows.1/MinGit-2.37.3-32-bit.zip",
+            "hash": "cac833cce9d71b96520418551c03e9dd377293da64a146f1603efb71ddc7771a"
+        }
+    },
+    "bin": "cmd\\git.exe",
+    "env_set": {
+        "GIT_INSTALL_ROOT": "$dir"
+    },
+    "checkver": {
+        "github": "https://github.com/git-for-windows/git",
+        "regex": "v([\\w.]+)/MinGit-(?<full>[\\w.]+)-64-bit"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchFull-64-bit.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchFull-32-bit.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/git-for-windows/git/releases/tag/v$version",
+            "regex": "<td>$basename</td>\\s*<td>$sha256</td>"
+        }
+    }
 }

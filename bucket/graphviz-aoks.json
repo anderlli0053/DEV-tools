@@ -1,0 +1,57 @@
+{
+    "version": "6.0.1",
+    "description": "Open source graph visualization software.",
+    "homepage": "https://www.graphviz.org/",
+    "license": "EPL-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/6.0.1/windows_10_cmake_Debug_graphviz-install-6.0.1-win64.exe#/dl.7z",
+            "hash": "a37aed9cac52b610b9fcb58d7b1d43d343ebe6eb8e64b429a209e7b3c23baf44"
+        },
+        "32bit": {
+            "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/6.0.1/windows_10_cmake_Debug_graphviz-install-6.0.1-win32.exe#/dl.7z",
+            "hash": "f5b588ddb906e44a178244c8cdf30affb2ab106a9bfe1b8274be5d9c1d393a15"
+        }
+    },
+    "bin": [
+        "bin\\acyclic.exe",
+        "bin\\bcomps.exe",
+        "bin\\ccomps.exe",
+        "bin\\dijkstra.exe",
+        "bin\\dot.exe",
+        "bin\\gc.exe",
+        "bin\\gml2gv.exe",
+        "bin\\graphml2gv.exe",
+        "bin\\gvcolor.exe",
+        "bin\\gvgen.exe",
+        "bin\\gvpack.exe",
+        "bin\\gxl2gv.exe",
+        "bin\\mm2gv.exe",
+        "bin\\nop.exe",
+        "bin\\sccmap.exe",
+        "bin\\tred.exe",
+        "bin\\unflatten.exe"
+    ],
+    "checkver": {
+        "url": "https://gitlab.com/graphviz/graphviz/-/tags?sort=updated_desc",
+        "regex": "/graphviz/graphviz/-/tags/([\\d.]+)\">"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/$version/windows_10_cmake_Debug_graphviz-install-$version-win64.exe#/dl.7z",
+                "hash": {
+                    "url": "$url.sha256",
+                    "regex": "$sha256\\s+"
+                }
+            },
+            "32bit": {
+                "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/$version/windows_10_cmake_Debug_graphviz-install-$version-win32.exe#/dl.7z",
+                "hash": {
+                    "url": "$url.sha256",
+                    "regex": "$sha256\\s+"
+                }
+            }
+        }
+    }
+}

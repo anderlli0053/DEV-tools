@@ -1,36 +1,36 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "sha1:99e2f2f32e61851a712057068b380fced389dfa2",
-   "url": "https://central.github.com/deployments/desktop/desktop/latest/GitHubDesktop-3.0.8-x64-full.nupkg"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "hash": {
-     "regex": "$sha1\\s+GithubDesktop-$version-",
-     "url": "https://central.github.com/api/deployments/desktop/desktop/latest/RELEASES"
+    "version": "3.0.8",
+    "description": "Extend your GitHub workflow beyond your browser.",
+    "homepage": "https://desktop.github.com/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://central.github.com/deployments/desktop/desktop/latest/win32#/dl.7z_",
+            "hash": "6ed24ad38ec2ee7e0a503e8adc0d4b5e62f9c5ea47da44d78b3cef73526c9ccd"
+        }
     },
-    "url": "https://central.github.com/deployments/desktop/desktop/latest/GitHubDesktop-$version-x64-full.nupkg"
-   }
-  }
- },
- "bin": "GitHubDesktop.exe",
- "checkver": {
-  "regex": "GitHubDesktop-([\\d.]+)-full\\.nupkg",
-  "reverse": true,
-  "url": "https://central.github.com/api/deployments/desktop/desktop/latest/RELEASES"
- },
- "description": "Extend your GitHub workflow beyond your browser.",
- "extract_dir": "lib\\net45",
- "homepage": "https://desktop.github.com/",
- "license": "MIT",
- "shortcuts": [
-  [
-   "GitHubDesktop.exe",
-   "GitHub Desktop"
-  ]
- ],
- "version": "3.0.8"
+    "pre_install": [
+        "ensure \"$dir\\extract\" | Out-Null",
+        "Expand-7zipArchive \"$dir\\dl.7z_\" \"$dir\\extract\" | Out-Null",
+        "Expand-7zipArchive \"$dir\\extract\\GitHubDesktop-$version-full.nupkg\" \"$dir\" -ExtractDir 'lib\\net45' | Out-Null",
+        "Remove-Item \"$dir\\extract\", \"$dir\\dl.7z_\" -Force -Recurse"
+    ],
+    "bin": "GitHubDesktop.exe",
+    "shortcuts": [
+        [
+            "GitHubDesktop.exe",
+            "GitHub Desktop"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/desktop/desktop/tags",
+        "regex": "tags/release-([\\d.]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://central.github.com/deployments/desktop/desktop/latest/win32#/dl.7z_"
+            }
+        }
+    }
 }

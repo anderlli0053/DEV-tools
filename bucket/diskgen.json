@@ -1,0 +1,43 @@
+{
+    "version": "5.4.5.1412",
+    "description": "DiskGenius (Chinese)",
+    "homepage": "https://www.diskgenius.cn/download.php",
+    "license": {
+        "identifier": "Shareware",
+        "url": "https://www.eassos.cn/dg/buynow.php"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.eassos.cn/DG5451412_x64.zip",
+            "hash": "592586a72b33bc74dcf4d76d551da71347bae5413e5832b8be1d01b4b45872f3"
+        },
+        "32bit": {
+            "url": "https://download.eassos.cn/DG5451412_x86.zip",
+            "hash": "9f60c40e54510e204d5b5ab67fa131df9b23fa22d540b62f1b8a2114e1d06774"
+        }
+    },
+    "extract_dir": "DiskGenius",
+    "pre_install": "if (!(Test-Path \"$persist_dir\\Options.ini\")) { New-Item \"$dir\\Options.ini\" | Out-Null }",
+    "bin": "DiskGenius.exe",
+    "shortcuts": [
+        [
+            "DiskGenius.exe",
+            "DiskGenius"
+        ]
+    ],
+    "persist": "Options.ini",
+    "checkver": {
+        "url": "https://www.diskgenius.cn/pro/statistics/update.php",
+        "regex": "\\[([\\d.]+)\\]"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.eassos.cn/DG$cleanVersion_x64.zip"
+            },
+            "32bit": {
+                "url": "https://download.eassos.cn/DG$cleanVersion_x86.zip"
+            }
+        }
+    }
+}

@@ -1,40 +1,38 @@
 {
- "architecture": {
-  "64bit": {
-   "extract_dir": "inbucket_2.1.0_windows_amd64",
-   "hash": "627838af6d1ecc50a19960f2a92fdebfd7d7accb0daf85fd7bc3cb9d011dc109",
-   "url": "https://github.com/inbucket/inbucket/releases/download/v2.1.0/inbucket_2.1.0_windows_amd64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "extract_dir": "inbucket_$version_windows_amd64",
-    "hash": {
-     "url": "$baseurl/inbucket_$version_checksums.txt"
+    "version": "3.0.3",
+    "description": "Inbucket is an email testing application; it will accept messages for any email address and make them available to view via a web interface.",
+    "homepage": "https://www.inbucket.org/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/inbucket/inbucket/releases/download/v3.0.3/inbucket_3.0.3_windows_amd64.zip",
+            "hash": "c190249399fe0f977134b7e95ea08405fbaf201fb34eee3e1c83540150ea68ed",
+            "extract_dir": "inbucket_3.0.3_windows_amd64"
+        }
     },
-    "url": "https://github.com/inbucket/inbucket/releases/download/v$version/inbucket_$version_windows_amd64.zip"
-   }
-  }
- },
- "bin": [
-  "inbucket.exe",
-  "inbucket-client.exe"
- ],
- "checkver": {
-  "regex": "inbucket_([\\d.]+)_windows",
-  "reverse": true,
-  "url": "https://www.inbucket.org/binaries/"
- },
- "description": "Inbucket is an email testing application; it will accept messages for any email address and make them available to view via a web interface.",
- "env_set": {
-  "INBUCKET_SMTP_TLSCERT": "$dir\\cert\\cert.crt",
-  "INBUCKET_SMTP_TLSPRIVKEY": "$dir\\cert\\cert.key",
-  "INBUCKET_WEB_GREETINGFILE": "$dir\\ui\\greeting.html",
-  "INBUCKET_WEB_UIDIR": "$dir\\ui"
- },
- "homepage": "https://www.inbucket.org/",
- "license": "MIT",
- "persist": "cert",
- "version": "2.1.0"
+    "bin": [
+        "inbucket.exe",
+        "inbucket-client.exe"
+    ],
+    "env_set": {
+        "INBUCKET_SMTP_TLSPRIVKEY": "$dir\\cert\\cert.key",
+        "INBUCKET_SMTP_TLSCERT": "$dir\\cert\\cert.crt",
+        "INBUCKET_WEB_UIDIR": "$dir\\ui",
+        "INBUCKET_WEB_GREETINGFILE": "$dir\\ui\\greeting.html"
+    },
+    "persist": "cert",
+    "checkver": {
+        "github": "https://github.com/inbucket/inbucket"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/inbucket/inbucket/releases/download/v$version/inbucket_$version_windows_amd64.zip",
+                "hash": {
+                    "url": "$baseurl/inbucket_$version_checksums.txt"
+                },
+                "extract_dir": "inbucket_$version_windows_amd64"
+            }
+        }
+    }
 }

@@ -1,24 +1,24 @@
 {
- "autoupdate": {
-  "hash": {
-   "url": "$url.sha256"
-  },
-  "url": "https://get.jenkins.io/war/$version/jenkins.war#/jenkins.jar"
- },
- "bin": "jenkins.jar",
- "checkver": {
-  "regex": "Jenkins ([\\d.]+)",
-  "url": "https://www.jenkins.io/changelog/rss.xml",
-  "xpath": "/rss/channel/item/title"
- },
- "description": "An automation server which enables developers around the world to reliably build, test, and deploy their software.",
- "hash": "9bd9fa08e0ca2691aa67d3d3439828cc40a1017f2148f81bb028a2502c49904e",
- "homepage": "https://www.jenkins.io",
- "license": "MIT",
- "suggest": {
-  "Java 11": "java/openjdk11",
-  "Java 8": "java/oraclejre8"
- },
- "url": "https://get.jenkins.io/war/2.370/jenkins.war#/jenkins.jar",
- "version": "2.370"
+    "version": "2.370",
+    "description": "An automation server which enables developers around the world to reliably build, test, and deploy their software.",
+    "homepage": "https://www.jenkins.io",
+    "license": "MIT",
+    "suggest": {
+        "Java 8": "java/oraclejre8",
+        "Java 11": "java/openjdk11"
+    },
+    "url": "https://get.jenkins.io/war/2.370/jenkins.war#/jenkins.jar",
+    "hash": "9bd9fa08e0ca2691aa67d3d3439828cc40a1017f2148f81bb028a2502c49904e",
+    "bin": "jenkins.jar",
+    "checkver": {
+        "url": "https://www.jenkins.io/changelog/rss.xml",
+        "xpath": "/rss/channel/item/title",
+        "regex": "Jenkins ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://get.jenkins.io/war/$version/jenkins.war#/jenkins.jar",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
 }

@@ -1,61 +1,61 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "39d9f17b05608aca5db736ad1664029beb002de4730dda709462e4f6483ad969",
-   "url": "https://daily-builds.s3.amazonaws.com/RavenDB-5.4.2-windows-x86.zip"
-  },
-  "64bit": {
-   "hash": "e65ab8f9a088454a0be27097e77123f7ed72dc3292ad829796040b0da2580b57",
-   "url": "https://daily-builds.s3.amazonaws.com/RavenDB-5.4.2-windows-x64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://daily-builds.s3.amazonaws.com/RavenDB-$version-windows-x86.zip"
-   },
-   "64bit": {
-    "url": "https://daily-builds.s3.amazonaws.com/RavenDB-$version-windows-x64.zip"
-   }
-  }
- },
- "bin": [
-  "Server\\rvn.exe",
-  "Server\\Raven.Server.exe",
-  "Server\\Raven.Debug.exe",
-  [
-   "run.ps1",
-   "raven-run"
-  ],
-  [
-   "setup-as-service.ps1",
-   "raven-setup-as-service"
-  ],
-  [
-   "uninstall-service.ps1",
-   "raven-uninstall-service"
-  ]
- ],
- "checkver": {
-  "regex": "([\\d.]+)\\s*\\(\\d+",
-  "url": "https://ravendb.net/whats-new"
- },
- "description": "NoSQL database built on .NET Core",
- "homepage": "https://ravendb.net",
- "installer": {
-  "script": [
-   "if(!(Test-Path \"$persist_dir\\Server\\settings.json\")){",
-   "    Copy-Item \"$dir\\Server\\settings.default.json\" \"$dir\\Server\\settings.json\"",
-   "}"
-  ]
- },
- "license": {
-  "identifier": "Freeware",
-  "url": "https://ravendb.net/terms/commercial"
- },
- "persist": "Server\\settings.json",
- "suggest": {
-  "Visual C++ Redistributable 2015": "extras/vcredist2022"
- },
- "version": "5.4.2"
+    "version": "5.4.2",
+    "description": "NoSQL database built on .NET Core",
+    "homepage": "https://ravendb.net",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://ravendb.net/terms/commercial"
+    },
+    "suggest": {
+        "Visual C++ Redistributable 2015": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://daily-builds.s3.amazonaws.com/RavenDB-5.4.2-windows-x64.zip",
+            "hash": "e65ab8f9a088454a0be27097e77123f7ed72dc3292ad829796040b0da2580b57"
+        },
+        "32bit": {
+            "url": "https://daily-builds.s3.amazonaws.com/RavenDB-5.4.2-windows-x86.zip",
+            "hash": "39d9f17b05608aca5db736ad1664029beb002de4730dda709462e4f6483ad969"
+        }
+    },
+    "installer": {
+        "script": [
+            "if(!(Test-Path \"$persist_dir\\Server\\settings.json\")){",
+            "    Copy-Item \"$dir\\Server\\settings.default.json\" \"$dir\\Server\\settings.json\"",
+            "}"
+        ]
+    },
+    "bin": [
+        "Server\\rvn.exe",
+        "Server\\Raven.Server.exe",
+        "Server\\Raven.Debug.exe",
+        [
+            "run.ps1",
+            "raven-run"
+        ],
+        [
+            "setup-as-service.ps1",
+            "raven-setup-as-service"
+        ],
+        [
+            "uninstall-service.ps1",
+            "raven-uninstall-service"
+        ]
+    ],
+    "persist": "Server\\settings.json",
+    "checkver": {
+        "url": "https://ravendb.net/whats-new",
+        "regex": "([\\d.]+)\\s*\\(\\d+"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://daily-builds.s3.amazonaws.com/RavenDB-$version-windows-x64.zip"
+            },
+            "32bit": {
+                "url": "https://daily-builds.s3.amazonaws.com/RavenDB-$version-windows-x86.zip"
+            }
+        }
+    }
 }

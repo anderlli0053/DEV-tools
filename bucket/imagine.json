@@ -1,34 +1,56 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "sha512:de149002b280e446ad3b66d341599e207691cb73164f0e5bb0720e500d7fc45175a5e4a7e7dffb17d6f84d040ae3db42c7b55b107970d2762044981447be9c09",
-   "pre_install": [
-    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-    "Remove-Item \"$dir\\`$*\" -Recurse"
-   ],
-   "url": "https://github.com/meowtec/Imagine/releases/download/v0.7.2/Imagine-Setup-0.7.2.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://github.com/meowtec/Imagine/releases/download/v$version/Imagine-Setup-$version.exe#/dl.7z"
-   }
-  },
-  "hash": {
-   "regex": "sha512:\\s+$base64",
-   "url": "$baseurl/latest.yml"
-  }
- },
- "checkver": "github",
- "description": "\ud83d\uddbc\ufe0f PNG/JPEG optimization app for macOS, Windows and Linux.",
- "homepage": "https://github.com/meowtec/Imagine",
- "license": "MIT",
- "shortcuts": [
-  [
-   "Imagine.exe",
-   "Imagine"
-  ]
- ],
- "version": "0.7.2"
+    "version": "1.1.4",
+    "description": "(1MB) Freeware Image & Animation Viewer for Windows",
+    "homepage": "https://www.nyam.pe.kr/dev/imagine/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.nyam.pe.kr/dev/imagine/"
+    },
+    "pre_install": "if (!(Test-Path \"$persist_dir\\Imagine.ini\")) { New-Item \"$dir\\Imagine.ini\" | Out-Null }",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nyam.pe.kr/dev/imagine/download/x64/Imagine_1.1.4_x64_Unicode.zip",
+            "hash": "9a8332988d1fea54eaa04649794a31e24ca4034b9dd73f7dcae091294590faba",
+            "bin": [
+                "Imagine64.exe",
+                [
+                    "Imagine64.exe",
+                    "Imagine"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "Imagine64.exe",
+                    "Imagine"
+                ]
+            ]
+        },
+        "32bit": {
+            "url": "https://www.nyam.pe.kr/dev/imagine/download/unicode/Imagine_1.1.4_Unicode.zip",
+            "hash": "d6c761d0d80628cdc22e4d995342effc7e9801038de24af231f5bd29c203b2cd",
+            "bin": "Imagine.exe",
+            "shortcuts": [
+                [
+                    "Imagine.exe",
+                    "Imagine"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "Imagine.ini",
+        "PlugInst.inf",
+        "Plugin"
+    ],
+    "checkver": "v(\\d[\\d.]+)",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nyam.pe.kr/dev/imagine/download/x64/Imagine_$version_x64_Unicode.zip"
+            },
+            "32bit": {
+                "url": "https://www.nyam.pe.kr/dev/imagine/download/unicode/Imagine_$version_Unicode.zip"
+            }
+        }
+    }
 }

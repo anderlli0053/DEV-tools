@@ -1,0 +1,37 @@
+{
+    "version": "4.3.4-r0",
+    "description": "multi-platform screen and application forwarding system, \"screen for X11\"",
+    "homepage": "https://xpra.org/",
+    "license": "LGPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://xpra.org/dists/windows/Xpra-Python3-x86_64_4.3.4-r0.zip",
+            "hash": "6fd8984aaa63ef39ccee6d47e74fe575ed060f6eacf16d4355274f971c0e560e",
+            "extract_dir": "Xpra-Python3-x86_64_4.3.4-r0"
+        }
+    },
+    "bin": "xpra.exe",
+    "shortcuts": [
+        [
+            "Xpra.exe",
+            "Xpra"
+        ]
+    ],
+    "checkver": {
+        "url": "https://xpra.org/dists/windows/",
+        "regex": "Xpra-Python3-x86_64_(?<version>[\\d.]+)(?<revision>-r[\\d]+)?.zip</a></td>",
+        "reverse": true,
+        "replace": "${version}${revision}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://xpra.org/dists/windows/Xpra-Python3-x86_64_$version.zip",
+                "extract_dir": "Xpra-Python3-x86_64_$version",
+                "hash": {
+                    "url": "$url.sha1"
+                }
+            }
+        }
+    }
+}

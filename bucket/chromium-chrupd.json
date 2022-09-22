@@ -1,0 +1,19 @@
+{
+    "version": "0.2022.04.17",
+    "description": "Simple Chromium command-line Updater",
+    "homepage": "https://github.com/mkorthof/chrupd",
+    "license": "GPL-2.0-only",
+    "url": "https://github.com/mkorthof/chrupd/archive/b4a399e9889fa9494f75522f58d9b4a24e7a99b5.zip",
+    "hash": "42dedfce192dab5303d61f360aeacf1daf9ae78149e37c9816b0571fc8d54c12",
+    "extract_dir": "chrupd-b4a399e9889fa9494f75522f58d9b4a24e7a99b5",
+    "bin": "chrupd.cmd",
+    "checkver": {
+        "url": "https://github.com/mkorthof/chrupd/commits/master.atom",
+        "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>[0-9a-f]{40})",
+        "replace": "0.${1}.${2}.${3}"
+    },
+    "autoupdate": {
+        "url": "https://github.com/mkorthof/chrupd/archive/$matchSha.zip",
+        "extract_dir": "chrupd-$matchSha"
+    }
+}

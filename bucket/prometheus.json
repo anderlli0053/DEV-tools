@@ -1,48 +1,48 @@
 {
- "architecture": {
-  "32bit": {
-   "extract_dir": "prometheus-2.37.1.windows-386",
-   "hash": "0afbce7a0458059626226013e38681e9b3c7410e76c8ef1c07406475c4ea45e0",
-   "url": "https://github.com/prometheus/prometheus/releases/download/v2.37.1/prometheus-2.37.1.windows-386.tar.gz"
-  },
-  "64bit": {
-   "extract_dir": "prometheus-2.37.1.windows-amd64",
-   "hash": "099ea240418febf4bcf714c2a754f5b8cc414bda9c98c8b717fb911184af1a56",
-   "url": "https://github.com/prometheus/prometheus/releases/download/v2.37.1/prometheus-2.37.1.windows-amd64.tar.gz"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "extract_dir": "prometheus-$version.windows-386",
-    "url": "https://github.com/prometheus/prometheus/releases/download/v$version/prometheus-$version.windows-386.tar.gz"
-   },
-   "64bit": {
-    "extract_dir": "prometheus-$version.windows-amd64",
-    "url": "https://github.com/prometheus/prometheus/releases/download/v$version/prometheus-$version.windows-amd64.tar.gz"
-   }
-  },
-  "hash": {
-   "url": "$baseurl/sha256sums.txt"
-  }
- },
- "bin": [
-  [
-   "prometheus.exe",
-   "prometheus",
-   "--config.file \"$persist_dir\\prometheus.yml\""
-  ],
-  "promtool.exe"
- ],
- "checkver": {
-  "github": "https://github.com/prometheus/prometheus"
- },
- "description": "Systems monitoring and alerting toolkit",
- "homepage": "https://prometheus.io",
- "license": "Apache-2.0",
- "persist": [
-  "data",
-  "prometheus.yml"
- ],
- "version": "2.37.1"
+    "version": "2.37.1",
+    "description": "Systems monitoring and alerting toolkit",
+    "homepage": "https://prometheus.io",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/prometheus/prometheus/releases/download/v2.37.1/prometheus-2.37.1.windows-amd64.tar.gz",
+            "hash": "099ea240418febf4bcf714c2a754f5b8cc414bda9c98c8b717fb911184af1a56",
+            "extract_dir": "prometheus-2.37.1.windows-amd64"
+        },
+        "32bit": {
+            "url": "https://github.com/prometheus/prometheus/releases/download/v2.37.1/prometheus-2.37.1.windows-386.tar.gz",
+            "hash": "0afbce7a0458059626226013e38681e9b3c7410e76c8ef1c07406475c4ea45e0",
+            "extract_dir": "prometheus-2.37.1.windows-386"
+        }
+    },
+    "bin": [
+        [
+            "prometheus.exe",
+            "prometheus",
+            "--config.file \"$persist_dir\\prometheus.yml\""
+        ],
+        "promtool.exe"
+    ],
+    "persist": [
+        "data",
+        "prometheus.yml"
+    ],
+    "checkver": {
+        "github": "https://github.com/prometheus/prometheus"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/prometheus/prometheus/releases/download/v$version/prometheus-$version.windows-amd64.tar.gz",
+                "extract_dir": "prometheus-$version.windows-amd64"
+            },
+            "32bit": {
+                "url": "https://github.com/prometheus/prometheus/releases/download/v$version/prometheus-$version.windows-386.tar.gz",
+                "extract_dir": "prometheus-$version.windows-386"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sums.txt"
+        }
+    }
 }

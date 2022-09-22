@@ -1,28 +1,28 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "d62f95bb3ff96b700c87c813865690156d239669487ca9f8a408099c25244f11",
-   "url": "https://github.com/vmware-tanzu/carvel-vendir/releases/download/v0.31.0/vendir-windows-amd64.exe#/vendir.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "hash": {
-     "regex": "$sha256  \\./vendir-windows-amd64\\.exe",
-     "url": "https://github.com/vmware-tanzu/carvel-vendir/releases"
+    "version": "0.31.0",
+    "description": "Carvel vendir is a tool that makes it easy to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively",
+    "homepage": "https://carvel.dev/vendir/",
+    "license": "Apache-2.0",
+    "notes": "See https://carvel.dev/vendir/#examples for some examples",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/vmware-tanzu/carvel-vendir/releases/download/v0.31.0/vendir-windows-amd64.exe#/vendir.exe",
+            "hash": "d62f95bb3ff96b700c87c813865690156d239669487ca9f8a408099c25244f11"
+        }
     },
-    "url": "https://github.com/vmware-tanzu/carvel-vendir/releases/download/v$version/vendir-windows-amd64.exe#/vendir.exe"
-   }
-  }
- },
- "bin": "vendir.exe",
- "checkver": {
-  "github": "https://github.com/vmware-tanzu/carvel-vendir"
- },
- "description": "Carvel vendir is a tool that makes it easy to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively",
- "homepage": "https://carvel.dev/vendir/",
- "license": "Apache-2.0",
- "notes": "See https://carvel.dev/vendir/#examples for some examples",
- "version": "0.31.0"
+    "bin": "vendir.exe",
+    "checkver": {
+        "github": "https://github.com/vmware-tanzu/carvel-vendir"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vmware-tanzu/carvel-vendir/releases/download/v$version/vendir-windows-amd64.exe#/vendir.exe",
+                "hash": {
+                    "url": "https://github.com/vmware-tanzu/carvel-vendir/releases",
+                    "regex": "$sha256  \\./vendir-windows-amd64\\.exe"
+                }
+            }
+        }
+    }
 }
