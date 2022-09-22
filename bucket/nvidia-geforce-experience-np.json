@@ -1,0 +1,23 @@
+{
+    "##": "This package is not in the official buckets because the uninstaller cannot be silent.",
+    "homepage": "https://www.nvidia.com/en-us/geforce/geforce-experience/",
+    "version": "3.25.1.27",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.nvidia.com/en-us/about-nvidia/eula-agreement/"
+    },
+    "description": "Nvidia GeForce graphics card toolkit",
+    "url": "https://us.download.nvidia.com/GFE/GFEClient/3.25.1.27/GeForce_Experience_v3.25.1.27.exe#/setup.exe",
+    "hash": "2c9f52582ec0248a6c76d240dbc5cdcb2ac7062a0dc0d9fe9ff5f64c6c83ddbd",
+    "pre_install": [
+        "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList '-s' -RunAs | Out-Null",
+        "Remove-Item \"$dir\\setup.exe\" | Out-Null"
+    ],
+    "uninstaller": {
+        "script": "Invoke-ExternalCommand 'C:\\WINDOWS\\SysWOW64\\RunDll32.EXE' -ArgumentList @('\"C:\\Program Files\\NVIDIA Corporation\\Installer2\\InstallerCore\\NVI2.DLL\",UninstallPackage', 'Display.GFExperience') -RunAs | Out-Null"
+    },
+    "checkver": "GeForce_Experience_v([\\d.]+)\\.exe",
+    "autoupdate": {
+        "url": "https://us.download.nvidia.com/GFE/GFEClient/$version/GeForce_Experience_v$version.exe#/setup.exe"
+    }
+}

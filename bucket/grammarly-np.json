@@ -1,0 +1,35 @@
+{
+    "##": [
+        "Requested in Extras#7126",
+        "Need an official page for checkver (or use UpdateTracker)",
+        "This package is nonportable because the installer cannot be properly extracted",
+        "The uninstaller is not completely silent (will pop up a page after uninstallation)"
+    ],
+    "version": "1.0.16.275",
+    "description": "An all-in-one writing assistant that gives real-time feedback on commas, commonly confused words, and more.",
+    "homepage": "https://www.grammarly.com/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.grammarly.com/terms"
+    },
+    "url": "https://download-windows.grammarly.com/GrammarlyInstaller.exe#/setup.exe",
+    "hash": "692ca154bf082dff03650ea65bd43aaaa22e178c8e07f21deba9d86620d14ee8",
+    "installer": {
+        "script": [
+            "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList '/S' | Out-Null",
+            "Remove-Item \"$dir\\setup.exe\"",
+            "Remove-Item \"$([Environment]::GetFolderPath('Desktop'))\\Grammarly.lnk\""
+        ]
+    },
+    "pre_uninstall": "Stop-Process -Name 'Grammarly.Desktop' -ErrorAction SilentlyContinue",
+    "uninstaller": {
+        "script": "Invoke-ExternalCommand \"$Env:LocalAppData\\Grammarly\\DesktopIntegrations\\Uninstall.exe\" -ArgumentList '/S' | Out-Null"
+    },
+    "checkver": {
+        "url": "https://www.softpedia.com/get/Office-tools/Other-Office-Tools/Grammarly-Grammarly.shtml",
+        "regex": "Download Grammarly ([\\d.]+)<"
+    },
+    "autoupdate": {
+        "url": "https://download-windows.grammarly.com/GrammarlyInstaller.exe#/setup.exe"
+    }
+}

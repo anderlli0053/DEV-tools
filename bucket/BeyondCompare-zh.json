@@ -1,0 +1,65 @@
+{
+    "version": "4.4.3.26655",
+    "description": "Directory and file compare functions in one package",
+    "homepage": "https://www.scootersoftware.com",
+    "license": {
+        "identifier": "Shareware",
+        "url": "https://www.scootersoftware.com/index.php?zz=kb_licensev4"
+    },
+    "notes": "Add Beyond Compare as a context menu option by running: '$dir\\install-context.reg'",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.scootersoftware.com/BCompare-zh-4.4.3.26655.exe",
+            "hash": "fec3d4b6f5a9785ba300dc85cd0c4d7c631d7d18b64c7becde7b56627039189c"
+        }
+    },
+    "innosetup": true,
+    "bin": "Bcomp.exe",
+    "shortcuts": [
+        [
+            "BCompare.exe",
+            "BCompare"
+        ],
+        [
+            "BCClipboard.exe",
+            "Clipboard Compare"
+        ]
+    ],
+    "pre_install": [
+        "Get-ChildItem -Path $dir | ForEach-Object {",
+        "  $name = [string]$_",
+        "  if ($name.Contains(\",1\")) {",
+        "    Remove-Item -Path $_ -Recurse -Force",
+        "  }",
+        "  if ($name.Contains(\",2\")) {",
+        "    $name = $name.Replace(\",2\", \"\")",
+        "    Rename-Item -Path $_ -NewName $name",
+        "  }",
+        "}"
+    ],
+    "post_install": [
+        "$dir_escaped = \"$dir\".Replace('\\', '\\\\')",
+        "\"install-context-$architecture\", \"uninstall-context\" | ForEach-Object {",
+        "  if (Test-Path \"$bucketsdir\\extras\\scripts\\beyondcompare\\$_.reg\") {",
+        "    $content = Get-Content \"$bucketsdir\\extras\\scripts\\beyondcompare\\$_.reg\"",
+        "    $content = $content.Replace('$install_dir', $dir_escaped)",
+        "    if ($global) {",
+        "      $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "    }",
+        "    $outfile_no_arch = $_.Replace(\"-$architecture\", \"\")",
+        "    $content | Set-Content -Path \"$dir\\$outfile_no_arch.reg\"",
+        "  }",
+        "}"
+    ],
+    "checkver": {
+        "url": "https://www.scootersoftware.com/download.php",
+        "regex": "BCompare-zh-([\\d.]+)\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.scootersoftware.com/BCompare-zh-$version.exe"
+            }
+        }
+    }
+}
