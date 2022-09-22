@@ -1,5 +1,8 @@
 [![Tests](https://github.com/anderlli0053/DEV-tools/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/anderlli0053/DEV-tools/actions/workflows/ci.yml)
 
+
+[![Pull Requests](https://github.com/anderlli0053/DEV-tools/actions/workflows/pull_request.yml/badge.svg?branch=master)](https://github.com/anderlli0053/DEV-tools/actions/workflows/pull_request.yml)
+
 scoop-bucket
 
 ### Scoop bucket for development tools, be it game dev or just regular software development, *and of course because i am not so well organized as it look like, there are also some games in here...*
