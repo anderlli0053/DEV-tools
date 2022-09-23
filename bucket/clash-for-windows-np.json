@@ -1,55 +1,55 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "8b631185cbd15723b8380bb1c6e44ba562818fa097414d62fd8065d024f84af0",
-   "installer": {
-    "script": [
-     "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
-     "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
-    ]
-   },
-   "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.3/Clash.for.Windows.Setup.0.20.3.ia32.exe#/dl.7z"
-  },
-  "64bit": {
-   "hash": "bb8b008d680209e2ef566b8b29680aeee9072891a5baf2e67e6ea9ca5177ff42",
-   "installer": {
-    "script": [
-     "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-     "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
-    ]
-   },
-   "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.3/Clash.for.Windows.Setup.0.20.3.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "hash": {
-     "mode": "extract",
-     "regex": "(?m)^ia32-exe: $sha256",
-     "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum"
+    "architecture": {
+        "32bit": {
+            "hash": "7eb4b8d4406d03010d8baf3d42a980e637ce009cea49fb4f78d679218f2012cc",
+            "installer": {
+                "script": [
+                    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+                    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
+                ]
+            },
+            "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.4/Clash.for.Windows.Setup.0.20.4.ia32.exe#/dl.7z"
+        },
+        "64bit": {
+            "hash": "e9ec6fb3feae4de5ca06831bd84138bc05d45f02ff2e07a80d2bee23930b6ea0",
+            "installer": {
+                "script": [
+                    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
+                ]
+            },
+            "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.4/Clash.for.Windows.Setup.0.20.4.exe#/dl.7z"
+        }
     },
-    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.ia32.exe#/dl.7z"
-   },
-   "64bit": {
-    "hash": {
-     "mode": "extract",
-     "regex": "(?m)^exe: $sha256",
-     "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum"
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "hash": {
+                    "mode": "extract",
+                    "regex": "(?m)^ia32-exe: $sha256",
+                    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum"
+                },
+                "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.ia32.exe#/dl.7z"
+            },
+            "64bit": {
+                "hash": {
+                    "mode": "extract",
+                    "regex": "(?m)^exe: $sha256",
+                    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum"
+                },
+                "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.exe#/dl.7z"
+            }
+        }
     },
-    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.exe#/dl.7z"
-   }
-  }
- },
- "checkver": "github",
- "description": "A Windows GUI based on Clash",
- "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
- "license": "MIT",
- "shortcuts": [
-  [
-   "Clash for Windows.exe",
-   "Clash for Windows"
-  ]
- ],
- "version": "0.20.3"
+    "checkver": "github",
+    "description": "A Windows GUI based on Clash",
+    "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
+    "license": "MIT",
+    "shortcuts": [
+        [
+            "Clash for Windows.exe",
+            "Clash for Windows"
+        ]
+    ],
+    "version": "0.20.4"
 }
