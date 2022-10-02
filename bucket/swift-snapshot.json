@@ -1,45 +1,45 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "13ec035cf515b412b21ebd691b76c9c62499e372b5708b1d396b4f9bcfe1a93d",
-   "url": "https://download.swift.org/development/windows10/swift-DEVELOPMENT-SNAPSHOT-09-06-a/swift-DEVELOPMENT-SNAPSHOT-09-06-a-windows10.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://download.swift.org/development/windows10/swift-DEVELOPMENT-SNAPSHOT-$matchBuild/swift-DEVELOPMENT-SNAPSHOT-$matchBuild-windows10.exe"
-   }
-  }
- },
- "checkver": {
-  "regex": "swift-DEVELOPMENT-SNAPSHOT-(?<build>[\\w\\-]+)-windows10.exe",
-  "replace": "snapshot-${build}",
-  "url": "https://dorado-api.deno.dev/swift-tmp"
- },
- "depends": "dark",
- "description": "The Swift Programming Language",
- "env_add_path": [
-  "Library\\Developer\\Toolchains\\unknown-Asserts-development.xctoolchain\\usr\\bin",
-  "Library\\icu-67\\usr\\bin",
-  "Library\\Swift-development\\bin"
- ],
- "env_set": {
-  "DEVELOPER_DIR": "$dir\\Library\\Developer",
-  "SDKROOT": "$dir\\Library\\Developer\\Platforms\\Windows.platform\\Developer\\SDKs\\Windows.sdk"
- },
- "homepage": "https://www.swift.org/",
- "installer": {
-  "script": [
-   "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\extracted\" -Removal",
-   "Get-ChildItem \"$dir\\extracted\\AttachedContainer\\*.msi\" | ForEach-Object { Expand-MsiArchive $_ \"$dir\" }",
-   "@('extracted') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse }"
-  ]
- },
- "license": "Apache-2.0",
- "notes": [
-  "To make swift toolchain work, you must have Visual Studio and Windows SDK components installed.",
-  "Please read https://www.swift.org/getting-started/#support-files for Supporting Files installation guide."
- ],
- "version": "snapshot-09-06-a"
+    "architecture": {
+        "64bit": {
+            "hash": "5ddb3a95282df769b5ad5e0c4b5f11217c0ec650d607c5108590391e4fe7341d",
+            "url": "https://download.swift.org/development/windows10/swift-DEVELOPMENT-SNAPSHOT-2022-09-24-a/swift-DEVELOPMENT-SNAPSHOT-2022-09-24-a-windows10.exe"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.swift.org/development/windows10/swift-DEVELOPMENT-SNAPSHOT-$matchBuild/swift-DEVELOPMENT-SNAPSHOT-$matchBuild-windows10.exe"
+            }
+        }
+    },
+    "checkver": {
+        "regex": "swift-DEVELOPMENT-SNAPSHOT-(?<build>[\\w\\-]+)-windows10.exe",
+        "replace": "snapshot-${build}",
+        "url": "https://dorado-api.deno.dev/swift-tmp"
+    },
+    "depends": "dark",
+    "description": "The Swift Programming Language",
+    "env_add_path": [
+        "Library\\Developer\\Toolchains\\unknown-Asserts-development.xctoolchain\\usr\\bin",
+        "Library\\icu-67\\usr\\bin",
+        "Library\\Swift-development\\bin"
+    ],
+    "env_set": {
+        "DEVELOPER_DIR": "$dir\\Library\\Developer",
+        "SDKROOT": "$dir\\Library\\Developer\\Platforms\\Windows.platform\\Developer\\SDKs\\Windows.sdk"
+    },
+    "homepage": "https://www.swift.org/",
+    "installer": {
+        "script": [
+            "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\extracted\" -Removal",
+            "Get-ChildItem \"$dir\\extracted\\AttachedContainer\\*.msi\" | ForEach-Object { Expand-MsiArchive $_ \"$dir\" }",
+            "@('extracted') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse }"
+        ]
+    },
+    "license": "Apache-2.0",
+    "notes": [
+        "To make swift toolchain work, you must have Visual Studio and Windows SDK components installed.",
+        "Please read https://www.swift.org/getting-started/#support-files for Supporting Files installation guide."
+    ],
+    "version": "snapshot-2022-09-24-a"
 }
