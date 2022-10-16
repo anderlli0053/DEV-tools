@@ -1,30 +1,35 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "092c251ae9a30bd2c5a518c1f5dcd3a30113b17556bf4001a00894820febb35d",
-            "url": "https://dl.4kdownload.com/app/4kvideodownloader_4.21.7.msi#/setup.msi_"
-        },
-        "64bit": {
-            "hash": "60a452c08d1a584d9908cffa1cf34bf69fd24aba898048214c0551cec756636d",
-            "url": "https://dl.4kdownload.com/app/4kvideodownloader_4.21.7_x64.msi#/setup.msi_"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://dl.4kdownload.com/app/4kvideodownloader_$majorVersion.$minorVersion.$patchVersion.msi#/setup.msi_"
-            },
-            "64bit": {
-                "url": "https://dl.4kdownload.com/app/4kvideodownloader_$majorVersion.$minorVersion.$patchVersion_x64.msi#/setup.msi_"
-            }
-        }
-    },
-    "checkver": {
-        "regex": "\"videodownloader_([\\d.]+)",
-        "url": "https://www.4kdownload.com/products/product-videodownloader"
-    },
+    "version": "4.21.7.5040",
     "description": "4K Video Downloader. Allows downloading videos, playlists, channels and subtitles from YouTube, Facebook, Vimeo and other video sites in high quality.",
     "homepage": "https://www.4kdownload.com/products/product-videodownloader",
+    "notes": "This manifest only installs and updates 4K Video Downloader",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.4kdownload.com/agreement/freeware"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.4kdownload.com/app/4kvideodownloader_4.21.7_x64.msi#/setup.msi_",
+            "hash": "60a452c08d1a584d9908cffa1cf34bf69fd24aba898048214c0551cec756636d"
+        },
+        "32bit": {
+            "url": "https://dl.4kdownload.com/app/4kvideodownloader_4.21.7.msi#/setup.msi_",
+            "hash": "092c251ae9a30bd2c5a518c1f5dcd3a30113b17556bf4001a00894820febb35d"
+        }
+    },
+    "pre_download": "Assert-Administrator",
+    "pre_install": [
+        "$processname = \"4kvideodownloader\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
     "installer": {
         "script": [
             "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
@@ -40,27 +45,22 @@
             "if (Test-Path -Path \"$dir\\setup.msi_\") { Remove-Item \"$dir\\setup.msi_\" -Force }"
         ]
     },
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.4kdownload.com/agreement/freeware"
-    },
-    "notes": "This manifest only installs and updates 4K Video Downloader",
     "post_install": [
         "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
         "if (Test-Path \"$CommonDesktopPath\\4K Video Downloader.lnk\") {Remove-Item \"$CommonDesktopPath\\4K Video Downloader.lnk\" -Force}"
     ],
-    "pre_download": "Assert-Administrator",
-    "pre_install": [
-        "$processname = \"4kvideodownloader\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "version": "4.21.7.5040"
+    "checkver": {
+        "url": "https://www.4kdownload.com/products/product-videodownloader",
+        "regex": "\"videodownloader_([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.4kdownload.com/app/4kvideodownloader_$majorVersion.$minorVersion.$patchVersion_x64.msi#/setup.msi_"
+            },
+            "32bit": {
+                "url": "https://dl.4kdownload.com/app/4kvideodownloader_$majorVersion.$minorVersion.$patchVersion.msi#/setup.msi_"
+            }
+        }
+    }
 }

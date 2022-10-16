@@ -1,14 +1,26 @@
 {
-    "autoupdate": {
-        "url": "https://www.kcsoftwares.com/files/sumo_lite.exe#/setup.exe"
-    },
-    "checkver": {
-        "regex": "<h3>SUMo</h3>\\s+<small>Version : <code>([\\d.]+)</code>",
-        "url": "https://www.kcsoftwares.com/?download"
-    },
+    "version": "5.16.1.526",
     "description": "SUMo. Detecting and updating outdated software",
-    "hash": "fa18656947e6fe7ecb40d503f8192c69cf6b691c8b7b2e322310fd06cfb23dc1",
     "homepage": "https://www.kcsoftwares.com/?sumo",
+    "license": {
+        "identifier": "Freeware",
+        "url": "http://www.kcsoftwares.com/legal/ToU.pdf"
+    },
+    "url": "https://www.kcsoftwares.com/files/sumo_lite.exe#/setup.exe",
+    "hash": "fa18656947e6fe7ecb40d503f8192c69cf6b691c8b7b2e322310fd06cfb23dc1",
+    "pre_download": "Assert-Administrator",
+    "pre_install": [
+        "$processname = \"SUMo\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
     "installer": {
         "script": [
             "$programname = \"KC Softwares SUMo*\"",
@@ -30,27 +42,15 @@
             "taskkill /F /IM $processname /FI 'status eq running'"
         ]
     },
-    "license": {
-        "identifier": "Freeware",
-        "url": "http://www.kcsoftwares.com/legal/ToU.pdf"
-    },
     "post_install": [
         "$DesktopPath = [Environment]::GetFolderPath(\"DesktopDirectory\")",
         "if (Test-Path \"$DesktopPath\\SUMo.lnk\") {Remove-Item \"$DesktopPath\\SUMo.lnk\" -Force}"
     ],
-    "pre_download": "Assert-Administrator",
-    "pre_install": [
-        "$processname = \"SUMo\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "url": "https://www.kcsoftwares.com/files/sumo_lite.exe#/setup.exe",
-    "version": "5.16.1.526"
+    "checkver": {
+        "url": "https://www.kcsoftwares.com/?download",
+        "regex": "<h3>SUMo</h3>\\s+<small>Version : <code>([\\d.]+)</code>"
+    },
+    "autoupdate": {
+        "url": "https://www.kcsoftwares.com/files/sumo_lite.exe#/setup.exe"
+    }
 }

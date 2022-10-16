@@ -1,36 +1,22 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "518f1de7af77768af319f5be682043af3f3ee774e93e3fd4c8eb5cc3e647e61a",
-            "url": "https://dorado-api.deno.dev/edge?arch=86&channel=stable&dl#/MicrosoftEdge-106.0.1370.47-x86.7z"
-        },
-        "64bit": {
-            "hash": "55e40f25e887307d573bff9045a03d8201db7550d04fa3ac637080fbdf779f21",
-            "url": "https://dorado-api.deno.dev/edge?arch=64&channel=stable&dl#/MicrosoftEdge-106.0.1370.47-x64.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://dorado-api.deno.dev/edge?arch=86&channel=stable&dl#/MicrosoftEdge-$version-x86.7z"
-            },
-            "64bit": {
-                "url": "https://dorado-api.deno.dev/edge?arch=64&channel=stable&dl#/MicrosoftEdge-$version-x64.7z"
-            }
-        }
-    },
-    "changelog": "https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel",
-    "checkver": {
-        "jsonpath": "$[?(@.Product == 'Stable')].Releases[?(@.Platform == 'Windows' && @.Architecture == 'x64')].ProductVersion",
-        "url": "https://edgeupdates.microsoft.com/api/products"
-    },
-    "description": "Microsoft Edge. The chromium based Microsoft Edge browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
+    "description": "Microsoft Edge. The chromium based Microsoft Edge browser",
+    "version": "106.0.1370.47",
+    "license": "Freeware",
+    "changelog": "https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel",
+    "architecture": {
+        "64bit": {
+            "url": "https://dorado-api.deno.dev/edge?arch=64&channel=stable&dl#/MicrosoftEdge-106.0.1370.47-x64.7z",
+            "hash": "55e40f25e887307d573bff9045a03d8201db7550d04fa3ac637080fbdf779f21"
+        },
+        "32bit": {
+            "url": "https://dorado-api.deno.dev/edge?arch=86&channel=stable&dl#/MicrosoftEdge-106.0.1370.47-x86.7z",
+            "hash": "518f1de7af77768af319f5be682043af3f3ee774e93e3fd4c8eb5cc3e647e61a"
+        }
+    },
     "installer": {
         "script": "Expand-7zipArchive -Path \"$dir\\MSEDGE.7z\" -ExtractDir \"Chrome-bin\\$version\" -Removal"
     },
-    "license": "Freeware",
-    "persist": "User Data",
     "shortcuts": [
         [
             "msedge.exe",
@@ -38,5 +24,19 @@
             "--user-data-dir=\"$dir\\User Data\""
         ]
     ],
-    "version": "106.0.1370.47"
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://edgeupdates.microsoft.com/api/products",
+        "jsonpath": "$[?(@.Product == 'Stable')].Releases[?(@.Platform == 'Windows' && @.Architecture == 'x64')].ProductVersion"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dorado-api.deno.dev/edge?arch=64&channel=stable&dl#/MicrosoftEdge-$version-x64.7z"
+            },
+            "32bit": {
+                "url": "https://dorado-api.deno.dev/edge?arch=86&channel=stable&dl#/MicrosoftEdge-$version-x86.7z"
+            }
+        }
+    }
 }

@@ -15,18 +15,24 @@
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "github": "https://github.com/corretto/corretto-jdk"
+        "url": "https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+        "jsonpath": "$.windows.x64.jdk.16.zip.resource",
+        "regex": "/([\\d.]+)/"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://corretto.aws/downloads/resources/$version/amazon-corretto-$version-windows-x64-jdk.zip",
                 "hash": {
-                    "url": "https://github.com/corretto/corretto-jdk/releases/tag/$version",
-                    "regex": "(?smi)amazon-corretto-$version-windows-x64-jdk.zip(?:.*?)<code>([a-fA-F0-9]+)</code>"
+                    "url": "https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+                    "jsonpath": "$.windows.x64.jdk.16.zip.checksum_sha256"
                 }
             }
         },
         "extract_dir": "jdk$matchHead_$buildVersion"
-    }
+    },
+    "notes": [
+        "WARNING: This older version of the JDK are provided to help developers debug issues.",
+        "It is not updated with the latest security patches and are not recommended for use in production."
+    ]
 }

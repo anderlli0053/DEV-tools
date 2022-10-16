@@ -1,31 +1,21 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "4e000ff923979aa700680bb641bdf4212af5b079c46fb3585ce19f2908be96f0",
-            "url": "https://download1.operacdn.com/pub/opera_gx/91.0.4516.72/win/Opera_GX_91.0.4516.72_Setup.exe#/dl.7z"
-        },
-        "64bit": {
-            "hash": "7b294d3405a586a8c4a15715289c89a9f4a605cd02304c94a6e668cb978c6f76",
-            "url": "https://download1.operacdn.com/pub/opera_gx/91.0.4516.72/win/Opera_GX_91.0.4516.72_Setup_x64.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://download1.operacdn.com/pub/opera_gx/$version/win/Opera_GX_$version_Setup.exe#/dl.7z"
-            },
-            "64bit": {
-                "url": "https://download1.operacdn.com/pub/opera_gx/$version/win/Opera_GX_$version_Setup_x64.exe#/dl.7z"
-            }
-        }
-    },
-    "checkver": {
-        "regex": "([\\d.]+)/",
-        "reverse": true,
-        "url": "https://download1.operacdn.com/pub/opera_gx/"
-    },
+    "version": "91.0.4516.72",
     "description": "Opera GX. is a special version of the Opera browser built specifically to complement gaming",
     "homepage": "https://www.opera.com/gx",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.opera.com/eula/computers"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download1.operacdn.com/pub/opera_gx/91.0.4516.72/win/Opera_GX_91.0.4516.72_Setup_x64.exe#/dl.7z",
+            "hash": "7b294d3405a586a8c4a15715289c89a9f4a605cd02304c94a6e668cb978c6f76"
+        },
+        "32bit": {
+            "url": "https://download1.operacdn.com/pub/opera_gx/91.0.4516.72/win/Opera_GX_91.0.4516.72_Setup.exe#/dl.7z",
+            "hash": "4e000ff923979aa700680bb641bdf4212af5b079c46fb3585ce19f2908be96f0"
+        }
+    },
     "installer": {
         "script": [
             "Remove-Item -Path \"$dir\\*_list\" -Force",
@@ -37,16 +27,26 @@
             "Set-Content -Path \"$dir\\installer_prefs.json\" -Value (@{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json) -Encoding ASCII"
         ]
     },
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.opera.com/eula/computers"
-    },
-    "persist": "profile",
     "shortcuts": [
         [
             "launcher.exe",
             "Opera GX"
         ]
     ],
-    "version": "91.0.4516.72"
+    "persist": "profile",
+    "checkver": {
+        "url": "https://download1.operacdn.com/pub/opera_gx/",
+        "regex": "([\\d.]+)/",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download1.operacdn.com/pub/opera_gx/$version/win/Opera_GX_$version_Setup_x64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://download1.operacdn.com/pub/opera_gx/$version/win/Opera_GX_$version_Setup.exe#/dl.7z"
+            }
+        }
+    }
 }

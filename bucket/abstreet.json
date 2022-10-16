@@ -1,17 +1,13 @@
 {
+    "version": "0.3.34",
+    "description": "Transportation planning and traffic simulation software for creating cities friendlier to walking, biking, and public transit.",
+    "homepage": "https://github.com/a-b-street/abstreet",
+    "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "extract_dir": "abstreet_windows_v0_3_34",
+            "url": "https://github.com/a-b-street/abstreet/releases/download/v0.3.34/abstreet_windows_v0_3_34.zip",
             "hash": "940075e7b026f2243dccffae0ea6f046338a463e315e8075a0dc9550c1625844",
-            "url": "https://github.com/a-b-street/abstreet/releases/download/v0.3.34/abstreet_windows_v0_3_34.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "extract_dir": "abstreet_windows_v$underscoreVersion",
-                "url": "https://github.com/a-b-street/abstreet/releases/download/v$version/abstreet_windows_v$underscoreVersion.zip"
-            }
+            "extract_dir": "abstreet_windows_v0_3_34"
         }
     },
     "bin": [
@@ -20,13 +16,6 @@
             "abstreet-cli"
         ]
     ],
-    "checkver": {
-        "github": "https://github.com/a-b-street/abstreet"
-    },
-    "description": "Transportation planning and traffic simulation software for creating cities friendlier to walking, biking, and public transit.",
-    "homepage": "https://github.com/a-b-street/abstreet",
-    "license": "Apache-2.0",
-    "persist": "data\\player",
     "shortcuts": [
         [
             "game.exe",
@@ -58,5 +47,16 @@
             "AB Street - 15-minute Santa"
         ]
     ],
-    "version": "0.3.34"
+    "persist": "data\\player",
+    "checkver": {
+        "github": "https://github.com/a-b-street/abstreet"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/a-b-street/abstreet/releases/download/v$version/abstreet_windows_v$underscoreVersion.zip",
+                "extract_dir": "abstreet_windows_v$underscoreVersion"
+            }
+        }
+    }
 }

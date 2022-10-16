@@ -1,32 +1,24 @@
 {
     "##": "Checkver URL https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel",
-    "architecture": {
-        "32bit": {
-            "hash": "605031733aaef79fe0b52a55a1428380c86b1f58657449db71bdbef87cac5df9",
-            "url": "http://go.microsoft.com/fwlink/?LinkID=2093505#/setup.msi_"
-        },
-        "64bit": {
-            "hash": "32abd35eec228550afbb55a1035e7c1f4b574246a1b12d2d2a1c36ea82a750af",
-            "url": "http://go.microsoft.com/fwlink/?LinkID=2093437#/setup.msi_"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "http://go.microsoft.com/fwlink/?LinkID=2093505#/setup.msi_"
-            },
-            "64bit": {
-                "url": "http://go.microsoft.com/fwlink/?LinkID=2093437#/setup.msi_"
-            }
-        }
-    },
-    "changelog": "https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel",
-    "checkver": {
-        "regex": "Version ([\\d.]+)",
-        "url": "https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnotes-security"
-    },
+    "version": "106.0.1370.47",
     "description": "Microsoft Edge. The chromium based Microsoft Edge browser.",
     "homepage": "https://www.microsoft.com/en-us/edge/business",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.microsoft.com/en-us/servicesagreement/"
+    },
+    "changelog": "https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnote-stable-channel",
+    "architecture": {
+        "64bit": {
+            "url": "http://go.microsoft.com/fwlink/?LinkID=2093437#/setup.msi_",
+            "hash": "32abd35eec228550afbb55a1035e7c1f4b574246a1b12d2d2a1c36ea82a750af"
+        },
+        "32bit": {
+            "url": "http://go.microsoft.com/fwlink/?LinkID=2093505#/setup.msi_",
+            "hash": "605031733aaef79fe0b52a55a1428380c86b1f58657449db71bdbef87cac5df9"
+        }
+    },
+    "pre_download": "Assert-Administrator",
     "installer": {
         "script": [
             "$programname = \"Microsoft Edge*\"",
@@ -45,14 +37,22 @@
             "if (Test-Path -Path \"$dir\\setup.msi_\") { Remove-Item \"$dir\\setup.msi_\" -Force }"
         ]
     },
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.microsoft.com/en-us/servicesagreement/"
-    },
     "post_install": [
         "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
         "if (Test-Path \"$CommonDesktopPath\\Microsoft Edge.lnk\") {Remove-Item \"$CommonDesktopPath\\Microsoft Edge.lnk\" -Force}"
     ],
-    "pre_download": "Assert-Administrator",
-    "version": "106.0.1370.47"
+    "checkver": {
+        "url": "https://edgeupdates.microsoft.com/api/products",
+        "jsonpath": "$[?(@.Product == 'Stable')].Releases[?(@.Platform == 'Windows' && @.Architecture == 'x64')].ProductVersion"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://go.microsoft.com/fwlink/?LinkID=2093437#/setup.msi_"
+            },
+            "32bit": {
+                "url": "http://go.microsoft.com/fwlink/?LinkID=2093505#/setup.msi_"
+            }
+        }
+    }
 }

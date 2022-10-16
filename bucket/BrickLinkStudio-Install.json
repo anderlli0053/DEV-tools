@@ -1,32 +1,32 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "8331a5eecef4aceabf0cb76a4614ae4163a2bc3da0ad423bd32f26c6f3da647c",
-            "url": "https://s3.amazonaws.com/blstudio/Studio2.0/Studio+2.0_32.exe#/setup.exe"
-        },
-        "64bit": {
-            "hash": "3fd8bb798e04ca0df48db6d807f2ab19d056b0b61171cb0999f8e6a86ec71df7",
-            "url": "https://s3.amazonaws.com/blstudio/Studio2.0/Studio+2.0.exe#/setup.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://s3.amazonaws.com/blstudio/Studio$majorVersion.0/Studio+$majorVersion.0_32.exe#/setup.exe"
-            },
-            "64bit": {
-                "url": "https://s3.amazonaws.com/blstudio/Studio$majorVersion.0/Studio+$majorVersion.0.exe#/setup.exe"
-            }
-        }
-    },
-    "changelog": "https://www.bricklink.com/v2/build/studio.page",
-    "checkver": {
-        "regex": "\"version\":\"([\\d.]+)",
-        "reverse": true,
-        "url": "https://www.bricklink.com/v2/build/studio.page"
-    },
+    "version": "2.22.9",
     "description": "BrickLink Studio. Studio is a desktop application that allows users to build LEGO models using virtual parts.",
     "homepage": "https://www.bricklink.com/v2/build/studio.page",
+    "license": "Unknown",
+    "changelog": "https://www.bricklink.com/v2/build/studio.page",
+    "architecture": {
+        "64bit": {
+            "url": "https://s3.amazonaws.com/blstudio/Studio2.0/Studio+2.0.exe#/setup.exe",
+            "hash": "99e42325366dd4c010db9c51492c52ea222b62a2da3df1de082a4f79740b894c"
+        },
+        "32bit": {
+            "url": "https://s3.amazonaws.com/blstudio/Studio2.0/Studio+2.0_32.exe#/setup.exe",
+            "hash": "4b20c7817a3deb03d082b6de7a289914d630fb739359ae17d3e9e8f98e84b856"
+        }
+    },
+    "pre_download": "Assert-Administrator",
+    "pre_install": [
+        "$processname = \"Studio\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
     "installer": {
         "script": [
             "$programname = \"Studio 2.0*\"",
@@ -42,19 +42,19 @@
             "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
         ]
     },
-    "license": "Unknown",
-    "pre_download": "Assert-Administrator",
-    "pre_install": [
-        "$processname = \"Studio\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "version": "2.22.9"
+    "checkver": {
+        "url": "https://www.bricklink.com/v2/build/studio.page",
+        "regex": "\"version\":\"([\\d.]+)",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://s3.amazonaws.com/blstudio/Studio$majorVersion.0/Studio+$majorVersion.0.exe#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://s3.amazonaws.com/blstudio/Studio$majorVersion.0/Studio+$majorVersion.0_32.exe#/setup.exe"
+            }
+        }
+    }
 }

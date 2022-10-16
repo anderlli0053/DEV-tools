@@ -1,14 +1,12 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/valinet/ExplorerPatcher/releases/latest/download/ep_setup.exe#/setup.exe"
-    },
-    "changelog": "https://github.com/valinet/ExplorerPatcher/releases",
-    "checkver": {
-        "github": "https://github.com/valinet/ExplorerPatcher"
-    },
+    "version": "22621.608.51.1",
     "description": "Explorer Patcher. This project aims to bring back a productive working environment on Windows 11",
-    "hash": "7cf866fab9e22fab969832dbb9eb4cac30af8588f8d7443faba967651688f520",
     "homepage": "https://github.com/valinet/ExplorerPatcher",
+    "license": "GPL 2.0",
+    "changelog": "https://github.com/valinet/ExplorerPatcher/releases",
+    "url": "https://github.com/valinet/ExplorerPatcher/releases/latest/download/ep_setup.exe#/setup.exe",
+    "hash": "7cf866fab9e22fab969832dbb9eb4cac30af8588f8d7443faba967651688f520",
+    "pre_download": "Assert-Administrator",
     "installer": {
         "script": [
             "$programname = \"programname*\"",
@@ -25,8 +23,10 @@
             "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
         ]
     },
-    "license": "GPL 2.0",
-    "pre_download": "Assert-Administrator",
-    "url": "https://github.com/valinet/ExplorerPatcher/releases/latest/download/ep_setup.exe#/setup.exe",
-    "version": "22621.608.51.1"
+    "checkver": {
+        "github": "https://github.com/valinet/ExplorerPatcher"
+    },
+    "autoupdate": {
+        "url": "https://github.com/valinet/ExplorerPatcher/releases/latest/download/ep_setup.exe#/setup.exe"
+    }
 }

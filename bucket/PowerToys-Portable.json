@@ -1,24 +1,15 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "d9e5cae050e6cb54f672c2f13dceb753b6ff1047d7286e0a98baa95df0affff7",
-            "url": "https://github.com/microsoft/PowerToys/releases/download/v0.63.0/PowerToysSetup-0.63.0-x64.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "hash": {
-                    "regex": ">$sha256<",
-                    "url": "https://github.com/microsoft/PowerToys/releases/tag/v$version"
-                },
-                "url": "https://github.com/microsoft/PowerToys/releases/download/v$version/PowerToysSetup-$version-x64.exe"
-            }
-        }
-    },
-    "checkver": "github",
+    "version": "0.63.0",
     "description": "PowerToys. A set of utilities for power users to tune and streamline their Windows experience for greater productivity.",
     "homepage": "https://github.com/microsoft/PowerToys",
+    "license": "MIT",
+    "notes": "To run this application, you must install .Net Core: https://dotnet.microsoft.com/download",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/microsoft/PowerToys/releases/download/v0.63.0/PowerToysSetup-0.63.0-x64.exe",
+            "hash": "d9e5cae050e6cb54f672c2f13dceb753b6ff1047d7286e0a98baa95df0affff7"
+        }
+    },
     "installer": {
         "script": [
             "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\.tmp\"",
@@ -26,13 +17,22 @@
             "Remove-Item \"$dir\\.tmp\", \"$dir\\$fname\" -Force -Recurse"
         ]
     },
-    "license": "MIT",
-    "notes": "To run this application, you must install .Net Core: https://dotnet.microsoft.com/download",
     "shortcuts": [
         [
             "PowerToys.exe",
             "PowerToys"
         ]
     ],
-    "version": "0.63.0"
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/microsoft/PowerToys/releases/download/v$version/PowerToysSetup-$version-x64.exe",
+                "hash": {
+                    "url": "https://github.com/microsoft/PowerToys/releases/tag/v$version",
+                    "regex": ">$sha256<"
+                }
+            }
+        }
+    }
 }

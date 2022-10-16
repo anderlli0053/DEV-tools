@@ -1,33 +1,29 @@
 {
+    "version": "3.0.1.4",
+    "description": "An open-source big data platform designed and optimized for the Internet of Things (IoT).",
+    "homepage": "https://www.taosdata.com/",
+    "license": "AGPL-3.0-only",
     "architecture": {
-        "32bit": {
-            "hash": "f5b94cf5b30c54d15948eec0015fc655d94df5a1c745905bc078dc5847e338ed",
-            "url": "https://www.taosdata.com/assets-download/TDengine-client-2.6.0.22-Windows-x86.exe"
-        },
         "64bit": {
-            "hash": "b88910ca3e8aed952a038025c4e3cd2e1acb74b0ed4e2b54a75219e60d4dcdbd",
-            "url": "https://www.taosdata.com/assets-download/TDengine-client-2.6.0.22-Windows-x64.exe"
+            "url": "https://tdengine.com/assets-download/3.0/TDengine-client-3.0.1.4-Windows-x64.exe",
+            "hash": "a30e3aa9c808406532d1d0275cc45eadb05b5ca4b1ab76a44f861f8742efb221"
         }
+    },
+    "innosetup": true,
+    "bin": [
+        "taos.exe",
+        "taosBenchmark.exe"
+    ],
+    "persist": "cfg",
+    "checkver": {
+        "url": "https://docs.tdengine.com/assets/globalscripts/packages_v3.php?type=3",
+        "regex": "TDengine-client-([\\d.]+)-Windows-x64.exe"
     },
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "https://www.taosdata.com/assets-download/TDengine-client-$version-Windows-x86.exe"
-            },
             "64bit": {
-                "url": "https://www.taosdata.com/assets-download/TDengine-client-$version-Windows-x64.exe"
+                "url": "https://tdengine.com/assets-download/$majorVersion.$minorVersion/TDengine-client-$version-Windows-x64.exe"
             }
         }
-    },
-    "bin": "taos.exe",
-    "checkver": {
-        "regex": "TDengine-client-([\\d.]+)-Windows-x64.exe",
-        "url": "https://tdengine.com/assets/globalscripts/packages.php?type=1"
-    },
-    "description": "An open-source big data platform designed and optimized for the Internet of Things (IoT).",
-    "homepage": "https://www.taosdata.com/",
-    "innosetup": true,
-    "license": "AGPL-3.0-only",
-    "persist": "cfg",
-    "version": "2.6.0.22"
+    }
 }

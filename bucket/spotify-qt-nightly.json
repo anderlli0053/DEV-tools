@@ -1,30 +1,29 @@
 {
-    "version": "3.9-220917",
-    "description": "An unofficial Spotify client using Qt as a simpler, lighter alternative to the official client, inspired by spotify-tui.",
+    "version": "3.9-221009",
+    "description": "Nightly builds for spotify-qt",
     "homepage": "https://github.com/kraxarn/spotify-qt-nightly",
-    "license": {
-        "identifier": "GPL-3.0-or-later"
-    },
-    "notes": "Unstable builds for testing. For stable builds, run `scoop install spotify-qt`.",
+    "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/kraxarn/spotify-qt-nightly/releases/download/latest/spotify-qt-v3.9-220917-win64.zip",
-            "hash": "43903f12296bdadc7d50b122f3c00ecc446f16044a56ccde58ad2fe1383a2364"
+            "url": "https://github.com/kraxarn/spotify-qt-nightly/releases/download/latest/spotify-qt-v3.9-221009-win64.zip",
+            "hash": "2cfb99efabd877fd71744ffb4e0a1e1e1cd930d96676564667a788c22db72b40"
         },
         "32bit": {
-            "url": "https://github.com/kraxarn/spotify-qt-nightly/releases/download/latest/spotify-qt-v3.9-220917-win32.zip",
-            "hash": "83d206215bb64cbe165368c1bdc7d6bb39a818a82c665eb8522cfc1a2b8a3aa0"
+            "url": "https://github.com/kraxarn/spotify-qt-nightly/releases/download/latest/spotify-qt-v3.9-221009-win32.zip",
+            "hash": "b9db203e9c9ec9e5c367cf3a9574ef4db536f3e720365deda88b2681db9d0945"
         }
     },
     "shortcuts": [
         [
             "spotify-qt.exe",
-            "Spotify Qt Nightly"
+            "spotify-qt"
         ]
     ],
+    "bin": "spotify-qt.exe",
     "checkver": {
-        "url": "https://api.github.com/repos/kraxarn/spotify-qt-nightly/releases",
-        "regex": "releases/download/latest/spotify-qt-v([\\w.-]+)-win64\\.zip"
+        "url": "https://api.github.com/repositories/458937795/releases/latest",
+        "jsonpath": "$.assets[0].name",
+        "regex": "spotify-qt-v([\\d.-]+)-win(?:64|32)\\.zip"
     },
     "autoupdate": {
         "architecture": {

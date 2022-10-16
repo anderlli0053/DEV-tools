@@ -1,32 +1,35 @@
 {
     "##": "Download url https://code.visualstudio.com/download#",
-    "architecture": {
-        "32bit": {
-            "hash": "558dcf37e8ed4777ade7c191c1789fd2eb142bf90fba81274b5b78c7af03aafa",
-            "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-user#/setup.exe"
-        },
-        "64bit": {
-            "hash": "31e848e3289c458b66bfdf8610460effea72e98ea9adc08953c33386427e96af",
-            "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user#/setup.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-user#/setup.exe"
-            },
-            "64bit": {
-                "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user#/setup.exe"
-            }
-        },
-        "changelog": "https://code.visualstudio.com/updates/v$majorVersion_$minorVersion"
-    },
-    "changelog": "https://code.visualstudio.com/updates/v1_72",
-    "checkver": {
-        "github": "https://github.com/microsoft/vscode"
-    },
+    "version": "1.72.2",
     "description": "Visual Studio Code (User). is a lightweight but powerful source code editor.",
     "homepage": "https://code.visualstudio.com/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://code.visualstudio.com/License/"
+    },
+    "changelog": "https://code.visualstudio.com/updates/v1_72",
+    "architecture": {
+        "64bit": {
+            "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user#/setup.exe",
+            "hash": "619432a09418ecd5f308724db3bca320fca55520713c00735da290aea3a0632e"
+        },
+        "32bit": {
+            "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-user#/setup.exe",
+            "hash": "e6ae299580030eda88b7f510372837db31ceb5c9d9dad574db2a3d1bff90fc20"
+        }
+    },
+    "pre_install": [
+        "$processname = \"Code\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
     "installer": {
         "script": [
             "$programname = \"Microsoft Visual Studio Code (User)*\"",
@@ -42,21 +45,18 @@
             "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
         ]
     },
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://code.visualstudio.com/License/"
+    "checkver": {
+        "github": "https://github.com/microsoft/vscode"
     },
-    "pre_install": [
-        "$processname = \"Code\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "version": "1.72.1"
+    "autoupdate": {
+        "changelog": "https://code.visualstudio.com/updates/v$majorVersion_$minorVersion",
+        "architecture": {
+            "64bit": {
+                "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-user#/setup.exe"
+            }
+        }
+    }
 }

@@ -1,35 +1,35 @@
 {
-    "autoupdate": {
-        "url": "http://downloads.ntlite.com/files/NTLite_setup_x64.exe"
-    },
-    "changelog": "https://www.ntlite.com/changelog/",
-    "checkver": {
-        "regex": "<span.+>v([\\d.]+)<\\/span>",
-        "url": "https://www.ntlite.com/download/"
-    },
-    "depends": "innounp",
+    "version": "2.3.8.8945",
     "description": "NTLite. Cutting-edge Windows configuration tool",
-    "hash": "e1d75c6fba883565df8b4d33c546fca593ec67209e20753a163b61ec5845e80c",
     "homepage": "https://www.ntlite.com/",
-    "installer": {
-        "script": [
-            "Expand-InnoArchive -Path \"$dir\\$fname\"",
-            "Expand-InnoArchive -Path \"$dir\\$fname\" -ExtractDir '{code_CefInstallDir}' -Removal"
-        ]
-    },
     "license": "Proprietary",
-    "persist": [
-        "settings.xml",
-        "Presets",
-        "Updates"
-    ],
-    "pre_install": "if(!(Test-Path \"$persist_dir\\settings.xml\")) {Set-Content -Encoding ASCII -Path \"$dir\\settings.xml\" -Value '<?xml version=\"1.0\" encoding=\"utf-8\"?><WebDAVClientSetting xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"></WebDAVClientSetting>'}",
+    "changelog": "https://www.ntlite.com/changelog/",
+    "url": "http://downloads.ntlite.com/files/NTLite_setup_x64.exe",
+    "hash": "e1d75c6fba883565df8b4d33c546fca593ec67209e20753a163b61ec5845e80c",
     "shortcuts": [
         [
             "NTLite.exe",
             "NTLite"
         ]
     ],
-    "url": "http://downloads.ntlite.com/files/NTLite_setup_x64.exe",
-    "version": "2.3.8.8945"
+    "depends": "innounp",
+    "pre_install": "if(!(Test-Path \"$persist_dir\\settings.xml\")) {Set-Content -Encoding ASCII -Path \"$dir\\settings.xml\" -Value '<?xml version=\"1.0\" encoding=\"utf-8\"?><WebDAVClientSetting xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"></WebDAVClientSetting>'}",
+    "installer": {
+        "script": [
+            "Expand-InnoArchive -Path \"$dir\\$fname\"",
+            "Expand-InnoArchive -Path \"$dir\\$fname\" -ExtractDir '{code_CefInstallDir}' -Removal"
+        ]
+    },
+    "persist": [
+        "settings.xml",
+        "Presets",
+        "Updates"
+    ],
+    "checkver": {
+        "url": "https://www.ntlite.com/download/",
+        "regex": "<span.+>v([\\d.]+)<\\/span>"
+    },
+    "autoupdate": {
+        "url": "http://downloads.ntlite.com/files/NTLite_setup_x64.exe"
+    }
 }

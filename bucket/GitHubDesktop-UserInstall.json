@@ -1,4 +1,14 @@
 {
+    "version": "3.1.1",
+    "description": "GitHub Desktop. Extend your GitHub workflow beyond your browser.",
+    "homepage": "https://desktop.github.com/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://central.github.com/deployments/desktop/desktop/latest/win32?format=msi#/dl.7z",
+            "hash": "ee513bdcb826e325b7380ffba7c1f2f204460d1b3b0662897ce2a8e62d641861"
+        }
+    },
     "##": [
         "$processname = \"GitHubDesktop\"",
         "$process = Get-Process $processname -ErrorAction SilentlyContinue",
@@ -11,26 +21,6 @@
         "   }",
         "}"
     ],
-    "architecture": {
-        "64bit": {
-            "hash": "ee513bdcb826e325b7380ffba7c1f2f204460d1b3b0662897ce2a8e62d641861",
-            "url": "https://central.github.com/deployments/desktop/desktop/latest/win32?format=msi#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://central.github.com/deployments/desktop/desktop/latest/win32?format=msi#/dl.7z"
-            }
-        }
-    },
-    "checkver": {
-        "regex": "GitHubDesktop-([\\d.]+)-full.nupkg",
-        "reverse": true,
-        "url": "https://central.github.com/api/deployments/desktop/desktop/latest/RELEASES"
-    },
-    "description": "GitHub Desktop. Extend your GitHub workflow beyond your browser.",
-    "homepage": "https://desktop.github.com/",
     "installer": {
         "script": [
             "$programname = \"GitHub Desktop\"",
@@ -49,10 +39,19 @@
             "if (Test-Path -Path \"$dir\\GitHubDesktop.exe\") { Remove-Item \"$dir\\GitHubDesktop.exe\" -Force }"
         ]
     },
-    "license": "MIT",
     "post_install": [
         "$DesktopDirectory = [Environment]::GetFolderPath(\"DesktopDirectory\")",
         "if (Test-Path \"$DesktopDirectory\\GitHub Desktop.lnk\") {Remove-Item \"$DesktopDirectory\\GitHub Desktop.lnk\" -Force}"
     ],
-    "version": "3.1.1"
+    "checkver": {
+        "url": "https://github.com/desktop/desktop/tags",
+        "regex": "/desktop/desktop/releases/tag/release-([\\d.]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://central.github.com/deployments/desktop/desktop/latest/win32?format=msi#/dl.7z"
+            }
+        }
+    }
 }

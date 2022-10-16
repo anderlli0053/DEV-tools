@@ -1,30 +1,19 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "a8227633b41e1f97f8b3d57368794bf7e1ea38f9baf590ffa3aeef0c28d1172e",
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.10/windowsdesktop-runtime-6.0.10-win-x86.exe#/setup.exe"
-        },
-        "64bit": {
-            "hash": "2a8208f6b2ce42856e9876b0b050ee1c9900766e9eae0ca35691b2e90221d199",
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.10/windowsdesktop-runtime-6.0.10-win-x64.exe#/setup.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe#/setup.exe"
-            },
-            "64bit": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe#/setup.exe"
-            }
-        }
-    },
-    "checkver": {
-        "regex": "(?s)([\\d.]+)[^\\d]*?(?<sdkversion>[\\d.]+)[^\\d]*?(?:current|lts)",
-        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json"
-    },
+    "version": "6.0.10",
     "description": "Microsoft .NET Desktop Runtime. The .NET Desktop Runtime enables you to run existing Windows desktop applications.",
     "homepage": "https://dotnet.microsoft.com/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.10/windowsdesktop-runtime-6.0.10-win-x64.exe#/setup.exe",
+            "hash": "2a8208f6b2ce42856e9876b0b050ee1c9900766e9eae0ca35691b2e90221d199"
+        },
+        "32bit": {
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.10/windowsdesktop-runtime-6.0.10-win-x86.exe#/setup.exe",
+            "hash": "a8227633b41e1f97f8b3d57368794bf7e1ea38f9baf590ffa3aeef0c28d1172e"
+        }
+    },
+    "pre_download": "Assert-Administrator",
     "installer": {
         "script": [
             "$programname = \"Microsoft Windows Desktop Runtime*\"",
@@ -42,7 +31,18 @@
             "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
         ]
     },
-    "license": "MIT",
-    "pre_download": "Assert-Administrator",
-    "version": "6.0.10"
+    "checkver": {
+        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
+        "regex": "(?s)([\\d.]+)[^\\d]*?(?<sdkversion>[\\d.]+)[^\\d]*?(?:current|lts)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe#/setup.exe"
+            }
+        }
+    }
 }

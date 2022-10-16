@@ -1,14 +1,23 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/$version/AutoDarkModeX_$version.exe#/setup.exe"
-    },
-    "changelog": "https://github.com/Armin2208/Windows-Auto-Night-Mode/releases",
-    "checkver": {
-        "github": "https://github.com/Armin2208/Windows-Auto-Night-Mode"
-    },
+    "version": "10.2.0.18",
     "description": "Auto Dark Mode. Automatically switches between the dark and light theme of Windows 10 at scheduled times.",
-    "hash": "948a70ed2ce7abd1f8bff89cb5112ffc09ea47a7c6a83771064b2c76a3c4a7d9",
     "homepage": "https://github.com/Armin2208/Windows-Auto-Night-Mode",
+    "license": "GPL-3.0-only",
+    "changelog": "https://github.com/Armin2208/Windows-Auto-Night-Mode/releases",
+    "url": "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/10.2.0.18/AutoDarkModeX_10.2.0.18.exe#/setup.exe",
+    "hash": "948a70ed2ce7abd1f8bff89cb5112ffc09ea47a7c6a83771064b2c76a3c4a7d9",
+    "pre_install": [
+        "$processname = \"AutoDarkMode\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
     "installer": {
         "script": [
             "if ( [environment]::OSVersion.Version.Major -ne 10 )",
@@ -30,19 +39,10 @@
             "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
         ]
     },
-    "license": "GPL-3.0-only",
-    "pre_install": [
-        "$processname = \"AutoDarkMode\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "url": "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/10.2.0.18/AutoDarkModeX_10.2.0.18.exe#/setup.exe",
-    "version": "10.2.0.18"
+    "checkver": {
+        "github": "https://github.com/Armin2208/Windows-Auto-Night-Mode"
+    },
+    "autoupdate": {
+        "url": "https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/$version/AutoDarkModeX_$version.exe#/setup.exe"
+    }
 }

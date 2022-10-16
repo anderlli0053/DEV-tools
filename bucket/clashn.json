@@ -1,57 +1,38 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/2dust/clashN/releases/download/$version/clashN.zip"
-    },
-    "bin": "clashN.ps1",
-    "checkver": {
-        "jsonpath": "$[0].tag_name",
-        "url": "https://api.github.com/repos/2dust/clashN/releases"
-    },
-    "depends": [
-        "sudo",
-        "meta/clash",
-        "meta/clash-premium",
-        "meta/clash-meta"
-    ],
-    "description": "A clash client for Windows, support clash core and Clash.Meta core",
-    "extract_dir": "clashN-Core",
-    "hash": "ec51882a88342c0c40b1090202f1a5f188f3a3c6b22378a7e590b710f0f749e3",
+    "version": "2.3",
+    "description": "A clash client for Windows, support clash core and Clash.Meta core.",
     "homepage": "https://github.com/2dust/clashN",
-    "license": {
-        "identifier": "GPL-3.0-only",
-        "url": "https://github.com/2dust/clashN/blob/main/LICENSE"
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/2dust/clashN/releases/download/2.3/clashN.zip",
+            "hash": "ba29b0c9acd756126c533aaaa8f3b2bd255431a96453d8b05d3c7f960faca1ac"
+        }
     },
+    "suggest": {
+        "dotnet-runtime": "windowsdesktop-runtime"
+    },
+    "extract_dir": "clashN",
     "persist": [
-        "guiBackups",
         "guiConfigs",
-        "guiLogs",
-        "data"
-    ],
-    "pre_install": [
-        "Copy-Item \"$(appdir clash $global)\\current\\Clash.exe\" \"$dir\" -Force | Out-Null",
-        "Copy-Item \"$(appdir clash-premium $global)\\current\\Clash.Premium.exe\" \"$dir\" -Force | Out-Null",
-        "Copy-Item \"$(appdir clash-meta $global)\\current\\Clash.Meta.exe\" \"$dir\" -Force | Out-Null",
-        "'config.yaml', 'guiNConfig.json' | ForEach-Object {",
-        "    if (Test-Path \"$persist_dir\\$_\") { Copy-Item \"$persist_dir\\$_\" \"$dir\\\" -Force | Out-Null }",
-        "}",
-        "Set-Content \"$dir\\clashN.ps1\" -Value 'sudo Start-Process -FilePath \"$env:SCOOP\\apps\\clashn\\current\\clashN.exe\" -WorkingDirectory \"$env:SCOOP\\apps\\clashn\\current\\\" -WindowStyle Hidden' -Encoding Ascii"
+        "guiBackups",
+        "guiLogs"
     ],
     "shortcuts": [
         [
-            "clashN.ps1",
+            "clashN.exe",
             "clashN"
         ]
     ],
-    "suggest": {
-        "dotnet-runtime": "meta/dotnet-runtime"
+    "checkver": {
+        "url": "https://github.com/2dust/clashN/releases/latest",
+        "regex": "/releases/tag/([\\d.]+)"
     },
-    "uninstaller": {
-        "script": [
-            "'config.yaml', 'guiNConfig.json' | ForEach-Object {",
-            "    if (Test-Path \"$dir\\$_\") { Copy-Item \"$dir\\$_\" \"$persist_dir\\\" -Force | Out-Null }",
-            "}"
-        ]
-    },
-    "url": "https://github.com/2dust/clashN/releases/download/2.5/clashN.zip",
-    "version": "2.5"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/2dust/clashN/releases/download/$version/clashN.zip"
+            }
+        }
+    }
 }

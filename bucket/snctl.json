@@ -1,29 +1,29 @@
 {
+    "version": "0.13.2",
+    "description": "A Command Line Interface (CLI) tool for StreamNative Cloud.",
+    "homepage": "https://docs.streamnative.io/cloud/stable/reference/snctl-reference",
+    "license": "Apache-2.0",
     "architecture": {
         "64bit": {
+            "url": "https://storage.googleapis.com/downloads.streamnative.cloud/snctl/v0.13.2/snctl_0.13.2_windows_amd64.zip",
             "extract_dir": "snctl_0.13.2_windows_amd64",
-            "hash": "6741f275a33e2cd31ef9b47773f7ac60dfe4439a6219e96a7789de1898c9034b",
-            "url": "https://storage.googleapis.com/downloads.streamnative.cloud/snctl/v0.13.2/snctl_0.13.2_windows_amd64.zip"
+            "hash": "6741f275a33e2cd31ef9b47773f7ac60dfe4439a6219e96a7789de1898c9034b"
         }
+    },
+    "bin": "snctl.exe",
+    "checkver": {
+        "url": "https://storage.googleapis.com/downloads.streamnative.cloud/snctl/stable.txt",
+        "regex": "v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "extract_dir": "snctl_$version_windows_amd64",
-                "url": "https://storage.googleapis.com/downloads.streamnative.cloud/snctl/v$version/snctl_$version_windows_amd64.zip"
+                "url": "https://storage.googleapis.com/downloads.streamnative.cloud/snctl/v$version/snctl_$version_windows_amd64.zip",
+                "extract_dir": "snctl_$version_windows_amd64"
             }
         },
         "hash": {
             "url": "$baseurl/checksums.txt"
         }
-    },
-    "bin": "snctl.exe",
-    "checkver": {
-        "regex": "v([\\d.]+)",
-        "url": "https://storage.googleapis.com/downloads.streamnative.cloud/snctl/stable.txt"
-    },
-    "description": "A Command Line Interface (CLI) tool for StreamNative Cloud.",
-    "homepage": "https://docs.streamnative.io/cloud/stable/reference/snctl-reference",
-    "license": "Apache-2.0",
-    "version": "0.13.2"
+    }
 }

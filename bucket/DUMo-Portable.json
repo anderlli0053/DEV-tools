@@ -1,29 +1,29 @@
 {
-    "autoupdate": {
-        "url": "https://www.kcsoftwares.com/files/dumo.zip"
-    },
-    "bin": "DUMo.exe",
-    "changelog": "https://www.kcsoftwares.com/bugs/changelog_page.php?project_id=19",
-    "checkver": {
-        "regex": "(?sm)DUMo</h.*?Version\\s+:\\s*<code>([\\d.]+)</",
-        "url": "https://www.kcsoftwares.com/?download"
-    },
+    "version": "2.25.1.121",
     "description": "DUMo. Detecting and updating required drivers",
-    "extract_dir": "dumo",
-    "hash": "42818c98e57e4f2d675b0ca1cafe8e1909c4f35f47d12b6e6ac9ca113307a41d",
     "homepage": "https://www.kcsoftwares.com/?dumo",
     "license": {
         "identifier": "Freeware",
         "url": "http://www.kcsoftwares.com/legal/ToU.pdf"
     },
-    "persist": "settings.ini",
+    "changelog": "https://www.kcsoftwares.com/bugs/changelog_page.php?project_id=19",
+    "url": "https://www.kcsoftwares.com/files/dumo.zip",
+    "hash": "42818c98e57e4f2d675b0ca1cafe8e1909c4f35f47d12b6e6ac9ca113307a41d",
+    "extract_dir": "dumo",
     "pre_install": "if (!(Test-Path \"$persist_dir\\settings.ini\")) { Set-Content \"$dir\\settings.ini\" '[Settings]', 'AutoUpdate=0' -Encoding Ascii }",
+    "bin": "DUMo.exe",
     "shortcuts": [
         [
             "DUMo.exe",
             "DUMo"
         ]
     ],
-    "url": "https://www.kcsoftwares.com/files/dumo.zip",
-    "version": "2.25.1.121"
+    "persist": "settings.ini",
+    "checkver": {
+        "url": "https://www.kcsoftwares.com/?download",
+        "regex": "(?sm)DUMo</h.*?Version\\s+:\\s*<code>([\\d.]+)</"
+    },
+    "autoupdate": {
+        "url": "https://www.kcsoftwares.com/files/dumo.zip"
+    }
 }

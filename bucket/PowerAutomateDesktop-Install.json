@@ -1,15 +1,23 @@
 {
-    "autoupdate": {
-        "url": "https://go.microsoft.com/fwlink/?LinkId=2102613&clcid=0x409#/setup.exe"
-    },
-    "checkver": {
-        "regex": "Microsoft/PowerAutomateDesktop/([\\d.]+)",
-        "reverse": true,
-        "url": "https://github.com/microsoft/winget-pkgs/tree/master/manifests/m/Microsoft/PowerAutomateDesktop"
-    },
+    "version": "2.24.179.22266",
     "description": "Power Automate Desktop. Easily automate anything from your desktop",
-    "hash": "0cc9330876856bdde46afbf228bf022450cbc2606fb223ff1a89abb227fb310d",
     "homepage": "https://flow.microsoft.com/en-us/desktop/",
+    "license": "",
+    "url": "https://go.microsoft.com/fwlink/?LinkId=2102613&clcid=0x409#/setup.exe",
+    "hash": "0cc9330876856bdde46afbf228bf022450cbc2606fb223ff1a89abb227fb310d",
+    "pre_download": "Assert-Administrator",
+    "pre_install": [
+        "$processname = \"PAD.Console.Host.exe\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
     "installer": {
         "script": [
             "$programname = \"Power Automate Desktop*\"",
@@ -26,20 +34,12 @@
             "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
         ]
     },
-    "license": "",
-    "pre_download": "Assert-Administrator",
-    "pre_install": [
-        "$processname = \"PAD.Console.Host.exe\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "url": "https://go.microsoft.com/fwlink/?LinkId=2102613&clcid=0x409#/setup.exe",
-    "version": "2.24.179.22266"
+    "checkver": {
+        "url": "https://github.com/microsoft/winget-pkgs/tree/master/manifests/m/Microsoft/PowerAutomateDesktop",
+        "regex": "Microsoft/PowerAutomateDesktop/([\\d.]+)",
+        "reverse": true
+    },
+    "autoupdate": {
+        "url": "https://go.microsoft.com/fwlink/?LinkId=2102613&clcid=0x409#/setup.exe"
+    }
 }

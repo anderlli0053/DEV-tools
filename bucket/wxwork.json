@@ -1,19 +1,22 @@
 {
- "autoupdate": {
-  "url": "https://work.weixin.qq.com/wework_admin/commdownload?platform=win#/dl.7z"
- },
- "description": "\u4f01\u4e1a\u5fae\u4fe1",
- "homepage": "https://work.weixin.qq.com/",
- "license": {
-  "identifier": "Freeware"
- },
- "pre_install": "Remove-Item -R -Path \"$dir\\Uninstall.exe\",\"$dir\\`$PLUGINSDIR\"",
- "shortcuts": [
-  [
-   "WXWork.exe",
-   "\u4f01\u4e1a\u5fae\u4fe1"
-  ]
- ],
- "url": "https://work.weixin.qq.com/wework_admin/commdownload?platform=win#/dl.7z",
- "version": "nightly"
+    "version": "4.0.16.6007",
+    "description": "A communication platform for enterprises that includes convenient communication and office automation tools.",
+    "homepage": "https://work.weixin.qq.com/",
+    "license": "Freeware",
+    "url": "https://dldir1.qq.com/wework/work_weixin/WeCom_4.0.16.6007.exe#/dl.7z",
+    "hash": "6c96e4c2afb96be4010666458ce156d0abdc0d026848412329b4680d0f1aae6b",
+    "shortcuts": [
+        [
+            "WXWork.exe",
+            "企业微信"
+        ]
+    ],
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse",
+    "checkver": {
+        "url": "https://pc.qq.com/detail/14/detail_22554.html",
+        "regex": "WeCom_([\\d.]+)-?_?\\d*.exe"
+    },
+    "autoupdate": {
+        "url": "https://dldir1.qq.com/wework/work_weixin/WeCom_$version.exe#/dl.7z"
+    }
 }

@@ -1,31 +1,21 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "4b6e0852173f09d8f6c06b35f48efa14f5f31b5178082b4e4e0be391e2914bd9",
-            "url": "https://download1.operacdn.com/pub/opera/desktop/91.0.4516.77/win/Opera_91.0.4516.77_Setup.exe#/dl.7z"
-        },
-        "64bit": {
-            "hash": "65b5091aa7e96626a40797474d4359ed28f066fc3e502bb70677f787a1d413b8",
-            "url": "https://download1.operacdn.com/pub/opera/desktop/91.0.4516.77/win/Opera_91.0.4516.77_Setup_x64.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://download1.operacdn.com/pub/opera/desktop/$version/win/Opera_$version_Setup.exe#/dl.7z"
-            },
-            "64bit": {
-                "url": "https://download1.operacdn.com/pub/opera/desktop/$version/win/Opera_$version_Setup_x64.exe#/dl.7z"
-            }
-        }
-    },
-    "checkver": {
-        "regex": "([\\d.]+)/",
-        "reverse": true,
-        "url": "https://download1.operacdn.com/pub/opera/desktop/"
-    },
+    "version": "91.0.4516.77",
     "description": "Opera. Fast, secure, easy-to-use browser.",
     "homepage": "https://www.opera.com/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.opera.com/eula/computers"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download1.operacdn.com/pub/opera/desktop/91.0.4516.77/win/Opera_91.0.4516.77_Setup_x64.exe#/dl.7z",
+            "hash": "65b5091aa7e96626a40797474d4359ed28f066fc3e502bb70677f787a1d413b8"
+        },
+        "32bit": {
+            "url": "https://download1.operacdn.com/pub/opera/desktop/91.0.4516.77/win/Opera_91.0.4516.77_Setup.exe#/dl.7z",
+            "hash": "4b6e0852173f09d8f6c06b35f48efa14f5f31b5178082b4e4e0be391e2914bd9"
+        }
+    },
     "installer": {
         "script": [
             "Remove-Item -Path \"$dir\\*_list\" -Force",
@@ -37,16 +27,26 @@
             "Set-Content -Path \"$dir\\installer_prefs.json\" -Value (@{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json) -Encoding ASCII"
         ]
     },
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.opera.com/eula/computers"
-    },
-    "persist": "profile",
     "shortcuts": [
         [
             "launcher.exe",
             "Opera"
         ]
     ],
-    "version": "91.0.4516.77"
+    "persist": "profile",
+    "checkver": {
+        "url": "https://download1.operacdn.com/pub/opera/desktop/",
+        "regex": "([\\d.]+)/",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download1.operacdn.com/pub/opera/desktop/$version/win/Opera_$version_Setup_x64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://download1.operacdn.com/pub/opera/desktop/$version/win/Opera_$version_Setup.exe#/dl.7z"
+            }
+        }
+    }
 }

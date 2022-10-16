@@ -1,30 +1,37 @@
 {
-    "version": "3.8-1",
-    "description": "An unofficial Spotify client using Qt as a simpler, lighter alternative to the official client, inspired by spotify-tui.",
+    "version": "3.9",
+    "description": "Lightweight Spotify client using Qt",
     "homepage": "https://github.com/kraxarn/spotify-qt",
-    "license": {
-        "identifier": "GPL-3.0-or-later"
-    },
+    "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/kraxarn/spotify-qt/releases/download/v3.8/spotify-qt-mingw64-v3.8-1.zip",
-            "hash": "ef2b8e5e141a7621e910f952789bd13229d50b58e94f1d0a1eace871a47b14f9"
+            "url": "https://github.com/kraxarn/spotify-qt/releases/download/v3.9/spotify-qt-v3.9-win64.zip",
+            "hash": "98d32be1938f09f49e1849a65258f733ca840c9d87268501a92dbd728c6c8eb3"
+        },
+        "32bit": {
+            "url": "https://github.com/kraxarn/spotify-qt/releases/download/v3.9/spotify-qt-v3.9-win32.zip",
+            "hash": "ae1f731ab6dfaea1f5aa60675e1d5acc6aa029ad3fb962b21b1228d73edf8f64"
         }
     },
     "shortcuts": [
         [
             "spotify-qt.exe",
-            "Spotify Qt"
+            "spotify-qt"
         ]
     ],
+    "bin": "spotify-qt.exe",
     "checkver": {
-        "url": "https://api.github.com/repos/kraxarn/spotify-qt/releases",
-        "regex": "releases/download/v(?<tag>.*?)/spotify-qt-mingw64-v([\\d.-]+).zip"
+        "url": "https://api.github.com/repositories/239120579/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "v([\\d.-]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/kraxarn/spotify-qt/releases/download/v$matchTag/spotify-qt-mingw64-v$version.zip"
+                "url": "https://github.com/kraxarn/spotify-qt/releases/download/v$matchHead/spotify-qt-v$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/kraxarn/spotify-qt/releases/download/v$matchHead/spotify-qt-v$version-win32.zip"
             }
         }
     }

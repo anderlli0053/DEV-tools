@@ -1,32 +1,21 @@
 {
     "##": "Download URL https://dotnet.microsoft.com/download/dotnet/6.0/runtime",
-    "architecture": {
-        "32bit": {
-            "hash": "794d4c54a9e992afcbeba090570db345f8d76af7fc1de6bab9c84ffd662aa61d",
-            "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-6.0.10-windows-x86-installer#/setup.exe"
-        },
-        "64bit": {
-            "hash": "8d94ea56d0025e5601008beeb92c0b61111007df6a89b60099a81d3491161ce3",
-            "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-6.0.10-windows-x64-installer#/setup.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-$version-windows-x86-installer#/setup.exe"
-            },
-            "64bit": {
-                "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-$version-windows-x64-installer#/setup.exe"
-            }
-        }
-    },
-    "changelog": "https://github.com/dotnet/core/blob/master/release-notes/5.0/5.0.6/5.0.6.md",
-    "checkver": {
-        "regex": "(?s)([\\d.]+)[^\\d]*?(?<sdkversion>[\\d.]+)[^\\d]*?(?:current|lts)",
-        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json"
-    },
+    "version": "6.0.10",
     "description": "Microsoft .NET Core Runtime. The .NET Runtime contains just the components needed to run a console app.",
     "homepage": "https://dotnet.microsoft.com/",
+    "license": "Freeware",
+    "changelog": "https://github.com/dotnet/core/blob/master/release-notes/5.0/5.0.6/5.0.6.md",
+    "architecture": {
+        "64bit": {
+            "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-6.0.10-windows-x64-installer#/setup.exe",
+            "hash": "568542c22084c1579694b13504f2af198badf859dca8e002e94687e2466b7b59"
+        },
+        "32bit": {
+            "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-6.0.10-windows-x86-installer#/setup.exe",
+            "hash": "1a808b9779cd590516e9212cb89db8366cd0893c86404aad8cc639c6448a70e7"
+        }
+    },
+    "pre_download": "Assert-Administrator",
     "installer": {
         "script": [
             "$programname = \"Microsoft .NET Runtime*\"",
@@ -44,7 +33,18 @@
             "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
         ]
     },
-    "license": "Freeware",
-    "pre_download": "Assert-Administrator",
-    "version": "6.0.10"
+    "checkver": {
+        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
+        "regex": "(?s)([\\d.]+)[^\\d]*?(?<sdkversion>[\\d.]+)[^\\d]*?(?:current|lts)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-$version-windows-x64-installer#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-$version-windows-x86-installer#/setup.exe"
+            }
+        }
+    }
 }

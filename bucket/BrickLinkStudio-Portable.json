@@ -1,40 +1,40 @@
 {
+    "version": "2.22.9",
+    "description": "BrickLink Studio. Studio is a desktop application that allows users to build LEGO models using virtual parts.",
+    "homepage": "https://www.bricklink.com/v2/build/studio.page",
+    "license": "Unknown",
+    "changelog": "https://www.bricklink.com/v2/build/studio.page",
+    "innosetup": true,
     "architecture": {
-        "32bit": {
-            "hash": "8331a5eecef4aceabf0cb76a4614ae4163a2bc3da0ad423bd32f26c6f3da647c",
-            "url": "https://s3.amazonaws.com/blstudio/Studio2.0/Studio+2.0_32.exe#/dl.7z"
-        },
         "64bit": {
-            "hash": "3fd8bb798e04ca0df48db6d807f2ab19d056b0b61171cb0999f8e6a86ec71df7",
-            "url": "https://s3.amazonaws.com/blstudio/Studio2.0/Studio+2.0.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://s3.amazonaws.com/blstudio/Studio$majorVersion.0/Studio+$majorVersion.0_32.exe#/dl.7z"
-            },
-            "64bit": {
-                "url": "https://s3.amazonaws.com/blstudio/Studio$majorVersion.0/Studio+$majorVersion.0.exe#/dl.7z"
-            }
+            "url": "https://s3.amazonaws.com/blstudio/Studio2.0/Studio+2.0.exe#/dl.7z",
+            "hash": "bb9f7086b35507fd360ab95114ff995b6e135c9a440d3b4227e2eefb3ce6fee2"
+        },
+        "32bit": {
+            "url": "https://s3.amazonaws.com/blstudio/Studio2.0/Studio+2.0_32.exe#/dl.7z",
+            "hash": "441e05b6056e0dccc305aadcf15395faf0f2c883c4f5f90195af757e272cba3a"
         }
     },
     "bin": "Studio.exe",
-    "changelog": "https://www.bricklink.com/v2/build/studio.page",
-    "checkver": {
-        "regex": "\"version\":\"([\\d.]+)",
-        "reverse": true,
-        "url": "https://www.bricklink.com/v2/build/studio.page"
-    },
-    "description": "BrickLink Studio. Studio is a desktop application that allows users to build LEGO models using virtual parts.",
-    "homepage": "https://www.bricklink.com/v2/build/studio.page",
-    "innosetup": true,
-    "license": "Unknown",
     "shortcuts": [
         [
             "Studio.exe",
             "BrickLink Studio"
         ]
     ],
-    "version": "2.22.9"
+    "checkver": {
+        "url": "https://www.bricklink.com/v2/build/studio.page",
+        "regex": "\"version\":\"([\\d.]+)",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://s3.amazonaws.com/blstudio/Studio$majorVersion.0/Studio+$majorVersion.0.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://s3.amazonaws.com/blstudio/Studio$majorVersion.0/Studio+$majorVersion.0_32.exe#/dl.7z"
+            }
+        }
+    }
 }

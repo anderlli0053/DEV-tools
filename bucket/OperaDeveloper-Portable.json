@@ -1,34 +1,21 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "9c88a584945b8bdfb5cba18d3ac25c2255451803afd337fca084ff81ac588117",
-            "url": "https://download1.operacdn.com/pub/opera-developer/93.0.4569.0/win/Opera_Developer_93.0.4569.0_Setup.exe#/dl.7z"
-        },
-        "64bit": {
-            "hash": "ef8e35828f0d1bb1c5aff5649de85f09c50d96845685cd710f4e26bfa50b8cd9",
-            "url": "https://download1.operacdn.com/pub/opera-developer/93.0.4569.0/win/Opera_Developer_93.0.4569.0_Setup_x64.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://download1.operacdn.com/pub/opera-developer/$version/win/Opera_Developer_$version_Setup.exe#/dl.7z"
-            },
-            "64bit": {
-                "url": "https://download1.operacdn.com/pub/opera-developer/$version/win/Opera_Developer_$version_Setup_x64.exe#/dl.7z"
-            }
-        },
-        "hash": {
-            "url": "$url.sha256sum"
-        }
-    },
-    "checkver": {
-        "regex": "([\\d.]+)/",
-        "reverse": true,
-        "url": "http://get.opera.com/ftp/pub/opera-developer/"
-    },
+    "version": "93.0.4569.0",
     "description": "Opera Developer. Fast, secure, easy-to-use browser.",
     "homepage": "https://www.opera.com/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.opera.com/eula/computers"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download1.operacdn.com/pub/opera-developer/93.0.4569.0/win/Opera_Developer_93.0.4569.0_Setup_x64.exe#/dl.7z",
+            "hash": "ef8e35828f0d1bb1c5aff5649de85f09c50d96845685cd710f4e26bfa50b8cd9"
+        },
+        "32bit": {
+            "url": "https://download1.operacdn.com/pub/opera-developer/93.0.4569.0/win/Opera_Developer_93.0.4569.0_Setup.exe#/dl.7z",
+            "hash": "9c88a584945b8bdfb5cba18d3ac25c2255451803afd337fca084ff81ac588117"
+        }
+    },
     "installer": {
         "script": [
             "Remove-Item -Path \"$dir\\*_list\" -Force",
@@ -40,16 +27,29 @@
             "Set-Content -Path \"$dir\\installer_prefs.json\" -Value (@{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json) -Encoding ASCII"
         ]
     },
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.opera.com/eula/computers"
-    },
-    "persist": "profile",
     "shortcuts": [
         [
             "launcher.exe",
             "Opera Developer"
         ]
     ],
-    "version": "93.0.4569.0"
+    "persist": "profile",
+    "checkver": {
+        "url": "http://get.opera.com/ftp/pub/opera-developer/",
+        "regex": "([\\d.]+)/",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download1.operacdn.com/pub/opera-developer/$version/win/Opera_Developer_$version_Setup_x64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://download1.operacdn.com/pub/opera-developer/$version/win/Opera_Developer_$version_Setup.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256sum"
+        }
+    }
 }

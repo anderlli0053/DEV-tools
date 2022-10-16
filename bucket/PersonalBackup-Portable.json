@@ -1,48 +1,48 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "daa203cb5ea9bd2653422d95a2c36c5aefb13442826756a43bba69a733dbc862",
-   "url": "https://personal-backup.rathlev-home.de/download/pb-setup-6.2.1600.exe"
-  },
-  "64bit": {
-   "hash": "b2584c7d02b8e415ca4161852f768a67d881969d1d2020218fcfe149361f88fb",
-   "url": "https://personal-backup.rathlev-home.de/download/pb-setup-x64-6.2.1600.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://personal-backup.rathlev-home.de/download/pb-setup-$version.exe"
-   },
-   "64bit": {
-    "url": "https://personal-backup.rathlev-home.de/download/pb-setup-x64-$version.exe"
-   }
-  }
- },
- "bin": "Persbackup.exe",
- "checkver": {
-  "regex": "pb-setup-(?<version>[\\d.]+[\\d])",
-  "url": "https://personal-backup.rathlev-home.de/download.html"
- },
- "description": "Personal Backup. simple backup solution",
- "homepage": "https://personal-backup.rathlev-home.de/",
- "innosetup": true,
- "license": {
-  "identifier": "Freeware",
-  "url": "https://personal-backup.rathlev-home.de/license.html"
- },
- "persist": [
-  "pb.ini",
-  "logs",
-  "tasks"
- ],
- "pre_install": "if (!(Test-Path \"$persist_dir\\pb.ini\")) { New-Item \"$dir\\pb.ini\" -Force | Out-Null }",
- "shortcuts": [
-  [
-   "Persbackup.exe",
-   "Personal Backup",
-   "/ini:%progpath%\\pb.ini /taskdir:%progpath%\\tasks /logdir:%progpath%\\logs"
-  ]
- ],
- "version": "6.2.1600"
+    "version": "6.2.1600",
+    "description": "Personal Backup. simple backup solution",
+    "homepage": "https://personal-backup.rathlev-home.de/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://personal-backup.rathlev-home.de/license.html"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://personal-backup.rathlev-home.de/download/pb-setup-6.2.1600.exe",
+            "hash": "a15cc1ae09491c9d38b8d23fea06661e2a751dced7eec8120d8cd5900b985946"
+        },
+        "64bit": {
+            "url": "https://personal-backup.rathlev-home.de/download/pb-setup-x64-6.2.1600.exe",
+            "hash": "e4b5899faa4c921324353ce65d5aaedc16bc30c982dbb38cff64b3f5760d9169"
+        }
+    },
+    "innosetup": true,
+    "pre_install": "if (!(Test-Path \"$persist_dir\\pb.ini\")) { New-Item \"$dir\\pb.ini\" -Force | Out-Null }",
+    "bin": "Persbackup.exe",
+    "shortcuts": [
+        [
+            "Persbackup.exe",
+            "Personal Backup",
+            "/ini:%progpath%\\pb.ini /taskdir:%progpath%\\tasks /logdir:%progpath%\\logs"
+        ]
+    ],
+    "persist": [
+        "pb.ini",
+        "logs",
+        "tasks"
+    ],
+    "checkver": {
+        "url": "https://personal-backup.rathlev-home.de/download.html",
+        "regex": "pb-setup-(?<version>[\\d.]+[\\d])"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://personal-backup.rathlev-home.de/download/pb-setup-$version.exe"
+            },
+            "64bit": {
+                "url": "https://personal-backup.rathlev-home.de/download/pb-setup-x64-$version.exe"
+            }
+        }
+    }
 }

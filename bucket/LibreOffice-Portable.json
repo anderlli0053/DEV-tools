@@ -1,22 +1,11 @@
 {
-    "autoupdate": {
-        "hash": {
-            "regex": "MD5 Hash: +[\\w]{32}",
-            "url": "https://portableapps.com/apps/office/libreoffice_portable"
-        },
-        "url": "https://ftp.osuosl.org/pub/tdf/libreoffice/portable/$version/LibreOfficePortable_$version_MultilingualStandard.paf.exe#/dl.7z"
-    },
-    "bin": "LibreOfficePortable.exe",
-    "checkver": {
-        "regex": "Version ([\\d.]+)",
-        "url": "https://portableapps.com/apps/office/libreoffice_portable"
-    },
+    "version": "7.4.1",
     "description": "LibreOffice. Complete office suite",
-    "hash": "59e52e180efa53e7d777456e06d736ca708747802a0fd5270c84e64b17b2f8e3",
     "homepage": "https://portableapps.com/apps/office/libreoffice_portable",
     "license": "",
-    "persist": "Data",
-    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+    "url": "https://ftp.osuosl.org/pub/tdf/libreoffice/portable/7.4.1/LibreOfficePortable_7.4.1_MultilingualStandard.paf.exe#/dl.7z",
+    "hash": "59e52e180efa53e7d777456e06d736ca708747802a0fd5270c84e64b17b2f8e3",
+    "bin": "LibreOfficePortable.exe",
     "shortcuts": [
         [
             "LibreOfficePortable.exe",
@@ -47,6 +36,17 @@
             "LibreOffice\\LibreOffice Writer"
         ]
     ],
-    "url": "https://ftp.osuosl.org/pub/tdf/libreoffice/portable/7.4.1/LibreOfficePortable_7.4.1_MultilingualStandard.paf.exe#/dl.7z",
-    "version": "7.4.1"
+    "persist": "Data",
+    "checkver": {
+        "url": "https://portableapps.com/apps/office/libreoffice_portable",
+        "regex": "Version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://ftp.osuosl.org/pub/tdf/libreoffice/portable/$version/LibreOfficePortable_$version_MultilingualStandard.paf.exe#/dl.7z",
+        "hash": {
+            "url": "https://portableapps.com/apps/office/libreoffice_portable",
+            "regex": "MD5 Hash: +[\\w]{32}"
+        }
+    },
+    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
 }
