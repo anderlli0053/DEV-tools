@@ -225,7 +225,7 @@ for file in manifests_to_remove:
 
 
 
-##
+## TESTING SOMETHING..
 ##    for files in manifests_to_remove:
 ##        if files.name.endswith(".json"):
 ##            print("Moving" + files.name + " -> " + files.path)
