@@ -27,9 +27,14 @@
         "https://archive.hugo.pro/builds/godot/master/editor/godot-windows-nightly-x86_64.zip",
         "https://archive.hugo.pro/builds/godot/master/templates/godot-templates-android-html5-linux-windows-nightly.tpz#/dl.tpz_"
     ],
+    
+ "post_install": [
  
+ "Rename-Item \"$dir\\dl.tpz_\" \"$dir\\export_templates.tpz\"",
+ "Set-Location -Path $dir\\GNP",
+ "Invoke-Expression -Command "strip godot.exe""
  
- "post_install": "Rename-Item \"$dir\\dl.tpz_\" \"$dir\\export_templates.tpz\"",
+ ]
  
  "version": "nightly"
 }
