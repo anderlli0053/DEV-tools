@@ -96,16 +96,14 @@
         "64bit": {
             "installer": {
                 "script": [
-                    "Expand-InnoArchive \"$dir\\iFinD_Setup_v1.10.12.384.001.exe\" -Removal",
-                    "Remove-Item \"$dir\\*,*\" -Force"
+                    Invoke-Expression -Command "innounp "iFinD_Setup_v1.10.12.384.001.exe" -x -diFinD"
                 ]
             }
         },
         "32bit": {
             "installer": {
                 "script": [
-                    "Expand-InnoArchive \"$dir\\HxDPortableSetup.exe\" -Removal",
-                    "Remove-Item \"$dir\\*,*\" -Force"
+                    Invoke-Expression -Command "innounp "iFinD_Setup_v1.10.12.384.001.exe" -x -diFinD"
                 ]
             }
         }
