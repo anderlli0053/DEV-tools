@@ -1,26 +1,27 @@
 {
     "version": "3.11.6.402",
-    "description": "Tencent Meeting provides one-stop audio and video conferencing solutions.",
+    "description": "腾讯会议",
     "homepage": "https://meeting.tencent.com/",
     "license": {
         "identifier": "Proprietary",
         "url": "https://meeting.tencent.com/declare.html"
     },
-    "notes": "We don't persist your Tencent Meeting data, they are still stored in \"$env:APPDATA\\Tencent\\WeMeet\".",
     "url": "https://updatecdn.meeting.qq.com/cos/947a8fd1faf0d491148980605952049b/TencentMeeting_0300000000_3.11.6.402.publish.exe#/dl.7z",
-    "hash": "d180cdc871f3061bdfe2fe8658a2584c796ad108669f74a6c87356619108af44",
-    "post_install": [
-        "Rename-Item \"$dir\\`$_9_\" \"$dir\\$version\"",
-        "Remove-Item \"$dir\\$*\" -Recurse -Force -ErrorAction SilentlyContinue",
-        "Remove-Item \"$dir\\wemeetapp_new.exe\" -Force -ErrorAction SilentlyContinue",
-        "create_startmenu_shortcuts $manifest $dir\\..\\$version $global $arch"
-    ],
-    "bin": [
-        [
-            "wemeetapp.exe",
-            "tencent-meeting"
+    "hash": "md5:947a8fd1faf0d491148980605952049b",
+    "pre_install": "Rename-Item -Path \"$dir\\`$_*\" -NewName \"$version\" -Force",
+    "installer": {
+        "script": [
+            "ensure \"$persist_dir\" | Out-Null",
+            "New-Item \"$env:APPDATA\\Tencent\\WeMeet\" -ItemType Junction -Target \"$persist_dir\" | Out-Null"
         ]
+    },
+    "post_install": [
+        "Remove-Item \"$dir\\`$*\" -Recurse -Force -ErrorAction SilentlyContinue",
+        "Remove-Item \"$dir\\wemeetapp_new.exe\" -Force -ErrorAction SilentlyContinue"
     ],
+    "uninstaller": {
+        "script": "Remove-Item \"$env:APPDATA\\Tencent\\WeMeet\" -ErrorAction 'SilentlyContinue' -Force -Recurse"
+    },
     "shortcuts": [
         [
             "wemeetapp.exe",
@@ -28,11 +29,15 @@
         ]
     ],
     "checkver": {
-        "url": "https://meeting.tencent.com/wemeet-webapi/v2/config/query-download-info",
-        "script": "(Invoke-WebRequest -Body '[{\"instance\":\"windows\",\"type\":\"0300000000\"}]' -Method 'POST' -Uri $url).Content",
-        "regex": "https://(?<url>.*?\\.exe).*?version\".*?\"([\\d.]+)\""
+        "url": "https://meeting.tencent.com/web-service/query-download-info?q=%5B%7B%22package-type%22:%22app%22,%22channel%22:%220300000000%22,%22platform%22:%22windows%22%7D%5D&nonce=AAAAAAAAAAAAAAAA",
+        "regex": "(?sm)url.*?updatecdn.meeting.qq.com/cos/(?<url>.*?publish.exe).*?version\":\"([\\d.]+)\""
     },
     "autoupdate": {
-        "url": "https://$matchUrl#/dl.7z"
+        "url": "https://updatecdn.meeting.qq.com/cos/$matchUrl#/dl.7z",
+        "hash": {
+            "url": "https://meeting.tencent.com/web-service/query-download-info?q=%5B%7B%22package-type%22:%22app%22,%22channel%22:%220300000000%22,%22platform%22:%22windows%22%7D%5D&nonce=AAAAAAAAAAAAAAAA",
+            "mode": "json",
+            "jsonpath": "$.info-list[0].md5"
+        }
     }
 }
