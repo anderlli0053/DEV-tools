@@ -1,9 +1,18 @@
 {
   "license": "Free",
   "homepage": "https://tlauncher.org/en/",
-  "pre_install": [
-    "Expand-7zipArchive \"$dir\\Tlauncher_2_86.7z\""
-  ],
+  
+  
+   "installer": {
+        "script": [
+            "Rename-Item \"$dir\\`f.php\" 'tlauncher.zip' -Force",
+			"Expand-7zipArchive -Path \"$dir\\$fname\" -Removal -Overwrite 'Rename'"
+            
+        ]
+    },
+  
+  
+  
   "depends": "java/temurin-jre",
   "suggest": {
     "wget": "wget",
@@ -18,8 +27,8 @@
     "TLauncher\\TLauncher-2.86.jar",
     "TLauncher"
   ],
-  "hash": "b6e6ca271bfe0a64dda60f2658fbf329066006bca1c52c2e746e4341f9663d96",
-  "url": "https://github.com/anderlli0053-storage/storage/raw/main/Tlauncher_2_86.7z",
+  "hash": "ae123982297f5352c578eb3fcc448b362f67f7c08568a82f6d18d05c422584d8",
+  "url": "https://dl2.tlauncher.org/f.php?f=files%2FTLauncher-2.86.zip",
   "version": "2.86",
   "notes": "\nYou'll need JRE in order to run the included JAR\nAdded and packed by Andrew Pozenel\n"
 }
