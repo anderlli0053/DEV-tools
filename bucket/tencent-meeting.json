@@ -1,21 +1,43 @@
 {
     "version": "3.11.6.402",
-    "description": "腾讯会议是腾讯云旗下的一款音视频会议软件",
-    "homepage": "https://meeting.tencent.com",
-    "license": "BSD-3-Clause",
+    "description": "腾讯会议 from: Samiya321/scoop-samiya",
+    "homepage": "https://meeting.tencent.com/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://meeting.tencent.com/declare.html"
+    },
     "url": "https://updatecdn.meeting.qq.com/cos/947a8fd1faf0d491148980605952049b/TencentMeeting_0300000000_3.11.6.402.publish.exe#/dl.7z",
+    "hash": "md5:947a8fd1faf0d491148980605952049b",
+    "pre_install": "Rename-Item -Path \"$dir\\`$_*\" -NewName \"$version\" -Force",
     "installer": {
         "script": [
-            "Rename-Item \"$dir\\`$_10_\" \"$dir\\$version\"",
-            "Remove-Item \"$dir\\wemeetapp_new.exe\" -Force",
-            "Remove-Item \"$dir\\`$TEMP\", \"$dir\\`$WINDIR\", \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
+            "ensure \"$persist_dir\" | Out-Null",
+            "New-Item \"$env:APPDATA\\Tencent\\WeMeet\" -ItemType Junction -Target \"$persist_dir\" | Out-Null"
         ]
     },
-    "bin": "wemeetapp.exe",
+    "post_install": [
+        "Remove-Item \"$dir\\`$*\" -Recurse -Force -ErrorAction SilentlyContinue",
+        "Remove-Item \"$dir\\wemeetapp_new.exe\" -Force -ErrorAction SilentlyContinue"
+    ],
+    "uninstaller": {
+        "script": "Remove-Item \"$env:APPDATA\\Tencent\\WeMeet\" -ErrorAction 'SilentlyContinue' -Force -Recurse"
+    },
     "shortcuts": [
         [
             "wemeetapp.exe",
-            "腾讯会议"
+            "Tencent Meeting"
         ]
-    ]
+    ],
+    "checkver": {
+        "url": "https://meeting.tencent.com/web-service/query-download-info?q=%5B%7B%22package-type%22:%22app%22,%22channel%22:%220300000000%22,%22platform%22:%22windows%22%7D%5D&nonce=AAAAAAAAAAAAAAAA",
+        "regex": "(?sm)url.*?updatecdn.meeting.qq.com/cos/(?<url>.*?publish.exe).*?version\":\"([\\d.]+)\""
+    },
+    "autoupdate": {
+        "url": "https://updatecdn.meeting.qq.com/cos/$matchUrl#/dl.7z",
+        "hash": {
+            "url": "https://meeting.tencent.com/web-service/query-download-info?q=%5B%7B%22package-type%22:%22app%22,%22channel%22:%220300000000%22,%22platform%22:%22windows%22%7D%5D&nonce=AAAAAAAAAAAAAAAA",
+            "mode": "json",
+            "jsonpath": "$.info-list[0].md5"
+        }
+    }
 }
