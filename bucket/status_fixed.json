@@ -1,0 +1,22 @@
+{
+    "##": "checkver and autoupdate have been temporarily removed until Version 0.8 of Status is released on their GitHub page: https://github.com/status-im/status-desktop ",
+    "version": "0.6.0-6c1e04",
+    "description": "A messenger, crypto wallet, and Web3 browser.",
+    "homepage": "https://status.im/",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/status-im/status-desktop/releases/download/0.6.0/StatusIm-Desktop-v0.6.0-6c1e04.7z",
+            "hash": "23c466b9a0472990ca0dd2caa4ececd0660a180e96039cff5830bb3019c0ac9b"
+        }
+    },
+    "extract_dir": "Status",
+    "pre_install": "if (!(Test-Path \"$env:LOCALAPPDATA\\Status\")) {New-Item \"$env:LOCALAPPDATA\\Status\" -ItemType 'Directory' | Out-Null}",
+    "bin": "Status.exe",
+    "shortcuts": [
+        [
+            "Status.exe",
+            "Status"
+        ]
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "version": "4.4.170",
+    "homepage": "https://github.com/Open-Shell/Open-Shell-Menu",
+    "description": "A fork of Classic Shell with additonal fixes and more features.",
+    "license": "MIT",
+    "url": "https://github.com/Open-Shell/Open-Shell-Menu/releases/download/v4.4.170/OpenShellSetup_4_4_170.exe#/setup.exe",
+    "hash": "0417041CFFED3478F13A840E45EE304CCF8D1F9CA38E4126BC315161AC9F1669",
+    "architecture": {
+        "64bit": {
+            "pre_install": "Set-Location $dir; Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList 'extract64' | Out-Null; Set-Location '-'"
+        },
+        "32bit": {
+            "pre_install": "Set-Location $dir; Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList 'extract32' | Out-Null; Set-Location '-'"
+        }
+    },
+    "installer": {
+        "script": [
+            "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
+            "Remove-Item \"$dir\\setup.exe\"; Rename-Item \"$dir\\*.msi\" 'setup.msi' | Out-Null",
+            "Write-Host \"Replacing Start Menu with Open Shell, please wait and don't cancel the script...\" -F 'Yellow'",
+            "Start-Process 'msiexec' -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList @('/i', \"$dir\\setup.msi\", '/qn')",
+            "Stop-Process -Name 'explorer'; Start-Sleep -Seconds 2; Write-Host \"Done!\" -F 'Yellow'"
+        ]
+    },
+    "pre_uninstall": [
+        "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
+        "Stop-Process -Name 'StartMenu' -Force -ErrorAction 'SilentlyContinue'",
+        "Write-Host \"Restoring previous Start Menu, please wait and don't cancel the script...\" -F 'Yellow'",
+        "Start-Process 'msiexec' -Wait -Verb 'RunAs' -ArgumentList @('/x', \"$dir\\setup.msi\", '/qn')",
+        "Start-Process 'taskkill' -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList ('/F', '/IM', 'explorer.exe'); Start-Sleep -Seconds 16",
+        "Write-Host 'Previous Start Menu Restored!' -F 'Yellow'; Start-Process 'explorer.exe' -Wait -Verb 'RunAs' -WindowStyle 'Hidden'"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/Open-Shell/Open-Shell-Menu/releases/download/v$version/OpenShellSetup_$underscoreVersion.exe#/setup.exe"
+    }
+}
