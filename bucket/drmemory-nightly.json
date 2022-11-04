@@ -1,0 +1,35 @@
+{
+    "version": "2.5.19287",
+    "description": "Dr. Memory is a memory monitoring tool capable of identifying memory-related programming errors.",
+    "homepage": "https://drmemory.org/",
+    "license": "LGPL-2.1-only",
+    "url": "https://github.com/DynamoRIO/drmemory/releases/download/cronbuild-2.5.19287/DrMemory-Windows-2.5.19287.zip",
+    "hash": "c6dc4d2d7e218e1329d87abdec5300d40a4a4fb3fffe1e4b31f1146da704bb08",
+    "extract_dir": "DrMemory-Windows-2.5.19287",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                "bin64\\drmemory.exe",
+                "bin64\\drstrace.exe",
+                "bin64\\drconfig.exe",
+                "bin64\\symquery.exe"
+            ]
+        },
+        "32bit": {
+            "bin": [
+                "bin\\drmemory.exe",
+                "bin\\drstrace.exe",
+                "bin\\drconfig.exe",
+                "bin\\symquery.exe"
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://github.com/DynamoRIO/drmemory/releases",
+        "regex": "/releases/tag/cronbuild-([\\d.]+)\""
+    },
+    "autoupdate": {
+        "url": "https://github.com/DynamoRIO/drmemory/releases/download/cronbuild-$version/DrMemory-Windows-$version.zip",
+        "extract_dir": "DrMemory-Windows-$version"
+    }
+}
