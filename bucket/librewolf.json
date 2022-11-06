@@ -5,7 +5,7 @@
     "license": "MPL-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/629bbdc5f32c3665801349316e5184dd/librewolf-106.0.5-1.en-US.win64-portable.zip",
+            "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/60ef3a0e73fc9ba985a02ff61a5d8720/librewolf-106.0.5-1.en-US.win64-portable.zip",
             "hash": "f08c4f5dd7659f821c4fc192a418bcbd45d5cd67d516c0e807930fda51b87feb"
         }
     },
@@ -37,7 +37,7 @@
             "# using checkver script because checksum URL can be either above or below file URL",
             "$url = 'https://gitlab.com/api/v4/projects/13852981/releases'",
             "$regex1 = '/uploads/([a-f0-9]+)/sha256sums\\.txt'",
-            "$regex2 = '/uploads/([a-f0-9]+)/librewolf-([\\d.-]+)\\.en-US\\.win64-portable\\.zip'",
+            "$regex2 = '/uploads/([a-f0-9]+)/librewolf-([\\d.-]+)\\.en-US\\.win64-portable\\.zip;'",
             "",
             "$cont = (Invoke-WebRequest $url).Content | ConvertFrom-Json",
             "$cont = $cont[0] | ConvertTo-Json",

@@ -1,35 +1,36 @@
 {
-    "version": "1.1.7",
-    "description": "Volume² is an advanced Windows volume control, which can be used as a complete replacement for the standard Windows volume control. Volume² provides easy to configure options to assign keyboard hotkeys and mouse for toggling system volume and allows scheduling the execution of applications or changes in sound configurations. Volume² comes with a multi-lingual interface and supports English, Russian, Greek, Chinese, Armenian, and other. What makes Volume² better than the default Windows mixer is it’s ability to provide mouse wheel, hotkey and scheduling support for changing volume options.",
-    "homepage": "https://irzyxa.blogspot.com",
+    "version": "1.1.7.449",
+    "homepage": "https://irzyxa.blogspot.com/",
+    "description": "An advanced Windows volume control, which can be used as a complete replacement for the standard Windows volume control.",
     "license": {
-        "identifier": "Proprietary",
-        "url": "https://github.com/irzyxa/Volume2/raw/master/License.txt"
+        "identifier": "Freeware",
+        "url": "https://github.com/irzyxa/Volume2/blob/master/License.txt"
     },
-    "url": "https://github.com/irzyxa/Volume2/releases/download/v1.1.7/Setup_Volume2_1_1_7_449.zip",
-    "hash": "01b0a5692ecd3e78cfe5df28a48cc8065e331387950b5ab060a6459490846dcc",
-    "pre_install": "Rename-Item \"$dir\\Setup_Volume*.exe\" 'setup.exe' -Force",
-    "installer": {
-        "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-            "#https://github.com/irzyxa/Volume2/wiki/FAQ#9-silent-installation",
-            "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList @('/silent', 'RunProgramSettings_off') -RunAs | Out-Null"
+    "url": "https://github.com/irzyxa/Volume2/releases/download/v1.1.7/Volume2_1_1_7_449.zip",
+    "hash": "5c4c8fa85f2bd404ff1cfe674570e9802733ae35cdd3150eb61c0e3c0d8e7bc4",
+    "extract_dir": "Volume2",
+    "pre_install": [
+        "'ColorSchemes.ini', 'Schedules.ini', 'Config.ini' | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) {New-Item \"$dir\\$_\" | Out-Null}",
+        "}"
+    ],
+    "bin": "Volume2.exe",
+    "shortcuts": [
+        [
+            "Volume2.exe",
+            "Volume²"
         ]
-    },
-    "uninstaller": {
-        "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-            "if ($architecture -eq '64bit') { $uninstall_exe = \"${Env:ProgramFiles(x86)}\\Volume2\\uninstall.exe\" }",
-            "else { $uninstall_exe = \"$Env:ProgramFiles\\Volume2\\uninstall.exe\" }",
-            "Invoke-ExternalCommand \"$uninstall_exe\" -ArgumentList ('/SILENT') -RunAs | Out-Null"
-        ]
-    },
+    ],
+    "persist": [
+        "ColorSchemes.ini",
+        "Schedules.ini",
+        "Config.ini"
+    ],
     "checkver": {
-        "url": "https://api.github.com/repos/irzyxa/Volume2/releases",
-        "jsonpath": "$[?(@prerelease == false)].assets",
-        "regex": "download/v([\\d.]+)/(?<file>Setup_Volume[\\d_]+\\.zip)"
+        "github": "https://github.com/irzyxa/Volume2",
+        "regex": "Volume²\\s([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/irzyxa/Volume2/releases/download/v$version/$matchFile"
+        "url": "https://github.com/irzyxa/Volume2/releases/download/v$majorVersion.$minorVersion.$patchVersion/Volume2_$underscoreVersion.zip"
     }
 }

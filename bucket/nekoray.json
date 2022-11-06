@@ -1,10 +1,8 @@
 {
-    "version": "2.2.20221030",
-    "description": "Qt/C++ based cross-platform proxy configuration manager(Use Matsuri custom version of v2ray-core).",
+    "version": "2.2",
+    "description": "Qt/C++ based cross-platform proxy configuration manager / v2ray sing-box GUI client",
     "homepage": "https://github.com/MatsuriDayo/nekoray",
-    "license": {
-        "identifier": "GPL-3.0-or-later"
-    },
+    "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
             "url": "https://github.com/MatsuriDayo/nekoray/releases/download/2.2/nekoray-2.2-2022-10-30-windows64.zip",
@@ -12,22 +10,27 @@
         }
     },
     "extract_dir": "nekoray",
+    "bin": [
+        "nekobox_core.exe",
+        "nekoray.exe",
+        "nekoray_core.exe"
+    ],
     "shortcuts": [
         [
             "nekoray.exe",
-            "NekoRay"
+            "Nekoray"
         ]
     ],
     "persist": "config",
     "checkver": {
-        "url": "https://api.github.com/repos/MatsuriDayo/nekoray/releases",
-        "regex": "releases/download/(?<tag>[\\d.]+)/(?<file>nekoray-([\\d.]+)-(\\d+)-(\\d+)-(\\d+)-windows64.zip)",
-        "replace": "${1}.${2}${3}${4}"
+        "url": "https://api.github.com/repos/MatsuriDayo/nekoray/releases/latest",
+        "regex": "nekoray-([\\d.]+)-(?<extra>[\\d-]+)-windows64"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/MatsuriDayo/nekoray/releases/download/$matchTag/$matchFile"
+                "url": "https://github.com/MatsuriDayo/nekoray/releases/download/$version/nekoray-$version-$matchExtra-windows64.zip",
+                "extract_dir": "nekoray"
             }
         }
     }

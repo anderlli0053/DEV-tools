@@ -1,26 +1,21 @@
 {
-    "version": "8.96",
-    "description": "Monkey’s Audio is a fast and easy way to compress digital music.",
     "homepage": "https://monkeysaudio.com/",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://monkeysaudio.com/license.html"
-    },
+    "version": "8.96",
+    "license": "",
     "architecture": {
         "64bit": {
-            "url": "https://monkeysaudio.com/files/MAC_896_x64.exe#/dl.7z",
+            "url": "https://monkeysaudio.com/files/MAC_896_x64.exe",
             "hash": "dc5b65899c49baf448d8945b69610ea2e0073471fc19cd6dd42abc96cc2801b6"
         },
         "32bit": {
-            "url": "https://monkeysaudio.com/files/MAC_896.exe#/dl.7z",
+            "url": "https://monkeysaudio.com/files/MAC_896.exe",
             "hash": "91984587e788c3671ef03f110698a9fea3094cf420e523771337bb056c7cf563"
         }
     },
-    "persist": "File Lists",
-    "bin": "MAC.exe",
-    "post_install": [
-        "Move-Item \"$dir\\`$SYSDIR\\*\" \"$dir\"",
-        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$SYSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
+    "innosetup": true,
+    "bin": [
+        "MAC.exe",
+        "Monkey's Audio.exe"
     ],
     "shortcuts": [
         [
@@ -28,17 +23,14 @@
             "Monkey's Audio"
         ]
     ],
-    "checkver": {
-        "url": "https://monkeysaudio.com/versionhistory.html",
-        "regex": "Version\\s*([\\d.-]+)"
-    },
+    "checkver": "([\\d.]+) <small>",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://monkeysaudio.com/files/MAC_$cleanVersion_x64.exe#/dl.7z"
+                "url": "https://monkeysaudio.com/files/MAC_$cleanVersion_x64.exe"
             },
             "32bit": {
-                "url": "https://monkeysaudio.com/files/MAC_$cleanVersion.exe#/dl.7z"
+                "url": "https://monkeysaudio.com/files/MAC_$cleanVersion.exe"
             }
         }
     }

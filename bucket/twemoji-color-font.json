@@ -1,0 +1,18 @@
+{
+    "##": "THIS CANNOT BE ADDED TO OFFICIAL BUCKETS BECAUSE THERE IS NO SILENT INSTALLATION.",
+    "version": "14.0.2",
+    "homepage": "https://github.com/13rac1/twemoji-color-font",
+    "description": "Twitter Unicode emoji color OpenType-SVG font.",
+    "license": "MIT",
+    "depends": "python",
+    "url": "https://github.com/13rac1/twemoji-color-font/releases/download/v14.0.2/TwitterColorEmoji-SVGinOT-Win-14.0.2.zip",
+    "hash": "e95eef4f8b0bc8140c70c2b4fcc1ac9f8f86fe7470030e1836be5aa6b344fabd",
+    "extract_dir": "TwitterColorEmoji-SVGinOT-Win-14.0.2",
+    "pre_install": "Start-Process 'cmd' -Wait -NoNewWindow -ArgumentList @('/c', \"$dir\\install.cmd\")",
+    "pre_uninstall": "Start-Process 'cmd' -Wait -NoNewWindow -ArgumentList @('/c', \"$dir\\uninstall.cmd\")",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/13rac1/twemoji-color-font/releases/download/v$version/TwitterColorEmoji-SVGinOT-Win-$version.zip",
+        "extract_dir": "TwitterColorEmoji-SVGinOT-Win-$version"
+    }
+}

@@ -1,27 +1,23 @@
 {
-    "version": "1.8.9",
-    "description": "A frontend for legendary, the open source Epic Games Launcher alternative.",
-    "homepage": "https://github.com/Dummerle/Rare",
-    "license": "GPL-3.0-only",
+    "homepage": "https://github.com/zix99/rare",
+    "description": "A file scanner/regex extractor and realtime summarizor.",
+    "license": "GPL-3.0-or-later",
+    "version": "0.3.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Dummerle/Rare/releases/download/1.8.9/Rare-1.8.9.msi",
-            "hash": "e044bb6ec0e607d654b13d7a5fd83ffc0f4d9a6302560a2f66e118e736c09a5f"
+            "url": "https://github.com/zix99/rare/releases/download/0.3.0/rare_0.3.0_Windows_x86_64.zip",
+            "hash": "273ce10d26496e9a4913b3bb54921ea57a18b1e6c233e17ea9d8868e894fcfaa"
         }
     },
-    "bin": "Rare.exe",
-    "shortcuts": [
-        [
-            "Rare.exe",
-            "Rare"
-        ]
-    ],
-    "notes": "Rare is NOT portable.",
-    "checkver": "github",
+    "bin": "rare.exe",
+    "checkver": {
+        "url": "https://github.com/zix99/rare/releases",
+        "regex": "rare_([\\d\\-rc.]+)_Windows_x86_64.zip"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Dummerle/Rare/releases/download/$version/Rare-$version.msi"
+                "url": "https://github.com/zix99/rare/releases/download/$version/rare_$version_Windows_x86_64.zip"
             }
         }
     }

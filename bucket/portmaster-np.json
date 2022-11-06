@@ -11,20 +11,21 @@
     },
     "pre_install": [
         "if (!(is_admin)) { throw 'Administrator privileges are required' }",
-        "Write-Host 'Please wait for Portmaster to install. Do not cancel this script!' -F 'Yellow'",
+        "Write-Host 'Please wait for Portmaster to $cmd. Do not cancel this script!' -F 'Yellow'",
         "Start-Process \"$dir\\portmaster-installer.exe\" -Verb RunAs -ArgumentList '/S' -Wait; Remove-Item \"$dir\\portmaster-installer.exe\"; Start-Sleep -Seconds 4",
         "if (Test-Path \"$home\\Portmaster-NP Backup\") {",
-        "Copy-item \"$home\\Portmaster-NP Backup\\*\" \"$env:ProgramData\\Safing\\Portmaster\" -Recurse -Force}"
+        "   Copy-item \"$home\\Portmaster-NP Backup\\*\" \"$env:ProgramData\\Safing\\Portmaster\" -Recurse -Force",
+        "}"
     ],
-    "post_install": "Write-Host 'Please restart your computer for Portmaster to work properly' -F 'Red'",
+    "post_install": "Write-Host 'Please restart your computer for Portmaster to $cmd properly' -F 'Red'",
     "pre_uninstall": [
         "if (!(is_admin)) { throw 'Administrator privileges are required' }",
         "if (!(Test-Path \"$home\\Portmaster-NP Backup\")) {New-Item \"$home\\Portmaster-NP Backup\" -ItemType 'Directory' | Out-Null}",
-        "Write-Host 'Please wait for Portmaster to uninstall. Do not cancel this script!' -F 'Yellow'",
+        "Write-Host 'Please wait for Portmaster to $cmd. Do not cancel this script!' -F 'Yellow'",
         "Copy-item \"$env:ProgramData\\Safing\\Portmaster\\*\" \"$home\\Portmaster-NP Backup\" -Include @('config.json', 'databases') -Recurse -Force; Start-Sleep -Seconds 4",
         "Start-Process \"$env:ProgramData\\Safing\\Portmaster\\portmaster-uninstaller.exe\" -Verb RunAs -ArgumentList '/S' -Wait; Start-Sleep -Seconds 5"
     ],
-    "post_uninstall": "Write-Host 'Please restart your computer to uninstall Portmaster properly' -F 'Red'",
+    "post_uninstall": "Write-Host 'Please restart your computer to $cmd Portmaster properly' -F 'Red'",
     "checkver": {
         "github": "https://github.com/safing/portmaster"
     },

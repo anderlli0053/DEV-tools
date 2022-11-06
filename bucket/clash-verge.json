@@ -1,18 +1,17 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/zzzgydi/clash-verge/releases/download/v$version/Clash.Verge_$version_x64_portable.zip"
-    },
-    "checkver": "github",
-    "description": "A Clash GUI based on tauri",
-    "hash": "ec9f77366348255da856f4ec459f2dc5b89c2addf9211cd3d9a4045a00321512",
+    "version": "1.1.2",
     "homepage": "https://github.com/zzzgydi/clash-verge",
-    "license": "GPL-3.0-only",
-    "persist": ".config",
-    "post_install": [
-        "# https://github.com/zzzgydi/clash-verge/issues/21#issuecomment-1097467046=",
-        "if (!(Test-Path \"$persist_dir\\.config\\PORTABLE\")) {",
-        "    New-Item -Path \"$persist_dir\\.config\\PORTABLE\" -ItemType file | Out-Null",
-        "}"
+    "description": "A Clash GUI based on tauri.",
+    "license": "GPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/zzzgydi/clash-verge/releases/download/v1.1.2/Clash.Verge_1.1.2_x64_portable.zip",
+            "hash": "ec9f77366348255da856f4ec459f2dc5b89c2addf9211cd3d9a4045a00321512"
+        }
+    },
+    "bin": [
+        "clash.exe",
+        "clash-meta.exe"
     ],
     "shortcuts": [
         [
@@ -20,6 +19,13 @@
             "Clash Verge"
         ]
     ],
-    "url": "https://github.com/zzzgydi/clash-verge/releases/download/v1.1.2/Clash.Verge_1.1.2_x64_portable.zip",
-    "version": "1.1.2"
+    "pre_uninstall": "Start-Process \"$dir\\resources\\uninstall-service.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden'; Start-Sleep -Seconds 2",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/zzzgydi/clash-verge/releases/download/v$version/Clash.Verge_$version_x64_portable.zip"
+            }
+        }
+    }
 }

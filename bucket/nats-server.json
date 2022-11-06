@@ -1,0 +1,44 @@
+{
+    "version": "2.9.6",
+    "description": "High-Performance server for NATS.io, the cloud and edge native messaging system",
+    "homepage": "https://github.com/nats-io/nats-server",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/nats-io/nats-server/releases/download/v2.9.6/nats-server-v2.9.6-windows-amd64.zip",
+            "hash": "1c627ca06ec40fafd26befac35640a6fefc63bbb16cbb594f74d493ba670f2c6",
+            "extract_dir": "nats-server-v2.9.6-windows-amd64"
+        },
+        "32bit": {
+            "url": "https://github.com/nats-io/nats-server/releases/download/v2.9.6/nats-server-v2.9.6-windows-386.zip",
+            "hash": "b64fb4b2568ccc68fc9b271f0460ae95bfc6c5e6af9206d1cdcb4161879ebc04",
+            "extract_dir": "nats-server-v2.9.6-windows-386"
+        },
+        "arm64": {
+            "url": "https://github.com/nats-io/nats-server/releases/download/v2.9.6/nats-server-v2.9.6-windows-arm64.zip",
+            "hash": "63bf2880d7effedd4f57ecf9b808ba596b16751618128fa368b572d38878e6b0",
+            "extract_dir": "nats-server-v2.9.6-windows-arm64"
+        }
+    },
+    "bin": "nats-server.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/nats-io/nats-server/releases/download/v$version/nats-server-v$version-windows-amd64.zip",
+                "extract_dir": "nats-server-v$version-windows-amd64"
+            },
+            "32bit": {
+                "url": "https://github.com/nats-io/nats-server/releases/download/v$version/nats-server-v$version-windows-386.zip",
+                "extract_dir": "nats-server-v$version-windows-386"
+            },
+            "arm64": {
+                "url": "https://github.com/nats-io/nats-server/releases/download/v$version/nats-server-v$version-windows-arm64.zip",
+                "extract_dir": "nats-server-v$version-windows-arm64"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/nats-io/nats-server/releases/download/v$version/SHA256SUMS"
+        }
+    }
+}
