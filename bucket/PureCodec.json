@@ -1,66 +1,66 @@
 {
-    "version": "20221104",
-    "description": "完美解码是一款能实现流行音视频、高清及 4K 等多媒文件软硬解播放的影音解码包, 集成多媒体播放器 PotPlayer、MPC-BE, 分离器解码器套件 LAV Filters, 高画质渲染器 madVR, 支持中英文语言平台下安装, 是高清爱好者的理想播放工具. 完美解码是一款能实现各种流行视频、HDTV 播放及编码的全能型影音解码包, 自带 Media Player Classic、KMPlayer、PotPlayer 三款流行播放器, 支持简、英语言平台下安装, 能播放 AVI、VCD、DVD、MPG、MP4、RMVB、TS、TP、EVO、M2TS、MKV、OGM、 MOV、SCM、CSF、FLV 等众多种格式的影音文件. ",
-    "homepage": "https://jm.wmzhe.com",
-    "license": {
-        "identifier": "Proprietary"
-    },
-    "notes": "完美解码中 PotPlayer 新版本 HEVC 软解设置: <http://qxys.3vfree.cn/ShowPost.asp?ThreadID=214>",
-    "url": "http://dl-t1.wmzhe.com/13/13163/PureCodec20221104.exe#/dl.7z",
-    "hash": "aaad79d0d65e7296cd3c08abe4a156848e479a987b4a6b672762c74a684b5488",
-    "pre_install": "@('$LOCALAPPDATA', '$PLUGINSDIR', '[NSIS].nsi', 'uninst.exe') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force -ErrorAction SilentlyContinue }",
-    "architecture": {
-        "64bit": {
-            "shortcuts": [
-                [
-                    "x64\\PotPlayerMini64.exe",
-                    "PureCodec\\PotPlayer"
-                ],
-                [
-                    "x64\\mpc-hc64.exe",
-                    "PureCodec\\MPC-HC"
-                ],
-                [
-                    "x64\\mpc-be64.exe",
-                    "PureCodec\\MPC-BE"
-                ],
-                [
-                    "PureSet.exe",
-                    "PureCodec\\PureSet"
-                ]
-            ]
-        },
-        "32bit": {
-            "shortcuts": [
-                [
-                    "x86\\PotPlayerMini.exe",
-                    "PureCodec\\PotPlayer"
-                ],
-                [
-                    "x86\\mpc-hc.exe",
-                    "PureCodec\\MPC-HC"
-                ],
-                [
-                    "x86\\mpc-be.exe",
-                    "PureCodec\\MPC-BE"
-                ],
-                [
-                    "PureSet.exe",
-                    "PureCodec\\PureSet"
-                ]
-            ]
-        }
-    },
-    "checkver": {
-        "url": "https://www.wmzhe.com/soft-13163.html",
-        "regex": "https://dl-t1.wmzhe.com/(?<path>.*?)/PureCodec(\\d+).exe"
-    },
-    "autoupdate": {
-        "url": "http://dl-t1.wmzhe.com/$matchPath/PureCodec$version.exe#/dl.7z",
-        "hash": {
-            "url": "http://qxys.3vfree.cn/ShowPost.asp?ThreadID=206",
-            "mode": "extract",
-            "regex": "(?sm)$basename.*?SHA1: $sha1"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "shortcuts": [
+    [
+     "x86\\PotPlayerMini.exe",
+     "PureCodec\\PotPlayer"
+    ],
+    [
+     "x86\\mpc-hc.exe",
+     "PureCodec\\MPC-HC"
+    ],
+    [
+     "x86\\mpc-be.exe",
+     "PureCodec\\MPC-BE"
+    ],
+    [
+     "PureSet.exe",
+     "PureCodec\\PureSet"
+    ]
+   ]
+  },
+  "64bit": {
+   "shortcuts": [
+    [
+     "x64\\PotPlayerMini64.exe",
+     "PureCodec\\PotPlayer"
+    ],
+    [
+     "x64\\mpc-hc64.exe",
+     "PureCodec\\MPC-HC"
+    ],
+    [
+     "x64\\mpc-be64.exe",
+     "PureCodec\\MPC-BE"
+    ],
+    [
+     "PureSet.exe",
+     "PureCodec\\PureSet"
+    ]
+   ]
+  }
+ },
+ "autoupdate": {
+  "hash": {
+   "mode": "extract",
+   "regex": "(?sm)$basename.*?SHA1: $sha1",
+   "url": "http://qxys.3vfree.cn/ShowPost.asp?ThreadID=206"
+  },
+  "url": "http://dl-t1.wmzhe.com/$matchPath/PureCodec$version.exe#/dl.7z"
+ },
+ "checkver": {
+  "regex": "https://dl-t1.wmzhe.com/(?<path>.*?)/PureCodec(\\d+).exe",
+  "url": "https://www.wmzhe.com/soft-13163.html"
+ },
+ "description": "\u5b8c\u7f8e\u89e3\u7801\u662f\u4e00\u6b3e\u80fd\u5b9e\u73b0\u6d41\u884c\u97f3\u89c6\u9891\u3001\u9ad8\u6e05\u53ca 4K \u7b49\u591a\u5a92\u6587\u4ef6\u8f6f\u786c\u89e3\u64ad\u653e\u7684\u5f71\u97f3\u89e3\u7801\u5305, \u96c6\u6210\u591a\u5a92\u4f53\u64ad\u653e\u5668 PotPlayer\u3001MPC-BE, \u5206\u79bb\u5668\u89e3\u7801\u5668\u5957\u4ef6 LAV Filters, \u9ad8\u753b\u8d28\u6e32\u67d3\u5668 madVR, \u652f\u6301\u4e2d\u82f1\u6587\u8bed\u8a00\u5e73\u53f0\u4e0b\u5b89\u88c5, \u662f\u9ad8\u6e05\u7231\u597d\u8005\u7684\u7406\u60f3\u64ad\u653e\u5de5\u5177. \u5b8c\u7f8e\u89e3\u7801\u662f\u4e00\u6b3e\u80fd\u5b9e\u73b0\u5404\u79cd\u6d41\u884c\u89c6\u9891\u3001HDTV \u64ad\u653e\u53ca\u7f16\u7801\u7684\u5168\u80fd\u578b\u5f71\u97f3\u89e3\u7801\u5305, \u81ea\u5e26 Media Player Classic\u3001KMPlayer\u3001PotPlayer \u4e09\u6b3e\u6d41\u884c\u64ad\u653e\u5668, \u652f\u6301\u7b80\u3001\u82f1\u8bed\u8a00\u5e73\u53f0\u4e0b\u5b89\u88c5, \u80fd\u64ad\u653e AVI\u3001VCD\u3001DVD\u3001MPG\u3001MP4\u3001RMVB\u3001TS\u3001TP\u3001EVO\u3001M2TS\u3001MKV\u3001OGM\u3001 MOV\u3001SCM\u3001CSF\u3001FLV \u7b49\u4f17\u591a\u79cd\u683c\u5f0f\u7684\u5f71\u97f3\u6587\u4ef6. ",
+ "hash": "aaad79d0d65e7296cd3c08abe4a156848e479a987b4a6b672762c74a684b5488",
+ "homepage": "https://jm.wmzhe.com",
+ "license": {
+  "identifier": "Proprietary"
+ },
+ "notes": "\u5b8c\u7f8e\u89e3\u7801\u4e2d PotPlayer \u65b0\u7248\u672c HEVC \u8f6f\u89e3\u8bbe\u7f6e: <http://qxys.3vfree.cn/ShowPost.asp?ThreadID=214>",
+ "pre_install": "@('$LOCALAPPDATA', '$PLUGINSDIR', '[NSIS].nsi', 'uninst.exe') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force -ErrorAction SilentlyContinue }",
+ "url": "http://dl-t1.wmzhe.com/13/13163/PureCodec20221104.exe#/dl.7z",
+ "version": "20221104"
 }

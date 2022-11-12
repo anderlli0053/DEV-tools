@@ -1,28 +1,28 @@
 {
-    "version": "2.1.0+e136de4",
-    "description": "A graph-relational database",
-    "homepage": "https://www.edgedb.com/",
-    "license": "Apache-2.0|MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-2.1.0+e136de4.exe#/edgedb.exe",
-            "hash": "a998a3269b6e2b8ce9509e8d73f117188ad19ba538cfcefff334fe4767f7abc1"
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "a998a3269b6e2b8ce9509e8d73f117188ad19ba538cfcefff334fe4767f7abc1",
+   "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-2.1.0+e136de4.exe#/edgedb.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "jsonpath": "$..packages[-1:].installrefs[?(@.encoding=='identity')].verification.sha256",
+     "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json"
     },
-    "bin": "edgedb.exe",
-    "checkver": {
-        "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json",
-        "jsonpath": "$..packages[-1:].version"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-$version.exe#/edgedb.exe",
-                "hash": {
-                    "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json",
-                    "jsonpath": "$..packages[-1:].installrefs[?(@.encoding=='identity')].verification.sha256"
-                }
-            }
-        }
-    }
+    "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-$version.exe#/edgedb.exe"
+   }
+  }
+ },
+ "bin": "edgedb.exe",
+ "checkver": {
+  "jsonpath": "$..packages[-1:].version",
+  "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json"
+ },
+ "description": "A graph-relational database",
+ "homepage": "https://www.edgedb.com/",
+ "license": "Apache-2.0|MIT",
+ "version": "2.1.0+e136de4"
 }

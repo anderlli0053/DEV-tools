@@ -1,45 +1,45 @@
 {
-    "version": "12.13",
-    "description": "Object-relational database management system based on POSTGRES. (version 12)",
-    "homepage": "https://www.postgresql.org",
-    "license": "PostgreSQL",
-    "notes": [
-        "Run run 'pg_ctl start' or 'pg_ctl stop' to start and stop the database or",
-        "register it as a service by running 'pg_ctl register -N PostgreSQL' from an elevated shell.",
-        "Default superuser login: postgres, password: <blank>"
-    ],
-    "architecture": {
-        "64bit": {
-            "url": "https://get.enterprisedb.com/postgresql/postgresql-12.13-1-windows-x64-binaries.zip",
-            "hash": "298c62d5d0e161254194065b445f6c1b8643d5b57da309157e55483d254f8914"
-        }
-    },
-    "extract_dir": "pgsql",
-    "post_install": [
-        "if (!(Test-Path \"$dir\\data\\pg_hba.conf\")) {",
-        "   Invoke-ExternalCommand -FilePath \"$dir\\bin\\initdb.exe\" -ArgumentList \"--username=postgres --encoding=UTF8 --locale=en --lc-collate=C\" | Out-Null",
-        "}"
-    ],
-    "shortcuts": [
-        [
-            "pgAdmin 4\\bin\\pgAdmin4.exe",
-            "pgAdmin 4"
-        ]
-    ],
-    "env_add_path": "bin",
-    "env_set": {
-        "PGDATA": "$dir\\data"
-    },
-    "persist": "data",
-    "checkver": {
-        "url": "https://www.postgresql.org/ftp/source/",
-        "regex": "v(12\\.[\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-x64-binaries.zip"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "298c62d5d0e161254194065b445f6c1b8643d5b57da309157e55483d254f8914",
+   "url": "https://get.enterprisedb.com/postgresql/postgresql-12.13-1-windows-x64-binaries.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-x64-binaries.zip"
+   }
+  }
+ },
+ "checkver": {
+  "regex": "v(12\\.[\\d.]+)",
+  "url": "https://www.postgresql.org/ftp/source/"
+ },
+ "description": "Object-relational database management system based on POSTGRES. (version 12)",
+ "env_add_path": "bin",
+ "env_set": {
+  "PGDATA": "$dir\\data"
+ },
+ "extract_dir": "pgsql",
+ "homepage": "https://www.postgresql.org",
+ "license": "PostgreSQL",
+ "notes": [
+  "Run run 'pg_ctl start' or 'pg_ctl stop' to start and stop the database or",
+  "register it as a service by running 'pg_ctl register -N PostgreSQL' from an elevated shell.",
+  "Default superuser login: postgres, password: <blank>"
+ ],
+ "persist": "data",
+ "post_install": [
+  "if (!(Test-Path \"$dir\\data\\pg_hba.conf\")) {",
+  "   Invoke-ExternalCommand -FilePath \"$dir\\bin\\initdb.exe\" -ArgumentList @('--username=postgres', '--encoding=UTF8', '--locale=en', '--lc-collate=C') | Out-Null",
+  "}"
+ ],
+ "shortcuts": [
+  [
+   "pgAdmin 4\\bin\\pgAdmin4.exe",
+   "pgAdmin 4"
+  ]
+ ],
+ "version": "12.13"
 }

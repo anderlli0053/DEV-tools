@@ -1,53 +1,31 @@
 {
  "architecture": {
   "32bit": {
-   "bin": "PsLoggedOn.exe",
-   "hash": "d689cb1dbd2e4c06cd15e51a6871c406c595790ddcdcd7dc8d0401c7183720ef",
-   "url": "https://live.sysinternals.com/PsLoggedOn.exe"
+   "bin": "PsLoggedon.exe"
   },
   "64bit": {
    "bin": [
-    "PsLoggedOn64.exe",
     [
-     "PsLoggedOn64.exe",
-     "PsLoggedOn"
+     "PsLoggedon64.exe",
+     "PsLoggedon"
     ]
-   ],
-   "hash": "fdadb6e15c52c41a31e3c22659dd490d5b616e017d1b1aa6070008ce09ed27ea",
-   "url": "https://live.sysinternals.com/PsLoggedOn64.exe"
+   ]
   }
  },
  "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://live.sysinternals.com/PsLoggedOn.exe"
-   },
-   "64bit": {
-    "url": "https://live.sysinternals.com/PsLoggedOn64.exe"
-   }
-  }
+  "url": "https://download.sysinternals.com/files/PsLoggedon.zip"
  },
- "checkver": "PsLoggedOn\\s+v([\\d.]+)</h1",
- "description": "PsLoggedOn. List of local and remote currently logged on users",
- "homepage": "https://docs.microsoft.com/en-us/sysinternals/downloads/psloggedon",
+ "checkver": {
+  "regex": "#.*?v([\\d.]+)",
+  "url": "https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/psloggedon.md"
+ },
+ "description": "Show users logged on to a system.",
+ "hash": "637e6de955807386a0e87e682eaa475f30e9aa89449337d18d07d9f49858c1da",
+ "homepage": "https://learn.microsoft.com/sysinternals/downloads/psloggedon",
  "license": {
   "identifier": "Freeware",
-  "url": "https://docs.microsoft.com/en-us/sysinternals/license-terms"
+  "url": "https://learn.microsoft.com/sysinternals/license-terms"
  },
- "pre_install": [
-  "$sysint = 'HKCU:\\SOFTWARE\\Sysinternals'",
-  "$fin = \"$sysint\\PsLoggedon\"",
-  "New-Item $sysint, $fin -ErrorAction 'SilentlyContinue' | Out-Null",
-  "Set-ItemProperty -Path $fin -Name 'EulaAccepted' -Value 1 -Type 'DWord' -Force | Out-Null"
- ],
- "uninstaller": {
-  "script": [
-   "if ($purge) {",
-   "    $sysInt = 'HKCU:\\SOFTWARE\\Sysinternals'",
-   "    Remove-Item \"$sysInt\\PsLoggedon\" -ErrorAction 'SilentlyContinue' -Force -Recurse",
-   "    if ((Get-ChildItem $sysInt).Count -eq 0) { Remove-Item $sysInt -ErrorAction 'SilentlyContinue' -Force -Recurse }",
-   "}"
-  ]
- },
+ "url": "https://download.sysinternals.com/files/PsLoggedon.zip",
  "version": "1.35"
 }

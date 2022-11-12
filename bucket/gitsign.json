@@ -1,25 +1,25 @@
 {
-    "version": "0.3.2",
-    "description": "Keyless Git signing with Sigstore!",
-    "homepage": "https://github.com/sigstore/gitsign",
-    "license": "Apache-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/sigstore/gitsign/releases/download/v0.3.2/gitsign_0.3.2_windows_amd64.exe#/gitsign.exe",
-            "hash": "15d581bc9df30d5523fd90a8c625210e1b1524141430230368dea4af6c53740f"
-        }
-    },
-    "bin": "gitsign.exe",
-    "checkver": "github",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/sigstore/gitsign/releases/download/v$version/gitsign_$version_windows_amd64.exe#/gitsign.exe"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/checksums.txt",
-            "regex": "(?im)^$sha256\\s+$basename$"
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "15d581bc9df30d5523fd90a8c625210e1b1524141430230368dea4af6c53740f",
+   "url": "https://github.com/sigstore/gitsign/releases/download/v0.3.2/gitsign_0.3.2_windows_amd64.exe#/gitsign.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/sigstore/gitsign/releases/download/v$version/gitsign_$version_windows_amd64.exe#/gitsign.exe"
+   }
+  },
+  "hash": {
+   "regex": "(?im)^$sha256\\s+$basename$",
+   "url": "$baseurl/checksums.txt"
+  }
+ },
+ "bin": "gitsign.exe",
+ "checkver": "github",
+ "description": "Keyless Git signing with Sigstore!",
+ "homepage": "https://github.com/sigstore/gitsign",
+ "license": "Apache-2.0",
+ "version": "0.3.2"
 }

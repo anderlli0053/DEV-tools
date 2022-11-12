@@ -1,32 +1,32 @@
 {
-    "version": "1.10.0.31",
-    "description": "BlueBubbles is an open-source and cross-platform ecosystem of apps aimed to bring iMessage to Android, Windows, Linux, and the Web! With BlueBubbles, you'll be able to send messages, media, and much more to your friends and family.",
-    "homepage": "https://bluebubbles.app",
-    "license": {
-        "identifier": "MIT",
-        "url": "https://github.com/BlueBubblesApp/bluebubbles-app/raw/master/LICENSE"
-    },
-    "notes": "BlueBubbles requires a Mac and an Apple ID to function! A macOS VM on Windows or Linux can suffice as well.",
-    "url": "https://github.com/BlueBubblesApp/bluebubbles-app/releases/download/v1.10.0%2B31/bluebubbles_standalone.exe",
-    "hash": "dd6a27b21c05f730f460b48470aad5725ddd47290dd61d82218768c6994f4d9d",
-    "innosetup": true,
-    "shortcuts": [
-        [
-            "bluebubbles_app.exe",
-            "BlueBubbles"
-        ]
-    ],
-    "checkver": {
-        "url": "https://api.github.com/repos/BlueBubblesApp/bluebubbles-app/releases",
-        "regex": "releases/download/v?(?<ver>[\\d.]+)(?<else>%2B(?<build>\\d+))?/bluebubbles",
-        "replace": "${ver}.${build}"
-    },
-    "autoupdate": {
-        "url": "https://github.com/BlueBubblesApp/bluebubbles-app/releases/download/v$matchVer$matchElse/bluebubbles_standalone.exe",
-        "hash": {
-            "url": "https://github.com/BlueBubblesApp/bluebubbles-app/releases/tag/v$matchVer$matchElse",
-            "mode": "extract",
-            "regex": "(?sm)$basename.*?$md5"
-        }
-    }
+ "autoupdate": {
+  "hash": {
+   "mode": "extract",
+   "regex": "(?sm)$basename.*?$md5",
+   "url": "https://github.com/BlueBubblesApp/bluebubbles-app/releases/tag/v$matchVer$matchElse"
+  },
+  "url": "https://github.com/BlueBubblesApp/bluebubbles-app/releases/download/v$matchVer$matchElse/bluebubbles_standalone.exe"
+ },
+ "checkver": {
+  "regex": "releases/download/v?(?<ver>[\\d.]+)(?<else>%2B(?<build>\\d+))?/bluebubbles",
+  "replace": "${ver}.${build}",
+  "url": "https://api.github.com/repos/BlueBubblesApp/bluebubbles-app/releases"
+ },
+ "description": "BlueBubbles is an open-source and cross-platform ecosystem of apps aimed to bring iMessage to Android, Windows, Linux, and the Web! With BlueBubbles, you'll be able to send messages, media, and much more to your friends and family.",
+ "hash": "dd6a27b21c05f730f460b48470aad5725ddd47290dd61d82218768c6994f4d9d",
+ "homepage": "https://bluebubbles.app",
+ "innosetup": true,
+ "license": {
+  "identifier": "MIT",
+  "url": "https://github.com/BlueBubblesApp/bluebubbles-app/raw/master/LICENSE"
+ },
+ "notes": "BlueBubbles requires a Mac and an Apple ID to function! A macOS VM on Windows or Linux can suffice as well.",
+ "shortcuts": [
+  [
+   "bluebubbles_app.exe",
+   "BlueBubbles"
+  ]
+ ],
+ "url": "https://github.com/BlueBubblesApp/bluebubbles-app/releases/download/v1.10.0%2B31/bluebubbles_standalone.exe",
+ "version": "1.10.0.31"
 }

@@ -1,36 +1,36 @@
 {
-    "version": "5.0.4",
-    "description": "Feature-rich GraphQL Client",
-    "homepage": "https://altair.sirmuel.design",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/altair-graphql/altair/releases/download/v5.0.4/altair_5.0.4_x64_win.exe#/dl.7z",
-            "hash": "sha512:7438b5464460222b3fa15fa72cd990ae1bca77389a6675d547f2087998a32afe5309bc884b87bcf904526faa29ddd796fd2f171f237cf40a918196dd7fa0490f",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
-            ]
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "sha512:7438b5464460222b3fa15fa72cd990ae1bca77389a6675d547f2087998a32afe5309bc884b87bcf904526faa29ddd796fd2f171f237cf40a918196dd7fa0490f",
+   "pre_install": [
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+    "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
+   ],
+   "url": "https://github.com/altair-graphql/altair/releases/download/v5.0.4/altair_5.0.4_x64_win.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "regex": "sha512:\\s+$base64",
+     "url": "$baseurl/latest.yml"
     },
-    "shortcuts": [
-        [
-            "Altair GraphQL Client.exe",
-            "Altair GraphQL Client"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/altair-graphql/altair"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/altair-graphql/altair/releases/download/v$version/altair_$version_x64_win.exe#/dl.7z",
-                "hash": {
-                    "url": "$baseurl/latest.yml",
-                    "regex": "sha512:\\s+$base64"
-                }
-            }
-        }
-    }
+    "url": "https://github.com/altair-graphql/altair/releases/download/v$version/altair_$version_x64_win.exe#/dl.7z"
+   }
+  }
+ },
+ "checkver": {
+  "github": "https://github.com/altair-graphql/altair"
+ },
+ "description": "Feature-rich GraphQL Client",
+ "homepage": "https://altair.sirmuel.design",
+ "license": "MIT",
+ "shortcuts": [
+  [
+   "Altair GraphQL Client.exe",
+   "Altair GraphQL Client"
+  ]
+ ],
+ "version": "5.0.4"
 }

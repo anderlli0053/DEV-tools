@@ -1,34 +1,34 @@
 {
-    "version": "1.4.2",
-    "description": "Easy-to-use, flexible, and performant workload orchestrator that can deploy a mix of microservice, batch, containerized, and non-containerized applications.",
-    "homepage": "https://www.nomadproject.io",
-    "license": "MPL-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://releases.hashicorp.com/nomad/1.4.2/nomad_1.4.2_windows_amd64.zip",
-            "hash": "2050957a380338a710a8d645f7f755a5ed87cbc1d284e2ed2f519ad491d25d4c"
-        },
-        "32bit": {
-            "url": "https://releases.hashicorp.com/nomad/1.4.2/nomad_1.4.2_windows_386.zip",
-            "hash": "4c2108867e1933ee98f536790b8a8d8fdc082032e30cd410aefd21e9a2b3fb4e"
-        }
-    },
-    "bin": "nomad.exe",
-    "checkver": {
-        "url": "https://releases.hashicorp.com/nomad/",
-        "regex": "nomad_([\\d.]+)</a>"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://releases.hashicorp.com/nomad/$version/nomad_$version_windows_amd64.zip"
-            },
-            "32bit": {
-                "url": "https://releases.hashicorp.com/nomad/$version/nomad_$version_windows_386.zip"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/nomad_$version_SHA256SUMS"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "4c2108867e1933ee98f536790b8a8d8fdc082032e30cd410aefd21e9a2b3fb4e",
+   "url": "https://releases.hashicorp.com/nomad/1.4.2/nomad_1.4.2_windows_386.zip"
+  },
+  "64bit": {
+   "hash": "2050957a380338a710a8d645f7f755a5ed87cbc1d284e2ed2f519ad491d25d4c",
+   "url": "https://releases.hashicorp.com/nomad/1.4.2/nomad_1.4.2_windows_amd64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://releases.hashicorp.com/nomad/$version/nomad_$version_windows_386.zip"
+   },
+   "64bit": {
+    "url": "https://releases.hashicorp.com/nomad/$version/nomad_$version_windows_amd64.zip"
+   }
+  },
+  "hash": {
+   "url": "$baseurl/nomad_$version_SHA256SUMS"
+  }
+ },
+ "bin": "nomad.exe",
+ "checkver": {
+  "regex": "nomad_([\\d.]+)</a>",
+  "url": "https://releases.hashicorp.com/nomad/"
+ },
+ "description": "Easy-to-use, flexible, and performant workload orchestrator that can deploy a mix of microservice, batch, containerized, and non-containerized applications.",
+ "homepage": "https://www.nomadproject.io",
+ "license": "MPL-2.0",
+ "version": "1.4.2"
 }

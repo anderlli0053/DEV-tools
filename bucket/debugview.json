@@ -5,28 +5,28 @@
    "shortcuts": [
     [
      "Dbgview.exe",
-     "SysInternals\\DebugView"
+     "SysInternals/DebugView",
+     "/accepteula"
     ]
    ]
   },
   "64bit": {
    "bin": [
-    "dbgview64.exe",
     [
      "dbgview64.exe",
-     "Dbgview"
+     "dbgview"
     ]
    ],
    "shortcuts": [
     [
      "dbgview64.exe",
-     "SysInternals\\DebugView"
+     "SysInternals/DebugView",
+     "/accepteula"
     ]
    ]
   },
   "arm64": {
    "bin": [
-    "Dbgview64a.exe",
     [
      "Dbgview64a.exe",
      "Dbgview"
@@ -35,7 +35,8 @@
    "shortcuts": [
     [
      "Dbgview64a.exe",
-     "SysInternals\\DebugView"
+     "SysInternals/DebugView",
+     "/accepteula"
     ]
    ]
   }
@@ -43,28 +44,16 @@
  "autoupdate": {
   "url": "https://download.sysinternals.com/files/DebugView.zip"
  },
- "checkver": "DebugView\\s+v([\\d.]+)</h1",
- "description": "DebugView. Monitors debug output on local system, or any computer on the network that can be reached via TCP/IP.",
+ "checkver": {
+  "regex": "#.*?v([\\d.]+)",
+  "url": "https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/debugview.md"
+ },
+ "description": "Intercepts calls made to DbgPrint by device drivers and OutputDebugString made by Win32 programs.",
  "hash": "05cfa3dde3d98eb333d0582556f4f520e6207fe8d335bd1e910d90692798f913",
- "homepage": "https://docs.microsoft.com/en-us/sysinternals/downloads/debugview",
+ "homepage": "https://learn.microsoft.com/sysinternals/downloads/debugview",
  "license": {
   "identifier": "Freeware",
-  "url": "https://docs.microsoft.com/en-us/sysinternals/license-terms"
- },
- "pre_install": [
-  "$sysint = 'HKCU:\\SOFTWARE\\Sysinternals'",
-  "$fin = \"$sysint\\DbgView\"",
-  "New-Item $sysint, $fin -ErrorAction 'SilentlyContinue' | Out-Null",
-  "Set-ItemProperty -Path $fin -Name 'EulaAccepted' -Value 1 -Type 'DWord' -Force | Out-Null"
- ],
- "uninstaller": {
-  "script": [
-   "if ($purge) {",
-   "    $sysInt = 'HKCU:\\SOFTWARE\\Sysinternals'",
-   "    Remove-Item \"$sysInt\\DbgView\" -ErrorAction 'SilentlyContinue' -Force -Recurse",
-   "    if ((Get-ChildItem $sysInt).Count -eq 0) { Remove-Item $sysInt -ErrorAction 'SilentlyContinue' -Force -Recurse }",
-   "}"
-  ]
+  "url": "https://learn.microsoft.com/sysinternals/license-terms"
  },
  "url": "https://download.sysinternals.com/files/DebugView.zip",
  "version": "4.90"

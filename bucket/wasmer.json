@@ -1,32 +1,32 @@
 {
-    "version": "2.3.0",
-    "description": "The leading WebAssembly Runtime supporting WASI and Emscripten",
-    "homepage": "https://wasmer.io/",
-    "license": "MIT",
-    "suggest": {
-        "wapm": "wapm-cli"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/wasmerio/wasmer/releases/download/2.3.0/wasmer-windows.exe",
-            "hash": "b414def96b2e5718f6d87702819d6b74cbc4e53fa7cc2950eb87ec92e60710ec"
-        }
-    },
-    "env_set": {
-        "WASMER_DIR": "$dir",
-        "WASMER_CACHE_DIR": "$dir\\cache"
-    },
-    "bin": "bin\\wasmer.exe",
-    "innosetup": true,
-    "checkver": {
-        "github": "https://github.com/wasmerio/wasmer",
-        "regex": "tag/([\\w.-]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/wasmerio/wasmer/releases/download/$version/wasmer-windows.exe"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "b414def96b2e5718f6d87702819d6b74cbc4e53fa7cc2950eb87ec92e60710ec",
+   "url": "https://github.com/wasmerio/wasmer/releases/download/2.3.0/wasmer-windows.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/wasmerio/wasmer/releases/download/$version/wasmer-windows.exe"
+   }
+  }
+ },
+ "bin": "bin\\wasmer.exe",
+ "checkver": {
+  "github": "https://github.com/wasmerio/wasmer",
+  "regex": "tag/([\\w.-]+)"
+ },
+ "description": "The leading WebAssembly Runtime supporting WASI and Emscripten",
+ "env_set": {
+  "WASMER_CACHE_DIR": "$dir\\cache",
+  "WASMER_DIR": "$dir"
+ },
+ "homepage": "https://wasmer.io/",
+ "innosetup": true,
+ "license": "MIT",
+ "suggest": {
+  "wapm": "wapm-cli"
+ },
+ "version": "2.3.0"
 }

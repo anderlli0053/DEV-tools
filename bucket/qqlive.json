@@ -1,25 +1,25 @@
 {
-    "homepage": "https://v.qq.com/",
-    "description": "腾讯视频是腾讯推出的在线视频媒体平台。",
-    "license": "BSD-3-Clause",
-    "version": "11.55.2026.0",
-    "url": "https://dldir1.qq.com/qqtv/TencentVideo11.55.2026.0.exe#/dl.7z",
-    "hash": "d9c3fa2eae3e9396c73c2b58c7f4bd1d1b2e8774954195bbb37593ca5acab744",
-    "post_install": [
-        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$TEMP\" -Force -Recurse",
-        "Copy-Item \"$dir\\QQLive.tpc\" \"$dir\\instok\""
-    ],
-    "shortcuts": [
-        [
-            "QQLive.exe",
-            "QQLive"
-        ]
-    ],
-    "checkver": {
-        "url": "https://v.qq.com/download.html",
-        "regex": "//(?<url>[^\"]+)/TencentVideo([\\d\\.]+)\\.exe"
-    },
-    "autoupdate": {
-        "url": "https://$matchUrl/TencentVideo$version.exe#/dl.7z"
-    }
+ "autoupdate": {
+  "url": "https://$matchUrl/TencentVideo$version.exe#/dl.7z"
+ },
+ "checkver": {
+  "regex": "//(?<url>[^\"]+)/TencentVideo([\\d\\.]+)\\.exe",
+  "url": "https://v.qq.com/download.html"
+ },
+ "description": "\u817e\u8baf\u89c6\u9891\u662f\u817e\u8baf\u63a8\u51fa\u7684\u5728\u7ebf\u89c6\u9891\u5a92\u4f53\u5e73\u53f0\u3002",
+ "hash": "d9c3fa2eae3e9396c73c2b58c7f4bd1d1b2e8774954195bbb37593ca5acab744",
+ "homepage": "https://v.qq.com/",
+ "license": "BSD-3-Clause",
+ "post_install": [
+  "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$TEMP\" -Force -Recurse",
+  "Copy-Item \"$dir\\QQLive.tpc\" \"$dir\\instok\""
+ ],
+ "shortcuts": [
+  [
+   "QQLive.exe",
+   "QQLive"
+  ]
+ ],
+ "url": "https://dldir1.qq.com/qqtv/TencentVideo11.55.2026.0.exe#/dl.7z",
+ "version": "11.55.2026.0"
 }

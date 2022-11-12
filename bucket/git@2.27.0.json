@@ -1,61 +1,61 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "d434ad45bd9060a99c1d58e9b2b09597c52035a6a3ebeb6a0fdc694092b298b5",
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.38.1.windows.1/PortableGit-2.38.1-32-bit.7z.exe#/dl.7z"
-        },
-        "64bit": {
-            "hash": "cdcdb268aaed1dd2ac33d1dfdaf105369e3d7bd8d84d641d26d30b34e706b843",
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.38.1.windows.1/PortableGit-2.38.1-64-bit.7z.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchVer-32-bit.7z.exe#/dl.7z"
-            },
-            "64bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchVer-64-bit.7z.exe#/dl.7z"
-            }
-        },
-        "hash": {
-            "regex": "<td>$basename</td>\\s*<td>$sha256</td>",
-            "url": "https://github.com/git-for-windows/git/releases/latest"
-        }
-    },
-    "bin": [
-        "cmd\\git.exe",
-        "cmd\\gitk.exe",
-        "cmd\\git-gui.exe",
-        "usr\\bin\\tig.exe",
-        "git-bash.exe"
-    ],
-    "checkver": {
-        "github": "https://github.com/git-for-windows/git",
-        "regex": "v([\\w.]+)/PortableGit-(?<ver>[\\d\\w.]+)-64-bit"
-    },
-    "description": "`git` ~ distributed version control system",
-    "env_set": {
-        "GIT_INSTALL_ROOT": "$dir"
-    },
-    "homepage": "https://gitforwindows.org",
-    "license": "GPL-2.0-only",
-    "post_install": [
-        "# ref: [PortableGit post-install]<https://github.com/git-for-windows/build-extra/tree/33ce2964376587bbe7fcf97789470701178087af/portable/root>[`@`](https://archive.is/BSBYG)",
-        "#  ... from CMD: `start \"\" /min \"%COMSPEC%\" /d/c \"DIR\\post-install.bat\"`",
-        "if (test-path \"$dir\\post-install.bat\") { start-process \"$dir\\post-install.bat\" -WindowStyle hidden }",
-        "git config --global credential.helper manager"
-    ],
-    "shortcuts": [
-        [
-            "git-bash.exe",
-            "Git Bash",
-            "--cd-to-home"
-        ],
-        [
-            "cmd\\git-gui.exe",
-            "Git GUI"
-        ]
-    ],
-    "version": "2.38.1.windows.1"
+ "architecture": {
+  "32bit": {
+   "hash": "d434ad45bd9060a99c1d58e9b2b09597c52035a6a3ebeb6a0fdc694092b298b5",
+   "url": "https://github.com/git-for-windows/git/releases/download/v2.38.1.windows.1/PortableGit-2.38.1-32-bit.7z.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "cdcdb268aaed1dd2ac33d1dfdaf105369e3d7bd8d84d641d26d30b34e706b843",
+   "url": "https://github.com/git-for-windows/git/releases/download/v2.38.1.windows.1/PortableGit-2.38.1-64-bit.7z.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchVer-32-bit.7z.exe#/dl.7z"
+   },
+   "64bit": {
+    "url": "https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchVer-64-bit.7z.exe#/dl.7z"
+   }
+  },
+  "hash": {
+   "regex": "<td>$basename</td>\\s*<td>$sha256</td>",
+   "url": "https://github.com/git-for-windows/git/releases/latest"
+  }
+ },
+ "bin": [
+  "cmd\\git.exe",
+  "cmd\\gitk.exe",
+  "cmd\\git-gui.exe",
+  "usr\\bin\\tig.exe",
+  "git-bash.exe"
+ ],
+ "checkver": {
+  "github": "https://github.com/git-for-windows/git",
+  "regex": "v([\\w.]+)/PortableGit-(?<ver>[\\d\\w.]+)-64-bit"
+ },
+ "description": "`git` ~ distributed version control system",
+ "env_set": {
+  "GIT_INSTALL_ROOT": "$dir"
+ },
+ "homepage": "https://gitforwindows.org",
+ "license": "GPL-2.0-only",
+ "post_install": [
+  "# ref: [PortableGit post-install]<https://github.com/git-for-windows/build-extra/tree/33ce2964376587bbe7fcf97789470701178087af/portable/root>[`@`](https://archive.is/BSBYG)",
+  "#  ... from CMD: `start \"\" /min \"%COMSPEC%\" /d/c \"DIR\\post-install.bat\"`",
+  "if (test-path \"$dir\\post-install.bat\") { start-process \"$dir\\post-install.bat\" -WindowStyle hidden }",
+  "git config --global credential.helper manager"
+ ],
+ "shortcuts": [
+  [
+   "git-bash.exe",
+   "Git Bash",
+   "--cd-to-home"
+  ],
+  [
+   "cmd\\git-gui.exe",
+   "Git GUI"
+  ]
+ ],
+ "version": "2.38.1.windows.1"
 }

@@ -1,48 +1,48 @@
 {
-    "version": "21.03-v1.5.0-R2",
-    "description": "7-Zip support for Brotli, Fast-LZMA2, Lizard, LZ4, LZ5 and Zstandard.",
-    "homepage": "https://mcmilk.de/projects/7-Zip-zstd/",
-    "license": "LGPL-2.1-or-later,BSD-3-Clause,Proprietary",
-    "notes": "When you update 7zip-aoks, please reinstall 7-zip-zstd-aoks.",
-    "depends": "scoop-aoks/7zip-aoks",
-    "##": "the usual github thing doesn't work",
-    "checkver": {
-        "url": "https://github.com/mcmilk/7-Zip-zstd/releases/latest",
-        "re": "https://github.com/mcmilk/7-Zip-zstd/releases/tag/v([\\d.-].+R[1-9])"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v21.03-v1.5.0-R2/Codecs-x64.7z",
-            "hash": "8605c6252a8c6337b27ea4125d601fbb551ccd68e454e4c6a9f77248c0dc4538"
-        },
-        "32bit": {
-            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v21.03-v1.5.0-R2/Codecs-x32.7z",
-            "hash": "c845ce295a59fc07a514c88c8a4f320425592299700ae900dbf2064a565dd2ed"
-        }
-    },
-    "installer": {
-        "script": [
-            "if (-not (Test-Path \"$(appdir 7zip-aoks $global)\\current\\Codecs\")) {",
-            "    mkdir -Path \"$(appdir 7zip-aoks $global)\\current\" -Name Codecs",
-            "}",
-            "cp \"$dir\\*.dll\" \"$(appdir 7zip-aoks $global)\\current\\Codecs\" -Recurse"
-        ]
-    },
-    "uninstaller": {
-        "script": [
-            "foreach ($file in (ls \"$dir\\*.dll\")) {",
-            "    rm \"$(appdir 7zip-aoks $global)\\current\\Codecs\\$($file.Name)\" -Recurse",
-            "}"
-        ]
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v$version/Codecs-x64.7z"
-            },
-            "32bit": {
-                "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v$version/Codecs-x32.7z"
-            }
-        }
-    }
+ "##": "the usual github thing doesn't work",
+ "architecture": {
+  "32bit": {
+   "hash": "c845ce295a59fc07a514c88c8a4f320425592299700ae900dbf2064a565dd2ed",
+   "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v21.03-v1.5.0-R2/Codecs-x32.7z"
+  },
+  "64bit": {
+   "hash": "8605c6252a8c6337b27ea4125d601fbb551ccd68e454e4c6a9f77248c0dc4538",
+   "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v21.03-v1.5.0-R2/Codecs-x64.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v$version/Codecs-x32.7z"
+   },
+   "64bit": {
+    "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v$version/Codecs-x64.7z"
+   }
+  }
+ },
+ "checkver": {
+  "re": "https://github.com/mcmilk/7-Zip-zstd/releases/tag/v([\\d.-].+R[1-9])",
+  "url": "https://github.com/mcmilk/7-Zip-zstd/releases/latest"
+ },
+ "depends": "scoop-aoks/7zip-aoks",
+ "description": "7-Zip support for Brotli, Fast-LZMA2, Lizard, LZ4, LZ5 and Zstandard.",
+ "homepage": "https://mcmilk.de/projects/7-Zip-zstd/",
+ "installer": {
+  "script": [
+   "if (-not (Test-Path \"$(appdir 7zip-aoks $global)\\current\\Codecs\")) {",
+   "    mkdir -Path \"$(appdir 7zip-aoks $global)\\current\" -Name Codecs",
+   "}",
+   "cp \"$dir\\*.dll\" \"$(appdir 7zip-aoks $global)\\current\\Codecs\" -Recurse"
+  ]
+ },
+ "license": "LGPL-2.1-or-later,BSD-3-Clause,Proprietary",
+ "notes": "When you update 7zip-aoks, please reinstall 7-zip-zstd-aoks.",
+ "uninstaller": {
+  "script": [
+   "foreach ($file in (ls \"$dir\\*.dll\")) {",
+   "    rm \"$(appdir 7zip-aoks $global)\\current\\Codecs\\$($file.Name)\" -Recurse",
+   "}"
+  ]
+ },
+ "version": "21.03-v1.5.0-R2"
 }

@@ -1,42 +1,42 @@
 {
-    "version": "3.1.425",
-    "homepage": "https://www.microsoft.com/net/",
-    "description": ".NET is a free, cross-platform, open source developer platform for building many different types of applications.",
-    "license": "MIT",
-    "suggest": {
-        "Visual C++ Redistributable": "extras/vcredist2022"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/3.1.425/dotnet-sdk-3.1.425-win-x64.zip",
-            "hash": "sha512:20b92ce9f44483d44fac53c7f5c72dd277099e837fd08ffdac70f61d040d501373a240eeadd9dc97dd79cf2b22ec124c625a09a1c563111581a355a1dd3b3d10"
-        },
-        "32bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/3.1.425/dotnet-sdk-3.1.425-win-x86.zip",
-            "hash": "sha512:22210ae4a9f41246c2c0fb7dd6fedceb83b43ab5c610afccbe29136bad432976117fd3b06937fcde3638f2b91fabf7fc91171ed1464dcd0c79583e236819b287"
-        }
-    },
-    "bin": "dotnet.exe",
-    "env_add_path": ".",
-    "env_set": {
-        "DOTNET_ROOT": "$dir",
-        "MSBuildSDKsPath": "$dir\\sdk\\$version\\Sdks"
-    },
-    "checkver": {
-        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/3.1/releases.json",
-        "regex": "runtime\": \"(?<runtimever>[\\d.]+)\",\\s+\"latest-sdk\": \"([\\d.]+)\""
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-x64.zip"
-            },
-            "32bit": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-x86.zip"
-            }
-        },
-        "hash": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$matchRuntimever-sha.txt"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:22210ae4a9f41246c2c0fb7dd6fedceb83b43ab5c610afccbe29136bad432976117fd3b06937fcde3638f2b91fabf7fc91171ed1464dcd0c79583e236819b287",
+   "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/3.1.425/dotnet-sdk-3.1.425-win-x86.zip"
+  },
+  "64bit": {
+   "hash": "sha512:20b92ce9f44483d44fac53c7f5c72dd277099e837fd08ffdac70f61d040d501373a240eeadd9dc97dd79cf2b22ec124c625a09a1c563111581a355a1dd3b3d10",
+   "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/3.1.425/dotnet-sdk-3.1.425-win-x64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-x86.zip"
+   },
+   "64bit": {
+    "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-x64.zip"
+   }
+  },
+  "hash": {
+   "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$matchRuntimever-sha.txt"
+  }
+ },
+ "bin": "dotnet.exe",
+ "checkver": {
+  "regex": "runtime\": \"(?<runtimever>[\\d.]+)\",\\s+\"latest-sdk\": \"([\\d.]+)\"",
+  "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/3.1/releases.json"
+ },
+ "description": ".NET is a free, cross-platform, open source developer platform for building many different types of applications.",
+ "env_add_path": ".",
+ "env_set": {
+  "DOTNET_ROOT": "$dir",
+  "MSBuildSDKsPath": "$dir\\sdk\\$version\\Sdks"
+ },
+ "homepage": "https://www.microsoft.com/net/",
+ "license": "MIT",
+ "suggest": {
+  "Visual C++ Redistributable": "extras/vcredist2022"
+ },
+ "version": "3.1.425"
 }

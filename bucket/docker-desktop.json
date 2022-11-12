@@ -1,53 +1,53 @@
 {
-    "version": "4.14.0",
-    "description": "Docker Desktop. Open platform for developers and sysadmins to build, ship, and run distributed applications, whether on laptops, data center VMs, or the cloud.",
-    "homepage": "https://www.docker.com/products/docker-desktop",
-    "license": {
-        "identifier": "Proprietary",
-        "url": "https://www.docker.com/legal/docker-subscription-service-agreement"
-    },
-    "notes": [
-        "All files will be installed into DEFAULT docker directory. (C:\\Program Files\\Docker)",
-        "I suggest to change the docker images location:",
-        "    https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file",
-        "",
-        "Updating is handled by docker itself.",
-        "    Run 'scoop hold docker-desktop' to disable updates via Scoop.",
-        "",
-        "'scoop uninstall docker' will uninstall docker completely.",
-        "    Images, VM, settings, ..."
-    ],
-    "architecture": {
-        "64bit": {
-            "url": "https://desktop.docker.com/win/main/amd64/91374/Docker%20Desktop%20Installer.exe#/DockerDesktopInstall.exe",
-            "hash": "7e2d34cb7573b81cc067ff9e979e44675d46eb6a26801031c27f83bbf93dfc3b"
-        }
-    },
-    "installer": {
-        "args": [
-            "install",
-            "--quiet"
-        ],
-        "keep": true
-    },
-    "post_install": "scoop hold docker-desktop",
-    "uninstaller": {
-        "file": "DockerDesktopInstall.exe",
-        "args": [
-            "uninstall",
-            "--quiet"
-        ]
-    },
-    "checkver": {
-        "url": "https://desktop.docker.com/win/main/amd64/appcast.xml",
-        "xpath": "/rss/channel/item[last()]/title",
-        "regex": "([\\d.]+)\\s\\((?<path>\\d+)\\)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://desktop.docker.com/win/main/amd64/$matchPath/Docker%20Desktop%20Installer.exe#/DockerDesktopInstall.exe"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "7e2d34cb7573b81cc067ff9e979e44675d46eb6a26801031c27f83bbf93dfc3b",
+   "url": "https://desktop.docker.com/win/main/amd64/91374/Docker%20Desktop%20Installer.exe#/DockerDesktopInstall.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://desktop.docker.com/win/main/amd64/$matchPath/Docker%20Desktop%20Installer.exe#/DockerDesktopInstall.exe"
+   }
+  }
+ },
+ "checkver": {
+  "regex": "([\\d.]+)\\s\\((?<path>\\d+)\\)",
+  "url": "https://desktop.docker.com/win/main/amd64/appcast.xml",
+  "xpath": "/rss/channel/item[last()]/title"
+ },
+ "description": "Docker Desktop. Open platform for developers and sysadmins to build, ship, and run distributed applications, whether on laptops, data center VMs, or the cloud.",
+ "homepage": "https://www.docker.com/products/docker-desktop",
+ "installer": {
+  "args": [
+   "install",
+   "--quiet"
+  ],
+  "keep": true
+ },
+ "license": {
+  "identifier": "Proprietary",
+  "url": "https://www.docker.com/legal/docker-subscription-service-agreement"
+ },
+ "notes": [
+  "All files will be installed into DEFAULT docker directory. (C:\\Program Files\\Docker)",
+  "I suggest to change the docker images location:",
+  "    https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file",
+  "",
+  "Updating is handled by docker itself.",
+  "    Run 'scoop hold docker-desktop' to disable updates via Scoop.",
+  "",
+  "'scoop uninstall docker' will uninstall docker completely.",
+  "    Images, VM, settings, ..."
+ ],
+ "post_install": "scoop hold docker-desktop",
+ "uninstaller": {
+  "args": [
+   "uninstall",
+   "--quiet"
+  ],
+  "file": "DockerDesktopInstall.exe"
+ },
+ "version": "4.14.0"
 }

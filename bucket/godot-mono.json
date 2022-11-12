@@ -1,42 +1,42 @@
 {
-    "version": "3.5.1",
-    "description": "a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
-    "homepage": "https://godotengine.org/",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_mono_win64.zip",
-            "hash": "8d7a1be56523b2a34465d0df1380bcfefc8c4ba67a1fb3ec8a5459446a31d51f"
-        },
-        "32bit": {
-            "url": "https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_mono_win32.zip",
-            "hash": "eb2e4ecf802bf28c5cbf355df0b89ceb7a54b8623896f9b0ab3cd64220306278"
-        }
-    },
-    "pre_install": [
-        "(Get-ChildItem \"$dir\\Godot_*\\Godot_*.exe\" | Rename-Item -NewName \"godot-mono.exe\");",
-        "(Get-ChildItem \"$dir\\Godot_*\\*\" | Move-Item -Destination \"$dir\");",
-        "Remove-Item \"$dir\\Godot_*\""
-    ],
-    "bin": "godot-mono.exe",
-    "shortcuts": [
-        [
-            "godot-mono.exe",
-            "Godot Engine (Mono)"
-        ]
-    ],
-    "checkver": {
-        "url": "https://github.com/godotengine/godot/releases/latest",
-        "regex": "(?<version>[\\d\\w.]+)-stable"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/godotengine/godot/releases/download/$version-stable/Godot_v$version-stable_mono_win64.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/godotengine/godot/releases/download/$version-stable/Godot_v$version-stable_mono_win32.zip"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "eb2e4ecf802bf28c5cbf355df0b89ceb7a54b8623896f9b0ab3cd64220306278",
+   "url": "https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_mono_win32.zip"
+  },
+  "64bit": {
+   "hash": "8d7a1be56523b2a34465d0df1380bcfefc8c4ba67a1fb3ec8a5459446a31d51f",
+   "url": "https://github.com/godotengine/godot/releases/download/3.5.1-stable/Godot_v3.5.1-stable_mono_win64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/godotengine/godot/releases/download/$version-stable/Godot_v$version-stable_mono_win32.zip"
+   },
+   "64bit": {
+    "url": "https://github.com/godotengine/godot/releases/download/$version-stable/Godot_v$version-stable_mono_win64.zip"
+   }
+  }
+ },
+ "bin": "godot-mono.exe",
+ "checkver": {
+  "regex": "(?<version>[\\d\\w.]+)-stable",
+  "url": "https://github.com/godotengine/godot/releases/latest"
+ },
+ "description": "a feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
+ "homepage": "https://godotengine.org/",
+ "license": "MIT",
+ "pre_install": [
+  "(Get-ChildItem \"$dir\\Godot_*\\Godot_*.exe\" | Rename-Item -NewName \"godot-mono.exe\");",
+  "(Get-ChildItem \"$dir\\Godot_*\\*\" | Move-Item -Destination \"$dir\");",
+  "Remove-Item \"$dir\\Godot_*\""
+ ],
+ "shortcuts": [
+  [
+   "godot-mono.exe",
+   "Godot Engine (Mono)"
+  ]
+ ],
+ "version": "3.5.1"
 }

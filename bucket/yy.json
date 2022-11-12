@@ -1,31 +1,31 @@
 {
-    "autoupdate": {
-        "url": "https://yydl.yy.com/4/setup/YYSetup-$version-zh-CN.exe#/dl.7z"
-    },
-    "checkver": {
-        "regex": "YYSetup-([\\d.]+)-zh-CN.exe",
-        "script": [
-            "$content = irm 'https://www.yy.com/web/pcyy_download/'",
-            "$jsPathname = 'https://web.yystatic.com/project/pcyy_download/pc/assets/'",
-            "$jsChunk = (Select-String -InputObject $content -Pattern 'js/index.*chunk.js').Matches.Value",
-            "$content = irm \"$jsPathname$jsChunk\"",
-            "return (Select-String -InputObject $content -Pattern 'YYSetup-([\\d.]+)-zh-CN.exe').Matches.Value"
-        ]
-    },
-    "description": "The official client of YY, a Chinese video-based social network.",
-    "extract_dir": "InstallDir",
-    "hash": "1cddee9b9b40b0cfbacd201dfbf25b04fe42b4905cd7f50a16efe532bf3ab8f7",
-    "homepage": "https://www.yy.com/",
-    "license": {
-        "identifier": "EULA",
-        "url": "https://zc.yy.com/license.html"
-    },
-    "shortcuts": [
-        [
-            "YY.exe",
-            "YY语音"
-        ]
-    ],
-    "url": "https://yydl.yy.com/4/setup/YYSetup-9.10.0.0-zh-CN.exe#/dl.7z",
-    "version": "9.10.0.0"
+ "autoupdate": {
+  "url": "https://yydl.yy.com/4/setup/YYSetup-$version-zh-CN.exe#/dl.7z"
+ },
+ "checkver": {
+  "regex": "YYSetup-([\\d.]+)-zh-CN.exe",
+  "script": [
+   "$content = irm 'https://www.yy.com/web/pcyy_download/'",
+   "$jsPathname = 'https://web.yystatic.com/project/pcyy_download/pc/assets/'",
+   "$jsChunk = (Select-String -InputObject $content -Pattern 'js/index.*chunk.js').Matches.Value",
+   "$content = irm \"$jsPathname$jsChunk\"",
+   "return (Select-String -InputObject $content -Pattern 'YYSetup-([\\d.]+)-zh-CN.exe').Matches.Value"
+  ]
+ },
+ "description": "The official client of YY, a Chinese video-based social network.",
+ "extract_dir": "InstallDir",
+ "hash": "1cddee9b9b40b0cfbacd201dfbf25b04fe42b4905cd7f50a16efe532bf3ab8f7",
+ "homepage": "https://www.yy.com/",
+ "license": {
+  "identifier": "EULA",
+  "url": "https://zc.yy.com/license.html"
+ },
+ "shortcuts": [
+  [
+   "YY.exe",
+   "YY\u8bed\u97f3"
+  ]
+ ],
+ "url": "https://yydl.yy.com/4/setup/YYSetup-9.10.0.0-zh-CN.exe#/dl.7z",
+ "version": "9.10.0.0"
 }

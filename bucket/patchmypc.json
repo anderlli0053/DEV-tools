@@ -1,0 +1,30 @@
+{
+ "autoupdate": {
+  "url": "https://patchmypc.com/freeupdater/PatchMyPC.exe"
+ },
+ "bin": "PatchMyPC.exe",
+ "checkver": "Download\\sPatch\\sMy\\sPC\\sHome\\sUpdater\\s([\\d.]+)</a>",
+ "description": "A free, easy-to-use program that keeps over 300+ third-party applications up-to-date on your computer.",
+ "hash": "788a013d232755d850b7b2e0a5848cff1d5528869504b838f35f360bbc70b255",
+ "homepage": "https://patchmypc.com/home-updater",
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://patchmypc.com/terms-of-service"
+ },
+ "persist": [
+  "PatchMyPC.ini",
+  "PatchMyPC.log"
+ ],
+ "pre_install": [
+  "if (!(Test-Path \"$dir\" -Include 'PatchMyPC.ini', 'PatchMyPC.log')) {New-Item \"$dir\\PatchMyPC.ini\", \"$dir\\PatchMyPC.log\" | Out-Null}",
+  "Add-Content \"$dir\\PatchMyPC.ini\" -Value \";Options`nChk_Options_DownloadOnlyMode`nChk_Options_EnableVerboseLogging`nChk_Options_DisablePatchMyPCSelfUpdater\""
+ ],
+ "shortcuts": [
+  [
+   "PatchMyPC.exe",
+   "PatchMyPC Home Updater"
+  ]
+ ],
+ "url": "https://patchmypc.com/freeupdater/PatchMyPC.exe",
+ "version": "4.5.0.0"
+}

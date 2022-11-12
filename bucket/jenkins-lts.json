@@ -1,24 +1,24 @@
 {
-    "version": "2.361.3",
-    "description": "An automation server which enables developers around the world to reliably build, test, and deploy their software. (Long Term Support)",
-    "homepage": "https://www.jenkins.io",
-    "license": "MIT",
-    "suggest": {
-        "Java 8": "java/oraclejre8",
-        "Java 11": "java/openjdk11"
-    },
-    "url": "https://get.jenkins.io/war-stable/2.361.3/jenkins.war#/jenkins.jar",
-    "hash": "f39cb8d09fd17c72dc096511ce50f245fc3004d1022aaaf60421a536f740c9b9",
-    "bin": "jenkins.jar",
-    "checkver": {
-        "url": "https://www.jenkins.io/changelog-stable/rss.xml",
-        "xpath": "/rss/channel/item/title",
-        "regex": "Jenkins ([\\d.]+)"
-    },
-    "autoupdate": {
-        "url": "https://get.jenkins.io/war-stable/$version/jenkins.war#/jenkins.jar",
-        "hash": {
-            "url": "$url.sha256"
-        }
-    }
+ "autoupdate": {
+  "hash": {
+   "url": "$url.sha256"
+  },
+  "url": "https://get.jenkins.io/war-stable/$version/jenkins.war#/jenkins.jar"
+ },
+ "bin": "jenkins.jar",
+ "checkver": {
+  "regex": "Jenkins ([\\d.]+)",
+  "url": "https://www.jenkins.io/changelog-stable/rss.xml",
+  "xpath": "/rss/channel/item/title"
+ },
+ "description": "An automation server which enables developers around the world to reliably build, test, and deploy their software. (Long Term Support)",
+ "hash": "f39cb8d09fd17c72dc096511ce50f245fc3004d1022aaaf60421a536f740c9b9",
+ "homepage": "https://www.jenkins.io",
+ "license": "MIT",
+ "suggest": {
+  "Java 11": "java/openjdk11",
+  "Java 8": "java/oraclejre8"
+ },
+ "url": "https://get.jenkins.io/war-stable/2.361.3/jenkins.war#/jenkins.jar",
+ "version": "2.361.3"
 }

@@ -1,25 +1,25 @@
 {
-    "version": "2.10.0",
-    "description": "Official Command Line Interface for the IPinfo API (IP geolocation and other types of IP data).",
-    "homepage": "https://github.com/ipinfo/cli",
-    "license": "Apache-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/ipinfo/cli/releases/download/ipinfo-2.10.0/ipinfo_2.10.0_windows_amd64.zip",
-            "hash": "36a38c46fbfb701396ba6ec54ed5e9c66265b6feef7d8efcead6e918fcb82f69"
-        }
-    },
-    "pre_install": "Get-ChildItem \"$dir\" 'ipinfo_*.exe' | Select-Object -First 1 | Rename-Item -NewName 'ipinfo.exe'",
-    "bin": "ipinfo.exe",
-    "checkver": {
-        "url": "https://github.com/ipinfo/cli/releases",
-        "regex": "/releases/tag/ipinfo-([\\d.]+)\""
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/ipinfo/cli/releases/download/ipinfo-$version/ipinfo_$version_windows_amd64.zip"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "36a38c46fbfb701396ba6ec54ed5e9c66265b6feef7d8efcead6e918fcb82f69",
+   "url": "https://github.com/ipinfo/cli/releases/download/ipinfo-2.10.0/ipinfo_2.10.0_windows_amd64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/ipinfo/cli/releases/download/ipinfo-$version/ipinfo_$version_windows_amd64.zip"
+   }
+  }
+ },
+ "bin": "ipinfo.exe",
+ "checkver": {
+  "regex": "/releases/tag/ipinfo-([\\d.]+)\"",
+  "url": "https://github.com/ipinfo/cli/releases"
+ },
+ "description": "Official Command Line Interface for the IPinfo API (IP geolocation and other types of IP data).",
+ "homepage": "https://github.com/ipinfo/cli",
+ "license": "Apache-2.0",
+ "pre_install": "Get-ChildItem \"$dir\" 'ipinfo_*.exe' | Select-Object -First 1 | Rename-Item -NewName 'ipinfo.exe'",
+ "version": "2.10.0"
 }

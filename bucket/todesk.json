@@ -1,31 +1,31 @@
 {
-    "autoupdate": {
-        "url": "https://dl.todesk.com/windows/ToDesk_Setup.exe#/dl.7z"
-    },
-    "checkver": {
-        "regex": ">([\\d.]+)</div>",
-        "url": "https://update.todesk.com/windows/uplog.html"
-    },
-    "description": "A unlimited speed multifunctional remote control software",
-    "hash": "df65ac8f3e2494021c7e6527d1d63dc679673526d6ffa24e3433bac9210ccb4d",
-    "homepage": "https://www.todesk.com/",
-    "license": "Proprietary",
-    "persist": [
-        "Logs",
-        "config.ini"
-    ],
-    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\",\"$dir\\uninst.exe\" -Force -Recurse",
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\config.ini\")) {",
-        "    New-Item -Force -Path \"$persist_dir\\config.ini\" -ItemType File -Value \"[ConfigInfo]`nautoStart=0\" | Out-Null",
-        "}"
-    ],
-    "shortcuts": [
-        [
-            "ToDesk.exe",
-            "ToDesk"
-        ]
-    ],
-    "url": "https://dl.todesk.com/windows/ToDesk_Setup.exe#/dl.7z",
-    "version": "4.6.0.1"
+ "autoupdate": {
+  "url": "https://dl.todesk.com/windows/ToDesk_Setup.exe#/dl.7z"
+ },
+ "checkver": {
+  "regex": ">([\\d.]+)</div>",
+  "url": "https://update.todesk.com/windows/uplog.html"
+ },
+ "description": "A unlimited speed multifunctional remote control software",
+ "hash": "df65ac8f3e2494021c7e6527d1d63dc679673526d6ffa24e3433bac9210ccb4d",
+ "homepage": "https://www.todesk.com/",
+ "license": "Proprietary",
+ "persist": [
+  "Logs",
+  "config.ini"
+ ],
+ "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\",\"$dir\\uninst.exe\" -Force -Recurse",
+ "pre_install": [
+  "if (!(Test-Path \"$persist_dir\\config.ini\")) {",
+  "    New-Item -Force -Path \"$persist_dir\\config.ini\" -ItemType File -Value \"[ConfigInfo]`nautoStart=0\" | Out-Null",
+  "}"
+ ],
+ "shortcuts": [
+  [
+   "ToDesk.exe",
+   "ToDesk"
+  ]
+ ],
+ "url": "https://dl.todesk.com/windows/ToDesk_Setup.exe#/dl.7z",
+ "version": "4.6.0.1"
 }

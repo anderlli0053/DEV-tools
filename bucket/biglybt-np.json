@@ -1,52 +1,52 @@
 {
-    "##": "We install to $dir\\install instead of just $dir because for some reason, Scoop has trouble removing $dir upon uninstallation.",
-    "version": "3.2.0.0",
-    "homepage": "https://www.biglybt.com/",
-    "description": "BitTorrent client.",
-    "license": "GPL-2.0-only",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/BiglySoftware/BiglyBT/releases/download/v3.2.0.0/Github_BiglyBT_Installer64.exe#/setup.exe",
-            "hash": "eb34275950713acde54433a0529f42b155fe5ba55a60d10e886fb9f8bd55c462"
-        },
-        "32bit": {
-            "url": "https://github.com/BiglySoftware/BiglyBT/releases/download/v3.2.0.0/Github_BiglyBT_Installer32.exe#/setup.exe",
-            "hash": "346b4d50dc8e028e3dbba510b2f5ed5eb2d455fbac71c62b42c24cec31633505"
-        }
-    },
-    "installer": {
-        "script": "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('-q', \"-dir `\"$dir\\install`\"\") | Out-Null"
-    },
-    "post_install": [
-        "Remove-Item \"$dir\\setup.exe\"",
-        "Remove-Item \"$env:PUBLIC\\Desktop\\BiglyBT.lnk\"",
-        "Remove-Item \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\BiglyBT.lnk\""
-    ],
-    "uninstaller": {
-        "file": "install\\uninstall.exe",
-        "args": "-q"
-    },
-    "bin": "install\\BiglyBT.exe",
-    "shortcuts": [
-        [
-            "install\\BiglyBT.exe",
-            "BiglyBT"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/BiglySoftware/BiglyBT"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/BiglySoftware/BiglyBT/releases/download/v$version/Github_BiglyBT_Installer64.exe#/setup.exe"
-            },
-            "32bit": {
-                "url": "https://github.com/BiglySoftware/BiglyBT/releases/download/v$version/Github_BiglyBT_Installer32.exe#/setup.exe"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/Github_sha256sum.txt"
-        }
-    }
+ "##": "We install to $dir\\install instead of just $dir because for some reason, Scoop has trouble removing $dir upon uninstallation.",
+ "architecture": {
+  "32bit": {
+   "hash": "346b4d50dc8e028e3dbba510b2f5ed5eb2d455fbac71c62b42c24cec31633505",
+   "url": "https://github.com/BiglySoftware/BiglyBT/releases/download/v3.2.0.0/Github_BiglyBT_Installer32.exe#/setup.exe"
+  },
+  "64bit": {
+   "hash": "eb34275950713acde54433a0529f42b155fe5ba55a60d10e886fb9f8bd55c462",
+   "url": "https://github.com/BiglySoftware/BiglyBT/releases/download/v3.2.0.0/Github_BiglyBT_Installer64.exe#/setup.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/BiglySoftware/BiglyBT/releases/download/v$version/Github_BiglyBT_Installer32.exe#/setup.exe"
+   },
+   "64bit": {
+    "url": "https://github.com/BiglySoftware/BiglyBT/releases/download/v$version/Github_BiglyBT_Installer64.exe#/setup.exe"
+   }
+  },
+  "hash": {
+   "url": "$baseurl/Github_sha256sum.txt"
+  }
+ },
+ "bin": "install\\BiglyBT.exe",
+ "checkver": {
+  "github": "https://github.com/BiglySoftware/BiglyBT"
+ },
+ "description": "BitTorrent client.",
+ "homepage": "https://www.biglybt.com/",
+ "installer": {
+  "script": "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('-q', \"-dir `\"$dir\\install`\"\") | Out-Null"
+ },
+ "license": "GPL-2.0-only",
+ "post_install": [
+  "Remove-Item \"$dir\\setup.exe\"",
+  "Remove-Item \"$env:PUBLIC\\Desktop\\BiglyBT.lnk\"",
+  "Remove-Item \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\BiglyBT.lnk\""
+ ],
+ "shortcuts": [
+  [
+   "install\\BiglyBT.exe",
+   "BiglyBT"
+  ]
+ ],
+ "uninstaller": {
+  "args": "-q",
+  "file": "install\\uninstall.exe"
+ },
+ "version": "3.2.0.0"
 }

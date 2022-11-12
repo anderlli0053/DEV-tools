@@ -1,41 +1,41 @@
 {
-    "version": "8.6",
-    "homepage": "https://racket-lang.org",
-    "license": "LGPL-3.0-or-later",
-    "description": "Racket on Chez Scheme",
-    "architecture": {
-        "64bit": {
-            "url": "https://mirror.racket-lang.org/releases/8.6/installers/racket-8.6-x86_64-win32-cs.exe#/dl.7z",
-            "hash": "20a8a6ce8178e00b1f0e4760844d71fcdafafde3f42ec09044e1d1e24912b4c9"
-        }
-    },
-    "bin": [
-        "racket.exe",
-        "raco.exe"
-    ],
-    "shortcuts": [
-        [
-            "GRacket.exe",
-            "GRacket"
-        ],
-        [
-            "DrRacket.exe",
-            "DrRacket"
-        ]
-    ],
-    "checkver": {
-        "url": "https://download.racket-lang.org/",
-        "re": "Version ([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://mirror.racket-lang.org/releases/$version/installers/racket-$version-x86_64-win32-cs.exe#/dl.7z"
-            }
-        },
-        "hash": {
-            "url": "https://download.racket-lang.org/releases/$version/",
-            "regex": "$basename[\\s\\S]*?\"checksum\">$sha1</span>"
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "20a8a6ce8178e00b1f0e4760844d71fcdafafde3f42ec09044e1d1e24912b4c9",
+   "url": "https://mirror.racket-lang.org/releases/8.6/installers/racket-8.6-x86_64-win32-cs.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://mirror.racket-lang.org/releases/$version/installers/racket-$version-x86_64-win32-cs.exe#/dl.7z"
+   }
+  },
+  "hash": {
+   "regex": "$basename[\\s\\S]*?\"checksum\">$sha1</span>",
+   "url": "https://download.racket-lang.org/releases/$version/"
+  }
+ },
+ "bin": [
+  "racket.exe",
+  "raco.exe"
+ ],
+ "checkver": {
+  "re": "Version ([\\d.]+)",
+  "url": "https://download.racket-lang.org/"
+ },
+ "description": "Racket on Chez Scheme",
+ "homepage": "https://racket-lang.org",
+ "license": "LGPL-3.0-or-later",
+ "shortcuts": [
+  [
+   "GRacket.exe",
+   "GRacket"
+  ],
+  [
+   "DrRacket.exe",
+   "DrRacket"
+  ]
+ ],
+ "version": "8.6"
 }

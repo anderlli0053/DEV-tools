@@ -1,30 +1,30 @@
 {
-    "version": "2.0.396.0",
-    "description": "NanaZip is an open source file archiver, forked from the source code of well-known file archiver 7-Zip(Download from SDU mirror).",
-    "homepage": "https://github.com/M2Team/NanaZip",
-    "license": {
-        "identifier": "Freeware"
-    },
-    "url": "https://mirrors.sdu.edu.cn/github-release/M2Team_NanaZip/2.0.396/40174MouriNaruto.NanaZip_2.0.396.0_gnj4mf6z9tkrc.msixbundle",
-    "hash": "67bc86ae748957edffa9fff9585e52fa582efe7470633feeb3e036f3d18c06ad",
-    "installer": {
-        "script": [
-            "if($PSVersionTable.PSVersion.Major -ge 6) { Import-Module Appx -UseWindowsPowershell | Out-Null }",
-            "Add-AppxPackage -Path \"$dir\\$fname\""
-        ]
-    },
-    "uninstaller": {
-        "script": [
-            "taskkill /F /IM NanaZip.exe /FI \"status eq running\" | Out-Null",
-            "if($PSVersionTable.PSVersion.Major -ge 6) { Import-Module Appx -UseWindowsPowershell | Out-Null }",
-            "Get-AppxPackage '40174MouriNaruto.NanaZip' | Remove-AppxPackage"
-        ]
-    },
-    "checkver": {
-        "url": "https://api.github.com/repos/M2Team/NanaZip/releases",
-        "regex": "releases/download/(?<tag>[\\w-.]+)/40174MouriNaruto.NanaZip_([\\d.]+)_gnj4mf6z9tkrc.msixbundle"
-    },
-    "autoupdate": {
-        "url": "https://mirrors.sdu.edu.cn/github-release/M2Team_NanaZip/$matchTag/40174MouriNaruto.NanaZip_$version_gnj4mf6z9tkrc.msixbundle"
-    }
+ "autoupdate": {
+  "url": "https://mirrors.sdu.edu.cn/github-release/M2Team_NanaZip/$matchTag/40174MouriNaruto.NanaZip_$version_gnj4mf6z9tkrc.msixbundle"
+ },
+ "checkver": {
+  "regex": "releases/download/(?<tag>[\\w-.]+)/40174MouriNaruto.NanaZip_([\\d.]+)_gnj4mf6z9tkrc.msixbundle",
+  "url": "https://api.github.com/repos/M2Team/NanaZip/releases"
+ },
+ "description": "NanaZip is an open source file archiver, forked from the source code of well-known file archiver 7-Zip(Download from SDU mirror).",
+ "hash": "67bc86ae748957edffa9fff9585e52fa582efe7470633feeb3e036f3d18c06ad",
+ "homepage": "https://github.com/M2Team/NanaZip",
+ "installer": {
+  "script": [
+   "if($PSVersionTable.PSVersion.Major -ge 6) { Import-Module Appx -UseWindowsPowershell | Out-Null }",
+   "Add-AppxPackage -Path \"$dir\\$fname\""
+  ]
+ },
+ "license": {
+  "identifier": "Freeware"
+ },
+ "uninstaller": {
+  "script": [
+   "taskkill /F /IM NanaZip.exe /FI \"status eq running\" | Out-Null",
+   "if($PSVersionTable.PSVersion.Major -ge 6) { Import-Module Appx -UseWindowsPowershell | Out-Null }",
+   "Get-AppxPackage '40174MouriNaruto.NanaZip' | Remove-AppxPackage"
+  ]
+ },
+ "url": "https://mirrors.sdu.edu.cn/github-release/M2Team_NanaZip/2.0.396/40174MouriNaruto.NanaZip_2.0.396.0_gnj4mf6z9tkrc.msixbundle",
+ "version": "2.0.396.0"
 }

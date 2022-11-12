@@ -1,59 +1,59 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "sha512:e8822679f0050cbe41b92ffb123df5911dea4d6112d864c32289963fa1913b1a7ca41c2e5e7328e053c87ece726a947aaebf27b0ba0cb54ad3c1f3f7de89dbd5",
-            "url": "https://archive.mozilla.org/pub/firefox/releases/102.4.0esr/win32/en-US/Firefox%20Setup%20102.4.0esr.exe#/dl.7z"
-        },
-        "64bit": {
-            "hash": "sha512:6f9cd6b557f8749550324f7a7b635f83e8a6b56b8302087b1810bbdbb5638c017810e8d2143b2eccfd48b130f63d63741c1eef00af2aef5491c0b9ea289c0714",
-            "url": "https://archive.mozilla.org/pub/firefox/releases/102.4.0esr/win64/en-US/Firefox%20Setup%20102.4.0esr.exe#/dl.7z"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:e8822679f0050cbe41b92ffb123df5911dea4d6112d864c32289963fa1913b1a7ca41c2e5e7328e053c87ece726a947aaebf27b0ba0cb54ad3c1f3f7de89dbd5",
+   "url": "https://archive.mozilla.org/pub/firefox/releases/102.4.0esr/win32/en-US/Firefox%20Setup%20102.4.0esr.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "sha512:6f9cd6b557f8749550324f7a7b635f83e8a6b56b8302087b1810bbdbb5638c017810e8d2143b2eccfd48b130f63d63741c1eef00af2aef5491c0b9ea289c0714",
+   "url": "https://archive.mozilla.org/pub/firefox/releases/102.4.0esr/win64/en-US/Firefox%20Setup%20102.4.0esr.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "regex": "$sha512\\s+win32/en-US/$basename",
+     "url": "https://archive.mozilla.org/pub/firefox/releases/$versionesr/SHA512SUMS"
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "regex": "$sha512\\s+win32/en-US/$basename",
-                    "url": "https://archive.mozilla.org/pub/firefox/releases/$versionesr/SHA512SUMS"
-                },
-                "url": "https://archive.mozilla.org/pub/firefox/releases/$versionesr/win32/en-US/Firefox%20Setup%20$versionesr.exe#/dl.7z"
-            },
-            "64bit": {
-                "hash": {
-                    "regex": "$sha512\\s+win64/en-US/$basename",
-                    "url": "https://archive.mozilla.org/pub/firefox/releases/$versionesr/SHA512SUMS"
-                },
-                "url": "https://archive.mozilla.org/pub/firefox/releases/$versionesr/win64/en-US/Firefox%20Setup%20$versionesr.exe#/dl.7z"
-            }
-        }
+    "url": "https://archive.mozilla.org/pub/firefox/releases/$versionesr/win32/en-US/Firefox%20Setup%20$versionesr.exe#/dl.7z"
+   },
+   "64bit": {
+    "hash": {
+     "regex": "$sha512\\s+win64/en-US/$basename",
+     "url": "https://archive.mozilla.org/pub/firefox/releases/$versionesr/SHA512SUMS"
     },
-    "bin": [
-        [
-            "firefox.exe",
-            "firefox",
-            "-profile \"$dir\\profile\""
-        ],
-        [
-            "firefox.exe",
-            "firefox-esr",
-            "-profile \"$dir\\profile\""
-        ]
-    ],
-    "checkver": {
-        "url": "https://aus5.mozilla.org/update/6/Firefox/78.0/_/WINNT_x86_64-msvc-x64/en-US/esr/_/_/_/_/update.xml",
-        "xpath": "/updates/update/@appVersion"
-    },
-    "description": "Extended Support Release of Firefox: the popular open source web browser.",
-    "extract_dir": "core",
-    "homepage": "https://www.mozilla.org/en-US/firefox/organizations/",
-    "license": "MPL-2.0",
-    "persist": "profile",
-    "shortcuts": [
-        [
-            "firefox.exe",
-            "Firefox ESR",
-            "-profile \"$dir\\profile\""
-        ]
-    ],
-    "version": "102.4.0"
+    "url": "https://archive.mozilla.org/pub/firefox/releases/$versionesr/win64/en-US/Firefox%20Setup%20$versionesr.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": [
+  [
+   "firefox.exe",
+   "firefox",
+   "-profile \"$dir\\profile\""
+  ],
+  [
+   "firefox.exe",
+   "firefox-esr",
+   "-profile \"$dir\\profile\""
+  ]
+ ],
+ "checkver": {
+  "url": "https://aus5.mozilla.org/update/6/Firefox/78.0/_/WINNT_x86_64-msvc-x64/en-US/esr/_/_/_/_/update.xml",
+  "xpath": "/updates/update/@appVersion"
+ },
+ "description": "Extended Support Release of Firefox: the popular open source web browser.",
+ "extract_dir": "core",
+ "homepage": "https://www.mozilla.org/en-US/firefox/organizations/",
+ "license": "MPL-2.0",
+ "persist": "profile",
+ "shortcuts": [
+  [
+   "firefox.exe",
+   "Firefox ESR",
+   "-profile \"$dir\\profile\""
+  ]
+ ],
+ "version": "102.4.0"
 }

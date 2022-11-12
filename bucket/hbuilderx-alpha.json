@@ -1,40 +1,40 @@
 {
-    "autoupdate": {
-        "url": "https://download1.dcloud.net.cn/download/HBuilderX.$version.zip"
-    },
-    "bin": "HBuilderX.exe",
-    "checkver": {
-        "jsonpath": "$.version",
-        "url": "https://download1.dcloud.net.cn/hbuilderx/alpha.json"
-    },
-    "description": "Lightweight but powerful source code editor(Standard, Alpha Edition).",
-    "extract_dir": "HBuilderX",
-    "hash": "f1ee98d826d2a4034ff6f9ae1d9d0bc2da8d7bc582eeee2a0dd47b764f752fdb",
-    "homepage": "https://www.dcloud.io/hbuilderx.html",
-    "license": {
-        "identifier": "Proprietary",
-        "url": "https://hx.dcloud.net.cn/license"
-    },
-    "notes": "If you encounter a situation where HBuilderX does not start, please check <http://ask.dcloud.net.cn/article/35583>",
-    "pre_install": [
-        "if (Test-Path \"$env:AppData\\HBuilder X\") {",
-        "    info \"Copying old '$env:AppData\\HBuilder X' to '$persist_dir\\Data\\settings'\" ...",
-        "    Copy-Item \"$env:AppData\\HBuilder X\" \"$dir\\Data\\\" -Recurse -Force",
-        "}"
-    ],
-    "shortcuts": [
-        [
-            "HBuilderX.exe",
-            "HBuilderX Alpha"
-        ]
-    ],
-    "uninstaller": {
-        "script": [
-            "Push-Location \"$dir\"",
-            "sudo Start-Process -filepath \"$dir\\reset.bat\" -WorkingDirectory \"$dir\" -Wait",
-            "Pop-Location"
-        ]
-    },
-    "url": "https://download1.dcloud.net.cn/download/HBuilderX.3.6.8.20221027-alpha.zip",
-    "version": "3.6.8.20221027-alpha"
+ "autoupdate": {
+  "url": "https://download1.dcloud.net.cn/download/HBuilderX.$version.zip"
+ },
+ "bin": "HBuilderX.exe",
+ "checkver": {
+  "jsonpath": "$.version",
+  "url": "https://download1.dcloud.net.cn/hbuilderx/alpha.json"
+ },
+ "description": "Lightweight but powerful source code editor(Standard, Alpha Edition).",
+ "extract_dir": "HBuilderX",
+ "hash": "f1ee98d826d2a4034ff6f9ae1d9d0bc2da8d7bc582eeee2a0dd47b764f752fdb",
+ "homepage": "https://www.dcloud.io/hbuilderx.html",
+ "license": {
+  "identifier": "Proprietary",
+  "url": "https://hx.dcloud.net.cn/license"
+ },
+ "notes": "If you encounter a situation where HBuilderX does not start, please check <http://ask.dcloud.net.cn/article/35583>",
+ "pre_install": [
+  "if (Test-Path \"$env:AppData\\HBuilder X\") {",
+  "    info \"Copying old '$env:AppData\\HBuilder X' to '$persist_dir\\Data\\settings'\" ...",
+  "    Copy-Item \"$env:AppData\\HBuilder X\" \"$dir\\Data\\\" -Recurse -Force",
+  "}"
+ ],
+ "shortcuts": [
+  [
+   "HBuilderX.exe",
+   "HBuilderX Alpha"
+  ]
+ ],
+ "uninstaller": {
+  "script": [
+   "Push-Location \"$dir\"",
+   "sudo Start-Process -filepath \"$dir\\reset.bat\" -WorkingDirectory \"$dir\" -Wait",
+   "Pop-Location"
+  ]
+ },
+ "url": "https://download1.dcloud.net.cn/download/HBuilderX.3.6.8.20221027-alpha.zip",
+ "version": "3.6.8.20221027-alpha"
 }

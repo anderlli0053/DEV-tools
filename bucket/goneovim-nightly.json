@@ -1,36 +1,36 @@
 {
-    "version": "20221030",
-    "description": "Neovim GUI which uses a Golang Qt backend",
-    "homepage": "https://github.com/akiyosi/goneovim",
-    "license": "MIT",
-    "suggest": {
-        "neovim": "neovim"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/akiyosi/goneovim/releases/download/nightly/goneovim-windows.zip",
-            "hash": "ced4d21641b9ad815e839fef14ac1be875b7893083b68e28ce81a10b653da7fe"
-        }
-    },
-    "extract_dir": "goneovim-windows",
-    "bin": "goneovim.exe",
-    "shortcuts": [
-        [
-            "goneovim.exe",
-            "Goneovim-nightly"
-        ]
-    ],
-    "checkver": {
-        "url": "https://api.github.com/repos/akiyosi/goneovim/releases/tags/nightly",
-        "jsonpath": "$.assets[?(@.name=='goneovim-windows.zip')].updated_at",
-        "regex": ".*(?<year>\\d{4})\\D(?<month>\\d{2})\\D(?<day>\\d{2}).*",
-        "replace": "${year}${month}${day}"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/akiyosi/goneovim/releases/download/nightly/goneovim-windows.zip"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "5f6f16140d23e1516ccc9bb8374df44944f1aa60a306b936e01982f23eb9bbf6",
+   "url": "https://github.com/akiyosi/goneovim/releases/download/nightly/goneovim-windows.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/akiyosi/goneovim/releases/download/nightly/goneovim-windows.zip"
+   }
+  }
+ },
+ "bin": "goneovim.exe",
+ "checkver": {
+  "jsonpath": "$.assets[?(@.name=='goneovim-windows.zip')].updated_at",
+  "regex": ".*(?<year>\\d{4})\\D(?<month>\\d{2})\\D(?<day>\\d{2}).*",
+  "replace": "${year}${month}${day}",
+  "url": "https://api.github.com/repos/akiyosi/goneovim/releases/tags/nightly"
+ },
+ "description": "Neovim GUI which uses a Golang Qt backend",
+ "extract_dir": "goneovim-windows",
+ "homepage": "https://github.com/akiyosi/goneovim",
+ "license": "MIT",
+ "shortcuts": [
+  [
+   "goneovim.exe",
+   "Goneovim-nightly"
+  ]
+ ],
+ "suggest": {
+  "neovim": "neovim"
+ },
+ "version": "20221109"
 }

@@ -1,0 +1,28 @@
+{
+ "autoupdate": {
+  "url": "https://www.sordum.org/files/download/registry-key-jumper/RegJump.zip"
+ },
+ "bin": "RegJump.exe",
+ "checkver": "Registry\\sKey\\sJumper\\sv([\\d.]+)",
+ "description": "A tool that helps the user navigate to a user-defined registry key with minimal effort.",
+ "extract_dir": "RegJump",
+ "hash": "f564b7521c5db597efc1afeb334ee94a7b609771942ff8bbf8945a83bb89f8ef",
+ "homepage": "https://www.sordum.org/8110/registry-key-jumper",
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://www.sordum.org/eula/"
+ },
+ "persist": "RegJump.ini",
+ "pre_install": [
+  "if ($architecture -eq '32bit') {Remove-Item \"$dir\\RegJump_x64.exe\"}",
+  "elseif ($architecture -eq '64bit') {Remove-Item \"$dir\\RegJump.exe\"; Rename-Item \"$dir\\RegJump_x64.exe\" 'RegJump.exe'}"
+ ],
+ "shortcuts": [
+  [
+   "RegJump.exe",
+   "Registry Key Jumper"
+  ]
+ ],
+ "url": "https://www.sordum.org/files/download/registry-key-jumper/RegJump.zip",
+ "version": "1.3"
+}

@@ -1,0 +1,26 @@
+{
+ "autoupdate": {
+  "url": "https://www.sordum.org/files/download/restart-explorer/Rexplorer.zip"
+ },
+ "bin": "Rexplorer.exe",
+ "checkver": "Restart\\sExplorer\\sv([\\d.]+)",
+ "description": "A small tool for restarting the Windows File Explorer.",
+ "hash": "86fe9c301ebc9c9ee9fc29df220562a3de091c5045fbba6ed00000844c4c9629",
+ "homepage": "https://www.sordum.org/9192/restart-explorer",
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://www.sordum.org/eula/"
+ },
+ "pre_install": [
+  "if ($architecture -eq '32bit') {Remove-Item \"$dir\\Rexplorer_x64.exe\"}",
+  "elseif ($architecture -eq '64bit') {Remove-Item \"$dir\\Rexplorer.exe\"; Rename-Item \"$dir\\Rexplorer_x64.exe\" 'Rexplorer.exe'}"
+ ],
+ "shortcuts": [
+  [
+   "Rexplorer.exe",
+   "Restart Explorer"
+  ]
+ ],
+ "url": "https://www.sordum.org/files/download/restart-explorer/Rexplorer.zip",
+ "version": "1.6"
+}

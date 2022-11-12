@@ -1,44 +1,44 @@
 {
-    "version": "0.9.0-dev-284-g0faf007a2",
-    "description": "Vim fork focused on extensibility and usability",
-    "homepage": "https://neovim.io",
-    "license": {
-        "identifier": "Apache-2.0,Vim",
-        "url": "https://github.com/neovim/neovim/blob/master/LICENSE"
+ "architecture": {
+  "64bit": {
+   "hash": "2f9950a5555372f0fe855f35f04af38d807bcb4e280beecb3c99ed642b66aff4",
+   "url": "https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "url": "$url.sha256sum"
     },
-    "suggest": {
-        "vcredist": "extras/vcredist2022"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip",
-            "hash": "6eb996c28fd954da2c71bd777976dcf9cd7bdcd17fdf2a0a55dc0ae9f0942eeb"
-        }
-    },
-    "extract_dir": "nvim-win64",
-    "bin": [
-        "bin\\nvim.exe",
-        "bin\\nvim-qt.exe"
-    ],
-    "shortcuts": [
-        [
-            "bin\\nvim-qt.exe",
-            "Neovim"
-        ]
-    ],
-    "checkver": {
-        "url": "https://api.github.com/repos/neovim/neovim/releases",
-        "regex": "NVIM v([\\w.-]+)\\+([\\w.-]+)",
-        "replace": "${1}-${2}"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip",
-                "hash": {
-                    "url": "$url.sha256sum"
-                }
-            }
-        }
-    }
+    "url": "https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip"
+   }
+  }
+ },
+ "bin": [
+  "bin\\nvim.exe",
+  "bin\\nvim-qt.exe"
+ ],
+ "checkver": {
+  "regex": "NVIM v([\\w.-]+)\\+([\\w.-]+)",
+  "replace": "${1}-${2}",
+  "url": "https://api.github.com/repos/neovim/neovim/releases"
+ },
+ "description": "Vim fork focused on extensibility and usability",
+ "extract_dir": "nvim-win64",
+ "homepage": "https://neovim.io",
+ "license": {
+  "identifier": "Apache-2.0,Vim",
+  "url": "https://github.com/neovim/neovim/blob/master/LICENSE"
+ },
+ "shortcuts": [
+  [
+   "bin\\nvim-qt.exe",
+   "Neovim"
+  ]
+ ],
+ "suggest": {
+  "vcredist": "extras/vcredist2022"
+ },
+ "version": "0.9.0-dev-296-g7335a67b5"
 }

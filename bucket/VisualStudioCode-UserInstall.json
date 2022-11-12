@@ -1,62 +1,62 @@
 {
-    "##": "Download url https://code.visualstudio.com/download#",
-    "version": "1.73.1",
-    "description": "Visual Studio Code (User). is a lightweight but powerful source code editor.",
-    "homepage": "https://code.visualstudio.com/",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://code.visualstudio.com/License/"
-    },
-    "changelog": "https://code.visualstudio.com/updates/v1_73",
-    "architecture": {
-        "64bit": {
-            "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user#/setup.exe",
-            "hash": "b970a7e561ba812be006d4890251a8985e56e9910859e636aa9cc2fda2d5d203"
-        },
-        "32bit": {
-            "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-user#/setup.exe",
-            "hash": "2c1c0c9894c60c95dc2c9d7ec30a2aa5408477346ac4974995ea06c059088676"
-        }
-    },
-    "pre_install": [
-        "$processname = \"Code\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "installer": {
-        "script": [
-            "$programname = \"Microsoft Visual Studio Code (User)*\"",
-            "$regPath = \"HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{771FD6B0-FA20-440A-A002-3B3BAC16DC50}_is1\"",
-            "if((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\")",
-            "{",
-            "   &\"$dir\\setup.exe\" /VERYSILENT /MERGETASKS=!runcode,!desktopicon,!quicklaunchicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath | Out-Null",
-            "   if((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\")",
-            "   {",
-            "       exit 1",
-            "   }",
-            "}",
-            "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
-        ]
-    },
-    "checkver": {
-        "github": "https://github.com/microsoft/vscode"
-    },
-    "autoupdate": {
-        "changelog": "https://code.visualstudio.com/updates/v$majorVersion_$minorVersion",
-        "architecture": {
-            "64bit": {
-                "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user#/setup.exe"
-            },
-            "32bit": {
-                "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-user#/setup.exe"
-            }
-        }
-    }
+ "##": "Download url https://code.visualstudio.com/download#",
+ "architecture": {
+  "32bit": {
+   "hash": "2c1c0c9894c60c95dc2c9d7ec30a2aa5408477346ac4974995ea06c059088676",
+   "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-user#/setup.exe"
+  },
+  "64bit": {
+   "hash": "b970a7e561ba812be006d4890251a8985e56e9910859e636aa9cc2fda2d5d203",
+   "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user#/setup.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-user#/setup.exe"
+   },
+   "64bit": {
+    "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user#/setup.exe"
+   }
+  },
+  "changelog": "https://code.visualstudio.com/updates/v$majorVersion_$minorVersion"
+ },
+ "changelog": "https://code.visualstudio.com/updates/v1_73",
+ "checkver": {
+  "github": "https://github.com/microsoft/vscode"
+ },
+ "description": "Visual Studio Code (User). is a lightweight but powerful source code editor.",
+ "homepage": "https://code.visualstudio.com/",
+ "installer": {
+  "script": [
+   "$programname = \"Microsoft Visual Studio Code (User)*\"",
+   "$regPath = \"HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{771FD6B0-FA20-440A-A002-3B3BAC16DC50}_is1\"",
+   "if((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\")",
+   "{",
+   "   &\"$dir\\setup.exe\" /VERYSILENT /MERGETASKS=!runcode,!desktopicon,!quicklaunchicon,addcontextmenufiles,addcontextmenufolders,associatewithfiles,addtopath | Out-Null",
+   "   if((Get-ItemProperty -LiteralPath \"$regPath\").DisplayVersion -lt [Version]\"$version\")",
+   "   {",
+   "       exit 1",
+   "   }",
+   "}",
+   "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
+  ]
+ },
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://code.visualstudio.com/License/"
+ },
+ "pre_install": [
+  "$processname = \"Code\"",
+  "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+  "if ($process) {",
+  "   $process.CloseMainWindow()",
+  "   Start-Sleep -Seconds 5",
+  "   if (!$process.HasExited) {",
+  "       Start-Sleep -Seconds 25",
+  "       $process | Stop-Process -Force",
+  "   }",
+  "}"
+ ],
+ "version": "1.73.1"
 }

@@ -1,36 +1,36 @@
 {
-    "version": "1.6.22",
-    "description": "Static checker for GitHub Actions workflow files",
-    "homepage": "https://github.com/rhysd/actionlint",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/rhysd/actionlint/releases/download/v1.6.22/actionlint_1.6.22_windows_amd64.zip",
-            "hash": "c0007e418e6cd2008769e55666229b50677f85975676c4246baee5ec3ae9a2b5"
-        },
-        "32bit": {
-            "url": "https://github.com/rhysd/actionlint/releases/download/v1.6.22/actionlint_1.6.22_windows_386.zip",
-            "hash": "1396715a2c179eb41f930d470d1dc8eb82fe6d093ad5b7ce0df7e2ab7632a974"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "1396715a2c179eb41f930d470d1dc8eb82fe6d093ad5b7ce0df7e2ab7632a974",
+   "url": "https://github.com/rhysd/actionlint/releases/download/v1.6.22/actionlint_1.6.22_windows_386.zip"
+  },
+  "64bit": {
+   "hash": "c0007e418e6cd2008769e55666229b50677f85975676c4246baee5ec3ae9a2b5",
+   "url": "https://github.com/rhysd/actionlint/releases/download/v1.6.22/actionlint_1.6.22_windows_amd64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "regex": "$sha256\\s+$basename",
+     "url": "$baseurl/actionlint_$version_checksums.txt"
     },
-    "bin": "actionlint.exe",
-    "checkver": "github",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/rhysd/actionlint/releases/download/v$version/actionlint_$version_windows_amd64.zip",
-                "hash": {
-                    "url": "$baseurl/actionlint_$version_checksums.txt",
-                    "regex": "$sha256\\s+$basename"
-                }
-            },
-            "32bit": {
-                "url": "https://github.com/rhysd/actionlint/releases/download/v$version/actionlint_$version_windows_386.zip",
-                "hash": {
-                    "url": "$baseurl/actionlint_$version_checksums.txt",
-                    "regex": "$sha256\\s+$basename"
-                }
-            }
-        }
-    }
+    "url": "https://github.com/rhysd/actionlint/releases/download/v$version/actionlint_$version_windows_386.zip"
+   },
+   "64bit": {
+    "hash": {
+     "regex": "$sha256\\s+$basename",
+     "url": "$baseurl/actionlint_$version_checksums.txt"
+    },
+    "url": "https://github.com/rhysd/actionlint/releases/download/v$version/actionlint_$version_windows_amd64.zip"
+   }
+  }
+ },
+ "bin": "actionlint.exe",
+ "checkver": "github",
+ "description": "Static checker for GitHub Actions workflow files",
+ "homepage": "https://github.com/rhysd/actionlint",
+ "license": "MIT",
+ "version": "1.6.22"
 }

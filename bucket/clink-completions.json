@@ -1,33 +1,33 @@
 {
-    "version": "0.4.1",
-    "description": "Completions for various commands through Clink",
-    "homepage": "https://github.com/vladimir-kotikov/clink-completions",
-    "license": "MIT",
-    "suggest": {
-        "Clink": "clink"
-    },
-    "url": "https://github.com/vladimir-kotikov/clink-completions/archive/0.4.1.zip",
-    "hash": "e40eae3ce3ac480d65527548d3eb2041decde4ece98e1c9b45be30ea855b51cb",
-    "extract_dir": "clink-completions-0.4.1",
-    "installer": {
-        "script": [
-            "if (Get-Command clink -ErrorAction SilentlyContinue) {",
-            "   clink installscripts \"$dir\"",
-            "} else {",
-            "   warn 'Clink installation not found. Please manually install these scripts.'",
-            "}"
-        ]
-    },
-    "uninstaller": {
-        "script": [
-            "if (Get-Command clink -ErrorAction SilentlyContinue) {",
-            "   clink uninstallscripts \"$dir\"",
-            "}"
-        ]
-    },
-    "checkver": "github",
-    "autoupdate": {
-        "url": "https://github.com/vladimir-kotikov/clink-completions/archive/$version.zip",
-        "extract_dir": "clink-completions-$version"
-    }
+ "autoupdate": {
+  "extract_dir": "clink-completions-$version",
+  "url": "https://github.com/vladimir-kotikov/clink-completions/archive/$version.zip"
+ },
+ "checkver": "github",
+ "description": "Completions for various commands through Clink",
+ "extract_dir": "clink-completions-0.4.1",
+ "hash": "e40eae3ce3ac480d65527548d3eb2041decde4ece98e1c9b45be30ea855b51cb",
+ "homepage": "https://github.com/vladimir-kotikov/clink-completions",
+ "installer": {
+  "script": [
+   "if (Get-Command clink -ErrorAction SilentlyContinue) {",
+   "   clink installscripts \"$dir\"",
+   "} else {",
+   "   warn 'Clink installation not found. Please manually install these scripts.'",
+   "}"
+  ]
+ },
+ "license": "MIT",
+ "suggest": {
+  "Clink": "clink"
+ },
+ "uninstaller": {
+  "script": [
+   "if (Get-Command clink -ErrorAction SilentlyContinue) {",
+   "   clink uninstallscripts \"$dir\"",
+   "}"
+  ]
+ },
+ "url": "https://github.com/vladimir-kotikov/clink-completions/archive/0.4.1.zip",
+ "version": "0.4.1"
 }

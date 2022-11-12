@@ -1,0 +1,33 @@
+{
+ "architecture": {
+  "64bit": {
+   "hash": "4e23c52a5a23dba1cf9e2ea980d1ce31f2f34f39404eb4e5689359dfa9f28269",
+   "url": "https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-11_0_16-windows-x64-b2043.64.tar.gz"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "regex": "$sha256\\s",
+     "url": "$url.checksum"
+    },
+    "url": "https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-$matchVersion-windows-x64-$matchBuild.$matchPatch.tar.gz"
+   }
+  }
+ },
+ "checkver": {
+  "regex": "\\s(?<Version>[\\d_]+)-(?<Build>[\\w]+)\\.(?<Patch>[\\d]+)</h2>",
+  "replace": "${Version}-${Build}.${Patch}",
+  "url": "https://github.com/JetBrains/JetBrainsRuntime/releases"
+ },
+ "description": "A fork of OpenJDK that includes a number enhancements in font rendering, HiDPI support, ligatures, performance improvements, and bugfixes. These are mainly for running IntelliJ Platform-based products",
+ "env_add_path": "bin",
+ "env_set": {
+  "JAVA_HOME": "$dir"
+ },
+ "extract_dir": "jbr",
+ "homepage": "https://github.com/JetBrains/JetBrainsRuntime",
+ "license": "GPL-2.0",
+ "version": "11_0_16-b2043.64"
+}

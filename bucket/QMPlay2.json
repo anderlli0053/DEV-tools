@@ -1,35 +1,35 @@
 {
-    "version": "22.08.21",
-    "description": "QMPlay2 is a video and audio player which can play most formats and codecs.",
-    "homepage": "https://github.com/zaps166/QMPlay2",
-    "license": "LGPL-3.0-only",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/zaps166/QMPlay2/releases/download/22.08.21/QMPlay2-Win64-22.08.21.exe#/dl.7z",
-            "hash": "edcab000f43370bb2d54604068858c156d2f832861d5d5494ccd82b258ecb98a"
-        },
-        "32bit": {
-            "url": "https://github.com/zaps166/QMPlay2/releases/download/21.12.24/QMPlay2-Win32-21.12.24.exe#/dl.7z",
-            "hash": ""
-        }
-    },
-    "bin": "QMPlay2.exe",
-    "shortcuts": [
-        [
-            "QMPlay2.exe",
-            "QMPlay2"
-        ]
-    ],
-    "checkver": "github",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/zaps166/QMPlay2/releases/download/$version/QMPlay2-Win64-$version.exe#/dl.7z"
-            }
-        },
-        "32bit": {
-            "url": "https://github.com/zaps166/QMPlay2/releases/download/$version/QMPlay2-Win32-$version.exe#/dl.7z"
-        }
-    },
-    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
+ "architecture": {
+  "32bit": {
+   "hash": "",
+   "url": "https://github.com/zaps166/QMPlay2/releases/download/21.12.24/QMPlay2-Win32-21.12.24.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "edcab000f43370bb2d54604068858c156d2f832861d5d5494ccd82b258ecb98a",
+   "url": "https://github.com/zaps166/QMPlay2/releases/download/22.08.21/QMPlay2-Win64-22.08.21.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "32bit": {
+   "url": "https://github.com/zaps166/QMPlay2/releases/download/$version/QMPlay2-Win32-$version.exe#/dl.7z"
+  },
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/zaps166/QMPlay2/releases/download/$version/QMPlay2-Win64-$version.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": "QMPlay2.exe",
+ "checkver": "github",
+ "description": "QMPlay2 is a video and audio player which can play most formats and codecs.",
+ "homepage": "https://github.com/zaps166/QMPlay2",
+ "license": "LGPL-3.0-only",
+ "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+ "shortcuts": [
+  [
+   "QMPlay2.exe",
+   "QMPlay2"
+  ]
+ ],
+ "version": "22.08.21"
 }

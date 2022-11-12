@@ -1,70 +1,70 @@
 {
-    "version": "5.12.8.10232",
-    "description": "Zoom provides videotelephony and online chat services through a cloud-based peer-to-peer software platform and is used for teleconferencing, telecommuting, distance education, and social relations.",
-    "homepage": "https://zoom.us/",
-    "license": "Proprietary",
-    "architecture": {
-        "64bit": {
-            "url": "https://www.zoom.us/client/5.12.8.10232/ZoomInstallerFull.msi?archType=x64#/setup.msi_",
-            "hash": "55141f6a10a7cf9b7fde39ae254bda451467113595467d63be5961f44b918be2"
-        },
-        "32bit": {
-            "url": "https://www.zoom.us/client/5.12.8.10232/ZoomInstallerFull.msi#/setup.msi_",
-            "hash": "5e7f9dd4cf38c565f20bbca4fe8be038ce13690c5677cad392626cfbd01f434c"
-        }
-    },
-    "pre_download": "Assert-Administrator",
-    "pre_install": [
-        "$processname = \"Zoom*\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "installer": {
-        "script": [
-            "$programname = \"Zoom*\"",
-            "$installpath = \"$dir\\setup.msi_\"",
-            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
-            "$programsVersion = \"$majorVersion.$minorVersion.$patchVersion\"",
-            "if((Get-Command \"$ProgramFiles\\Zoom\\bin\\zoom.exe\").Version -lt $version)",
-            "{",
-            "   Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn', '/norestart', 'MSIRESTARTMANAGERCONTROL=”Disable”', 'ZoomAutoUpdate=\"true\"') -RunAs | Out-Null",
-            "   if((Get-Command \"$ProgramFilesX86\\Zoom\\bin\\zoom.exe\").Version -lt $version)",
-            "   {",
-            "       exit 1",
-            "   }",
-            "}",
-            "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
-            "if (Test-Path -Path \"$CommonDesktopPath\\Zoom.lnk\")",
-            "{",
-            "   Remove-Item \"$CommonDesktopPath\\Zoom.lnk\" -Force",
-            "}",
-            "if (Test-Path -Path \"$dir\\setup.msi_\") { Remove-Item \"$dir\\setup.msi_\" -Force }"
-        ]
-    },
-    "post_install": [
-        "$programname = \"Zoom\"",
-        "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
-        "if (Test-Path \"$CommonDesktopPath\\$programname.lnk\") {Remove-Item \"$CommonDesktopPath\\$programname.lnk\" -Force}"
-    ],
-    "checkver": {
-        "url": "https://launcher.zoom.us/upgrade?os=win",
-        "regex": "Current-version=([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi?archType=x64#/setup.msi_"
-            },
-            "32bit": {
-                "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi#/setup.msi_"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "5e7f9dd4cf38c565f20bbca4fe8be038ce13690c5677cad392626cfbd01f434c",
+   "url": "https://www.zoom.us/client/5.12.8.10232/ZoomInstallerFull.msi#/setup.msi_"
+  },
+  "64bit": {
+   "hash": "55141f6a10a7cf9b7fde39ae254bda451467113595467d63be5961f44b918be2",
+   "url": "https://www.zoom.us/client/5.12.8.10232/ZoomInstallerFull.msi?archType=x64#/setup.msi_"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi#/setup.msi_"
+   },
+   "64bit": {
+    "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi?archType=x64#/setup.msi_"
+   }
+  }
+ },
+ "checkver": {
+  "regex": "Current-version=([\\d.]+)",
+  "url": "https://launcher.zoom.us/upgrade?os=win"
+ },
+ "description": "Zoom provides videotelephony and online chat services through a cloud-based peer-to-peer software platform and is used for teleconferencing, telecommuting, distance education, and social relations.",
+ "homepage": "https://zoom.us/",
+ "installer": {
+  "script": [
+   "$programname = \"Zoom*\"",
+   "$installpath = \"$dir\\setup.msi_\"",
+   "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
+   "$programsVersion = \"$majorVersion.$minorVersion.$patchVersion\"",
+   "if((Get-Command \"$ProgramFiles\\Zoom\\bin\\zoom.exe\").Version -lt $version)",
+   "{",
+   "   Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn', '/norestart', 'MSIRESTARTMANAGERCONTROL=\u201dDisable\u201d', 'ZoomAutoUpdate=\"true\"') -RunAs | Out-Null",
+   "   if((Get-Command \"$ProgramFilesX86\\Zoom\\bin\\zoom.exe\").Version -lt $version)",
+   "   {",
+   "       exit 1",
+   "   }",
+   "}",
+   "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
+   "if (Test-Path -Path \"$CommonDesktopPath\\Zoom.lnk\")",
+   "{",
+   "   Remove-Item \"$CommonDesktopPath\\Zoom.lnk\" -Force",
+   "}",
+   "if (Test-Path -Path \"$dir\\setup.msi_\") { Remove-Item \"$dir\\setup.msi_\" -Force }"
+  ]
+ },
+ "license": "Proprietary",
+ "post_install": [
+  "$programname = \"Zoom\"",
+  "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
+  "if (Test-Path \"$CommonDesktopPath\\$programname.lnk\") {Remove-Item \"$CommonDesktopPath\\$programname.lnk\" -Force}"
+ ],
+ "pre_download": "Assert-Administrator",
+ "pre_install": [
+  "$processname = \"Zoom*\"",
+  "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+  "if ($process) {",
+  "   $process.CloseMainWindow()",
+  "   Start-Sleep -Seconds 5",
+  "   if (!$process.HasExited) {",
+  "       Start-Sleep -Seconds 25",
+  "       $process | Stop-Process -Force",
+  "   }",
+  "}"
+ ],
+ "version": "5.12.8.10232"
 }

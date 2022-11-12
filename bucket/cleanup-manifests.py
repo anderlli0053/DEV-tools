@@ -17,22 +17,22 @@ import json_minify
 import os
 from os import path
 
-borked_json_files = [
-    # courtesy of Andrew Pozenel (shame on you)
-    "audiosurf2.json",                               # Invalid control character at: line 1 column 548 (char 547)
-    "blip-and-blop.json",                            # Invalid control character at: line 1 column 526 (char 525)
-    "cleo-scripting-pack.json",                      # Invalid control character at: line 1 column 562 (char 561)
-    "crowbar.json",                                  # Invalid control character at: line 1 column 530 (char 529)
-    "dragonunpacker.json",                           # Invalid control character at: line 1 column 590 (char 589)
-    "foe.json"                                       # json.decoder.JSONDecodeError: Invalid control character at: line 1 column 661 (char 660)
+# borked_json_files = [
+    # # courtesy of Andrew Pozenel (shame on you)
+    # "audiosurf2.json",                               # Invalid control character at: line 1 column 548 (char 547)
+    # "blip-and-blop.json",                            # Invalid control character at: line 1 column 526 (char 525)
+    # "cleo-scripting-pack.json",                      # Invalid control character at: line 1 column 562 (char 561)
+    # "crowbar.json",                                  # Invalid control character at: line 1 column 530 (char 529)
+    # "dragonunpacker.json",                           # Invalid control character at: line 1 column 590 (char 589)
+    # "foe.json"                                       # json.decoder.JSONDecodeError: Invalid control character at: line 1 column 661 (char 660)
 
-]
+# ]
 
 # just plain incomplete json files, skipped
-borked_json_files_incomplete = [
-    "cabal.json",                           # just incomplete
-    "processing.json"                       # JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 1402 (char 1401)"
-]
+# borked_json_files_incomplete = [
+    # "cabal.json",                           # just incomplete
+    # "processing.json"                       # JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 1402 (char 1401)"
+# ]
 
 clean_directory = (r"C:\\Users\\ander\\Desktop\\DEV-tools\\bucket")
 
@@ -50,8 +50,8 @@ def cleanup_json(jsonfile, strip_space=False):
     fname = jsonfile.split(os.sep)[-1]
     json_clean = json_clean.replace('\n', "").replace('\r', "").replace('\t', "")
 
-    if fname in borked_json_files_incomplete:
-        return
+    # if fname in borked_json_files_incomplete:
+        # return
 
     json_dict = json.loads(json_clean)
     with open(jsonfile, "w", encoding="utf-8") as jf:

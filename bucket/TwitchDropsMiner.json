@@ -1,43 +1,43 @@
 {
-    "version": "14",
-    "description": "twitch",
-    "homepage": "https://github.com/DevilXD/TwitchDropsMiner",
-    "license": "mit",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/DevilXD/TwitchDropsMiner/releases/download/v14/Twitch.Drops.Miner.zip",
-            "hash": "3d7f3a820b73fec9183e38213879214149e0d077580b1e085dc2353bd1fd7ba5",
-            "extract_dir": "Twitch Drops Miner"
-        }
-    },
-    "bin": [
-        [
-            "Twitch Drops Miner (by DevilXD).exe",
-            "TwitchDrops"
-        ]
-    ],
-    "shortcuts": [
-        [
-            "Twitch Drops Miner (by DevilXD).exe",
-            "Twitch Drops"
-        ]
-    ],
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\settings.json\")) {",
-        "  New-Item \"$persist_dir\\settings.json\", \"$persist_dir\\cookies.jar\"",
-        "}"
-    ],
-    "persist": [
-        "cache",
-        "settings.json",
-        "cookies.jar"
-    ],
-    "checkver": "github",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/DevilXD/TwitchDropsMiner/releases/download/v$version/Twitch.Drops.Miner.zip"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "extract_dir": "Twitch Drops Miner",
+   "hash": "3d7f3a820b73fec9183e38213879214149e0d077580b1e085dc2353bd1fd7ba5",
+   "url": "https://github.com/DevilXD/TwitchDropsMiner/releases/download/v14/Twitch.Drops.Miner.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/DevilXD/TwitchDropsMiner/releases/download/v$version/Twitch.Drops.Miner.zip"
+   }
+  }
+ },
+ "bin": [
+  [
+   "Twitch Drops Miner (by DevilXD).exe",
+   "TwitchDrops"
+  ]
+ ],
+ "checkver": "github",
+ "description": "twitch",
+ "homepage": "https://github.com/DevilXD/TwitchDropsMiner",
+ "license": "mit",
+ "persist": [
+  "cache",
+  "settings.json",
+  "cookies.jar"
+ ],
+ "pre_install": [
+  "if (!(Test-Path \"$persist_dir\\settings.json\")) {",
+  "  New-Item \"$persist_dir\\settings.json\", \"$persist_dir\\cookies.jar\"",
+  "}"
+ ],
+ "shortcuts": [
+  [
+   "Twitch Drops Miner (by DevilXD).exe",
+   "Twitch Drops"
+  ]
+ ],
+ "version": "14"
 }

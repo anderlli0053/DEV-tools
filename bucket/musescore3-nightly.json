@@ -1,42 +1,42 @@
 {
-    "version": "202211120423",
-    "description": "Music notation editor with an easy-to-use WYSIWYG interface.",
-    "homepage": "https://musescore.org/",
-    "license": "GPL-2.0-only",
-    "architecture": {
-        "64bit": {
-            "url": "https://ftp.osuosl.org/pub/musescore-nightlies/windows/3x/nightly/MuseScoreNightly-202211120423-3.x-2513676-x86_64.7z",
-            "hash": "610f88bc3bc026a0627cdabcd8dbb237e8008ae2f74d830206454b98007552c2"
-        }
-    },
-    "extract_dir": "MuseScoreNightly-202211120423-3.x-2513676-x86_64",
-    "bin": [
-        [
-            "bin\\MuseScore3.exe",
-            "MuseScore"
-        ],
-        [
-            "bin\\MuseScore3.exe",
-            "mscore"
-        ]
-    ],
-    "shortcuts": [
-        [
-            "bin\\MuseScore3.exe",
-            "MuseScore 3 Nightly"
-        ]
-    ],
-    "checkver": {
-        "url": "https://ftp.osuosl.org/pub/musescore-nightlies/windows/3x/nightly/",
-        "regex": "MuseScoreNightly-(\\d+)-3.x-(?<tag>[a-f0-9]+)-x86_64\\.7z",
-        "reverse": true
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://ftp.osuosl.org/pub/musescore-nightlies/windows/3x/nightly/MuseScoreNightly-$version-3.x-$matchTag-x86_64.7z"
-            }
-        },
-        "extract_dir": "MuseScoreNightly-$version-3.x-$matchTag-x86_64"
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "610f88bc3bc026a0627cdabcd8dbb237e8008ae2f74d830206454b98007552c2",
+   "url": "https://ftp.osuosl.org/pub/musescore-nightlies/windows/3x/nightly/MuseScoreNightly-202211120423-3.x-2513676-x86_64.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://ftp.osuosl.org/pub/musescore-nightlies/windows/3x/nightly/MuseScoreNightly-$version-3.x-$matchTag-x86_64.7z"
+   }
+  },
+  "extract_dir": "MuseScoreNightly-$version-3.x-$matchTag-x86_64"
+ },
+ "bin": [
+  [
+   "bin\\MuseScore3.exe",
+   "MuseScore"
+  ],
+  [
+   "bin\\MuseScore3.exe",
+   "mscore"
+  ]
+ ],
+ "checkver": {
+  "regex": "MuseScoreNightly-(\\d+)-3.x-(?<tag>[a-f0-9]+)-x86_64\\.7z",
+  "reverse": true,
+  "url": "https://ftp.osuosl.org/pub/musescore-nightlies/windows/3x/nightly/"
+ },
+ "description": "Music notation editor with an easy-to-use WYSIWYG interface.",
+ "extract_dir": "MuseScoreNightly-202211120423-3.x-2513676-x86_64",
+ "homepage": "https://musescore.org/",
+ "license": "GPL-2.0-only",
+ "shortcuts": [
+  [
+   "bin\\MuseScore3.exe",
+   "MuseScore 3 Nightly"
+  ]
+ ],
+ "version": "202211120423"
 }

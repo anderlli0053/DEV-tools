@@ -3,28 +3,16 @@
   "url": "https://download.sysinternals.com/files/EFSDump.zip"
  },
  "bin": "efsdump.exe",
- "checkver": "EFSDump\\s+v([\\d.]+)</h1",
- "description": "EFSDump. View information for encrypted files.",
+ "checkver": {
+  "regex": "#.*?v([\\d.]+)",
+  "url": "https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/efsdump.md"
+ },
+ "description": "View information for encrypted files.",
  "hash": "9f74b906404402c94af5a3aa04808a07ef1fcc85607c2ea53283cee8b19bc175",
- "homepage": "https://docs.microsoft.com/en-us/sysinternals/downloads/efsdump",
+ "homepage": "https://learn.microsoft.com/sysinternals/downloads/efsdump",
  "license": {
   "identifier": "Freeware",
-  "url": "https://docs.microsoft.com/en-us/sysinternals/license-terms"
- },
- "pre_install": [
-  "$sysint = 'HKCU:\\SOFTWARE\\Sysinternals'",
-  "$fin = \"$sysint\\EFSDump\"",
-  "New-Item $sysint, $fin -ErrorAction 'SilentlyContinue' | Out-Null",
-  "Set-ItemProperty -Path $fin -Name 'EulaAccepted' -Value 1 -Type 'DWord' -Force | Out-Null"
- ],
- "uninstaller": {
-  "script": [
-   "if ($purge) {",
-   "    $sysInt = 'HKCU:\\SOFTWARE\\Sysinternals'",
-   "    Remove-Item \"$sysInt\\EFSDump\" -ErrorAction 'SilentlyContinue' -Force -Recurse",
-   "    if ((Get-ChildItem $sysInt).Count -eq 0) { Remove-Item $sysInt -ErrorAction 'SilentlyContinue' -Force -Recurse }",
-   "}"
-  ]
+  "url": "https://learn.microsoft.com/sysinternals/license-terms"
  },
  "url": "https://download.sysinternals.com/files/EFSDump.zip",
  "version": "1.03"

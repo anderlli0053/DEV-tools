@@ -1,37 +1,41 @@
 {
-    "homepage": "https://kurtzimmermann.com/tweakpowerext_en.html",
-    "version": "2.037",
-    "license": "freeware",
-    "architecture": {
-        "64bit": {
-            "url": "https://kurtzimmermann.com/files/TweakPowerX64.zip",
-            "hash": "7ef43624fb1e99a119892163d45ebff7eb42b4453ee37688abbe31526488b0b4"
-        },
-        "32bit": {
-            "url": "https://kurtzimmermann.com/files/TweakPowerX32.zip",
-            "hash": "693047b1d04b02c9394aeb0874f370dfc83f0843a7fb4a5456723a02d60ef141"
-        }
-    },
-    "bin": "TweakPower.exe",
-    "persist": "Settings",
-    "shortcuts": [
-        [
-            "TweakPower.exe",
-            "TweakPower"
-        ]
-    ],
-    "checkver": {
-        "url": "https://kurtzimmermann.com/index_e.html",
-        "regex": "TweakPower[\\w\\W]*?Version ([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://kurtzimmermann.com/files/TweakPowerX64.zip"
-            },
-            "32bit": {
-                "url": "https://kurtzimmermann.com/files/TweakPowerX32.zip"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "693047b1d04b02c9394aeb0874f370dfc83f0843a7fb4a5456723a02d60ef141",
+   "url": "https://kurtzimmermann.com/files/TweakPowerX32.zip"
+  },
+  "64bit": {
+   "hash": "7ef43624fb1e99a119892163d45ebff7eb42b4453ee37688abbe31526488b0b4",
+   "url": "https://kurtzimmermann.com/files/TweakPowerX64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://kurtzimmermann.com/files/TweakPowerX32.zip"
+   },
+   "64bit": {
+    "url": "https://kurtzimmermann.com/files/TweakPowerX64.zip"
+   }
+  }
+ },
+ "bin": "TweakPower.exe",
+ "checkver": {
+  "regex": "v([\\d.]+)",
+  "url": "https://kurtzimmermann.com/tweakpowerversions_de.html"
+ },
+ "description": "A software tool that allows Windows 11 users to fine-tune their operating system and programs for optimum performance. Developed by Kurt Zimmermann.",
+ "homepage": "https://kurtzimmermann.com/index_e.html",
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://kurtzimmermann-com.translate.goog/datenschutz_en.html?_x_tr_sl=auto&_x_tr_tl=en-US&_x_tr_hl=en-US"
+ },
+ "pre_install": "Remove-Item \"$dir\\Uninstaller.exe\" | Out-Null",
+ "shortcuts": [
+  [
+   "TweakPower.exe",
+   "TweakPower"
+  ]
+ ],
+ "version": "2.027"
 }

@@ -1,38 +1,38 @@
 {
-    "version": "0.0.16",
-    "description": "Rust implementation of GNU coreutils (binaries compiled with MSVC)",
-    "homepage": "https://github.com/uutils/coreutils",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/uutils/coreutils/releases/download/0.0.16/coreutils-0.0.16-x86_64-pc-windows-msvc.zip",
-            "hash": "cf9135a27600299a1a52dd94d5cbf5b7c5073ec2629d892d11de92a44daed3ba",
-            "extract_dir": "coreutils-0.0.16-x86_64-pc-windows-msvc"
-        },
-        "32bit": {
-            "url": "https://github.com/uutils/coreutils/releases/download/0.0.16/coreutils-0.0.16-i686-pc-windows-msvc.zip",
-            "hash": "95bdf9b9a51c75298e8518bc64c426aa8f64954426f9695f106734e8170815ca",
-            "extract_dir": "coreutils-0.0.16-i686-pc-windows-msvc"
-        }
-    },
-    "bin": [
-        "coreutils.exe",
-        [
-            "coreutils.exe",
-            "uutils"
-        ]
-    ],
-    "checkver": "github",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-x86_64-pc-windows-msvc.zip",
-                "extract_dir": "coreutils-$version-x86_64-pc-windows-msvc"
-            },
-            "32bit": {
-                "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-i686-pc-windows-msvc.zip",
-                "extract_dir": "coreutils-$version-i686-pc-windows-msvc"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "extract_dir": "coreutils-0.0.16-i686-pc-windows-msvc",
+   "hash": "95bdf9b9a51c75298e8518bc64c426aa8f64954426f9695f106734e8170815ca",
+   "url": "https://github.com/uutils/coreutils/releases/download/0.0.16/coreutils-0.0.16-i686-pc-windows-msvc.zip"
+  },
+  "64bit": {
+   "extract_dir": "coreutils-0.0.16-x86_64-pc-windows-msvc",
+   "hash": "cf9135a27600299a1a52dd94d5cbf5b7c5073ec2629d892d11de92a44daed3ba",
+   "url": "https://github.com/uutils/coreutils/releases/download/0.0.16/coreutils-0.0.16-x86_64-pc-windows-msvc.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "extract_dir": "coreutils-$version-i686-pc-windows-msvc",
+    "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-i686-pc-windows-msvc.zip"
+   },
+   "64bit": {
+    "extract_dir": "coreutils-$version-x86_64-pc-windows-msvc",
+    "url": "https://github.com/uutils/coreutils/releases/download/$version/coreutils-$version-x86_64-pc-windows-msvc.zip"
+   }
+  }
+ },
+ "bin": [
+  "coreutils.exe",
+  [
+   "coreutils.exe",
+   "uutils"
+  ]
+ ],
+ "checkver": "github",
+ "description": "Rust implementation of GNU coreutils (binaries compiled with MSVC)",
+ "homepage": "https://github.com/uutils/coreutils",
+ "license": "MIT",
+ "version": "0.0.16"
 }

@@ -1,40 +1,40 @@
 {
-    "version": "7.3.0",
-    "description": "PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework.",
-    "homepage": "https://microsoft.com/PowerShell",
-    "license": {
-        "identifier": "MIT"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/PowerShell/PowerShell/LatestRelease/PowerShell-7.3.0-win-x64.msi#/powershell.msi_",
-            "hash": "5dbbfa10fd37a032414f36b9d6a8de99e042081075dab320c10f1f67b93e2c4e"
-        },
-        "32bit": {
-            "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/PowerShell/PowerShell/LatestRelease/PowerShell-7.3.0-win-x86.msi#/powershell.msi_",
-            "hash": "9e819f88d3cc1575ef19cc1acf002e7d942737b9d34e8a5306410b0df34f433c"
-        }
-    },
-    "installer": {
-        "script": "Start-Process msiexec.exe -ArgumentList @('/package', \"$fname\", '/passive', 'ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1', 'ENABLE_PSREMOTING=1', 'REGISTER_MANIFEST=1', 'USE_MU=0', 'ENABLE_MU=0') -WorkingDirectory \"$dir\" -Wait"
-    },
-    "post_install": "Remove-Item \"$dir\\$fname\" -Force -ErrorAction SilentlyContinue",
-    "checkver": {
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/PowerShell/PowerShell/LatestRelease/",
-        "regex": "PowerShell-([\\d.]+)-win-x64.msi"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/PowerShell/PowerShell/LatestRelease/PowerShell-$version-win-x64.msi#/powershell.msi_"
-            },
-            "32bit": {
-                "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/PowerShell/PowerShell/LatestRelease/PowerShell-$version-win-x86.msi#/powershell.msi_"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/hashes.sha256",
-            "mode": "extract"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "9e819f88d3cc1575ef19cc1acf002e7d942737b9d34e8a5306410b0df34f433c",
+   "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/PowerShell/PowerShell/LatestRelease/PowerShell-7.3.0-win-x86.msi#/powershell.msi_"
+  },
+  "64bit": {
+   "hash": "5dbbfa10fd37a032414f36b9d6a8de99e042081075dab320c10f1f67b93e2c4e",
+   "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/PowerShell/PowerShell/LatestRelease/PowerShell-7.3.0-win-x64.msi#/powershell.msi_"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/PowerShell/PowerShell/LatestRelease/PowerShell-$version-win-x86.msi#/powershell.msi_"
+   },
+   "64bit": {
+    "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/PowerShell/PowerShell/LatestRelease/PowerShell-$version-win-x64.msi#/powershell.msi_"
+   }
+  },
+  "hash": {
+   "mode": "extract",
+   "url": "$baseurl/hashes.sha256"
+  }
+ },
+ "checkver": {
+  "regex": "PowerShell-([\\d.]+)-win-x64.msi",
+  "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/PowerShell/PowerShell/LatestRelease/"
+ },
+ "description": "PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework.",
+ "homepage": "https://microsoft.com/PowerShell",
+ "installer": {
+  "script": "Start-Process msiexec.exe -ArgumentList @('/package', \"$fname\", '/passive', 'ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1', 'ENABLE_PSREMOTING=1', 'REGISTER_MANIFEST=1', 'USE_MU=0', 'ENABLE_MU=0') -WorkingDirectory \"$dir\" -Wait"
+ },
+ "license": {
+  "identifier": "MIT"
+ },
+ "post_install": "Remove-Item \"$dir\\$fname\" -Force -ErrorAction SilentlyContinue",
+ "version": "7.3.0"
 }

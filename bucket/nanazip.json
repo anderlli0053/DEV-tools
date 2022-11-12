@@ -1,37 +1,37 @@
 {
- "architecture": {
-  "32bit": {
-   "pre_install": [
-    "$file = \"NanaZipPackage_$($version).0_x86.msix\"",
-    "Remove-Item \"$dir\\*\" -Exclude $file -Recurse",
-    "Expand-7zipArchive \"$dir\\$file\" -Removal | Out-Null"
-   ]
-  },
-  "64bit": {
-   "pre_install": [
-    "$file = \"NanaZipPackage_$($version).0_x64.msix\"",
-    "Remove-Item \"$dir\\*\" -Exclude $file -Recurse",
-    "Expand-7zipArchive \"$dir\\$file\" -Removal | Out-Null"
-   ]
-  }
- },
  "autoupdate": {
-  "url": "https://github.com/M2Team/NanaZip/releases/download/$version/40174MouriNaruto.NanaZipPreview_$version.0_gnj4mf6z9tkrc.msixbundle#/dl.7z"
+  "hash": {
+   "regex": "(?s)$basename.*?$sha256",
+   "url": "https://github.com/M2Team/NanaZip/releases/tag/$version"
+  },
+  "url": "https://github.com/M2Team/NanaZip/releases/download/$version/40174MouriNaruto.NanaZip_$version.0_gnj4mf6z9tkrc.msixbundle#/dl.7z"
  },
- "checkver": {
-  "regex": "NanaZip/tree/([\\d.]+)",
-  "url": "https://github.com/M2Team/NanaZip/releases/"
- },
- "description": "NanaZip is an open source file archiver, forked from the source code of well-known file archiver 7-Zip.",
- "hash": "a741a9d1d73b3adbe3980e7338fc45148fa591dadc1f644c29f912bd7e7a15cf",
- "homepage": "https://github.com/M2Team/NanaZip/",
+ "bin": [
+  [
+   "NanaZipC.exe",
+   "7z"
+  ],
+  [
+   "NanaZipG.exe",
+   "7zG"
+  ]
+ ],
+ "checkver": "github",
+ "description": "The 7-Zip derivative intended for the modern Windows experience",
+ "hash": "67bc86ae748957edffa9fff9585e52fa582efe7470633feeb3e036f3d18c06ad",
+ "homepage": "https://github.com/M2Team/NanaZip",
  "license": "MIT",
+ "pre_install": [
+  "Remove-Item -Path \"$dir\\*\" -Exclude *.msix -Recurse -Force",
+  "Expand-7zipArchive -Path \"$dir\\*$(switch ($architecture) { '64bit' { 'x64' } '32bit' { 'x86' } 'arm64' { 'ARM64' } }).msix\"",
+  "Remove-Item -Path \"$dir\\*\" -Include '*.msix', 'Appx*', '?Content*', 'Code*' -Recurse -Force"
+ ],
  "shortcuts": [
   [
    "NanaZip.exe",
    "NanaZip"
   ]
  ],
- "url": "https://github.com/M2Team/NanaZip/releases/download/2.0.376/40174MouriNaruto.NanaZipPreview_2.0.376.0_gnj4mf6z9tkrc.msixbundle#/dl.7z",
- "version": "2.0.376"
+ "url": "https://github.com/M2Team/NanaZip/releases/download/2.0.396/40174MouriNaruto.NanaZip_2.0.396.0_gnj4mf6z9tkrc.msixbundle#/dl.7z",
+ "version": "2.0.396"
 }

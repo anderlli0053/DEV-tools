@@ -1,0 +1,40 @@
+{
+ "architecture": {
+  "32bit": {
+   "hash": "297ae50f29ccfbcf1c5186eebd82b7a2185136b5492ac214a9000f08a67e4551",
+   "url": "https://cache-redirector.jetbrains.com/intellij-jbr/jbr-11_0_16-windows-x86-b2043.64.tar.gz"
+  },
+  "64bit": {
+   "hash": "c8d9bb608ab5fb5329dc6418c1074a13245d3f9f049c1034bb41a4fa0726fbc0",
+   "url": "https://cache-redirector.jetbrains.com/intellij-jbr/jbr_nomod-11_0_16-windows-x64-b2043.64.tar.gz"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://cache-redirector.jetbrains.com/intellij-jbr/jbr-$matchVersion-windows-x86-$matchBuild.$matchPatch.tar.gz"
+   },
+   "64bit": {
+    "url": "https://cache-redirector.jetbrains.com/intellij-jbr/jbr_nomod-$matchVersion-windows-x64-$matchBuild.$matchPatch.tar.gz"
+   }
+  },
+  "hash": {
+   "regex": "$sha256\\s",
+   "url": "$url.checksum"
+  }
+ },
+ "checkver": {
+  "regex": "\\s(?<Version>[\\d_]+)-(?<Build>[\\w]+)\\.(?<Patch>[\\d]+)</h2>",
+  "replace": "${Version}-${Build}.${Patch}",
+  "url": "https://github.com/JetBrains/JetBrainsRuntime/releases"
+ },
+ "description": "A fork of OpenJDK that includes a number enhancements in font rendering, HiDPI support, ligatures, performance improvements, and bugfixes. These are mainly for running IntelliJ Platform-based products",
+ "env_add_path": "bin",
+ "env_set": {
+  "JAVA_HOME": "$dir"
+ },
+ "extract_dir": "jbr",
+ "homepage": "https://github.com/JetBrains/JetBrainsRuntime",
+ "license": "GPL-2.0",
+ "version": "11_0_16-b2043.64"
+}

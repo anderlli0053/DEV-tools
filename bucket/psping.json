@@ -1,53 +1,31 @@
 {
  "architecture": {
   "32bit": {
-   "bin": "PsPing.exe",
-   "hash": "c8453110682d999223a84146462b0b4fc6979f40a01b60a7b925783b71b2d6ff",
-   "url": "https://live.sysinternals.com/PsPing.exe"
+   "bin": "psping.exe"
   },
   "64bit": {
    "bin": [
-    "PsPing64.exe",
     [
-     "PsPing64.exe",
-     "PsPing"
+     "psping64.exe",
+     "psping"
     ]
-   ],
-   "hash": "6330fd6b82b3a1c91d2396c1ac096cd2e3775ca50baf8d223fa25a0258361126",
-   "url": "https://live.sysinternals.com/PsPing64.exe"
+   ]
   }
  },
  "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://live.sysinternals.com/PsPing.exe"
-   },
-   "64bit": {
-    "url": "https://live.sysinternals.com/PsPing64.exe"
-   }
-  }
+  "url": "https://download.sysinternals.com/files/psping.zip"
  },
- "checkver": "PsPing\\s+v([\\d.]+)</h1",
- "description": "PsPing. Ping, latency and bandwidth measurement utility",
- "homepage": "https://docs.microsoft.com/en-us/sysinternals/downloads/psping",
+ "checkver": {
+  "regex": "#.*?v([\\d.]+)",
+  "url": "https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/psping.md"
+ },
+ "description": "Measure network performance.",
+ "hash": "8fa76f8645ee30142715d6ffc1dc88d183f9ebd2e903b8452902a63df06a3e2d",
+ "homepage": "https://learn.microsoft.com/sysinternals/downloads/psping",
  "license": {
   "identifier": "Freeware",
-  "url": "https://docs.microsoft.com/en-us/sysinternals/license-terms"
+  "url": "https://learn.microsoft.com/sysinternals/license-terms"
  },
- "pre_install": [
-  "$sysint = 'HKCU:\\SOFTWARE\\Sysinternals'",
-  "$fin = \"$sysint\\PsPing\"",
-  "New-Item $sysint, $fin -ErrorAction 'SilentlyContinue' | Out-Null",
-  "Set-ItemProperty -Path $fin -Name 'EulaAccepted' -Value 1 -Type 'DWord' -Force | Out-Null"
- ],
- "uninstaller": {
-  "script": [
-   "if ($purge) {",
-   "    $sysInt = 'HKCU:\\SOFTWARE\\Sysinternals'",
-   "    Remove-Item \"$sysInt\\PsPing\" -ErrorAction 'SilentlyContinue' -Force -Recurse",
-   "    if ((Get-ChildItem $sysInt).Count -eq 0) { Remove-Item $sysInt -ErrorAction 'SilentlyContinue' -Force -Recurse }",
-   "}"
-  ]
- },
+ "url": "https://download.sysinternals.com/files/psping.zip",
  "version": "2.1"
 }

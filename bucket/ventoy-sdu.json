@@ -1,69 +1,69 @@
 {
-    "version": "1.0.81",
-    "description": "Bootable USB drive creator",
-    "homepage": "https://www.ventoy.net/en/index.html",
-    "license": {
-        "identifier": "GPL-3.0-or-later"
-    },
-    "url": "https://mirrors.sdu.edu.cn/github-release/ventoy_Ventoy/v1.0.81/ventoy-1.0.81-windows.zip",
-    "hash": "719a0c9d68f863ca3488c23de2d9f701708bf2f61f1ce1bf582301b7e150e568",
-    "extract_dir": "ventoy-1.0.81",
-    "pre_install": [
-        "'log.txt', 'Ventoy2Disk.ini' | ForEach-Object {",
-        "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" -ItemType File | Out-Null }",
-        "}"
+ "architecture": {
+  "32bit": {
+   "shortcuts": [
+    [
+     "Ventoy2Disk.exe",
+     "Ventoy2Disk"
     ],
-    "architecture": {
-        "64bit": {
-            "shortcuts": [
-                [
-                    "altexe\\Ventoy2Disk_X64.exe",
-                    "Ventoy2Disk"
-                ],
-                [
-                    "VentoyPlugson.exe",
-                    "VentoyPlugson"
-                ],
-                [
-                    "VentoyVlnk.exe",
-                    "VentoyVlnk",
-                    "-s"
-                ]
-            ]
-        },
-        "32bit": {
-            "shortcuts": [
-                [
-                    "Ventoy2Disk.exe",
-                    "Ventoy2Disk"
-                ],
-                [
-                    "VentoyPlugson.exe",
-                    "VentoyPlugson"
-                ],
-                [
-                    "VentoyVlnk.exe",
-                    "VentoyVlnk",
-                    "-s"
-                ]
-            ]
-        }
-    },
-    "persist": [
-        "log.txt",
-        "Ventoy2Disk.ini"
+    [
+     "VentoyPlugson.exe",
+     "VentoyPlugson"
     ],
-    "checkver": {
-        "url": "https://mirrors.sdu.edu.cn/github-release/ventoy_Ventoy/",
-        "regex": "v(\\d[\\d.]+)",
-        "reverse": true
-    },
-    "autoupdate": {
-        "url": "https://mirrors.sdu.edu.cn/github-release/ventoy_Ventoy/v$version/ventoy-$version-windows.zip",
-        "hash": {
-            "url": "https://github.com/ventoy/Ventoy/releases/tag/v$version",
-            "regex": "$basename:\\s+$checksum"
-        },
-        "extract_dir": "ventoy-$version"
-    }
+    [
+     "VentoyVlnk.exe",
+     "VentoyVlnk",
+     "-s"
+    ]
+   ]
+  },
+  "64bit": {
+   "shortcuts": [
+    [
+     "altexe\\Ventoy2Disk_X64.exe",
+     "Ventoy2Disk"
+    ],
+    [
+     "VentoyPlugson.exe",
+     "VentoyPlugson"
+    ],
+    [
+     "VentoyVlnk.exe",
+     "VentoyVlnk",
+     "-s"
+    ]
+   ]
+  }
+ },
+ "autoupdate": {
+  "extract_dir": "ventoy-$version",
+  "hash": {
+   "regex": "$basename:\\s+$checksum",
+   "url": "https://github.com/ventoy/Ventoy/releases/tag/v$version"
+  },
+  "url": "https://mirrors.sdu.edu.cn/github-release/ventoy_Ventoy/v$version/ventoy-$version-windows.zip"
+ },
+ "checkver": {
+  "regex": "v(\\d[\\d.]+)",
+  "reverse": true,
+  "url": "https://mirrors.sdu.edu.cn/github-release/ventoy_Ventoy/"
+ },
+ "description": "Bootable USB drive creator",
+ "extract_dir": "ventoy-1.0.81",
+ "hash": "719a0c9d68f863ca3488c23de2d9f701708bf2f61f1ce1bf582301b7e150e568",
+ "homepage": "https://www.ventoy.net/en/index.html",
+ "license": {
+  "identifier": "GPL-3.0-or-later"
+ },
+ "persist": [
+  "log.txt",
+  "Ventoy2Disk.ini"
+ ],
+ "pre_install": [
+  "'log.txt', 'Ventoy2Disk.ini' | ForEach-Object {",
+  "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" -ItemType File | Out-Null }",
+  "}"
+ ],
+ "url": "https://mirrors.sdu.edu.cn/github-release/ventoy_Ventoy/v1.0.81/ventoy-1.0.81-windows.zip",
+ "version": "1.0.81"
 }

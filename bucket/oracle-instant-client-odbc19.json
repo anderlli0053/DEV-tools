@@ -1,0 +1,51 @@
+{
+ "architecture": {
+  "32bit": {
+   "hash": "a74ef69d8b8539703491a67325d7469b6559cb7e7697e8d4433b5ae61b6c6042",
+   "url": "https://download.oracle.com/otn_software/nt/instantclient/1916000/instantclient-odbc-nt-19.16.0.0.0dbru.zip"
+  },
+  "64bit": {
+   "hash": "78197ab6736c8a1297fb118bf6354dfb2bd8c0073293ded2003b57db36a133e4",
+   "url": "https://download.oracle.com/otn_software/nt/instantclient/1916000/instantclient-odbc-windows.x64-19.16.0.0.0dbru.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://download.oracle.com/otn_software/nt/instantclient/$cleanVersion/instantclient-odbc-nt-$versiondbru.zip"
+   },
+   "64bit": {
+    "url": "https://download.oracle.com/otn_software/nt/instantclient/$cleanVersion/instantclient-odbc-windows.x64-$versiondbru.zip"
+   }
+  },
+  "extract_dir": "instantclient_$majorVersion_$minorVersion"
+ },
+ "checkver": {
+  "regex": "Version (19[\\d.]+)",
+  "url": "https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html",
+  "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+ },
+ "depends": "oracle-instant-client19",
+ "description": "Additional libraries for enabling ODBC applications with Oracle Instant Client.",
+ "extract_dir": "instantclient_19_16",
+ "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://www.oracle.com/downloads/licenses/instant-client-lic.html"
+ },
+ "notes": [
+  "Use 'odbc_install.exe' in Oracle Instant Client's dir to install ODBC.",
+  "Use 'odbc_uninstall.exe' in above dir to uninstall it."
+ ],
+ "pre_install": [
+  "$instantclient = versiondir 'oracle-instant-client' 'current'",
+  "Copy-Item -Path \"$dir\\*\" -Destination \"$instantclient\" -Force -Recurse | Out-Null"
+ ],
+ "uninstaller": {
+  "script": [
+   "$instantclient = versiondir 'oracle-instant-client' 'current'",
+   "Get-ChildItem -Path \"$dir\" -Exclude *.json | ForEach-Object { Remove-Item -LiteralPath \"$instantclient\\$($_.Name)\" -Recurse -Force -ErrorAction SilentlyContinue }"
+  ]
+ },
+ "version": "19.16.0.0.0"
+}

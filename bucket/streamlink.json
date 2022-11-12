@@ -1,61 +1,61 @@
 {
-    "version": "5.0.1-1",
-    "description": "A command-line utility that pipes video streams from various services into a video player.",
-    "homepage": "https://streamlink.github.io/",
-    "license": "BSD-2-Clause",
-    "notes": "You will find your config file here: '$dir\\config'. To customise it, read the docs here: https://streamlink.github.io/cli/config.html#syntax",
-    "suggest": {
-        "FFmpeg": [
-            "ffmpeg",
-            "ffmpeg-nightly"
-        ],
-        "VLC Player": "extras/vlc"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/streamlink/windows-builds/releases/download/5.0.1-1/streamlink-5.0.1-1-py310-x86_64.zip",
-            "hash": "69f1a8707eed766a96b57a6f97e9561dfbfd238182bc5c2123d70de78e292aca",
-            "extract_dir": "streamlink-5.0.1-1-py310-x86_64"
-        },
-        "32bit": {
-            "url": "https://github.com/streamlink/windows-builds/releases/download/5.0.1-1/streamlink-5.0.1-1-py310-x86.zip",
-            "hash": "691f6979bed6ed1e5a2175ee1a24de1d1e192ee124aa70653eea11924d2495dc",
-            "extract_dir": "streamlink-5.0.1-1-py310-x86"
-        }
-    },
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\config\")) {",
-        "    if (Test-Path \"$env:APPDATA\\streamlink\\config\") {",
-        "        info 'Copying existing ''config'' from ''%APPDATA%\\streamlink\\config'''",
-        "        Copy-Item \"$env:APPDATA\\streamlink\\config\" \"$dir\\config\"",
-        "    } else {",
-        "        New-Item \"$dir\\config\" | Out-Null",
-        "    }",
-        "}"
-    ],
-    "bin": [
-        [
-            "bin\\streamlink.exe",
-            "streamlink",
-            "--ffmpeg-ffmpeg \"$dir\\ffmpeg\\ffmpeg.exe\" --config \"$dir\\config\""
-        ],
-        "bin\\streamlinkw.exe"
-    ],
-    "persist": "config",
-    "checkver": {
-        "url": "https://github.com/streamlink/windows-builds/releases/",
-        "regex": "tree/([\\d.\\-]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/streamlink/windows-builds/releases/download/$version/streamlink-$version-py310-x86_64.zip",
-                "extract_dir": "streamlink-$version-py310-x86_64"
-            },
-            "32bit": {
-                "url": "https://github.com/streamlink/windows-builds/releases/download/$version/streamlink-$version-py310-x86.zip",
-                "extract_dir": "streamlink-$version-py310-x86"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "extract_dir": "streamlink-5.0.1-1-py310-x86",
+   "hash": "691f6979bed6ed1e5a2175ee1a24de1d1e192ee124aa70653eea11924d2495dc",
+   "url": "https://github.com/streamlink/windows-builds/releases/download/5.0.1-1/streamlink-5.0.1-1-py310-x86.zip"
+  },
+  "64bit": {
+   "extract_dir": "streamlink-5.0.1-1-py310-x86_64",
+   "hash": "69f1a8707eed766a96b57a6f97e9561dfbfd238182bc5c2123d70de78e292aca",
+   "url": "https://github.com/streamlink/windows-builds/releases/download/5.0.1-1/streamlink-5.0.1-1-py310-x86_64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "extract_dir": "streamlink-$version-py310-x86",
+    "url": "https://github.com/streamlink/windows-builds/releases/download/$version/streamlink-$version-py310-x86.zip"
+   },
+   "64bit": {
+    "extract_dir": "streamlink-$version-py310-x86_64",
+    "url": "https://github.com/streamlink/windows-builds/releases/download/$version/streamlink-$version-py310-x86_64.zip"
+   }
+  }
+ },
+ "bin": [
+  [
+   "bin\\streamlink.exe",
+   "streamlink",
+   "--ffmpeg-ffmpeg \"$dir\\ffmpeg\\ffmpeg.exe\" --config \"$dir\\config\""
+  ],
+  "bin\\streamlinkw.exe"
+ ],
+ "checkver": {
+  "regex": "tree/([\\d.\\-]+)",
+  "url": "https://github.com/streamlink/windows-builds/releases/"
+ },
+ "description": "A command-line utility that pipes video streams from various services into a video player.",
+ "homepage": "https://streamlink.github.io/",
+ "license": "BSD-2-Clause",
+ "notes": "You will find your config file here: '$dir\\config'. To customise it, read the docs here: https://streamlink.github.io/cli/config.html#syntax",
+ "persist": "config",
+ "pre_install": [
+  "if (!(Test-Path \"$persist_dir\\config\")) {",
+  "    if (Test-Path \"$env:APPDATA\\streamlink\\config\") {",
+  "        info 'Copying existing ''config'' from ''%APPDATA%\\streamlink\\config'''",
+  "        Copy-Item \"$env:APPDATA\\streamlink\\config\" \"$dir\\config\"",
+  "    } else {",
+  "        New-Item \"$dir\\config\" | Out-Null",
+  "    }",
+  "}"
+ ],
+ "suggest": {
+  "FFmpeg": [
+   "ffmpeg",
+   "ffmpeg-nightly"
+  ],
+  "VLC Player": "extras/vlc"
+ },
+ "version": "5.0.1-1"
 }

@@ -1,59 +1,59 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "sha512:d1684c29c556aafad9f549cec86628ffece664ff43d0af3404dfbee09ad972d4210e37eacdb492d40316059e8e07a10fe82cf5a1a70b7de317a24b7313a3f8e8",
-            "url": "https://archive.mozilla.org/pub/devedition/releases/107.0b9/win32/en-US/Firefox%20Setup%20107.0b9.exe#/dl.7z"
-        },
-        "64bit": {
-            "hash": "sha512:bb7eeb5a1f8d0003217f5940848e7efd860843b596666b64cc29ab4f74394e663b55ee7f3a6cb27988cfb84761ef76de624d785981f41e38204c96e7b080a329",
-            "url": "https://archive.mozilla.org/pub/devedition/releases/107.0b9/win64/en-US/Firefox%20Setup%20107.0b9.exe#/dl.7z"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:d1684c29c556aafad9f549cec86628ffece664ff43d0af3404dfbee09ad972d4210e37eacdb492d40316059e8e07a10fe82cf5a1a70b7de317a24b7313a3f8e8",
+   "url": "https://archive.mozilla.org/pub/devedition/releases/107.0b9/win32/en-US/Firefox%20Setup%20107.0b9.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "sha512:bb7eeb5a1f8d0003217f5940848e7efd860843b596666b64cc29ab4f74394e663b55ee7f3a6cb27988cfb84761ef76de624d785981f41e38204c96e7b080a329",
+   "url": "https://archive.mozilla.org/pub/devedition/releases/107.0b9/win64/en-US/Firefox%20Setup%20107.0b9.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "regex": "$sha512\\s+win32/en-US/$basename",
+     "url": "https://archive.mozilla.org/pub/devedition/releases/$version/SHA512SUMS"
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "regex": "$sha512\\s+win32/en-US/$basename",
-                    "url": "https://archive.mozilla.org/pub/devedition/releases/$version/SHA512SUMS"
-                },
-                "url": "https://archive.mozilla.org/pub/devedition/releases/$version/win32/en-US/Firefox%20Setup%20$version.exe#/dl.7z"
-            },
-            "64bit": {
-                "hash": {
-                    "regex": "$sha512\\s+win64/en-US/$basename",
-                    "url": "https://archive.mozilla.org/pub/devedition/releases/$version/SHA512SUMS"
-                },
-                "url": "https://archive.mozilla.org/pub/devedition/releases/$version/win64/en-US/Firefox%20Setup%20$version.exe#/dl.7z"
-            }
-        }
+    "url": "https://archive.mozilla.org/pub/devedition/releases/$version/win32/en-US/Firefox%20Setup%20$version.exe#/dl.7z"
+   },
+   "64bit": {
+    "hash": {
+     "regex": "$sha512\\s+win64/en-US/$basename",
+     "url": "https://archive.mozilla.org/pub/devedition/releases/$version/SHA512SUMS"
     },
-    "bin": [
-        [
-            "firefox.exe",
-            "firefox-dev",
-            "-profile \"$dir\\profile\""
-        ],
-        [
-            "firefox.exe",
-            "firefox-developer",
-            "-profile \"$dir\\profile\""
-        ]
-    ],
-    "checkver": {
-        "regex": "<option value=\"desktop_developer\">([\\db.]+)",
-        "url": "https://www.mozilla.org/de/firefox/all/"
-    },
-    "description": "Developer builds of Firefox: the popular open source web browser.",
-    "extract_dir": "core",
-    "homepage": "https://www.mozilla.org/en-US/firefox/developer/",
-    "license": "MPL-2.0",
-    "persist": "profile",
-    "shortcuts": [
-        [
-            "firefox.exe",
-            "Firefox Developer",
-            "-profile \"$dir\\profile\""
-        ]
-    ],
-    "version": "107.0b9"
+    "url": "https://archive.mozilla.org/pub/devedition/releases/$version/win64/en-US/Firefox%20Setup%20$version.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": [
+  [
+   "firefox.exe",
+   "firefox-dev",
+   "-profile \"$dir\\profile\""
+  ],
+  [
+   "firefox.exe",
+   "firefox-developer",
+   "-profile \"$dir\\profile\""
+  ]
+ ],
+ "checkver": {
+  "regex": "<option value=\"desktop_developer\">([\\db.]+)",
+  "url": "https://www.mozilla.org/de/firefox/all/"
+ },
+ "description": "Developer builds of Firefox: the popular open source web browser.",
+ "extract_dir": "core",
+ "homepage": "https://www.mozilla.org/en-US/firefox/developer/",
+ "license": "MPL-2.0",
+ "persist": "profile",
+ "shortcuts": [
+  [
+   "firefox.exe",
+   "Firefox Developer",
+   "-profile \"$dir\\profile\""
+  ]
+ ],
+ "version": "107.0b9"
 }

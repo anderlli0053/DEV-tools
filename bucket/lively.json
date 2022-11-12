@@ -1,36 +1,36 @@
 {
-    "version": "2.0.4.0",
-    "description": "Free and open-source software that allows users to set animated and interactive desktop wallpapers.",
-    "homepage": "https://rocksdanister.github.io/lively/",
-    "license": {
-        "identifier": "GPL-3.0-or-later"
-    },
-    "url": "https://github.com/rocksdanister/lively/releases/download/v2.0.4.0/lively_setup_x86_full_v2040.exe",
-    "hash": "f9146eda6fc65629ffb674f0ec11d461ad02617a255e94d9b01ad6b9db368e67",
-    "pre_install": [
-        "ensure \"$persist_dir\" | Out-Null",
-        "New-Item \"$env:LocalAppData\\Lively Wallpaper\" -ItemType Junction -Target \"$persist_dir\" | Out-Null"
-    ],
-    "uninstaller": {
-        "script": "Remove-Item \"$env:LocalAppData\\Lively Wallpaper\" -ErrorAction 'SilentlyContinue' -Force -Recurse"
-    },
-    "shortcuts": [
-        [
-            "livelywpf.exe",
-            "Lively Wallpaper"
-        ]
-    ],
-    "innosetup": true,
-    "checkver": {
-        "url": "https://api.github.com/repos/rocksdanister/lively/releases",
-        "regex": "(?sm)releases/download/v([\\d.]+)/lively_setup_x86_.*?.exe"
-    },
-    "autoupdate": {
-        "url": "https://github.com/rocksdanister/lively/releases/download/v$version/lively_setup_x86_full_v$cleanVersion.exe",
-        "hash": {
-            "url": "https://github.com/rocksdanister/lively/releases/tag/v$version",
-            "mode": "extract",
-            "regex": "(?sm)SHA256:.*?$sha256"
-        }
-    }
+ "autoupdate": {
+  "hash": {
+   "mode": "extract",
+   "regex": "(?sm)SHA256:.*?$sha256",
+   "url": "https://github.com/rocksdanister/lively/releases/tag/v$version"
+  },
+  "url": "https://github.com/rocksdanister/lively/releases/download/v$version/lively_setup_x86_full_v$cleanVersion.exe"
+ },
+ "checkver": {
+  "regex": "(?sm)releases/download/v([\\d.]+)/lively_setup_x86_.*?.exe",
+  "url": "https://api.github.com/repos/rocksdanister/lively/releases"
+ },
+ "description": "Free and open-source software that allows users to set animated and interactive desktop wallpapers.",
+ "hash": "f9146eda6fc65629ffb674f0ec11d461ad02617a255e94d9b01ad6b9db368e67",
+ "homepage": "https://rocksdanister.github.io/lively/",
+ "innosetup": true,
+ "license": {
+  "identifier": "GPL-3.0-or-later"
+ },
+ "pre_install": [
+  "ensure \"$persist_dir\" | Out-Null",
+  "New-Item \"$env:LocalAppData\\Lively Wallpaper\" -ItemType Junction -Target \"$persist_dir\" | Out-Null"
+ ],
+ "shortcuts": [
+  [
+   "livelywpf.exe",
+   "Lively Wallpaper"
+  ]
+ ],
+ "uninstaller": {
+  "script": "Remove-Item \"$env:LocalAppData\\Lively Wallpaper\" -ErrorAction 'SilentlyContinue' -Force -Recurse"
+ },
+ "url": "https://github.com/rocksdanister/lively/releases/download/v2.0.4.0/lively_setup_x86_full_v2040.exe",
+ "version": "2.0.4.0"
 }

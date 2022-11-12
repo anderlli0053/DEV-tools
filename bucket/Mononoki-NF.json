@@ -1,52 +1,52 @@
 {
-    "version": "2.2.2",
-    "license": "MIT",
-    "homepage": "https://github.com/ryanoasis/nerd-fonts",
-    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Mononoki.zip",
-    "hash": "d6d21469971ac8cf01d5c1e6a34372466d4f67a0db2e79b6fd0b4d9d6b8c9d05",
-    "checkver": "github",
-    "autoupdate": {
-        "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v$version/Mononoki.zip"
-    },
-    "installer": {
-        "script": [
-            "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
-            "$windows1809BuildNumber = 17763",
-            "$isPerUserFontInstallationSupported = $currentBuildNumber -ge $windows1809BuildNumber",
-            "$isFontInstallationForAllUsers = $global -or !$isPerUserFontInstallationSupported",
-            "if ($isFontInstallationForAllUsers -and !(is_admin)) {",
-            "    error \"Administrator rights are required to install $app.\"",
-            "    exit 1",
-            "}",
-            "$fontInstallDir = if ($isFontInstallationForAllUsers) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
-            "$registryRoot = if ($isFontInstallationForAllUsers) { \"HKLM\" } else { \"HKCU\" }",
-            "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
-            "New-Item $fontInstallDir -ItemType Directory -ErrorAction SilentlyContinue | Out-Null",
-            "Get-ChildItem $dir -Filter '*Complete Windows Compatible.*' | ForEach-Object {",
-            "    $value = if ($isFontInstallationForAllUsers) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
-            "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
-            "}"
-        ]
-    },
-    "uninstaller": {
-        "script": [
-            "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
-            "$windows1809BuildNumber = 17763",
-            "$isPerUserFontInstallationSupported = $currentBuildNumber -ge $windows1809BuildNumber",
-            "$isFontInstallationForAllUsers = $global -or !$isPerUserFontInstallationSupported",
-            "if ($isFontInstallationForAllUsers -and !(is_admin)) {",
-            "    error \"Administrator rights are required to uninstall $app.\"",
-            "    exit 1",
-            "}",
-            "$fontInstallDir = if ($isFontInstallationForAllUsers) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
-            "$registryRoot = if ($isFontInstallationForAllUsers) { \"HKLM\" } else { \"HKCU\" }",
-            "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
-            "Get-ChildItem $dir -Filter '*Complete Windows Compatible.*' | ForEach-Object {",
-            "    Remove-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Force -ErrorAction SilentlyContinue",
-            "    Remove-Item \"$fontInstallDir\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
-            "}",
-            "Write-Host \"The '$($app.Replace('-NF', ''))' Font family has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta"
-        ]
-    }
+ "autoupdate": {
+  "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v$version/Mononoki.zip"
+ },
+ "checkver": "github",
+ "hash": "d6d21469971ac8cf01d5c1e6a34372466d4f67a0db2e79b6fd0b4d9d6b8c9d05",
+ "homepage": "https://github.com/ryanoasis/nerd-fonts",
+ "installer": {
+  "script": [
+   "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
+   "$windowsTen1809BuildNumber = 17763",
+   "$isPerUserFontInstallationSupported = $currentBuildNumber -ge $windowsTen1809BuildNumber",
+   "if (!$isPerUserFontInstallationSupported -and !$global) {",
+   "    scoop uninstall $app",
+   "    Write-Host \"\"",
+   "    Write-Host \"For Windows version before Windows 10 1809 (OS Build 17763),\" -Foreground DarkRed",
+   "    Write-Host \"Font can only be installed for all users.\" -Foreground DarkRed",
+   "    Write-Host \"\"",
+   "    Write-Host \"Please use following commands to install '$app' Font for all users.\" -Foreground DarkRed",
+   "    Write-Host \"\"",
+   "    Write-Host \"        scoop install sudo\"",
+   "    Write-Host \"        sudo scoop install -g $app\"",
+   "    Write-Host \"\"",
+   "    exit 1",
+   "}",
+   "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
+   "$registryRoot = if ($global) { \"HKLM\" } else { \"HKCU\" }",
+   "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
+   "New-Item $fontInstallDir -ItemType Directory -ErrorAction SilentlyContinue | Out-Null",
+   "Get-ChildItem $dir -Filter '*Complete Windows Compatible.*' | ForEach-Object {",
+   "    $value = if ($isFontInstallationForAllUsers) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
+   "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
+   "    Copy-Item $_.FullName -Destination $fontInstallDir",
+   "}"
+  ]
+ },
+ "license": "MIT",
+ "uninstaller": {
+  "script": [
+   "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
+   "$registryRoot = if ($global) { \"HKLM\" } else { \"HKCU\" }",
+   "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
+   "Get-ChildItem $dir -Filter '*Complete Windows Compatible.*' | ForEach-Object {",
+   "    Remove-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Force -ErrorAction SilentlyContinue",
+   "    Remove-Item \"$fontInstallDir\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
+   "}",
+   "Write-Host \"The '$($app.Replace('-NF', ''))' Font family has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta"
+  ]
+ },
+ "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/Mononoki.zip",
+ "version": "2.2.2"
 }

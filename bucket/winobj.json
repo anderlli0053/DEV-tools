@@ -1,26 +1,42 @@
 {
  "architecture": {
   "32bit": {
+   "bin": "Winobj.exe",
    "shortcuts": [
     [
-     "WinObj.exe",
-     "SysInternals\\WinObj"
+     "Winobj.exe",
+     "SysInternals/WinObj",
+     "/accepteula"
     ]
    ]
   },
   "64bit": {
+   "bin": [
+    [
+     "Winobj64.exe",
+     "Winobj"
+    ]
+   ],
    "shortcuts": [
     [
-     "WinObj64.exe",
-     "SysInternals\\WinObj"
+     "winobj64.exe",
+     "SysInternals/WinObj",
+     "/accepteula"
     ]
    ]
   },
   "arm64": {
+   "bin": [
+    [
+     "Winobj64a.exe",
+     "Winobj"
+    ]
+   ],
    "shortcuts": [
     [
-     "WinObj64a.exe",
-     "SysInternals\\WinObj"
+     "Winobj64a.exe",
+     "SysInternals/WinObj",
+     "/accepteula"
     ]
    ]
   }
@@ -28,28 +44,16 @@
  "autoupdate": {
   "url": "https://download.sysinternals.com/files/WinObj.zip"
  },
- "checkver": "WinObj\\s+v([\\d.]+)</h1",
- "description": "WinObj. Access and display information on the NT Object Manager's name space using native API.",
+ "checkver": {
+  "regex": "#.*?v([\\d.]+)",
+  "url": "https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/winobj.md"
+ },
+ "description": "The ultimate Object Manager namespace viewer is here.",
  "hash": "585c75e0c2fb82fc43d8b986deac305fa3711db8d5f369dd874b66e721e6f5b3",
- "homepage": "https://docs.microsoft.com/en-us/sysinternals/downloads/winobj",
+ "homepage": "https://learn.microsoft.com/sysinternals/downloads/winobj",
  "license": {
   "identifier": "Freeware",
-  "url": "https://docs.microsoft.com/en-us/sysinternals/license-terms"
- },
- "pre_install": [
-  "$sysint = 'HKCU:\\SOFTWARE\\Sysinternals'",
-  "$fin = \"$sysint\\Winobj\"",
-  "New-Item $sysint, $fin -ErrorAction 'SilentlyContinue' | Out-Null",
-  "Set-ItemProperty -Path $fin -Name 'EulaAccepted' -Value 1 -Type 'DWord' -Force | Out-Null"
- ],
- "uninstaller": {
-  "script": [
-   "if ($purge) {",
-   "    $sysInt = 'HKCU:\\SOFTWARE\\Sysinternals'",
-   "    Remove-Item \"$sysInt\\Winobj\" -ErrorAction 'SilentlyContinue' -Force -Recurse",
-   "    if ((Get-ChildItem $sysInt).Count -eq 0) { Remove-Item $sysInt -ErrorAction 'SilentlyContinue' -Force -Recurse }",
-   "}"
-  ]
+  "url": "https://learn.microsoft.com/sysinternals/license-terms"
  },
  "url": "https://download.sysinternals.com/files/WinObj.zip",
  "version": "3.14"

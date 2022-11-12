@@ -1,40 +1,40 @@
 {
-    "version": "110",
-    "description": "Compiler infrastructure and toolchain library for WebAssembly",
-    "homepage": "https://github.com/WebAssembly/binaryen",
-    "license": "Apache-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/WebAssembly/binaryen/releases/download/version_110/binaryen-version_110-x86_64-windows.tar.gz",
-            "hash": "a118decd2bf0359f4275aad2d41394b4b507c7a53d10f5253d29338d0057b48c"
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "a118decd2bf0359f4275aad2d41394b4b507c7a53d10f5253d29338d0057b48c",
+   "url": "https://github.com/WebAssembly/binaryen/releases/download/version_110/binaryen-version_110-x86_64-windows.tar.gz"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "url": "$url.sha256"
     },
-    "extract_dir": "binaryen-version_110",
-    "bin": [
-        "bin\\wasm2js.exe",
-        "bin\\wasm-as.exe",
-        "bin\\wasm-ctor-eval.exe",
-        "bin\\wasm-dis.exe",
-        "bin\\wasm-emscripten-finalize.exe",
-        "bin\\wasm-metadce.exe",
-        "bin\\wasm-opt.exe",
-        "bin\\wasm-reduce.exe",
-        "bin\\wasm-shell.exe",
-        "bin\\wasm-split.exe"
-    ],
-    "checkver": {
-        "github": "https://github.com/WebAssembly/binaryen",
-        "regex": "tag/version_(\\d+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/WebAssembly/binaryen/releases/download/version_$version/binaryen-version_$version-x86_64-windows.tar.gz",
-                "hash": {
-                    "url": "$url.sha256"
-                }
-            }
-        },
-        "extract_dir": "binaryen-version_$version"
-    }
+    "url": "https://github.com/WebAssembly/binaryen/releases/download/version_$version/binaryen-version_$version-x86_64-windows.tar.gz"
+   }
+  },
+  "extract_dir": "binaryen-version_$version"
+ },
+ "bin": [
+  "bin\\wasm2js.exe",
+  "bin\\wasm-as.exe",
+  "bin\\wasm-ctor-eval.exe",
+  "bin\\wasm-dis.exe",
+  "bin\\wasm-emscripten-finalize.exe",
+  "bin\\wasm-metadce.exe",
+  "bin\\wasm-opt.exe",
+  "bin\\wasm-reduce.exe",
+  "bin\\wasm-shell.exe",
+  "bin\\wasm-split.exe"
+ ],
+ "checkver": {
+  "github": "https://github.com/WebAssembly/binaryen",
+  "regex": "tag/version_(\\d+)"
+ },
+ "description": "Compiler infrastructure and toolchain library for WebAssembly",
+ "extract_dir": "binaryen-version_110",
+ "homepage": "https://github.com/WebAssembly/binaryen",
+ "license": "Apache-2.0",
+ "version": "110"
 }

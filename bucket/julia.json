@@ -1,44 +1,44 @@
 {
-    "version": "1.8.2",
-    "description": "A programming language that is a fresh approach to technical computing.",
-    "homepage": "https://julialang.org",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://julialang-s3.julialang.org/bin/winnt/x64/1.8/julia-1.8.2-win64.zip",
-            "hash": "2529facaa5975cc43642715289d9745c21d84adb9579a4018f9bfad9057f4e8e",
-            "extract_dir": "julia-1.8.2"
-        },
-        "32bit": {
-            "url": "https://julialang-s3.julialang.org/bin/winnt/x86/1.8/julia-1.8.2-win32.zip",
-            "hash": "a679aaa7aa3df466ccffb1563701ce857174c727015ec408451c86d0316c5613",
-            "extract_dir": "julia-1.8.2"
-        }
-    },
-    "bin": "bin\\julia.exe",
-    "checkver": {
-        "url": "https://julialang.org/downloads/",
-        "regex": "Current stable release: v([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://julialang-s3.julialang.org/bin/winnt/x64/$majorVersion.$minorVersion/julia-$version-win64.zip",
-                "extract_dir": "julia-$version"
-            },
-            "32bit": {
-                "url": "https://julialang-s3.julialang.org/bin/winnt/x86/$majorVersion.$minorVersion/julia-$version-win32.zip",
-                "extract_dir": "julia-$version"
-            }
-        },
-        "hash": {
-            "url": "https://julialang-s3.julialang.org/bin/checksums/julia-$version.sha256"
-        }
-    },
-    "shortcuts": [
-        [
-            "bin\\julia.exe",
-            "Julia"
-        ]
-    ]
+ "architecture": {
+  "32bit": {
+   "extract_dir": "julia-1.8.2",
+   "hash": "a679aaa7aa3df466ccffb1563701ce857174c727015ec408451c86d0316c5613",
+   "url": "https://julialang-s3.julialang.org/bin/winnt/x86/1.8/julia-1.8.2-win32.zip"
+  },
+  "64bit": {
+   "extract_dir": "julia-1.8.2",
+   "hash": "2529facaa5975cc43642715289d9745c21d84adb9579a4018f9bfad9057f4e8e",
+   "url": "https://julialang-s3.julialang.org/bin/winnt/x64/1.8/julia-1.8.2-win64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "extract_dir": "julia-$version",
+    "url": "https://julialang-s3.julialang.org/bin/winnt/x86/$majorVersion.$minorVersion/julia-$version-win32.zip"
+   },
+   "64bit": {
+    "extract_dir": "julia-$version",
+    "url": "https://julialang-s3.julialang.org/bin/winnt/x64/$majorVersion.$minorVersion/julia-$version-win64.zip"
+   }
+  },
+  "hash": {
+   "url": "https://julialang-s3.julialang.org/bin/checksums/julia-$version.sha256"
+  }
+ },
+ "bin": "bin\\julia.exe",
+ "checkver": {
+  "regex": "Current stable release: v([\\d.]+)",
+  "url": "https://julialang.org/downloads/"
+ },
+ "description": "A programming language that is a fresh approach to technical computing.",
+ "homepage": "https://julialang.org",
+ "license": "MIT",
+ "shortcuts": [
+  [
+   "bin\\julia.exe",
+   "Julia"
+  ]
+ ],
+ "version": "1.8.2"
 }

@@ -1,28 +1,28 @@
 {
-    "version": "2.1.0",
-    "description": "Command-line tools for EdgeDB.",
-    "homepage": "https://www.edgedb.com/docs/cli/index",
-    "license": "Apache-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-2.1.0+e136de4.exe#/edgedb.exe",
-            "hash": "a998a3269b6e2b8ce9509e8d73f117188ad19ba538cfcefff334fe4767f7abc1"
-        }
-    },
-    "bin": "edgedb.exe",
-    "checkver": {
-        "script": [
-            "$indexes = Invoke-RestMethod 'https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json'",
-            "$latest = $indexes.packages | Sort-Object -Property revision | Select-Object -Last 1",
-            "return $latest.version"
-        ],
-        "regex": "(.+)\\+(?<commit>.+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-$version+$matchCommit.exe#/edgedb.exe"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "a998a3269b6e2b8ce9509e8d73f117188ad19ba538cfcefff334fe4767f7abc1",
+   "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-2.1.0+e136de4.exe#/edgedb.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-$version+$matchCommit.exe#/edgedb.exe"
+   }
+  }
+ },
+ "bin": "edgedb.exe",
+ "checkver": {
+  "regex": "(.+)\\+(?<commit>.+)",
+  "script": [
+   "$indexes = Invoke-RestMethod 'https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json'",
+   "$latest = $indexes.packages | Sort-Object -Property revision | Select-Object -Last 1",
+   "return $latest.version"
+  ]
+ },
+ "description": "Command-line tools for EdgeDB.",
+ "homepage": "https://www.edgedb.com/docs/cli/index",
+ "license": "Apache-2.0",
+ "version": "2.1.0"
 }

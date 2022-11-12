@@ -1,48 +1,48 @@
 {
-    "##": "For command-line usage, see: https://sandboxie-plus.com/sandboxie/startcommandline/",
-    "version": "5.60.3",
-    "description": "Sandbox isolation software (classic variant)",
-    "homepage": "https://sandboxie-plus.com/",
-    "license": "GPL-3.0-or-later",
-    "notes": [
-        "You are installing Sandboxie Classic, which is designed to be compatible with the original Sandboxie.",
-        "For more new features, install 'sandboxie-plus-np'"
-    ],
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.5.3/Sandboxie-Classic-x64-v5.60.3.exe#/setup.exe",
-            "hash": "e567137350b4fac14e72b3632051288f387743f3d9b5968fb251230aa89e865c"
-        },
-        "32bit": {
-            "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.5.3/Sandboxie-Classic-x86-v5.60.3.exe#/setup.exe",
-            "hash": "f4c906aa2d2bd2cd31fb9ca140965ece3d55913e44138e8d8b79ae124cfcbb2f"
-        }
-    },
-    "installer": {
-        "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to install\"; break }",
-            "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList '/S' -RunAs | Out-Null"
-        ]
-    },
-    "uninstaller": {
-        "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to uninstall\"; break }",
-            "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList @('/remove', '/S') -RunAs | Out-Null"
-        ]
-    },
-    "checkver": {
-        "github": "https://github.com/sandboxie-plus/Sandboxie",
-        "regex": "Release v(?<plusver>[\\d.]+) / (?<classicver>[\\d.]+)",
-        "replace": "${classicver}"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v$matchPlusver/Sandboxie-Classic-x64-v$version.exe#/setup.exe"
-            },
-            "32bit": {
-                "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v$matchPlusver/Sandboxie-Classic-x86-v$version.exe#/setup.exe"
-            }
-        }
-    }
+ "##": "For command-line usage, see: https://sandboxie-plus.com/sandboxie/startcommandline/",
+ "architecture": {
+  "32bit": {
+   "hash": "f4c906aa2d2bd2cd31fb9ca140965ece3d55913e44138e8d8b79ae124cfcbb2f",
+   "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.5.3/Sandboxie-Classic-x86-v5.60.3.exe#/setup.exe"
+  },
+  "64bit": {
+   "hash": "e567137350b4fac14e72b3632051288f387743f3d9b5968fb251230aa89e865c",
+   "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.5.3/Sandboxie-Classic-x64-v5.60.3.exe#/setup.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v$matchPlusver/Sandboxie-Classic-x86-v$version.exe#/setup.exe"
+   },
+   "64bit": {
+    "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v$matchPlusver/Sandboxie-Classic-x64-v$version.exe#/setup.exe"
+   }
+  }
+ },
+ "checkver": {
+  "github": "https://github.com/sandboxie-plus/Sandboxie",
+  "regex": "Release v(?<plusver>[\\d.]+) / (?<classicver>[\\d.]+)",
+  "replace": "${classicver}"
+ },
+ "description": "Sandbox isolation software (classic variant)",
+ "homepage": "https://sandboxie-plus.com/",
+ "installer": {
+  "script": [
+   "if (!(is_admin)) { error \"$app requires admin rights to install\"; break }",
+   "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList '/S' -RunAs | Out-Null"
+  ]
+ },
+ "license": "GPL-3.0-or-later",
+ "notes": [
+  "You are installing Sandboxie Classic, which is designed to be compatible with the original Sandboxie.",
+  "For more new features, install 'sandboxie-plus-np'"
+ ],
+ "uninstaller": {
+  "script": [
+   "if (!(is_admin)) { error \"$app requires admin rights to uninstall\"; break }",
+   "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList @('/remove', '/S') -RunAs | Out-Null"
+  ]
+ },
+ "version": "5.60.3"
 }

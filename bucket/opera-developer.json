@@ -1,55 +1,55 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "7406e0de7379b8fea3f22e3ca540c6b84af7e96e4d55e8c5d08343a19da6839f",
-            "url": "https://download1.operacdn.com/pub/opera-developer/94.0.4597.0/win/Opera_Developer_94.0.4597.0_Autoupdate.exe#/dl.7z"
-        },
-        "64bit": {
-            "hash": "5f48478c5d4de5b3b86849de0e092091bbf6412173f8c473c1fcd2aa6b99aabd",
-            "url": "https://download1.operacdn.com/pub/opera-developer/94.0.4597.0/win/Opera_Developer_94.0.4597.0_Autoupdate_x64.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://download1.operacdn.com/pub/opera-developer/$version/win/Opera_Developer_$version_Autoupdate.exe#/dl.7z"
-            },
-            "64bit": {
-                "url": "https://download1.operacdn.com/pub/opera-developer/$version/win/Opera_Developer_$version_Autoupdate_x64.exe#/dl.7z"
-            }
-        },
-        "hash": {
-            "url": "$url.sha256sum"
-        }
-    },
-    "checkver": {
-        "regex": "([\\d.]+)/",
-        "reverse": true,
-        "url": "http://get.opera.com/ftp/pub/opera-developer/"
-    },
-    "description": "Fast, secure, easy-to-use browser.",
-    "homepage": "https://www.opera.com/",
-    "installer": {
-        "script": [
-            "Remove-Item -Path \"$dir\\*_list\" -Force",
-            "Move-Item -Path \"$dir\\*\" -Destination \"$dir\\$version\" -Exclude 'Assets', 'launcher*', 'Resources.pri' -ErrorAction Ignore",
-            "if (!(Test-Path \"$dir\\$version\\localization\")) {",
-            "   New-Item -Path \"$dir\\$version\\localization\" -ItemType Directory | Out-Null",
-            "   Move-Item -Path \"$dir\\$version\\*.pak\" -Destination \"$dir\\$version\\localization\" -Exclude 'opera*' -ErrorAction Ignore",
-            "}",
-            "Set-Content -Path \"$dir\\installer_prefs.json\" -Value (@{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json) -Encoding ASCII"
-        ]
-    },
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.opera.com/eula/computers"
-    },
-    "persist": "profile",
-    "shortcuts": [
-        [
-            "launcher.exe",
-            "Opera Developer"
-        ]
-    ],
-    "version": "94.0.4597.0"
+ "architecture": {
+  "32bit": {
+   "hash": "7406e0de7379b8fea3f22e3ca540c6b84af7e96e4d55e8c5d08343a19da6839f",
+   "url": "https://download1.operacdn.com/pub/opera-developer/94.0.4597.0/win/Opera_Developer_94.0.4597.0_Autoupdate.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "5f48478c5d4de5b3b86849de0e092091bbf6412173f8c473c1fcd2aa6b99aabd",
+   "url": "https://download1.operacdn.com/pub/opera-developer/94.0.4597.0/win/Opera_Developer_94.0.4597.0_Autoupdate_x64.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://download1.operacdn.com/pub/opera-developer/$version/win/Opera_Developer_$version_Autoupdate.exe#/dl.7z"
+   },
+   "64bit": {
+    "url": "https://download1.operacdn.com/pub/opera-developer/$version/win/Opera_Developer_$version_Autoupdate_x64.exe#/dl.7z"
+   }
+  },
+  "hash": {
+   "url": "$url.sha256sum"
+  }
+ },
+ "checkver": {
+  "regex": "([\\d.]+)/",
+  "reverse": true,
+  "url": "http://get.opera.com/ftp/pub/opera-developer/"
+ },
+ "description": "Fast, secure, easy-to-use browser.",
+ "homepage": "https://www.opera.com/",
+ "installer": {
+  "script": [
+   "Remove-Item -Path \"$dir\\*_list\" -Force",
+   "Move-Item -Path \"$dir\\*\" -Destination \"$dir\\$version\" -Exclude 'Assets', 'launcher*', 'Resources.pri' -ErrorAction Ignore",
+   "if (!(Test-Path \"$dir\\$version\\localization\")) {",
+   "   New-Item -Path \"$dir\\$version\\localization\" -ItemType Directory | Out-Null",
+   "   Move-Item -Path \"$dir\\$version\\*.pak\" -Destination \"$dir\\$version\\localization\" -Exclude 'opera*' -ErrorAction Ignore",
+   "}",
+   "Set-Content -Path \"$dir\\installer_prefs.json\" -Value (@{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json) -Encoding ASCII"
+  ]
+ },
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://www.opera.com/eula/computers"
+ },
+ "persist": "profile",
+ "shortcuts": [
+  [
+   "launcher.exe",
+   "Opera Developer"
+  ]
+ ],
+ "version": "94.0.4597.0"
 }

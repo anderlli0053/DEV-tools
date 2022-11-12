@@ -1,0 +1,28 @@
+{
+ "autoupdate": {
+  "url": "https://www.copytrans.net/bin/CopyTransDriversInstallerv$version.zip"
+ },
+ "bin": "CopyTransDriversInstaller.exe",
+ "checkver": {
+  "regex": "CopyTransDriversInstallerv([\\d.]+).zip",
+  "script": [
+   "$redirUrl = [System.Net.HttpWebRequest]::Create('https://www.copytrans.net/download-zip?program=CTDI').GetResponse().ResponseUri.AbsoluteUri",
+   "return $redirUrl"
+  ]
+ },
+ "description": "An installer for installing iOS drivers without installing iTunes.",
+ "hash": "871a9ced3f434cc7280082a3219d7239383210636fc8dc0f713a49b102abb71d",
+ "homepage": "https://www.copytrans.net/support/install-iphone-ipod-touch-and-ipad-drivers-without-installing-itunes/",
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://www.copytrans.net/support/terms-and-conditions/"
+ },
+ "shortcuts": [
+  [
+   "CopyTransDriversInstaller.exe",
+   "CopyTrans\\CopyTrans Drivers Installer"
+  ]
+ ],
+ "url": "https://www.copytrans.net/bin/CopyTransDriversInstallerv3.002.zip",
+ "version": "3.002"
+}

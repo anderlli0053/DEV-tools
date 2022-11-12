@@ -1,25 +1,25 @@
 {
-    "version": "20221111.1b43f37",
-    "description": "A language for humans and computers.",
-    "homepage": "https://crystal-lang.org/",
-    "license": {
-        "identifier": "Apache-2.0",
-        "url": "https://github.com/crystal-lang/crystal/raw/master/LICENSE"
-    },
-    "depends": "vswhere",
-    "url": "https://nightly.link/crystal-lang/crystal/actions/runs/3444754959/crystal.zip",
-    "hash": "954016cb6135002ef7195de5bf4a0dc0e0e142c1312fad098da27996d9e240fb",
-    "post_install": "If (Test-Path \"$env:LOCALAPPDATA\\crystal\\cache\") { Remove-Item \"$env:LOCALAPPDATA\\crystal\\cache\" -ErrorAction 'SilentlyContinue' -Recurse -Force }",
-    "bin": [
-        "crystal.exe",
-        "shards.exe"
-    ],
-    "checkver": {
-        "url": "https://scoop-apps.vercel.app/crystal-lang/crystal",
-        "regex": "(?sm)crystal-lang/crystal/actions/runs/(?<runid>\\d+).+datetime=\"(?<year>\\d+).(?<month>\\d+).(?<day>\\d+).*?commit/(?<sha>[0-9a-f]{7})",
-        "replace": "${year}${month}${day}.${sha}"
-    },
-    "autoupdate": {
-        "url": "https://nightly.link/crystal-lang/crystal/actions/runs/$matchRunid/crystal.zip"
-    }
+ "autoupdate": {
+  "url": "https://nightly.link/crystal-lang/crystal/actions/runs/$matchRunid/crystal.zip"
+ },
+ "bin": [
+  "crystal.exe",
+  "shards.exe"
+ ],
+ "checkver": {
+  "regex": "(?sm)crystal-lang/crystal/actions/runs/(?<runid>\\d+).+datetime=\"(?<year>\\d+).(?<month>\\d+).(?<day>\\d+).*?commit/(?<sha>[0-9a-f]{7})",
+  "replace": "${year}${month}${day}.${sha}",
+  "url": "https://scoop-apps.vercel.app/crystal-lang/crystal"
+ },
+ "depends": "vswhere",
+ "description": "A language for humans and computers.",
+ "hash": "954016cb6135002ef7195de5bf4a0dc0e0e142c1312fad098da27996d9e240fb",
+ "homepage": "https://crystal-lang.org/",
+ "license": {
+  "identifier": "Apache-2.0",
+  "url": "https://github.com/crystal-lang/crystal/raw/master/LICENSE"
+ },
+ "post_install": "If (Test-Path \"$env:LOCALAPPDATA\\crystal\\cache\") { Remove-Item \"$env:LOCALAPPDATA\\crystal\\cache\" -ErrorAction 'SilentlyContinue' -Recurse -Force }",
+ "url": "https://nightly.link/crystal-lang/crystal/actions/runs/3444754959/crystal.zip",
+ "version": "20221111.1b43f37"
 }

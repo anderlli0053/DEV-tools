@@ -1,53 +1,31 @@
 {
  "architecture": {
   "32bit": {
-   "bin": "PsLogList.exe",
-   "hash": "57dc27269669402152518dc7683e0a9cc372a3c3125efe1c7ecd8e8516f556f3",
-   "url": "https://live.sysinternals.com/PsLogList.exe"
+   "bin": "psloglist.exe"
   },
   "64bit": {
    "bin": [
-    "PsLogList64.exe",
     [
-     "PsLogList64.exe",
-     "PsLogList"
+     "psloglist64.exe",
+     "psloglist"
     ]
-   ],
-   "hash": "e2587dd0aa50d75b545e2100fb2bab0b0607ff7e87b264339c7fb695b8572342",
-   "url": "https://live.sysinternals.com/PsLogList64.exe"
+   ]
   }
  },
  "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://live.sysinternals.com/PsLogList.exe"
-   },
-   "64bit": {
-    "url": "https://live.sysinternals.com/PsLogList64.exe"
-   }
-  }
+  "url": "https://download.sysinternals.com/files/psloglist.zip"
  },
- "checkver": "PsLogList\\s+v([\\d.]+)</h1",
- "description": "PsLogList. Local and remote event log viewer",
- "homepage": "https://docs.microsoft.com/en-us/sysinternals/downloads/psloglist",
+ "checkver": {
+  "regex": "#.*?v([\\d.]+)",
+  "url": "https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/psloglist.md"
+ },
+ "description": "Dump event log records.",
+ "hash": "5a5f1e927fdc87324a3ac331933b02e276b2651c43ad16a526cad5b0e423695d",
+ "homepage": "https://learn.microsoft.com/sysinternals/downloads/psloglist",
  "license": {
   "identifier": "Freeware",
-  "url": "https://docs.microsoft.com/en-us/sysinternals/license-terms"
+  "url": "https://learn.microsoft.com/sysinternals/license-terms"
  },
- "pre_install": [
-  "$sysint = 'HKCU:\\SOFTWARE\\Sysinternals'",
-  "$fin = \"$sysint\\PsLoglist\"",
-  "New-Item $sysint, $fin -ErrorAction 'SilentlyContinue' | Out-Null",
-  "Set-ItemProperty -Path $fin -Name 'EulaAccepted' -Value 1 -Type 'DWord' -Force | Out-Null"
- ],
- "uninstaller": {
-  "script": [
-   "if ($purge) {",
-   "    $sysInt = 'HKCU:\\SOFTWARE\\Sysinternals'",
-   "    Remove-Item \"$sysInt\\PsLoglist\" -ErrorAction 'SilentlyContinue' -Force -Recurse",
-   "    if ((Get-ChildItem $sysInt).Count -eq 0) { Remove-Item $sysInt -ErrorAction 'SilentlyContinue' -Force -Recurse }",
-   "}"
-  ]
- },
+ "url": "https://download.sysinternals.com/files/psloglist.zip",
  "version": "2.81"
 }

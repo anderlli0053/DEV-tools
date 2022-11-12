@@ -1,36 +1,36 @@
 {
-    "version": "136",
-    "description": "This is the release repository for Fan Control, a focused and highly customizable fan controlling software for Windows.",
-    "homepage": "https://github.com/Rem0o/FanControl.Releases",
-    "license": {
-        "identifier": "Freeware"
-    },
-    "url": "https://github.com/Rem0o/FanControl.Releases/raw/V136/FanControl.zip",
-    "hash": "aa35887f518d9c1547d447e80581db324c21d71afaafb193db95e12ca4105647",
-    "pre_install": [
-        "if (Test-Path \"$persist_dir\\userConfig.json\") {",
-        "    Copy-Item \"$persist_dir\\userConfig.json\" \"$dir\\\" | Out-Null",
-        "}"
-    ],
-    "uninstaller": {
-        "script": [
-            "if (Test-Path \"$dir\\userConfig.json\") {",
-            "    ensure \"$persist_dir\" | Out-Null",
-            "    Copy-Item \"$dir\\userConfig.json\" \"$persist_dir\\\" | Out-Null",
-            "}"
-        ]
-    },
-    "shortcuts": [
-        [
-            "FanControl.exe",
-            "Fan Control"
-        ]
-    ],
-    "persist": "Plugins",
-    "checkver": {
-        "github": "https://github.com/Rem0o/FanControl.Releases"
-    },
-    "autoupdate": {
-        "url": "https://github.com/Rem0o/FanControl.Releases/raw/V$version/FanControl.zip"
-    }
+ "autoupdate": {
+  "url": "https://github.com/Rem0o/FanControl.Releases/raw/V$version/FanControl.zip"
+ },
+ "checkver": {
+  "github": "https://github.com/Rem0o/FanControl.Releases"
+ },
+ "description": "This is the release repository for Fan Control, a focused and highly customizable fan controlling software for Windows.",
+ "hash": "aa35887f518d9c1547d447e80581db324c21d71afaafb193db95e12ca4105647",
+ "homepage": "https://github.com/Rem0o/FanControl.Releases",
+ "license": {
+  "identifier": "Freeware"
+ },
+ "persist": "Plugins",
+ "pre_install": [
+  "if (Test-Path \"$persist_dir\\userConfig.json\") {",
+  "    Copy-Item \"$persist_dir\\userConfig.json\" \"$dir\\\" | Out-Null",
+  "}"
+ ],
+ "shortcuts": [
+  [
+   "FanControl.exe",
+   "Fan Control"
+  ]
+ ],
+ "uninstaller": {
+  "script": [
+   "if (Test-Path \"$dir\\userConfig.json\") {",
+   "    ensure \"$persist_dir\" | Out-Null",
+   "    Copy-Item \"$dir\\userConfig.json\" \"$persist_dir\\\" | Out-Null",
+   "}"
+  ]
+ },
+ "url": "https://github.com/Rem0o/FanControl.Releases/raw/V136/FanControl.zip",
+ "version": "136"
 }

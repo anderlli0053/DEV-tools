@@ -1,21 +1,21 @@
 {
-    "version": "1.12.22301",
-    "description": "Set of software components that allows the creation of user mode file systems.",
-    "homepage": "http://www.secfs.net/winfsp/",
-    "license": "GPL-3.0-only",
-    "url": "https://github.com/billziss-gh/winfsp/releases/download/v1.12/winfsp-1.12.22301.msi#/setup.msi_",
-    "hash": "e42ca8463eb31f3f0dc49a36bbb5096dfc118bbf28b66f4508049c374d23427d",
-    "installer": {
-        "script": "Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", 'ADDLOCAL=F.Developer', '/qn') -RunAs | Out-Null"
-    },
-    "uninstaller": {
-        "script": "Invoke-ExternalCommand msiexec -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn') -RunAs | Out-Null"
-    },
-    "checkver": {
-        "url": "https://github.com/billziss-gh/winfsp/releases/latest",
-        "regex": "v(?<short>[\\d.]+)/winfsp-(?<version>[\\d.]+).*\\.msi"
-    },
-    "autoupdate": {
-        "url": "https://github.com/billziss-gh/winfsp/releases/download/v$matchShort/winfsp-$matchVersion.msi#/setup.msi_"
-    }
+ "autoupdate": {
+  "url": "https://github.com/billziss-gh/winfsp/releases/download/v$matchShort/winfsp-$matchVersion.msi#/setup.msi_"
+ },
+ "checkver": {
+  "regex": "v(?<short>[\\d.]+)/winfsp-(?<version>[\\d.]+).*\\.msi",
+  "url": "https://github.com/billziss-gh/winfsp/releases/latest"
+ },
+ "description": "Set of software components that allows the creation of user mode file systems.",
+ "hash": "e42ca8463eb31f3f0dc49a36bbb5096dfc118bbf28b66f4508049c374d23427d",
+ "homepage": "http://www.secfs.net/winfsp/",
+ "installer": {
+  "script": "Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", 'ADDLOCAL=F.Developer', '/qn') -RunAs | Out-Null"
+ },
+ "license": "GPL-3.0-only",
+ "uninstaller": {
+  "script": "Invoke-ExternalCommand msiexec -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn') -RunAs | Out-Null"
+ },
+ "url": "https://github.com/billziss-gh/winfsp/releases/download/v1.12/winfsp-1.12.22301.msi#/setup.msi_",
+ "version": "1.12.22301"
 }

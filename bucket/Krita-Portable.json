@@ -1,39 +1,39 @@
 {
-    "version": "5.1.3",
-    "description": "Krita. A free digital painting application.",
-    "homepage": "https://krita.org/",
-    "license": "GPL-3.0-or-later",
-    "changelog": "https://krita.org/en/download/krita-desktop/",
-    "architecture": {
-        "64bit": {
-            "url": "https://download.kde.org/stable/krita/5.1.3/krita-x64-5.1.3.zip",
-            "hash": "4f0753f9177f031101f80271293172d06794227bf5a0f777701d2f68ba1d0c8c"
-        }
-    },
-    "extract_dir": "krita-x64-5.1.3",
-    "bin": [
-        "bin\\krita.exe",
-        "bin\\kritarunner.exe"
-    ],
-    "shortcuts": [
-        [
-            "bin\\krita.exe",
-            "Krita"
-        ]
-    ],
-    "checkver": {
-        "url": "https://krita.org/en/download/krita-desktop/",
-        "regex": "Download Krita\\s+([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://download.kde.org/stable/krita/$version/krita-x64-$version.zip"
-            }
-        },
-        "hash": {
-            "url": "$url.sha256"
-        },
-        "extract_dir": "krita-x64-$version"
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "4f0753f9177f031101f80271293172d06794227bf5a0f777701d2f68ba1d0c8c",
+   "url": "https://download.kde.org/stable/krita/5.1.3/krita-x64-5.1.3.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://download.kde.org/stable/krita/$version/krita-x64-$version.zip"
+   }
+  },
+  "extract_dir": "krita-x64-$version",
+  "hash": {
+   "url": "$url.sha256"
+  }
+ },
+ "bin": [
+  "bin\\krita.exe",
+  "bin\\kritarunner.exe"
+ ],
+ "changelog": "https://krita.org/en/download/krita-desktop/",
+ "checkver": {
+  "regex": "Download Krita\\s+([\\d.]+)",
+  "url": "https://krita.org/en/download/krita-desktop/"
+ },
+ "description": "Krita. A free digital painting application.",
+ "extract_dir": "krita-x64-5.1.3",
+ "homepage": "https://krita.org/",
+ "license": "GPL-3.0-or-later",
+ "shortcuts": [
+  [
+   "bin\\krita.exe",
+   "Krita"
+  ]
+ ],
+ "version": "5.1.3"
 }

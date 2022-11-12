@@ -1,29 +1,29 @@
 {
-    "version": "7.22.0.8",
-    "description": "baidu net disk client",
-    "homepage": "http://pan.baidu.com/",
-    "license": {
-        "identifier": "Unknown",
-        "url": "http://pan.baidu.com/disk/duty/"
-    },
-    "url": "http://wppkg.baidupcs.com/issue/netdisk/yunguanjia/BaiduNetdisk_7.22.0.8.exe#/dl.7z",
-    "hash": "ffc639e9dede5721db2deed2d45ec1685cffbaf7379512eabab29e39c5bf601f",
-    "pre_install": "Remove-Item -R -Path \"$dir\\`$TEMP\",\"$dir\\`$PLUGINSDIR\"",
-    "shortcuts": [
-        [
-            "BaiduNetdisk.exe",
-            "Baidu Netdisk"
-        ]
-    ],
-    "persist": "users",
-    "checkver": {
-        "url": "http://pan.baidu.com/disk/cmsdata?do=client",
-        "regex": "\\\\/yunguanjia\\\\/(?<name>Baidu[\\w]+_)(\\d+\\.\\d+\\.\\d+\\.\\d+)\\.exe"
-    },
-    "autoupdate": {
-        "url": "http://wppkg.baidupcs.com/issue/netdisk/yunguanjia/$matchName$version.exe#/dl.7z",
-        "hash": {
-            "mode": "download"
-        }
-    }
+ "autoupdate": {
+  "hash": {
+   "mode": "download"
+  },
+  "url": "http://wppkg.baidupcs.com/issue/netdisk/yunguanjia/$matchName$version.exe#/dl.7z"
+ },
+ "checkver": {
+  "regex": "\\\\/yunguanjia\\\\/(?<name>Baidu[\\w]+_)(\\d+\\.\\d+\\.\\d+\\.\\d+)\\.exe",
+  "url": "http://pan.baidu.com/disk/cmsdata?do=client"
+ },
+ "description": "baidu net disk client",
+ "hash": "ffc639e9dede5721db2deed2d45ec1685cffbaf7379512eabab29e39c5bf601f",
+ "homepage": "http://pan.baidu.com/",
+ "license": {
+  "identifier": "Unknown",
+  "url": "http://pan.baidu.com/disk/duty/"
+ },
+ "persist": "users",
+ "pre_install": "Remove-Item -R -Path \"$dir\\`$TEMP\",\"$dir\\`$PLUGINSDIR\"",
+ "shortcuts": [
+  [
+   "BaiduNetdisk.exe",
+   "Baidu Netdisk"
+  ]
+ ],
+ "url": "http://wppkg.baidupcs.com/issue/netdisk/yunguanjia/BaiduNetdisk_7.22.0.8.exe#/dl.7z",
+ "version": "7.22.0.8"
 }

@@ -1,50 +1,50 @@
 {
-    "version": "2022.3-EAP7-223.7401.6",
-    "description": "Cross-Platform IDE for .NET by JetBrains. (Early Access Program)",
-    "homepage": "https://www.jetbrains.com/rider/",
-    "license": {
-        "identifier": "Proprietary",
-        "url": "https://www.jetbrains.com/store/license.html"
+ "architecture": {
+  "64bit": {
+   "bin": [
+    [
+     "IDE\\bin\\rider64.exe",
+     "rider"
+    ]
+   ],
+   "hash": "ef48da16e1685d188c81ca1a34599a5b44575b7d95924d41f6f0ac73f92f743b",
+   "shortcuts": [
+    [
+     "IDE\\bin\\rider64.exe",
+     "JetBrains\\Rider"
+    ]
+   ],
+   "url": "https://download.jetbrains.com/rider/JetBrains.Rider-2022.3-EAP7-223.7401.6.Checked.win.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "url": "$url.sha256"
     },
-    "architecture": {
-        "64bit": {
-            "url": "https://download.jetbrains.com/rider/JetBrains.Rider-2022.3-EAP7-223.7401.6.Checked.win.zip",
-            "hash": "ef48da16e1685d188c81ca1a34599a5b44575b7d95924d41f6f0ac73f92f743b",
-            "bin": [
-                [
-                    "IDE\\bin\\rider64.exe",
-                    "rider"
-                ]
-            ],
-            "shortcuts": [
-                [
-                    "IDE\\bin\\rider64.exe",
-                    "JetBrains\\Rider"
-                ]
-            ]
-        }
-    },
-    "extract_to": "IDE",
-    "installer": {
-        "script": "& \"$bucketsdir\\versions\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir"
-    },
-    "persist": [
-        "IDE\\bin\\idea.properties",
-        "profile"
-    ],
-    "checkver": {
-        "url": "https://data.services.jetbrains.com/products/releases?code=RD&latest=true&platform=zip&type=eap",
-        "regex": "version\":\"(?<ver>[\\w.-]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
-        "replace": "${ver}-${build}"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://download.jetbrains.com/rider/JetBrains.Rider-$version.Checked.win.zip",
-                "hash": {
-                    "url": "$url.sha256"
-                }
-            }
-        }
-    }
+    "url": "https://download.jetbrains.com/rider/JetBrains.Rider-$version.Checked.win.zip"
+   }
+  }
+ },
+ "checkver": {
+  "regex": "version\":\"(?<ver>[\\w.-]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
+  "replace": "${ver}-${build}",
+  "url": "https://data.services.jetbrains.com/products/releases?code=RD&latest=true&platform=zip&type=eap"
+ },
+ "description": "Cross-Platform IDE for .NET by JetBrains. (Early Access Program)",
+ "extract_to": "IDE",
+ "homepage": "https://www.jetbrains.com/rider/",
+ "installer": {
+  "script": "& \"$bucketsdir\\versions\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir"
+ },
+ "license": {
+  "identifier": "Proprietary",
+  "url": "https://www.jetbrains.com/store/license.html"
+ },
+ "persist": [
+  "IDE\\bin\\idea.properties",
+  "profile"
+ ],
+ "version": "2022.3-EAP7-223.7401.6"
 }

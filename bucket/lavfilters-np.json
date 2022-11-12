@@ -1,63 +1,63 @@
 {
-    "version": "0.76.1",
-    "description": "Open-Source DirectShow Media Splitter and Decoders.",
-    "homepage": "https://1f0.de/",
-    "license": {
-        "identifier": "GPL-2.0-only",
-        "url": "https://github.com/Nevcairiel/LAVFilters/blob/master/COPYING"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/Nevcairiel/LAVFilters/releases/download/0.76.1/LAVFilters-0.76.1-x64.zip",
-            "hash": "bf52325ba35dff7dd772bdfd8819206fb60ae6efa48f0f562e5e6daf3c07d8a4"
-        },
-        "32bit": {
-            "url": "https://github.com/Nevcairiel/LAVFilters/releases/download/0.76.1/LAVFilters-0.76.1-x86.zip",
-            "hash": "3973f6364c6b101353631025ed172dbaa28c2878c18fad45bcd98689aaf84594"
-        }
-    },
-    "depends": "sudo",
-    "installer": {
-        "script": [
-            "sudo \"$env:COMSPEC\" /c \"regsvr32 /s `\"$dir\\LAVAudio.ax`\" & regsvr32 /s `\"$dir\\LAVSplitter.ax`\" & regsvr32 /s `\"$dir\\LAVVideo.ax`\"\"",
-            "@('LAVAudio', 'LAVSplitter', 'LAVVideo') | %{",
-            "    $s = (New-Object -ComObject WScript.Shell).CreateShortcut(\"$dir\\$_.lnk\")",
-            "    $s.TargetPath = \"rundll32.exe\"",
-            "    $s.Arguments = \"`\"$dir\\$_.ax`\",OpenConfiguration\"",
-            "    $s.WorkingDirectory = \"$dir\"",
-            "    $s.IconLocation = \"$dir\\$_.ax\"",
-            "    $s.Save()",
-            "}"
-        ]
-    },
-    "uninstaller": {
-        "script": "sudo \"$env:COMSPEC\" /c \"regsvr32 /u /s `\"$dir\\LAVAudio.ax`\" & regsvr32 /u /s `\"$dir\\LAVSplitter.ax`\" & regsvr32 /u /s `\"$dir\\LAVVideo.ax`\"\""
-    },
-    "shortcuts": [
-        [
-            "LAVAudio.lnk",
-            "LAV Audio Configuration"
-        ],
-        [
-            "LAVSplitter.lnk",
-            "LAV Splitter Configuration"
-        ],
-        [
-            "LAVVideo.lnk",
-            "LAV Video Configuration"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/Nevcairiel/LAVFilters"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/Nevcairiel/LAVFilters/releases/download/$version/LAVFilters-$version-x64.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/Nevcairiel/LAVFilters/releases/download/$version/LAVFilters-$version-x86.zip"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "88a441685e34960a591cdd7049e5cc91838a0e46b8d9148f557a726a1866f35f",
+   "url": "https://github.com/Nevcairiel/LAVFilters/releases/download/0.77/LAVFilters-0.77-x86.zip"
+  },
+  "64bit": {
+   "hash": "95e6729a73e4217246d7a517711121fad7b2b7c49bec7f32e7196b4b45eb24a5",
+   "url": "https://github.com/Nevcairiel/LAVFilters/releases/download/0.77/LAVFilters-0.77-x64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/Nevcairiel/LAVFilters/releases/download/$version/LAVFilters-$version-x86.zip"
+   },
+   "64bit": {
+    "url": "https://github.com/Nevcairiel/LAVFilters/releases/download/$version/LAVFilters-$version-x64.zip"
+   }
+  }
+ },
+ "checkver": {
+  "github": "https://github.com/Nevcairiel/LAVFilters"
+ },
+ "depends": "sudo",
+ "description": "Open-Source DirectShow Media Splitter and Decoders.",
+ "homepage": "https://1f0.de/",
+ "installer": {
+  "script": [
+   "sudo \"$env:COMSPEC\" /c \"regsvr32 /s `\"$dir\\LAVAudio.ax`\" & regsvr32 /s `\"$dir\\LAVSplitter.ax`\" & regsvr32 /s `\"$dir\\LAVVideo.ax`\"\"",
+   "@('LAVAudio', 'LAVSplitter', 'LAVVideo') | %{",
+   "    $s = (New-Object -ComObject WScript.Shell).CreateShortcut(\"$dir\\$_.lnk\")",
+   "    $s.TargetPath = \"rundll32.exe\"",
+   "    $s.Arguments = \"`\"$dir\\$_.ax`\",OpenConfiguration\"",
+   "    $s.WorkingDirectory = \"$dir\"",
+   "    $s.IconLocation = \"$dir\\$_.ax\"",
+   "    $s.Save()",
+   "}"
+  ]
+ },
+ "license": {
+  "identifier": "GPL-2.0-only",
+  "url": "https://github.com/Nevcairiel/LAVFilters/blob/master/COPYING"
+ },
+ "shortcuts": [
+  [
+   "LAVAudio.lnk",
+   "LAV Audio Configuration"
+  ],
+  [
+   "LAVSplitter.lnk",
+   "LAV Splitter Configuration"
+  ],
+  [
+   "LAVVideo.lnk",
+   "LAV Video Configuration"
+  ]
+ ],
+ "uninstaller": {
+  "script": "sudo \"$env:COMSPEC\" /c \"regsvr32 /u /s `\"$dir\\LAVAudio.ax`\" & regsvr32 /u /s `\"$dir\\LAVSplitter.ax`\" & regsvr32 /u /s `\"$dir\\LAVVideo.ax`\"\""
+ },
+ "version": "0.77"
 }

@@ -1,43 +1,43 @@
 {
-    "version": "10.0.1-55",
-    "description": "Postman™ portable app made with Portapps. A complete toolchain for API developers.",
-    "homepage": "https://github.com/portapps/postman-portable",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/portapps/postman-portable/releases/download/10.0.1-55/postman-portable-win64-10.0.1-55.7z",
-            "hash": "02d0ed4c8216391920aa16ccc693e9a70339f40dc936e7cdfa9f80b24d142ad8"
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "02d0ed4c8216391920aa16ccc693e9a70339f40dc936e7cdfa9f80b24d142ad8",
+   "url": "https://github.com/portapps/postman-portable/releases/download/10.0.1-55/postman-portable-win64-10.0.1-55.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "regex": "$sha256\\s+$basename",
+     "url": "https://github.com/portapps/postman-portable/releases/download/$version/checksums.txt"
     },
-    "bin": [
-        [
-            "postman-portable.exe",
-            "Postman"
-        ]
-    ],
-    "shortcuts": [
-        [
-            "postman-portable.exe",
-            "Postman"
-        ]
-    ],
-    "persist": [
-        "data",
-        "log"
-    ],
-    "checkver": {
-        "url": "https://github.com/portapps/postman-portable/releases/latest",
-        "regex": "([\\d.-]+)</h1>"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/portapps/postman-portable/releases/download/$version/postman-portable-win64-$version.7z",
-                "hash": {
-                    "url": "https://github.com/portapps/postman-portable/releases/download/$version/checksums.txt",
-                    "regex": "$sha256\\s+$basename"
-                }
-            }
-        }
-    }
+    "url": "https://github.com/portapps/postman-portable/releases/download/$version/postman-portable-win64-$version.7z"
+   }
+  }
+ },
+ "bin": [
+  [
+   "postman-portable.exe",
+   "Postman"
+  ]
+ ],
+ "checkver": {
+  "regex": "([\\d.-]+)</h1>",
+  "url": "https://github.com/portapps/postman-portable/releases/latest"
+ },
+ "description": "Postman\u2122 portable app made with Portapps. A complete toolchain for API developers.",
+ "homepage": "https://github.com/portapps/postman-portable",
+ "license": "MIT",
+ "persist": [
+  "data",
+  "log"
+ ],
+ "shortcuts": [
+  [
+   "postman-portable.exe",
+   "Postman"
+  ]
+ ],
+ "version": "10.0.1-55"
 }

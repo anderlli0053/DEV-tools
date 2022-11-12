@@ -1,36 +1,36 @@
 {
-    "homepage": "https://rport.io/",
-    "description": "Manage remote systems with ease.",
-    "version": "0.9.0",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/cloudradar-monitoring/rport/releases/download/0.9.0/rport_0.9.0_Windows_x86_64.zip",
-            "hash": "567f693307e3c04f4e0a69b654140fd5c07e8aec6c2526e780fb784c49039684"
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "567f693307e3c04f4e0a69b654140fd5c07e8aec6c2526e780fb784c49039684",
+   "url": "https://github.com/cloudradar-monitoring/rport/releases/download/0.9.0/rport_0.9.0_Windows_x86_64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "regex": "$sha256\\s+$basename",
+     "url": "$baseurl/checksums.txt"
     },
-    "bin": "rport.exe",
-    "persist": "rport.conf",
-    "suggest": {
-        "rportcli": "scoop-aoks/rportcli-aoks"
-    },
-    "notes": [
-        "   Look into $dir\\rport.example.conf for hints how to configure rport",
-        "   Create a $dir\\rport.conf with your settings",
-        " "
-    ],
-    "checkver": {
-        "github": "https://github.com/cloudradar-monitoring/rport"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/cloudradar-monitoring/rport/releases/download/$version/rport_$version_Windows_x86_64.zip",
-                "hash": {
-                    "url": "$baseurl/checksums.txt",
-                    "regex": "$sha256\\s+$basename"
-                }
-            }
-        }
-    }
+    "url": "https://github.com/cloudradar-monitoring/rport/releases/download/$version/rport_$version_Windows_x86_64.zip"
+   }
+  }
+ },
+ "bin": "rport.exe",
+ "checkver": {
+  "github": "https://github.com/cloudradar-monitoring/rport"
+ },
+ "description": "Manage remote systems with ease.",
+ "homepage": "https://rport.io/",
+ "license": "MIT",
+ "notes": [
+  "   Look into $dir\\rport.example.conf for hints how to configure rport",
+  "   Create a $dir\\rport.conf with your settings",
+  " "
+ ],
+ "persist": "rport.conf",
+ "suggest": {
+  "rportcli": "scoop-aoks/rportcli-aoks"
+ },
+ "version": "0.9.0"
 }

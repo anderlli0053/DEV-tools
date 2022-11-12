@@ -1,55 +1,55 @@
 {
-    "version": "92.0.4561.43",
-    "description": "Fast, secure, easy-to-use browser.",
-    "homepage": "https://www.opera.com/",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.opera.com/eula/computers"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://download1.operacdn.com/pub/opera/desktop/92.0.4561.43/win/Opera_92.0.4561.43_Setup_x64.exe#/dl.7z",
-            "hash": "9708646ce01c4120417267029ba5152a7bf8345ff8c265ea3ed76c7a1a470bc8"
-        },
-        "32bit": {
-            "url": "https://download1.operacdn.com/pub/opera/desktop/92.0.4561.43/win/Opera_92.0.4561.43_Setup.exe#/dl.7z",
-            "hash": "ab22ba6ceef6396f3b1e3e391cc236734b24b856ab137d24c1d330f7fa411395"
-        }
-    },
-    "installer": {
-        "script": [
-            "Remove-Item -Path \"$dir\\*_list\" -Force",
-            "Move-Item -Path \"$dir\\*\" -Destination \"$dir\\$version\" -Exclude 'Assets', 'launcher*', 'Resources.pri' -ErrorAction Ignore",
-            "if (!(Test-Path \"$dir\\$version\\localization\")) {",
-            "   New-Item -Path \"$dir\\$version\\localization\" -ItemType Directory | Out-Null",
-            "   Move-Item -Path \"$dir\\$version\\*.pak\" -Destination \"$dir\\$version\\localization\" -Exclude 'opera*' -ErrorAction Ignore",
-            "}",
-            "Set-Content -Path \"$dir\\installer_prefs.json\" -Value (@{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json) -Encoding ASCII"
-        ]
-    },
-    "shortcuts": [
-        [
-            "launcher.exe",
-            "Opera"
-        ]
-    ],
-    "persist": "profile",
-    "checkver": {
-        "url": "http://get.opera.com/ftp/pub/opera/desktop/",
-        "regex": "([\\d.]+)/",
-        "reverse": true
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://download1.operacdn.com/pub/opera/desktop/$version/win/Opera_$version_Setup_x64.exe#/dl.7z"
-            },
-            "32bit": {
-                "url": "https://download1.operacdn.com/pub/opera/desktop/$version/win/Opera_$version_Setup.exe#/dl.7z"
-            }
-        },
-        "hash": {
-            "url": "$url.sha256sum"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "ab22ba6ceef6396f3b1e3e391cc236734b24b856ab137d24c1d330f7fa411395",
+   "url": "https://download1.operacdn.com/pub/opera/desktop/92.0.4561.43/win/Opera_92.0.4561.43_Setup.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "9708646ce01c4120417267029ba5152a7bf8345ff8c265ea3ed76c7a1a470bc8",
+   "url": "https://download1.operacdn.com/pub/opera/desktop/92.0.4561.43/win/Opera_92.0.4561.43_Setup_x64.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://download1.operacdn.com/pub/opera/desktop/$version/win/Opera_$version_Setup.exe#/dl.7z"
+   },
+   "64bit": {
+    "url": "https://download1.operacdn.com/pub/opera/desktop/$version/win/Opera_$version_Setup_x64.exe#/dl.7z"
+   }
+  },
+  "hash": {
+   "url": "$url.sha256sum"
+  }
+ },
+ "checkver": {
+  "regex": "([\\d.]+)/",
+  "reverse": true,
+  "url": "http://get.opera.com/ftp/pub/opera/desktop/"
+ },
+ "description": "Fast, secure, easy-to-use browser.",
+ "homepage": "https://www.opera.com/",
+ "installer": {
+  "script": [
+   "Remove-Item -Path \"$dir\\*_list\" -Force",
+   "Move-Item -Path \"$dir\\*\" -Destination \"$dir\\$version\" -Exclude 'Assets', 'launcher*', 'Resources.pri' -ErrorAction Ignore",
+   "if (!(Test-Path \"$dir\\$version\\localization\")) {",
+   "   New-Item -Path \"$dir\\$version\\localization\" -ItemType Directory | Out-Null",
+   "   Move-Item -Path \"$dir\\$version\\*.pak\" -Destination \"$dir\\$version\\localization\" -Exclude 'opera*' -ErrorAction Ignore",
+   "}",
+   "Set-Content -Path \"$dir\\installer_prefs.json\" -Value (@{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json) -Encoding ASCII"
+  ]
+ },
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://www.opera.com/eula/computers"
+ },
+ "persist": "profile",
+ "shortcuts": [
+  [
+   "launcher.exe",
+   "Opera"
+  ]
+ ],
+ "version": "92.0.4561.43"
 }

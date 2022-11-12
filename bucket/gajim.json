@@ -1,34 +1,34 @@
 {
-    "version": "1.5.3",
-    "description": "Gajim aims to be an easy to use and fully-featured XMPP chat client. It is open source and released under the GNU General Public License (GPL).",
-    "homepage": "https://gajim.org",
-    "license": {
-        "identifier": "GPL-3.0-or-later"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://gajim.org/downloads/1.5/Gajim-Portable-1.5.3-64bit.exe#/dl.7z",
-            "hash": "0905324768583cbd924bd3013a828e9b5452db45e66add7aa254daabf562ae99"
-        }
-    },
-    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -ErrorAction 'SilentlyContinue' -Force -Recurse",
-    "bin": "bin/Gajim.exe",
-    "shortcuts": [
-        [
-            "bin/Gajim.exe",
-            "Gajim"
-        ]
-    ],
-    "persist": "UserData",
-    "checkver": {
-        "url": "https://gajim.org/download",
-        "regex": "Gajim-Portable-([\\d.]+)-64bit.exe"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://gajim.org/downloads/$majorVersion.$minorVersion/Gajim-Portable-$version-64bit.exe#/dl.7z"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "0905324768583cbd924bd3013a828e9b5452db45e66add7aa254daabf562ae99",
+   "url": "https://gajim.org/downloads/1.5/Gajim-Portable-1.5.3-64bit.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://gajim.org/downloads/$majorVersion.$minorVersion/Gajim-Portable-$version-64bit.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": "bin/Gajim.exe",
+ "checkver": {
+  "regex": "Gajim-Portable-([\\d.]+)-64bit.exe",
+  "url": "https://gajim.org/download"
+ },
+ "description": "Gajim aims to be an easy to use and fully-featured XMPP chat client. It is open source and released under the GNU General Public License (GPL).",
+ "homepage": "https://gajim.org",
+ "license": {
+  "identifier": "GPL-3.0-or-later"
+ },
+ "persist": "UserData",
+ "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -ErrorAction 'SilentlyContinue' -Force -Recurse",
+ "shortcuts": [
+  [
+   "bin/Gajim.exe",
+   "Gajim"
+  ]
+ ],
+ "version": "1.5.3"
 }

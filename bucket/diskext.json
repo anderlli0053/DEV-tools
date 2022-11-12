@@ -5,7 +5,6 @@
   },
   "64bit": {
    "bin": [
-    "diskext64.exe",
     [
      "diskext64.exe",
      "diskext"
@@ -14,7 +13,6 @@
   },
   "arm64": {
    "bin": [
-    "diskext64a.exe",
     [
      "diskext64a.exe",
      "diskext"
@@ -25,28 +23,16 @@
  "autoupdate": {
   "url": "https://download.sysinternals.com/files/DiskExt.zip"
  },
- "checkver": "DiskExt\\s+v([\\d.]+)</h1",
- "description": "DiskExt. Disk extent dumper",
+ "checkver": {
+  "regex": "#.*?v([\\d.]+)",
+  "url": "https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/diskext.md"
+ },
+ "description": "Display volume disk-mappings.",
  "hash": "b201c8424aecb60d7aab6079e86acad550d9d21e7833861995b0c1faca9ada39",
- "homepage": "https://docs.microsoft.com/en-us/sysinternals/downloads/diskext",
+ "homepage": "https://learn.microsoft.com/sysinternals/downloads/diskext",
  "license": {
   "identifier": "Freeware",
-  "url": "https://docs.microsoft.com/en-us/sysinternals/license-terms"
- },
- "pre_install": [
-  "$sysint = 'HKCU:\\SOFTWARE\\Sysinternals'",
-  "$fin = \"$sysint\\DiskExt\"",
-  "New-Item $sysint, $fin -ErrorAction 'SilentlyContinue' | Out-Null",
-  "Set-ItemProperty -Path $fin -Name 'EulaAccepted' -Value 1 -Type 'DWord' -Force | Out-Null"
- ],
- "uninstaller": {
-  "script": [
-   "if ($purge) {",
-   "    $sysInt = 'HKCU:\\SOFTWARE\\Sysinternals'",
-   "    Remove-Item \"$sysInt\\DiskExt\" -ErrorAction 'SilentlyContinue' -Force -Recurse",
-   "    if ((Get-ChildItem $sysInt).Count -eq 0) { Remove-Item $sysInt -ErrorAction 'SilentlyContinue' -Force -Recurse }",
-   "}"
-  ]
+  "url": "https://learn.microsoft.com/sysinternals/license-terms"
  },
  "url": "https://download.sysinternals.com/files/DiskExt.zip",
  "version": "1.2"

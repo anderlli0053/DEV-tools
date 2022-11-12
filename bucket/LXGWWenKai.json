@@ -1,65 +1,65 @@
 {
-    "version": "1.245.1",
-    "description": "An open-source Chinese font derived from Fontworks' Klee One. 一款基于 FONTWORKS 出品字体 Klee One 改造的开源中文字体。",
-    "homepage": "https://github.com/lxgw/LxgwWenKai",
-    "license": "OFL-1.1",
-    "url": [
-        "https://github.com/lxgw/LxgwWenKai/releases/download/v1.245.1/LXGWWenKai-Bold.ttf",
-        "https://github.com/lxgw/LxgwWenKai/releases/download/v1.245.1/LXGWWenKai-Light.ttf",
-        "https://github.com/lxgw/LxgwWenKai/releases/download/v1.245.1/LXGWWenKai-Regular.ttf"
-    ],
-    "hash": [
-        "492031b01cbb190a05bd0a77a782555a30076d5de49d7fa3fa6a3ff13b3af058",
-        "576c702d20aa0d9bd1d14ea010ca0e533be841641ab11a4d712fe1dbbf4faae9",
-        "9d5fb31b282e4ac16b6b9aaa0d40c21e947ac6bd2a7f32c814d43f7f5f396bf9"
-    ],
-    "checkver": "github",
-    "autoupdate": {
-        "url": [
-            "https://github.com/lxgw/LxgwWenKai/releases/download/v$version/LXGWWenKai-Bold.ttf",
-            "https://github.com/lxgw/LxgwWenKai/releases/download/v$version/LXGWWenKai-Light.ttf",
-            "https://github.com/lxgw/LxgwWenKai/releases/download/v$version/LXGWWenKai-Regular.ttf"
-        ]
-    },
-    "installer": {
-        "script": [
-            "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
-            "$windows1809BuildNumber = 17763",
-            "$isPerUserFontInstallationSupported = $currentBuildNumber -ge $windows1809BuildNumber",
-            "$isFontInstallationForAllUsers = $global -or !$isPerUserFontInstallationSupported",
-            "if ($isFontInstallationForAllUsers -and !(is_admin)) {",
-            "    error \"Administrator rights are required to install $app.\"",
-            "    exit 1",
-            "}",
-            "$fontInstallDir = if ($isFontInstallationForAllUsers) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
-            "$registryRoot = if ($isFontInstallationForAllUsers) { \"HKLM\" } else { \"HKCU\" }",
-            "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
-            "New-Item $fontInstallDir -ItemType Directory -ErrorAction SilentlyContinue | Out-Null",
-            "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
-            "    $value = if ($isFontInstallationForAllUsers) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
-            "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
-            "}"
-        ]
-    },
-    "uninstaller": {
-        "script": [
-            "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
-            "$windows1809BuildNumber = 17763",
-            "$isPerUserFontInstallationSupported = $currentBuildNumber -ge $windows1809BuildNumber",
-            "$isFontInstallationForAllUsers = $global -or !$isPerUserFontInstallationSupported",
-            "if ($isFontInstallationForAllUsers -and !(is_admin)) {",
-            "    error \"Administrator rights are required to uninstall $app.\"",
-            "    exit 1",
-            "}",
-            "$fontInstallDir = if ($isFontInstallationForAllUsers) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
-            "$registryRoot = if ($isFontInstallationForAllUsers) { \"HKLM\" } else { \"HKCU\" }",
-            "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
-            "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
-            "    Remove-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Force -ErrorAction SilentlyContinue",
-            "    Remove-Item \"$fontInstallDir\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
-            "}",
-            "Write-Host \"Font family 'LXGWWenKai' has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta"
-        ]
-    }
+ "autoupdate": {
+  "url": [
+   "https://github.com/lxgw/LxgwWenKai/releases/download/v$version/LXGWWenKai-Bold.ttf",
+   "https://github.com/lxgw/LxgwWenKai/releases/download/v$version/LXGWWenKai-Light.ttf",
+   "https://github.com/lxgw/LxgwWenKai/releases/download/v$version/LXGWWenKai-Regular.ttf"
+  ]
+ },
+ "checkver": "github",
+ "description": "An open-source Chinese font derived from Fontworks' Klee One. \u4e00\u6b3e\u57fa\u4e8e FONTWORKS \u51fa\u54c1\u5b57\u4f53 Klee One \u6539\u9020\u7684\u5f00\u6e90\u4e2d\u6587\u5b57\u4f53\u3002",
+ "hash": [
+  "492031b01cbb190a05bd0a77a782555a30076d5de49d7fa3fa6a3ff13b3af058",
+  "576c702d20aa0d9bd1d14ea010ca0e533be841641ab11a4d712fe1dbbf4faae9",
+  "9d5fb31b282e4ac16b6b9aaa0d40c21e947ac6bd2a7f32c814d43f7f5f396bf9"
+ ],
+ "homepage": "https://github.com/lxgw/LxgwWenKai",
+ "installer": {
+  "script": [
+   "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
+   "$windowsTen1809BuildNumber = 17763",
+   "$isPerUserFontInstallationSupported = $currentBuildNumber -ge $windowsTen1809BuildNumber",
+   "if (!$isPerUserFontInstallationSupported -and !$global) {",
+   "    scoop uninstall $app",
+   "    Write-Host \"\"",
+   "    Write-Host \"For Windows version before Windows 10 1809 (OS Build 17763),\" -Foreground DarkRed",
+   "    Write-Host \"Font can only be installed for all users.\" -Foreground DarkRed",
+   "    Write-Host \"\"",
+   "    Write-Host \"Please use following commands to install '$app' Font for all users.\" -Foreground DarkRed",
+   "    Write-Host \"\"",
+   "    Write-Host \"        scoop install sudo\"",
+   "    Write-Host \"        sudo scoop install -g $app\"",
+   "    Write-Host \"\"",
+   "    exit 1",
+   "}",
+   "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
+   "$registryRoot = if ($global) { \"HKLM\" } else { \"HKCU\" }",
+   "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
+   "New-Item $fontInstallDir -ItemType Directory -ErrorAction SilentlyContinue | Out-Null",
+   "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
+   "    $value = if ($isFontInstallationForAllUsers) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
+   "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
+   "    Copy-Item $_.FullName -Destination $fontInstallDir",
+   "}"
+  ]
+ },
+ "license": "OFL-1.1",
+ "uninstaller": {
+  "script": [
+   "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
+   "$registryRoot = if ($global) { \"HKLM\" } else { \"HKCU\" }",
+   "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
+   "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
+   "    Remove-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Force -ErrorAction SilentlyContinue",
+   "    Remove-Item \"$fontInstallDir\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
+   "}",
+   "Write-Host \"Font family 'LXGWWenKai' has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta"
+  ]
+ },
+ "url": [
+  "https://github.com/lxgw/LxgwWenKai/releases/download/v1.245.1/LXGWWenKai-Bold.ttf",
+  "https://github.com/lxgw/LxgwWenKai/releases/download/v1.245.1/LXGWWenKai-Light.ttf",
+  "https://github.com/lxgw/LxgwWenKai/releases/download/v1.245.1/LXGWWenKai-Regular.ttf"
+ ],
+ "version": "1.245.1"
 }

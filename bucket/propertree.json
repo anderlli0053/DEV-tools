@@ -1,28 +1,28 @@
 {
-    "version": "0.2022.10.22",
-    "description": "Cross platform GUI plist editor written in python.",
-    "homepage": "https://github.com/corpnewt/ProperTree",
-    "license": "BSD-3-Clause",
-    "depends": "python",
-    "url": "https://github.com/corpnewt/ProperTree/archive/4eab143192a6a51a293f24fa02b2064616aab7f2.zip",
-    "hash": "e3bb19eabff7f0c70fa73932ce3a5bcf4566a8f54a9412f23d6c33f4e9fc5df8",
-    "extract_dir": "ProperTree-4eab143192a6a51a293f24fa02b2064616aab7f2",
-    "bin": "ProperTree.bat",
-    "shortcuts": [
-        [
-            "ProperTree.bat",
-            "ProperTree"
-        ]
-    ],
-    "pre_install": "if (!(Test-Path \"$persist_dir\\Scripts\\settings.json\")) { Set-Content \"$dir\\Scripts\\settings.json\" '{}' -Encoding Ascii }",
-    "persist": "Scripts\\settings.json",
-    "checkver": {
-        "url": "https://github.com/corpnewt/ProperTree/commits/master.atom",
-        "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>[0-9a-f]{40})",
-        "replace": "0.${1}.${2}.${3}"
-    },
-    "autoupdate": {
-        "url": "https://github.com/corpnewt/ProperTree/archive/$matchSha.zip",
-        "extract_dir": "ProperTree-$matchSha"
-    }
+ "autoupdate": {
+  "extract_dir": "ProperTree-$matchSha",
+  "url": "https://github.com/corpnewt/ProperTree/archive/$matchSha.zip"
+ },
+ "bin": "ProperTree.bat",
+ "checkver": {
+  "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>[0-9a-f]{40})",
+  "replace": "0.${1}.${2}.${3}",
+  "url": "https://github.com/corpnewt/ProperTree/commits/master.atom"
+ },
+ "depends": "python",
+ "description": "Cross platform GUI plist editor written in python.",
+ "extract_dir": "ProperTree-e2f9b88a569b56fa4fbe45ab60ab1a030592ce09",
+ "hash": "81f15a7c622df0345b694bd30eaaf96fb249b835f9c3e2d53ba977cc79726705",
+ "homepage": "https://github.com/corpnewt/ProperTree",
+ "license": "BSD-3-Clause",
+ "persist": "Scripts\\settings.json",
+ "pre_install": "if (!(Test-Path \"$persist_dir\\Scripts\\settings.json\")) { Set-Content \"$dir\\Scripts\\settings.json\" '{}' -Encoding Ascii }",
+ "shortcuts": [
+  [
+   "ProperTree.bat",
+   "ProperTree"
+  ]
+ ],
+ "url": "https://github.com/corpnewt/ProperTree/archive/e2f9b88a569b56fa4fbe45ab60ab1a030592ce09.zip",
+ "version": "0.2022.11.08"
 }

@@ -1,29 +1,29 @@
 {
-    "version": "12.1.0",
-    "homepage": "https://www.goodsync.com",
-    "description": "Simple and secure file backup/synchronization software.",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.goodsync.com/license"
-    },
-    "url": "https://www.goodsync.com/download/GoodSync-Setup.exe",
-    "hash": "dd3305a995eaacee93fbfa28a2010b46debbf8da7cb4d6a6d5f5d252d730ce4d",
-    "pre_install": [
-        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-        "Start-Process \"$dir\\GoodSync-Setup.exe\" -Wait -ArgumentList '/S' -Verb RunAs",
-        "Stop-Process -Name 'gs-server' -Force; Remove-Item \"$dir\\GoodSync-Setup.exe\" | Out-Null"
-    ],
-    "pre_uninstall": [
-        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-        "if (Get-Process -Name 'gs-server' | Out-Null) {Stop-Process -Name 'gs-server' -Force}",
-        "Start-Process \"$env:ProgramFiles\\Siber Systems\\GoodSync\\gs-runner.exe\" -Wait -ArgumentList @('/stop-remove-services', '/S') -Verb RunAs",
-        "Remove-Item \"$env:ProgramData\\GoodSync\" -Force -Recurse"
-    ],
-    "checkver": {
-        "url": "https://www.goodsync.com/news-windows",
-        "regex": "Version\\s([\\d.]+)"
-    },
-    "autoupdate": {
-        "url": "https://www.goodsync.com/download/GoodSync-Setup.exe"
-    }
+ "autoupdate": {
+  "url": "https://www.goodsync.com/download/GoodSync-Setup.exe"
+ },
+ "checkver": {
+  "regex": "Version\\s([\\d.]+)",
+  "url": "https://www.goodsync.com/news-windows"
+ },
+ "description": "Simple and secure file backup/synchronization software.",
+ "hash": "8aa798813b1d4b4c68edb9e456ef287a68ef9efd23ac1665f7cbdd43501c4bab",
+ "homepage": "https://www.goodsync.com",
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://www.goodsync.com/license"
+ },
+ "pre_install": [
+  "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+  "Start-Process \"$dir\\GoodSync-Setup.exe\" -Wait -ArgumentList '/S' -Verb RunAs",
+  "Stop-Process -Name 'gs-server' -Force; Remove-Item \"$dir\\GoodSync-Setup.exe\" | Out-Null"
+ ],
+ "pre_uninstall": [
+  "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+  "if (Get-Process -Name 'gs-server' | Out-Null) {Stop-Process -Name 'gs-server' -Force}",
+  "Start-Process \"$env:ProgramFiles\\Siber Systems\\GoodSync\\gs-runner.exe\" -Wait -ArgumentList @('/stop-remove-services', '/S') -Verb RunAs",
+  "Remove-Item \"$env:ProgramData\\GoodSync\" -Force -Recurse"
+ ],
+ "url": "https://www.goodsync.com/download/GoodSync-Setup.exe",
+ "version": "12.1.0"
 }

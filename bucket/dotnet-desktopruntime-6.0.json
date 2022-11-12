@@ -1,42 +1,42 @@
 {
-    "version": "6.0.11",
-    "description": "Microsoft .NET 6 Desktop Runtime.",
-    "homepage": "https://dotnet.microsoft.com/download/dotnet-core",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx"
-    },
-    "notes": "You can now remove this installer with 'scoop uninstall windowsdesktop-runtime-6'",
-    "architecture": {
-        "64bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.11/windowsdesktop-runtime-6.0.11-win-x64.exe",
-            "hash": "sha512:37bef9107a069edd977c135fc54bf84f1b46862ef2636caeb9c7ddd9f53627f83cb69d6ecf79cb640d7979c7ebe80c03b1222c6c52d7a991e6c399c91fe902c0"
-        },
-        "32bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.11/windowsdesktop-runtime-6.0.11-win-x86.exe",
-            "hash": "sha512:b642a16325053b266f2f2475c31e124987dcf0e010076633cfe174761a1ff736a5047019de3cc259d88775bae6ffb4b0f907e0818895fab0e2962dfa0ee66641"
-        }
-    },
-    "pre_install": "if (!(is_admin)) { throw 'Admin privileges are required.' }",
-    "installer": {
-        "script": "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList '/install', '/passive', '/norestart' -RunAs | Out-Null"
-    },
-    "checkver": {
-        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
-        "jsonpath": "$.releases-index[?(@.channel-version == '6.0')].latest-release"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe"
-            },
-            "32bit": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe"
-            }
-        },
-        "hash": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$version-sha.txt",
-            "mode": "extract"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:b642a16325053b266f2f2475c31e124987dcf0e010076633cfe174761a1ff736a5047019de3cc259d88775bae6ffb4b0f907e0818895fab0e2962dfa0ee66641",
+   "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.11/windowsdesktop-runtime-6.0.11-win-x86.exe"
+  },
+  "64bit": {
+   "hash": "sha512:37bef9107a069edd977c135fc54bf84f1b46862ef2636caeb9c7ddd9f53627f83cb69d6ecf79cb640d7979c7ebe80c03b1222c6c52d7a991e6c399c91fe902c0",
+   "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.11/windowsdesktop-runtime-6.0.11-win-x64.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe"
+   },
+   "64bit": {
+    "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe"
+   }
+  },
+  "hash": {
+   "mode": "extract",
+   "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$version-sha.txt"
+  }
+ },
+ "checkver": {
+  "jsonpath": "$.releases-index[?(@.channel-version == '6.0')].latest-release",
+  "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json"
+ },
+ "description": "Microsoft .NET 6 Desktop Runtime.",
+ "homepage": "https://dotnet.microsoft.com/download/dotnet-core",
+ "installer": {
+  "script": "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList '/install', '/passive', '/norestart' -RunAs | Out-Null"
+ },
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx"
+ },
+ "notes": "You can now remove this installer with 'scoop uninstall windowsdesktop-runtime-6'",
+ "pre_install": "if (!(is_admin)) { throw 'Admin privileges are required.' }",
+ "version": "6.0.11"
 }

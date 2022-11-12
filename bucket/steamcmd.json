@@ -1,29 +1,29 @@
 {
-    "version": "1666144101",
-    "description": "A command-line version of the Steam client",
-    "homepage": "https://developer.valvesoftware.com/wiki/SteamCMD",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://developer.valvesoftware.com/wiki/Valve_Developer_Community:Terms_of_Use"
-    },
-    "url": "http://media2.steampowered.com/client/steamcmd_win32.zip.0995f58aef614294934e062165ac466b3c0ee489#/dl.7z",
-    "hash": "60ff124bdbb3801b3dd6c394096868402af588c8934ebc40ada28f747668a11f",
-    "bin": "steamcmd.exe",
-    "persist": [
-        "appcache",
-        "config",
-        "steamapps",
-        "userdata"
-    ],
-    "checkver": {
-        "url": "http://media2.steampowered.com/client/steam_cmd_win32",
-        "regex": "\"version\"\\s+\"(\\d+)\"[\\s\\S]*?steamcmd_win32\\.zip\\.(?<random>[a-f\\d]{40})"
-    },
-    "autoupdate": {
-        "url": "http://media2.steampowered.com/client/steamcmd_win32.zip.$matchRandom#/dl.7z",
-        "hash": {
-            "url": "http://media2.steampowered.com/client/steam_cmd_win32",
-            "regex": "(?sm)$basename.*?$sha256"
-        }
-    }
+ "autoupdate": {
+  "hash": {
+   "regex": "(?sm)$basename.*?$sha256",
+   "url": "http://media2.steampowered.com/client/steam_cmd_win32"
+  },
+  "url": "http://media2.steampowered.com/client/steamcmd_win32.zip.$matchRandom#/dl.7z"
+ },
+ "bin": "steamcmd.exe",
+ "checkver": {
+  "regex": "\"version\"\\s+\"(\\d+)\"[\\s\\S]*?steamcmd_win32\\.zip\\.(?<random>[a-f\\d]{40})",
+  "url": "http://media2.steampowered.com/client/steam_cmd_win32"
+ },
+ "description": "A command-line version of the Steam client",
+ "hash": "60ff124bdbb3801b3dd6c394096868402af588c8934ebc40ada28f747668a11f",
+ "homepage": "https://developer.valvesoftware.com/wiki/SteamCMD",
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://developer.valvesoftware.com/wiki/Valve_Developer_Community:Terms_of_Use"
+ },
+ "persist": [
+  "appcache",
+  "config",
+  "steamapps",
+  "userdata"
+ ],
+ "url": "http://media2.steampowered.com/client/steamcmd_win32.zip.0995f58aef614294934e062165ac466b3c0ee489#/dl.7z",
+ "version": "1666144101"
 }

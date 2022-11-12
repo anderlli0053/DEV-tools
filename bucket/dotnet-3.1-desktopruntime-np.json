@@ -1,52 +1,52 @@
 {
-    "version": "3.1.31",
-    "description": "Microsoft .NET Core 3.1 Desktop Runtime.",
-    "homepage": "https://dotnet.microsoft.com/download/dotnet-core",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx"
-    },
-    "notes": "This package only contains the .NET Core 3.1 desktop runtime, install 'dotnet-sdk' instead if you need .NET Core SDK",
-    "depends": "dark",
-    "architecture": {
-        "64bit": {
-            "url": "https://download.visualstudio.microsoft.com/download/pr/f68e8704-171f-47dc-88a5-40572a22319a/43a6b2785e73b2177a4401ceccd01ef3/windowsdesktop-runtime-3.1.31-win-x64.exe",
-            "hash": "sha512:7d10dd9f9e345a57b0c91b6703115c114d3418bbf2715297bbee8445e6a9919741cc167fd55a0b5628ac5f31d416e716b13eacf57dcd5c6305b4a6bf26192398"
-        },
-        "32bit": {
-            "url": "https://download.visualstudio.microsoft.com/download/pr/df67c05e-3019-4d7f-846b-e08b92924b60/18a670ed3b1b60c5f7061f7bdaa6f7f6/windowsdesktop-runtime-3.1.31-win-x86.exe",
-            "hash": "sha512:9d8b64ae13d855aab9e622af4bb4967cc9c8b97ee2671bb9efe9ef31ebe3b7a312e213f3d4b3237cb1201445f1edaa6de987b08929412528fb0b6521ce0f7780"
-        }
-    },
-    "installer": {
-        "script": [
-            "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\extracted\" -Removal",
-            "Get-ChildItem \"$dir\\extracted\\AttachedContainer\\*.msi\" | ForEach-Object { Expand-MsiArchive $_ \"$dir\" }",
-            "Move-Item \"$dir\\dotnet\\*\" \"$dir\" -Force",
-            "@('dotnet', 'extracted') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse }"
-        ]
-    },
-    "bin": "dotnet.exe",
-    "env_set": {
-        "DOTNET_ROOT": "$dir"
-    },
-    "checkver": {
-        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/3.1/releases.json",
-        "jsonpath": "$.releases[0].windowsdesktop",
-        "regex": "(?sm)version.*?([\\d.]+).*?download/pr/(?<x64>.*?-win-x64.exe).*?download/pr/(?<x86>.*?-win-x86.exe)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://download.visualstudio.microsoft.com/download/pr/$matchX64"
-            },
-            "32bit": {
-                "url": "https://download.visualstudio.microsoft.com/download/pr/$matchX86"
-            }
-        },
-        "hash": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$version-sha.txt",
-            "mode": "extract"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:9d8b64ae13d855aab9e622af4bb4967cc9c8b97ee2671bb9efe9ef31ebe3b7a312e213f3d4b3237cb1201445f1edaa6de987b08929412528fb0b6521ce0f7780",
+   "url": "https://download.visualstudio.microsoft.com/download/pr/df67c05e-3019-4d7f-846b-e08b92924b60/18a670ed3b1b60c5f7061f7bdaa6f7f6/windowsdesktop-runtime-3.1.31-win-x86.exe"
+  },
+  "64bit": {
+   "hash": "sha512:7d10dd9f9e345a57b0c91b6703115c114d3418bbf2715297bbee8445e6a9919741cc167fd55a0b5628ac5f31d416e716b13eacf57dcd5c6305b4a6bf26192398",
+   "url": "https://download.visualstudio.microsoft.com/download/pr/f68e8704-171f-47dc-88a5-40572a22319a/43a6b2785e73b2177a4401ceccd01ef3/windowsdesktop-runtime-3.1.31-win-x64.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://download.visualstudio.microsoft.com/download/pr/$matchX86"
+   },
+   "64bit": {
+    "url": "https://download.visualstudio.microsoft.com/download/pr/$matchX64"
+   }
+  },
+  "hash": {
+   "mode": "extract",
+   "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$version-sha.txt"
+  }
+ },
+ "bin": "dotnet.exe",
+ "checkver": {
+  "jsonpath": "$.releases[0].windowsdesktop",
+  "regex": "(?sm)version.*?([\\d.]+).*?download/pr/(?<x64>.*?-win-x64.exe).*?download/pr/(?<x86>.*?-win-x86.exe)",
+  "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/3.1/releases.json"
+ },
+ "depends": "dark",
+ "description": "Microsoft .NET Core 3.1 Desktop Runtime.",
+ "env_set": {
+  "DOTNET_ROOT": "$dir"
+ },
+ "homepage": "https://dotnet.microsoft.com/download/dotnet-core",
+ "installer": {
+  "script": [
+   "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\extracted\" -Removal",
+   "Get-ChildItem \"$dir\\extracted\\AttachedContainer\\*.msi\" | ForEach-Object { Expand-MsiArchive $_ \"$dir\" }",
+   "Move-Item \"$dir\\dotnet\\*\" \"$dir\" -Force",
+   "@('dotnet', 'extracted') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse }"
+  ]
+ },
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx"
+ },
+ "notes": "This package only contains the .NET Core 3.1 desktop runtime, install 'dotnet-sdk' instead if you need .NET Core SDK",
+ "version": "3.1.31"
 }

@@ -1,43 +1,43 @@
 {
-    "version": "1.10.0",
-    "description": "balenaEtcher. Flash OS images to SD cards & USB drives, safely and easily.",
-    "homepage": "https://www.balena.io/etcher/",
-    "license": "Apache-2.0",
-    "changelog": "https://github.com/balena-io/etcher/blob/master/CHANGELOG.md",
-    "url": "https://github.com/balena-io/etcher/releases/download/v1.10.0/balenaEtcher-Portable-1.10.0.exe#/dl.7z",
-    "hash": "600f9965062f20eac7bfa56f6ab54ad9e668286a8f2f05f99cb4a9b664915c81",
-    "extract_dir": "$PLUGINSDIR",
-    "architecture": {
-        "64bit": {
-            "installer": {
-                "script": [
-                    "Remove-Item \"$dir\\*\" -Exclude \"app-64.7z\"",
-                    "Expand-7zipArchive \"$dir\\app-64.7z\" \"$dir\"",
-                    "Remove-Item \"$dir\\app-64.7z\""
-                ]
-            }
-        },
-        "32bit": {
-            "installer": {
-                "script": [
-                    "Remove-Item \"$dir\\*\" -Exclude \"app-32.7z\"",
-                    "Expand-7zipArchive \"$dir\\app-32.7z\" \"$dir\"",
-                    "Remove-Item \"$dir\\app-32.7z\""
-                ]
-            }
-        }
-    },
-    "bin": "balenaEtcher.exe",
-    "shortcuts": [
-        [
-            "balenaEtcher.exe",
-            "balenaEtcher"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/balena-io/etcher"
-    },
-    "autoupdate": {
-        "url": "https://github.com/balena-io/etcher/releases/download/v$version/balenaEtcher-Portable-$version.exe#/dl.7z"
-    }
+ "architecture": {
+  "32bit": {
+   "installer": {
+    "script": [
+     "Remove-Item \"$dir\\*\" -Exclude \"app-32.7z\"",
+     "Expand-7zipArchive \"$dir\\app-32.7z\" \"$dir\"",
+     "Remove-Item \"$dir\\app-32.7z\""
+    ]
+   }
+  },
+  "64bit": {
+   "installer": {
+    "script": [
+     "Remove-Item \"$dir\\*\" -Exclude \"app-64.7z\"",
+     "Expand-7zipArchive \"$dir\\app-64.7z\" \"$dir\"",
+     "Remove-Item \"$dir\\app-64.7z\""
+    ]
+   }
+  }
+ },
+ "autoupdate": {
+  "url": "https://github.com/balena-io/etcher/releases/download/v$version/balenaEtcher-Portable-$version.exe#/dl.7z"
+ },
+ "bin": "balenaEtcher.exe",
+ "changelog": "https://github.com/balena-io/etcher/blob/master/CHANGELOG.md",
+ "checkver": {
+  "github": "https://github.com/balena-io/etcher"
+ },
+ "description": "balenaEtcher. Flash OS images to SD cards & USB drives, safely and easily.",
+ "extract_dir": "$PLUGINSDIR",
+ "hash": "600f9965062f20eac7bfa56f6ab54ad9e668286a8f2f05f99cb4a9b664915c81",
+ "homepage": "https://www.balena.io/etcher/",
+ "license": "Apache-2.0",
+ "shortcuts": [
+  [
+   "balenaEtcher.exe",
+   "balenaEtcher"
+  ]
+ ],
+ "url": "https://github.com/balena-io/etcher/releases/download/v1.10.0/balenaEtcher-Portable-1.10.0.exe#/dl.7z",
+ "version": "1.10.0"
 }

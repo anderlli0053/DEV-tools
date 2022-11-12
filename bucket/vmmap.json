@@ -1,17 +1,17 @@
 {
  "architecture": {
   "32bit": {
-   "bin": "VMMap.exe",
+   "bin": "vmmap.exe",
    "shortcuts": [
     [
      "vmmap.exe",
-     "SysInternals\\VMMap"
+     "SysInternals/VMMap",
+     "/accepteula"
     ]
    ]
   },
   "64bit": {
    "bin": [
-    "vmmap64.exe",
     [
      "vmmap64.exe",
      "vmmap"
@@ -20,13 +20,13 @@
    "shortcuts": [
     [
      "vmmap64.exe",
-     "SysInternals\\VMMap"
+     "SysInternals/VMMap",
+     "/accepteula"
     ]
    ]
   },
   "arm64": {
    "bin": [
-    "vmmap64a.exe",
     [
      "vmmap64a.exe",
      "vmmap"
@@ -35,7 +35,8 @@
    "shortcuts": [
     [
      "vmmap64a.exe",
-     "SysInternals\\VMMap"
+     "SysInternals/VMMap",
+     "/accepteula"
     ]
    ]
   }
@@ -43,28 +44,16 @@
  "autoupdate": {
   "url": "https://download.sysinternals.com/files/VMMap.zip"
  },
- "checkver": "VMMap\\s+v([\\d.]+)</h1",
- "description": "VMMap. Utility for processing virtual and physical memory of process.",
+ "checkver": {
+  "regex": "#.*?v([\\d.]+)",
+  "url": "https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/vmmap.md"
+ },
+ "description": "A process virtual and physical memory analysis utility.",
  "hash": "c985c951bd0e78602c64feb831248bedc03e46acea9927ef8d611d81b83f615a",
- "homepage": "https://docs.microsoft.com/en-us/sysinternals/downloads/vmmap",
+ "homepage": "https://learn.microsoft.com/sysinternals/downloads/vmmap",
  "license": {
   "identifier": "Freeware",
-  "url": "https://docs.microsoft.com/en-us/sysinternals/license-terms"
- },
- "pre_install": [
-  "$sysint = 'HKCU:\\SOFTWARE\\Sysinternals'",
-  "$fin = \"$sysint\\VMMap\"",
-  "New-Item $sysint, $fin -ErrorAction 'SilentlyContinue' | Out-Null",
-  "Set-ItemProperty -Path $fin -Name 'EulaAccepted' -Value 1 -Type 'DWord' -Force | Out-Null"
- ],
- "uninstaller": {
-  "script": [
-   "if ($purge) {",
-   "    $sysInt = 'HKCU:\\SOFTWARE\\Sysinternals'",
-   "    Remove-Item \"$sysInt\\VMMap\" -ErrorAction 'SilentlyContinue' -Force -Recurse",
-   "    if ((Get-ChildItem $sysInt).Count -eq 0) { Remove-Item $sysInt -ErrorAction 'SilentlyContinue' -Force -Recurse }",
-   "}"
-  ]
+  "url": "https://learn.microsoft.com/sysinternals/license-terms"
  },
  "url": "https://download.sysinternals.com/files/VMMap.zip",
  "version": "3.32"

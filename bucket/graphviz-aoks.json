@@ -1,57 +1,57 @@
 {
-    "version": "7.0.1",
-    "description": "Open source graph visualization software.",
-    "homepage": "https://www.graphviz.org/",
-    "license": "EPL-1.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/7.0.1/windows_10_cmake_Debug_graphviz-install-7.0.1-win64.exe#/dl.7z",
-            "hash": "7a2d19210527c340f61dfcacd9b4aa0fdccee6f6ff560a84d140b85d15ceaaf8"
-        },
-        "32bit": {
-            "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/7.0.1/windows_10_cmake_Debug_graphviz-install-7.0.1-win32.exe#/dl.7z",
-            "hash": "ddefebe9df4ca7306a06b3cb96474fa2b5390e7a1058e00952ee4acad3ae5449"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "ddefebe9df4ca7306a06b3cb96474fa2b5390e7a1058e00952ee4acad3ae5449",
+   "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/7.0.1/windows_10_cmake_Debug_graphviz-install-7.0.1-win32.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "7a2d19210527c340f61dfcacd9b4aa0fdccee6f6ff560a84d140b85d15ceaaf8",
+   "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/7.0.1/windows_10_cmake_Debug_graphviz-install-7.0.1-win64.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "regex": "$sha256\\s+",
+     "url": "$url.sha256"
     },
-    "bin": [
-        "bin\\acyclic.exe",
-        "bin\\bcomps.exe",
-        "bin\\ccomps.exe",
-        "bin\\dijkstra.exe",
-        "bin\\dot.exe",
-        "bin\\gc.exe",
-        "bin\\gml2gv.exe",
-        "bin\\graphml2gv.exe",
-        "bin\\gvcolor.exe",
-        "bin\\gvgen.exe",
-        "bin\\gvpack.exe",
-        "bin\\gxl2gv.exe",
-        "bin\\mm2gv.exe",
-        "bin\\nop.exe",
-        "bin\\sccmap.exe",
-        "bin\\tred.exe",
-        "bin\\unflatten.exe"
-    ],
-    "checkver": {
-        "url": "https://gitlab.com/graphviz/graphviz/-/tags?sort=updated_desc",
-        "regex": "/graphviz/graphviz/-/tags/([\\d.]+)\">"
+    "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/$version/windows_10_cmake_Debug_graphviz-install-$version-win32.exe#/dl.7z"
+   },
+   "64bit": {
+    "hash": {
+     "regex": "$sha256\\s+",
+     "url": "$url.sha256"
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/$version/windows_10_cmake_Debug_graphviz-install-$version-win64.exe#/dl.7z",
-                "hash": {
-                    "url": "$url.sha256",
-                    "regex": "$sha256\\s+"
-                }
-            },
-            "32bit": {
-                "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/$version/windows_10_cmake_Debug_graphviz-install-$version-win32.exe#/dl.7z",
-                "hash": {
-                    "url": "$url.sha256",
-                    "regex": "$sha256\\s+"
-                }
-            }
-        }
-    }
+    "url": "https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/$version/windows_10_cmake_Debug_graphviz-install-$version-win64.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": [
+  "bin\\acyclic.exe",
+  "bin\\bcomps.exe",
+  "bin\\ccomps.exe",
+  "bin\\dijkstra.exe",
+  "bin\\dot.exe",
+  "bin\\gc.exe",
+  "bin\\gml2gv.exe",
+  "bin\\graphml2gv.exe",
+  "bin\\gvcolor.exe",
+  "bin\\gvgen.exe",
+  "bin\\gvpack.exe",
+  "bin\\gxl2gv.exe",
+  "bin\\mm2gv.exe",
+  "bin\\nop.exe",
+  "bin\\sccmap.exe",
+  "bin\\tred.exe",
+  "bin\\unflatten.exe"
+ ],
+ "checkver": {
+  "regex": "/graphviz/graphviz/-/tags/([\\d.]+)\">",
+  "url": "https://gitlab.com/graphviz/graphviz/-/tags?sort=updated_desc"
+ },
+ "description": "Open source graph visualization software.",
+ "homepage": "https://www.graphviz.org/",
+ "license": "EPL-1.0",
+ "version": "7.0.1"
 }

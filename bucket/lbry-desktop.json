@@ -1,55 +1,55 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "sha512:236c7cd77eea9dafd3ceef08faecc996ed122f784745bfd097bf96878e3e5184c3c8f465ffd9cf4de76d253c3cdf17d43ddb8352c78ac373c97489dd13fda9b5",
-            "installer": {
-                "script": [
-                    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" -DestinationPath \"$dir\" -Removal",
-                    "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
-                ]
-            },
-            "url": "https://github.com/lbryio/lbry-desktop/releases/download/v0.53.6/LBRY_0.53.6.exe#/LBRY_0.53.6.7z"
-        },
-        "64bit": {
-            "hash": "sha512:236c7cd77eea9dafd3ceef08faecc996ed122f784745bfd097bf96878e3e5184c3c8f465ffd9cf4de76d253c3cdf17d43ddb8352c78ac373c97489dd13fda9b5",
-            "installer": {
-                "script": [
-                    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" -DestinationPath \"$dir\" -Removal",
-                    "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
-                ]
-            },
-            "url": "https://github.com/lbryio/lbry-desktop/releases/download/v0.53.6/LBRY_0.53.6.exe#/LBRY_0.53.6.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/lbryio/lbry-desktop/releases/download/v$version/LBRY_$version.exe#/LBRY_$version.7z"
-            },
-            "64bit": {
-                "url": "https://github.com/lbryio/lbry-desktop/releases/download/v$version/LBRY_$version.exe#/LBRY_$version.7z"
-            }
-        },
-        "hash": {
-            "mode": "extract",
-            "regex": "(?sm)$version.exe.*?sha512: $base64",
-            "url": "https://github.com/lbryio/lbry-desktop/releases/download/v$version/latest.yml"
-        }
-    },
-    "checkver": {
-        "github": "https://github.com/lbryio/lbry-desktop"
-    },
-    "description": "A browser and wallet for LBRY, the decentralized, user-controlled content marketplace",
-    "homepage": "https://lbry.tv",
-    "license": "MIT",
-    "shortcuts": [
-        [
-            "LBRY.exe",
-            "LBRY"
-        ]
-    ],
-    "suggest": {
-        "ffmpeg": "main/ffmpeg"
-    },
-    "version": "0.53.6"
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:236c7cd77eea9dafd3ceef08faecc996ed122f784745bfd097bf96878e3e5184c3c8f465ffd9cf4de76d253c3cdf17d43ddb8352c78ac373c97489dd13fda9b5",
+   "installer": {
+    "script": [
+     "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" -DestinationPath \"$dir\" -Removal",
+     "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
+    ]
+   },
+   "url": "https://github.com/lbryio/lbry-desktop/releases/download/v0.53.6/LBRY_0.53.6.exe#/LBRY_0.53.6.7z"
+  },
+  "64bit": {
+   "hash": "sha512:236c7cd77eea9dafd3ceef08faecc996ed122f784745bfd097bf96878e3e5184c3c8f465ffd9cf4de76d253c3cdf17d43ddb8352c78ac373c97489dd13fda9b5",
+   "installer": {
+    "script": [
+     "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" -DestinationPath \"$dir\" -Removal",
+     "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
+    ]
+   },
+   "url": "https://github.com/lbryio/lbry-desktop/releases/download/v0.53.6/LBRY_0.53.6.exe#/LBRY_0.53.6.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/lbryio/lbry-desktop/releases/download/v$version/LBRY_$version.exe#/LBRY_$version.7z"
+   },
+   "64bit": {
+    "url": "https://github.com/lbryio/lbry-desktop/releases/download/v$version/LBRY_$version.exe#/LBRY_$version.7z"
+   }
+  },
+  "hash": {
+   "mode": "extract",
+   "regex": "(?sm)$version.exe.*?sha512: $base64",
+   "url": "https://github.com/lbryio/lbry-desktop/releases/download/v$version/latest.yml"
+  }
+ },
+ "checkver": {
+  "github": "https://github.com/lbryio/lbry-desktop"
+ },
+ "description": "A browser and wallet for LBRY, the decentralized, user-controlled content marketplace",
+ "homepage": "https://lbry.tv",
+ "license": "MIT",
+ "shortcuts": [
+  [
+   "LBRY.exe",
+   "LBRY"
+  ]
+ ],
+ "suggest": {
+  "ffmpeg": "main/ffmpeg"
+ },
+ "version": "0.53.6"
 }

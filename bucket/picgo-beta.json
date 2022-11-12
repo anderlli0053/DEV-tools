@@ -1,44 +1,44 @@
 {
-    "version": "2.3.1-beta.6",
-    "description": "Image uploader/manager",
-    "homepage": "https://picgo.github.io/PicGo-Doc/en/",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/Molunerfinn/PicGo/releases/download/v2.3.1-beta.6/PicGo-Setup-2.3.1-beta.6-x64.exe#/dl.7z",
-            "hash": "sha512:c29f9996b3e81700713657f618fa3c45c08ff695a992cc9fa36f39a1e7744dc2cbe2dd4ca585d1c00d56806a9a1cfd233264e9fe50a06567b17ba9e9f909f270",
-            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
-        },
-        "32bit": {
-            "url": "https://github.com/Molunerfinn/PicGo/releases/download/v2.3.1-beta.6/PicGo-Setup-2.3.1-beta.6-ia32.exe#/dl.7z",
-            "hash": "db324d61c853de0bec3dd21672ec5e09e6a27219c30a9b698f073cda539fc647",
-            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "db324d61c853de0bec3dd21672ec5e09e6a27219c30a9b698f073cda539fc647",
+   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+   "url": "https://github.com/Molunerfinn/PicGo/releases/download/v2.3.1-beta.6/PicGo-Setup-2.3.1-beta.6-ia32.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "sha512:c29f9996b3e81700713657f618fa3c45c08ff695a992cc9fa36f39a1e7744dc2cbe2dd4ca585d1c00d56806a9a1cfd233264e9fe50a06567b17ba9e9f909f270",
+   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+   "url": "https://github.com/Molunerfinn/PicGo/releases/download/v2.3.1-beta.6/PicGo-Setup-2.3.1-beta.6-x64.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/Molunerfinn/PicGo/releases/download/v$version/PicGo-Setup-$version-ia32.exe#/dl.7z"
+   },
+   "64bit": {
+    "hash": {
+     "regex": "sha512:\\s+$base64",
+     "url": "$baseurl/latest.yml"
     },
-    "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse",
-    "bin": "PicGo.exe",
-    "shortcuts": [
-        [
-            "PicGo.exe",
-            "PicGo"
-        ]
-    ],
-    "checkver": {
-        "url": "https://github.com/Molunerfinn/PicGo/releases",
-        "regex": "/PicGo/tree/v([\\w.-]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/Molunerfinn/PicGo/releases/download/v$version/PicGo-Setup-$version-x64.exe#/dl.7z",
-                "hash": {
-                    "url": "$baseurl/latest.yml",
-                    "regex": "sha512:\\s+$base64"
-                }
-            },
-            "32bit": {
-                "url": "https://github.com/Molunerfinn/PicGo/releases/download/v$version/PicGo-Setup-$version-ia32.exe#/dl.7z"
-            }
-        }
-    }
+    "url": "https://github.com/Molunerfinn/PicGo/releases/download/v$version/PicGo-Setup-$version-x64.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": "PicGo.exe",
+ "checkver": {
+  "regex": "/PicGo/tree/v([\\w.-]+)",
+  "url": "https://github.com/Molunerfinn/PicGo/releases"
+ },
+ "description": "Image uploader/manager",
+ "homepage": "https://picgo.github.io/PicGo-Doc/en/",
+ "license": "MIT",
+ "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse",
+ "shortcuts": [
+  [
+   "PicGo.exe",
+   "PicGo"
+  ]
+ ],
+ "version": "2.3.1-beta.6"
 }

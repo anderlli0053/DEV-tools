@@ -1,37 +1,46 @@
 {
-    "homepage": "https://kurtzimmermann.com",
-    "version": "2.037",
-    "license": "freeware",
-    "architecture": {
-        "64bit": {
-            "url": "https://kurtzimmermann.com/files/HDCleanerX64.zip",
-            "hash": "5851e9fc29de8627728d9d49ef9f397018c325b489e6c765c46980a73a149c61"
-        },
-        "32bit": {
-            "url": "https://kurtzimmermann.com/files/HDCleanerX32.zip",
-            "hash": "63217b01c088573da603aa4cc61b50615eeff5dbdfb825e7b8f47fdbb34bb086"
-        }
-    },
-    "bin": "HDCleaner.exe",
-    "persist": "Settings",
-    "shortcuts": [
-        [
-            "HDCleaner.exe",
-            "HDCleaner"
-        ]
-    ],
-    "checkver": {
-        "url": "https://kurtzimmermann.com/index_e.html",
-        "regex": "HDCleaner</h4>[\\w\\W]*?Version ([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://kurtzimmermann.com/files/HDCleanerX64.zip"
-            },
-            "32bit": {
-                "url": "https://kurtzimmermann.com/files/HDCleanerX32.zip"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "63217b01c088573da603aa4cc61b50615eeff5dbdfb825e7b8f47fdbb34bb086",
+   "url": "https://kurtzimmermann.com/files/HDCleanerX32.zip"
+  },
+  "64bit": {
+   "hash": "5851e9fc29de8627728d9d49ef9f397018c325b489e6c765c46980a73a149c61",
+   "url": "https://kurtzimmermann.com/files/HDCleanerX64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://kurtzimmermann.com/files/HDCleanerX32.zip"
+   },
+   "64bit": {
+    "url": "https://kurtzimmermann.com/files/HDCleanerX64.zip"
+   }
+  }
+ },
+ "bin": "HDCleaner.exe",
+ "checkver": {
+  "regex": "v([\\d.]+)",
+  "url": "https://kurtzimmermann.com/hdcleanerversions_de.html"
+ },
+ "description": "An application that offers a comprehensive toolkit for system maintenance. Developed by Kurt Zimmermann.",
+ "homepage": "https://kurtzimmermann.com/index_e.html",
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://kurtzimmermann-com.translate.goog/datenschutz_en.html?_x_tr_sl=auto&_x_tr_tl=en-US&_x_tr_hl=en-US"
+ },
+ "notes": [
+  "For a guide on how to use this app, click the link below:",
+  "https://kurtzimmermann-com.translate.goog/hdhelp_de.html?_x_tr_sl=auto&_x_tr_tl=en-US&_x_tr_hl=en-US"
+ ],
+ "persist": "Settings",
+ "pre_install": "Remove-Item \"$dir\\Uninstaller.exe\" | Out-Null",
+ "shortcuts": [
+  [
+   "HDCleaner.exe",
+   "HDCleaner"
+  ]
+ ],
+ "version": "2.037"
 }
