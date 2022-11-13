@@ -1,48 +1,48 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "6427b398f8f58d227eb0d751e49b5c83d000810a237de1a2c18e7ffd9011fa9e",
-   "url": "https://github.com/Ryujinx/release-channel-master/releases/download/1.1.341/ryujinx-1.1.341-win_x64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://github.com/Ryujinx/release-channel-master/releases/download/$version/ryujinx-$version-win_x64.zip"
-   }
-  }
- },
- "bin": "Ryujinx.exe",
- "checkver": {
-  "github": "https://github.com/Ryujinx/release-channel-master"
- },
- "description": "A simple, experimental Nintendo Switch emulator",
- "extract_dir": "publish",
- "homepage": "https://ryujinx.org/",
- "license": {
-  "identifier": "MIT",
-  "url": "https://github.com/Ryujinx/Ryujinx/blob/master/LICENSE.txt"
- },
- "notes": [
-  "ATTENTION: Ryujinx requires Nintendo Switch firmware and a prod.keys file to function.",
-  "Learn more at https://github.com/Ryujinx/Ryujinx/wiki/Ryujinx-Setup-&-Configuration-Guide"
- ],
- "persist": "portable",
- "pre_install": [
-  "if (!(Test-Path \"$persist_dir\")) {",
-  "   New-item \"$persist_dir\\portable\" -ItemType Directory | Out-Null",
-  "   if (Test-Path \"$env:APPDATA\\Ryujinx\") {",
-  "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
-  "       Copy-Item -Path \"$env:APPDATA\\Ryujinx\\*\" -Destination \"$persist_dir\\portable\" -Recurse",
-  "       Remove-Item -Path \"$env:APPDATA\\Ryujinx\" -Recurse",
-  "   }",
-  "}"
- ],
- "shortcuts": [
-  [
-   "Ryujinx.exe",
-   "Ryujinx"
-  ]
- ],
- "version": "1.1.341"
+    "architecture": {
+        "64bit": {
+            "hash": "577cb9f626655b972d527bafcd98d1d29e693c9833377afb08962156b17e30e1",
+            "url": "https://github.com/Ryujinx/release-channel-master/releases/download/1.1.343/ryujinx-1.1.343-win_x64.zip"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Ryujinx/release-channel-master/releases/download/$version/ryujinx-$version-win_x64.zip"
+            }
+        }
+    },
+    "bin": "Ryujinx.exe",
+    "checkver": {
+        "github": "https://github.com/Ryujinx/release-channel-master"
+    },
+    "description": "A simple, experimental Nintendo Switch emulator",
+    "extract_dir": "publish",
+    "homepage": "https://ryujinx.org/",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/Ryujinx/Ryujinx/blob/master/LICENSE.txt"
+    },
+    "notes": [
+        "ATTENTION: Ryujinx requires Nintendo Switch firmware and a prod.keys file to function.",
+        "Learn more at https://github.com/Ryujinx/Ryujinx/wiki/Ryujinx-Setup-&-Configuration-Guide"
+    ],
+    "persist": "portable",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-item \"$persist_dir\\portable\" -ItemType Directory | Out-Null",
+        "   if (Test-Path \"$env:APPDATA\\Ryujinx\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:APPDATA\\Ryujinx\\*\" -Destination \"$persist_dir\\portable\" -Recurse",
+        "       Remove-Item -Path \"$env:APPDATA\\Ryujinx\" -Recurse",
+        "   }",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "Ryujinx.exe",
+            "Ryujinx"
+        ]
+    ],
+    "version": "1.1.343"
 }
