@@ -1,73 +1,73 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "714206b703f375d4dffb121463b0914dd96b7484a5ec41894506357a5ad9ca90",
-   "url": "https://github.com/cemu-project/Cemu/releases/download/v2.0-14/cemu-2.0-14-windows-x64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://github.com/cemu-project/Cemu/releases/download/v$matchVer/cemu-$matchVer-windows-x64.zip"
-   }
-  },
-  "extract_dir": "Cemu_$matchVer"
- },
- "bin": [
-  [
-   "Cemu.exe",
-   "cemu-dev"
-  ]
- ],
- "checkver": {
-  "regex": "Cemu (?<ver>\\d+\\.\\d+-\\d+) \\(Experimental\\)",
-  "replace": "${1}",
-  "url": "https://github.com/cemu-project/Cemu/releases"
- },
- "description": "A Nintendo WiiU emulator capable of online play (development version)",
- "extract_dir": "Cemu_2.0-14",
- "homepage": "https://cemu.info/",
- "installer": {
-  "script": [
-   "if (!(Test-Path \"$persist_dir\\keys.txt\")) {",
-   "    New-Item \"$dir\\keys.txt\" -Type File | Out-Null",
-   "}"
-  ]
- },
- "license": "MPL-2.0",
- "persist": [
-  "controllerProfiles",
-  "gameProfiles",
-  "graphicPacks",
-  "mlc01",
-  "sharedFonts",
-  "shaderCache\\transferable",
-  "keys.txt"
- ],
- "post_install": [
-  "'settings.xml' | ForEach-Object {",
-  "   if (Test-Path \"$persist_dir\\$_.bak\") {",
-  "       Copy-Item \"$persist_dir\\$_.bak\" \"$dir\\$_\"  -Force",
-  "   } else {",
-  "       New-Item -ItemType File \"$dir\\$_\" | Out-Null",
-  "   }",
-  "}"
- ],
- "shortcuts": [
-  [
-   "Cemu.exe",
-   "Cemu (Development)"
-  ]
- ],
- "suggest": {
-  "Microsoft Visual C++ Runtime 2022": "extras/vcredist2022"
- },
- "uninstaller": {
-  "script": [
-   "'settings.xml' | ForEach-Object {",
-   "   Copy-Item \"$dir\\$_\" \"$persist_dir\\$_.bak\" -Force",
-   "}"
-  ]
- },
- "version": "2.0-14"
+    "architecture": {
+        "64bit": {
+            "hash": "9443b4952a42a4bf2f5a5cb6162eda912cb6f7cf8b6fda35c7c2289f1c443ba0",
+            "url": "https://github.com/cemu-project/Cemu/releases/download/v2.0-15/cemu-2.0-15-windows-x64.zip"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/cemu-project/Cemu/releases/download/v$matchVer/cemu-$matchVer-windows-x64.zip"
+            }
+        },
+        "extract_dir": "Cemu_$matchVer"
+    },
+    "bin": [
+        [
+            "Cemu.exe",
+            "cemu-dev"
+        ]
+    ],
+    "checkver": {
+        "regex": "Cemu (?<ver>\\d+\\.\\d+-\\d+) \\(Experimental\\)",
+        "replace": "${1}",
+        "url": "https://github.com/cemu-project/Cemu/releases"
+    },
+    "description": "A Nintendo WiiU emulator capable of online play (development version)",
+    "extract_dir": "Cemu_2.0-15",
+    "homepage": "https://cemu.info/",
+    "installer": {
+        "script": [
+            "if (!(Test-Path \"$persist_dir\\keys.txt\")) {",
+            "    New-Item \"$dir\\keys.txt\" -Type File | Out-Null",
+            "}"
+        ]
+    },
+    "license": "MPL-2.0",
+    "persist": [
+        "controllerProfiles",
+        "gameProfiles",
+        "graphicPacks",
+        "mlc01",
+        "sharedFonts",
+        "shaderCache\\transferable",
+        "keys.txt"
+    ],
+    "post_install": [
+        "'settings.xml' | ForEach-Object {",
+        "   if (Test-Path \"$persist_dir\\$_.bak\") {",
+        "       Copy-Item \"$persist_dir\\$_.bak\" \"$dir\\$_\"  -Force",
+        "   } else {",
+        "       New-Item -ItemType File \"$dir\\$_\" | Out-Null",
+        "   }",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "Cemu.exe",
+            "Cemu (Development)"
+        ]
+    ],
+    "suggest": {
+        "Microsoft Visual C++ Runtime 2022": "extras/vcredist2022"
+    },
+    "uninstaller": {
+        "script": [
+            "'settings.xml' | ForEach-Object {",
+            "   Copy-Item \"$dir\\$_\" \"$persist_dir\\$_.bak\" -Force",
+            "}"
+        ]
+    },
+    "version": "2.0-15"
 }
