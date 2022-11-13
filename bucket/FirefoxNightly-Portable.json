@@ -1,74 +1,74 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "sha512:5b16807738d753ab7a72a5c41fb13eb3613de1571ba60ae95cf83ab62c03e3a2aeb96d2b52ceaed5be7c3ef8a5a285500c4732c50e3e4bd98779172c2118136e",
-   "url": "https://archive.mozilla.org/pub/firefox/nightly/2022/11/2022-11-12-09-47-29-mozilla-central/firefox-108.0a1.en-US.win32.installer.exe#/dl.7z"
-  },
-  "64bit": {
-   "hash": "sha512:af5db67139eb4a558f770633b6fb860f23bfa5bd0b1b4d8f491722ac34e07094955762e85d37b425283e244ed409d88f1fa8102f2486d3ba0e03564fb1e36f95",
-   "url": "https://archive.mozilla.org/pub/firefox/nightly/2022/11/2022-11-12-09-47-29-mozilla-central/firefox-108.0a1.en-US.win64.installer.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "hash": {
-     "url": "$baseurl/firefox-$majorVersion.$minorVersion.en-US.win32.checksums"
+    "architecture": {
+        "32bit": {
+            "hash": "sha512:78c9ef952c97bc66c2d6bf5f1edc8b1a763ac0e0af57952deaec2a2d6078fc379856a8a8fe4632305ee7d5d68e1973e418ad3bb553e9e9317ed1aa105b566698",
+            "url": "https://archive.mozilla.org/pub/firefox/nightly/2022/11/2022-11-12-21-58-06-mozilla-central/firefox-108.0a1.en-US.win32.installer.exe#/dl.7z"
+        },
+        "64bit": {
+            "hash": "sha512:538079e5420f2353537f68550b3c7fdc533a85c58bcbf0c5c715de7f95b16cb26e91ceb0dffdd674754a4d66df027dc8900f73e4bd3c220b150350bac10a1ea5",
+            "url": "https://archive.mozilla.org/pub/firefox/nightly/2022/11/2022-11-12-21-58-06-mozilla-central/firefox-108.0a1.en-US.win64.installer.exe#/dl.7z"
+        }
     },
-    "url": "https://archive.mozilla.org/pub/firefox/nightly/$matchYyyy/$matchMm/$matchYyyy-$matchMm-$matchDd-$matchHr-$matchMi-$matchSe-mozilla-central/firefox-$majorVersion.$minorVersion.en-US.win32.installer.exe#/dl.7z"
-   },
-   "64bit": {
-    "hash": {
-     "url": "$baseurl/firefox-$majorVersion.$minorVersion.en-US.win64.checksums"
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "hash": {
+                    "url": "$baseurl/firefox-$majorVersion.$minorVersion.en-US.win32.checksums"
+                },
+                "url": "https://archive.mozilla.org/pub/firefox/nightly/$matchYyyy/$matchMm/$matchYyyy-$matchMm-$matchDd-$matchHr-$matchMi-$matchSe-mozilla-central/firefox-$majorVersion.$minorVersion.en-US.win32.installer.exe#/dl.7z"
+            },
+            "64bit": {
+                "hash": {
+                    "url": "$baseurl/firefox-$majorVersion.$minorVersion.en-US.win64.checksums"
+                },
+                "url": "https://archive.mozilla.org/pub/firefox/nightly/$matchYyyy/$matchMm/$matchYyyy-$matchMm-$matchDd-$matchHr-$matchMi-$matchSe-mozilla-central/firefox-$majorVersion.$minorVersion.en-US.win64.installer.exe#/dl.7z"
+            }
+        }
     },
-    "url": "https://archive.mozilla.org/pub/firefox/nightly/$matchYyyy/$matchMm/$matchYyyy-$matchMm-$matchDd-$matchHr-$matchMi-$matchSe-mozilla-central/firefox-$majorVersion.$minorVersion.en-US.win64.installer.exe#/dl.7z"
-   }
-  }
- },
- "bin": [
-  [
-   "firefox.exe",
-   "firefox-nightly"
-  ]
- ],
- "changelog": "https://www.mozilla.org/en-US/firefox/nightly/notes/",
- "checkver": {
-  "regex": "appVersion=\"([\\w.]+)\".*?buildID=\"((?<yyyy>\\d{4})(?<mm>\\d{2})(?<dd>\\d{2})(?<hr>\\d{2})(?<mi>\\d{2})(?<se>\\d{2}))",
-  "replace": "${1}.${2}",
-  "url": "https://aus5.mozilla.org/update/6/Firefox/60.0/_/WINNT_x86_64-msvc-x64/en-US/nightly/_/_/_/_/update.xml"
- },
- "description": "Firefox Nightly. Nightly builds of Firefox: the popular open source web browser.",
- "extract_dir": "core",
- "homepage": "https://www.mozilla.org/en-US/firefox/nightly/",
- "license": "MPL-2.0",
- "notes": [
-  "To set profile 'Scoop-Nightly' as *DEFAULT*, or profiles/settings was lost after update:",
-  "  - Run 'Firefox Nightly Profile Manager', choose 'Scoop-Nightly' then click 'Start Nightly'.",
-  "  - Visit 'about:profiles' page in Firefox Nightly to check *DEFAULT* profile.",
-  "For details: https://support.mozilla.org/en-US/kb/profile-manager-create-remove-switch-firefox-profiles"
- ],
- "persist": [
-  "distribution",
-  "profile"
- ],
- "post_install": [
-  "firefox-nightly -CreateProfile \"Scoop-Nightly $persist_dir\\profile\"",
-  "$Addition = \"$persist_dir\\addition\"",
-  "if (Test-Path $Addition) {",
-  "  info 'Copying additional items...'",
-  "  Copy-Item -Path $Addition\\* -Destination $dir -Force -Recurse -ErrorAction SilentlyContinue",
-  "}"
- ],
- "shortcuts": [
-  [
-   "firefox.exe",
-   "Firefox Nightly"
-  ],
-  [
-   "firefox.exe",
-   "Firefox Nightly Profile Manager",
-   "-P"
-  ]
- ],
- "version": "108.0a1.20221112094729"
+    "bin": [
+        [
+            "firefox.exe",
+            "firefox-nightly"
+        ]
+    ],
+    "changelog": "https://www.mozilla.org/en-US/firefox/nightly/notes/",
+    "checkver": {
+        "regex": "appVersion=\"([\\w.]+)\".*?buildID=\"((?<yyyy>\\d{4})(?<mm>\\d{2})(?<dd>\\d{2})(?<hr>\\d{2})(?<mi>\\d{2})(?<se>\\d{2}))",
+        "replace": "${1}.${2}",
+        "url": "https://aus5.mozilla.org/update/6/Firefox/60.0/_/WINNT_x86_64-msvc-x64/en-US/nightly/_/_/_/_/update.xml"
+    },
+    "description": "Firefox Nightly. Nightly builds of Firefox: the popular open source web browser.",
+    "extract_dir": "core",
+    "homepage": "https://www.mozilla.org/en-US/firefox/nightly/",
+    "license": "MPL-2.0",
+    "notes": [
+        "To set profile 'Scoop-Nightly' as *DEFAULT*, or profiles/settings was lost after update:",
+        "  - Run 'Firefox Nightly Profile Manager', choose 'Scoop-Nightly' then click 'Start Nightly'.",
+        "  - Visit 'about:profiles' page in Firefox Nightly to check *DEFAULT* profile.",
+        "For details: https://support.mozilla.org/en-US/kb/profile-manager-create-remove-switch-firefox-profiles"
+    ],
+    "persist": [
+        "distribution",
+        "profile"
+    ],
+    "post_install": [
+        "firefox-nightly -CreateProfile \"Scoop-Nightly $persist_dir\\profile\"",
+        "$Addition = \"$persist_dir\\addition\"",
+        "if (Test-Path $Addition) {",
+        "  info 'Copying additional items...'",
+        "  Copy-Item -Path $Addition\\* -Destination $dir -Force -Recurse -ErrorAction SilentlyContinue",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "firefox.exe",
+            "Firefox Nightly"
+        ],
+        [
+            "firefox.exe",
+            "Firefox Nightly Profile Manager",
+            "-P"
+        ]
+    ],
+    "version": "108.0a1.20221112215806"
 }
