@@ -1,34 +1,34 @@
 {
- "autoupdate": {
-  "url": "https://dldir1.qq.com/foxmail/windows/FoxmailSetup_$version.exe#/dl.7z"
- },
- "checkver": {
-  "regex": "FoxmailSetup_([\\d.]+).exe",
-  "url": "https://raw.githubusercontent.com/kkzzhizhou/scoop-zapps/master/versions/Foxmail.latest"
- },
- "description": "\u4f60\u7684\u90ae\u4ef6\uff0c\u73b0\u5728\u6709\u4e86\u65b0\u770b\u6cd5\u3002",
- "hash": "9dbd6355991c948c9a333b44e2abce79f45cda90e924e5b504851b4f3bea9ac7",
- "homepage": "https://www.foxmail.com/",
- "persist": [
-  "Storage",
-  "Global",
-  "FMStorage.list"
- ],
- "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
- "pre_install": [
-  "$file = 'FMStorage.list'",
-  "if (!(Test-Path \"$persist_dir\\$file\")) {",
-  "    Write-Host 'File' $file 'does not exists. Creating.' -f Yellow",
-  "    $CONT = @('')",
-  "    Set-Content \"$dir\\$file\" ($CONT -join \"`r`n\") -Encoding Ascii",
-  "}"
- ],
- "shortcuts": [
-  [
-   "Foxmail.exe",
-   "Foxmail"
-  ]
- ],
- "url": "https://dldir1.qq.com/foxmail/windows/FoxmailSetup_7.2.25.148.exe#/dl.7z",
- "version": "7.2.25.148"
+    "autoupdate": {
+        "url": "https://dldir1.qq.com/foxmail/windows/FoxmailSetup_$version.exe#/dl.7z"
+    },
+    "checkver": {
+        "regex": "FoxmailSetup_([\\d.]+).exe",
+        "url": "https://raw.githubusercontent.com/kkzzhizhou/scoop-zapps/master/versions/Foxmail.latest"
+    },
+    "description": "你的邮件，现在有了新看法。",
+    "hash": "474216af35a22aa4ff187d83908f6051b7989968a77e0ad21b54f2c1252121d2",
+    "homepage": "https://www.foxmail.com/",
+    "persist": [
+        "Storage",
+        "Global",
+        "FMStorage.list"
+    ],
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
+    "pre_install": [
+        "$file = 'FMStorage.list'",
+        "if (!(Test-Path \"$persist_dir\\$file\")) {",
+        "    Write-Host 'File' $file 'does not exists. Creating.' -f Yellow",
+        "    $CONT = @('')",
+        "    Set-Content \"$dir\\$file\" ($CONT -join \"`r`n\") -Encoding Ascii",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "Foxmail.exe",
+            "Foxmail"
+        ]
+    ],
+    "url": "https://dldir1.qq.com/foxmail/windows/FoxmailSetup_7.2.25.178.exe#/dl.7z",
+    "version": "7.2.25.178"
 }
