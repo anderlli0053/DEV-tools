@@ -1,52 +1,52 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "6d9542ba6c888758b82806f5e170ab4b6ceafae92f2b631e1c305f4b386c57a9",
-   "url": "https://github.com/adoptium/temurin20-binaries/releases/download/jdk-2022-11-11-09-20-beta/OpenJDK-jre_x86-32_windows_hotspot_2022-11-11-03-30.zip"
-  },
-  "64bit": {
-   "hash": "ea4f9a900d40afb291dae5e09ecb5255a52d286ff2af34de9edef2f6d4ac2c73",
-   "url": "https://github.com/adoptium/temurin20-binaries/releases/download/jdk-2022-11-11-09-20-beta/OpenJDK-jre_x64_windows_hotspot_2022-11-11-03-30.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://github.com/$matchLink/download/$matchTag/$matchPrefix_x86-32_$matchSuffix"
-   },
-   "64bit": {
-    "url": "https://github.com/$matchLink/download/$matchTag/$matchName"
-   }
-  },
-  "hash": {
-   "find": "^([a-fA-F0-9]+)\\s",
-   "url": "$url.sha256.txt"
-  }
- },
- "checkver": {
-  "regex": "(?<ver>.*?) https://github.com/(?<link>.*?)/tag/(?<tag>.*?) (?<name>(?<prefix>OpenJDK[\\dU]*-[dejkr]{3})_x64_(?<suffix>.*))",
-  "replace": "${ver}",
-  "script": [
-   "$ver = (json_path $page $..version_data.semver).replace('+', '-').replace('-beta','')",
-   "$link = (json_path $page $..release_link).replace('%2B', '+')",
-   "$name = json_path $page $..binaries[0].package.name",
-   "Write-Output \"$ver $link $name\""
-  ],
-  "url": "https://api.adoptium.net/v3/assets/version/%5B8%2C%29?release_type=ea&jvm_impl=hotspot&heap_size=normal&os=windows&architecture=x64&image_type=jre&project=jdk&vendor=eclipse&page_size=1&sort_order=DESC"
- },
- "description": "Eclipse Temurin is a runtime provided by Eclipse Adoptium for general use across the Java ecosystem",
- "env_add_path": "bin",
- "env_set": {
-  "JAVA_HOME": "$dir"
- },
- "extract_to": "tmp",
- "homepage": "https://adoptium.net",
- "installer": {
-  "script": [
-   "(Get-ChildItem -Directory \"$dir\\tmp\").FullName | % { Move-Item \"$_\\*\" \"$dir\" }",
-   "Remove-Item -Recurse \"$dir\\tmp\""
-  ]
- },
- "license": "GPL-2.0-only WITH Classpath-exception-2.0",
- "version": "20.0.0-23.0.202211110348"
+    "architecture": {
+        "32bit": {
+            "hash": "681ecb8219ca01798a272707003cb99753034513f61fba5256e5d425fb8e9f01",
+            "url": "https://github.com/adoptium/temurin20-binaries/releases/download/jdk-2022-11-16-08-39-beta/OpenJDK-jre_x86-32_windows_hotspot_2022-11-16-03-30.zip"
+        },
+        "64bit": {
+            "hash": "b9bba5ccf992e72fb0dc511c3b76c084957a305a7665480a87c5f9ae0c90ca54",
+            "url": "https://github.com/adoptium/temurin20-binaries/releases/download/jdk-2022-11-16-08-39-beta/OpenJDK-jre_x64_windows_hotspot_2022-11-16-03-30.zip"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/$matchLink/download/$matchTag/$matchPrefix_x86-32_$matchSuffix"
+            },
+            "64bit": {
+                "url": "https://github.com/$matchLink/download/$matchTag/$matchName"
+            }
+        },
+        "hash": {
+            "find": "^([a-fA-F0-9]+)\\s",
+            "url": "$url.sha256.txt"
+        }
+    },
+    "checkver": {
+        "regex": "(?<ver>.*?) https://github.com/(?<link>.*?)/tag/(?<tag>.*?) (?<name>(?<prefix>OpenJDK[\\dU]*-[dejkr]{3})_x64_(?<suffix>.*))",
+        "replace": "${ver}",
+        "script": [
+            "$ver = (json_path $page $..version_data.semver).replace('+', '-').replace('-beta','')",
+            "$link = (json_path $page $..release_link).replace('%2B', '+')",
+            "$name = json_path $page $..binaries[0].package.name",
+            "Write-Output \"$ver $link $name\""
+        ],
+        "url": "https://api.adoptium.net/v3/assets/version/%5B8%2C%29?release_type=ea&jvm_impl=hotspot&heap_size=normal&os=windows&architecture=x64&image_type=jre&project=jdk&vendor=eclipse&page_size=1&sort_order=DESC"
+    },
+    "description": "Eclipse Temurin is a runtime provided by Eclipse Adoptium for general use across the Java ecosystem",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "extract_to": "tmp",
+    "homepage": "https://adoptium.net",
+    "installer": {
+        "script": [
+            "(Get-ChildItem -Directory \"$dir\\tmp\").FullName | % { Move-Item \"$_\\*\" \"$dir\" }",
+            "Remove-Item -Recurse \"$dir\\tmp\""
+        ]
+    },
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "version": "20.0.0-23.0.202211160348"
 }
