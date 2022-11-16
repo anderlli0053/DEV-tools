@@ -1,55 +1,55 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "5d5e9d44e3cc6144579505793ea8e0153493ce5a348d773c4161386f8c80de2a",
-   "url": "https://download3.operacdn.com/pub/opera_gx/92.0.4561.55/win/Opera_GX_92.0.4561.55_Setup.exe#/dl.7z"
-  },
-  "64bit": {
-   "hash": "66515948f28f4f62f450b90e326d29413caeaa411c2acc6dec9474f227cf5958",
-   "url": "https://download3.operacdn.com/pub/opera_gx/92.0.4561.55/win/Opera_GX_92.0.4561.55_Setup_x64.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://download3.operacdn.com/pub/opera_gx/$version/win/Opera_GX_$version_Setup.exe#/dl.7z"
-   },
-   "64bit": {
-    "url": "https://download3.operacdn.com/pub/opera_gx/$version/win/Opera_GX_$version_Setup_x64.exe#/dl.7z"
-   }
-  },
-  "hash": {
-   "url": "$url.sha256sum"
-  }
- },
- "checkver": {
-  "regex": "([\\d.]+)/",
-  "reverse": true,
-  "url": "https://get.opera.com/ftp/pub/opera_gx/"
- },
- "description": "Gaming counterpart of Opera web browser",
- "homepage": "https://www.opera.com/gx",
- "installer": {
-  "script": [
-   "Remove-Item \"$dir\\*_list\" -Force",
-   "Move-Item \"$dir\\*\" \"$dir\\$version\" -Exclude 'Assets', 'launcher*', 'Resources.pri' -ErrorAction Ignore",
-   "if (-not (Test-Path \"$dir\\$version\\localization\")) {",
-   "   New-Item -Path \"$dir\\$version\\localization\" -ItemType Directory | Out-Null",
-   "   Move-Item -Path \"$dir\\$version\\*.pak\" -Destination \"$dir\\$version\\localization\" -Exclude 'opera*' -ErrorAction Ignore",
-   "}",
-   "@{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json -Depth 20 | Out-File \"$dir\\installer_prefs.json\" -Encoding ASCII"
-  ]
- },
- "license": {
-  "identifier": "Freeware",
-  "url": "https://www.opera.com/eula/computers"
- },
- "persist": "profile",
- "shortcuts": [
-  [
-   "launcher.exe",
-   "Opera GX"
-  ]
- ],
- "version": "92.0.4561.55"
+    "architecture": {
+        "32bit": {
+            "hash": "79255711d5cd204c2af56d58ca29a549cecf929bc38dbcf18431841246d52ffe",
+            "url": "https://download3.operacdn.com/pub/opera_gx/92.0.4561.64/win/Opera_GX_92.0.4561.64_Setup.exe#/dl.7z"
+        },
+        "64bit": {
+            "hash": "61d58bde06f02c0ac167787e733b3ba58b8af248ad616e3083c1303bbba35a3e",
+            "url": "https://download3.operacdn.com/pub/opera_gx/92.0.4561.64/win/Opera_GX_92.0.4561.64_Setup_x64.exe#/dl.7z"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://download3.operacdn.com/pub/opera_gx/$version/win/Opera_GX_$version_Setup.exe#/dl.7z"
+            },
+            "64bit": {
+                "url": "https://download3.operacdn.com/pub/opera_gx/$version/win/Opera_GX_$version_Setup_x64.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256sum"
+        }
+    },
+    "checkver": {
+        "regex": "([\\d.]+)/",
+        "reverse": true,
+        "url": "https://get.opera.com/ftp/pub/opera_gx/"
+    },
+    "description": "Gaming counterpart of Opera web browser",
+    "homepage": "https://www.opera.com/gx",
+    "installer": {
+        "script": [
+            "Remove-Item \"$dir\\*_list\" -Force",
+            "Move-Item \"$dir\\*\" \"$dir\\$version\" -Exclude 'Assets', 'launcher*', 'Resources.pri' -ErrorAction Ignore",
+            "if (-not (Test-Path \"$dir\\$version\\localization\")) {",
+            "   New-Item -Path \"$dir\\$version\\localization\" -ItemType Directory | Out-Null",
+            "   Move-Item -Path \"$dir\\$version\\*.pak\" -Destination \"$dir\\$version\\localization\" -Exclude 'opera*' -ErrorAction Ignore",
+            "}",
+            "@{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json -Depth 20 | Out-File \"$dir\\installer_prefs.json\" -Encoding ASCII"
+        ]
+    },
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.opera.com/eula/computers"
+    },
+    "persist": "profile",
+    "shortcuts": [
+        [
+            "launcher.exe",
+            "Opera GX"
+        ]
+    ],
+    "version": "92.0.4561.64"
 }
