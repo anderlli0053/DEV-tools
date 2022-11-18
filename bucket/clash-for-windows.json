@@ -1,77 +1,77 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "0bb3eed7e6c82e39c168d03048c567a7d0e13975073f13751378a9d5360d4753",
-            "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.8/Clash.for.Windows-0.20.8-ia32-win.7z"
-        },
-        "64bit": {
-            "hash": "d686af32aea94dd910d87989f9b6c6a38917ba53390febaa7e031bbae5c678dc",
-            "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.8/Clash.for.Windows-0.20.8-win.7z"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "0bb3eed7e6c82e39c168d03048c567a7d0e13975073f13751378a9d5360d4753",
+   "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.8/Clash.for.Windows-0.20.8-ia32-win.7z"
+  },
+  "64bit": {
+   "hash": "d686af32aea94dd910d87989f9b6c6a38917ba53390febaa7e031bbae5c678dc",
+   "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.8/Clash.for.Windows-0.20.8-win.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "mode": "extract",
+     "regex": "^ia32-7z: $sha256",
+     "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum"
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "mode": "extract",
-                    "regex": "^ia32-7z: $sha256",
-                    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum"
-                },
-                "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows-$version-ia32-win.7z"
-            },
-            "64bit": {
-                "hash": {
-                    "mode": "extract",
-                    "regex": "(?m)^7z: $sha256",
-                    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum"
-                },
-                "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows-$version-win.7z"
-            }
-        }
+    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows-$version-ia32-win.7z"
+   },
+   "64bit": {
+    "hash": {
+     "mode": "extract",
+     "regex": "(?m)^7z: $sha256",
+     "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum"
     },
-    "checkver": "github",
-    "description": "A Windows GUI based on Clash",
-    "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
-    "installer": {
-        "script": [
-            "if (!(Test-Path \"$persist_dir\\data\")) {",
-            "    New-Item \"$persist_dir\\data\" -Type Directory -Force | Out-Null",
-            "    if (Test-Path \"$env:USERPROFILE\\.config\\clash\") {",
-            "        Copy-Item -Path \"$env:USERPROFILE\\.config\\clash\\*\" -Destination \"$persist_dir\\data\" -Recurse -Container",
-            "    }",
-            "}",
-            "$runtimeCache = \"$env:APPDATA\\clash_win\"",
-            "$runtimeCachePersist = \"$persist_dir\\clash_win\"",
-            "if (Test-Path $runtimeCachePersist) {",
-            "    Remove-Item $runtimeCache -Force -Recurse -ErrorAction SilentlyContinue",
-            "    New-Item -Type Junction -Path $runtimeCache -Target $runtimeCachePersist | Out-Null",
-            "} else {",
-            "    if (Test-Path $runtimeCache) {",
-            "        Move-Item $runtimeCache $runtimeCachePersist -Force",
-            "        New-Item -Type Junction -Path $runtimeCache -Target $runtimeCachePersist | Out-Null",
-            "    }",
-            "}"
-        ]
-    },
-    "license": "MIT",
-    "notes": "Clash for Windows data are now saved into '$persist_dir' and persisted by Scoop.",
-    "persist": "data",
-    "shortcuts": [
-        [
-            "Clash for Windows.exe",
-            "Clash for Windows"
-        ]
-    ],
-    "uninstaller": {
-        "script": [
-            "$runtimeCache = \"$env:APPDATA\\clash_win\"",
-            "$runtimeCachePersist = \"$persist_dir\\clash_win\"",
-            "if (!(Test-Path $runtimeCachePersist)) {",
-            "    Move-Item $runtimeCache $runtimeCachePersist -Force",
-            "} else {",
-            "    Remove-Item $runtimeCache -Force -Recurse -ErrorAction SilentlyContinue",
-            "}"
-        ]
-    },
-    "version": "0.20.8"
+    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows-$version-win.7z"
+   }
+  }
+ },
+ "checkver": "github",
+ "description": "A Windows GUI based on Clash",
+ "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
+ "installer": {
+  "script": [
+   "if (!(Test-Path \"$persist_dir\\data\")) {",
+   "    New-Item \"$persist_dir\\data\" -Type Directory -Force | Out-Null",
+   "    if (Test-Path \"$env:USERPROFILE\\.config\\clash\") {",
+   "        Copy-Item -Path \"$env:USERPROFILE\\.config\\clash\\*\" -Destination \"$persist_dir\\data\" -Recurse -Container",
+   "    }",
+   "}",
+   "$runtimeCache = \"$env:APPDATA\\clash_win\"",
+   "$runtimeCachePersist = \"$persist_dir\\clash_win\"",
+   "if (Test-Path $runtimeCachePersist) {",
+   "    Remove-Item $runtimeCache -Force -Recurse -ErrorAction SilentlyContinue",
+   "    New-Item -Type Junction -Path $runtimeCache -Target $runtimeCachePersist | Out-Null",
+   "} else {",
+   "    if (Test-Path $runtimeCache) {",
+   "        Move-Item $runtimeCache $runtimeCachePersist -Force",
+   "        New-Item -Type Junction -Path $runtimeCache -Target $runtimeCachePersist | Out-Null",
+   "    }",
+   "}"
+  ]
+ },
+ "license": "MIT",
+ "notes": "Clash for Windows data are now saved into '$persist_dir' and persisted by Scoop.",
+ "persist": "data",
+ "shortcuts": [
+  [
+   "Clash for Windows.exe",
+   "Clash for Windows"
+  ]
+ ],
+ "uninstaller": {
+  "script": [
+   "$runtimeCache = \"$env:APPDATA\\clash_win\"",
+   "$runtimeCachePersist = \"$persist_dir\\clash_win\"",
+   "if (!(Test-Path $runtimeCachePersist)) {",
+   "    Move-Item $runtimeCache $runtimeCachePersist -Force",
+   "} else {",
+   "    Remove-Item $runtimeCache -Force -Recurse -ErrorAction SilentlyContinue",
+   "}"
+  ]
+ },
+ "version": "0.20.8"
 }

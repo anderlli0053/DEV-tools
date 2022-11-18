@@ -1,0 +1,32 @@
+{
+ "architecture": {
+  "64bit": {
+   "hash": "sha512:a3ee1d1c568afa617093d38de38e4fe9e3ac2865786c5d6d665624e9fcae0624f2d3fbe10d8b965a9098fa7ed9d99e21ebca290fe025d5f0eb9dbbde17365129",
+   "url": "https://github.com/upscayl/upscayl/releases/download/v1.5.5/Upscayl-Setup-1.5.5.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/upscayl/upscayl/releases/download/v$version/Upscayl-Setup-$version.exe#/dl.7z"
+   }
+  },
+  "hash": {
+   "regex": "sha512:\\s$base64",
+   "url": "$baseurl/latest.yml"
+  }
+ },
+ "checkver": "github",
+ "description": "A Free and Open Source AI Image Upscaler.",
+ "extract_dir": "$PLUGINSDIR",
+ "homepage": "https://github.com/upscayl/upscayl",
+ "license": "AGPL-3.0",
+ "pre_install": "Expand-7zipArchive \"$dir\\app-64.7z\" \"$dir\" -Removal",
+ "shortcuts": [
+  [
+   "Upscayl.exe",
+   "Upscayl"
+  ]
+ ],
+ "version": "1.5.5"
+}

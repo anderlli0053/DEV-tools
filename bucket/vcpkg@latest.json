@@ -1,42 +1,42 @@
 {
-    "autoupdate": {
-        "extract_dir": "vcpkg-$version",
-        "url": "https://github.com/microsoft/vcpkg/archive/refs/tags/$version.zip"
-    },
-    "bin": [
-        "vcpkg.exe",
-        [
-            "bootstrap-vcpkg.bat",
-            "vcpkg-update"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/microsoft/vcpkg/"
-    },
-    "description": "C/C++ dependency manager from Microsoft For all platforms, buildsystems, and workflows",
-    "env_set": {
-        "VCPKG_DEFAULT_TRIPLET": "x64-windows-static",
-        "VCPKG_ROOT": "$dir"
-    },
-    "extract_dir": "vcpkg-2022.11.14",
-    "hash": "5ce4e88778bf3478d66dedf5215b7b1a35d52f71082e7f4ca22c2f0ebfa15626",
-    "homepage": "https://vcpkg.io/",
-    "license": "MIT",
-    "persist": [
-        "downloads",
-        "installed"
-    ],
-    "post_install": "& vcpkg integrate install",
-    "pre_install": [
-        "& cd $dir",
-        "& git init .",
-        "& git remote add origin https://github.com/microsoft/vcpkg",
-        "& git remote update --prune",
-        "& git checkout --track origin/master -f",
-        "& git reset --hard",
-        "& git clean -fdx",
-        "& $dir\\bootstrap-vcpkg.bat -disableMetrics"
-    ],
-    "url": "https://github.com/microsoft/vcpkg/archive/refs/tags/2022.11.14.zip",
-    "version": "2022.11.14"
+ "autoupdate": {
+  "extract_dir": "vcpkg-$version",
+  "url": "https://github.com/microsoft/vcpkg/archive/refs/tags/$version.zip"
+ },
+ "bin": [
+  "vcpkg.exe",
+  [
+   "bootstrap-vcpkg.bat",
+   "vcpkg-update"
+  ]
+ ],
+ "checkver": {
+  "github": "https://github.com/microsoft/vcpkg/"
+ },
+ "description": "C/C++ dependency manager from Microsoft For all platforms, buildsystems, and workflows",
+ "env_set": {
+  "VCPKG_DEFAULT_TRIPLET": "x64-windows-static",
+  "VCPKG_ROOT": "$dir"
+ },
+ "extract_dir": "vcpkg-2022.11.14",
+ "hash": "5ce4e88778bf3478d66dedf5215b7b1a35d52f71082e7f4ca22c2f0ebfa15626",
+ "homepage": "https://vcpkg.io/",
+ "license": "MIT",
+ "persist": [
+  "downloads",
+  "installed"
+ ],
+ "post_install": "& vcpkg integrate install",
+ "pre_install": [
+  "& cd $dir",
+  "& git init .",
+  "& git remote add origin https://github.com/microsoft/vcpkg",
+  "& git remote update --prune",
+  "& git checkout --track origin/master -f",
+  "& git reset --hard",
+  "& git clean -fdx",
+  "& $dir\\bootstrap-vcpkg.bat -disableMetrics"
+ ],
+ "url": "https://github.com/microsoft/vcpkg/archive/refs/tags/2022.11.14.zip",
+ "version": "2022.11.14"
 }

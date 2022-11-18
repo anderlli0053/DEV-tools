@@ -1,52 +1,52 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "1ad5a73f63b3a999e5565818f91fd543785e780fb37d6f6d3aeb83ad5ba1b5ee",
-            "url": "https://github.com/adoptium/temurin11-binaries/releases/download/jdk11u-2022-11-18-05-55-beta/OpenJDK11U-jre_x86-32_windows_hotspot_2022-11-18-05-55.zip"
-        },
-        "64bit": {
-            "hash": "be3110351b5eedea99ee9b5af3823549bf64b328de3cd58692a29135ca7d1cc4",
-            "url": "https://github.com/adoptium/temurin11-binaries/releases/download/jdk11u-2022-11-18-05-55-beta/OpenJDK11U-jre_x64_windows_hotspot_2022-11-18-05-55.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/$matchLink/download/$matchTag/$matchPrefix_x86-32_$matchSuffix"
-            },
-            "64bit": {
-                "url": "https://github.com/$matchLink/download/$matchTag/$matchName"
-            }
-        },
-        "hash": {
-            "find": "^([a-fA-F0-9]+)\\s",
-            "url": "$url.sha256.txt"
-        }
-    },
-    "checkver": {
-        "regex": "(?<ver>.*?) https://github.com/(?<link>.*?)/tag/(?<tag>.*?) (?<name>(?<prefix>OpenJDK[\\dU]*-[dejkr]{3})_x64_(?<suffix>.*))",
-        "replace": "${ver}",
-        "script": [
-            "$ver = (json_path $page $..version_data.semver).replace('+', '-').replace('-beta','')",
-            "$link = (json_path $page $..release_link).replace('%2B', '+')",
-            "$name = json_path $page $..binaries[0].package.name",
-            "Write-Output \"$ver $link $name\""
-        ],
-        "url": "https://api.adoptium.net/v3/assets/feature_releases/11/ea?jvm_impl=hotspot&heap_size=normal&os=windows&architecture=x64&image_type=jre&project=jdk&vendor=eclipse&page_size=1&sort_order=DESC"
-    },
-    "description": "Eclipse Temurin is a runtime provided by Eclipse Adoptium for general use across the Java ecosystem",
-    "env_add_path": "bin",
-    "env_set": {
-        "JAVA_HOME": "$dir"
-    },
-    "extract_to": "tmp",
-    "homepage": "https://adoptium.net",
-    "installer": {
-        "script": [
-            "(Get-ChildItem -Directory \"$dir\\tmp\").FullName | % { Move-Item \"$_\\*\" \"$dir\" }",
-            "Remove-Item -Recurse \"$dir\\tmp\""
-        ]
-    },
-    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
-    "version": "11.0.18-3.0.202211171816"
+ "architecture": {
+  "32bit": {
+   "hash": "1ad5a73f63b3a999e5565818f91fd543785e780fb37d6f6d3aeb83ad5ba1b5ee",
+   "url": "https://github.com/adoptium/temurin11-binaries/releases/download/jdk11u-2022-11-18-05-55-beta/OpenJDK11U-jre_x86-32_windows_hotspot_2022-11-18-05-55.zip"
+  },
+  "64bit": {
+   "hash": "be3110351b5eedea99ee9b5af3823549bf64b328de3cd58692a29135ca7d1cc4",
+   "url": "https://github.com/adoptium/temurin11-binaries/releases/download/jdk11u-2022-11-18-05-55-beta/OpenJDK11U-jre_x64_windows_hotspot_2022-11-18-05-55.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/$matchLink/download/$matchTag/$matchPrefix_x86-32_$matchSuffix"
+   },
+   "64bit": {
+    "url": "https://github.com/$matchLink/download/$matchTag/$matchName"
+   }
+  },
+  "hash": {
+   "find": "^([a-fA-F0-9]+)\\s",
+   "url": "$url.sha256.txt"
+  }
+ },
+ "checkver": {
+  "regex": "(?<ver>.*?) https://github.com/(?<link>.*?)/tag/(?<tag>.*?) (?<name>(?<prefix>OpenJDK[\\dU]*-[dejkr]{3})_x64_(?<suffix>.*))",
+  "replace": "${ver}",
+  "script": [
+   "$ver = (json_path $page $..version_data.semver).replace('+', '-').replace('-beta','')",
+   "$link = (json_path $page $..release_link).replace('%2B', '+')",
+   "$name = json_path $page $..binaries[0].package.name",
+   "Write-Output \"$ver $link $name\""
+  ],
+  "url": "https://api.adoptium.net/v3/assets/feature_releases/11/ea?jvm_impl=hotspot&heap_size=normal&os=windows&architecture=x64&image_type=jre&project=jdk&vendor=eclipse&page_size=1&sort_order=DESC"
+ },
+ "description": "Eclipse Temurin is a runtime provided by Eclipse Adoptium for general use across the Java ecosystem",
+ "env_add_path": "bin",
+ "env_set": {
+  "JAVA_HOME": "$dir"
+ },
+ "extract_to": "tmp",
+ "homepage": "https://adoptium.net",
+ "installer": {
+  "script": [
+   "(Get-ChildItem -Directory \"$dir\\tmp\").FullName | % { Move-Item \"$_\\*\" \"$dir\" }",
+   "Remove-Item -Recurse \"$dir\\tmp\""
+  ]
+ },
+ "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+ "version": "11.0.18-3.0.202211171816"
 }

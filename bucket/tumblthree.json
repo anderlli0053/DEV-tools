@@ -1,52 +1,52 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "f920b53a1ea5cffe75ced49596119ada2b24f5b289d83a8c5aaca7c2a5f3f633",
-            "url": "https://github.com/TumblThreeApp/TumblThree/releases/download/v2.9.1/TumblThree-v2.9.1-x86-Application.zip"
-        },
-        "64bit": {
-            "hash": "d389dbc1425e0687993ced5a791f3e73ac9c2a8f4bb2be056d7b4d2e6bc01f7b",
-            "url": "https://github.com/TumblThreeApp/TumblThree/releases/download/v2.9.1/TumblThree-v2.9.1-x64-Application.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/TumblThreeApp/TumblThree/releases/download/v$matchHead/TumblThree-v$version-x86-Application.zip"
-            },
-            "64bit": {
-                "url": "https://github.com/TumblThreeApp/TumblThree/releases/download/v$matchHead/TumblThree-v$version-x64-Application.zip"
-            }
-        }
-    },
-    "bin": "TumblThree.exe",
-    "checkver": {
-        "github": "https://github.com/TumblThreeApp/TumblThree",
-        "regex": "/TumblThree-v([\\d.]+)-x\\d+"
-    },
-    "description": "A Tumblr Backup Application",
-    "homepage": "https://github.com/TumblThreeApp/TumblThree",
-    "license": "MIT",
-    "persist": [
-        "Cookies.json",
-        "Manager.json",
-        "Queuelist.json",
-        "Settings.json"
-    ],
-    "pre_install": [
-        "foreach ($name in @('Cookies.json', 'Manager.json', 'Queuelist.json')) {",
-        "    if (!(Test-Path \"$persist_dir\\$name\")) { New-Item \"$dir\\$name\" | Out-Null }",
-        "}",
-        "if (!(Test-Path \"$persist_dir\\Settings.json\")) { Set-Content \"$dir\\Settings.json\" '{\"PortableMode\": true}' -Encoding ASCII }"
-    ],
-    "shortcuts": [
-        [
-            "TumblThree.exe",
-            "TumblThree"
-        ]
-    ],
-    "suggest": {
-        "vcredist": "extras/vcredist2022"
-    },
-    "version": "2.9.1"
+ "architecture": {
+  "32bit": {
+   "hash": "f920b53a1ea5cffe75ced49596119ada2b24f5b289d83a8c5aaca7c2a5f3f633",
+   "url": "https://github.com/TumblThreeApp/TumblThree/releases/download/v2.9.1/TumblThree-v2.9.1-x86-Application.zip"
+  },
+  "64bit": {
+   "hash": "d389dbc1425e0687993ced5a791f3e73ac9c2a8f4bb2be056d7b4d2e6bc01f7b",
+   "url": "https://github.com/TumblThreeApp/TumblThree/releases/download/v2.9.1/TumblThree-v2.9.1-x64-Application.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/TumblThreeApp/TumblThree/releases/download/v$matchHead/TumblThree-v$version-x86-Application.zip"
+   },
+   "64bit": {
+    "url": "https://github.com/TumblThreeApp/TumblThree/releases/download/v$matchHead/TumblThree-v$version-x64-Application.zip"
+   }
+  }
+ },
+ "bin": "TumblThree.exe",
+ "checkver": {
+  "github": "https://github.com/TumblThreeApp/TumblThree",
+  "regex": "/TumblThree-v([\\d.]+)-x\\d+"
+ },
+ "description": "A Tumblr Backup Application",
+ "homepage": "https://github.com/TumblThreeApp/TumblThree",
+ "license": "MIT",
+ "persist": [
+  "Cookies.json",
+  "Manager.json",
+  "Queuelist.json",
+  "Settings.json"
+ ],
+ "pre_install": [
+  "foreach ($name in @('Cookies.json', 'Manager.json', 'Queuelist.json')) {",
+  "    if (!(Test-Path \"$persist_dir\\$name\")) { New-Item \"$dir\\$name\" | Out-Null }",
+  "}",
+  "if (!(Test-Path \"$persist_dir\\Settings.json\")) { Set-Content \"$dir\\Settings.json\" '{\"PortableMode\": true}' -Encoding ASCII }"
+ ],
+ "shortcuts": [
+  [
+   "TumblThree.exe",
+   "TumblThree"
+  ]
+ ],
+ "suggest": {
+  "vcredist": "extras/vcredist2022"
+ },
+ "version": "2.9.1"
 }

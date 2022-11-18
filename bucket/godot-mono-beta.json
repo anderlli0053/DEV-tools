@@ -1,46 +1,49 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "sha512:62d460808572b57658b219fff8532f5fbf1bde98e49b06008f1ac7d69a00abac81b7d6fa76c6af2abb857f1f366c50a0ccf8c5c12c6b6073e0a2f0f4921e3a2c",
-            "url": "https://downloads.tuxfamily.org/godotengine/4.0/beta5/Godot_v4.0-beta5_win32.exe.zip"
-        },
-        "64bit": {
-            "hash": "sha512:491ad7c400faf19d1c56291c1424e39a5ba70153c6a06485a626ceeb9372d633b3f9352661223ce9216da0d24c705ee11a24296096a209b8e2f0ed9d305cb8f1",
-            "url": "https://downloads.tuxfamily.org/godotengine/4.0/beta5/Godot_v4.0-beta5_win64.exe.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/beta$matchBeta/Godot_v$version_win32.exe.zip"
-            },
-            "64bit": {
-                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/beta$matchBeta/Godot_v$version_win64.exe.zip"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/SHA512-SUMS.txt"
-        }
-    },
-    "bin": "godot-mono.exe",
-    "checkver": {
-        "regex": "Dev snapshot: Godot (?<ver>[\\d.]+) beta (?<beta>[\\d.]+)",
-        "replace": "${1}-beta${2}",
-        "url": "https://godotengine.org/news"
-    },
-    "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
-    "homepage": "https://godotengine.org/",
-    "license": "MIT",
-    "pre_install": [
-        "(Get-ChildItem \"$dir\\Godot_*\\Godot_*.exe\" | Rename-Item -NewName \"godot-mono.exe\");",
-        "(Get-ChildItem \"$dir\\Godot_*\\*\" | Move-Item -Destination \"$dir\");",
-        "Remove-Item \"$dir\\Godot_*\""
-    ],
-    "shortcuts": [
-        [
-            "godot-mono.exe",
-            "Godot Engine"
-        ]
-    ],
-    "version": "4.0-beta5"
+ "architecture": {
+  "32bit": {
+   "extract_dir": "Godot_v4.0-beta5_mono_win32",
+   "hash": "sha512:5422c9fcf79fc5b37dc67f5517bffe8728f76871f2a030648f5da3d0e6cfa49c9951d543e886c65e144cf2fbb7c1e010c2fbf460d045bcafa0260b2196d5fded",
+   "url": "https://downloads.tuxfamily.org/godotengine/4.0/beta5/mono/Godot_v4.0-beta5_mono_win32.zip"
+  },
+  "64bit": {
+   "extract_dir": "Godot_v4.0-beta5_mono_win64",
+   "hash": "sha512:00da0122004dbdac69ec0b64df1f91eb227171085b49959a1c1ed15c18f5cc86d48ee504c7b9a39ba8dacf6ebceb2a9a5fe63b1fe7cb757263ea46fcc3bcf0f7",
+   "url": "https://downloads.tuxfamily.org/godotengine/4.0/beta5/mono/Godot_v4.0-beta5_mono_win64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "extract_dir": "Godot_v$version_mono_win32",
+    "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/$preReleaseVersion/mono/Godot_v$version_mono_win32.zip"
+   },
+   "64bit": {
+    "extract_dir": "Godot_v$version_mono_win64",
+    "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/$preReleaseVersion/mono/Godot_v$version_mono_win64.zip"
+   }
+  },
+  "hash": {
+   "url": "$baseurl/SHA512-SUMS.txt"
+  }
+ },
+ "bin": "godot-mono.exe",
+ "checkver": {
+  "regex": "Dev snapshot: Godot (?<ver>[\\d.]+) beta (?<beta>[\\d.]+)",
+  "replace": "${1}-beta${2}",
+  "url": "https://godotengine.org/news"
+ },
+ "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
+ "homepage": "https://godotengine.org/",
+ "license": "MIT",
+ "pre_install": [
+  "Remove-Item \"$dir\\Godot_*_console.*\"",
+  "Rename-Item \"$dir\\Godot_*.exe\" 'godot-mono.exe'"
+ ],
+ "shortcuts": [
+  [
+   "godot-mono.exe",
+   "Godot Engine (Mono)"
+  ]
+ ],
+ "version": "4.0-beta5"
 }

@@ -1,39 +1,39 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "fb128a34ae1685bf2f0aac8a7eccffda9cbb247fd4a8fc52d1c8a95afae4091e",
-            "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x86-2.0.0.1100-20221116.zip"
-        },
-        "64bit": {
-            "hash": "9ff2aed9b0ee55cacaf9ade11140039aaa28a4988adb2b897f7c7f1032608289",
-            "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x64-2.0.0.1100-20221116.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x86-$version-$matchDate.zip"
-            },
-            "64bit": {
-                "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x64-$version-$matchDate.zip"
-            }
-        }
-    },
-    "bin": "BookxNotePro.exe",
-    "checkver": "bookxnotepro-windows-x64-([\\d.]+)-(?<date>\\d{6,8}).zip",
-    "homepage": "http://www.bookxnote.com/",
-    "installer": {
-        "script": [
-            "$exefile = (Get-ChildItem \"$dir\" '*.exe' | Select-Object -First 1).FullName",
-            "Expand-7ZipArchive \"$exefile\" \"$dir\" -Removal"
-        ]
-    },
-    "license": "Proprietary",
-    "shortcuts": [
-        [
-            "BookxNotePro.exe",
-            "BookxNote Pro"
-        ]
-    ],
-    "version": "2.0.0.1100"
+ "architecture": {
+  "32bit": {
+   "hash": "fb128a34ae1685bf2f0aac8a7eccffda9cbb247fd4a8fc52d1c8a95afae4091e",
+   "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x86-2.0.0.1100-20221116.zip"
+  },
+  "64bit": {
+   "hash": "9ff2aed9b0ee55cacaf9ade11140039aaa28a4988adb2b897f7c7f1032608289",
+   "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x64-2.0.0.1100-20221116.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x86-$version-$matchDate.zip"
+   },
+   "64bit": {
+    "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x64-$version-$matchDate.zip"
+   }
+  }
+ },
+ "bin": "BookxNotePro.exe",
+ "checkver": "bookxnotepro-windows-x64-([\\d.]+)-(?<date>\\d{6,8}).zip",
+ "homepage": "http://www.bookxnote.com/",
+ "installer": {
+  "script": [
+   "$exefile = (Get-ChildItem \"$dir\" '*.exe' | Select-Object -First 1).FullName",
+   "Expand-7ZipArchive \"$exefile\" \"$dir\" -Removal"
+  ]
+ },
+ "license": "Proprietary",
+ "shortcuts": [
+  [
+   "BookxNotePro.exe",
+   "BookxNote Pro"
+  ]
+ ],
+ "version": "2.0.0.1100"
 }

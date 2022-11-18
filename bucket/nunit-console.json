@@ -1,32 +1,32 @@
 {
-    "autoupdate": {
-        "hash": {
-            "regex": "$sha256.*?$basename",
-            "url": "https://chocolatey.org/packages/nunit-console-runner"
-        },
-        "url": "https://packages.chocolatey.org/nunit-console-runner.$version.nupkg"
-    },
-    "bin": "nunit3-console.exe",
-    "checkver": {
-        "regex": "\\s+([\\d.]+)</title>",
-        "url": "https://chocolatey.org/packages/nunit-console-runner"
-    },
-    "description": "NUnit Console runner for NUnit, the most popular and widely used unit testing framework for .NET",
-    "extract_dir": "tools",
-    "hash": "c29b4c21558395f95d4521daa16d0aef277f833894afe93d6d315485a3c7fb72",
-    "homepage": "https://nunit.org/",
-    "license": "MIT",
-    "post_install": "New-Item -Path \"$dir\\nunit.scoop.addins\" -ItemType File -Value '../../nunit-extension-*/current/     # find extensions installed under scoop' | Out-Null",
-    "suggest": {
-        "NUnit Extension": [
-            "nunit-extension-nunit-project-loader",
-            "nunit-extension-nunit-v2-driver",
-            "nunit-extension-nunit-v2-result-writer",
-            "nunit-extension-teamcity-event-listener",
-            "nunit-extension-vs-project-loader"
-        ],
-        "NuGet": "nuget"
-    },
-    "url": "https://packages.chocolatey.org/nunit-console-runner.3.16.0.nupkg",
-    "version": "3.16.0"
+ "autoupdate": {
+  "hash": {
+   "regex": "$sha256.*?$basename",
+   "url": "https://chocolatey.org/packages/nunit-console-runner"
+  },
+  "url": "https://packages.chocolatey.org/nunit-console-runner.$version.nupkg"
+ },
+ "bin": "nunit3-console.exe",
+ "checkver": {
+  "regex": "\\s+([\\d.]+)</title>",
+  "url": "https://chocolatey.org/packages/nunit-console-runner"
+ },
+ "description": "NUnit Console runner for NUnit, the most popular and widely used unit testing framework for .NET",
+ "extract_dir": "tools",
+ "hash": "c29b4c21558395f95d4521daa16d0aef277f833894afe93d6d315485a3c7fb72",
+ "homepage": "https://nunit.org/",
+ "license": "MIT",
+ "post_install": "New-Item -Path \"$dir\\nunit.scoop.addins\" -ItemType File -Value '../../nunit-extension-*/current/     # find extensions installed under scoop' | Out-Null",
+ "suggest": {
+  "NUnit Extension": [
+   "nunit-extension-nunit-project-loader",
+   "nunit-extension-nunit-v2-driver",
+   "nunit-extension-nunit-v2-result-writer",
+   "nunit-extension-teamcity-event-listener",
+   "nunit-extension-vs-project-loader"
+  ],
+  "NuGet": "nuget"
+ },
+ "url": "https://packages.chocolatey.org/nunit-console-runner.3.16.0.nupkg",
+ "version": "3.16.0"
 }

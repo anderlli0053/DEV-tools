@@ -1,48 +1,48 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "sha512:a6df80e3bfa5bbbc552dce7bfc3a0134c62bd16a298a9ed64a52fe959aef39422ba2d566467f7af5c3863ee944ca3bc2837cbfd199450eba015cb882acbc208b",
-            "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/107.0/win32/zh-CN/Firefox%20Setup%20107.0.exe#/firefox.7z"
-        },
-        "64bit": {
-            "hash": "sha512:89fc5ad4aa99813e34d95ed4242dc35de536c97fda9e1a501d24daf8540532fcd3ee5f1d58d525bb4111c585fdd8c55657d1e34b9f0df455b603436f6501b100",
-            "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/107.0/win64/zh-CN/Firefox%20Setup%20107.0.exe#/firefox.7z"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:a6df80e3bfa5bbbc552dce7bfc3a0134c62bd16a298a9ed64a52fe959aef39422ba2d566467f7af5c3863ee944ca3bc2837cbfd199450eba015cb882acbc208b",
+   "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/107.0/win32/zh-CN/Firefox%20Setup%20107.0.exe#/firefox.7z"
+  },
+  "64bit": {
+   "hash": "sha512:89fc5ad4aa99813e34d95ed4242dc35de536c97fda9e1a501d24daf8540532fcd3ee5f1d58d525bb4111c585fdd8c55657d1e34b9f0df455b603436f6501b100",
+   "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/107.0/win64/zh-CN/Firefox%20Setup%20107.0.exe#/firefox.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "regex": "$sha512\\s+win32/zh-CN/$basename",
+     "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA512SUMS"
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "regex": "$sha512\\s+win32/zh-CN/$basename",
-                    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA512SUMS"
-                },
-                "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/win32/zh-CN/Firefox%20Setup%20$version.exe#/firefox.7z"
-            },
-            "64bit": {
-                "hash": {
-                    "regex": "$sha512\\s+win64/zh-CN/$basename",
-                    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA512SUMS"
-                },
-                "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/win64/zh-CN/Firefox%20Setup%20$version.exe#/firefox.7z"
-            }
-        }
+    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/win32/zh-CN/Firefox%20Setup%20$version.exe#/firefox.7z"
+   },
+   "64bit": {
+    "hash": {
+     "regex": "$sha512\\s+win64/zh-CN/$basename",
+     "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA512SUMS"
     },
-    "bin": "firefox.exe",
-    "checkver": {
-        "re": "data-latest-firefox=\"([\\d.]+)\"",
-        "url": "https://www.mozilla.org/zh-CN/firefox/all/"
-    },
-    "description": "Popular open source web browser. Cross-platform and available in many languages.",
-    "extract_dir": "core",
-    "homepage": "https://www.mozilla.org/zh-CN/firefox/new/",
-    "license": "MPL-2.0",
-    "notes": "To recover persisted profile, you need to open the Profile Manager with `firefox -P` and create by selecting the portable profile directory.",
-    "persist": "profile-portable",
-    "shortcuts": [
-        [
-            "firefox.exe",
-            "Mozilla Firefox"
-        ]
-    ],
-    "version": "107.0"
+    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/win64/zh-CN/Firefox%20Setup%20$version.exe#/firefox.7z"
+   }
+  }
+ },
+ "bin": "firefox.exe",
+ "checkver": {
+  "re": "data-latest-firefox=\"([\\d.]+)\"",
+  "url": "https://www.mozilla.org/zh-CN/firefox/all/"
+ },
+ "description": "Popular open source web browser. Cross-platform and available in many languages.",
+ "extract_dir": "core",
+ "homepage": "https://www.mozilla.org/zh-CN/firefox/new/",
+ "license": "MPL-2.0",
+ "notes": "To recover persisted profile, you need to open the Profile Manager with `firefox -P` and create by selecting the portable profile directory.",
+ "persist": "profile-portable",
+ "shortcuts": [
+  [
+   "firefox.exe",
+   "Mozilla Firefox"
+  ]
+ ],
+ "version": "107.0"
 }
