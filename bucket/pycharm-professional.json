@@ -1,63 +1,63 @@
 {
- "architecture": {
-  "32bit": {
-   "bin": "IDE\\bin\\pycharm.exe",
-   "shortcuts": [
-    [
-     "IDE\\bin\\pycharm.exe",
-     "JetBrains\\PyCharm Professional"
-    ]
-   ]
-  },
-  "64bit": {
-   "bin": [
-    [
-     "run_pycharm.bat",
-     "pycharm"
-    ]
-   ],
-   "shortcuts": [
-    [
-     "run_pycharm.bat",
-     "JetBrains\\PyCharm Professional",
-     "",
-     "IDE\\bin\\pycharm64.exe"
-    ]
-   ]
-  }
- },
- "autoupdate": {
-  "hash": {
-   "url": "$url.sha256"
-  },
-  "url": "https://download.jetbrains.com/python/pycharm-professional-$matchHead.exe#/dl.7z"
- },
- "checkver": {
-  "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
-  "replace": "${ver}-${build}",
-  "url": "https://data.services.jetbrains.com/products/releases?code=PCP&latest=true&platform=zip&type=release"
- },
- "description": "Cross-Platform IDE for Python by JetBrains.",
- "extract_to": "IDE",
- "hash": "cd6acaf0a931a53355debd656d1157e53538a55e1ea7d22ce592c5cfec91fdd2",
- "homepage": "https://www.jetbrains.com/pycharm/",
- "installer": {
-  "script": [
-   "& \"$bucketsdir\\extras\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
-   "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse",
-   "Set-Content \"$dir\\run_pycharm.bat\" \"start `\"`\" `\"$dir\\IDE\\bin\\pycharm64.exe`\"\" -Encoding ascii | Out-Null"
-  ]
- },
- "license": {
-  "identifier": "Proprietary",
-  "url": "https://www.jetbrains.com/store/license.html"
- },
- "persist": [
-  "IDE\\bin\\idea.properties",
-  "IDE\\bin\\pycharm.exe.vmoptions",
-  "IDE\\bin\\pycharm64.exe.vmoptions",
-  "profile"
- ],
- "url": "https://download.jetbrains.com/python/pycharm-professional-2022.2.3.exe#/dl.7z",
- "version": "2022.2.3-222.4345.23"
+    "architecture": {
+        "32bit": {
+            "bin": "IDE\\bin\\pycharm.exe",
+            "shortcuts": [
+                [
+                    "IDE\\bin\\pycharm.exe",
+                    "JetBrains\\PyCharm Professional"
+                ]
+            ]
+        },
+        "64bit": {
+            "bin": [
+                [
+                    "run_pycharm.bat",
+                    "pycharm"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "run_pycharm.bat",
+                    "JetBrains\\PyCharm Professional",
+                    "",
+                    "IDE\\bin\\pycharm64.exe"
+                ]
+            ]
+        }
+    },
+    "autoupdate": {
+        "hash": {
+            "url": "$url.sha256"
+        },
+        "url": "https://download.jetbrains.com/python/pycharm-professional-$matchHead.exe#/dl.7z"
+    },
+    "checkver": {
+        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
+        "replace": "${ver}-${build}",
+        "url": "https://data.services.jetbrains.com/products/releases?code=PCP&latest=true&platform=zip&type=release"
+    },
+    "description": "Cross-Platform IDE for Python by JetBrains.",
+    "extract_to": "IDE",
+    "hash": "e36da5591fd37d142d2805ffee6b7bd82128fcf98d78003b4d83bdf4bc973970",
+    "homepage": "https://www.jetbrains.com/pycharm/",
+    "installer": {
+        "script": [
+            "& \"$bucketsdir\\extras\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
+            "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse",
+            "Set-Content \"$dir\\run_pycharm.bat\" \"start `\"`\" `\"$dir\\IDE\\bin\\pycharm64.exe`\"\" -Encoding ascii | Out-Null"
+        ]
+    },
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/store/license.html"
+    },
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "IDE\\bin\\pycharm.exe.vmoptions",
+        "IDE\\bin\\pycharm64.exe.vmoptions",
+        "profile"
+    ],
+    "url": "https://download.jetbrains.com/python/pycharm-professional-2022.2.4.exe#/dl.7z",
+    "version": "2022.2.4-222.4459.20"
 }
