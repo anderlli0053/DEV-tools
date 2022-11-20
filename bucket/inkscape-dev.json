@@ -1,50 +1,50 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "d5d3a9c9461d4106bd46b4b4706d2bd93d72446fb64bc83d5f72dbd209656765",
-   "url": "https://gitlab.com/inkscape/inkscape/-/jobs/3314469096/artifacts/raw/build/inkscape-1.3-dev_2022-11-12_132e1ceb-x86.7z"
-  },
-  "64bit": {
-   "hash": "c6c2f86f04bf3736552450c85680c2c5ed38bc74e3b080cfd2dc91cf90d59424",
-   "url": "https://gitlab.com/inkscape/inkscape/-/jobs/3347550099/artifacts/raw/build/inkscape-1.3-dev_2022-11-18_1f302ffe-x64.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "$matchWin32bit"
-   },
-   "64bit": {
-    "url": "$matchWin64bit"
-   }
-  }
- },
- "bin": [
-  "bin\\inkscape.com",
-  "bin\\inkview.com"
- ],
- "checkver": {
-  "regex": "urls:\"(?<win32bit>.+inkscape-[\\d._\\-dev]+_\\w+-.+)\\s(?<win64bit>.+inkscape-(?<version>[\\d._\\-dev]+)_\\w+-.+)\"",
-  "script": [
-   "$urls =  @()",
-   "'x32', 'x64' | ForEach-Object {",
-   "    $base_url = 'https://alpha.inkscape.org/snapshots/latest_master_'+ $_ + '.html'",
-   "    $dl_page = Invoke-WebRequest $base_url -UseBasicParsing",
-   "    $dl = $dl_page.links | Where-Object href -match '\\.7z$' | Select-Object -first 1 -expand href",
-   "    $urls += $dl",
-   "}",
-   "Write-Output ('urls:\"' + $urls + '\"')"
-  ]
- },
- "description": "Professional vector graphics editor",
- "extract_dir": "inkscape",
- "homepage": "https://inkscape.org",
- "license": "GPL-3.0-or-later",
- "shortcuts": [
-  [
-   "bin\\inkscape.exe",
-   "Inkscape Dev"
-  ]
- ],
- "version": "1.3-dev_2022-11-18"
+    "architecture": {
+        "32bit": {
+            "hash": "d5d3a9c9461d4106bd46b4b4706d2bd93d72446fb64bc83d5f72dbd209656765",
+            "url": "https://gitlab.com/inkscape/inkscape/-/jobs/3314469096/artifacts/raw/build/inkscape-1.3-dev_2022-11-12_132e1ceb-x86.7z"
+        },
+        "64bit": {
+            "hash": "a59033f38b4b7846d47ed541c0e12ff9fd64160a3fd0be7ce5382fddd15fe451",
+            "url": "https://gitlab.com/inkscape/inkscape/-/jobs/3351218474/artifacts/raw/build/inkscape-1.3-dev_2022-11-20_16dd9440-x64.7z"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "$matchWin32bit"
+            },
+            "64bit": {
+                "url": "$matchWin64bit"
+            }
+        }
+    },
+    "bin": [
+        "bin\\inkscape.com",
+        "bin\\inkview.com"
+    ],
+    "checkver": {
+        "regex": "urls:\"(?<win32bit>.+inkscape-[\\d._\\-dev]+_\\w+-.+)\\s(?<win64bit>.+inkscape-(?<version>[\\d._\\-dev]+)_\\w+-.+)\"",
+        "script": [
+            "$urls =  @()",
+            "'x32', 'x64' | ForEach-Object {",
+            "    $base_url = 'https://alpha.inkscape.org/snapshots/latest_master_'+ $_ + '.html'",
+            "    $dl_page = Invoke-WebRequest $base_url -UseBasicParsing",
+            "    $dl = $dl_page.links | Where-Object href -match '\\.7z$' | Select-Object -first 1 -expand href",
+            "    $urls += $dl",
+            "}",
+            "Write-Output ('urls:\"' + $urls + '\"')"
+        ]
+    },
+    "description": "Professional vector graphics editor",
+    "extract_dir": "inkscape",
+    "homepage": "https://inkscape.org",
+    "license": "GPL-3.0-or-later",
+    "shortcuts": [
+        [
+            "bin\\inkscape.exe",
+            "Inkscape Dev"
+        ]
+    ],
+    "version": "1.3-dev_2022-11-20"
 }
