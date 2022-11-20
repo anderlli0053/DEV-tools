@@ -1,51 +1,51 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "8004cb23ffc3dc0cefbf480ed1a93645831ca5369cf0b3bfd04ab798a7530d9d",
-   "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.5.3/Sandboxie-Plus-x86-v1.5.3.exe#/setup.exe"
-  },
-  "64bit": {
-   "hash": "308cacc877a6559cb65fcaeccca58a8d964e2b6a05a5006c64ebeb5c3e28e5b9",
-   "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.5.3/Sandboxie-Plus-x64-v1.5.3.exe#/setup.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v$version/Sandboxie-Plus-x86-v$version.exe#/setup.exe"
-   },
-   "64bit": {
-    "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v$version/Sandboxie-Plus-x64-v$version.exe#/setup.exe"
-   }
-  }
- },
- "bin": "SandMan.exe",
- "changelog": "https://github.com/sandboxie-plus/Sandboxie/releases",
- "checkver": {
-  "github": "https://github.com/sandboxie-plus/Sandboxie"
- },
- "description": "Sandboxie Plus. Sandboxie is a sandbox-based isolation software for 32- and 64-bit Windows NT-based operating systems.",
- "homepage": "https://sandboxie-plus.com/",
- "innosetup": true,
- "installer": {
-  "script": [
-   "if (!(Test-Path \"$persist_dir\\Sandbox\")) {",
-   "   ensure \"$dir\\Sandbox\" | Out-Null",
-   "}"
-  ]
- },
- "license": "Opensource",
- "notes": "",
- "persist": [
-  "Sandboxie.ini",
-  "Sandboxie-Plus.ini",
-  "Sandbox"
- ],
- "shortcuts": [
-  [
-   "SandMan.exe",
-   "Sandboxie Plus"
-  ]
- ],
- "version": "1.5.3"
+    "version": "1.5.3",
+    "description": "Sandboxie Plus. Sandboxie is a sandbox-based isolation software for 32- and 64-bit Windows NT-based operating systems.",
+    "homepage": "https://sandboxie-plus.com/",
+    "license": "Opensource",
+    "changelog": "https://github.com/sandboxie-plus/Sandboxie/releases",
+    "notes": "",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.5.3/Sandboxie-Plus-x64-v1.5.3.exe#/setup.exe",
+            "hash": "308cacc877a6559cb65fcaeccca58a8d964e2b6a05a5006c64ebeb5c3e28e5b9"
+        },
+        "32bit": {
+            "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.5.3/Sandboxie-Plus-x86-v1.5.3.exe#/setup.exe",
+            "hash": "8004cb23ffc3dc0cefbf480ed1a93645831ca5369cf0b3bfd04ab798a7530d9d"
+        }
+    },
+    "innosetup": true,
+    "installer": {
+        "script": [
+            "if (!(Test-Path \"$persist_dir\\Sandbox\")) {",
+            "   ensure \"$dir\\Sandbox\" | Out-Null",
+            "}"
+        ]
+    },
+    "persist": [
+        "Sandboxie.ini",
+        "Sandboxie-Plus.ini",
+        "Sandbox"
+    ],
+    "bin": "SandMan.exe",
+    "shortcuts": [
+        [
+            "SandMan.exe",
+            "Sandboxie Plus"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/sandboxie-plus/Sandboxie"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v$version/Sandboxie-Plus-x64-v$version.exe#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v$version/Sandboxie-Plus-x86-v$version.exe#/setup.exe"
+            }
+        }
+    }
 }

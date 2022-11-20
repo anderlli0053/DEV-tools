@@ -1,39 +1,39 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "13427bea34f39d1d3fce0f52e70a88950cc456268c18fd357ea40db51d6b07cd",
-   "url": "https://github.com/yairm210/Unciv/releases/download/4.2.20/Unciv-Windows64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://github.com/yairm210/Unciv/releases/download/$version/Unciv-Windows64.zip"
-   }
-  }
- },
- "bin": "Unciv.exe",
- "checkver": "github",
- "description": "An open-source, mod-friendly Android+Desktop remake of Civ V, made with LibGDX.",
- "homepage": "https://github.com/yairm210/UnCiv",
- "license": "MPL-2.0",
- "persist": [
-  "GameSettings.json",
-  "SaveFiles"
- ],
- "pre_install": [
-  "if (!(Test-Path \"$persist_dir\\GameSettings.json\")) {",
-  "New-Item \"$dir\\GameSettings.json\" -Value '{resolution:1200x800,windowState:{width:1920,height:1080},isFreshlyCreated:true,multiplayer:{userId:},version:1}' | Out-Null",
-  "}"
- ],
- "shortcuts": [
-  [
-   "Unciv.exe",
-   "Unciv - FOSS Civ V"
-  ]
- ],
- "suggest": {
-  "JRE": "java/temurin-jre"
- },
- "version": "4.2.20"
+    "version": "4.3.0",
+    "homepage": "https://github.com/yairm210/UnCiv",
+    "description": "An open-source, mod-friendly Android+Desktop remake of Civ V, made with LibGDX.",
+    "license": "MPL-2.0",
+    "suggest": {
+        "JRE": "java/temurin-jre"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/yairm210/Unciv/releases/download/4.3.0/Unciv-Windows64.zip",
+            "hash": "3038ed0f25ca02f7247f2a39f444dc11ae6859f60f714894e1aef7fd0f3992d1"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\GameSettings.json\")) {",
+        "New-Item \"$dir\\GameSettings.json\" -Value '{resolution:1200x800,windowState:{width:1920,height:1080},isFreshlyCreated:true,multiplayer:{userId:},version:1}' | Out-Null",
+        "}"
+    ],
+    "bin": "Unciv.exe",
+    "shortcuts": [
+        [
+            "Unciv.exe",
+            "Unciv - FOSS Civ V"
+        ]
+    ],
+    "persist": [
+        "GameSettings.json",
+        "SaveFiles"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/yairm210/Unciv/releases/download/$version/Unciv-Windows64.zip"
+            }
+        }
+    }
 }

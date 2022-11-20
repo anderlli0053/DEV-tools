@@ -1,45 +1,45 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "sha1:6ed9295d6c7703c3406be84c423f60e2a18ce9bd",
-   "url": "https://www.syntevo.com/downloads/smartgit/smartgit-portable-22_1_0.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "hash": {
-     "regex": "$basename[\\S\\s]+?$sha1",
-     "url": "https://www.syntevo.com/smartgit/download/"
+    "version": "22.1.0",
+    "description": "A graphical Git client with support for SVN and Pull Requests for GitHub and Bitbucket.",
+    "homepage": "https://www.syntevo.com/smartgit/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.syntevo.com/documents/smartgit-license.html"
     },
-    "url": "https://www.syntevo.com/downloads/smartgit/smartgit-portable-$underscoreVersion.7z"
-   }
-  }
- },
- "bin": [
-  "bin\\smartgitc.exe",
-  [
-   "bin\\smartgitc.exe",
-   "smartgit"
-  ]
- ],
- "checkver": {
-  "regex": "SmartGit\\s+([\\d.]+)\\s+\\(",
-  "url": "https://www.syntevo.com/smartgit/changelog.txt"
- },
- "description": "A graphical Git client with support for SVN and Pull Requests for GitHub and Bitbucket.",
- "extract_dir": "SmartGit",
- "homepage": "https://www.syntevo.com/smartgit/",
- "license": {
-  "identifier": "Proprietary",
-  "url": "https://www.syntevo.com/documents/smartgit-license.html"
- },
- "persist": ".settings",
- "shortcuts": [
-  [
-   "bin\\smartgit.exe",
-   "SmartGit"
-  ]
- ],
- "version": "22.1.0"
+    "architecture": {
+        "64bit": {
+            "url": "https://www.syntevo.com/downloads/smartgit/smartgit-portable-22_1_0.7z",
+            "hash": "sha1:6ed9295d6c7703c3406be84c423f60e2a18ce9bd"
+        }
+    },
+    "extract_dir": "SmartGit",
+    "bin": [
+        "bin\\smartgitc.exe",
+        [
+            "bin\\smartgitc.exe",
+            "smartgit"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "bin\\smartgit.exe",
+            "SmartGit"
+        ]
+    ],
+    "persist": ".settings",
+    "checkver": {
+        "url": "https://www.syntevo.com/smartgit/changelog.txt",
+        "regex": "SmartGit\\s+([\\d.]+)\\s+\\("
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.syntevo.com/downloads/smartgit/smartgit-portable-$underscoreVersion.7z",
+                "hash": {
+                    "url": "https://www.syntevo.com/smartgit/download/",
+                    "regex": "$basename[\\S\\s]+?$sha1"
+                }
+            }
+        }
+    }
 }

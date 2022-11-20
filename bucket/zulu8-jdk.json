@@ -1,51 +1,51 @@
 {
- "architecture": {
-  "32bit": {
-   "extract_dir": "zulu8.66.0.15-ca-jdk8.0.352-win_i686",
-   "hash": "2850f1366894ca3f3aba0f81542e8f0296dd76348f89344c028818eb58da3d87",
-   "url": "https://cdn.azul.com/zulu/bin/zulu8.66.0.15-ca-jdk8.0.352-win_i686.zip"
-  },
-  "64bit": {
-   "extract_dir": "zulu8.66.0.15-ca-jdk8.0.352-win_x64",
-   "hash": "8315bc27b5b258ba78b88ce9f2ef0c45149e784a304164c21c8c653a7053bd58",
-   "url": "https://cdn.azul.com/zulu/bin/zulu8.66.0.15-ca-jdk8.0.352-win_x64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "extract_dir": "$matchName_i686",
-    "hash": {
-     "jp": "$.sha256_hash",
-     "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=8&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=32"
+    "description": "Zulu 8 is certified build of OpenJDK 8",
+    "homepage": "https://www.azul.com/products/zulu-community/",
+    "version": "8.66.0.15",
+    "license": {
+        "identifier": "GPL-2.0-only WITH Classpath-exception-2.0",
+        "url": "https://www.azulsystems.com/license/zulu_third_party_licenses.html"
     },
-    "url": "https://cdn.azul.com/zulu/bin/$matchName_i686.zip"
-   },
-   "64bit": {
-    "extract_dir": "$matchName_x64",
-    "hash": {
-     "jp": "$.sha256_hash",
-     "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=8&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64"
+    "architecture": {
+        "64bit": {
+            "url": "https://cdn.azul.com/zulu/bin/zulu8.66.0.15-ca-jdk8.0.352-win_x64.zip",
+            "hash": "8315bc27b5b258ba78b88ce9f2ef0c45149e784a304164c21c8c653a7053bd58",
+            "extract_dir": "zulu8.66.0.15-ca-jdk8.0.352-win_x64"
+        },
+        "32bit": {
+            "url": "https://cdn.azul.com/zulu/bin/zulu8.66.0.15-ca-jdk8.0.352-win_i686.zip",
+            "hash": "2850f1366894ca3f3aba0f81542e8f0296dd76348f89344c028818eb58da3d87",
+            "extract_dir": "zulu8.66.0.15-ca-jdk8.0.352-win_i686"
+        }
     },
-    "url": "https://cdn.azul.com/zulu/bin/$matchName_x64.zip"
-   }
-  }
- },
- "checkver": {
-  "jsonpath": "$.name",
-  "regex": "(?<name>zulu(?<version>[\\d.]+)-ca-jdk(?<java>[\\d.]+)-win)_x64.zip",
-  "replace": "${version}",
-  "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=8&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64"
- },
- "description": "Zulu 8 is certified build of OpenJDK 8",
- "env_add_path": "bin",
- "env_set": {
-  "JAVA_HOME": "$dir"
- },
- "homepage": "https://www.azul.com/products/zulu-community/",
- "license": {
-  "identifier": "GPL-2.0-only WITH Classpath-exception-2.0",
-  "url": "https://www.azulsystems.com/license/zulu_third_party_licenses.html"
- },
- "version": "8.66.0.15"
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=8&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64",
+        "jsonpath": "$.name",
+        "regex": "(?<name>zulu(?<version>[\\d.]+)-ca-jdk(?<java>[\\d.]+)-win)_x64.zip",
+        "replace": "${version}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cdn.azul.com/zulu/bin/$matchName_x64.zip",
+                "extract_dir": "$matchName_x64",
+                "hash": {
+                    "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=8&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64",
+                    "jp": "$.sha256_hash"
+                }
+            },
+            "32bit": {
+                "url": "https://cdn.azul.com/zulu/bin/$matchName_i686.zip",
+                "extract_dir": "$matchName_i686",
+                "hash": {
+                    "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=8&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=32",
+                    "jp": "$.sha256_hash"
+                }
+            }
+        }
+    }
 }

@@ -1,28 +1,28 @@
 {
- "architecture": {
-  "32bit": {
-   "extract_dir": "x86"
-  },
-  "64bit": {
-   "extract_dir": "x64"
-  }
- },
- "autoupdate": {
-  "url": "https://github.com/gerardog/gsudo/releases/download/v$version/gsudo.v$version.zip"
- },
- "bin": [
-  [
-   "gsudo.exe",
-   "sudo"
-  ]
- ],
- "checkver": "github",
- "description": "A Sudo for Windows",
- "env_add_path": ".",
- "hash": "ac517242d3b1237fc4b5e677447abb6f223f0af390b77d3c2f1665a9c2897bf3",
- "homepage": "https://github.com/gerardog/gsudo",
- "license": "MIT",
- "post_install": "try { & \"$dir\\gsudo.exe\" -k 2>&1 | Out-Null } catch { info $_.Exception.Message }",
- "url": "https://github.com/gerardog/gsudo/releases/download/v2.0.3/gsudo.v2.0.3.zip",
- "version": "2.0.3"
+    "version": "2.0.3",
+    "description": "A Sudo for Windows",
+    "homepage": "https://github.com/gerardog/gsudo",
+    "license": "MIT",
+    "url": "https://github.com/gerardog/gsudo/releases/download/v2.0.3/gsudo.v2.0.3.zip",
+    "hash": "ac517242d3b1237fc4b5e677447abb6f223f0af390b77d3c2f1665a9c2897bf3",
+    "architecture": {
+        "64bit": {
+            "extract_dir": "x64"
+        },
+        "32bit": {
+            "extract_dir": "x86"
+        }
+    },
+    "bin": [
+        [
+            "gsudo.exe",
+            "sudo"
+        ]
+    ],
+    "post_install": "try { & \"$dir\\gsudo.exe\" -k 2>&1 | Out-Null } catch { info $_.Exception.Message }",
+    "env_add_path": ".",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/gerardog/gsudo/releases/download/v$version/gsudo.v$version.zip"
+    }
 }

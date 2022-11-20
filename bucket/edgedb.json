@@ -1,28 +1,28 @@
 {
+    "version": "2.2.3+bcdfcdf",
+    "description": "A graph-relational database",
+    "homepage": "https://www.edgedb.com/",
+    "license": "Apache-2.0|MIT",
     "architecture": {
         "64bit": {
-            "hash": "00732cc2ce470c1db45d32ba416d1c01641dffb5a8236a90521b8c96433cb5f9",
-            "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-2.2.3+bcdfcdf.exe#/edgedb.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "hash": {
-                    "jsonpath": "$..packages[-1:].installrefs[?(@.encoding=='identity')].verification.sha256",
-                    "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json"
-                },
-                "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-$version.exe#/edgedb.exe"
-            }
+            "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-2.2.3+bcdfcdf.exe#/edgedb.exe",
+            "hash": "00732cc2ce470c1db45d32ba416d1c01641dffb5a8236a90521b8c96433cb5f9"
         }
     },
     "bin": "edgedb.exe",
     "checkver": {
-        "jsonpath": "$..packages[-1:].version",
-        "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json"
+        "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json",
+        "jsonpath": "$..packages[-1:].version"
     },
-    "description": "A graph-relational database",
-    "homepage": "https://www.edgedb.com/",
-    "license": "Apache-2.0|MIT",
-    "version": "2.2.3+bcdfcdf"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-$version.exe#/edgedb.exe",
+                "hash": {
+                    "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json",
+                    "jsonpath": "$..packages[-1:].installrefs[?(@.encoding=='identity')].verification.sha256"
+                }
+            }
+        }
+    }
 }

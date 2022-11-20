@@ -1,39 +1,39 @@
 {
- "##": "http://get-chrome.herokuapp.com/",
- "architecture": {
-  "32bit": {
-   "hash": "b9405b303e018cd33863741266c37289d6d078f62acdc9b98264b78b4938328b",
-   "url": "https://dl.google.com/release2/chrome/nlhof2sp2ioclgozupfzrxytxi_107.0.5304.107/107.0.5304.107_chrome_installer.exe#/dl.7z"
-  },
-  "64bit": {
-   "hash": "b9405b303e018cd33863741266c37289d6d078f62acdc9b98264b78b4938328b",
-   "url": "https://dl.google.com/release2/chrome/nlhof2sp2ioclgozupfzrxytxi_107.0.5304.107/107.0.5304.107_chrome_installer.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "url": "https://dl.google.com$matchDownloadurl#/dl.7z"
- },
- "bin": "chrome.exe",
- "changelog": "https://chromereleases.googleblog.com/",
- "checkver": {
-  "regex": "(?sm)https://dl.google.com(?<downloadurl>[\\w.-/].*?)</code>.*?_([\\d.]+)",
-  "url": "http://get-chrome.herokuapp.com/"
- },
- "description": "Google Chrome. Fast, secure, and free web browser, built for the modern web.",
- "homepage": "https://www.google.com/chrome/",
- "installer": {
-  "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
- },
- "license": {
-  "identifier": "Freeware",
-  "url": "https://www.google.com/chrome/privacy/eula_text.html"
- },
- "notes": "https://tools.shuax.com/chrome/",
- "shortcuts": [
-  [
-   "chrome.exe",
-   "Google Chrome"
-  ]
- ],
- "version": "107.0.5304.107"
+    "##": "http://get-chrome.herokuapp.com/",
+    "version": "107.0.5304.107",
+    "description": "Google Chrome. Fast, secure, and free web browser, built for the modern web.",
+    "homepage": "https://www.google.com/chrome/",
+    "notes": "https://tools.shuax.com/chrome/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.google.com/chrome/privacy/eula_text.html"
+    },
+    "changelog": "https://chromereleases.googleblog.com/",
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.google.com/release2/chrome/nlhof2sp2ioclgozupfzrxytxi_107.0.5304.107/107.0.5304.107_chrome_installer.exe#/dl.7z",
+            "hash": "b9405b303e018cd33863741266c37289d6d078f62acdc9b98264b78b4938328b"
+        },
+        "32bit": {
+            "url": "https://dl.google.com/release2/chrome/nlhof2sp2ioclgozupfzrxytxi_107.0.5304.107/107.0.5304.107_chrome_installer.exe#/dl.7z",
+            "hash": "b9405b303e018cd33863741266c37289d6d078f62acdc9b98264b78b4938328b"
+        }
+    },
+    "installer": {
+        "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
+    },
+    "bin": "chrome.exe",
+    "shortcuts": [
+        [
+            "chrome.exe",
+            "Google Chrome"
+        ]
+    ],
+    "checkver": {
+        "url": "http://get-chrome.herokuapp.com/",
+        "regex": "(?sm)https://dl.google.com(?<downloadurl>[\\w.-/].*?)</code>.*?_([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://dl.google.com$matchDownloadurl#/dl.7z"
+    }
 }

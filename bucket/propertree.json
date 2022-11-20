@@ -1,28 +1,28 @@
 {
- "autoupdate": {
-  "extract_dir": "ProperTree-$matchSha",
-  "url": "https://github.com/corpnewt/ProperTree/archive/$matchSha.zip"
- },
- "bin": "ProperTree.bat",
- "checkver": {
-  "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>[0-9a-f]{40})",
-  "replace": "0.${1}.${2}.${3}",
-  "url": "https://github.com/corpnewt/ProperTree/commits/master.atom"
- },
- "depends": "python",
- "description": "Cross platform GUI plist editor written in python.",
- "extract_dir": "ProperTree-ae34a875ba63755a01e0c5cd950408bd1ddd31e2",
- "hash": "b66b1220b4bbe792fe57fb18fbe8f31aff9803c2343368f40d2783c7586b40e9",
- "homepage": "https://github.com/corpnewt/ProperTree",
- "license": "BSD-3-Clause",
- "persist": "Scripts\\settings.json",
- "pre_install": "if (!(Test-Path \"$persist_dir\\Scripts\\settings.json\")) { Set-Content \"$dir\\Scripts\\settings.json\" '{}' -Encoding Ascii }",
- "shortcuts": [
-  [
-   "ProperTree.bat",
-   "ProperTree"
-  ]
- ],
- "url": "https://github.com/corpnewt/ProperTree/archive/ae34a875ba63755a01e0c5cd950408bd1ddd31e2.zip",
- "version": "0.2022.11.15"
+    "version": "0.2022.11.15",
+    "description": "Cross platform GUI plist editor written in python.",
+    "homepage": "https://github.com/corpnewt/ProperTree",
+    "license": "BSD-3-Clause",
+    "depends": "python",
+    "url": "https://github.com/corpnewt/ProperTree/archive/ae34a875ba63755a01e0c5cd950408bd1ddd31e2.zip",
+    "hash": "b66b1220b4bbe792fe57fb18fbe8f31aff9803c2343368f40d2783c7586b40e9",
+    "extract_dir": "ProperTree-ae34a875ba63755a01e0c5cd950408bd1ddd31e2",
+    "bin": "ProperTree.bat",
+    "shortcuts": [
+        [
+            "ProperTree.bat",
+            "ProperTree"
+        ]
+    ],
+    "pre_install": "if (!(Test-Path \"$persist_dir\\Scripts\\settings.json\")) { Set-Content \"$dir\\Scripts\\settings.json\" '{}' -Encoding Ascii }",
+    "persist": "Scripts\\settings.json",
+    "checkver": {
+        "url": "https://github.com/corpnewt/ProperTree/commits/master.atom",
+        "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>[0-9a-f]{40})",
+        "replace": "0.${1}.${2}.${3}"
+    },
+    "autoupdate": {
+        "url": "https://github.com/corpnewt/ProperTree/archive/$matchSha.zip",
+        "extract_dir": "ProperTree-$matchSha"
+    }
 }

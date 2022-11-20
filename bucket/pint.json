@@ -1,32 +1,32 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "18c310c74c1e9574e3cd3fd93469ea0d58c75b2bd0baf15dce2599a89b617528",
-   "url": "https://github.com/cloudflare/pint/releases/download/v0.30.2/pint-0.30.2-Windows-i386.tar.gz"
-  },
-  "64bit": {
-   "hash": "119549f07dd63eef02c2fa948c1fbfbd152e021bcb4718ef00f7d51763bd0f77",
-   "url": "https://github.com/cloudflare/pint/releases/download/v0.30.2/pint-0.30.2-Windows-x86_64.tar.gz"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://github.com/cloudflare/pint/releases/download/v$version/pint-$version-Windows-i386.tar.gz"
-   },
-   "64bit": {
-    "url": "https://github.com/cloudflare/pint/releases/download/v$version/pint-$version-Windows-x86_64.tar.gz"
-   }
-  },
-  "hash": {
-   "url": "$baseurl/checksums.txt"
-  }
- },
- "bin": "pint.exe",
- "checkver": "github",
- "description": "Prometheus rule linter",
- "homepage": "https://github.com/cloudflare/pint",
- "license": "Apache-2.0",
- "pre_install": "Get-ChildItem \"$dir\" 'pint-windows-*.exe' | Select-Object -First 1 | Rename-Item -NewName 'pint.exe'",
- "version": "0.30.2"
+    "version": "0.30.2",
+    "description": "Prometheus rule linter",
+    "homepage": "https://github.com/cloudflare/pint",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/cloudflare/pint/releases/download/v0.30.2/pint-0.30.2-Windows-x86_64.tar.gz",
+            "hash": "119549f07dd63eef02c2fa948c1fbfbd152e021bcb4718ef00f7d51763bd0f77"
+        },
+        "32bit": {
+            "url": "https://github.com/cloudflare/pint/releases/download/v0.30.2/pint-0.30.2-Windows-i386.tar.gz",
+            "hash": "18c310c74c1e9574e3cd3fd93469ea0d58c75b2bd0baf15dce2599a89b617528"
+        }
+    },
+    "pre_install": "Get-ChildItem \"$dir\" 'pint-windows-*.exe' | Select-Object -First 1 | Rename-Item -NewName 'pint.exe'",
+    "bin": "pint.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/cloudflare/pint/releases/download/v$version/pint-$version-Windows-x86_64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/cloudflare/pint/releases/download/v$version/pint-$version-Windows-i386.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
 }

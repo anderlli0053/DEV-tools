@@ -1,9 +1,30 @@
 {
+    "version": "20221120",
+    "description": "Neovim GUI which uses a Golang Qt backend",
+    "homepage": "https://github.com/akiyosi/goneovim",
+    "license": "MIT",
+    "suggest": {
+        "neovim": "neovim"
+    },
     "architecture": {
         "64bit": {
-            "hash": "de4bb9b1e5fe222ae7af79be1eada6c3d3b8115fb39cf6027d9fe21ef0a8ce8a",
-            "url": "https://github.com/akiyosi/goneovim/releases/download/nightly/goneovim-windows.zip"
+            "url": "https://github.com/akiyosi/goneovim/releases/download/nightly/goneovim-windows.zip",
+            "hash": "67bbff32131b1f4b47af9d84edda22163d034aa967866b3101773043dfff7267"
         }
+    },
+    "extract_dir": "goneovim-windows",
+    "bin": "goneovim.exe",
+    "shortcuts": [
+        [
+            "goneovim.exe",
+            "Goneovim-nightly"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/akiyosi/goneovim/releases/tags/nightly",
+        "jsonpath": "$.assets[?(@.name=='goneovim-windows.zip')].updated_at",
+        "regex": ".*(?<year>\\d{4})\\D(?<month>\\d{2})\\D(?<day>\\d{2}).*",
+        "replace": "${year}${month}${day}"
     },
     "autoupdate": {
         "architecture": {
@@ -11,26 +32,5 @@
                 "url": "https://github.com/akiyosi/goneovim/releases/download/nightly/goneovim-windows.zip"
             }
         }
-    },
-    "bin": "goneovim.exe",
-    "checkver": {
-        "jsonpath": "$.assets[?(@.name=='goneovim-windows.zip')].updated_at",
-        "regex": ".*(?<year>\\d{4})\\D(?<month>\\d{2})\\D(?<day>\\d{2}).*",
-        "replace": "${year}${month}${day}",
-        "url": "https://api.github.com/repos/akiyosi/goneovim/releases/tags/nightly"
-    },
-    "description": "Neovim GUI which uses a Golang Qt backend",
-    "extract_dir": "goneovim-windows",
-    "homepage": "https://github.com/akiyosi/goneovim",
-    "license": "MIT",
-    "shortcuts": [
-        [
-            "goneovim.exe",
-            "Goneovim-nightly"
-        ]
-    ],
-    "suggest": {
-        "neovim": "neovim"
-    },
-    "version": "20221119"
+    }
 }

@@ -1,32 +1,32 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "9782578e3c4afb505d158418f667fd27b74987883e2332acb090e8f19c965b8f",
-   "url": "https://download.vroid.com/dist/mM5IcGieTg/VRoidStudio-v1.16.0-win.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://download.vroid.com/dist/$matchDistid/VRoidStudio-v$version-win.exe"
-   }
-  }
- },
- "checkver": "https://download.vroid.com/dist/(?<distId>[\\w]+)/VRoidStudio-v(?<version>[\\d.]+)-win\\.exe",
- "description": "3D character maker",
- "homepage": "https://vroid.com/en/studio",
- "innosetup": true,
- "license": {
-  "identifier": "Proprietary",
-  "url": "https://policies.pixiv.net/en.html#vroidstudio"
- },
- "persist": "uWintab.log",
- "pre_install": "if (!(Test-Path \"$dir\\uWintab.log\")) {New-Item \"$dir\\uWintab.log\" | Out-Null}",
- "shortcuts": [
-  [
-   "VRoidStudio.exe",
-   "VRoid Studio"
-  ]
- ],
- "version": "1.16.0"
+    "version": "1.16.0",
+    "description": "3D character maker",
+    "homepage": "https://vroid.com/en/studio",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://policies.pixiv.net/en.html#vroidstudio"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.vroid.com/dist/mM5IcGieTg/VRoidStudio-v1.16.0-win.exe",
+            "hash": "9782578e3c4afb505d158418f667fd27b74987883e2332acb090e8f19c965b8f"
+        }
+    },
+    "innosetup": true,
+    "pre_install": "if (!(Test-Path \"$dir\\uWintab.log\")) {New-Item \"$dir\\uWintab.log\" | Out-Null}",
+    "shortcuts": [
+        [
+            "VRoidStudio.exe",
+            "VRoid Studio"
+        ]
+    ],
+    "persist": "uWintab.log",
+    "checkver": "https://download.vroid.com/dist/(?<distId>[\\w]+)/VRoidStudio-v(?<version>[\\d.]+)-win\\.exe",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.vroid.com/dist/$matchDistid/VRoidStudio-v$version-win.exe"
+            }
+        }
+    }
 }

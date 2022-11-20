@@ -1,23 +1,23 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "be48757a0ea2e2f4742d7f13d07d75b6792e82a2ac238d95cb6a4c0094e21b1a",
-   "url": "https://github.com/net-byte/vtun/releases/download/v1.6.7/vtun-win-amd64.exe#/vtun.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://github.com/net-byte/vtun/releases/download/v$version/vtun-win-amd64.exe#/vtun.exe"
-   }
-  }
- },
- "bin": "vtun.exe",
- "checkver": "github",
- "depends": "lemon/wintun-libs",
- "description": "A simple VPN written in Go.",
- "homepage": "https://github.com/net-byte/vtun",
- "license": "MIT",
- "pre_install": "if (installed 'wintun-libs' $global) {Copy-Item \"$(appdir wintun-libs $global)\\current\\wintun.dll\" \"$dir\\\" } else { error 'Please install `lemon/wintun-libs` first, then reinstall `lemon/vtun`.'}",
- "version": "1.6.7"
+    "version": "1.6.8",
+    "description": "A simple VPN written in Go.",
+    "homepage": "https://github.com/net-byte/vtun",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/net-byte/vtun/releases/download/v1.6.8/vtun-win-amd64.exe#/vtun.exe",
+            "hash": "3ad15bc0d860799c03529397ee34ec81bc6f429c07e3c3821ef0b19a5b7658b4"
+        }
+    },
+    "depends": "lemon/wintun-libs",
+    "bin": "vtun.exe",
+    "pre_install": "if (installed 'wintun-libs' $global) {Copy-Item \"$(appdir wintun-libs $global)\\current\\wintun.dll\" \"$dir\\\" } else { error 'Please install `lemon/wintun-libs` first, then reinstall `lemon/vtun`.'}",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/net-byte/vtun/releases/download/v$version/vtun-win-amd64.exe#/vtun.exe"
+            }
+        }
+    }
 }

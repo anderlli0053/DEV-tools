@@ -1,37 +1,37 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "sha1:5dc49be3ee3ac8258344012eaefd6a52d15a64f6",
-   "url": "https://dl.pstmn.io/download/10.1.2/Postman-win64-10.1.2-full.nupkg"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "hash": {
-     "regex": "(?sm)$basename.*?$sha1",
-     "url": "https://dl.pstmn.io/RELEASES?platform=win64&from=$version"
+    "version": "10.1.2",
+    "description": "Complete API development environment.",
+    "homepage": "https://www.getpostman.com/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.getpostman.com/licenses/postman_eula"
     },
-    "url": "https://dl.pstmn.io/download/$version/Postman-win64-$version-full.nupkg"
-   }
-  }
- },
- "checkver": {
-  "jsonpath": "$.changelog[0].name",
-  "url": "https://dl.pstmn.io/changelog?channel=stable&platform=win64"
- },
- "description": "Complete API development environment.",
- "extract_dir": "lib\\net45",
- "homepage": "https://www.getpostman.com/",
- "license": {
-  "identifier": "Freeware",
-  "url": "https://www.getpostman.com/licenses/postman_eula"
- },
- "shortcuts": [
-  [
-   "Postman.exe",
-   "Postman"
-  ]
- ],
- "version": "10.1.2"
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.pstmn.io/download/10.1.2/Postman-win64-10.1.2-full.nupkg",
+            "hash": "sha1:5dc49be3ee3ac8258344012eaefd6a52d15a64f6"
+        }
+    },
+    "extract_dir": "lib\\net45",
+    "shortcuts": [
+        [
+            "Postman.exe",
+            "Postman"
+        ]
+    ],
+    "checkver": {
+        "url": "https://dl.pstmn.io/changelog?channel=stable&platform=win64",
+        "jsonpath": "$.changelog[0].name"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.pstmn.io/download/$version/Postman-win64-$version-full.nupkg",
+                "hash": {
+                    "url": "https://dl.pstmn.io/RELEASES?platform=win64&from=$version",
+                    "regex": "(?sm)$basename.*?$sha1"
+                }
+            }
+        }
+    }
 }

@@ -1,20 +1,34 @@
 {
+    "version": "2917-5b47eb9",
+    "description": "Experimental PlayStation Vita emulator",
+    "homepage": "https://vita3k.org",
+    "license": "GPL-2.0-only",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
     "architecture": {
         "64bit": {
-            "hash": "c09923149b10c2a4819a10675baec1f8ac36632913130db1ff4eb28db513f0b2",
-            "url": "https://github.com/Vita3K/Vita3K/releases/download/continuous/windows-latest.zip"
+            "url": "https://github.com/Vita3K/Vita3K/releases/download/continuous/windows-latest.zip",
+            "hash": "c09923149b10c2a4819a10675baec1f8ac36632913130db1ff4eb28db513f0b2"
         }
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/Vita3K/Vita3K/releases/download/continuous/windows-latest.zip"
-            }
-        }
-    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config.yml\")) {",
+        "   New-Item \"$dir\\config.yml\" | Out-Null",
+        "}"
+    ],
     "bin": "Vita3K.exe",
+    "shortcuts": [
+        [
+            "Vita3K.exe",
+            "Vita3K"
+        ]
+    ],
+    "persist": [
+        "cache",
+        "config.yml"
+    ],
     "checkver": {
-        "regex": "(\\d+-[a-f0-9]{7})",
         "script": [
             "$url = 'https://github.com/Vita3K/Vita3K/releases/tag/continuous'",
             "$build_regex = 'Vita3K Build: (\\d+)'",
@@ -29,28 +43,14 @@
             "",
             "$script_ver = \"$build_number-$commit_sha\"",
             "Write-Output $script_ver"
-        ]
+        ],
+        "regex": "(\\d+-[a-f0-9]{7})"
     },
-    "description": "Experimental PlayStation Vita emulator",
-    "homepage": "https://vita3k.org",
-    "license": "GPL-2.0-only",
-    "persist": [
-        "cache",
-        "config.yml"
-    ],
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\config.yml\")) {",
-        "   New-Item \"$dir\\config.yml\" | Out-Null",
-        "}"
-    ],
-    "shortcuts": [
-        [
-            "Vita3K.exe",
-            "Vita3K"
-        ]
-    ],
-    "suggest": {
-        "vcredist": "extras/vcredist2022"
-    },
-    "version": "2917-5b47eb9"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Vita3K/Vita3K/releases/download/continuous/windows-latest.zip"
+            }
+        }
+    }
 }

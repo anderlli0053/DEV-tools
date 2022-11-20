@@ -1,34 +1,34 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "sha512:94f158bd372e26ea58a5b0ed9564dd392e41fcc733b5a4457dfcde70d5e8fae689d04c4bc6277da06d09df76fe451043d93b86c5d970304f273f4aa86515998c",
-   "url": "https://github.com/ThaUnknown/miru/releases/download/v3.2.0/win-Miru-3.2.0.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "hash": {
-     "regex": "sha512:\\s+$base64",
-     "url": "$baseurl/latest.yml"
+    "version": "3.2.0",
+    "description": "Stream anime torrents, real-time with no waiting for downloads",
+    "homepage": "https://github.com/ThaUnknown/miru",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ThaUnknown/miru/releases/download/v3.2.0/win-Miru-3.2.0.exe#/dl.7z",
+            "hash": "sha512:94f158bd372e26ea58a5b0ed9564dd392e41fcc733b5a4457dfcde70d5e8fae689d04c4bc6277da06d09df76fe451043d93b86c5d970304f273f4aa86515998c"
+        }
     },
-    "url": "https://github.com/ThaUnknown/miru/releases/download/v$version/win-Miru-$version.exe#/dl.7z"
-   }
-  }
- },
- "checkver": "github",
- "description": "Stream anime torrents, real-time with no waiting for downloads",
- "homepage": "https://github.com/ThaUnknown/miru",
- "license": "GPL-3.0-or-later",
- "pre_install": [
-  "Expand-7zipArchive -Path \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-  "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Recurse -Force"
- ],
- "shortcuts": [
-  [
-   "Miru.exe",
-   "Miru"
-  ]
- ],
- "version": "3.2.0"
+    "pre_install": [
+        "Expand-7zipArchive -Path \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Recurse -Force"
+    ],
+    "checkver": "github",
+    "shortcuts": [
+        [
+            "Miru.exe",
+            "Miru"
+        ]
+    ],
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ThaUnknown/miru/releases/download/v$version/win-Miru-$version.exe#/dl.7z",
+                "hash": {
+                    "url": "$baseurl/latest.yml",
+                    "regex": "sha512:\\s+$base64"
+                }
+            }
+        }
+    }
 }

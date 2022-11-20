@@ -1,35 +1,39 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "75acd654ccce479ab40558cd4da218626e46cc32f51f3e76bb28c15e6807ffda",
-   "url": "https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.7.9/Install-TidGi-Windows-ia32.msi"
-  },
-  "64bit": {
-   "hash": "ae9d08a32c16d4548d512722122b1787253b7d1add0d1c2bc2e51a8ec8e06f76",
-   "url": "https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.7.9/Install-TidGi-Windows-x64.msi"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v$version/Install-TidGi-Windows-ia32.msi"
-   },
-   "64bit": {
-    "url": "https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v$version/Install-TidGi-Windows-x64.msi"
-   }
-  }
- },
- "bin": "TidGi.exe",
- "checkver": "github",
- "description": "An auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app",
- "extract_dir": "TiddlyWiki",
- "homepage": "https://github.com/tiddly-gittly/TidGi-Desktop",
- "license": "MPL-2.0",
- "shortcuts": [
-  [
-   "TidGi.exe",
-   "TidGi"
-  ]
- ],
- "version": "0.7.9"
+    "version": "0.7.9",
+    "description": "TidGi is an auto-git-backup, privatcy-in-mind, freely-deployed Tiddlywiki knowledgement Desktop app, with local REST API.",
+    "homepage": "https://github.com/tiddly-gittly/TidGi-Desktop",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v0.7.9/Install-TidGi-Windows-x64.exe#/dl.7z",
+            "hash": "180bd846f804c24cf4ba53a29794c8219a58aec4d0189618d504cf0bdad46257"
+        }
+    },
+    "pre_install": [
+        "Get-ChildItem -Path \"$dir\" | Where-Object { $_.Name -NotLike 'TidGi-*-full.nupkg' } | Remove-Item",
+        "Expand-7zipArchive -Path \"$dir\\TidGi-*-full.nupkg\" -DestinationPath \"$dir\" -ExtractDir \"lib\\net45\" -Removal"
+    ],
+    "bin": [
+        [
+            "TidGi.exe",
+            "TidGi",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "TidGi.exe",
+            "TidGi",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "persist": "User Data",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/tiddly-gittly/TidGi-Desktop/releases/download/v$version/Install-TidGi-Windows-x64.exe#/dl.7z"
+            }
+        }
+    }
 }

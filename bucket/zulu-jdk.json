@@ -1,51 +1,51 @@
 {
- "architecture": {
-  "32bit": {
-   "extract_dir": "zulu19.30.11-ca-jdk19.0.1-win_i686",
-   "hash": "271ef48102e4a786a137517070f2d5d89254696c0e597d70adf13293a5dd1b9c",
-   "url": "https://cdn.azul.com/zulu/bin/zulu19.30.11-ca-jdk19.0.1-win_i686.zip"
-  },
-  "64bit": {
-   "extract_dir": "zulu19.30.11-ca-jdk19.0.1-win_x64",
-   "hash": "1ef231d4a27d31d5b8d8fa7f98eedb779c79d55b142ea7e7ac2c48287e7b1802",
-   "url": "https://cdn.azul.com/zulu/bin/zulu19.30.11-ca-jdk19.0.1-win_x64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "extract_dir": "$matchName_i686",
-    "hash": {
-     "jp": "$.sha256_hash",
-     "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=32"
+    "description": "Zulu is certified build of OpenJDK",
+    "homepage": "https://www.azul.com/products/zulu-community/",
+    "version": "19.30.11",
+    "license": {
+        "identifier": "GPL-2.0-only WITH Classpath-exception-2.0",
+        "url": "https://www.azulsystems.com/license/zulu_third_party_licenses.html"
     },
-    "url": "https://cdn.azul.com/zulu/bin/$matchName_i686.zip"
-   },
-   "64bit": {
-    "extract_dir": "$matchName_x64",
-    "hash": {
-     "jp": "$.sha256_hash",
-     "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64"
+    "architecture": {
+        "64bit": {
+            "url": "https://cdn.azul.com/zulu/bin/zulu19.30.11-ca-jdk19.0.1-win_x64.zip",
+            "hash": "1ef231d4a27d31d5b8d8fa7f98eedb779c79d55b142ea7e7ac2c48287e7b1802",
+            "extract_dir": "zulu19.30.11-ca-jdk19.0.1-win_x64"
+        },
+        "32bit": {
+            "url": "https://cdn.azul.com/zulu/bin/zulu19.30.11-ca-jdk19.0.1-win_i686.zip",
+            "hash": "271ef48102e4a786a137517070f2d5d89254696c0e597d70adf13293a5dd1b9c",
+            "extract_dir": "zulu19.30.11-ca-jdk19.0.1-win_i686"
+        }
     },
-    "url": "https://cdn.azul.com/zulu/bin/$matchName_x64.zip"
-   }
-  }
- },
- "checkver": {
-  "jsonpath": "$.name",
-  "regex": "(?<name>zulu(?<version>[\\d.]+)-ca-jdk(?<java>[\\d.]+)-win)_x64.zip",
-  "replace": "${version}",
-  "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64"
- },
- "description": "Zulu is certified build of OpenJDK",
- "env_add_path": "bin",
- "env_set": {
-  "JAVA_HOME": "$dir"
- },
- "homepage": "https://www.azul.com/products/zulu-community/",
- "license": {
-  "identifier": "GPL-2.0-only WITH Classpath-exception-2.0",
-  "url": "https://www.azulsystems.com/license/zulu_third_party_licenses.html"
- },
- "version": "19.30.11"
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64",
+        "jsonpath": "$.name",
+        "regex": "(?<name>zulu(?<version>[\\d.]+)-ca-jdk(?<java>[\\d.]+)-win)_x64.zip",
+        "replace": "${version}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cdn.azul.com/zulu/bin/$matchName_x64.zip",
+                "extract_dir": "$matchName_x64",
+                "hash": {
+                    "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64",
+                    "jp": "$.sha256_hash"
+                }
+            },
+            "32bit": {
+                "url": "https://cdn.azul.com/zulu/bin/$matchName_i686.zip",
+                "extract_dir": "$matchName_i686",
+                "hash": {
+                    "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=32",
+                    "jp": "$.sha256_hash"
+                }
+            }
+        }
+    }
 }

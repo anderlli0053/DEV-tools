@@ -1,23 +1,28 @@
 {
-    "autoupdate": {
-        "url": "https://ide.update.aardio.com/releases/aardio.7z"
-    },
-    "bin": "aardio.exe",
-    "checkver": {
-        "regex": "\"version\":\"([\\d.]+)\"",
-        "url": "http://ide.update.aardio.com/check/"
-    },
-    "description": "A Windows desktop rapid programming platform",
-    "hash": "68928e75f71ecdacd6555e8ac5550215ccfc90d09d2c18bd0d04252fa4cb4cb3",
+    "version": "35.38.5",
+    "description": "aardio 编程语言，专注于桌面软件快速开发",
     "homepage": "https://www.aardio.com/",
-    "license": "freeware",
-    "persist": "config\\USR.CFG",
+    "license": "Freeware",
+    "url": "https://ide.update.aardio.com/releases/aardio.7z",
+    "hash": "68928e75f71ecdacd6555e8ac5550215ccfc90d09d2c18bd0d04252fa4cb4cb3",
+    "bin": "aardio.exe",
     "shortcuts": [
         [
             "aardio.exe",
             "aardio"
         ]
     ],
-    "url": "https://ide.update.aardio.com/releases/aardio.7z",
-    "version": "35.38.5"
+    "persist": [
+        "config",
+        "download",
+        "project",
+        "codes\\我的代码段"
+    ],
+    "checkver": {
+        "url": "http://ide.update.aardio.com/check/",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "url": "https://ide.update.aardio.com/releases/aardio.7z"
+    }
 }

@@ -1,18 +1,13 @@
 {
-    "autoupdate": {
-        "url": "https://www.goodsync.com/download/GoodSync-Setup.exe"
-    },
-    "checkver": {
-        "regex": "Version\\s([\\d.]+)",
-        "url": "https://www.goodsync.com/news-windows"
-    },
-    "description": "Simple and secure file backup/synchronization software.",
-    "hash": "1582a0cb4e02849a30b191186ab66f442c4ae867895cb2c73ecb45212e93591b",
+    "version": "12.1.1",
     "homepage": "https://www.goodsync.com",
+    "description": "Simple and secure file backup/synchronization software.",
     "license": {
         "identifier": "Freeware",
         "url": "https://www.goodsync.com/license"
     },
+    "url": "https://www.goodsync.com/download/GoodSync-Setup.exe",
+    "hash": "1582a0cb4e02849a30b191186ab66f442c4ae867895cb2c73ecb45212e93591b",
     "pre_install": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
         "Start-Process \"$dir\\GoodSync-Setup.exe\" -Wait -ArgumentList '/S' -Verb RunAs",
@@ -24,6 +19,11 @@
         "Start-Process \"$env:ProgramFiles\\Siber Systems\\GoodSync\\gs-runner.exe\" -Wait -ArgumentList @('/stop-remove-services', '/S') -Verb RunAs",
         "Remove-Item \"$env:ProgramData\\GoodSync\" -Force -Recurse"
     ],
-    "url": "https://www.goodsync.com/download/GoodSync-Setup.exe",
-    "version": "12.1.1"
+    "checkver": {
+        "url": "https://www.goodsync.com/news-windows",
+        "regex": "Version\\s([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://www.goodsync.com/download/GoodSync-Setup.exe"
+    }
 }

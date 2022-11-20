@@ -1,39 +1,39 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "sha512:89c2d9e7ffd346004a0932346fa2ebc19a49eb608ca71c331a6b6fe6fcc0661c5eb859032447544b16b4f5094d5dfecf506645c15b0a306d14d76dc7a25e9756",
-   "url": "https://github.com/ytdl-patched/yt-dlp/releases/download/2022.11.18.1919/yt-dlp_x86.exe#/yt-dlp.exe"
-  },
-  "64bit": {
-   "hash": "sha512:efd5ddcfa6a82ce3842b04dff4d244c45ecd1c78005338f023f98c1ca597647d7e9d6369188fec7e5b7655a091122ab856f540bd3cece954bdddc30853974545",
-   "url": "https://github.com/ytdl-patched/yt-dlp/releases/download/2022.11.18.1919/yt-dlp.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://github.com/ytdl-patched/yt-dlp/releases/download/$version/yt-dlp_x86.exe#/yt-dlp.exe"
-   },
-   "64bit": {
-    "url": "https://github.com/ytdl-patched/yt-dlp/releases/download/$version/yt-dlp.exe"
-   }
-  },
-  "hash": {
-   "url": "$baseurl/SHA2-512SUMS"
-  }
- },
- "bin": "yt-dlp.exe",
- "checkver": "github",
- "description": "Unofficial daily builds for yt-dlp - a youtube-dl fork with additional features and fixes.",
- "homepage": "https://github.com/ytdl-patched/yt-dlp",
- "license": "Unlicense",
- "persist": [
-  "yt-dlp.conf",
-  "ytdlp_plugins"
- ],
- "pre_install": "if (-not (Test-Path \"$persist_dir\\yt-dlp.conf\")) { New-Item \"$dir\\yt-dlp.conf\" -ItemType file | Out-Null }",
- "suggest": {
-  "ffmpeg": "ffmpeg-nightly"
- },
- "version": "2022.11.18.1919"
+    "version": "2022.11.20.334",
+    "description": "Unofficial daily builds for yt-dlp - a youtube-dl fork with additional features and fixes.",
+    "homepage": "https://github.com/ytdl-patched/yt-dlp",
+    "license": "Unlicense",
+    "suggest": {
+        "ffmpeg": "ffmpeg-nightly"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ytdl-patched/yt-dlp/releases/download/2022.11.20.334/yt-dlp.exe",
+            "hash": "sha512:ea5414f856416fe02775acf698742169c44cf7cdebb85e50521f154169d4c1d404f5c7c22c5b42d0940d1f093cd7470193a5ebdae0290ae166c3ca4a0da074c3"
+        },
+        "32bit": {
+            "url": "https://github.com/ytdl-patched/yt-dlp/releases/download/2022.11.20.334/yt-dlp_x86.exe#/yt-dlp.exe",
+            "hash": "sha512:2e2339d8fc768cd5d660314b9a0cd3c2cb2a64062d83662af21239e0bf658a7ccf67e7cb574dffe113084829481d22912b92a33fb597b457edd741e6b10351e6"
+        }
+    },
+    "bin": "yt-dlp.exe",
+    "pre_install": "if (-not (Test-Path \"$persist_dir\\yt-dlp.conf\")) { New-Item \"$dir\\yt-dlp.conf\" -ItemType file | Out-Null }",
+    "persist": [
+        "yt-dlp.conf",
+        "ytdlp_plugins"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ytdl-patched/yt-dlp/releases/download/$version/yt-dlp.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/ytdl-patched/yt-dlp/releases/download/$version/yt-dlp_x86.exe#/yt-dlp.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA2-512SUMS"
+        }
+    }
 }

@@ -1,71 +1,71 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "5c111886b7edcaa113363bfb9bf409b02322cbbabbaed6fa88488001270a69ec",
-   "url": "https://github.com/brave/brave-browser/releases/download/v1.45.129/brave-v1.45.129-win32-ia32.zip"
-  },
-  "64bit": {
-   "hash": "6b93868c2d3ce52c3468bda904d020df2a57ac4f0e78a802f3e45bdf7197fc01",
-   "url": "https://github.com/brave/brave-browser/releases/download/v1.45.129/brave-v1.45.129-win32-x64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-ia32.zip"
-   },
-   "64bit": {
-    "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-x64.zip"
-   }
-  },
-  "hash": {
-   "url": "$url.sha256"
-  }
- },
- "bin": [
-  [
-   "brave.exe",
-   "brave",
-   "--user-data-dir=\"$dir\\User Data\""
-  ]
- ],
- "checkver": {
-  "regex": "([\\d.]+)",
-  "script": [
-   "# Using checkver script because sometimes Desktop and Mobile versions release at the same time,",
-   "# which causes autoupdate fail to catch up. See v1.43.89 and v1.43.90 for example",
-   "$url = 'https://api.github.com/repos/brave/brave-browser/releases'",
-   "$release_tags = (Invoke-WebRequest $url).Content | ConvertFrom-Json",
-   "$release_tags | ForEach-Object {",
-   "    if ($_.name.Contains('Release') -and ($_.assets -match 'brave-v([\\d.]+)-win32')) {",
-   "        Write-Output $_.tag_name.replace('v', '')",
-   "    }",
-   "}"
-  ]
- },
- "description": "Secure, Fast & Private Web Browser with Adblocker",
- "homepage": "https://brave.com",
- "license": {
-  "identifier": "Freeware,BSD-3-Clause,GPL-3.0-only,...",
-  "url": "https://github.com/brave/brave-browser/blob/master/LICENSE"
- },
- "persist": "User Data",
- "post_install": [
-  "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$persist_dir\\data\")) {",
-  "    info '[Portable Mode]: Copying user data from portapps data directory . . .'",
-  "    Copy-Item \"$persist_dir\\data\\*\" \"$dir\\User Data\" -Recurse",
-  "}",
-  "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\BraveSoftware\\Brave-Browser\\User Data\")) {",
-  "    info '[Portable Mode]: Copying user data from local application data directory . . .'",
-  "    Copy-Item \"$env:LocalAppData\\BraveSoftware\\Brave-Browser\\User Data\\*\" \"$dir\\User Data\" -Recurse",
-  "}"
- ],
- "shortcuts": [
-  [
-   "brave.exe",
-   "Brave",
-   "--user-data-dir=\"$dir\\User Data\""
-  ]
- ],
- "version": "1.45.129"
+    "version": "1.45.129",
+    "description": "Secure, Fast & Private Web Browser with Adblocker",
+    "homepage": "https://brave.com",
+    "license": {
+        "identifier": "Freeware,BSD-3-Clause,GPL-3.0-only,...",
+        "url": "https://github.com/brave/brave-browser/blob/master/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.45.129/brave-v1.45.129-win32-x64.zip",
+            "hash": "6b93868c2d3ce52c3468bda904d020df2a57ac4f0e78a802f3e45bdf7197fc01"
+        },
+        "32bit": {
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.45.129/brave-v1.45.129-win32-ia32.zip",
+            "hash": "5c111886b7edcaa113363bfb9bf409b02322cbbabbaed6fa88488001270a69ec"
+        }
+    },
+    "bin": [
+        [
+            "brave.exe",
+            "brave",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "brave.exe",
+            "Brave",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "post_install": [
+        "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$persist_dir\\data\")) {",
+        "    info '[Portable Mode]: Copying user data from portapps data directory . . .'",
+        "    Copy-Item \"$persist_dir\\data\\*\" \"$dir\\User Data\" -Recurse",
+        "}",
+        "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\BraveSoftware\\Brave-Browser\\User Data\")) {",
+        "    info '[Portable Mode]: Copying user data from local application data directory . . .'",
+        "    Copy-Item \"$env:LocalAppData\\BraveSoftware\\Brave-Browser\\User Data\\*\" \"$dir\\User Data\" -Recurse",
+        "}"
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "script": [
+            "# Using checkver script because sometimes Desktop and Mobile versions release at the same time,",
+            "# which causes autoupdate fail to catch up. See v1.43.89 and v1.43.90 for example",
+            "$url = 'https://api.github.com/repos/brave/brave-browser/releases'",
+            "$release_tags = (Invoke-WebRequest $url).Content | ConvertFrom-Json",
+            "$release_tags | ForEach-Object {",
+            "    if ($_.name.Contains('Release') -and ($_.assets -match 'brave-v([\\d.]+)-win32')) {",
+            "        Write-Output $_.tag_name.replace('v', '')",
+            "    }",
+            "}"
+        ],
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-ia32.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
 }

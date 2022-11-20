@@ -1,36 +1,36 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "sha512:e1e4b05fd3761164a675fe201dde8e406157f36eae8399698fa45606b4af1451a67c3997154c62873681924787c3fcdca7ffac8dd97985c80b4abeeca6a69641",
-   "pre_install": [
-    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-    "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Force -Recurse"
-   ],
-   "url": "https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v3.7.9/Beekeeper-Studio-Setup-3.7.9.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v$version/Beekeeper-Studio-Setup-$version.exe#/dl.7z"
-   }
-  },
-  "hash": {
-   "regex": "sha512:\\s+$base64",
-   "url": "$baseurl/latest.yml"
-  }
- },
- "checkver": {
-  "github": "https://github.com/beekeeper-studio/beekeeper-studio"
- },
- "description": "SQL editor and database management",
- "homepage": "https://www.beekeeperstudio.io",
- "license": "MIT",
- "shortcuts": [
-  [
-   "Beekeeper Studio.exe",
-   "Beekeeper Studio"
-  ]
- ],
- "version": "3.7.9"
+    "version": "3.7.9",
+    "description": "SQL editor and database management",
+    "homepage": "https://www.beekeeperstudio.io",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v3.7.9/Beekeeper-Studio-Setup-3.7.9.exe#/dl.7z",
+            "hash": "sha512:e1e4b05fd3761164a675fe201dde8e406157f36eae8399698fa45606b4af1451a67c3997154c62873681924787c3fcdca7ffac8dd97985c80b4abeeca6a69641",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Force -Recurse"
+            ]
+        }
+    },
+    "shortcuts": [
+        [
+            "Beekeeper Studio.exe",
+            "Beekeeper Studio"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/beekeeper-studio/beekeeper-studio"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v$version/Beekeeper-Studio-Setup-$version.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/latest.yml",
+            "regex": "sha512:\\s+$base64"
+        }
+    }
 }

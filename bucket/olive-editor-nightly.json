@@ -1,30 +1,15 @@
 {
-    "architecture": {
-        "64bit": {
-            "extract_dir": "olive-editor",
-            "hash": "e4e966a15d0304b7af59ebd0f03cb8578f2f605b85ea8a573f6ea4660ca746db",
-            "url": "https://nightly.link/olive-editor/olive/workflows/ci/master/Olive-fbfa0c28-Windows-x86_64-Portable.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://nightly.link/olive-editor/olive/workflows/ci/master/Olive-$version-Windows-x86_64-Portable.zip"
-            }
-        }
-    },
-    "bin": "olive-editor.exe",
-    "checkver": {
-        "regex": "Olive-([\\d\\w]{8})-Windows-x86_64-Portable\\.zip</a>",
-        "url": "https://nightly.link/olive-editor/olive/workflows/ci/master"
-    },
+    "version": "fbfa0c28",
     "description": "Non-linear video editor aiming to provide a fully-featured alternative to high-end professional video editing software.",
     "homepage": "https://olivevideoeditor.org",
     "license": "GPL-3.0-only",
-    "persist": [
-        "config.xml",
-        "shortcuts"
-    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://nightly.link/olive-editor/olive/workflows/ci/master/Olive-fbfa0c28-Windows-x86_64-Portable.zip",
+            "hash": "e4e966a15d0304b7af59ebd0f03cb8578f2f605b85ea8a573f6ea4660ca746db",
+            "extract_dir": "olive-editor"
+        }
+    },
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\config.xml\")) {",
         "   '<Configuration></Configuration>' | Out-File -FilePath \"$dir\\config.xml\"",
@@ -39,11 +24,26 @@
         "   New-Item \"$dir\\shortcuts\" -ItemType File | Out-Null",
         "}"
     ],
+    "bin": "olive-editor.exe",
     "shortcuts": [
         [
             "olive-editor.exe",
             "Olive Editor Nightly"
         ]
     ],
-    "version": "fbfa0c28"
+    "persist": [
+        "config.xml",
+        "shortcuts"
+    ],
+    "checkver": {
+        "url": "https://nightly.link/olive-editor/olive/workflows/ci/master",
+        "regex": "Olive-([\\d\\w]{8})-Windows-x86_64-Portable\\.zip</a>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nightly.link/olive-editor/olive/workflows/ci/master/Olive-$version-Windows-x86_64-Portable.zip"
+            }
+        }
+    }
 }

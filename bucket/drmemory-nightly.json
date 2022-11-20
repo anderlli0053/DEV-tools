@@ -1,13 +1,12 @@
 {
+    "version": "2.5.19314",
+    "description": "Dr. Memory is a memory monitoring tool capable of identifying memory-related programming errors.",
+    "homepage": "https://drmemory.org/",
+    "license": "LGPL-2.1-only",
+    "url": "https://github.com/DynamoRIO/drmemory/releases/download/cronbuild-2.5.19314/DrMemory-Windows-2.5.19314.zip",
+    "hash": "5a417e3155cd00152d24d99ca9319b8ace4be055292f10db043155d04ea80e43",
+    "extract_dir": "DrMemory-Windows-2.5.19314",
     "architecture": {
-        "32bit": {
-            "bin": [
-                "bin\\drmemory.exe",
-                "bin\\drstrace.exe",
-                "bin\\drconfig.exe",
-                "bin\\symquery.exe"
-            ]
-        },
         "64bit": {
             "bin": [
                 "bin64\\drmemory.exe",
@@ -15,21 +14,22 @@
                 "bin64\\drconfig.exe",
                 "bin64\\symquery.exe"
             ]
+        },
+        "32bit": {
+            "bin": [
+                "bin\\drmemory.exe",
+                "bin\\drstrace.exe",
+                "bin\\drconfig.exe",
+                "bin\\symquery.exe"
+            ]
         }
     },
-    "autoupdate": {
-        "extract_dir": "DrMemory-Windows-$version",
-        "url": "https://github.com/DynamoRIO/drmemory/releases/download/cronbuild-$version/DrMemory-Windows-$version.zip"
-    },
     "checkver": {
-        "regex": "/releases/tag/cronbuild-([\\d.]+)\"",
-        "url": "https://github.com/DynamoRIO/drmemory/releases"
+        "url": "https://github.com/DynamoRIO/drmemory/releases",
+        "regex": "/releases/tag/cronbuild-([\\d.]+)\""
     },
-    "description": "Dr. Memory is a memory monitoring tool capable of identifying memory-related programming errors.",
-    "extract_dir": "DrMemory-Windows-2.5.19314",
-    "hash": "5a417e3155cd00152d24d99ca9319b8ace4be055292f10db043155d04ea80e43",
-    "homepage": "https://drmemory.org/",
-    "license": "LGPL-2.1-only",
-    "url": "https://github.com/DynamoRIO/drmemory/releases/download/cronbuild-2.5.19314/DrMemory-Windows-2.5.19314.zip",
-    "version": "2.5.19314"
+    "autoupdate": {
+        "url": "https://github.com/DynamoRIO/drmemory/releases/download/cronbuild-$version/DrMemory-Windows-$version.zip",
+        "extract_dir": "DrMemory-Windows-$version"
+    }
 }

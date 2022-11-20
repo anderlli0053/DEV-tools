@@ -1,19 +1,16 @@
 {
+    "version": "2.3.0",
+    "description": "NextSSH 是一个 SSH 连接、管理工具，在终端的基础上增加了一些辅助功能，力图让远程操作变得简洁、直接。",
+    "homepage": "https://codemutex.com/",
+    "license": "Shareware",
     "architecture": {
         "64bit": {
+            "url": "https://github.com/codemutex/NextSSH-userland/releases/download/v2.3.0/NextSSH.Setup.2.3.0.exe#/dl.7z",
             "hash": "930c7f982e476733579158b233abba8154460e6b645784a7ee60216716c31055",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
                 "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
-            ],
-            "url": "https://github.com/codemutex/NextSSH-userland/releases/download/v2.3.0/NextSSH.Setup.2.3.0.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/codemutex/NextSSH-userland/releases/download/v$version/NextSSH.Setup.$version.exe#/dl.7z"
-            }
+            ]
         }
     },
     "bin": [
@@ -23,13 +20,6 @@
             "--user-data-dir=\"$dir\\User Data\""
         ]
     ],
-    "checkver": {
-        "github": "https://github.com/codemutex/NextSSH-userland"
-    },
-    "description": "NextSSH 是一个 SSH 连接、管理工具，在终端的基础上增加了一些辅助功能，力图让远程操作变得简洁、直接。",
-    "homepage": "https://codemutex.com/",
-    "license": "Shareware",
-    "persist": "User Data",
     "shortcuts": [
         [
             "NextSSH.exe",
@@ -37,5 +27,15 @@
             "--user-data-dir=\"$dir\\User Data\""
         ]
     ],
-    "version": "2.3.0"
+    "persist": "User Data",
+    "checkver": {
+        "github": "https://github.com/codemutex/NextSSH-userland"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/codemutex/NextSSH-userland/releases/download/v$version/NextSSH.Setup.$version.exe#/dl.7z"
+            }
+        }
+    }
 }

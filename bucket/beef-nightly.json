@@ -1,15 +1,12 @@
 {
+    "homepage": "https://www.beeflang.org/",
+    "description": "Beef programming language compiler. (nightly version)",
+    "version": "0.43.5.11192022",
+    "license": "MIT",
     "architecture": {
         "64bit": {
-            "hash": "31958bd29dac85588ecdef4bee6ee8e686717beee514cf6206824e042055e83c",
-            "url": "http://nightly.beeflang.org/BeefSetup_0_43_5__11_19_2022.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "http://nightly.beeflang.org/BeefSetup_$match1_$match2_$match3__$match4_$match5_$match6.exe#/dl.7z"
-            }
+            "url": "http://nightly.beeflang.org/BeefSetup_0_43_5__11_19_2022.exe#/dl.7z",
+            "hash": "31958bd29dac85588ecdef4bee6ee8e686717beee514cf6206824e042055e83c"
         }
     },
     "bin": [
@@ -23,12 +20,15 @@
         ]
     ],
     "checkver": {
+        "url": "http://nightly.beeflang.org/index.html",
         "regex": "(?s)BeefSetup_(\\d+)_(\\d+)_(\\d+)__(\\d{2})_(\\d{2})_(\\d{4})",
-        "replace": "${1}.${2}.${3}.${4}${5}${6}",
-        "url": "http://nightly.beeflang.org/index.html"
+        "replace": "${1}.${2}.${3}.${4}${5}${6}"
     },
-    "description": "Beef programming language compiler. (nightly version)",
-    "homepage": "https://www.beeflang.org/",
-    "license": "MIT",
-    "version": "0.43.5.11192022"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://nightly.beeflang.org/BeefSetup_$match1_$match2_$match3__$match4_$match5_$match6.exe#/dl.7z"
+            }
+        }
+    }
 }

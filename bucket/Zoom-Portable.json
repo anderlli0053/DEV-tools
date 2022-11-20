@@ -1,56 +1,56 @@
 {
- "architecture": {
-  "32bit": {
-   "extract_dir": "Program Files (32-bit) Folder\\Zoom\\bin",
-   "hash": "5e7f9dd4cf38c565f20bbca4fe8be038ce13690c5677cad392626cfbd01f434c",
-   "url": "https://www.zoom.us/client/5.12.8.10232/ZoomInstallerFull.msi"
-  },
-  "64bit": {
-   "extract_dir": "Program Files (64-bit) Folder\\Zoom\\bin",
-   "hash": "55141f6a10a7cf9b7fde39ae254bda451467113595467d63be5961f44b918be2",
-   "url": "https://www.zoom.us/client/5.12.8.10232/ZoomInstallerFull.msi?archType=x64"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi"
-   },
-   "64bit": {
-    "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi?archType=x64"
-   }
-  }
- },
- "bin": "Zoom.exe",
- "checkver": {
-  "regex": "Current-version=([\\d.]+)",
-  "url": "https://launcher.zoom.us/upgrade?os=win"
- },
- "description": "Zoom. Video and audio conferencing, chat, and webinars",
- "extract_dir": "Program Files (64-bit) Folder\\Zoom\\bin",
- "homepage": "https://zoom.us",
- "license": {
-  "identifier": "Proprietary",
-  "url": "https://zoom.us/terms"
- },
- "post_install": [
-  "Write-Host \"Registering zoommtg:// protocol handler\"",
-  "$regpath = \"HKCU:\\SOFTWARE\\Classes\\zoommtg\"",
-  "New-Item -Path $regpath -Value \"Zoom (Application Name)\" -Force | Out-Null",
-  "New-ItemProperty -Path $regpath -Name \"URL Protocol\" -PropertyType String -Force | Out-Null",
-  "New-Item -Path \"$regpath\\shell\\open\\command\" -Value \"`\"$dir\\Zoom.exe`\" --url=`\"%1`\"\" -Force| Out-Null"
- ],
- "shortcuts": [
-  [
-   "Zoom.exe",
-   "Zoom"
-  ]
- ],
- "uninstaller": {
-  "script": [
-   "Write-Host \"Unregistering zoommtg:// protocol handler\"",
-   "Remove-Item \"HKCU:\\SOFTWARE\\Classes\\zoommtg\" -Recurse -Force"
-  ]
- },
- "version": "5.12.8.10232"
+    "version": "5.12.8.10232",
+    "description": "Zoom. Video and audio conferencing, chat, and webinars",
+    "homepage": "https://zoom.us",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://zoom.us/terms"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://www.zoom.us/client/5.12.8.10232/ZoomInstallerFull.msi?archType=x64",
+            "hash": "55141f6a10a7cf9b7fde39ae254bda451467113595467d63be5961f44b918be2",
+            "extract_dir": "Program Files (64-bit) Folder\\Zoom\\bin"
+        },
+        "32bit": {
+            "url": "https://www.zoom.us/client/5.12.8.10232/ZoomInstallerFull.msi",
+            "hash": "5e7f9dd4cf38c565f20bbca4fe8be038ce13690c5677cad392626cfbd01f434c",
+            "extract_dir": "Program Files (32-bit) Folder\\Zoom\\bin"
+        }
+    },
+    "extract_dir": "Program Files (64-bit) Folder\\Zoom\\bin",
+    "post_install": [
+        "Write-Host \"Registering zoommtg:// protocol handler\"",
+        "$regpath = \"HKCU:\\SOFTWARE\\Classes\\zoommtg\"",
+        "New-Item -Path $regpath -Value \"Zoom (Application Name)\" -Force | Out-Null",
+        "New-ItemProperty -Path $regpath -Name \"URL Protocol\" -PropertyType String -Force | Out-Null",
+        "New-Item -Path \"$regpath\\shell\\open\\command\" -Value \"`\"$dir\\Zoom.exe`\" --url=`\"%1`\"\" -Force| Out-Null"
+    ],
+    "uninstaller": {
+        "script": [
+            "Write-Host \"Unregistering zoommtg:// protocol handler\"",
+            "Remove-Item \"HKCU:\\SOFTWARE\\Classes\\zoommtg\" -Recurse -Force"
+        ]
+    },
+    "bin": "Zoom.exe",
+    "shortcuts": [
+        [
+            "Zoom.exe",
+            "Zoom"
+        ]
+    ],
+    "checkver": {
+        "url": "https://launcher.zoom.us/upgrade?os=win",
+        "regex": "Current-version=([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi?archType=x64"
+            },
+            "32bit": {
+                "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi"
+            }
+        }
+    }
 }

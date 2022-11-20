@@ -1,47 +1,47 @@
 {
- "architecture": {
-  "32bit": {
-   "bin": "dChanger.exe",
-   "pre_install": "Remove-Item \"$dir\\x64\" | Out-Null",
-   "shortcuts": [
-    [
-     "dChanger.exe",
-     "Drive Letter Changer"
-    ]
-   ]
-  },
-  "64bit": {
-   "bin": [
-    [
-     "dChanger_x64.exe",
-     "dChanger"
-    ]
-   ],
-   "pre_install": [
-    "Remove-Item @('dChanger.exe', 'dChanger.ini'); Move-Item \"$dir\\x64\\*\" $dir | Out-Null",
-    "Remove-Item \"$dir\\x64\" | Out-Null"
-   ],
-   "shortcuts": [
-    [
-     "dChanger_x64.exe",
-     "Drive Letter Changer"
-    ]
-   ]
-  }
- },
- "autoupdate": {
-  "url": "https://www.sordum.org/files/download/drive-letter-changer/dChanger.zip"
- },
- "checkver": "Drive\\sLetter\\sChanger\\sv([\\d.]+)",
- "description": "A simple app that allows you to change the letter of your hard drives.",
- "extract_dir": "dChanger",
- "hash": "4c5b4782ecd04404391ef7b9c899fde4e94624ce5fe93460b5a015db3395bf4a",
- "homepage": "https://www.sordum.org/drive-letter-changer",
- "license": {
-  "identifier": "Freeware",
-  "url": "https://www.sordum.org/eula/"
- },
- "persist": "dChanger.ini",
- "url": "https://www.sordum.org/files/download/drive-letter-changer/dChanger.zip",
- "version": "1.4"
+    "version": "1.4",
+    "homepage": "https://www.sordum.org/drive-letter-changer",
+    "description": "A simple app that allows you to change the letter of your hard drives.",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.sordum.org/eula/"
+    },
+    "url": "https://www.sordum.org/files/download/drive-letter-changer/dChanger.zip",
+    "hash": "4c5b4782ecd04404391ef7b9c899fde4e94624ce5fe93460b5a015db3395bf4a",
+    "extract_dir": "dChanger",
+    "architecture": {
+        "64bit": {
+            "pre_install": [
+                "Remove-Item @('dChanger.exe', 'dChanger.ini'); Move-Item \"$dir\\x64\\*\" $dir | Out-Null",
+                "Remove-Item \"$dir\\x64\" | Out-Null"
+            ],
+            "bin": [
+                [
+                    "dChanger_x64.exe",
+                    "dChanger"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "dChanger_x64.exe",
+                    "Drive Letter Changer"
+                ]
+            ]
+        },
+        "32bit": {
+            "pre_install": "Remove-Item \"$dir\\x64\" | Out-Null",
+            "bin": "dChanger.exe",
+            "shortcuts": [
+                [
+                    "dChanger.exe",
+                    "Drive Letter Changer"
+                ]
+            ]
+        }
+    },
+    "persist": "dChanger.ini",
+    "checkver": "Drive\\sLetter\\sChanger\\sv([\\d.]+)",
+    "autoupdate": {
+        "url": "https://www.sordum.org/files/download/drive-letter-changer/dChanger.zip"
+    }
 }

@@ -1,37 +1,37 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "4e538657170270336b2185ecc59f1c04dbf914e4f9c8548e9b21238bf26588af",
-   "url": "https://github.com/aws/aws-sam-cli/releases/download/v1.65.0/AWS_SAM_CLI_64_PY3.msi"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://github.com/aws/aws-sam-cli/releases/download/v$version/AWS_SAM_CLI_64_PY3.msi"
-   }
-  },
-  "hash": {
-   "regex": "(?sm)>$basename</.*?>\\s*$sha256</",
-   "url": "https://github.com/aws/aws-sam-cli/releases/tag/v$version"
-  }
- },
- "bin": [
-  "bin\\sam.cmd",
-  [
-   "bin\\sam.cmd",
-   "aws-sam-cli"
-  ]
- ],
- "checkver": {
-  "github": "https://github.com/aws/aws-sam-cli"
- },
- "description": "Build, test, debug, and deploy Serverless applications from CLI",
- "extract_dir": "Amazon\\AWSSAMCLI",
- "homepage": "https://aws.amazon.com/serverless/sam/",
- "license": "Apache-2.0",
- "suggest": {
-  "AWS CLI": "aws"
- },
- "version": "1.65.0"
+    "version": "1.65.0",
+    "description": "Build, test, debug, and deploy Serverless applications from CLI",
+    "homepage": "https://aws.amazon.com/serverless/sam/",
+    "license": "Apache-2.0",
+    "suggest": {
+        "AWS CLI": "aws"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/aws/aws-sam-cli/releases/download/v1.65.0/AWS_SAM_CLI_64_PY3.msi",
+            "hash": "4e538657170270336b2185ecc59f1c04dbf914e4f9c8548e9b21238bf26588af"
+        }
+    },
+    "extract_dir": "Amazon\\AWSSAMCLI",
+    "bin": [
+        "bin\\sam.cmd",
+        [
+            "bin\\sam.cmd",
+            "aws-sam-cli"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/aws/aws-sam-cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/aws/aws-sam-cli/releases/download/v$version/AWS_SAM_CLI_64_PY3.msi"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/aws/aws-sam-cli/releases/tag/v$version",
+            "regex": "(?sm)>$basename</.*?>\\s*$sha256</"
+        }
+    }
 }

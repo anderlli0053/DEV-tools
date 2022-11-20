@@ -1,15 +1,32 @@
 {
- "autoupdate": {
-  "url": "https://gwgw.ga/webd/$version/webd-$version-win32.7z"
- },
- "bin": "webd.exe",
- "checkver": "\u4e0b\u8f7d\u5730\u5740 (\\d+)",
- "description": "Portable, self-hosted web storage server",
- "extract_dir": "webd",
- "hash": "e42e4d5f4dfb8cb79efec81854e9ac78189f10e70e101995cefb6e98de96ddf5",
- "homepage": "https://webd.cf/",
- "license": "unknown",
- "persist": "webd.conf",
- "url": "https://gwgw.ga/webd/20220512/webd-20220512-win32.7z",
- "version": "20220512"
+    "version": "20220512",
+    "description": "轻量级自建网盘软件，无依赖，速度快，资源占用低",
+    "homepage": "https://webd.cf",
+    "license": "Unknown",
+    "url": "https://gwgw.ga/webd/20220512/webd-20220512-win32.7z",
+    "hash": "sha1:bb55e20fa8287854e137ca494f55cfdb0ab6fe1f",
+    "extract_dir": "webd",
+    "shortcuts": [
+        [
+            "webd.exe",
+            "webd"
+        ]
+    ],
+    "persist": [
+        "web",
+        "webd.conf"
+    ],
+    "notes": "Edit the default configuration file $dir\\webd.conf before starting.",
+    "checkver": {
+        "url": "https://gwgw.ga/webd/flst.txt",
+        "regex": "(\\d{8})",
+        "reverse": true
+    },
+    "autoupdate": {
+        "url": "https://gwgw.ga/webd/$version/webd-$version-win32.7z",
+        "hash": {
+            "url": "$baseurl/sha1sums.txt",
+            "regex": "$sha1\\s*$basename"
+        }
+    }
 }

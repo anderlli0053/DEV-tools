@@ -1,38 +1,38 @@
 {
- "architecture": {
-  "32bit": {
-   "extract_dir": "ascii-image-converter_Windows_i386_32bit",
-   "hash": "91335da613899840186fd61c135526ba8d7fee1108fe3f42388ae3b75f5498c3",
-   "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v1.13.0/ascii-image-converter_Windows_i386_32bit.zip"
-  },
-  "64bit": {
-   "extract_dir": "ascii-image-converter_Windows_amd64_64bit",
-   "hash": "b534934b6f523b5c8d3ae405166db11be1afdbeeb97209e5f193f185a4d79256",
-   "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v1.13.0/ascii-image-converter_Windows_amd64_64bit.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "hash": {
-     "regex": "$sha256\\s+$basename",
-     "url": "$baseurl/sha256_checksums.txt"
+    "version": "1.13.0",
+    "description": "A cross-platform command-line tool to convert images into ascii art and print them on the console. Now supports braille art!",
+    "homepage": "https://github.com/TheZoraiz/ascii-image-converter/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v1.13.0/ascii-image-converter_Windows_amd64_64bit.zip",
+            "hash": "b534934b6f523b5c8d3ae405166db11be1afdbeeb97209e5f193f185a4d79256",
+            "extract_dir": "ascii-image-converter_Windows_amd64_64bit"
+        },
+        "32bit": {
+            "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v1.13.0/ascii-image-converter_Windows_i386_32bit.zip",
+            "hash": "91335da613899840186fd61c135526ba8d7fee1108fe3f42388ae3b75f5498c3",
+            "extract_dir": "ascii-image-converter_Windows_i386_32bit"
+        }
     },
-    "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v$version/ascii-image-converter_Windows_i386_32bit.zip"
-   },
-   "64bit": {
-    "hash": {
-     "regex": "$sha256\\s+$basename",
-     "url": "$baseurl/sha256_checksums.txt"
-    },
-    "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v$version/ascii-image-converter_Windows_amd64_64bit.zip"
-   }
-  }
- },
- "bin": "ascii-image-converter.exe",
- "checkver": "github",
- "description": "A cross-platform command-line tool to convert images into ascii art and print them on the console. Now supports braille art!",
- "homepage": "https://github.com/TheZoraiz/ascii-image-converter/",
- "license": "Apache-2.0",
- "version": "1.13.0"
+    "bin": "ascii-image-converter.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v$version/ascii-image-converter_Windows_amd64_64bit.zip",
+                "hash": {
+                    "url": "$baseurl/sha256_checksums.txt",
+                    "regex": "$sha256\\s+$basename"
+                }
+            },
+            "32bit": {
+                "url": "https://github.com/TheZoraiz/ascii-image-converter/releases/download/v$version/ascii-image-converter_Windows_i386_32bit.zip",
+                "hash": {
+                    "url": "$baseurl/sha256_checksums.txt",
+                    "regex": "$sha256\\s+$basename"
+                }
+            }
+        }
+    }
 }

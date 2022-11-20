@@ -1,15 +1,26 @@
 {
+    "version": "2.10.1",
+    "description": "Manages a local OpenShift 4.x cluster optimized for testing and development purposes.",
+    "homepage": "https://code-ready.github.io/crc/",
+    "license": "Apache-2.0",
+    "notes": "To acquire a pull secret, visit: https://cloud.redhat.com/openshift/install/crc/installer-provisioned",
+    "depends": "lessmsi",
     "architecture": {
         "64bit": {
+            "url": "https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/2.10.1/crc-windows-installer.zip",
             "hash": "90aaa053cfd3923de7c289aff8a3b0ce4f4728292972f6d1ccadb0096cebc7ed",
             "pre_install": [
                 "# The trailing backslash(\\) in $dir\\ is required by lessmsi.",
                 "Invoke-ExternalCommand lessmsi -ArgumentList @('x', \"$dir\\crc-windows-amd64.msi\", \"$dir\\\") | Out-Null",
                 "Copy-Item \"$dir\\SourceDir\\Red Hat OpenShift Local\\*\" \"$dir\" -Force -Recurse | Out-Null",
                 "Remove-Item \"$dir\\SourceDir\" -Force -Recurse | Out-Null"
-            ],
-            "url": "https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/2.10.1/crc-windows-installer.zip"
+            ]
         }
+    },
+    "bin": "crc.exe",
+    "checkver": {
+        "url": "https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/latest/release-info.json",
+        "jsonpath": "$.version.crcVersion"
     },
     "autoupdate": {
         "architecture": {
@@ -20,16 +31,5 @@
         "hash": {
             "url": "$url.sha256"
         }
-    },
-    "bin": "crc.exe",
-    "checkver": {
-        "jsonpath": "$.version.crcVersion",
-        "url": "https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/latest/release-info.json"
-    },
-    "depends": "lessmsi",
-    "description": "Manages a local OpenShift 4.x cluster optimized for testing and development purposes.",
-    "homepage": "https://code-ready.github.io/crc/",
-    "license": "Apache-2.0",
-    "notes": "To acquire a pull secret, visit: https://cloud.redhat.com/openshift/install/crc/installer-provisioned",
-    "version": "2.10.1"
+    }
 }
