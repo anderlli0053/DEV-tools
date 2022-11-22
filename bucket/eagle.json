@@ -1,46 +1,46 @@
 {
- "autoupdate": {
-  "url": "https://$matchUrl#/installer.exe"
- },
- "bin": [
-  [
-   "Eagle.exe",
-   "Eagle",
-   "--user-data-dir=\"$dir\\User Data\""
-  ]
- ],
- "checkver": {
-  "jsonpath": "$.links.windows",
-  "regex": "//(?<url>eaglefile.oss-cn-shenzhen.aliyuncs.com/releases/Eagle-(?<ver>[\\d.]+)-build(?<build>\\d+)\\.exe)",
-  "replace": "${ver}.0.${build}",
-  "url": "https://en.eagle.cool/check-for-update"
- },
- "depends": "sudo",
- "description": "Eagle helps you become a happier, better designer. A new way to collect, search and organize your image files in a logical way and all in one place.",
- "hash": "221e5a281b3f96e1f9e892130dd661551b2838bb26b184fcc5e3061cee8e4770",
- "homepage": "https://en.eagle.cool/",
- "installer": {
-  "script": "sudo Start-Process -Filepath \"$dir\\installer.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"/S /D=$dir\" -Wait"
- },
- "license": {
-  "identifier": "Shareware",
-  "url": "https://en.eagle.cool/privacy"
- },
- "persist": "User Data",
- "post_install": [
-  "sudo Remove-Item -path \"$dir\\installer.exe\" -Force",
-  "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:AppData\\Eagle\")) {",
-  "    info '[Portable Mode]: Copying user data...'",
-  "    Copy-Item \"$env:AppData\\Eagle\\*\" \"$dir\\User Data\" -Recurse",
-  "}"
- ],
- "shortcuts": [
-  [
-   "Eagle.exe",
-   "Eagle",
-   "--user-data-dir=\"$dir\\User Data\""
-  ]
- ],
- "url": "https://eaglefile.oss-cn-shenzhen.aliyuncs.com/releases/Eagle-3.0-build27.exe#/installer.exe",
- "version": "3.0.0.27"
+    "autoupdate": {
+        "url": "https://$matchUrl#/installer.exe"
+    },
+    "bin": [
+        [
+            "Eagle.exe",
+            "Eagle",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "checkver": {
+        "jsonpath": "$.links.windows",
+        "regex": "//(?<url>eaglefile.oss-cn-shenzhen.aliyuncs.com/releases/Eagle-(?<ver>[\\d.]+)-build(?<build>\\d+)\\.exe)",
+        "replace": "${ver}.0.${build}",
+        "url": "https://en.eagle.cool/check-for-update"
+    },
+    "depends": "sudo",
+    "description": "Eagle helps you become a happier, better designer. A new way to collect, search and organize your image files in a logical way and all in one place.",
+    "hash": "23409600805007ddc8e6450627a0ea64792038cbbc655af38ee5c76621ef16a0",
+    "homepage": "https://en.eagle.cool/",
+    "installer": {
+        "script": "sudo Start-Process -Filepath \"$dir\\installer.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"/S /D=$dir\" -Wait"
+    },
+    "license": {
+        "identifier": "Shareware",
+        "url": "https://en.eagle.cool/privacy"
+    },
+    "persist": "User Data",
+    "post_install": [
+        "sudo Remove-Item -path \"$dir\\installer.exe\" -Force",
+        "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:AppData\\Eagle\")) {",
+        "    info '[Portable Mode]: Copying user data...'",
+        "    Copy-Item \"$env:AppData\\Eagle\\*\" \"$dir\\User Data\" -Recurse",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "Eagle.exe",
+            "Eagle",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "url": "https://eaglefile.oss-cn-shenzhen.aliyuncs.com/releases/Eagle-3.0-build28.exe#/installer.exe",
+    "version": "3.0.0.28"
 }
