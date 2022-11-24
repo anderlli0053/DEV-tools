@@ -41,4 +41,10 @@ ___It started as a collection of manifests for development tools that i wrote, b
 
 ### THIS BUCKET CONTAINS [BOT]S THAT TAKE CARE OF IT, MEANING THEY UPDATE, LINT AND CHECK FOR OTHER MANIFEST ANOMALIES, ...! ###
 
+
+For detailed explanation on how to install Scoop software, please refer to our official community page:
+
+https://scoop.sh/
+
+
 × Andrew Poženel (SloDevTeam) AKA anderlli0053 ×
