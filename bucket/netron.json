@@ -1,37 +1,37 @@
 {
-    "version": "6.2.0",
-    "description": "Visualizer for deep learning and machine learning models",
-    "homepage": "https://netron.app/",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/lutzroeder/netron/releases/download/v6.2.0/Netron-Setup-6.2.0.exe#/dl.7z",
-            "hash": "sha512:894e91aedb21675e3e3ca29c1429dbbb1b7115a37367ffa9a42c867869dfe524d34c92c14cbe11d112b7488e9dbf94c2418a57689c1eec6fb41141c6b691cbc6",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$*\" -Force -Recurse"
-            ]
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "sha512:894e91aedb21675e3e3ca29c1429dbbb1b7115a37367ffa9a42c867869dfe524d34c92c14cbe11d112b7488e9dbf94c2418a57689c1eec6fb41141c6b691cbc6",
+   "pre_install": [
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+    "Remove-Item \"$dir\\`$*\" -Force -Recurse"
+   ],
+   "url": "https://github.com/lutzroeder/netron/releases/download/v6.2.0/Netron-Setup-6.2.0.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "regex": "sha512:\\s+$base64",
+     "url": "$baseurl/latest.yml"
     },
-    "bin": "Netron.exe",
-    "shortcuts": [
-        [
-            "Netron.exe",
-            "Netron"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/lutzroeder/netron"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/lutzroeder/netron/releases/download/v$version/Netron-Setup-$version.exe#/dl.7z",
-                "hash": {
-                    "url": "$baseurl/latest.yml",
-                    "regex": "sha512:\\s+$base64"
-                }
-            }
-        }
-    }
+    "url": "https://github.com/lutzroeder/netron/releases/download/v$version/Netron-Setup-$version.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": "Netron.exe",
+ "checkver": {
+  "github": "https://github.com/lutzroeder/netron"
+ },
+ "description": "Visualizer for deep learning and machine learning models",
+ "homepage": "https://netron.app/",
+ "license": "MIT",
+ "shortcuts": [
+  [
+   "Netron.exe",
+   "Netron"
+  ]
+ ],
+ "version": "6.2.0"
 }

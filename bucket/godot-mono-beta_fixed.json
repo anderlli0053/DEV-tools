@@ -1,46 +1,46 @@
 {
-    "version": "4.0-beta6",
-    "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
-    "homepage": "https://godotengine.org/",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://downloads.tuxfamily.org/godotengine/4.0/beta6/mono/Godot_v4.0-beta6_mono_win64.zip",
-            "hash": "sha512:2926ffdba8b2e71ba9ffa672aef8d675c0c893f7a5c46daa95adfa7802ff5c1807d0df316854ec05eea74d2e851aab24358b5a92fc2ecd0bfa3ee2263ad46f8e",
-            "extract_dir": "Godot_v4.0-beta6_mono_win64"
-        },
-        "32bit": {
-            "url": "https://downloads.tuxfamily.org/godotengine/4.0/beta6/mono/Godot_v4.0-beta6_mono_win32.zip",
-            "hash": "sha512:933cfc9201bd67ef45cf1487c4da854f88ada21143a65730a44e2aa7cc5d54fa2e310aacffd32d0346842cfe0faf64ec858b61bb33a92e1b77d0674b1f5630a2",
-            "extract_dir": "Godot_v4.0-beta6_mono_win32"
-        }
-    },
-    "pre_install": "Remove-Item \"$dir\\Godot_*_console.exe\"; Rename-Item \"$dir\\Godot_*.exe\" 'godot-mono.exe'",
-    "bin": "godot-mono.exe",
-    "shortcuts": [
-        [
-            "godot-mono.exe",
-            "Godot Engine (Mono)"
-        ]
-    ],
-    "checkver": {
-        "url": "https://godotengine.org/news",
-        "regex": "Dev snapshot: Godot (?<ver>[\\d.]+) beta (?<beta>[\\d.]+)",
-        "replace": "${1}-beta${2}"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/$preReleaseVersion/mono/Godot_v$version_mono_win64.zip",
-                "extract_dir": "Godot_v$version_mono_win64"
-            },
-            "32bit": {
-                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/$preReleaseVersion/mono/Godot_v$version_mono_win32.zip",
-                "extract_dir": "Godot_v$version_mono_win32"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/SHA512-SUMS.txt"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "extract_dir": "Godot_v4.0-beta6_mono_win32",
+   "hash": "sha512:933cfc9201bd67ef45cf1487c4da854f88ada21143a65730a44e2aa7cc5d54fa2e310aacffd32d0346842cfe0faf64ec858b61bb33a92e1b77d0674b1f5630a2",
+   "url": "https://downloads.tuxfamily.org/godotengine/4.0/beta6/mono/Godot_v4.0-beta6_mono_win32.zip"
+  },
+  "64bit": {
+   "extract_dir": "Godot_v4.0-beta6_mono_win64",
+   "hash": "sha512:2926ffdba8b2e71ba9ffa672aef8d675c0c893f7a5c46daa95adfa7802ff5c1807d0df316854ec05eea74d2e851aab24358b5a92fc2ecd0bfa3ee2263ad46f8e",
+   "url": "https://downloads.tuxfamily.org/godotengine/4.0/beta6/mono/Godot_v4.0-beta6_mono_win64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "extract_dir": "Godot_v$version_mono_win32",
+    "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/$preReleaseVersion/mono/Godot_v$version_mono_win32.zip"
+   },
+   "64bit": {
+    "extract_dir": "Godot_v$version_mono_win64",
+    "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/$preReleaseVersion/mono/Godot_v$version_mono_win64.zip"
+   }
+  },
+  "hash": {
+   "url": "$baseurl/SHA512-SUMS.txt"
+  }
+ },
+ "bin": "godot-mono.exe",
+ "checkver": {
+  "regex": "Dev snapshot: Godot (?<ver>[\\d.]+) beta (?<beta>[\\d.]+)",
+  "replace": "${1}-beta${2}",
+  "url": "https://godotengine.org/news"
+ },
+ "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
+ "homepage": "https://godotengine.org/",
+ "license": "MIT",
+ "pre_install": "Remove-Item \"$dir\\Godot_*_console.exe\"; Rename-Item \"$dir\\Godot_*.exe\" 'godot-mono.exe'",
+ "shortcuts": [
+  [
+   "godot-mono.exe",
+   "Godot Engine (Mono)"
+  ]
+ ],
+ "version": "4.0-beta6"
 }

@@ -1,24 +1,23 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "3c478e9fa2bab880c5bf03566f2ef0084496e8d9cb6225d4e4c8caa8bd5f905d",
-   "pre_install": [
-    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Unins*\" -Force -Recurse"
-   ],
-   "url": "https://github.com/Eugeny/terminus/releases/download/v1.0.143/terminus-1.0.143-setup.exe#/dl.7z"
-  }
+ "autoupdate": {
+  "url": "https://github.com/Eugeny/terminus/releases/download/v$version/terminus-$version-portable.exe#/dl.7z"
  },
  "bin": "Terminus.exe",
- "description": "A terminal for a more modern age",
- "homepage": "https://eugeny.github.io/terminus/",
+ "checkver": {
+  "github": "https://github.com/Eugeny/terminus",
+  "re": "/releases/tag/(?:v)?(?<version>(?<short>[\\d.]+)(?<alpha>-\\w+).(?<build>\\d+))?"
+ },
+ "hash": "sha256:330e505592bb810bf29fa78d0f70e97f99415fd51caa0da8b6fb6d0e97127657",
+ "homepage": "https://eugeny.github.io/terminus",
  "license": "MIT",
- "notes": "Deprecated. Use extras/tabby",
+ "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
+ "pre_install": "extract_7zip \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
  "shortcuts": [
   [
    "Terminus.exe",
    "Terminus"
   ]
  ],
- "version": "1.0.143"
+ "url": "https://github.com/Eugeny/terminus/releases/download/v1.0.71/terminus-1.0.71-portable.exe#/dl.7z",
+ "version": "1.0.71"
 }

@@ -1,53 +1,53 @@
 {
-    "autoupdate": {
-        "url": "https://encdn.ldmnq.com/download/package/LDPlayer_$version.exe#/dl.7z"
-    },
-    "checkver": {
-        "regex": "version:\"(9[\\d.]+)\"",
-        "url": "https://www.ldplayer.net/other/version-history-and-release-notes.html"
-    },
-    "description": "An Android emulator optimized for mobile gaming with lower resource consumption",
-    "hash": "56babd1a1d00e3558e2aaaf9101f39f167d32f6196c0df627921032066d1f824",
-    "homepage": "https://www.ldplayer.net",
-    "installer": {
-        "script": "Start-Process -Wait \"$dir\\install.bat\""
-    },
-    "license": "Unknown",
-    "notes": "Administrator privileges are required to run repairer",
-    "persist": [
-        "ldrecord\\video",
-        "vms"
-    ],
-    "post_install": [
-        "Remove-Item \"$dir\\log\" -Force -Recurse",
-        "Remove-Item \"$dir\\upload\" -Force -Recurse",
-        "Remove-Item \"$dir\\*report*\" -Force",
-        "Remove-Item \"$dir\\dnuninst.exe\" -Force",
-        "Remove-Item \"$dir\\ldyunuuploaden.exe\" -Force",
-        "Remove-Item \"$dir\\dnutility.dll\" -Force",
-        "Remove-Item \"$dir\\zone.tab\" -Force"
-    ],
-    "pre_install": [
-        "Copy-Item \"$bucketsdir\\ownscoop\\scripts\\ldplayer9\\install.bat\" \"$dir\\\" | Out-Null",
-        "Copy-Item \"$bucketsdir\\ownscoop\\scripts\\ldplayer9\\uninstall.bat\" \"$dir\\\" | Out-Null"
-    ],
-    "shortcuts": [
-        [
-            "dnplayer.exe",
-            "LDPlayer\\LDPlayer"
-        ],
-        [
-            "dnmultiplayer.exe",
-            "LDPlayer\\LDMultiPlayer"
-        ],
-        [
-            "dnrepairer.exe",
-            "LDPlayer\\LDPlayer Repairer"
-        ]
-    ],
-    "uninstaller": {
-        "script": "Start-Process -Wait \"$dir\\uninstall.bat\""
-    },
-    "url": "https://encdn.ldmnq.com/download/package/LDPlayer_9.0.30.exe#/dl.7z",
-    "version": "9.0.30"
+ "autoupdate": {
+  "url": "https://encdn.ldmnq.com/download/package/LDPlayer_$version.exe#/dl.7z"
+ },
+ "checkver": {
+  "regex": "version:\"(9[\\d.]+)\"",
+  "url": "https://www.ldplayer.net/other/version-history-and-release-notes.html"
+ },
+ "description": "An Android emulator optimized for mobile gaming with lower resource consumption",
+ "hash": "56babd1a1d00e3558e2aaaf9101f39f167d32f6196c0df627921032066d1f824",
+ "homepage": "https://www.ldplayer.net",
+ "installer": {
+  "script": "Start-Process -Wait \"$dir\\install.bat\""
+ },
+ "license": "Unknown",
+ "notes": "Administrator privileges are required to run repairer",
+ "persist": [
+  "ldrecord\\video",
+  "vms"
+ ],
+ "post_install": [
+  "Remove-Item \"$dir\\log\" -Force -Recurse",
+  "Remove-Item \"$dir\\upload\" -Force -Recurse",
+  "Remove-Item \"$dir\\*report*\" -Force",
+  "Remove-Item \"$dir\\dnuninst.exe\" -Force",
+  "Remove-Item \"$dir\\ldyunuuploaden.exe\" -Force",
+  "Remove-Item \"$dir\\dnutility.dll\" -Force",
+  "Remove-Item \"$dir\\zone.tab\" -Force"
+ ],
+ "pre_install": [
+  "Copy-Item \"$bucketsdir\\ownscoop\\scripts\\ldplayer9\\install.bat\" \"$dir\\\" | Out-Null",
+  "Copy-Item \"$bucketsdir\\ownscoop\\scripts\\ldplayer9\\uninstall.bat\" \"$dir\\\" | Out-Null"
+ ],
+ "shortcuts": [
+  [
+   "dnplayer.exe",
+   "LDPlayer\\LDPlayer"
+  ],
+  [
+   "dnmultiplayer.exe",
+   "LDPlayer\\LDMultiPlayer"
+  ],
+  [
+   "dnrepairer.exe",
+   "LDPlayer\\LDPlayer Repairer"
+  ]
+ ],
+ "uninstaller": {
+  "script": "Start-Process -Wait \"$dir\\uninstall.bat\""
+ },
+ "url": "https://encdn.ldmnq.com/download/package/LDPlayer_9.0.30.exe#/dl.7z",
+ "version": "9.0.30"
 }

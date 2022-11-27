@@ -1,0 +1,44 @@
+{
+ "architecture": {
+  "32bit": {
+   "hash": "cd8c688349bcd1f429e3b383620fb0d19f52be0f765b2eae78d63b41aefb2e73",
+   "url": "https://repo.anaconda.com/archive/Anaconda3-2022.05-Windows-x86.exe#/setup.exe"
+  },
+  "64bit": {
+   "hash": "2766eb102f9d65da36d262b651777358de39fbe5f1a74f9854a2e5e29caeeeec",
+   "url": "https://repo.anaconda.com/archive/Anaconda3-2022.05-Windows-x86_64.exe#/setup.exe"
+  }
+ },
+ "bin": [
+  "python.exe",
+  "pythonw.exe",
+  [
+   "python.exe",
+   "python3"
+  ]
+ ],
+ "description": "The most popular Python distribution for data science.",
+ "env_add_path": "Scripts",
+ "homepage": "https://www.anaconda.com/",
+ "installer": {
+  "script": [
+   "Write-Host 'Installing Anaconda 3. This can take up to 30 minutes on an HDD.' -ForegroundColor Magenta",
+   "# Using Start-Process as a workaround because the installer will not work properly when args are quoted (e.g. \"`\"/S`\"\")",
+   "Start-Process \"$dir\\setup.exe\" -ArgumentList @('/S', '/InstallationType=JustMe', '/RegisterPython=1', '/AddToPath=0', '/NoRegistry=1', \"/D=$dir\") -Wait | Out-Null"
+  ]
+ },
+ "license": "BSD-3-Clause",
+ "notes": [
+  "From 4.6.0, conda has built the support for Cmd, Powershell or other shells.",
+  "Use \"conda init powershell\" or \"conda init __your_favorite_shell__\""
+ ],
+ "persist": "envs",
+ "uninstaller": {
+  "script": [
+   "Start-Process \"$dir\\Uninstall-Anaconda3.exe\" -ArgumentList '/S' -Wait | Out-Null",
+   "# Create a 'dummy' to avoid error because the uninstaller removes the symlink. The does not affect persist.",
+   "if (!(Test-Path \"$dir\\envs\")) { New-Item \"$dir\\envs\" -ItemType Directory | Out-Null }"
+  ]
+ },
+ "version": "2022.05"
+}

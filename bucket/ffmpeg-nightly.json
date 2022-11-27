@@ -1,30 +1,29 @@
 {
-    "version": "109138",
-    "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
-    "homepage": "https://ffmpeg.org",
-    "license": "GPL-3.0-or-later",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2022-11-19-12-35/ffmpeg-N-109138-g3bcec58535-win64-gpl.zip",
-            "hash": "db51ccc4d455fd5f8db261a6b2c60f0091792939dcdc901f49da6dce1f64696f",
-            "extract_dir": "ffmpeg-N-109138-g3bcec58535-win64-gpl"
-        }
-    },
-    "bin": [
-        "bin\\ffmpeg.exe",
-        "bin\\ffplay.exe",
-        "bin\\ffprobe.exe"
-    ],
-    "checkver": {
-        "url": "https://github.com/BtbN/FFmpeg-Builds/releases",
-        "regex": "/autobuild-(?<time>[\\d-]+)/ffmpeg-N-(?<version>\\d+)-g(?<hash>[a-z\\d]+)-win64-gpl\\.zip"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchTime/ffmpeg-N-$version-g$matchHash-win64-gpl.zip",
-                "extract_dir": "ffmpeg-N-$version-g$matchHash-win64-gpl"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "extract_dir": "ffmpeg-master-latest-win64-gpl",
+   "hash": "d5a652cf999d4f7aaa49158f3bf03548947f118ab96b344681d4466d640ac112",
+   "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip"
+   }
+  }
+ },
+ "bin": [
+  "bin\\ffmpeg.exe",
+  "bin\\ffplay.exe",
+  "bin\\ffprobe.exe"
+ ],
+ "checkver": {
+  "regex": "^(\\d+)$",
+  "script": "Get-Date (Invoke-RestMethod https://api.github.com/repositories/292087234/releases/latest).published_at -UFormat %s"
+ },
+ "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
+ "homepage": "https://ffmpeg.org",
+ "license": "GPL-3.0-or-later",
+ "version": "1669469230"
 }

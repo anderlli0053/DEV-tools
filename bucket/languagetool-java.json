@@ -1,36 +1,36 @@
 {
-    "version": "5.9",
-    "description": "Grammar, Style and Spell Checker for +25 languages",
-    "homepage": "https://languagetool.org/",
-    "license": "LGPL-2.1-or-later",
-    "suggest": {
-        "Java": [
-            "oraclejdk",
-            "adopt8-hotspot-jre"
-        ]
-    },
-    "url": "https://languagetool.org/download/LanguageTool-5.9.zip",
-    "hash": "0d06c2e8b016c105d24a242aa4967329a4cc8f7ffc95fb0e11113bd9db48c4ac",
-    "extract_dir": "LanguageTool-5.9",
-    "pre_install": "Set-Content \"$dir\\languagetool.bat\" '@start javaw.exe -jar \"%~dp0\\languagetool.jar\" %*' -Encoding Ascii",
-    "bin": [
-        "languagetool.bat",
-        "languagetool-commandline.jar",
-        "languagetool-server.jar"
-    ],
-    "shortcuts": [
-        [
-            "languagetool.bat",
-            "LanguageTool"
-        ]
-    ],
-    "checkver": {
-        "url": "https://languagetool.org/download/",
-        "regex": "LanguageTool-([\\d.]+)\\.zip",
-        "reverse": true
-    },
-    "autoupdate": {
-        "url": "https://languagetool.org/download/LanguageTool-$version.zip",
-        "extract_dir": "LanguageTool-$version"
-    }
+ "autoupdate": {
+  "extract_dir": "LanguageTool-$version",
+  "url": "https://languagetool.org/download/LanguageTool-$version.zip"
+ },
+ "bin": [
+  "languagetool.bat",
+  "languagetool-commandline.jar",
+  "languagetool-server.jar"
+ ],
+ "checkver": {
+  "regex": "LanguageTool-([\\d.]+)\\.zip",
+  "reverse": true,
+  "url": "https://languagetool.org/download/"
+ },
+ "description": "Grammar, Style and Spell Checker for +25 languages",
+ "extract_dir": "LanguageTool-5.9",
+ "hash": "0d06c2e8b016c105d24a242aa4967329a4cc8f7ffc95fb0e11113bd9db48c4ac",
+ "homepage": "https://languagetool.org/",
+ "license": "LGPL-2.1-or-later",
+ "pre_install": "Set-Content \"$dir\\languagetool.bat\" '@start javaw.exe -jar \"%~dp0\\languagetool.jar\" %*' -Encoding Ascii",
+ "shortcuts": [
+  [
+   "languagetool.bat",
+   "LanguageTool"
+  ]
+ ],
+ "suggest": {
+  "Java": [
+   "oraclejdk",
+   "adopt8-hotspot-jre"
+  ]
+ },
+ "url": "https://languagetool.org/download/LanguageTool-5.9.zip",
+ "version": "5.9"
 }

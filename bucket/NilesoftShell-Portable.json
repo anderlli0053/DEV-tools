@@ -1,55 +1,55 @@
 {
-    "version": "1.7",
-    "description": "Nilesoft Shell. A context menu extender that lets you handpick the items to integrate into Windows File Explorer context menu.",
-    "homepage": "https://nilesoft.org/",
-    "license": "MIT",
-    "changelog": "https://nilesoft.org/download/changes",
-    "architecture": {
-        "64bit": {
-            "url": "https://nilesoft.org/download/shell.zip",
-            "hash": "f99468755e6ccae7dc46f1db605ddfe9d27deeba9008d46c4fb1e5616ac5a1ae"
-        },
-        "32bit": {
-            "url": "https://nilesoft.org/download/shell-32.zip",
-            "hash": "c5a85c7416a8b1c5ed47a2ed4bf1b779aa56c5da9bd3ae255d7effe286963826"
-        }
-    },
-    "pre_install": "if(!(Test-Path \"$persist_dir\\shell.log\")) { New-Item \"$dir\\shell.log\" | Out-Null }",
-    "uninstaller": {
-        "script": [
-            "if ($cmd -eq 'uninstall') {",
-            "    $regkey = Get-ItemProperty -Path 'HKLM:\\SOFTWARE\\Classes\\Directory\\background\\shellex\\ContextMenuHandlers\\nilesoft.shell' -ErrorAction SilentlyContinue",
-            "    if ($regkey) {",
-            "        if (!(is_admin)) { error 'Admin right is required to unregister nilesoft shell'; break }",
-            "        Invoke-ExternalCommand \"$dir\\shell.exe\" -ArgumentList @('-unregister', '-restart', '-silent') -RunAs | Out-Null",
-            "        if (Get-Process -Name 'shell' -ErrorAction SilentlyContinue) { Start-Sleep -Seconds 2 }",
-            "    }",
-            "}"
-        ]
-    },
-    "bin": "shell.exe",
-    "shortcuts": [
-        [
-            "shell.exe",
-            "Nilesoft Shell"
-        ]
-    ],
-    "persist": [
-        "shell.log",
-        "shell.shl"
-    ],
-    "checkver": {
-        "url": "https://nilesoft.org/download",
-        "regex": "Shell version ([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://nilesoft.org/download/$version/shell-x64.zip"
-            },
-            "32bit": {
-                "url": "https://nilesoft.org/download/$version/shell-x86.zip"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "c5a85c7416a8b1c5ed47a2ed4bf1b779aa56c5da9bd3ae255d7effe286963826",
+   "url": "https://nilesoft.org/download/shell-32.zip"
+  },
+  "64bit": {
+   "hash": "f99468755e6ccae7dc46f1db605ddfe9d27deeba9008d46c4fb1e5616ac5a1ae",
+   "url": "https://nilesoft.org/download/shell.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://nilesoft.org/download/$version/shell-x86.zip"
+   },
+   "64bit": {
+    "url": "https://nilesoft.org/download/$version/shell-x64.zip"
+   }
+  }
+ },
+ "bin": "shell.exe",
+ "changelog": "https://nilesoft.org/download/changes",
+ "checkver": {
+  "regex": "Shell version ([\\d.]+)",
+  "url": "https://nilesoft.org/download"
+ },
+ "description": "Nilesoft Shell. A context menu extender that lets you handpick the items to integrate into Windows File Explorer context menu.",
+ "homepage": "https://nilesoft.org/",
+ "license": "MIT",
+ "persist": [
+  "shell.log",
+  "shell.shl"
+ ],
+ "pre_install": "if(!(Test-Path \"$persist_dir\\shell.log\")) { New-Item \"$dir\\shell.log\" | Out-Null }",
+ "shortcuts": [
+  [
+   "shell.exe",
+   "Nilesoft Shell"
+  ]
+ ],
+ "uninstaller": {
+  "script": [
+   "if ($cmd -eq 'uninstall') {",
+   "    $regkey = Get-ItemProperty -Path 'HKLM:\\SOFTWARE\\Classes\\Directory\\background\\shellex\\ContextMenuHandlers\\nilesoft.shell' -ErrorAction SilentlyContinue",
+   "    if ($regkey) {",
+   "        if (!(is_admin)) { error 'Admin right is required to unregister nilesoft shell'; break }",
+   "        Invoke-ExternalCommand \"$dir\\shell.exe\" -ArgumentList @('-unregister', '-restart', '-silent') -RunAs | Out-Null",
+   "        if (Get-Process -Name 'shell' -ErrorAction SilentlyContinue) { Start-Sleep -Seconds 2 }",
+   "    }",
+   "}"
+  ]
+ },
+ "version": "1.7"
 }

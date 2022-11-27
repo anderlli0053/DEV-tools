@@ -1,31 +1,31 @@
 {
-    "version": "10.4",
-    "description": "A development tool to help programmers write Java code that adheres to a coding standard.",
-    "homepage": "https://checkstyle.org/cmdline.html",
-    "license": "LGPL-2.1-only",
-    "url": "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.4/checkstyle-10.4-all.jar#!/checkstyle.jar",
-    "hash": "c7fd77aea6f734e3f830bd87a1d764991ac4c0102c1bded9da22cba090aed8f4",
-    "pre_install": "Set-Content -Encoding ASCII -Path \"$dir\\checkstyle-gui.bat\" -Value '@start javaw.exe -cp \"%~dp0checkstyle.jar\" com.puppycrawl.tools.checkstyle.gui.Main'",
-    "bin": "checkstyle.jar",
-    "shortcuts": [
-        [
-            "checkstyle-gui.bat",
-            "Checkstyle GUI"
-        ]
-    ],
-    "suggest": {
-        "JDK 11+": [
-            "java/temurin17-jdk",
-            "java/temurin11-jdk",
-            "java/zulu17-jdk",
-            "java/zulu11-jdk"
-        ]
-    },
-    "checkver": {
-        "url": "https://github.com/checkstyle/checkstyle/releases/latest",
-        "regex": "/releases/tag/checkstyle-([\\d.]+)\""
-    },
-    "autoupdate": {
-        "url": "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-$version/checkstyle-$version-all.jar#!/checkstyle.jar"
-    }
+ "autoupdate": {
+  "url": "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-$version/checkstyle-$version-all.jar#!/checkstyle.jar"
+ },
+ "bin": "checkstyle.jar",
+ "checkver": {
+  "regex": "/releases/tag/checkstyle-([\\d.]+)\"",
+  "url": "https://github.com/checkstyle/checkstyle/releases/latest"
+ },
+ "description": "A development tool to help programmers write Java code that adheres to a coding standard.",
+ "hash": "c7fd77aea6f734e3f830bd87a1d764991ac4c0102c1bded9da22cba090aed8f4",
+ "homepage": "https://checkstyle.org/cmdline.html",
+ "license": "LGPL-2.1-only",
+ "pre_install": "Set-Content -Encoding ASCII -Path \"$dir\\checkstyle-gui.bat\" -Value '@start javaw.exe -cp \"%~dp0checkstyle.jar\" com.puppycrawl.tools.checkstyle.gui.Main'",
+ "shortcuts": [
+  [
+   "checkstyle-gui.bat",
+   "Checkstyle GUI"
+  ]
+ ],
+ "suggest": {
+  "JDK 11+": [
+   "java/temurin17-jdk",
+   "java/temurin11-jdk",
+   "java/zulu17-jdk",
+   "java/zulu11-jdk"
+  ]
+ },
+ "url": "https://github.com/checkstyle/checkstyle/releases/download/checkstyle-10.4/checkstyle-10.4-all.jar#!/checkstyle.jar",
+ "version": "10.4"
 }

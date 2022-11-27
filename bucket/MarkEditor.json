@@ -1,47 +1,47 @@
 {
-    "homepage": "https://www.markeditor.com/",
-    "version": "1.2.5.7",
-    "license": "freeware",
-    "architecture": {
-        "64bit": {
-            "url": "http://download.quanduan.com/markeditor_64_1.2.5.7.exe",
-            "hash": "md5:3686f875be155a8d26d36e94b72a7c19"
-        },
-        "32bit": {
-            "url": "http://download.quanduan.com/markeditor_1.2.5.7.exe",
-            "hash": "md5:ab3a3e0a5bee7df6f1a182caf6ab47de"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "md5:ab3a3e0a5bee7df6f1a182caf6ab47de",
+   "url": "http://download.quanduan.com/markeditor_1.2.5.7.exe"
+  },
+  "64bit": {
+   "hash": "md5:3686f875be155a8d26d36e94b72a7c19",
+   "url": "http://download.quanduan.com/markeditor_64_1.2.5.7.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "find": "32\u4f4d MD5:  ($md5)",
+     "mode": "extract",
+     "url": "https://zrey.com/docs/markeditor-updates.txt"
     },
-    "innosetup": true,
-    "bin": "MarkEditor.exe",
-    "shortcuts": [
-        [
-            "MarkEditor.exe",
-            "MarkEditor"
-        ]
-    ],
-    "checkver": {
-        "url": "http://zrey.com/docs/markeditor-updates.txt",
-        "regex": "<h1 id=\"toc_1\" class=\"h16\">([\\d.]+)</h1>"
+    "url": "http://download.quanduan.com/markeditor_$version.exe"
+   },
+   "64bit": {
+    "hash": {
+     "find": "64\u4f4d MD5:  ($md5)",
+     "mode": "extract",
+     "url": "https://zrey.com/docs/markeditor-updates.txt"
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "http://download.quanduan.com/markeditor_64_$version.exe",
-                "hash": {
-                    "mode": "extract",
-                    "url": "https://zrey.com/docs/markeditor-updates.txt",
-                    "find": "64位 MD5:  ($md5)"
-                }
-            },
-            "32bit": {
-                "url": "http://download.quanduan.com/markeditor_$version.exe",
-                "hash": {
-                    "mode": "extract",
-                    "url": "https://zrey.com/docs/markeditor-updates.txt",
-                    "find": "32位 MD5:  ($md5)"
-                }
-            }
-        }
-    }
+    "url": "http://download.quanduan.com/markeditor_64_$version.exe"
+   }
+  }
+ },
+ "bin": "MarkEditor.exe",
+ "checkver": {
+  "regex": "<h1 id=\"toc_1\" class=\"h16\">([\\d.]+)</h1>",
+  "url": "http://zrey.com/docs/markeditor-updates.txt"
+ },
+ "homepage": "https://www.markeditor.com/",
+ "innosetup": true,
+ "license": "freeware",
+ "shortcuts": [
+  [
+   "MarkEditor.exe",
+   "MarkEditor"
+  ]
+ ],
+ "version": "1.2.5.7"
 }

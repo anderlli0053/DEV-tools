@@ -1,51 +1,51 @@
 {
-    "version": "4.7.1",
-    "description": "A Mastodon, Pleroma, and Misskey client for desktop application.",
-    "homepage": "https://whalebird.social/",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/h3poteto/whalebird-desktop/releases/download/4.7.1/Whalebird-4.7.1-windows-x64.exe#/dl.7z",
-            "hash": "fc7a507b1d8f2e5379ac5b39dd54d81f2d975892935315040f1580174166e892",
-            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
-        },
-        "32bit": {
-            "url": "https://github.com/h3poteto/whalebird-desktop/releases/download/4.7.1/Whalebird-4.7.1-windows-ia32.exe#/dl.7z",
-            "hash": "3dcbd0237848a56ef5686d85f6f0187f1255a80ccdd7c6b91b13c1b0f1c6987f",
-            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
-        }
-    },
-    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\", \"$dir\\resources\\app-update.yml\"  -Force -Recurse",
-    "bin": [
-        [
-            "Whalebird.exe",
-            "Whalebird",
-            "--user-data-dir=\"$dir\\User Data\""
-        ]
-    ],
-    "shortcuts": [
-        [
-            "Whalebird.exe",
-            "Whalebird",
-            "--user-data-dir=\"$dir\\User Data\""
-        ]
-    ],
-    "persist": "User Data",
-    "checkver": {
-        "url": "https://whalebird.social/en/desktop/contents/downloads",
-        "regex": "Whalebird-([\\d.]+)-x64.exe"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/h3poteto/whalebird-desktop/releases/download/$version/Whalebird-$version-windows-x64.exe#/dl.7z"
-            },
-            "32bit": {
-                "url": "https://github.com/h3poteto/whalebird-desktop/releases/download/$version/Whalebird-$version-windows-ia32.exe#/dl.7z"
-            }
-        },
-        "hash": {
-            "url": "$url.shasum"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "3dcbd0237848a56ef5686d85f6f0187f1255a80ccdd7c6b91b13c1b0f1c6987f",
+   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+   "url": "https://github.com/h3poteto/whalebird-desktop/releases/download/4.7.1/Whalebird-4.7.1-windows-ia32.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "fc7a507b1d8f2e5379ac5b39dd54d81f2d975892935315040f1580174166e892",
+   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+   "url": "https://github.com/h3poteto/whalebird-desktop/releases/download/4.7.1/Whalebird-4.7.1-windows-x64.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/h3poteto/whalebird-desktop/releases/download/$version/Whalebird-$version-windows-ia32.exe#/dl.7z"
+   },
+   "64bit": {
+    "url": "https://github.com/h3poteto/whalebird-desktop/releases/download/$version/Whalebird-$version-windows-x64.exe#/dl.7z"
+   }
+  },
+  "hash": {
+   "url": "$url.shasum"
+  }
+ },
+ "bin": [
+  [
+   "Whalebird.exe",
+   "Whalebird",
+   "--user-data-dir=\"$dir\\User Data\""
+  ]
+ ],
+ "checkver": {
+  "regex": "Whalebird-([\\d.]+)-x64.exe",
+  "url": "https://whalebird.social/en/desktop/contents/downloads"
+ },
+ "description": "A Mastodon, Pleroma, and Misskey client for desktop application.",
+ "homepage": "https://whalebird.social/",
+ "license": "MIT",
+ "persist": "User Data",
+ "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\", \"$dir\\resources\\app-update.yml\"  -Force -Recurse",
+ "shortcuts": [
+  [
+   "Whalebird.exe",
+   "Whalebird",
+   "--user-data-dir=\"$dir\\User Data\""
+  ]
+ ],
+ "version": "4.7.1"
 }

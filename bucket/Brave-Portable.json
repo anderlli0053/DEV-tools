@@ -1,42 +1,42 @@
 {
-    "version": "1.45.133",
-    "description": "Brave. Secure, Fast & Private Web Browser with Adblocker",
-    "homepage": "https://brave.com",
-    "license": {
-        "identifier": "MPL 2.0",
-        "url": "https://github.com/brave/brave-browser/blob/master/LICENSE"
-    },
-    "changelog": "https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md",
-    "architecture": {
-        "64bit": {
-            "url": "https://brave-browser-downloads.s3.brave.com/latest/brave_installer-x64.exe#/dl.7z",
-            "hash": "5f0a563a8b81dfc40f9649517bf7295867112cee7ec0323bb0d254b24d41d7e1"
-        },
-        "32bit": {
-            "url": "https://brave-browser-downloads.s3.brave.com/latest/brave_installer-ia32.exe#/dl.7z",
-            "hash": "b3e7c3afc11828207fb31951c6bbe8f72437aa888f8384193f756d954c4c507f"
-        }
-    },
-    "pre_install": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal",
-    "bin": "brave.exe",
-    "shortcuts": [
-        [
-            "brave.exe",
-            "Brave"
-        ]
-    ],
-    "checkver": {
-        "url": "https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md",
-        "regex": "releases/tag/v([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://brave-browser-downloads.s3.brave.com/latest/brave_installer-x64.exe#/dl.7z"
-            },
-            "32bit": {
-                "url": "https://brave-browser-downloads.s3.brave.com/latest/brave_installer-ia32.exe#/dl.7z"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "a969ce760478fd6655bb57e6d160c62166ad20546b208cdcb96b664a99faa1e6",
+   "url": "https://brave-browser-downloads.s3.brave.com/latest/brave_installer-ia32.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "5f0a563a8b81dfc40f9649517bf7295867112cee7ec0323bb0d254b24d41d7e1",
+   "url": "https://brave-browser-downloads.s3.brave.com/latest/brave_installer-x64.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://brave-browser-downloads.s3.brave.com/latest/brave_installer-ia32.exe#/dl.7z"
+   },
+   "64bit": {
+    "url": "https://brave-browser-downloads.s3.brave.com/latest/brave_installer-x64.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": "brave.exe",
+ "changelog": "https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md",
+ "checkver": {
+  "regex": "releases/tag/v([\\d.]+)",
+  "url": "https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md"
+ },
+ "description": "Brave. Secure, Fast & Private Web Browser with Adblocker",
+ "homepage": "https://brave.com",
+ "license": {
+  "identifier": "MPL 2.0",
+  "url": "https://github.com/brave/brave-browser/blob/master/LICENSE"
+ },
+ "pre_install": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal",
+ "shortcuts": [
+  [
+   "brave.exe",
+   "Brave"
+  ]
+ ],
+ "version": "1.45.133"
 }

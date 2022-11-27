@@ -1,29 +1,29 @@
 {
-    "version": "2.9.3",
-    "description": "Local development against a remote Kubernetes or OpenShift cluster.",
-    "homepage": "https://www.telepresence.io/",
-    "license": "Apache-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://app.getambassador.io/download/tel2/windows/amd64/2.9.3/telepresence.zip",
-            "hash": "2f7fc49ba9232b960524ead7eb5da5817250f5f7021fbdbac327cfa7437d14df"
-        }
-    },
-    "post_install": "Remove-Item \"$dir\\*.msi\", \"$dir\\*.ps1\" -Force -Recurse",
-    "bin": "telepresence.exe",
-    "suggest": {
-        "sshfs": "nonportable/sshfs-np",
-        "winfsp": "nonportable/winfsp-np"
-    },
-    "checkver": {
-        "url": "https://github.com/datawire/homebrew-blackbird/raw/master/Formula/telepresence.rb",
-        "regex": "/amd64/([\\d.]+)/telepresence"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://app.getambassador.io/download/tel2/windows/amd64/$version/telepresence.zip"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "2f7fc49ba9232b960524ead7eb5da5817250f5f7021fbdbac327cfa7437d14df",
+   "url": "https://app.getambassador.io/download/tel2/windows/amd64/2.9.3/telepresence.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://app.getambassador.io/download/tel2/windows/amd64/$version/telepresence.zip"
+   }
+  }
+ },
+ "bin": "telepresence.exe",
+ "checkver": {
+  "regex": "/amd64/([\\d.]+)/telepresence",
+  "url": "https://github.com/datawire/homebrew-blackbird/raw/master/Formula/telepresence.rb"
+ },
+ "description": "Local development against a remote Kubernetes or OpenShift cluster.",
+ "homepage": "https://www.telepresence.io/",
+ "license": "Apache-2.0",
+ "post_install": "Remove-Item \"$dir\\*.msi\", \"$dir\\*.ps1\" -Force -Recurse",
+ "suggest": {
+  "sshfs": "nonportable/sshfs-np",
+  "winfsp": "nonportable/winfsp-np"
+ },
+ "version": "2.9.3"
 }

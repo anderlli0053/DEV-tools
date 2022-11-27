@@ -1,31 +1,31 @@
 {
-    "version": "2.1.7",
-    "description": "A simple server for sending and receiving messages in real-time per WebSocket, with a sleek web UI",
-    "homepage": "https://gotify.net/",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/gotify/server/releases/download/v2.1.7/gotify-windows-amd64.exe.zip",
-            "hash": "23804511ee394395012bc77586d0124673cc26fd8dbb3ec0dc38f786a1d8a90e"
-        },
-        "32bit": {
-            "url": "https://github.com/gotify/server/releases/download/v2.1.7/gotify-windows-386.exe.zip",
-            "hash": "eb9ef27cfe737ba6c955ff9660071ec88d35616b4f5dcdb8d175ed34c4d9543a"
-        }
-    },
-    "pre_install": "Get-ChildItem \"$dir\\gotify-windows-*\" | Rename-Item -NewName gotify.exe",
-    "bin": "gotify.exe",
-    "checkver": {
-        "github": "https://github.com/gotify/server/"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/gotify/server/releases/download/v$version/gotify-windows-amd64.exe.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/gotify/server/releases/download/v$version/gotify-windows-386.exe.zip"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "eb9ef27cfe737ba6c955ff9660071ec88d35616b4f5dcdb8d175ed34c4d9543a",
+   "url": "https://github.com/gotify/server/releases/download/v2.1.7/gotify-windows-386.exe.zip"
+  },
+  "64bit": {
+   "hash": "23804511ee394395012bc77586d0124673cc26fd8dbb3ec0dc38f786a1d8a90e",
+   "url": "https://github.com/gotify/server/releases/download/v2.1.7/gotify-windows-amd64.exe.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/gotify/server/releases/download/v$version/gotify-windows-386.exe.zip"
+   },
+   "64bit": {
+    "url": "https://github.com/gotify/server/releases/download/v$version/gotify-windows-amd64.exe.zip"
+   }
+  }
+ },
+ "bin": "gotify.exe",
+ "checkver": {
+  "github": "https://github.com/gotify/server/"
+ },
+ "description": "A simple server for sending and receiving messages in real-time per WebSocket, with a sleek web UI",
+ "homepage": "https://gotify.net/",
+ "license": "MIT",
+ "pre_install": "Get-ChildItem \"$dir\\gotify-windows-*\" | Rename-Item -NewName gotify.exe",
+ "version": "2.1.7"
 }

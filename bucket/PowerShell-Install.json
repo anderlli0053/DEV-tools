@@ -1,57 +1,57 @@
 {
-    "version": "7.3.0",
-    "description": "PowerShell Core. The cross-platform task automation and configuration management framework/tool.",
-    "homepage": "https://github.com/PowerShell/PowerShell",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.3.0/PowerShell-7.3.0-win-x64.msi#/setup.msi_",
-            "hash": "5dbbfa10fd37a032414f36b9d6a8de99e042081075dab320c10f1f67b93e2c4e"
-        },
-        "32bit": {
-            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.3.0/PowerShell-7.3.0-win-x86.msi#/setup.msi_",
-            "hash": "9e819f88d3cc1575ef19cc1acf002e7d942737b9d34e8a5306410b0df34f433c"
-        }
-    },
-    "pre_download": "Assert-Administrator",
-    "##": [
-        "$processname = \"pwsh\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "installer": {
-        "script": [
-            "$programname = \"PowerShell*\"",
-            "$installpath = \"$dir\\setup.msi_\"",
-            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
-            "$filepath = \"$ProgramFiles\\PowerShell\\7\\pwsh.exe\"",
-            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-            "{",
-            "   Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/quiet ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1 ENABLE_PSREMOTING=1 REGISTER_MANIFEST=1') -RunAs | Out-Null",
-            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-            "   {",
-            "       exit 1",
-            "   }",
-            "}",
-            "if (Test-Path -Path \"$dir\\setup.msi_\") { Remove-Item \"$dir\\setup.msi_\" -Force }"
-        ]
-    },
-    "checkver": "github",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x64.msi#/setup.msi_"
-            },
-            "32bit": {
-                "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x86.msi#/setup.msi_"
-            }
-        }
-    }
+ "##": [
+  "$processname = \"pwsh\"",
+  "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+  "if ($process) {",
+  "   $process.CloseMainWindow()",
+  "   Start-Sleep -Seconds 5",
+  "   if (!$process.HasExited) {",
+  "       Start-Sleep -Seconds 25",
+  "       $process | Stop-Process -Force",
+  "   }",
+  "}"
+ ],
+ "architecture": {
+  "32bit": {
+   "hash": "9e819f88d3cc1575ef19cc1acf002e7d942737b9d34e8a5306410b0df34f433c",
+   "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.3.0/PowerShell-7.3.0-win-x86.msi#/setup.msi_"
+  },
+  "64bit": {
+   "hash": "5dbbfa10fd37a032414f36b9d6a8de99e042081075dab320c10f1f67b93e2c4e",
+   "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.3.0/PowerShell-7.3.0-win-x64.msi#/setup.msi_"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x86.msi#/setup.msi_"
+   },
+   "64bit": {
+    "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x64.msi#/setup.msi_"
+   }
+  }
+ },
+ "checkver": "github",
+ "description": "PowerShell Core. The cross-platform task automation and configuration management framework/tool.",
+ "homepage": "https://github.com/PowerShell/PowerShell",
+ "installer": {
+  "script": [
+   "$programname = \"PowerShell*\"",
+   "$installpath = \"$dir\\setup.msi_\"",
+   "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
+   "$filepath = \"$ProgramFiles\\PowerShell\\7\\pwsh.exe\"",
+   "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+   "{",
+   "   Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/quiet ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1 ENABLE_PSREMOTING=1 REGISTER_MANIFEST=1') -RunAs | Out-Null",
+   "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+   "   {",
+   "       exit 1",
+   "   }",
+   "}",
+   "if (Test-Path -Path \"$dir\\setup.msi_\") { Remove-Item \"$dir\\setup.msi_\" -Force }"
+  ]
+ },
+ "license": "MIT",
+ "pre_download": "Assert-Administrator",
+ "version": "7.3.0"
 }
