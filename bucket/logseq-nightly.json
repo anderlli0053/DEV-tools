@@ -1,38 +1,38 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "a3840ce0c7879efd4714454dd13d916c8e676b7ecf6d697ad2bc628d8ab47bdb",
-   "url": "https://github.com/logseq/logseq/releases/download/nightly/Logseq-win-x64-0.8.12+nightly.20221125.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "hash": {
-     "regex": "$sha256\\s{2}Logseq-win-x64-$matchMain\\+nightly\\.$matchDate\\.exe",
-     "url": "$baseurl/SHA256SUMS.txt"
+    "architecture": {
+        "64bit": {
+            "hash": "6f3eb0d3b3fdbffe069826ebfe04ca3b7ddfadcebe35a3f8a0ea93b7a5a9b9f8",
+            "url": "https://github.com/logseq/logseq/releases/download/nightly/Logseq-win-x64-0.8.12+nightly.20221129.exe#/dl.7z"
+        }
     },
-    "url": "https://github.com/logseq/logseq/releases/download/nightly/Logseq-win-x64-$matchMain+nightly.$matchDate.exe#/dl.7z"
-   }
-  }
- },
- "checkver": {
-  "regex": "Logseq-win-x64-(?<main>[\\d.]+)\\+nightly\\.(?<date>\\d{8})",
-  "replace": "${main}-${date}",
-  "url": "https://api.github.com/repos/logseq/logseq/releases/tags/nightly"
- },
- "description": "A privacy-first platform for knowledge sharing and management",
- "homepage": "https://logseq.com",
- "license": "AGPL-3.0-only",
- "pre_install": [
-  "Expand-7ZipArchive \"$dir\\Logseq-*-full.nupkg\" -ExtractDir 'lib\\net45' -Removal",
-  "Remove-Item \"$dir\\lib\", \"$dir\\Update*\", \"$dir\\*.gif\", \"$dir\\*.ico\", \"$dir\\RELEASES*\" -Recurse"
- ],
- "shortcuts": [
-  [
-   "Logseq.exe",
-   "Logseq"
-  ]
- ],
- "version": "0.8.12-20221125"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "hash": {
+                    "regex": "$sha256\\s{2}Logseq-win-x64-$matchMain\\+nightly\\.$matchDate\\.exe",
+                    "url": "$baseurl/SHA256SUMS.txt"
+                },
+                "url": "https://github.com/logseq/logseq/releases/download/nightly/Logseq-win-x64-$matchMain+nightly.$matchDate.exe#/dl.7z"
+            }
+        }
+    },
+    "checkver": {
+        "regex": "Logseq-win-x64-(?<main>[\\d.]+)\\+nightly\\.(?<date>\\d{8})",
+        "replace": "${main}-${date}",
+        "url": "https://api.github.com/repos/logseq/logseq/releases/tags/nightly"
+    },
+    "description": "A privacy-first platform for knowledge sharing and management",
+    "homepage": "https://logseq.com",
+    "license": "AGPL-3.0-only",
+    "pre_install": [
+        "Expand-7ZipArchive \"$dir\\Logseq-*-full.nupkg\" -ExtractDir 'lib\\net45' -Removal",
+        "Remove-Item \"$dir\\lib\", \"$dir\\Update*\", \"$dir\\*.gif\", \"$dir\\*.ico\", \"$dir\\RELEASES*\" -Recurse"
+    ],
+    "shortcuts": [
+        [
+            "Logseq.exe",
+            "Logseq"
+        ]
+    ],
+    "version": "0.8.12-20221129"
 }
