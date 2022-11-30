@@ -1,48 +1,48 @@
 {
- "##": "Modified from 42wim/scoop-bucket",
- "architecture": {
-  "32bit": {
-   "hash": "f9a537f8674277ed295f05f440485b5444779de32aaa463f68a9f29908e4875c",
-   "url": "https://dl.google.com/release2/chrome/bdmaxx75yoznbioqsjd4atrp2q_107.0.5304.122/107.0.5304.122_chrome_installer.exe#/setup.exe"
-  },
-  "64bit": {
-   "hash": "981a3c8b98ec8848e8ceaef65d4339ca530b3e9c0d3861b2ea67230342df8264",
-   "url": "https://dl.google.com/release2/chrome/od2lllrxuumm2zm5pdlk6xdgnm_107.0.5304.122/107.0.5304.122_chrome_installer.exe#/setup.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "hash": {
-     "url": "https://42wim.github.io/chromeupdates/chrome.min.xml",
-     "xpath": "/chromechecker/stable32[version='$version']/sha256"
+    "##": "Modified from 42wim/scoop-bucket",
+    "architecture": {
+        "32bit": {
+            "hash": "766d4e47a20a509bd49c8668b73bc1062f81a704ce4706d447aa08fb653817a2",
+            "url": "https://dl.google.com/release2/chrome/adfuhiwo4eyd7p5yclcyf4ughipa_108.0.5359.72/108.0.5359.72_chrome_installer.exe#/setup.exe"
+        },
+        "64bit": {
+            "hash": "e3f5bba14d793516c4c77739ff1fdd38760b983b50939d47fbb1367e67596350",
+            "url": "https://dl.google.com/release2/chrome/ij3z4ttz6vdcmafpsfp3skmzda_108.0.5359.72/108.0.5359.72_chrome_installer.exe#/setup.exe"
+        }
     },
-    "url": "https://dl.google.com/release2/chrome/$match32#/setup.exe"
-   },
-   "64bit": {
-    "hash": {
-     "url": "https://42wim.github.io/chromeupdates/chrome.min.xml",
-     "xpath": "/chromechecker/stable64[version='$version']/sha256"
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "hash": {
+                    "url": "https://42wim.github.io/chromeupdates/chrome.min.xml",
+                    "xpath": "/chromechecker/stable32[version='$version']/sha256"
+                },
+                "url": "https://dl.google.com/release2/chrome/$match32#/setup.exe"
+            },
+            "64bit": {
+                "hash": {
+                    "url": "https://42wim.github.io/chromeupdates/chrome.min.xml",
+                    "xpath": "/chromechecker/stable64[version='$version']/sha256"
+                },
+                "url": "https://dl.google.com/release2/chrome/$match64#/setup.exe"
+            }
+        }
     },
-    "url": "https://dl.google.com/release2/chrome/$match64#/setup.exe"
-   }
-  }
- },
- "checkver": {
-  "regex": "(?sm)<stable32><version>(?<version>[\\d.]+)</version>.+release2/chrome/(?<32>.+exe).+<stable64>.+release2/chrome/(?<64>.+exe).+</stable64>",
-  "url": "https://42wim.github.io/chromeupdates/chrome.min.xml"
- },
- "description": "Fast, secure, and free web browser, built for the modern web.",
- "homepage": "https://www.google.com/chrome/",
- "installer": {
-  "script": "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList @('/silent', '/install')"
- },
- "license": {
-  "identifier": "Freeware",
-  "url": "https://www.google.com/chrome/privacy/eula_text.html"
- },
- "uninstaller": {
-  "script": "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList @('/uninstall') -ContinueExitCodes @{19 = ''} | Out-Null"
- },
- "version": "107.0.5304.122"
+    "checkver": {
+        "regex": "(?sm)<stable32><version>(?<version>[\\d.]+)</version>.+release2/chrome/(?<32>.+exe).+<stable64>.+release2/chrome/(?<64>.+exe).+</stable64>",
+        "url": "https://42wim.github.io/chromeupdates/chrome.min.xml"
+    },
+    "description": "Fast, secure, and free web browser, built for the modern web.",
+    "homepage": "https://www.google.com/chrome/",
+    "installer": {
+        "script": "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList @('/silent', '/install')"
+    },
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.google.com/chrome/privacy/eula_text.html"
+    },
+    "uninstaller": {
+        "script": "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList @('/uninstall') -ContinueExitCodes @{19 = ''} | Out-Null"
+    },
+    "version": "108.0.5359.72"
 }
