@@ -1,51 +1,51 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "sha1:8023d0f3ee49bf4dc562139395471d0a92fe1eda",
-   "url": "http://hashcodes.com/files/HashCodes_x86.exe"
-  },
-  "64bit": {
-   "hash": "sha1:aba79dd3a4a11ec4e2511825e18bdf396f38b02f",
-   "url": "http://hashcodes.com/files/HashCodes_x64.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "hash": {
-     "regex": "HashCodes_x86.exe:</td><td>$sha1</td>",
-     "url": "http://hashcodes.com/downloads.html"
+    "architecture": {
+        "32bit": {
+            "hash": "374bcb22e5514d074744de4bfc5378f4ee12f2e300b32406e27ec488e3a8520e",
+            "url": "http://hashcodes.com/files/HashCodes_x86.exe"
+        },
+        "64bit": {
+            "hash": "33dccb0ea1f4bf9825822a9b26ac5d61b2a52f52028542507b186f8682ff43bd",
+            "url": "http://hashcodes.com/files/HashCodes_x64.exe"
+        }
     },
-    "url": "http://hashcodes.com/files/HashCodes_x86.exe"
-   },
-   "64bit": {
-    "hash": {
-     "regex": "HashCodes_x64.exe:</td><td>$sha1</td>",
-     "url": "http://hashcodes.com/downloads.html"
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "hash": {
+                    "regex": "HashCodes_x86.exe:</td><td>$sha1</td>",
+                    "url": "http://hashcodes.com/downloads.html"
+                },
+                "url": "http://hashcodes.com/files/HashCodes_x86.exe"
+            },
+            "64bit": {
+                "hash": {
+                    "regex": "HashCodes_x64.exe:</td><td>$sha1</td>",
+                    "url": "http://hashcodes.com/downloads.html"
+                },
+                "url": "http://hashcodes.com/files/HashCodes_x64.exe"
+            }
+        }
     },
-    "url": "http://hashcodes.com/files/HashCodes_x64.exe"
-   }
-  }
- },
- "bin": "HashCodes.exe",
- "checkver": {
-  "url": "http://hashcodes.com/res/hashcodes_pad_file.xml",
-  "xpath": "/XML_DIZ_INFO/Program_Info/Program_Version"
- },
- "description": "A program allows you to change the creation, modify and last accessing date and time of a file or the creation date and time of a folder.",
- "homepage": "http://hashcodes.com/",
- "installer": {
-  "script": [
-   "$exefile = (Get-ChildItem \"$dir\" '*.exe' | Select-Object -First 1).FullName",
-   "Rename-Item \"$exefile\" \"$dir\\HashCodes.exe\""
-  ]
- },
- "license": "freeware",
- "shortcuts": [
-  [
-   "HashCodes.exe",
-   "HashCodes"
-  ]
- ],
- "version": "1.62.780.7200"
+    "bin": "HashCodes.exe",
+    "checkver": {
+        "url": "http://hashcodes.com/res/hashcodes_pad_file.xml",
+        "xpath": "/XML_DIZ_INFO/Program_Info/Program_Version"
+    },
+    "description": "A program allows you to change the creation, modify and last accessing date and time of a file or the creation date and time of a folder.",
+    "homepage": "http://hashcodes.com/",
+    "installer": {
+        "script": [
+            "$exefile = (Get-ChildItem \"$dir\" '*.exe' | Select-Object -First 1).FullName",
+            "Rename-Item \"$exefile\" \"$dir\\HashCodes.exe\""
+        ]
+    },
+    "license": "freeware",
+    "shortcuts": [
+        [
+            "HashCodes.exe",
+            "HashCodes"
+        ]
+    ],
+    "version": "1.42"
 }
