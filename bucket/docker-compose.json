@@ -1,9 +1,21 @@
 {
+    "version": "2.14.0",
+    "description": "Define and run multi-container applications with Docker",
+    "homepage": "https://docs.docker.com/compose/",
+    "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "hash": "f1c6e953e119e7d1558b76ec6826633963edefcde7f499ca6601ca094f568767",
-            "url": "https://github.com/docker/compose/releases/download/v2.14.0/docker-compose-windows-x86_64.exe#/docker-compose.exe"
+            "url": "https://github.com/docker/compose/releases/download/v2.14.0/docker-compose-windows-x86_64.exe#/docker-compose.exe",
+            "hash": "f1c6e953e119e7d1558b76ec6826633963edefcde7f499ca6601ca094f568767"
         }
+    },
+    "bin": "docker-compose.exe",
+    "post_install": "echo 'Installing docker-compose as docker-cli plugin...'; New-Item -ItemType Directory -Force \"$Env:USERPROFILE/.docker/cli-plugins\" | Out-Null; Copy-Item \"$original_dir/docker-compose.exe\" \"$Env:USERPROFILE/.docker/cli-plugins/docker-compose.exe\"",
+    "uninstaller": {
+        "script": "Remove-Item -Force \"$Env:USERPROFILE/.docker/cli-plugins/docker-compose.exe\""
+    },
+    "checkver": {
+        "github": "https://github.com/docker/compose"
     },
     "autoupdate": {
         "architecture": {
@@ -14,17 +26,5 @@
         "hash": {
             "url": "$url.sha256"
         }
-    },
-    "bin": "docker-compose.exe",
-    "checkver": {
-        "github": "https://github.com/docker/compose"
-    },
-    "description": "Define and run multi-container applications with Docker",
-    "homepage": "https://docs.docker.com/compose/",
-    "license": "Apache-2.0",
-    "post_install": "echo 'Installing docker-compose as docker-cli plugin...'; New-Item -ItemType Directory -Force \"$Env:USERPROFILE/.docker/cli-plugins\" | Out-Null; Copy-Item \"$original_dir/docker-compose.exe\" \"$Env:USERPROFILE/.docker/cli-plugins/docker-compose.exe\"",
-    "uninstaller": {
-        "script": "Remove-Item -Force \"$Env:USERPROFILE/.docker/cli-plugins/docker-compose.exe\""
-    },
-    "version": "2.14.0"
+    }
 }

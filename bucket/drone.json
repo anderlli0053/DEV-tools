@@ -1,28 +1,28 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "c69e3f95eecd2b68213f4ee09c26a8e0f33378bae7ce0d88799a83bde30773b7",
-   "url": "https://github.com/drone/drone-cli/releases/download/v1.6.2/drone_windows_amd64.tar.gz"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://github.com/drone/drone-cli/releases/download/v$version/drone_windows_amd64.tar.gz"
-   }
-  },
-  "hash": {
-   "regex": "$sha256\\s+(?:\\./|\\*)?(?:release/$basename)",
-   "url": "$baseurl/drone_checksums.txt"
-  }
- },
- "bin": "drone.exe",
- "checkver": {
-  "github": "https://github.com/drone/drone-cli"
- },
- "description": "A self-service Continuous Delivery platform for busy development teams.",
- "homepage": "https://drone.io/",
- "license": "Apache-2.0",
- "pre_install": "if(Test-Path \"$dir\\drone\") { Rename-Item \"$dir\\drone\" \"$dir\\drone.exe\" }",
- "version": "1.6.2"
+    "version": "1.6.2",
+    "description": "A self-service Continuous Delivery platform for busy development teams.",
+    "homepage": "https://drone.io/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/drone/drone-cli/releases/download/v1.6.2/drone_windows_amd64.tar.gz",
+            "hash": "c69e3f95eecd2b68213f4ee09c26a8e0f33378bae7ce0d88799a83bde30773b7"
+        }
+    },
+    "pre_install": "if(Test-Path \"$dir\\drone\") { Rename-Item \"$dir\\drone\" \"$dir\\drone.exe\" }",
+    "bin": "drone.exe",
+    "checkver": {
+        "github": "https://github.com/drone/drone-cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/drone/drone-cli/releases/download/v$version/drone_windows_amd64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/drone_checksums.txt",
+            "regex": "$sha256\\s+(?:\\./|\\*)?(?:release/$basename)"
+        }
+    }
 }

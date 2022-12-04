@@ -1,19 +1,14 @@
 {
-    "autoupdate": {
-        "hash": {
-            "url": "$url.sha256"
-        },
-        "url": "https://download.jetbrains.com/teamcity/TeamCity-$majorVersion.$minorVersion.exe#/dl.7z"
-    },
-    "bin": "teamcity.ps1",
-    "checkver": {
-        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
-        "replace": "${ver}.${build}",
-        "url": "https://data.services.jetbrains.com/products/releases?code=TC&latest=true&platform=windows&type=release"
-    },
+    "version": "2022.10.1.116934",
     "description": "Continuous Integration server by JetBrains.",
-    "hash": "80857d2a8e391c0e34299ac8f69a357828d994c0ea5cedd736220b131a0ef88d",
     "homepage": "https://www.jetbrains.com/teamcity/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/store/license.html"
+    },
+    "notes": "TeamCity can be started from anywhere using 'teamcity' command.",
+    "url": "https://download.jetbrains.com/teamcity/TeamCity-2022.10.exe#/dl.7z",
+    "hash": "80857d2a8e391c0e34299ac8f69a357828d994c0ea5cedd736220b131a0ef88d",
     "installer": {
         "script": [
             "Remove-Item \"$dir\\`$*\" -Recurse",
@@ -26,12 +21,17 @@
             "Set-Content \"$dir\\teamcity.ps1\" $cont -Encoding Ascii"
         ]
     },
-    "license": {
-        "identifier": "Proprietary",
-        "url": "https://www.jetbrains.com/store/license.html"
-    },
-    "notes": "TeamCity can be started from anywhere using 'teamcity' command.",
+    "bin": "teamcity.ps1",
     "persist": "conf",
-    "url": "https://download.jetbrains.com/teamcity/TeamCity-2022.10.exe#/dl.7z",
-    "version": "2022.10.1.116934"
+    "checkver": {
+        "url": "https://data.services.jetbrains.com/products/releases?code=TC&latest=true&platform=windows&type=release",
+        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
+        "replace": "${ver}.${build}"
+    },
+    "autoupdate": {
+        "url": "https://download.jetbrains.com/teamcity/TeamCity-$majorVersion.$minorVersion.exe#/dl.7z",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
 }

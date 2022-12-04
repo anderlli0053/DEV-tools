@@ -1,19 +1,11 @@
 {
-    "autoupdate": {
-        "url": "https://www.ipvanish.com/software/setup-prod-v2/ipvanish-setup.exe#/setup.exe"
-    },
-    "checkver": {
-        "script": [
-            "$dl_url = 'https://www.ipvanish.com/software/setup-prod-v2/ipvanish-setup.exe'",
-            "$dl = cache_path 'IPVanish' 'unknown' $dl_url",
-            "do_dl $dl_url $dl",
-            "$version = (Get-Item $dl).VersionInfo.FileVersion",
-            "return $version"
-        ]
-    },
+    "version": "4.1.2.122",
     "description": "IPVanish. provides a secure environment for everyday internet activity",
-    "hash": "872fd95293414bb089b80743177d883eada221ff5b74cb0344e397d0845dd9de",
     "homepage": "https://www.ipvanish.com",
+    "license": "Proprietary",
+    "url": "https://www.ipvanish.com/software/setup-prod-v2/ipvanish-setup.exe#/setup.exe",
+    "hash": "872fd95293414bb089b80743177d883eada221ff5b74cb0344e397d0845dd9de",
+    "pre_download": "Assert-Administrator",
     "installer": {
         "script": [
             "$programname = \"IPVanish*\"",
@@ -30,13 +22,21 @@
             "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
         ]
     },
-    "license": "Proprietary",
     "post_install": [
         "$programname = \"IPVanish\"",
         "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
         "if (Test-Path \"$CommonDesktopPath\\$programname.lnk\") {Remove-Item \"$CommonDesktopPath\\$programname.lnk\" -Force}"
     ],
-    "pre_download": "Assert-Administrator",
-    "url": "https://www.ipvanish.com/software/setup-prod-v2/ipvanish-setup.exe#/setup.exe",
-    "version": "4.1.2.122"
+    "checkver": {
+        "script": [
+            "$dl_url = 'https://www.ipvanish.com/software/setup-prod-v2/ipvanish-setup.exe'",
+            "$dl = cache_path 'IPVanish' 'unknown' $dl_url",
+            "do_dl $dl_url $dl",
+            "$version = (Get-Item $dl).VersionInfo.FileVersion",
+            "return $version"
+        ]
+    },
+    "autoupdate": {
+        "url": "https://www.ipvanish.com/software/setup-prod-v2/ipvanish-setup.exe#/setup.exe"
+    }
 }

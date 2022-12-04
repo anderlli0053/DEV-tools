@@ -1,13 +1,26 @@
 {
+    "version": "2.5.2",
+    "description": "SiYuan is a local-first personal knowledge management system, supports fine-grained block-level reference, and Markdown WYSIWYG.",
+    "homepage": "https://b3log.org/siyuan",
+    "license": "AGPL-3.0-only",
     "architecture": {
         "64bit": {
+            "url": "https://github.com/siyuan-note/siyuan/releases/download/v2.5.2/siyuan-2.5.2-win.exe#/dl.7z",
             "hash": "e619e1243d0db02fafa788394f37d844273a104c683ddcb1f8c4e9dd23f2fa06",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
                 "Remove-Item \"$dir\\`$*\" -Recurse"
-            ],
-            "url": "https://github.com/siyuan-note/siyuan/releases/download/v2.5.2/siyuan-2.5.2-win.exe#/dl.7z"
+            ]
         }
+    },
+    "shortcuts": [
+        [
+            "siyuan.exe",
+            "SiYuan Note"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/siyuan-note/siyuan"
     },
     "autoupdate": {
         "architecture": {
@@ -15,18 +28,5 @@
                 "url": "https://github.com/siyuan-note/siyuan/releases/download/v$version/siyuan-$version-win.exe#/dl.7z"
             }
         }
-    },
-    "checkver": {
-        "github": "https://github.com/siyuan-note/siyuan"
-    },
-    "description": "SiYuan is a local-first personal knowledge management system, supports fine-grained block-level reference, and Markdown WYSIWYG.",
-    "homepage": "https://b3log.org/siyuan",
-    "license": "AGPL-3.0-only",
-    "shortcuts": [
-        [
-            "siyuan.exe",
-            "SiYuan Note"
-        ]
-    ],
-    "version": "2.5.2"
+    }
 }

@@ -1,7 +1,24 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/citra-emu/citra-canary/releases/download/canary-$matchBuild/citra-windows-$matchEnv-$matchDate-$matchCommit.$matchZip"
+    "version": "2330-20221203",
+    "description": "Emulator for Nintendo 3DS, capable of playing many of your favorite games",
+    "homepage": "https://citra-emu.org/",
+    "license": {
+        "identifier": "GPL-2.0",
+        "url": "https://github.com/citra-emu/citra-canary/blob/master/license.txt"
     },
+    "url": "https://github.com/citra-emu/citra-canary/releases/download/canary-2330/citra-windows-mingw-20221203-bf469e3.7z",
+    "hash": "3e55b1317087f7e6ef7c57ad66b1ca97b836403f1e591d8983f9721b136c7663",
+    "extract_dir": "canary-mingw",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\user\")) {",
+        "   New-Item -Path \"$persist_dir\" -Name \"user\" -ItemType \"directory\" | Out-Null",
+        "   if (Test-Path \"$env:APPDATA\\Citra\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:APPDATA\\Citra\\*\" -Destination \"$persist_dir\\user\" -Recurse",
+        "       Remove-Item -Path \"$env:APPDATA\\Citra\" -Recurse",
+        "   }",
+        "}"
+    ],
     "bin": [
         [
             "citra.exe",
@@ -16,36 +33,19 @@
             "citra-room-canary"
         ]
     ],
-    "checkver": {
-        "github": "https://github.com/citra-emu/citra-canary",
-        "regex": "download/canary-(?<build>[\\d]+)/citra-windows-(?<env>[\\w]+)-(?<date>[\\d]{8})-(?<commit>[\\da-f]{7})\\.(?<zip>7z|zip)",
-        "replace": "${build}-${date}"
-    },
-    "description": "Emulator for Nintendo 3DS, capable of playing many of your favorite games",
-    "extract_dir": "canary-mingw",
-    "hash": "3e55b1317087f7e6ef7c57ad66b1ca97b836403f1e591d8983f9721b136c7663",
-    "homepage": "https://citra-emu.org/",
-    "license": {
-        "identifier": "GPL-2.0",
-        "url": "https://github.com/citra-emu/citra-canary/blob/master/license.txt"
-    },
-    "persist": "user",
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\user\")) {",
-        "   New-Item -Path \"$persist_dir\" -Name \"user\" -ItemType \"directory\" | Out-Null",
-        "   if (Test-Path \"$env:APPDATA\\Citra\") {",
-        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
-        "       Copy-Item -Path \"$env:APPDATA\\Citra\\*\" -Destination \"$persist_dir\\user\" -Recurse",
-        "       Remove-Item -Path \"$env:APPDATA\\Citra\" -Recurse",
-        "   }",
-        "}"
-    ],
     "shortcuts": [
         [
             "citra-qt.exe",
             "Citra (Canary)"
         ]
     ],
-    "url": "https://github.com/citra-emu/citra-canary/releases/download/canary-2330/citra-windows-mingw-20221203-bf469e3.7z",
-    "version": "2330-20221203"
+    "persist": "user",
+    "checkver": {
+        "github": "https://github.com/citra-emu/citra-canary",
+        "regex": "download/canary-(?<build>[\\d]+)/citra-windows-(?<env>[\\w]+)-(?<date>[\\d]{8})-(?<commit>[\\da-f]{7})\\.(?<zip>7z|zip)",
+        "replace": "${build}-${date}"
+    },
+    "autoupdate": {
+        "url": "https://github.com/citra-emu/citra-canary/releases/download/canary-$matchBuild/citra-windows-$matchEnv-$matchDate-$matchCommit.$matchZip"
+    }
 }

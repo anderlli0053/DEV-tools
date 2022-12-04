@@ -1,25 +1,32 @@
 {
+    "version": "9.0.1000",
+    "description": "A highly configurable text editor for efficiently creating and changing any kind of text.",
+    "homepage": "https://www.vim.org",
+    "license": "Vim",
+    "notes": "Add gVim as a context menu option by running: \"$dir\\install-context.reg\"",
+    "suggest": {
+        "vimtutor": "vimtutor"
+    },
     "architecture": {
-        "32bit": {
-            "hash": "3b3739d15cabced2f7670361f2dc35d68797bcf1a1036e4ee6bbf45f45fa7da5",
-            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.0.0995/gvim_9.0.0995_x86.zip"
-        },
         "64bit": {
-            "hash": "0d6f7f77d492030c849b45868197eefdc134191d1e89d7c6d02263bb4b086a43",
-            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.0.0995/gvim_9.0.0995_x64.zip"
+            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.0.1000/gvim_9.0.1000_x64.zip",
+            "hash": "49833cbf7d82f4b4e48a824e87c8b072cc382e1a3c44e0560123d52f36c6c921"
+        },
+        "32bit": {
+            "url": "https://github.com/vim/vim-win32-installer/releases/download/v9.0.1000/gvim_9.0.1000_x86.zip",
+            "hash": "8f7613f0a8fc66820f2bd63ebe1c9ff930ed1d4a081cae69e76c4cebbead95ac"
         }
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x86.zip"
-            },
-            "64bit": {
-                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x64.zip"
-            }
-        },
-        "extract_dir": "vim\\vim$majorVersion$minorVersion"
-    },
+    "extract_dir": "vim\\vim90",
+    "post_install": [
+        "Remove-Item \"$dir\\`$*\", \"$dir\\uninstal.*\", \"$dir\\install.exe\" -Recurse",
+        "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
+        "    $vimpath = \"$dir\\gVim.exe\".Replace('\\', '\\\\')",
+        "    $content = (Get-Content \"$bucketsdir\\versions\\scripts\\vim\\$_\").Replace('$vim', $vimpath)",
+        "    if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
+        "    Set-Content \"$dir\\$_\" $content",
+        "}"
+    ],
     "bin": [
         "vim.exe",
         [
@@ -84,31 +91,24 @@
         ],
         "xxd.exe"
     ],
-    "checkver": {
-        "github": "https://github.com/vim/vim-win32-installer"
-    },
-    "description": "A highly configurable text editor for efficiently creating and changing any kind of text.",
-    "extract_dir": "vim\\vim90",
-    "homepage": "https://www.vim.org",
-    "license": "Vim",
-    "notes": "Add gVim as a context menu option by running: \"$dir\\install-context.reg\"",
-    "post_install": [
-        "Remove-Item \"$dir\\`$*\", \"$dir\\uninstal.*\", \"$dir\\install.exe\" -Recurse",
-        "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
-        "    $vimpath = \"$dir\\gVim.exe\".Replace('\\', '\\\\')",
-        "    $content = (Get-Content \"$bucketsdir\\versions\\scripts\\vim\\$_\").Replace('$vim', $vimpath)",
-        "    if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
-        "    Set-Content \"$dir\\$_\" $content",
-        "}"
-    ],
     "shortcuts": [
         [
             "gvim.exe",
             "gVim"
         ]
     ],
-    "suggest": {
-        "vimtutor": "vimtutor"
+    "checkver": {
+        "github": "https://github.com/vim/vim-win32-installer"
     },
-    "version": "9.0.0995"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x86.zip"
+            }
+        },
+        "extract_dir": "vim\\vim$majorVersion$minorVersion"
+    }
 }

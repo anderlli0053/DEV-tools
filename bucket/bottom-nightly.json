@@ -1,31 +1,31 @@
 {
+    "version": "3610871238",
+    "description": "Graphical process/system monitor",
+    "homepage": "https://github.com/ClementTsang/bottom",
+    "license": "MIT",
     "architecture": {
-        "32bit": {
-            "hash": "e9ad3e8f30c698a6d6f513f13807a67e1b9d89c946f1a10e36a6a7415efc1323",
-            "url": "https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_i686-pc-windows-msvc.zip"
-        },
         "64bit": {
-            "hash": "0b8a3af5f65fde1dea7eef30768b8e1b106b84fba1789232a2aad77311a4a511",
-            "url": "https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_x86_64-pc-windows-msvc.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_i686-pc-windows-msvc.zip"
-            },
-            "64bit": {
-                "url": "https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_x86_64-pc-windows-msvc.zip"
-            }
+            "url": "https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_x86_64-pc-windows-msvc.zip",
+            "hash": "0b8a3af5f65fde1dea7eef30768b8e1b106b84fba1789232a2aad77311a4a511"
+        },
+        "32bit": {
+            "url": "https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_i686-pc-windows-msvc.zip",
+            "hash": "e9ad3e8f30c698a6d6f513f13807a67e1b9d89c946f1a10e36a6a7415efc1323"
         }
     },
     "bin": "btm.exe",
     "checkver": {
-        "jsonpath": "$.workflow_runs[0].id",
-        "url": "https://api.github.com/repositories/205042455/actions/workflows/nightly.yml/runs?branch=master&status=success"
+        "url": "https://api.github.com/repositories/205042455/actions/workflows/nightly.yml/runs?branch=master&status=success",
+        "jsonpath": "$.workflow_runs[0].id"
     },
-    "description": "Graphical process/system monitor",
-    "homepage": "https://github.com/ClementTsang/bottom",
-    "license": "MIT",
-    "version": "3610871238"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_i686-pc-windows-msvc.zip"
+            }
+        }
+    }
 }

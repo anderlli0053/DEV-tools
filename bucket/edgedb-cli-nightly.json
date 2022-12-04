@@ -1,9 +1,22 @@
 {
+    "version": "2.3.0-dev.895+f34eafa",
+    "description": "(Nightly Version) Command-line tools for EdgeDB.",
+    "homepage": "https://www.edgedb.com/docs/cli/index",
+    "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "hash": "01cef3af2cef199e0758ee6a22f95348267c7be6c412aedefb9fcb735b4938c2",
-            "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc.nightly/edgedb-cli-2.3.0-dev.895+f34eafa.exe#/edgedb.exe"
+            "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc.nightly/edgedb-cli-2.3.0-dev.895+f34eafa.exe#/edgedb.exe",
+            "hash": "01cef3af2cef199e0758ee6a22f95348267c7be6c412aedefb9fcb735b4938c2"
         }
+    },
+    "bin": "edgedb.exe",
+    "checkver": {
+        "script": [
+            "$indexes = Invoke-RestMethod 'https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.nightly.json'",
+            "$latest = $indexes.packages | Sort-Object -Property revision | Select-Object -Last 1",
+            "return $latest.version"
+        ],
+        "regex": "(.+)"
     },
     "autoupdate": {
         "architecture": {
@@ -11,18 +24,5 @@
                 "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc.nightly/edgedb-cli-$version.exe#/edgedb.exe"
             }
         }
-    },
-    "bin": "edgedb.exe",
-    "checkver": {
-        "regex": "(.+)",
-        "script": [
-            "$indexes = Invoke-RestMethod 'https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.nightly.json'",
-            "$latest = $indexes.packages | Sort-Object -Property revision | Select-Object -Last 1",
-            "return $latest.version"
-        ]
-    },
-    "description": "(Nightly Version) Command-line tools for EdgeDB.",
-    "homepage": "https://www.edgedb.com/docs/cli/index",
-    "license": "Apache-2.0",
-    "version": "2.3.0-dev.895+f34eafa"
+    }
 }

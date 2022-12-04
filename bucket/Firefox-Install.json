@@ -1,40 +1,20 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "sha512:a090152f5666a8265ef82a9e371ddb94c6d5d9c233675fc6f4db0d4acf03fec3502490ed92e734fbec561b7e8d0a25f85ccb50ca40a38147b52ea7727436a74d",
-            "url": "https://archive.mozilla.org/pub/firefox/releases/107.0.1/win32/en-US/Firefox%20Setup%20107.0.1.exe#/setup.exe"
-        },
-        "64bit": {
-            "hash": "sha512:3ce636d351186351b213af56c0d0f117940507d7a998342f7693efa09a3dd46a4e58f1709bc3328601a1a909bec47a41cb2e74ee6810d8c3d68767b46be8dd11",
-            "url": "https://archive.mozilla.org/pub/firefox/releases/107.0.1/win64/en-US/Firefox%20Setup%20107.0.1.exe#/setup.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "regex": "$sha512\\s+win32/en-US/$basename",
-                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS"
-                },
-                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/en-US/Firefox%20Setup%20$version.exe#/setup.exe"
-            },
-            "64bit": {
-                "hash": {
-                    "regex": "$sha512\\s+win64/en-US/$basename",
-                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS"
-                },
-                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/en-US/Firefox%20Setup%20$version.exe#/setup.exe"
-            }
-        },
-        "changelog": "https://www.mozilla.org/en-US/firefox/$version/releasenotes/"
-    },
-    "changelog": "https://www.mozilla.org/en-US/firefox/107.0.1/releasenotes/",
-    "checkver": {
-        "regex": "<div class=\"c-release-version\">([\\d.]+)</div>",
-        "url": "https://www.mozilla.org/en-US/firefox/notes/"
-    },
+    "version": "107.0.1",
     "description": "Firefox. Popular open source web browser.",
     "homepage": "https://www.mozilla.org/firefox/",
+    "license": "MPL-2.0",
+    "changelog": "https://www.mozilla.org/en-US/firefox/107.0.1/releasenotes/",
+    "architecture": {
+        "64bit": {
+            "url": "https://archive.mozilla.org/pub/firefox/releases/107.0.1/win64/en-US/Firefox%20Setup%20107.0.1.exe#/setup.exe",
+            "hash": "sha512:3ce636d351186351b213af56c0d0f117940507d7a998342f7693efa09a3dd46a4e58f1709bc3328601a1a909bec47a41cb2e74ee6810d8c3d68767b46be8dd11"
+        },
+        "32bit": {
+            "url": "https://archive.mozilla.org/pub/firefox/releases/107.0.1/win32/en-US/Firefox%20Setup%20107.0.1.exe#/setup.exe",
+            "hash": "sha512:a090152f5666a8265ef82a9e371ddb94c6d5d9c233675fc6f4db0d4acf03fec3502490ed92e734fbec561b7e8d0a25f85ccb50ca40a38147b52ea7727436a74d"
+        }
+    },
+    "pre_download": "Assert-Administrator",
     "installer": {
         "script": [
             "$programname = \"Mozilla Firefox*\"",
@@ -51,11 +31,31 @@
             "Remove-Item \"$dir\\setup.exe\" -Force"
         ]
     },
-    "license": "MPL-2.0",
     "post_install": [
         "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
         "if (Test-Path \"$CommonDesktopPath\\Firefox.lnk\") {Remove-Item \"$CommonDesktopPath\\Firefox.lnk\" -Force}"
     ],
-    "pre_download": "Assert-Administrator",
-    "version": "107.0.1"
+    "checkver": {
+        "url": "https://www.mozilla.org/en-US/firefox/notes/",
+        "regex": "<div class=\"c-release-version\">([\\d.]+)</div>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/en-US/Firefox%20Setup%20$version.exe#/setup.exe",
+                "hash": {
+                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win64/en-US/$basename"
+                }
+            },
+            "32bit": {
+                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/en-US/Firefox%20Setup%20$version.exe#/setup.exe",
+                "hash": {
+                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win32/en-US/$basename"
+                }
+            }
+        },
+        "changelog": "https://www.mozilla.org/en-US/firefox/$version/releasenotes/"
+    }
 }

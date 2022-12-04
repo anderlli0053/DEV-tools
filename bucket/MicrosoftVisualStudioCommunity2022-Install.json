@@ -1,24 +1,24 @@
 {
-    "autoupdate": {
-        "url": "https://aka.ms/vs/17/release/vs_community.exe"
-    },
-    "checkver": {
-        "regex": ">Visual Studio 2022 version ([\\d.]+)<",
-        "url": "https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes"
-    },
+    "version": "17.4.2",
     "description": "Microsoft Visual Studio Community 2022. ",
-    "hash": "aa7154a50a8be673f89fecba5a5dd503747e90fd8db4ad7f0a50d06ff6885596",
     "homepage": "https://www.visualstudio.com/downloads/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://visualstudio.microsoft.com/license-terms"
+    },
+    "url": "https://aka.ms/vs/17/release/vs_community.exe",
+    "hash": "aa7154a50a8be673f89fecba5a5dd503747e90fd8db4ad7f0a50d06ff6885596",
     "installer": {
         "script": [
             "Invoke-ExternalCommand -FilePath \"$dir\\vs_community.exe\" -Args @('--quiet', '--update', '--wait') -RunAs | Out-Null",
             "Invoke-ExternalCommand -FilePath \"$dir\\vs_community.exe\" -Args @('update', '--wait', '--quiet', '--norestart', '--installPath \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\"') -RunAs | Out-Null"
         ]
     },
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://visualstudio.microsoft.com/license-terms"
+    "checkver": {
+        "url": "https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes",
+        "regex": ">Visual Studio 2022 version ([\\d.]+)<"
     },
-    "url": "https://aka.ms/vs/17/release/vs_community.exe",
-    "version": "17.4.2"
+    "autoupdate": {
+        "url": "https://aka.ms/vs/17/release/vs_community.exe"
+    }
 }

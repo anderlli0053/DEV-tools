@@ -1,32 +1,20 @@
 {
+    "version": "102.5.1",
+    "description": "Thunderbird. A free email application that is easy to set up and customize.",
+    "homepage": "https://www.thunderbird.net",
+    "license": "MPL-2.0",
+    "changelog": "https://www.thunderbird.net/en-US/thunderbird/91.3.2/releasenotes/#changes",
     "architecture": {
-        "32bit": {
-            "hash": "sha512:6471475e5e315ec344d34ed85fb2bff21c726f73e9f39cd3f39f73f50b70007cb556da8e6d02277e025720403b5f3a363e793fec657f28f1e2b17bb2ea4007ac",
-            "url": "https://archive.mozilla.org/pub/thunderbird/releases/102.5.1/win32/en-US/Thunderbird%20Setup%20102.5.1.exe#/dl.7z"
-        },
         "64bit": {
-            "hash": "sha512:39af632f2fc08ecdeaff5ccdbc296ad79d3b8aea3de18a54dedd73c44a749c04516dc97980a9195ec7e9ed7f6677282a47835acc102ca7480d190e1f4c4b6f72",
-            "url": "https://archive.mozilla.org/pub/thunderbird/releases/102.5.1/win64/en-US/Thunderbird%20Setup%20102.5.1.exe#/dl.7z"
+            "url": "https://archive.mozilla.org/pub/thunderbird/releases/102.5.1/win64/en-US/Thunderbird%20Setup%20102.5.1.exe#/dl.7z",
+            "hash": "sha512:39af632f2fc08ecdeaff5ccdbc296ad79d3b8aea3de18a54dedd73c44a749c04516dc97980a9195ec7e9ed7f6677282a47835acc102ca7480d190e1f4c4b6f72"
+        },
+        "32bit": {
+            "url": "https://archive.mozilla.org/pub/thunderbird/releases/102.5.1/win32/en-US/Thunderbird%20Setup%20102.5.1.exe#/dl.7z",
+            "hash": "sha512:6471475e5e315ec344d34ed85fb2bff21c726f73e9f39cd3f39f73f50b70007cb556da8e6d02277e025720403b5f3a363e793fec657f28f1e2b17bb2ea4007ac"
         }
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "regex": "$sha512\\s+win32/en-US/$basename",
-                    "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/SHA512SUMS"
-                },
-                "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/win32/en-US/Thunderbird%20Setup%20$version.exe#/dl.7z"
-            },
-            "64bit": {
-                "hash": {
-                    "regex": "$sha512\\s+win64/en-US/$basename",
-                    "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/SHA512SUMS"
-                },
-                "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/win64/en-US/Thunderbird%20Setup%20$version.exe#/dl.7z"
-            }
-        }
-    },
+    "extract_dir": "core",
     "bin": [
         [
             "thunderbird.exe",
@@ -34,16 +22,6 @@
             "-profile \"$dir\\profile\""
         ]
     ],
-    "changelog": "https://www.thunderbird.net/en-US/thunderbird/91.3.2/releasenotes/#changes",
-    "checkver": {
-        "regex": "thunderbird/([\\d.]+)/",
-        "url": "https://www.thunderbird.net/thunderbird/all/"
-    },
-    "description": "Thunderbird. A free email application that is easy to set up and customize.",
-    "extract_dir": "core",
-    "homepage": "https://www.thunderbird.net",
-    "license": "MPL-2.0",
-    "persist": "profile",
     "shortcuts": [
         [
             "thunderbird.exe",
@@ -51,5 +29,27 @@
             "-profile \"$dir\\profile\""
         ]
     ],
-    "version": "102.5.1"
+    "persist": "profile",
+    "checkver": {
+        "url": "https://www.thunderbird.net/thunderbird/all/",
+        "regex": "thunderbird/([\\d.]+)/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/win64/en-US/Thunderbird%20Setup%20$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win64/en-US/$basename"
+                }
+            },
+            "32bit": {
+                "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/win32/en-US/Thunderbird%20Setup%20$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win32/en-US/$basename"
+                }
+            }
+        }
+    }
 }

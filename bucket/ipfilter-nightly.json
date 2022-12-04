@@ -1,15 +1,15 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/DavidMoore/ipfilter/releases/download/lists/ipfilter.zip"
-    },
-    "checkver": {
-        "regex": "^(\\d+)$",
-        "script": "Get-Date (Invoke-RestMethod https://api.github.com/repositories/487352/releases/tags/lists).assets[0].updated_at -UFormat %s"
-    },
+    "version": "1670083365",
     "description": "Protects privacy and security when using Bit Torrent by blocking a list of potentially malicious peers.",
-    "hash": "954e0e9248d2313741707e18d0fcd71176ab86f140eae728c3d74835d93ebc8b",
     "homepage": "https://www.ipfilter.app/",
     "license": "MIT",
     "url": "https://github.com/DavidMoore/ipfilter/releases/download/lists/ipfilter.zip",
-    "version": "1670083365"
+    "hash": "954e0e9248d2313741707e18d0fcd71176ab86f140eae728c3d74835d93ebc8b",
+    "checkver": {
+        "script": "Get-Date (Invoke-RestMethod https://api.github.com/repositories/487352/releases/tags/lists).assets[0].updated_at -UFormat %s",
+        "regex": "^(\\d+)$"
+    },
+    "autoupdate": {
+        "url": "https://github.com/DavidMoore/ipfilter/releases/download/lists/ipfilter.zip"
+    }
 }

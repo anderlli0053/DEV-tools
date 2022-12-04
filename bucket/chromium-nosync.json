@@ -1,54 +1,26 @@
 {
     "##": "Check chromium.woolyss.com for different versions of Chromium releases.",
+    "version": "108.0.5359.95-r1016",
+    "description": "Browser aiming for safer, faster, and more stable way for all users to experience the web.",
+    "homepage": "https://www.chromium.org",
+    "license": "BSD-3-Clause",
     "architecture": {
-        "32bit": {
-            "hash": "sha1:b401f97f5c0f984b9294a5309e1c95a895696833",
-            "url": "https://github.com/Hibbiki/chromium-win32/releases/download/v108.0.5359.95-r1016/chrome.nosync.7z"
-        },
         "64bit": {
-            "hash": "sha1:7c916eab8351bf256502b4f7910c56cbe59cd49a",
-            "url": "https://github.com/Hibbiki/chromium-win64/releases/download/v108.0.5359.95-r1016/chrome.nosync.7z"
+            "url": "https://github.com/Hibbiki/chromium-win64/releases/download/v108.0.5359.95-r1016/chrome.nosync.7z",
+            "hash": "sha1:7c916eab8351bf256502b4f7910c56cbe59cd49a"
+        },
+        "32bit": {
+            "url": "https://github.com/Hibbiki/chromium-win32/releases/download/v108.0.5359.95-r1016/chrome.nosync.7z",
+            "hash": "sha1:77b143fd9e46618434e60e074d24eecba632c5af"
         }
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "regex": "$sha1 \\.\\./out/x86/chrome.nosync.7z",
-                    "url": "https://github.com/Hibbiki/chromium-win32/releases/latest"
-                },
-                "url": "https://github.com/Hibbiki/chromium-win32/releases/download/v$version/chrome.nosync.7z"
-            },
-            "64bit": {
-                "hash": {
-                    "regex": "$sha1 \\.\\./out/x64/chrome.nosync.7z",
-                    "url": "https://github.com/Hibbiki/chromium-win64/releases/latest"
-                },
-                "url": "https://github.com/Hibbiki/chromium-win64/releases/download/v$version/chrome.nosync.7z"
-            }
-        }
-    },
+    "extract_dir": "Chrome-bin",
     "bin": [
         [
             "chrome.exe",
             "chromium",
             "--user-data-dir=\"$dir\\User Data\""
         ]
-    ],
-    "checkver": {
-        "regex": ">v([\\d.\\-r]+)</h1>",
-        "url": "https://github.com/Hibbiki/chromium-win64/releases/latest"
-    },
-    "description": "Browser aiming for safer, faster, and more stable way for all users to experience the web.",
-    "extract_dir": "Chrome-bin",
-    "homepage": "https://www.chromium.org",
-    "license": "BSD-3-Clause",
-    "persist": "User Data",
-    "post_install": [
-        "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\Chromium\\User Data\")) {",
-        "    info '[Portable Mode]: Copying user data...'",
-        "    Copy-Item \"$env:LocalAppData\\Chromium\\User Data\\*\" \"$dir\\User Data\" -Recurse",
-        "}"
     ],
     "shortcuts": [
         [
@@ -57,5 +29,33 @@
             "--user-data-dir=\"$dir\\User Data\""
         ]
     ],
-    "version": "108.0.5359.95-r1016"
+    "post_install": [
+        "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\Chromium\\User Data\")) {",
+        "    info '[Portable Mode]: Copying user data...'",
+        "    Copy-Item \"$env:LocalAppData\\Chromium\\User Data\\*\" \"$dir\\User Data\" -Recurse",
+        "}"
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://github.com/Hibbiki/chromium-win64/releases/latest",
+        "regex": ">v([\\d.\\-r]+)</h1>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Hibbiki/chromium-win64/releases/download/v$version/chrome.nosync.7z",
+                "hash": {
+                    "url": "https://github.com/Hibbiki/chromium-win64/releases/latest",
+                    "regex": "$sha1 \\.\\./out/x64/chrome.nosync.7z"
+                }
+            },
+            "32bit": {
+                "url": "https://github.com/Hibbiki/chromium-win32/releases/download/v$version/chrome.nosync.7z",
+                "hash": {
+                    "url": "https://github.com/Hibbiki/chromium-win32/releases/latest",
+                    "regex": "$sha1 \\.\\./out/x86/chrome.nosync.7z"
+                }
+            }
+        }
+    }
 }

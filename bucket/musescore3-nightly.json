@@ -1,18 +1,15 @@
 {
+    "version": "202212040415",
+    "description": "Music notation editor with an easy-to-use WYSIWYG interface.",
+    "homepage": "https://musescore.org/",
+    "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "hash": "389ae23e8c31e5826d5ab0ce90e30d21d8ce165b757b129434524127febb0e28",
-            "url": "https://ftp.osuosl.org/pub/musescore-nightlies/windows/3x/nightly/MuseScoreNightly-202212040415-3.x-2513676-x86_64.7z"
+            "url": "https://ftp.osuosl.org/pub/musescore-nightlies/windows/3x/nightly/MuseScoreNightly-202212040415-3.x-2513676-x86_64.7z",
+            "hash": "389ae23e8c31e5826d5ab0ce90e30d21d8ce165b757b129434524127febb0e28"
         }
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://ftp.osuosl.org/pub/musescore-nightlies/windows/3x/nightly/MuseScoreNightly-$version-3.x-$matchTag-x86_64.7z"
-            }
-        },
-        "extract_dir": "MuseScoreNightly-$version-3.x-$matchTag-x86_64"
-    },
+    "extract_dir": "MuseScoreNightly-202212040415-3.x-2513676-x86_64",
     "bin": [
         [
             "bin\\MuseScore3.exe",
@@ -23,20 +20,23 @@
             "mscore"
         ]
     ],
-    "checkver": {
-        "regex": "MuseScoreNightly-(\\d+)-3.x-(?<tag>[a-f0-9]+)-x86_64\\.7z",
-        "reverse": true,
-        "url": "https://ftp.osuosl.org/pub/musescore-nightlies/windows/3x/nightly/"
-    },
-    "description": "Music notation editor with an easy-to-use WYSIWYG interface.",
-    "extract_dir": "MuseScoreNightly-202212040415-3.x-2513676-x86_64",
-    "homepage": "https://musescore.org/",
-    "license": "GPL-2.0-only",
     "shortcuts": [
         [
             "bin\\MuseScore3.exe",
             "MuseScore 3 Nightly"
         ]
     ],
-    "version": "202212040415"
+    "checkver": {
+        "url": "https://ftp.osuosl.org/pub/musescore-nightlies/windows/3x/nightly/",
+        "regex": "MuseScoreNightly-(\\d+)-3.x-(?<tag>[a-f0-9]+)-x86_64\\.7z",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ftp.osuosl.org/pub/musescore-nightlies/windows/3x/nightly/MuseScoreNightly-$version-3.x-$matchTag-x86_64.7z"
+            }
+        },
+        "extract_dir": "MuseScoreNightly-$version-3.x-$matchTag-x86_64"
+    }
 }

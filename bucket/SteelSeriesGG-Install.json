@@ -1,15 +1,12 @@
 {
-    "autoupdate": {
-        "url": "https://steelseries.com/gg/downloads/gg/latest/windows#/setup.exe"
-    },
-    "changelog": "https://techblog.steelseries.com/",
-    "checkver": {
-        "regex": "Release notes for GG ([\\d.]+)",
-        "url": "https://techblog.steelseries.com/"
-    },
+    "version": "28.1",
     "description": "SteelSeries GG. SteelSeries GG helps create better connections with your gear, your people and your game",
-    "hash": "bb088cb4cdb1bce7d8d63707162fcac019a36c1b94b820b63f1da24fd98e47b9",
     "homepage": "https://steelseries.com/gg/",
+    "license": "Propritary",
+    "changelog": "https://techblog.steelseries.com/",
+    "url": "https://steelseries.com/gg/downloads/gg/latest/windows#/setup.exe",
+    "hash": "bb088cb4cdb1bce7d8d63707162fcac019a36c1b94b820b63f1da24fd98e47b9",
+    "pre_download": "Assert-Administrator",
     "installer": {
         "script": [
             "$programname = \"SteelSeries GG*\"",
@@ -26,8 +23,11 @@
             "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
         ]
     },
-    "license": "Propritary",
-    "pre_download": "Assert-Administrator",
-    "url": "https://steelseries.com/gg/downloads/gg/latest/windows#/setup.exe",
-    "version": "28.1"
+    "checkver": {
+        "url": "https://techblog.steelseries.com/",
+        "regex": "Release notes for GG ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://steelseries.com/gg/downloads/gg/latest/windows#/setup.exe"
+    }
 }

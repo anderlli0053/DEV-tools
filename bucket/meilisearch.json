@@ -1,9 +1,21 @@
 {
+    "version": "0.30.0",
+    "description": "A powerful, fast, open-source, easy to use and deploy search engine.",
+    "homepage": "https://www.meilisearch.com/",
+    "license": "MIT",
     "architecture": {
         "64bit": {
-            "hash": "fcf1802121df5cb02062d63d738942ca695778059ef4e50b338cd03bdafd91c9",
-            "url": "https://github.com/meilisearch/meilisearch/releases/download/v0.30.0/meilisearch-windows-amd64.exe#/meilisearch.exe"
+            "url": "https://github.com/meilisearch/meilisearch/releases/download/v0.30.0/meilisearch-windows-amd64.exe#/meilisearch.exe",
+            "hash": "fcf1802121df5cb02062d63d738942ca695778059ef4e50b338cd03bdafd91c9"
         }
+    },
+    "bin": "meilisearch.exe",
+    "persist": "data.ms",
+    "env_set": {
+        "MEILI_DB_PATH": "$dir\\data.ms"
+    },
+    "checkver": {
+        "github": "https://github.com/meilisearch/meilisearch"
     },
     "autoupdate": {
         "architecture": {
@@ -11,17 +23,5 @@
                 "url": "https://github.com/meilisearch/meilisearch/releases/download/v$version/meilisearch-windows-amd64.exe#/meilisearch.exe"
             }
         }
-    },
-    "bin": "meilisearch.exe",
-    "checkver": {
-        "github": "https://github.com/meilisearch/meilisearch"
-    },
-    "description": "A powerful, fast, open-source, easy to use and deploy search engine.",
-    "env_set": {
-        "MEILI_DB_PATH": "$dir\\data.ms"
-    },
-    "homepage": "https://www.meilisearch.com/",
-    "license": "MIT",
-    "persist": "data.ms",
-    "version": "0.30.0"
+    }
 }

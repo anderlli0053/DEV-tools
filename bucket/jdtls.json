@@ -1,29 +1,29 @@
 {
-    "autoupdate": {
-        "hash": {
-            "url": "$url.sha256"
-        },
-        "url": "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-$match1-$match2.tar.gz"
-    },
-    "checkver": {
-        "regex": "jdt-language-server-([\\d.]+)-(\\d+)",
-        "replace": "${1}-${2}",
-        "url": "https://download.eclipse.org/jdtls/snapshots/latest.txt"
-    },
+    "version": "1.19.0-202212021627",
     "description": "Java language server",
-    "hash": "e1f3fa4e2debb826e88292f54f0175d7af5989278b74b0b0bf0bcd04d2c4d178",
     "homepage": "https://projects.eclipse.org/projects/eclipse.jdt.ls",
-    "installer": {
-        "script": "shim (search_in_path python.exe) $global jdtls \"$dir\\bin\\jdtls\""
-    },
     "license": "EPL-2.0",
     "suggest": {
         "JDK": "java/openjdk",
         "Python": "python"
     },
+    "url": "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-1.19.0-202212021627.tar.gz",
+    "hash": "e1f3fa4e2debb826e88292f54f0175d7af5989278b74b0b0bf0bcd04d2c4d178",
+    "installer": {
+        "script": "shim (search_in_path python.exe) $global jdtls \"$dir\\bin\\jdtls\""
+    },
     "uninstaller": {
         "script": "rm_shim jdtls (shimdir $global) jdtls"
     },
-    "url": "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-1.19.0-202212021627.tar.gz",
-    "version": "1.19.0-202212021627"
+    "checkver": {
+        "url": "https://download.eclipse.org/jdtls/snapshots/latest.txt",
+        "regex": "jdt-language-server-([\\d.]+)-(\\d+)",
+        "replace": "${1}-${2}"
+    },
+    "autoupdate": {
+        "url": "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-$match1-$match2.tar.gz",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
 }

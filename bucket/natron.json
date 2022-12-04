@@ -1,35 +1,35 @@
 {
+    "version": "2.5.0",
+    "description": "Compositing software for VFX and motion graphics",
+    "homepage": "https://natrongithub.github.io/",
+    "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "extract_dir": "Natron-2.5.0-Windows-x86_64",
+            "url": "https://github.com/NatronGitHub/Natron/releases/download/v2.5.0/Natron-2.5.0-Windows-x86_64.zip",
             "hash": "386dd68cb920e487c575917d3f657a55942d8c9a2468ed2ec6ce322ffcc5ab61",
-            "url": "https://github.com/NatronGitHub/Natron/releases/download/v2.5.0/Natron-2.5.0-Windows-x86_64.zip"
+            "extract_dir": "Natron-2.5.0-Windows-x86_64"
         }
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "extract_dir": "Natron-$version-Windows-x86_64",
-                "url": "https://github.com/NatronGitHub/Natron/releases/download/v$version/Natron-$version-Windows-x86_64.zip"
-            }
-        }
-    },
+    "post_install": "Copy-Item \"$dir\\bin\\mesa\\opengl32.dll\" \"$dir\\bin\"",
     "bin": [
         "bin\\Natron.exe",
         "bin\\NatronRenderer.exe"
     ],
-    "checkver": {
-        "github": "https://github.com/NatronGitHub/Natron"
-    },
-    "description": "Compositing software for VFX and motion graphics",
-    "homepage": "https://natrongithub.github.io/",
-    "license": "GPL-2.0-only",
-    "post_install": "Copy-Item \"$dir\\bin\\mesa\\opengl32.dll\" \"$dir\\bin\"",
     "shortcuts": [
         [
             "bin\\Natron.exe",
             "Natron"
         ]
     ],
-    "version": "2.5.0"
+    "checkver": {
+        "github": "https://github.com/NatronGitHub/Natron"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/NatronGitHub/Natron/releases/download/v$version/Natron-$version-Windows-x86_64.zip",
+                "extract_dir": "Natron-$version-Windows-x86_64"
+            }
+        }
+    }
 }

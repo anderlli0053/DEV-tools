@@ -1,49 +1,49 @@
 {
-    "architecture": {
-        "32bit": {
-            "extract_dir": "node-v19.2.0-win-x86",
-            "hash": "10a35e02249fae9cf69122d436c6a895d442cdb277bc1dcefa5d56f784a6a832",
-            "url": "https://nodejs.org/dist/v19.2.0/node-v19.2.0-win-x86.7z"
-        },
-        "64bit": {
-            "extract_dir": "node-v19.2.0-win-x64",
-            "hash": "f0376c07002cf564fb6037897686f9fe079aa2ca3eea7d0a408e66b8299e11ad",
-            "url": "https://nodejs.org/dist/v19.2.0/node-v19.2.0-win-x64.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "extract_dir": "node-v$version-win-x86",
-                "url": "https://nodejs.org/dist/v$version/node-v$version-win-x86.7z"
-            },
-            "64bit": {
-                "extract_dir": "node-v$version-win-x64",
-                "url": "https://nodejs.org/dist/v$version/node-v$version-win-x64.7z"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/SHASUMS256.txt.asc"
-        }
-    },
-    "checkver": {
-        "regex": "node-v([\\d.]+)-win-x64\\.7z",
-        "url": "https://nodejs.org/dist/latest/"
-    },
+    "version": "19.2.0",
     "description": "An asynchronous event driven JavaScript runtime designed to build scalable network applications.",
-    "env_add_path": [
-        "bin",
-        "."
-    ],
     "homepage": "https://nodejs.org",
     "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://nodejs.org/dist/v19.2.0/node-v19.2.0-win-x64.7z",
+            "hash": "f0376c07002cf564fb6037897686f9fe079aa2ca3eea7d0a408e66b8299e11ad",
+            "extract_dir": "node-v19.2.0-win-x64"
+        },
+        "32bit": {
+            "url": "https://nodejs.org/dist/v19.2.0/node-v19.2.0-win-x86.7z",
+            "hash": "10a35e02249fae9cf69122d436c6a895d442cdb277bc1dcefa5d56f784a6a832",
+            "extract_dir": "node-v19.2.0-win-x86"
+        }
+    },
     "persist": [
         "bin",
         "cache"
+    ],
+    "env_add_path": [
+        "bin",
+        "."
     ],
     "post_install": [
         "# Set npm prefix to install modules inside bin and npm cache so they persist",
         "Set-Content -Value \"prefix=$persist_dir\\bin`ncache=$persist_dir\\cache\" -Path \"$dir\\node_modules\\npm\\npmrc\""
     ],
-    "version": "19.2.0"
+    "checkver": {
+        "url": "https://nodejs.org/dist/latest/",
+        "regex": "node-v([\\d.]+)-win-x64\\.7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nodejs.org/dist/v$version/node-v$version-win-x64.7z",
+                "extract_dir": "node-v$version-win-x64"
+            },
+            "32bit": {
+                "url": "https://nodejs.org/dist/v$version/node-v$version-win-x86.7z",
+                "extract_dir": "node-v$version-win-x86"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHASUMS256.txt.asc"
+        }
+    }
 }

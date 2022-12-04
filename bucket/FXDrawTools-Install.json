@@ -1,15 +1,24 @@
 {
-    "autoupdate": {
-        "url": "https://www.efofex.com/downloadexe.php?&file=FXDrawTools.exe#/setup.exe"
-    },
-    "changelog": "https://www.efofex.com/downloads.php#versions",
-    "checkver": {
-        "regex": "V([\\d.]+)",
-        "url": "https://www.efofex.com/downloads.php#versions"
-    },
+    "version": "22.12.2",
     "description": "FX Draw Tools. High-productivity drawing environment designed specifically for mathematics teachers",
-    "hash": "abb9ffc9525078160e14090df53a1e5af7ddb9d46594d41e651cd3f8070bc089",
     "homepage": "https://www.efofex.com/fxdraw.php",
+    "license": "Proprietary",
+    "changelog": "https://www.efofex.com/downloads.php#versions",
+    "url": "https://www.efofex.com/downloadexe.php?&file=FXDrawTools.exe#/setup.exe",
+    "hash": "abb9ffc9525078160e14090df53a1e5af7ddb9d46594d41e651cd3f8070bc089",
+    "pre_download": "Assert-Administrator",
+    "pre_install": [
+        "$processname = \"FXDraw\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
     "installer": {
         "script": [
             "$programname = \"FX Draw Tools*\"",
@@ -26,25 +35,16 @@
             "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
         ]
     },
-    "license": "Proprietary",
     "post_install": [
         "$programname = \"FX Draw Tools\"",
         "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
         "if (Test-Path \"$CommonDesktopPath\\$programname.lnk\") {Remove-Item \"$CommonDesktopPath\\$programname.lnk\" -Force}"
     ],
-    "pre_download": "Assert-Administrator",
-    "pre_install": [
-        "$processname = \"FXDraw\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "url": "https://www.efofex.com/downloadexe.php?&file=FXDrawTools.exe#/setup.exe",
-    "version": "22.12.2"
+    "checkver": {
+        "url": "https://www.efofex.com/downloads.php#versions",
+        "regex": "V([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://www.efofex.com/downloadexe.php?&file=FXDrawTools.exe#/setup.exe"
+    }
 }

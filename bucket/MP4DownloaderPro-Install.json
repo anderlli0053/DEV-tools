@@ -1,14 +1,23 @@
 {
-    "autoupdate": {
-        "url": "http://www.tomabo.net/downloads/mp4-downloader-pro-$majorVersion-setup.exe#/setup.exe"
-    },
-    "checkver": {
-        "regex": "Latest Version</td>\\s+<td bgcolor=\"#FFFFFF\" align=\"center\">([\\d.]+)",
-        "url": "http://www.tomabo.com/mp4-downloader-pro/download.html"
-    },
+    "version": "4.17.0",
     "description": "MP4 Downloader Pro. A Windows application to download your favorite videos from hundreds of video sharing sites.",
-    "hash": "51e7a387e8605470918968841e1470b7ac39a66ac7919990c1b31e7317ea5437",
     "homepage": "http://www.tomabo.com/mp4-downloader-pro/index.html",
+    "license": "",
+    "url": "http://www.tomabo.net/downloads/mp4-downloader-pro-4-setup.exe#/setup.exe",
+    "hash": "51e7a387e8605470918968841e1470b7ac39a66ac7919990c1b31e7317ea5437",
+    "pre_download": "Assert-Administrator",
+    "pre_install": [
+        "$processname = \"MP4DownloaderPro\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
     "installer": {
         "script": [
             "$ProgramFilesX86 = [Environment]::GetFolderPath(\"ProgramFilesX86\")",
@@ -38,20 +47,11 @@
             "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
         ]
     },
-    "license": "",
-    "pre_download": "Assert-Administrator",
-    "pre_install": [
-        "$processname = \"MP4DownloaderPro\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "url": "http://www.tomabo.net/downloads/mp4-downloader-pro-4-setup.exe#/setup.exe",
-    "version": "4.17.0"
+    "checkver": {
+        "url": "http://www.tomabo.com/mp4-downloader-pro/download.html",
+        "regex": "Latest Version</td>\\s+<td bgcolor=\"#FFFFFF\" align=\"center\">([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "http://www.tomabo.net/downloads/mp4-downloader-pro-$majorVersion-setup.exe#/setup.exe"
+    }
 }

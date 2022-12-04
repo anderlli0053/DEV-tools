@@ -1,45 +1,33 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "4daf731c3360a755b1ea35399518491192405a621bc8d028300371f5551d4164",
-            "url": "http://dl.winsshterm.net/WinSSHTerm-2.23.3.zip"
-        },
-        "64bit": {
-            "hash": "a820ab06380790642857190bdb70810c130f975a81c43b285e48dd608e261101",
-            "url": "http://dl.winsshterm.net/WinSSHTerm-2.23.3-64.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "regex": "SHA256 \\(.ZIP\\):\\s*$sha256",
-                    "url": "https://winsshterm.blogspot.com/"
-                },
-                "url": "http://dl.winsshterm.net/WinSSHTerm-$version.zip"
-            },
-            "64bit": {
-                "hash": {
-                    "regex": "SHA256 \\(.ZIP64\\):\\s*$sha256",
-                    "url": "https://winsshterm.blogspot.com/"
-                },
-                "url": "http://dl.winsshterm.net/WinSSHTerm-$version-64.zip"
-            }
-        }
-    },
-    "bin": "WinSSHTerm.exe",
-    "checkver": "WinSSHTerm-([\\d.]+)\\.zip",
-    "depends": "putty",
+    "version": "2.23.3",
     "description": "A tabbed SSH solution for Windows, combining PuTTY/KiTTY, WinSCP and VcXsrv",
-    "extract_dir": "WinSSHTerm",
     "homepage": "https://winsshterm.blogspot.com/",
     "license": {
         "identifier": "Freeware",
         "url": "https://winsshterm.blogspot.com/p/license.html"
     },
-    "persist": [
-        "config",
-        "tools"
+    "depends": "putty",
+    "suggest": {
+        "Copy files": "extras/winscp",
+        "X-server": "extras/vcxsrv"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "http://dl.winsshterm.net/WinSSHTerm-2.23.3-64.zip",
+            "hash": "a820ab06380790642857190bdb70810c130f975a81c43b285e48dd608e261101"
+        },
+        "32bit": {
+            "url": "http://dl.winsshterm.net/WinSSHTerm-2.23.3.zip",
+            "hash": "4daf731c3360a755b1ea35399518491192405a621bc8d028300371f5551d4164"
+        }
+    },
+    "extract_dir": "WinSSHTerm",
+    "bin": "WinSSHTerm.exe",
+    "shortcuts": [
+        [
+            "WinSSHTerm.exe",
+            "WinSSHTerm"
+        ]
     ],
     "post_install": [
         "'lib', 'tools', 'config' | ForEach-Object { ensure \"$dir\\$_\" | Out-Null }",
@@ -72,15 +60,27 @@
         "    Set-Content -Path \"$dir\\config\\preferences.xml\" -Value $preferencesXml -Encoding Ascii",
         "}"
     ],
-    "shortcuts": [
-        [
-            "WinSSHTerm.exe",
-            "WinSSHTerm"
-        ]
+    "persist": [
+        "config",
+        "tools"
     ],
-    "suggest": {
-        "Copy files": "extras/winscp",
-        "X-server": "extras/vcxsrv"
-    },
-    "version": "2.23.3"
+    "checkver": "WinSSHTerm-([\\d.]+)\\.zip",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://dl.winsshterm.net/WinSSHTerm-$version-64.zip",
+                "hash": {
+                    "url": "https://winsshterm.blogspot.com/",
+                    "regex": "SHA256 \\(.ZIP64\\):\\s*$sha256"
+                }
+            },
+            "32bit": {
+                "url": "http://dl.winsshterm.net/WinSSHTerm-$version.zip",
+                "hash": {
+                    "url": "https://winsshterm.blogspot.com/",
+                    "regex": "SHA256 \\(.ZIP\\):\\s*$sha256"
+                }
+            }
+        }
+    }
 }

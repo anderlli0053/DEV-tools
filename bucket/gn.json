@@ -1,33 +1,33 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "499801baca18bd92733d921e2743d0691f2a6e6aac9e83f9b215d2a0eccde48e",
-            "url": "https://chrome-infra-packages.appspot.com/dl/gn/gn/windows-amd64/+/SZgBusoYvZJzPZIeJ0PQaR8qbmqsnoP5shXSoOzN5I4C#/gn-windows-amd64.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "hash": {
-                    "regex": "<b>SHA256</b>\\S+\\s+<td class=\"user-select-all\">$sha256",
-                    "url": "https://chrome-infra-packages.appspot.com/p/gn/gn/windows-amd64/+/latest"
-                },
-                "url": "https://chrome-infra-packages.appspot.com/dl/gn/gn/windows-amd64/+/$matchInstanceid#/gn-windows-amd64.zip"
-            }
-        }
-    },
-    "bin": "gn.exe",
-    "checkver": {
-        "regex": "Instance ID\\S+\\s+<td class=\"user-select-all\">(?<instanceId>(?<short>[\\w-]{6})[\\w-]+)",
-        "replace": "${short}",
-        "url": "https://chrome-infra-packages.appspot.com/p/gn/gn/windows-amd64/+/latest"
-    },
+    "version": "SZgBus",
     "description": "GN is a meta-build system that generates build files for Ninja.",
     "homepage": "https://gn.googlesource.com/gn",
     "license": "BSD-3-Clause",
     "suggest": {
-        "Python3": "python",
-        "ninja": "ninja"
+        "ninja": "ninja",
+        "Python3": "python"
     },
-    "version": "SZgBus"
+    "architecture": {
+        "64bit": {
+            "url": "https://chrome-infra-packages.appspot.com/dl/gn/gn/windows-amd64/+/SZgBusoYvZJzPZIeJ0PQaR8qbmqsnoP5shXSoOzN5I4C#/gn-windows-amd64.zip",
+            "hash": "499801baca18bd92733d921e2743d0691f2a6e6aac9e83f9b215d2a0eccde48e"
+        }
+    },
+    "bin": "gn.exe",
+    "checkver": {
+        "url": "https://chrome-infra-packages.appspot.com/p/gn/gn/windows-amd64/+/latest",
+        "regex": "Instance ID\\S+\\s+<td class=\"user-select-all\">(?<instanceId>(?<short>[\\w-]{6})[\\w-]+)",
+        "replace": "${short}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://chrome-infra-packages.appspot.com/dl/gn/gn/windows-amd64/+/$matchInstanceid#/gn-windows-amd64.zip",
+                "hash": {
+                    "url": "https://chrome-infra-packages.appspot.com/p/gn/gn/windows-amd64/+/latest",
+                    "regex": "<b>SHA256</b>\\S+\\s+<td class=\"user-select-all\">$sha256"
+                }
+            }
+        }
+    }
 }

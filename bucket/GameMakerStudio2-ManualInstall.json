@@ -1,24 +1,28 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "e4226d5c1a67a2037cd34cd183e313afe04d2537b83a5b790d61be6614c66cfc",
-            "url": "https://gms.yoyogames.com/GameMaker-Installer-2022.11.0.54.exe#/setup.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://gms.yoyogames.com/GameMaker-Installer-$version.exe#/setup.exe"
-            }
-        }
-    },
-    "changelog": "https://gms.yoyogames.com/ReleaseNotes.html",
-    "checkver": {
-        "regex": "Current version is <b>([\\d.]+)",
-        "url": "https://gmapi.gnysek.pl/"
-    },
+    "version": "2022.11.0.54",
     "description": "GameMaker Studio 2. GameMaker has helped developers create much-loved and multi-million seller games",
     "homepage": "https://www.yoyogames.com/en/gamemaker",
+    "license": "Proprietary",
+    "changelog": "https://gms.yoyogames.com/ReleaseNotes.html",
+    "architecture": {
+        "64bit": {
+            "url": "https://gms.yoyogames.com/GameMaker-Installer-2022.11.0.54.exe#/setup.exe",
+            "hash": "e4226d5c1a67a2037cd34cd183e313afe04d2537b83a5b790d61be6614c66cfc"
+        }
+    },
+    "pre_download": "Assert-Administrator",
+    "pre_install": [
+        "$processname = \"GameMakerStudio\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
     "installer": {
         "script": [
             "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
@@ -34,24 +38,20 @@
             "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
         ]
     },
-    "license": "Proprietary",
     "post_install": [
         "$programname = \"GameMaker\"",
         "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
         "if (Test-Path \"$CommonDesktopPath\\$programname.lnk\") {Remove-Item \"$CommonDesktopPath\\$programname.lnk\" -Force}"
     ],
-    "pre_download": "Assert-Administrator",
-    "pre_install": [
-        "$processname = \"GameMakerStudio\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "version": "2022.11.0.54"
+    "checkver": {
+        "url": "https://gmapi.gnysek.pl/",
+        "regex": "Current version is <b>([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gms.yoyogames.com/GameMaker-Installer-$version.exe#/setup.exe"
+            }
+        }
+    }
 }

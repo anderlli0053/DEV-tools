@@ -1,24 +1,30 @@
 {
+    "version": "9.0.0990",
+    "description": "A highly configurable text editor for efficiently creating and changing any kind of text. (tux build)",
+    "homepage": "https://tuxproject.de/projects/vim",
+    "license": "Vim",
+    "notes": "Add gVim as a context menu option by running: \"$dir\\install-context.reg\"",
+    "suggest": {
+        "vimtutor": "vimtutor"
+    },
     "architecture": {
-        "32bit": {
-            "hash": "3f427838c53f87d38f6c1611a1a89a7d917d12c534ba8b35eab30ecda5d00591",
-            "url": "https://tuxproject.de/projects/vim/complete-x86.7z"
-        },
         "64bit": {
-            "hash": "f40833dc8578b23d8193c35db0891a341d2480ca7444a3ead7178a014d93c8a0",
-            "url": "https://tuxproject.de/projects/vim/complete-x64.7z"
+            "url": "https://tuxproject.de/projects/vim/complete-x64.7z",
+            "hash": "f40833dc8578b23d8193c35db0891a341d2480ca7444a3ead7178a014d93c8a0"
+        },
+        "32bit": {
+            "url": "https://tuxproject.de/projects/vim/complete-x86.7z",
+            "hash": "3f427838c53f87d38f6c1611a1a89a7d917d12c534ba8b35eab30ecda5d00591"
         }
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://tuxproject.de/projects/vim/complete-x86.7z"
-            },
-            "64bit": {
-                "url": "https://tuxproject.de/projects/vim/complete-x64.7z"
-            }
-        }
-    },
+    "post_install": [
+        "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
+        "    $vimpath = \"$dir\\gVim.exe\".Replace('\\', '\\\\')",
+        "    $content = (Get-Content \"$bucketsdir\\versions\\scripts\\vim\\$_\").Replace('$vim', $vimpath)",
+        "    if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
+        "    Set-Content \"$dir\\$_\" $content",
+        "}"
+    ],
     "bin": [
         "vim.exe",
         [
@@ -83,27 +89,21 @@
         ],
         "xxd.exe"
     ],
-    "checkver": "Vim ([\\d.]+)",
-    "description": "A highly configurable text editor for efficiently creating and changing any kind of text. (tux build)",
-    "homepage": "https://tuxproject.de/projects/vim",
-    "license": "Vim",
-    "notes": "Add gVim as a context menu option by running: \"$dir\\install-context.reg\"",
-    "post_install": [
-        "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
-        "    $vimpath = \"$dir\\gVim.exe\".Replace('\\', '\\\\')",
-        "    $content = (Get-Content \"$bucketsdir\\versions\\scripts\\vim\\$_\").Replace('$vim', $vimpath)",
-        "    if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
-        "    Set-Content \"$dir\\$_\" $content",
-        "}"
-    ],
     "shortcuts": [
         [
             "gvim.exe",
             "gVim"
         ]
     ],
-    "suggest": {
-        "vimtutor": "vimtutor"
-    },
-    "version": "9.0.0990"
+    "checkver": "Vim ([\\d.]+)",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://tuxproject.de/projects/vim/complete-x64.7z"
+            },
+            "32bit": {
+                "url": "https://tuxproject.de/projects/vim/complete-x86.7z"
+            }
+        }
+    }
 }

@@ -1,35 +1,35 @@
 {
- "architecture": {
-  "32bit": {
-   "extract_dir": "fluent-bit-2.0.6-win32",
-   "hash": "c561694389df6f7835419c9d35024b9f2d5e46cf785232fe044efe20c03c390e",
-   "url": "https://fluentbit.io/releases/2.0/fluent-bit-2.0.6-win32.zip"
-  },
-  "64bit": {
-   "extract_dir": "fluent-bit-2.0.6-win64",
-   "hash": "da406742f95d872651741fe5b84194770f886fc7e4e67e0157818250603b6ace",
-   "url": "https://fluentbit.io/releases/2.0/fluent-bit-2.0.6-win64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "extract_dir": "fluent-bit-$version-win32",
-    "url": "https://fluentbit.io/releases/$majorVersion.$minorVersion/fluent-bit-$version-win32.zip"
-   },
-   "64bit": {
-    "extract_dir": "fluent-bit-$version-win64",
-    "url": "https://fluentbit.io/releases/$majorVersion.$minorVersion/fluent-bit-$version-win64.zip"
-   }
-  }
- },
- "bin": "bin\\fluent-bit.exe",
- "checkver": {
-  "github": "https://github.com/fluent/fluent-bit"
- },
- "description": "A log processor and forwarder which allows you to collect data/logs from different sources, unify and send them to multiple destinations.",
- "homepage": "https://fluentbit.io/",
- "license": "Apache-2.0",
- "persist": "conf",
- "version": "2.0.6"
+    "version": "2.0.6",
+    "description": "A log processor and forwarder which allows you to collect data/logs from different sources, unify and send them to multiple destinations.",
+    "homepage": "https://fluentbit.io/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://fluentbit.io/releases/2.0/fluent-bit-2.0.6-win64.zip",
+            "hash": "da406742f95d872651741fe5b84194770f886fc7e4e67e0157818250603b6ace",
+            "extract_dir": "fluent-bit-2.0.6-win64"
+        },
+        "32bit": {
+            "url": "https://fluentbit.io/releases/2.0/fluent-bit-2.0.6-win32.zip",
+            "hash": "c561694389df6f7835419c9d35024b9f2d5e46cf785232fe044efe20c03c390e",
+            "extract_dir": "fluent-bit-2.0.6-win32"
+        }
+    },
+    "bin": "bin\\fluent-bit.exe",
+    "persist": "conf",
+    "checkver": {
+        "github": "https://github.com/fluent/fluent-bit"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://fluentbit.io/releases/$majorVersion.$minorVersion/fluent-bit-$version-win64.zip",
+                "extract_dir": "fluent-bit-$version-win64"
+            },
+            "32bit": {
+                "url": "https://fluentbit.io/releases/$majorVersion.$minorVersion/fluent-bit-$version-win32.zip",
+                "extract_dir": "fluent-bit-$version-win32"
+            }
+        }
+    }
 }

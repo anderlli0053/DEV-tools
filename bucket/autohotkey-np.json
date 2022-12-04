@@ -1,22 +1,19 @@
 {
+    "version": "1.1.36.01",
+    "description": "The ultimate automation scripting language for Windows.",
+    "homepage": "https://www.autohotkey.com/",
+    "license": "GPL-2.0-or-later",
+    "url": "https://github.com/Lexikos/AutoHotkey_L/releases/download/v1.1.36.01/AutoHotkey_1.1.36.01_setup.exe#/setup.exe",
+    "hash": "62734d219f14a942986e62d6c0fef0c2315bc84acd963430aed788c36e67e1ff",
+    "pre_install": "Write-Host 'Installing AutoHotKey with their installer and its own options ( create registry keys removed by uninstaller )' -ForegroundColor Magenta",
     "architecture": {
-        "32bit": {
-            "bin": [
-                "autohotkeyu32.exe",
-                [
-                    "autohotkeyu32.exe",
-                    "autohotkey"
-                ],
-                "compiler\\ahk2exe.exe"
-            ],
+        "64bit": {
             "installer": {
                 "script": [
                     "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-                    "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/S', '/U32', '/uiAccess=0', '/IsHostApp=1', \"/D=`\"$dir`\"\") -Verb RunAs | Out-Null"
+                    "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/S', '/x64', '/uiAccess=0', '/IsHostApp=1', \"/D=`\"$dir`\"\") -Verb RunAs | Out-Null"
                 ]
-            }
-        },
-        "64bit": {
+            },
             "bin": [
                 "autohotkeyu64.exe",
                 [
@@ -24,32 +21,35 @@
                     "autohotkey"
                 ],
                 "compiler\\ahk2exe.exe"
-            ],
+            ]
+        },
+        "32bit": {
             "installer": {
                 "script": [
                     "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-                    "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/S', '/x64', '/uiAccess=0', '/IsHostApp=1', \"/D=`\"$dir`\"\") -Verb RunAs | Out-Null"
+                    "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/S', '/U32', '/uiAccess=0', '/IsHostApp=1', \"/D=`\"$dir`\"\") -Verb RunAs | Out-Null"
                 ]
-            }
+            },
+            "bin": [
+                "autohotkeyu32.exe",
+                [
+                    "autohotkeyu32.exe",
+                    "autohotkey"
+                ],
+                "compiler\\ahk2exe.exe"
+            ]
         }
     },
-    "autoupdate": {
-        "url": "https://github.com/Lexikos/AutoHotkey_L/releases/download/v$version/AutoHotkey_$version_setup.exe#/setup.exe"
-    },
-    "checkver": {
-        "github": "https://github.com/lexikos/autohotkey_l"
-    },
-    "description": "The ultimate automation scripting language for Windows.",
-    "hash": "62734d219f14a942986e62d6c0fef0c2315bc84acd963430aed788c36e67e1ff",
-    "homepage": "https://www.autohotkey.com/",
-    "license": "GPL-2.0-or-later",
-    "pre_install": "Write-Host 'Installing AutoHotKey with their installer and its own options ( create registry keys removed by uninstaller )' -ForegroundColor Magenta",
     "uninstaller": {
         "script": [
             "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
             "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList '/Uninstall' -Verb RunAs | Out-Null"
         ]
     },
-    "url": "https://github.com/Lexikos/AutoHotkey_L/releases/download/v1.1.36.01/AutoHotkey_1.1.36.01_setup.exe#/setup.exe",
-    "version": "1.1.36.01"
+    "checkver": {
+        "github": "https://github.com/lexikos/autohotkey_l"
+    },
+    "autoupdate": {
+        "url": "https://github.com/Lexikos/AutoHotkey_L/releases/download/v$version/AutoHotkey_$version_setup.exe#/setup.exe"
+    }
 }

@@ -1,16 +1,18 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/bitwarden/clients/releases/download/desktop-v$version/Bitwarden-Portable-$version.exe"
-    },
-    "bin": "Bitwarden.exe",
-    "checkver": {
-        "regex": "Desktop v([\\d.]+)",
-        "url": "https://github.com/bitwarden/clients/releases"
-    },
+    "version": "2022.11.0",
     "description": "Bitwarden. Password management solutions for individuals, teams, and business organizations",
-    "hash": "7beba8798bed0659201544984807fddd55b1573afb72022c334d56400c910e4f",
     "homepage": "https://bitwarden.com",
     "license": "GPL-3.0-or-later",
+    "url": "https://github.com/bitwarden/clients/releases/download/desktop-v2022.11.0/Bitwarden-Portable-2022.11.0.exe",
+    "hash": "7beba8798bed0659201544984807fddd55b1573afb72022c334d56400c910e4f",
+    "pre_install": "Rename-Item \"$dir\\Bitwarden-Portable-$version.exe\" 'Bitwarden.exe'",
+    "bin": "Bitwarden.exe",
+    "shortcuts": [
+        [
+            "Bitwarden.exe",
+            "Bitwarden"
+        ]
+    ],
     "persist": "bitwarden-appdata",
     "post_install": [
         "if(Test-Path \"$env:Appdata\\Bitwarden\") {",
@@ -18,13 +20,11 @@
         "    Remove-Item \"$env:Appdata\\Bitwarden\" -Recurse",
         "}"
     ],
-    "pre_install": "Rename-Item \"$dir\\Bitwarden-Portable-$version.exe\" 'Bitwarden.exe'",
-    "shortcuts": [
-        [
-            "Bitwarden.exe",
-            "Bitwarden"
-        ]
-    ],
-    "url": "https://github.com/bitwarden/clients/releases/download/desktop-v2022.11.0/Bitwarden-Portable-2022.11.0.exe",
-    "version": "2022.11.0"
+    "checkver": {
+        "url": "https://github.com/bitwarden/clients/releases",
+        "regex": "Desktop v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/bitwarden/clients/releases/download/desktop-v$version/Bitwarden-Portable-$version.exe"
+    }
 }

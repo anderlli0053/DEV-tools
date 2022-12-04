@@ -1,23 +1,6 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "a5472bb2e9ed011596aeda9be8cb8fea3bbf6b1299bff525fd3179bd7ef20eb0",
-            "url": "https://github.com/Ryujinx/release-channel-master/releases/download/1.1.417/ryujinx-1.1.417-win_x64.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/Ryujinx/release-channel-master/releases/download/$version/ryujinx-$version-win_x64.zip"
-            }
-        }
-    },
-    "bin": "Ryujinx.exe",
-    "checkver": {
-        "github": "https://github.com/Ryujinx/release-channel-master"
-    },
+    "version": "1.1.417",
     "description": "A simple, experimental Nintendo Switch emulator",
-    "extract_dir": "publish",
     "homepage": "https://ryujinx.org/",
     "license": {
         "identifier": "MIT",
@@ -27,7 +10,13 @@
         "ATTENTION: Ryujinx requires Nintendo Switch firmware and a prod.keys file to function.",
         "Learn more at https://github.com/Ryujinx/Ryujinx/wiki/Ryujinx-Setup-&-Configuration-Guide"
     ],
-    "persist": "portable",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Ryujinx/release-channel-master/releases/download/1.1.417/ryujinx-1.1.417-win_x64.zip",
+            "hash": "a5472bb2e9ed011596aeda9be8cb8fea3bbf6b1299bff525fd3179bd7ef20eb0"
+        }
+    },
+    "extract_dir": "publish",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\")) {",
         "   New-item \"$persist_dir\\portable\" -ItemType Directory | Out-Null",
@@ -38,11 +27,22 @@
         "   }",
         "}"
     ],
+    "bin": "Ryujinx.exe",
     "shortcuts": [
         [
             "Ryujinx.exe",
             "Ryujinx"
         ]
     ],
-    "version": "1.1.417"
+    "persist": "portable",
+    "checkver": {
+        "github": "https://github.com/Ryujinx/release-channel-master"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Ryujinx/release-channel-master/releases/download/$version/ryujinx-$version-win_x64.zip"
+            }
+        }
+    }
 }

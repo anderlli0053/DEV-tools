@@ -1,38 +1,38 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "274242ed71ac037832cddaf9e4a46a65fdbd1e963b6d8baebc62c349362d0dda",
-   "url": "https://github.com/status-im/status-desktop/releases/download/0.8.0-rc.5/StatusIm-Desktop-v0.8.0-rc.5-7e6ec2.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "hash": {
-     "regex": "$sha256\\s+$fname",
-     "url": "$baseurl/StatusIm-Desktop-v$version.sha256"
+    "version": "0.8.0-7be712",
+    "description": "A messenger, crypto wallet, and Web3 browser.",
+    "homepage": "https://status.im/",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/status-im/status-desktop/releases/download/0.8.0/StatusIm-Desktop-v0.8.0-7be712.7z ",
+            "hash": "7985cf278a9e2a7b63cc434212a73e78ea4ade270ac4f03af72b24841b59a1b3"
+        }
     },
-    "url": "https://github.com/status-im/status-desktop/releases/download/$match1/StatusIm-Desktop-v$version.7z"
-   }
-  }
- },
- "bin": "Status.exe",
- "checkver": {
-  "jsonpath": "$.assets..browser_download_url",
-  "regex": "StatusIm-Desktop-v([\\d.]+-[\\w.]+)-([\\w]+)\\.",
-  "replace": "$1-$2",
-  "url": "https://api.github.com/repos/status-im/status-desktop/releases/latest"
- },
- "description": "A messenger, crypto wallet, and Web3 browser.",
- "extract_dir": "Status",
- "homepage": "https://status.im/",
- "license": "MPL-2.0",
- "pre_install": "if (!(Test-Path \"$env:LOCALAPPDATA\\Status\")) {New-Item \"$env:LOCALAPPDATA\\Status\" -ItemType 'Directory' | Out-Null}",
- "shortcuts": [
-  [
-   "Status.exe",
-   "Status"
-  ]
- ],
- "version": "0.8.0-rc.5-7e6ec2"
+    "extract_dir": "Status",
+    "pre_install": "if (!(Test-Path \"$env:LOCALAPPDATA\\Status\")) {New-Item \"$env:LOCALAPPDATA\\Status\" -ItemType 'Directory' | Out-Null}",
+    "bin": "Status.exe",
+    "shortcuts": [
+        [
+            "Status.exe",
+            "Status"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/status-im/status-desktop/releases/latest",
+        "jsonpath": "$.assets..browser_download_url",
+        "regex": "StatusIm-Desktop-v(?<Ver>[\\d.]+)-(?<Build>[\\w]+)\\.",
+        "replace": "${Ver}-${Build}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/status-im/status-desktop/releases/download/$matchVer/StatusIm-Desktop-v$version.7z ",
+                "hash": {
+                    "url": "$baseurl/StatusIm-Desktop-v$version.sha256",
+                    "regex": "$sha256\\s+$fname"
+                }
+            }
+        }
+    }
 }

@@ -1,33 +1,33 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "8a6a01aec7df97c4c4d8b3602763413164c12d066319ae81d0a74ae09b85e594",
-   "url": "https://download.oracle.com/java/19/archive/jdk-19.0.1_windows-x64_bin.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://download.oracle.com/java/$majorVersion/archive/jdk-$version_windows-x64_bin.zip"
-   }
-  },
-  "extract_dir": "jdk-$version",
-  "hash": {
-   "url": "$url.sha256"
-  }
- },
- "checkver": {
-  "regex": "Java SE Development Kit ([\\d.]+) downloads",
-  "url": "https://www.oracle.com/java/technologies/downloads",
-  "useragent": "curl/7"
- },
- "description": "Oracle Java Platform, Standard Edition Development Kit (JDK)",
- "env_add_path": "bin",
- "env_set": {
-  "JAVA_HOME": "$dir"
- },
- "extract_dir": "jdk-19.0.1",
- "homepage": "https://www.oracle.com/java/",
- "license": "https://www.oracle.com/downloads/licenses/no-fee-license.html",
- "version": "19.0.1"
+    "description": "Oracle Java Platform, Standard Edition Development Kit (JDK)",
+    "homepage": "https://www.oracle.com/java/",
+    "version": "19.0.1",
+    "license": "https://www.oracle.com/downloads/licenses/no-fee-license.html",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.oracle.com/java/19/archive/jdk-19.0.1_windows-x64_bin.zip",
+            "hash": "8a6a01aec7df97c4c4d8b3602763413164c12d066319ae81d0a74ae09b85e594"
+        }
+    },
+    "extract_dir": "jdk-19.0.1",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://www.oracle.com/java/technologies/downloads",
+        "useragent": "curl/7",
+        "regex": "Java SE Development Kit ([\\d.]+) downloads"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.oracle.com/java/$majorVersion/archive/jdk-$version_windows-x64_bin.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        },
+        "extract_dir": "jdk-$version"
+    }
 }

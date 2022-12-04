@@ -1,14 +1,23 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/balena-io/etcher/releases/download/v$version/balenaEtcher-Setup-$version.exe#/setup.exe"
-    },
-    "changelog": "https://github.com/balena-io/etcher/blob/master/CHANGELOG.md",
-    "checkver": {
-        "github": "https://github.com/balena-io/etcher"
-    },
+    "version": "1.10.6",
     "description": "balenaEtcher. Flash OS images to SD cards & USB drives, safely and easily.",
-    "hash": "81b7627bec3decec3cdc13e8f07a552a6bd312b02c0a81064bddf6d031a138cd",
     "homepage": "https://www.balena.io/etcher/",
+    "license": "Apache-2.0",
+    "changelog": "https://github.com/balena-io/etcher/blob/master/CHANGELOG.md",
+    "url": "https://github.com/balena-io/etcher/releases/download/v1.10.6/balenaEtcher-Setup-1.10.6.exe#/setup.exe",
+    "hash": "81b7627bec3decec3cdc13e8f07a552a6bd312b02c0a81064bddf6d031a138cd",
+    "pre_install": [
+        "$processname = \"balenaEtcher\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
     "installer": {
         "script": [
             "$programname = \"balenaEtcher*\"",
@@ -24,24 +33,15 @@
             "}"
         ]
     },
-    "license": "Apache-2.0",
     "post_install": [
         "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }",
         "$DesktopPath = [Environment]::GetFolderPath(\"Desktop\")",
         "if (Test-Path \"$DesktopPath\\balenaEtcher.lnk\") {Remove-Item \"$DesktopPath\\balenaEtcher.lnk\" -Force}"
     ],
-    "pre_install": [
-        "$processname = \"balenaEtcher\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "url": "https://github.com/balena-io/etcher/releases/download/v1.10.6/balenaEtcher-Setup-1.10.6.exe#/setup.exe",
-    "version": "1.10.6"
+    "checkver": {
+        "github": "https://github.com/balena-io/etcher"
+    },
+    "autoupdate": {
+        "url": "https://github.com/balena-io/etcher/releases/download/v$version/balenaEtcher-Setup-$version.exe#/setup.exe"
+    }
 }

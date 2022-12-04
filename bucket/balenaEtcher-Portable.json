@@ -1,14 +1,13 @@
 {
+    "version": "1.10.6",
+    "description": "balenaEtcher. Flash OS images to SD cards & USB drives, safely and easily.",
+    "homepage": "https://www.balena.io/etcher/",
+    "license": "Apache-2.0",
+    "changelog": "https://github.com/balena-io/etcher/blob/master/CHANGELOG.md",
+    "url": "https://github.com/balena-io/etcher/releases/download/v1.10.6/balenaEtcher-Portable-1.10.6.exe#/dl.7z",
+    "hash": "655c58427808e3078a4d49162443b4f8e5ceb258852c1c0f2c639a264f5c5023",
+    "extract_dir": "$PLUGINSDIR",
     "architecture": {
-        "32bit": {
-            "installer": {
-                "script": [
-                    "Remove-Item \"$dir\\*\" -Exclude \"app-32.7z\"",
-                    "Expand-7zipArchive \"$dir\\app-32.7z\" \"$dir\"",
-                    "Remove-Item \"$dir\\app-32.7z\""
-                ]
-            }
-        },
         "64bit": {
             "installer": {
                 "script": [
@@ -17,27 +16,28 @@
                     "Remove-Item \"$dir\\app-64.7z\""
                 ]
             }
+        },
+        "32bit": {
+            "installer": {
+                "script": [
+                    "Remove-Item \"$dir\\*\" -Exclude \"app-32.7z\"",
+                    "Expand-7zipArchive \"$dir\\app-32.7z\" \"$dir\"",
+                    "Remove-Item \"$dir\\app-32.7z\""
+                ]
+            }
         }
     },
-    "autoupdate": {
-        "url": "https://github.com/balena-io/etcher/releases/download/v$version/balenaEtcher-Portable-$version.exe#/dl.7z"
-    },
     "bin": "balenaEtcher.exe",
-    "changelog": "https://github.com/balena-io/etcher/blob/master/CHANGELOG.md",
-    "checkver": {
-        "github": "https://github.com/balena-io/etcher"
-    },
-    "description": "balenaEtcher. Flash OS images to SD cards & USB drives, safely and easily.",
-    "extract_dir": "$PLUGINSDIR",
-    "hash": "655c58427808e3078a4d49162443b4f8e5ceb258852c1c0f2c639a264f5c5023",
-    "homepage": "https://www.balena.io/etcher/",
-    "license": "Apache-2.0",
     "shortcuts": [
         [
             "balenaEtcher.exe",
             "balenaEtcher"
         ]
     ],
-    "url": "https://github.com/balena-io/etcher/releases/download/v1.10.6/balenaEtcher-Portable-1.10.6.exe#/dl.7z",
-    "version": "1.10.6"
+    "checkver": {
+        "github": "https://github.com/balena-io/etcher"
+    },
+    "autoupdate": {
+        "url": "https://github.com/balena-io/etcher/releases/download/v$version/balenaEtcher-Portable-$version.exe#/dl.7z"
+    }
 }

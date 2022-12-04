@@ -1,34 +1,34 @@
 {
+    "version": "1.23.1",
+    "description": "GitLab CLI",
+    "homepage": "https://gitlab.com/gitlab-org/cli",
+    "license": "MIT",
     "architecture": {
-        "32bit": {
-            "hash": "246b0a9e1879107d433fdae6d9b0e4924be2da0d48a0cd6ec7634eaca992bf74",
-            "url": "https://gitlab.com/gitlab-org/cli/-/releases/v1.23.1/downloads/glab_1.23.1_Windows_i386.zip"
-        },
         "64bit": {
-            "hash": "af195fdef0ebde08f3bbb2ab21a8763ebb1bbee90b6579165a3bb1fbf27620e5",
-            "url": "https://gitlab.com/gitlab-org/cli/-/releases/v1.23.1/downloads/glab_1.23.1_Windows_x86_64.zip"
+            "url": "https://gitlab.com/gitlab-org/cli/-/releases/v1.23.1/downloads/glab_1.23.1_Windows_x86_64.zip",
+            "hash": "af195fdef0ebde08f3bbb2ab21a8763ebb1bbee90b6579165a3bb1fbf27620e5"
+        },
+        "32bit": {
+            "url": "https://gitlab.com/gitlab-org/cli/-/releases/v1.23.1/downloads/glab_1.23.1_Windows_i386.zip",
+            "hash": "246b0a9e1879107d433fdae6d9b0e4924be2da0d48a0cd6ec7634eaca992bf74"
         }
+    },
+    "bin": "bin\\glab.exe",
+    "checkver": {
+        "url": "https://gitlab.com/gitlab-org/cli/-/tags?format=atom",
+        "regex": "/tags/v([\\d.]+)<"
     },
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "https://gitlab.com/gitlab-org/cli/-/releases/v$version/downloads/glab_$version_Windows_i386.zip"
-            },
             "64bit": {
                 "url": "https://gitlab.com/gitlab-org/cli/-/releases/v$version/downloads/glab_$version_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://gitlab.com/gitlab-org/cli/-/releases/v$version/downloads/glab_$version_Windows_i386.zip"
             }
         },
         "hash": {
             "url": "$baseurl/checksums.txt"
         }
-    },
-    "bin": "bin\\glab.exe",
-    "checkver": {
-        "regex": "/tags/v([\\d.]+)<",
-        "url": "https://gitlab.com/gitlab-org/cli/-/tags?format=atom"
-    },
-    "description": "GitLab CLI",
-    "homepage": "https://gitlab.com/gitlab-org/cli",
-    "license": "MIT",
-    "version": "1.23.1"
+    }
 }

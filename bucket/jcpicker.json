@@ -1,35 +1,21 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "33d50af034de14fd09b01be464f6a12665b809435d3ec4b28eee388b91732a09",
-            "url": "https://annystudio.com/jcpicker_32bit.exe#/jcpicker.exe"
-        },
-        "64bit": {
-            "hash": "77b028f48674f45fa0f36da075012e33a46df3c1e58d162a387d8aef814045b5",
-            "url": "https://annystudio.com/jcpicker.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://annystudio.com/jcpicker_32bit.exe#/jcpicker.exe"
-            },
-            "64bit": {
-                "url": "https://annystudio.com/jcpicker.exe"
-            }
-        }
-    },
-    "checkver": "Latest version:</b> ([\\d.]+)",
+    "version": "5.7",
     "description": "Color picker and color editor",
     "homepage": "https://annystudio.com/software/colorpicker/",
     "license": {
         "identifier": "Freeware",
         "url": "https://annystudio.com/info/#tnc"
     },
-    "persist": [
-        "jcpicker.ini",
-        "jcpicker.txt"
-    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://annystudio.com/jcpicker.exe",
+            "hash": "77b028f48674f45fa0f36da075012e33a46df3c1e58d162a387d8aef814045b5"
+        },
+        "32bit": {
+            "url": "https://annystudio.com/jcpicker_32bit.exe#/jcpicker.exe",
+            "hash": "33d50af034de14fd09b01be464f6a12665b809435d3ec4b28eee388b91732a09"
+        }
+    },
     "pre_install": [
         "'ini', 'txt' | ForEach-Object {",
         "    if (!(Test-Path \"$persist_dir\\jcpicker.$_\")) { New-Item \"$dir\\jcpicker.$_\" | Out-Null }",
@@ -41,5 +27,19 @@
             "Just Color Picker"
         ]
     ],
-    "version": "5.7"
+    "persist": [
+        "jcpicker.ini",
+        "jcpicker.txt"
+    ],
+    "checkver": "Latest version:</b> ([\\d.]+)",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://annystudio.com/jcpicker.exe"
+            },
+            "32bit": {
+                "url": "https://annystudio.com/jcpicker_32bit.exe#/jcpicker.exe"
+            }
+        }
+    }
 }

@@ -1,35 +1,35 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "2914e8c3018599b9c36461328f6f86a036c16538857a854d18b02eaf081e6d2c",
-            "url": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.5.0/Heroic-2.5.0-Setup.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "hash": {
-                    "regex": "sha512:\\s$sha512",
-                    "url": "$baseurl/latest.yml"
-                },
-                "url": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v$version/Heroic-$version-Setup.exe#/dl.7z"
-            }
-        }
-    },
-    "bin": "Heroic.exe",
-    "checkver": {
-        "github": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
-    },
+    "version": "2.5.0",
     "description": "Unofficial native GUI reimplementation for GOG and Epic Games Launcher",
-    "extract_dir": "$PLUGINSDIR",
     "homepage": "https://heroicgameslauncher.com/",
     "license": "GPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.5.0/Heroic-2.5.0-Setup.exe#/dl.7z",
+            "hash": "b00703518eddc06bb88cd0978d396cc5a03fefcc2206d6f39694753d784cf9aa"
+        }
+    },
+    "extract_dir": "$PLUGINSDIR",
     "pre_install": "Remove-Item \"$dir\\*.dll\"; Expand-7ZipArchive \"$dir\\app-64.7z\" \"$dir\" -Removal",
+    "bin": "Heroic.exe",
     "shortcuts": [
         [
             "Heroic.exe",
             "Heroic"
         ]
     ],
-    "version": "2.5.0"
+    "checkver": {
+        "github": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v$version/Heroic-$version-Setup.exe#/dl.7z",
+                "hash": {
+                    "url": "$baseurl/latest.yml",
+                    "regex": "sha512:\\s$sha512"
+                }
+            }
+        }
+    }
 }

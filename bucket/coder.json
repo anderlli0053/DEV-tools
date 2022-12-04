@@ -1,9 +1,21 @@
 {
+    "version": "0.13.1",
+    "description": "Creates remote development machines so your team can develop from anywhere.",
+    "homepage": "https://coder.com/",
+    "license": "AGPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "hash": "f6091bfddd58e098121fcc7a067069716d90649a26ffe0d748d8661423288a7e",
-            "url": "https://github.com/coder/coder/releases/download/v0.13.1/coder_0.13.1_windows_amd64.zip"
+            "url": "https://github.com/coder/coder/releases/download/v0.13.1/coder_0.13.1_windows_amd64.zip",
+            "hash": "f6091bfddd58e098121fcc7a067069716d90649a26ffe0d748d8661423288a7e"
         }
+    },
+    "bin": "coder.exe",
+    "env_set": {
+        "CODER_CONFIG_DIR": "$dir\\config"
+    },
+    "persist": "config",
+    "checkver": {
+        "github": "https://github.com/coder/coder"
     },
     "autoupdate": {
         "architecture": {
@@ -14,17 +26,5 @@
         "hash": {
             "url": "$baseurl/coder_$version_checksums.txt"
         }
-    },
-    "bin": "coder.exe",
-    "checkver": {
-        "github": "https://github.com/coder/coder"
-    },
-    "description": "Creates remote development machines so your team can develop from anywhere.",
-    "env_set": {
-        "CODER_CONFIG_DIR": "$dir\\config"
-    },
-    "homepage": "https://coder.com/",
-    "license": "AGPL-3.0-or-later",
-    "persist": "config",
-    "version": "0.13.1"
+    }
 }

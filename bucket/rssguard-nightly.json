@@ -1,9 +1,25 @@
 {
+    "version": "39bb467a",
+    "description": "(Development Builds) A simple, light and easy-to-use RSS/ATOM feed aggregator developed using Qt framework which supports online feed synchronization.",
+    "homepage": "https://github.com/martinrotter/rssguard/releases/tag/devbuild",
+    "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "hash": "2e2446c06926882f84db5ce7b47731d7259e0f95452ceebbd1a5278053da23d6",
-            "url": "https://github.com/martinrotter/rssguard/releases/download/devbuild/rssguard-devbuild-b3959a64-win10.7z"
+            "url": "https://github.com/martinrotter/rssguard/releases/download/devbuild/rssguard-devbuild-39bb467a-win10.7z",
+            "hash": "781dcbdb6ea025cb9ae5cee52cd59e9dd6ffc642240e1321cab4728e7ae011ae"
         }
+    },
+    "pre_install": "if (!(Test-Path \"$persist_dir\\data4\\\")) { New-Item -Path \"$dir\\data4\\\" -ItemType Directory | Out-Null }",
+    "persist": "data4",
+    "shortcuts": [
+        [
+            "rssguard.exe",
+            "RSS Guard"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/martinrotter/rssguard/releases/expanded_assets/devbuild",
+        "regex": "rssguard-devbuild-([\\d\\w.]+)-win10\\.7z"
     },
     "autoupdate": {
         "architecture": {
@@ -11,21 +27,5 @@
                 "url": "https://github.com/martinrotter/rssguard/releases/download/devbuild/rssguard-devbuild-$version-win10.7z"
             }
         }
-    },
-    "checkver": {
-        "regex": "rssguard-devbuild-([\\d\\w.]+)-win10\\.7z",
-        "url": "https://github.com/martinrotter/rssguard/releases/expanded_assets/devbuild"
-    },
-    "description": "(Development Builds) A simple, light and easy-to-use RSS/ATOM feed aggregator developed using Qt framework which supports online feed synchronization.",
-    "homepage": "https://github.com/martinrotter/rssguard/releases/tag/devbuild",
-    "license": "GPL-3.0-only",
-    "persist": "data4",
-    "pre_install": "if (!(Test-Path \"$persist_dir\\data4\\\")) { New-Item -Path \"$dir\\data4\\\" -ItemType Directory | Out-Null }",
-    "shortcuts": [
-        [
-            "rssguard.exe",
-            "RSS Guard"
-        ]
-    ],
-    "version": "b3959a64"
+    }
 }

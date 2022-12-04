@@ -1,44 +1,44 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "80fb702004512efff09b5493aeae2721b92b310cdffe8967bf8d00d0edf52f05",
-            "url": "https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "hash": {
-                    "url": "$url.sha256sum"
-                },
-                "url": "https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip"
-            }
-        }
-    },
-    "bin": [
-        "bin\\nvim.exe",
-        "bin\\nvim-qt.exe"
-    ],
-    "checkver": {
-        "regex": "NVIM v([\\w.-]+)\\+([\\w.-]+)",
-        "replace": "${1}-${2}",
-        "url": "https://api.github.com/repos/neovim/neovim/releases"
-    },
+    "version": "0.9.0-dev-430-gc0840087c",
     "description": "Vim fork focused on extensibility and usability",
-    "extract_dir": "nvim-win64",
     "homepage": "https://neovim.io",
     "license": {
         "identifier": "Apache-2.0,Vim",
         "url": "https://github.com/neovim/neovim/blob/master/LICENSE"
     },
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip",
+            "hash": "99a47c2b0a9361f83b68b380d4ea6fc1f526e19b1b5b5727912abefa685e09cd"
+        }
+    },
+    "extract_dir": "nvim-win64",
+    "bin": [
+        "bin\\nvim.exe",
+        "bin\\nvim-qt.exe"
+    ],
     "shortcuts": [
         [
             "bin\\nvim-qt.exe",
             "Neovim"
         ]
     ],
-    "suggest": {
-        "vcredist": "extras/vcredist2022"
+    "checkver": {
+        "url": "https://api.github.com/repos/neovim/neovim/releases",
+        "regex": "NVIM v([\\w.-]+)\\+([\\w.-]+)",
+        "replace": "${1}-${2}"
     },
-    "version": "0.9.0-dev-421-gdcc686a20"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip",
+                "hash": {
+                    "url": "$url.sha256sum"
+                }
+            }
+        }
+    }
 }
