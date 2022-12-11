@@ -1,17 +1,15 @@
 {
-    "version": "110.0.1543.0",
+    "version": "107.0.1402.2",
     "description": "Microsoft Edge Dev. The chromium based Microsoft Edge browser (Dev Channel)",
     "homepage": "https://www.microsoftedgeinsider.com/en-us/welcome?channel=dev",
     "license": "Freeware",
     "changelog": "",
     "architecture": {
         "64bit": {
-            "url": "https://dorado-api.deno.dev/edge?arch=64&channel=dev&version=110.0.1543.0&dl#/MicrosoftEdge-110.0.1543.0-x64.7z",
-            "hash": "d55c170492a4ec27a4617e0f2dcbdb9fd2bf5b0296e3be6d9f16b573bfced00f"
+            "url": "https://dorado-api.deno.dev/edge?arch=64&channel=dev&version=107.0.1402.2&dl#/MicrosoftEdge-107.0.1402.2-x64.7z"
         },
         "32bit": {
-            "url": "https://dorado-api.deno.dev/edge?arch=86&channel=dev&version=110.0.1543.0&dl#/MicrosoftEdge-110.0.1543.0-x86.7z",
-            "hash": "df465221e7eb8276ee903eed59d2c3e9e0b8094594d4f1676365e39e7e2d5e9d"
+            "url": "https://dorado-api.deno.dev/edge?arch=86&channel=dev&version=107.0.1402.2&dl#/MicrosoftEdge-107.0.1402.2-x86.7z"
         }
     },
     "installer": {
@@ -27,23 +25,15 @@
     "persist": "User Data",
     "checkver": {
         "url": "https://dorado-api.deno.dev/edge?arch=64&channel=dev",
-        "jsonpath": "$.Version"
+        "regex": "\"Version\":\"([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dorado-api.deno.dev/edge?arch=64&channel=dev&version=$version&dl#/MicrosoftEdge-$version-x64.7z",
-                "hash": {
-                    "url": "https://dorado-api.deno.dev/edge?arch=64&channel=dev&version=$version",
-                    "jsonpath": "$.Hashes.Sha256"
-                }
+                "url": "https://dorado-api.deno.dev/edge?arch=64&channel=dev&version=$version&dl#/MicrosoftEdge-$version-x64.7z"
             },
             "32bit": {
-                "url": "https://dorado-api.deno.dev/edge?arch=86&channel=dev&version=$version&dl#/MicrosoftEdge-$version-x86.7z",
-                "hash": {
-                    "url": "https://dorado-api.deno.dev/edge?arch=86&channel=dev&version=$version",
-                    "jsonpath": "$.Hashes.Sha256"
-                }
+                "url": "https://dorado-api.deno.dev/edge?arch=86&channel=dev&version=$version&dl#/MicrosoftEdge-$version-x86.7z"
             }
         }
     }

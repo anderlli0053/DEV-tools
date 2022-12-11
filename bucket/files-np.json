@@ -1,0 +1,16 @@
+{
+    "version": "2.3.12",
+    "homepage": "https://files.community/",
+    "description": "A modern file explorer that pushes the boundaries of the Windows platform.",
+    "license": "MIT",
+    "url": "https://github.com/files-community/Files/releases/download/v2.3.12/Files.Package_2.3.12.0_x64_arm64_Sideload.msixbundle#/setup.msixbundle",
+    "hash": "a0f7e6e10d3b1dea8991d7fab39f3e542ca6e840e6fa83149d76c170d95dcd62",
+    "pre_install": "powershell -C \"Add-AppxPackage \"\"$dir\\setup.msixbundle\"\"\"",
+    "pre_uninstall": "powershell -C 'Get-AppxPackage ''Files'' | Remove-AppxPackage'",
+    "checkver": {
+        "github": "https://github.com/files-community/Files"
+    },
+    "autoupdate": {
+        "url": "https://github.com/files-community/Files/releases/download/v$version/Files.Package_$version.0_x64_arm64_Sideload.msixbundle#setup.msixbundle"
+    }
+}

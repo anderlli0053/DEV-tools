@@ -1,45 +1,45 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "9a440ed75b655004f58fea584fb900efc33f1454edf0cc7a538b7504450dc3a6",
-            "url": "https://registry.yarnpkg.com/esbuild-windows-32/-/esbuild-windows-32-0.15.18.tgz"
-        },
-        "64bit": {
-            "hash": "29847a44da402533c40f6493bd067c57a681e06678417224549183f9894e9981",
-            "url": "https://registry.yarnpkg.com/esbuild-windows-64/-/esbuild-windows-64-0.15.18.tgz"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "jsonpath": "$.versions.$version.dist.shasum",
-                    "url": "https://registry.yarnpkg.com/esbuild-windows-32"
-                },
-                "url": "https://registry.yarnpkg.com/esbuild-windows-32/-/esbuild-windows-32-$version.tgz"
-            },
-            "64bit": {
-                "hash": {
-                    "jsonpath": "$.versions.$version.dist.shasum",
-                    "url": "https://registry.yarnpkg.com/esbuild-windows-64"
-                },
-                "url": "https://registry.yarnpkg.com/esbuild-windows-64/-/esbuild-windows-64-$version.tgz"
-            }
-        }
-    },
-    "bin": "esbuild.exe",
-    "checkver": {
-        "jsonpath": "$.dist-tags.latest",
-        "url": "https://registry.yarnpkg.com/esbuild-windows-64"
-    },
-    "description": "An extremely fast JavaScript bundler and minifier",
     "homepage": "https://github.com/evanw/esbuild",
+    "description": "An extremely fast JavaScript bundler and minifier",
+    "version": "0.15.18",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://registry.yarnpkg.com/esbuild-windows-64/-/esbuild-windows-64-0.15.18.tgz",
+            "hash": "sha1:0fc761d785414284fc408e7914226d33f82420d0"
+        },
+        "32bit": {
+            "url": "https://registry.yarnpkg.com/esbuild-windows-32/-/esbuild-windows-32-0.15.18.tgz",
+            "hash": "sha1:0e92b66ecdf5435a76813c4bc5ccda0696f4efc3"
+        }
+    },
     "installer": {
         "script": [
             "Move-Item $dir\\package\\esbuild.exe $dir",
             "Remove-Item $dir\\package -Recurse -Force"
         ]
     },
-    "license": "MIT",
-    "version": "0.15.18"
+    "bin": "esbuild.exe",
+    "checkver": {
+        "url": "https://registry.yarnpkg.com/esbuild-windows-64",
+        "jsonpath": "$.dist-tags.latest"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://registry.yarnpkg.com/esbuild-windows-64/-/esbuild-windows-64-$version.tgz",
+                "hash": {
+                    "url": "https://registry.yarnpkg.com/esbuild-windows-64",
+                    "jsonpath": "$.versions.$version.dist.shasum"
+                }
+            },
+            "32bit": {
+                "url": "https://registry.yarnpkg.com/esbuild-windows-32/-/esbuild-windows-32-$version.tgz",
+                "hash": {
+                    "url": "https://registry.yarnpkg.com/esbuild-windows-32",
+                    "jsonpath": "$.versions.$version.dist.shasum"
+                }
+            }
+        }
+    }
 }

@@ -1,38 +1,11 @@
 {
-    "autoupdate": {
-        "hash": {
-            "regex": "Windows SHA-256: ($sha256)",
-            "url": "https://rpcs3.net/compatibility?b"
-        },
-        "url": "https://github.com/rpcs3/rpcs3-binaries-win/releases/download/build-$matchFullhash/rpcs3-v$matchBuild-$matchShorthash_win64.7z"
-    },
-    "bin": "rpcs3.exe",
-    "checkver": {
-        "regex": "/rpcs3-binaries-win/releases/download/build-(?<fullhash>[0-9a-f]+)/rpcs3-v(?<build>[0-9]+\\.[0-9]+\\.[0-9]+\\-[0-9]+)-(?<shorthash>[0-9a-f]{8})",
-        "replace": "${build}",
-        "url": "https://rpcs3.net/compatibility?b"
-    },
+    "version": "0.0.25-14454",
     "description": "Open-source Sony PlayStation 3 emulator (development version)",
-    "hash": "304379bf9c66e7709f627c36389b2f09ff51a54e85db9feaceff0ef3ebb0b7f8",
     "homepage": "https://rpcs3.net/",
-    "installer": {
-        "script": [
-            "if (!(Test-Path \"$persist_dir\\config.yml\")) {",
-            "    New-Item \"$dir\\config.yml\" -Type File | Out-Null",
-            "}",
-            "if (!(Test-Path \"$persist_dir\\games.yml\")) {",
-            "    New-Item \"$dir\\games.yml\" -Type File | Out-Null",
-            "}"
-        ]
-    },
     "license": "GPL-2.0-only",
-    "notes": [
-        "ATTENTION: RPCS3 requires a copy of the official PS3 firmware to function.",
-        "It is available here: https://www.playstation.com/en-us/support/system-updates/ps3",
-        "See the official quickstart guide for further instructions: https://rpcs3.net/quickstart",
-        "NEW: Alternatively, install the ps3-system-software package.  You must still manually load PS3UPDAT.PUP",
-        "Suggested apps could be safely uninstalled/ignored if have been installed."
-    ],
+    "url": "https://github.com/rpcs3/rpcs3-binaries-win/releases/download/build-ab3c8268f0deefe88192e4357a9124093012b821/rpcs3-v0.0.25-14454-ab3c8268_win64.7z",
+    "hash": "304379bf9c66e7709f627c36389b2f09ff51a54e85db9feaceff0ef3ebb0b7f8",
+    "bin": "rpcs3.exe",
     "persist": [
         "GuiConfigs",
         "dev_hdd0",
@@ -50,10 +23,37 @@
             "RPCS3-dev"
         ]
     ],
+    "installer": {
+        "script": [
+            "if (!(Test-Path \"$persist_dir\\config.yml\")) {",
+            "    New-Item \"$dir\\config.yml\" -Type File | Out-Null",
+            "}",
+            "if (!(Test-Path \"$persist_dir\\games.yml\")) {",
+            "    New-Item \"$dir\\games.yml\" -Type File | Out-Null",
+            "}"
+        ]
+    },
+    "checkver": {
+        "url": "https://rpcs3.net/compatibility?b",
+        "regex": "/rpcs3-binaries-win/releases/download/build-(?<fullhash>[0-9a-f]+)/rpcs3-v(?<build>[0-9]+\\.[0-9]+\\.[0-9]+\\-[0-9]+)-(?<shorthash>[0-9a-f]{8})",
+        "replace": "${build}"
+    },
+    "autoupdate": {
+        "url": "https://github.com/rpcs3/rpcs3-binaries-win/releases/download/build-$matchFullhash/rpcs3-v$matchBuild-$matchShorthash_win64.7z",
+        "hash": {
+            "url": "https://rpcs3.net/compatibility?b",
+            "regex": "Windows SHA-256: ($sha256)"
+        }
+    },
     "suggest": {
         "PS3 System Software": "games/ps3-system-software",
         "vcredist2019": "extras/vcredist2019"
     },
-    "url": "https://github.com/rpcs3/rpcs3-binaries-win/releases/download/build-ab3c8268f0deefe88192e4357a9124093012b821/rpcs3-v0.0.25-14454-ab3c8268_win64.7z",
-    "version": "0.0.25-14454"
+    "notes": [
+        "ATTENTION: RPCS3 requires a copy of the official PS3 firmware to function.",
+        "It is available here: https://www.playstation.com/en-us/support/system-updates/ps3",
+        "See the official quickstart guide for further instructions: https://rpcs3.net/quickstart",
+        "NEW: Alternatively, install the ps3-system-software package.  You must still manually load PS3UPDAT.PUP",
+        "Suggested apps could be safely uninstalled/ignored if have been installed."
+    ]
 }

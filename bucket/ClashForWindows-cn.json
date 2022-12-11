@@ -1,23 +1,14 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "7cac68f72c6238c43498b4b79b47d99fbf43d042407bc193eb02dd9d62b7a034",
-            "url": "https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases/download/CFW-V0.20.10_CN/Clash.for.Windows-0.20.10-win.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases/download/CFW-V$version_CN/Clash.for.Windows-$version-win.7z"
-            }
-        }
-    },
-    "checkver": {
-        "regex": "Clash for Windows V([\\d.]+)",
-        "url": "https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases"
-    },
+    "version": "0.20.10",
     "description": "clash for windows汉化版. 提供clash for windows的汉化版, 汉化补丁及汉化版安装程序",
     "homepage": "https://github.com/ender-zhao/Clash-for-Windows_Chinese",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases/download/CFW-V0.20.10_CN/Clash.for.Windows-0.20.10-win.7z",
+            "hash": "7cac68f72c6238c43498b4b79b47d99fbf43d042407bc193eb02dd9d62b7a034"
+        }
+    },
     "installer": {
         "script": [
             "if (!(Test-Path \"$persist_dir\\data\")) {",
@@ -39,15 +30,6 @@
             "}"
         ]
     },
-    "license": "Freeware",
-    "notes": "Clash for Windows data are now saved into '$persist_dir' and persisted by Scoop.",
-    "persist": "data",
-    "shortcuts": [
-        [
-            "Clash for Windows.exe",
-            "Clash for Windows"
-        ]
-    ],
     "uninstaller": {
         "script": [
             "$runtimeCache = \"$env:APPDATA\\clash_win\"",
@@ -59,5 +41,23 @@
             "}"
         ]
     },
-    "version": "0.20.10"
+    "shortcuts": [
+        [
+            "Clash for Windows.exe",
+            "Clash for Windows"
+        ]
+    ],
+    "persist": "data",
+    "checkver": {
+        "url": "https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases",
+        "regex": "Clash for Windows V([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ender-zhao/Clash-for-Windows_Chinese/releases/download/CFW-V$version_CN/Clash.for.Windows-$version-win.7z"
+            }
+        }
+    },
+    "notes": "Clash for Windows data are now saved into '$persist_dir' and persisted by Scoop."
 }
