@@ -23,7 +23,9 @@
 
 ### Scoop bucket for development tools, be it game dev or just regular software development, *and of course because i am not so well organized as it look like, there are also some games in here...*
 <hr><hr>
-Add this bucket after installing Scoop by typing: ```scoop bucket add DEV-Tools https://github.com/anderlli0053/DEV-tools.git```
+Add this bucket after installing Scoop by typing:
+
+```scoop bucket add DEV-Tools https://github.com/anderlli0053/DEV-tools.git```
 
 Even faster way is ```scoop bucket add DEV-Tools https://github.com/anderlli0053/DEV-tools.git && scoop update && scoop install <anyAPPNameInTheBucket>```
 <hr><hr>
