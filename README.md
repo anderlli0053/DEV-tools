@@ -55,6 +55,5 @@ ___It started as a collection of manifests for development tools that i wrote, b
 📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦
 <hr>
 
-+ **11.392 manifests fetched and added!**
 
 <hr>
