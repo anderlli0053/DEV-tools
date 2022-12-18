@@ -2,37 +2,25 @@
     "version": "3.8",
     "description": "Desktop utility to download images/videos/music/text from various websites, and more.",
     "homepage": "https://github.com/KurtBestor/Hitomi-Downloader",
-    "license": "Unknown",
+    "license": "Freeware",
     "architecture": {
         "64bit": {
             "url": "https://github.com/KurtBestor/Hitomi-Downloader/releases/download/v3.8/hitomi_downloader_GUI.zip",
             "hash": "0549f6e28e123353d7c64dbcb9794f81a32bf4fca28c940595a3dc2156bf0913"
         }
     },
-    "pre_install": [
-        "Rename-Item -Path \"$dir\\hitomi_downloader_GUI.exe\" -NewName 'hitomi_downloader.exe'",
-        "if (Test-Path \"$persist_dir\\hitomi_downloader.ini\") { Move-Item \"$persist_dir\\hitomi_downloader.ini*\" \"$dir\" -Force }",
-        "if (Test-Path \"$persist_dir\\hitomi_downloaded_*\\\") { Move-Item \"$persist_dir\\hitomi_downloaded_*\" \"$dir\" -Force }"
-    ],
-    "uninstaller": {
-        "script": [
-            "if(Test-Path \"$dir\\hitomi_downloader.ini\") { Move-Item \"$dir\\hitomi_downloader.ini\" \"$persist_dir\" -Force }",
-            "if(Test-Path \"$dir\\hitomi_downloaded_*\\\") { Move-Item \"$dir\\hitomi_downloaded_*\" \"$persist_dir\" -Force }"
-        ]
-    },
-    "persist": "hitomi_downloaded",
-    "bin": "hitomi_downloader.exe",
+    "pre_install": "if (!(Test-Path \"$persist_dir\\hitomi_downloader_GUI.ini\")) { New-Item \"$dir\\hitomi_downloader_GUI.ini\" | Out-Null }",
+    "bin": "hitomi_downloader_GUI.exe",
+    "persist": "hitomi_downloader_GUI.ini",
     "shortcuts": [
         [
-            "hitomi_downloader.exe",
-            "Hitomi Downloader",
-            "--no-admin"
+            "hitomi_downloader_GUI.exe",
+            "hitomi"
         ]
     ],
-    "notes": "Bypassing DPI is disabled.",
     "checkver": {
-        "url": "https://github.com/KurtBestor/Hitomi-Downloader/releases/latest",
-        "regex": "/releases/tag/v([\\d.]+\\w?)\""
+        "url": "https://github.com/KurtBestor/Hitomi-Downloader/releases",
+        "regex": "Hitomi Downloader v([\\d.a-z]+)"
     },
     "autoupdate": {
         "architecture": {

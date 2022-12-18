@@ -9,8 +9,10 @@
     "url": "https://patchmypc.com/freeupdater/PatchMyPC.exe",
     "hash": "788a013d232755d850b7b2e0a5848cff1d5528869504b838f35f360bbc70b255",
     "pre_install": [
-        "if (!(Test-Path \"$dir\" -Include 'PatchMyPC.ini', 'PatchMyPC.log')) {New-Item \"$dir\\PatchMyPC.ini\", \"$dir\\PatchMyPC.log\" | Out-Null}",
-        "Add-Content \"$dir\\PatchMyPC.ini\" -Value \";Options`nChk_Options_EnableVerboseLogging`nChk_Options_DisablePatchMyPCSelfUpdater\""
+        "if (!(Test-Path \"$persist_dir\\PatchMyPC.log\")) { New-Item \"$dir\\PatchMyPC.log\" | Out-Null }",
+        "if (!(Test-Path \"$persist_dir\\'PatchMyPC.ini\")) {",
+        "    Set-Content \"$dir\\PatchMyPC.ini\" -Value \";Options`nChk_Options_EnableVerboseLogging`nChk_Options_DisablePatchMyPCSelfUpdater\" -Encoding 'utf8' -Force",
+        "}"
     ],
     "bin": "PatchMyPC.exe",
     "shortcuts": [

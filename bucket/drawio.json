@@ -1,7 +1,7 @@
 {
     "version": "20.6.2",
-    "description": "A diagramming app for making flowcharts, process diagrams, org charts, UML, ER and network diagrams.",
-    "homepage": "https://www.diagrams.net/",
+    "description": "Professional diagramming",
+    "homepage": "https://www.diagrams.net",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
@@ -9,7 +9,7 @@
             "hash": "4d1572363740f906a0ae61407768c70c61fffd44d3f5642b696ac46cf4460047",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse"
             ]
         },
         "32bit": {
@@ -17,25 +17,17 @@
             "hash": "c5e1e1876e56ee8480788d0dfe5180ea1978edf201cae87bfddbb79ccceca157",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse"
             ]
         }
     },
-    "bin": [
-        [
-            "draw.io.exe",
-            "draw.io",
-            "--user-data-dir=\"$dir\\User Data\""
-        ]
-    ],
+    "bin": "draw.io.exe",
     "shortcuts": [
         [
             "draw.io.exe",
-            "Draw.io",
-            "--user-data-dir=\"$dir\\User Data\""
+            "draw.io"
         ]
     ],
-    "persist": "User Data",
     "checkver": {
         "github": "https://github.com/jgraph/drawio-desktop"
     },
@@ -47,6 +39,10 @@
             "32bit": {
                 "url": "https://github.com/jgraph/drawio-desktop/releases/download/v$version/draw.io-ia32-$version-windows-32bit-installer.exe#/dl.7z"
             }
+        },
+        "hash": {
+            "url": "$baseurl/Files-SHA256-Hashes.txt",
+            "regex": "$basename\\s*?$sha256"
         }
     }
 }
