@@ -1,0 +1,23 @@
+{
+    "version": "22.1",
+    "description": "Software to manage your OpenPS2Loader game library on Windows",
+    "homepage": "https://oplmanager.com/site",
+    "license": "Freeware",
+    "url": "https://static.oplmanager.com/releases/OPL_Manager_V22.1.zip",
+    "hash": "3046bb5cc1a7bcee84b1720384def3735eb4fe21222fbac312c77ed0a25d6889",
+    "pre_install": "if (!(Test-Path \"$persist_dir\\OPLManager.ini\")) { New-Item -ItemType File \"$dir\\OPLManager.ini\" | Out-Null }",
+    "shortcuts": [
+        [
+            "OPL_Manager.exe",
+            "OPL Manager"
+        ]
+    ],
+    "persist": "OPLManager.ini",
+    "checkver": {
+        "url": "https://oplmanager.com/site/?changelog",
+        "regex": "V([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://static.oplmanager.com/releases/OPL_Manager_V$version.zip"
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "version": "1.2.1",
+    "description": "Convert your full OG Xbox ISO dumps into split ISO images",
+    "homepage": "https://github.com/Team-Resurgent/Repackinator",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Team-Resurgent/Repackinator/releases/download/v1.2.1/Repackinator-win-x64.zip",
+            "hash": "39eef36c3f203724ed9579b786c94f6f4d91314e66dbd541cc9d0dbf97f3aff7"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config.json\")) { Set-Content \"$dir\\config.json\" (@('{', '}') -join \"`r`n\") -Encoding Unicode | Out-Null }",
+        "if (!(Test-Path \"$persist_dir\\settings.ini\")) { New-Item \"$dir\\settings.ini\" | Out-Null }"
+    ],
+    "persist": [
+        "config.json",
+        "settings.ini"
+    ],
+    "shortcuts": [
+        [
+            "repackinator.exe",
+            "Repackinator"
+        ]
+    ],
+    "bin": "repackinator.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Team-Resurgent/Repackinator/releases/download/v$version/Repackinator-win-x64.zip"
+            }
+        }
+    }
+}

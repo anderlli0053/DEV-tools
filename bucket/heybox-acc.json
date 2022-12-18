@@ -1,0 +1,23 @@
+{
+    "version": "1.1.19.1",
+    "description": "小黑盒加速器，告别高延迟，畅玩海外游戏。",
+    "homepage": "https://acc.xiaoheihe.cn",
+    "license": {
+        "identifier": "Freeware"
+    },
+    "url": "https://macc.max-c.com/proxy/acc_installer_1.1.19.1_xiaoheihe.exe#/dl.7z",
+    "hash": "1dd6885a43f0563aa904541ca9d1a7db1bfaab41886f0d21b8d1fd604573b428",
+    "shortcuts": [
+        [
+            "heyboxacc.exe",
+            "小黑盒加速器"
+        ]
+    ],
+    "checkver": {
+        "script": "(Invoke-WebRequest -Uri 'https://api.xiaoheihe.cn/proxy/download/' -MaximumRedirection 0 -SkipHttpErrorCheck -ErrorAction:SilentlyContinue).Headers.Location",
+        "regex": "acc_installer_([\\d.]+)_xiaoheihe\\.exe"
+    },
+    "autoupdate": {
+        "url": "https://macc.max-c.com/proxy/acc_installer_$version_xiaoheihe.exe#/dl.7z"
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "version": "1.8.2",
+    "description": "哔哩哔哩PC客户端",
+    "homepage": "https://app.bilibili.com",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.hdslb.com/mobile/fixed/bili_win/bili_win-install.exe#/dl.7z",
+            "hash": "sha512:db840f13e77a6f0371ad07b79d71e91c7c31113165f4a4a2f4377ba7fe19c11739b08cbefc1402d28d61480491a1b924fbf77f1145b7e672423588e1977e2092",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
+            ]
+        }
+    },
+    "shortcuts": [
+        [
+            "哔哩哔哩.exe",
+            "哔哩哔哩"
+        ]
+    ],
+    "checkver": {
+        "url": "http://api.bilibili.com/x/elec-frontend/update/latest.yml",
+        "regex": "bilibili-setup-v([\\d\\.]+)\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.hdslb.com/mobile/fixed/bili_win/bili_win-install.exe#/dl.7z",
+                "hash": {
+                    "url": "http://api.bilibili.com/x/elec-frontend/update/latest.yml",
+                    "regex": "sha512: ([\\w\\d+\\/=]{24,88})"
+                }
+            }
+        }
+    }
+}
