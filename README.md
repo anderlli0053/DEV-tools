@@ -10,6 +10,8 @@
 [![Tests](https://github.com/anderlli0053/DEV-tools/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/anderlli0053/DEV-tools/actions/workflows/ci.yml)
 
 
+[![DevSkim](https://github.com/anderlli0053/DEV-tools/actions/workflows/devskim.yml/badge.svg?branch=master)](https://github.com/anderlli0053/DEV-tools/actions/workflows/devskim.yml)
+
 [![Pull Requests](https://github.com/anderlli0053/DEV-tools/actions/workflows/pull_request.yml/badge.svg?branch=master)](https://github.com/anderlli0053/DEV-tools/actions/workflows/pull_request.yml)
 
 
