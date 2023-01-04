@@ -1,51 +1,51 @@
 {
- "autoupdate": {
-  "hash": {
-   "url": "https://github.com/GNS3/gns3-gui/releases/download/v$version/GNS3-$version-all-in-one.exe.sha256"
-  },
-  "url": "https://github.com/GNS3/gns3-gui/releases/download/v$version/GNS3-$version-all-in-one.exe#/dl.7z"
- },
- "bin": [
-  "gns3.ps1",
-  "gns3server.ps1",
-  "gns3vmnet.ps1"
- ],
- "checkver": {
-  "github": "https://github.com/GNS3/gns3-gui"
- },
- "description": "An advanced network simulator to design and configure virtual networks",
- "hash": "d900ce2a7e0bf04af42b302ca7bdd2bc910c9722ac427340170143ff41f6f6db",
- "homepage": "https://gns3.com",
- "license": "GPL-3.0-only",
- "notes": [
-  "Npcap needs to be installed separately and possibly vc_redist.x64",
-  "Run 'scoop install nmap' (from a elevated shell) to install 'Npcap' automatically,",
-  "bundled version is available at $dir\\npcap-*.exe,",
-  "latest version can be downloaded from https://nmap.org/npcap"
- ],
- "pre_install": [
-  "Move-Item \"$dir\\`$TEMP\\*\" \"$dir\"",
-  "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$TEMP\" -Recurse",
-  "foreach ($binary in @(\"gns3\", \"gns3server\", \"gns3vmnet\")) {",
-  "    Set-Content -Path \"$dir\\${binary}.ps1\" -Value @\"",
-  "if (!(Test-Path Variable:PSScriptRoot)) { `$PSScriptRoot = Split-Path `$MyInvocation.MyCommand.Path -Parent }",
-  "try {",
-  "    Push-Location `\"`$PSScriptRoot`\"",
-  "    if(`$MyInvocation.ExpectingInput) { `$input | & `\".\\${binary}.exe`\" @args } else { & `\".\\${binary}.exe`\" @args }",
-  "} finally { Pop-Location }",
-  "exit `$LASTEXITCODE",
-  "\"@",
-  "}"
- ],
- "shortcuts": [
-  [
-   "gns3.exe",
-   "GNS3"
-  ]
- ],
- "suggest": {
-  "Nmap (includes Npcap)": "nmap"
- },
- "url": "https://github.com/GNS3/gns3-gui/releases/download/v2.2.35.1/GNS3-2.2.35.1-all-in-one.exe#/dl.7z",
- "version": "2.2.35.1"
+    "autoupdate": {
+        "hash": {
+            "url": "https://github.com/GNS3/gns3-gui/releases/download/v$version/GNS3-$version-all-in-one.exe.sha256"
+        },
+        "url": "https://github.com/GNS3/gns3-gui/releases/download/v$version/GNS3-$version-all-in-one.exe#/dl.7z"
+    },
+    "bin": [
+        "gns3.ps1",
+        "gns3server.ps1",
+        "gns3vmnet.ps1"
+    ],
+    "checkver": {
+        "github": "https://github.com/GNS3/gns3-gui"
+    },
+    "description": "An advanced network simulator to design and configure virtual networks",
+    "hash": "2a81095db3dcd2a93fbcbbcac69819f064b7913568e7435171eac13a786a46a5",
+    "homepage": "https://gns3.com",
+    "license": "GPL-3.0-only",
+    "notes": [
+        "Npcap needs to be installed separately and possibly vc_redist.x64",
+        "Run 'scoop install nmap' (from a elevated shell) to install 'Npcap' automatically,",
+        "bundled version is available at $dir\\npcap-*.exe,",
+        "latest version can be downloaded from https://nmap.org/npcap"
+    ],
+    "pre_install": [
+        "Move-Item \"$dir\\`$TEMP\\*\" \"$dir\"",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$TEMP\" -Recurse",
+        "foreach ($binary in @(\"gns3\", \"gns3server\", \"gns3vmnet\")) {",
+        "    Set-Content -Path \"$dir\\${binary}.ps1\" -Value @\"",
+        "if (!(Test-Path Variable:PSScriptRoot)) { `$PSScriptRoot = Split-Path `$MyInvocation.MyCommand.Path -Parent }",
+        "try {",
+        "    Push-Location `\"`$PSScriptRoot`\"",
+        "    if(`$MyInvocation.ExpectingInput) { `$input | & `\".\\${binary}.exe`\" @args } else { & `\".\\${binary}.exe`\" @args }",
+        "} finally { Pop-Location }",
+        "exit `$LASTEXITCODE",
+        "\"@",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "gns3.exe",
+            "GNS3"
+        ]
+    ],
+    "suggest": {
+        "Nmap (includes Npcap)": "nmap"
+    },
+    "url": "https://github.com/GNS3/gns3-gui/releases/download/v2.2.36/GNS3-2.2.36-all-in-one.exe#/dl.7z",
+    "version": "2.2.36"
 }
