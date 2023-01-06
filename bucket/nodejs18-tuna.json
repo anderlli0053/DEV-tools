@@ -1,41 +1,41 @@
 {
- "architecture": {
-  "64bit": {
-   "extract_dir": "node-v18.12.1-win-x64",
-   "hash": "b8f73f9b7fa78aebf172893713b14908aa46585dbb88e333bf9c26102533a7f6",
-   "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v18.12.1/node-v18.12.1-win-x64.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "extract_dir": "node-v$version-win-x64",
-    "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v$version/node-v$version-win-x64.7z"
-   }
-  },
-  "hash": {
-   "url": "$baseurl/SHASUMS256.txt.asc"
-  }
- },
- "checkver": {
-  "regex": "node-v(18.[\\d.]+)-win-x64.7z",
-  "url": "https://nodejs.org/dist/latest-v18.x/"
- },
- "description": "An asynchronous event driven JavaScript runtime designed to build scalable network applications(Download from TUNA mirror).",
- "env_add_path": [
-  "bin",
-  "."
- ],
- "homepage": "https://nodejs.org",
- "license": "MIT",
- "persist": [
-  "bin",
-  "cache"
- ],
- "post_install": [
-  "# Set npm prefix to install modules inside bin and npm cache so they persist",
-  "Set-Content -Value \"prefix=$persist_dir\\bin`ncache=$persist_dir\\cache\" -Path \"$dir\\node_modules\\npm\\npmrc\"",
-  "npm config set registry http://mirrors.cloud.tencent.com/npm/"
- ],
- "version": "18.12.1"
+    "architecture": {
+        "64bit": {
+            "extract_dir": "node-v18.13.0-win-x64",
+            "hash": "ceac916b111c8a0f04dd0621d7c48cd2a91848ff4fc8e35ff339138350dec801",
+            "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v18.13.0/node-v18.13.0-win-x64.7z"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "extract_dir": "node-v$version-win-x64",
+                "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v$version/node-v$version-win-x64.7z"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHASUMS256.txt.asc"
+        }
+    },
+    "checkver": {
+        "regex": "node-v(18.[\\d.]+)-win-x64.7z",
+        "url": "https://nodejs.org/dist/latest-v18.x/"
+    },
+    "description": "An asynchronous event driven JavaScript runtime designed to build scalable network applications(Download from TUNA mirror).",
+    "env_add_path": [
+        "bin",
+        "."
+    ],
+    "homepage": "https://nodejs.org",
+    "license": "MIT",
+    "persist": [
+        "bin",
+        "cache"
+    ],
+    "post_install": [
+        "# Set npm prefix to install modules inside bin and npm cache so they persist",
+        "Set-Content -Value \"prefix=$persist_dir\\bin`ncache=$persist_dir\\cache\" -Path \"$dir\\node_modules\\npm\\npmrc\"",
+        "npm config set registry http://mirrors.cloud.tencent.com/npm/"
+    ],
+    "version": "18.13.0"
 }
