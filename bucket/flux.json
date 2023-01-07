@@ -1,26 +1,34 @@
 {
-    "version": "4.120",
-    "description": "Makes the color of your computer's display adapt to the time of day, warm at night and like sunlight during the day.",
-    "homepage": "https://justgetflux.com",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://justgetflux.com/news/pages/eula/"
+    "version": "0.38.2",
+    "description": "Open and extensible continuous delivery solution for Kubernetes.",
+    "homepage": "https://fluxcd.io",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/fluxcd/flux2/releases/download/v0.38.2/flux_0.38.2_windows_amd64.zip",
+            "hash": "341c28fcb5132acc22c8d5f63bcc3790459fd3b65ebb6baaef201f7603192076"
+        },
+        "32bit": {
+            "url": "https://github.com/fluxcd/flux2/releases/download/v0.38.2/flux_0.38.2_windows_386.zip",
+            "hash": "3c8c28fac2ffe11a0455333267d7b37a90ba492cc798a386c7138d6fed5710bc"
+        }
     },
-    "url": "http://justgetflux.com/flux-setup4-120.exe#/dl.7z",
-    "hash": "0b3f19bd4910a27ed4566ad1fe72735869e9e84b943a026fa224a344926670ff",
-    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
     "bin": "flux.exe",
-    "shortcuts": [
-        [
-            "flux.exe",
-            "f.lux"
-        ]
-    ],
     "checkver": {
-        "url": "https://justgetflux.com/update/v4/windows-download.json",
-        "regex": "([\\d.]+)"
+        "github": "https://github.com/fluxcd/flux2"
     },
     "autoupdate": {
-        "url": "http://justgetflux.com/flux-setup$dashVersion.exe#/dl.7z"
-    }
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/fluxcd/flux2/releases/download/v$version/flux_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/fluxcd/flux2/releases/download/v$version/flux_$version_windows_386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/flux_$version_checksums.txt"
+        }
+    },
+    "notes": "For Flux v1, please install 'versions/fluxctl' instead."
 }

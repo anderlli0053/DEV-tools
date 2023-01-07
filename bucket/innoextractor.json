@@ -1,18 +1,16 @@
-{
-    "version": "6.2.1.418",
+﻿{
     "homepage": "http://www.havysoft.cl/innoextractor.html",
-    "description": "A GUI frontend for innounp.",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www-havysoft-cl.translate.goog/acuerdo.html?_x_tr_sch=http&_x_tr_sl=auto&_x_tr_tl=en-US&_x_tr_hl=en-US"
-    },
+    "license": "freeware",
+    "version": "5.4.5.202",
     "url": "http://www.havysoft.cl/download/IE_Install.zip",
-    "hash": "e1277ade19bea5145167e0168be86c5166b3763fe696fca43d6327e03d7f553e",
-    "pre_install": [
-        "ensure \"$persist_dir\" | Out-Null",
-        "Start-Process \"$dir\\IE_Install.exe\" -Wait -ArgumentList @('/SP-', '/VERYSILENT', '/PORTABLE=1', \"/DIR=$dir\"); Remove-Item \"$dir\\IE_Install.exe\"",
-        "Copy-Item \"$persist_dir\\Config.ini\" \"$dir\\Config.ini\" -ErrorAction 'SilentlyContinue' -Force"
-    ],
+    "hash": "51ee17e7790eb92685d1c1941d9be5fee4c2866010833bda4e5797ec2f814e2b",
+    "installer": {
+        "script": [
+            "& (Get-HelperPath 'innounp') -x -d\"$dir\" \"$dir\\IE_Install.exe\" | Out-Null",
+            "Move-Item \"$dir\\{app}\\*\" \"$dir\" -Force",
+            "Remove-Item \"$dir\\{app}\",\"$dir\\{userappdata}\",\"$dir\\install_script.iss\",\"$dir\\IE_Install.exe\" -Force -Recurse"
+        ]
+    },
     "bin": "InnoExtractor.exe",
     "shortcuts": [
         [
@@ -20,15 +18,5 @@
             "InnoExtractor"
         ]
     ],
-    "pre_uninstall": [
-        "Start-Process 'reg' -Wait -WindowStyle 'Hidden' -ArgumentList @('delete', 'HKCU\\SOFTWARE\\Classes\\exefile\\shell\\InnoExtractor', '/f')",
-        "Copy-Item \"$dir\\Config.ini\" \"$persist_dir\\Config.ini\" -ErrorAction 'SilentlyContinue' -Force"
-    ],
-    "checkver": {
-        "url": "http://www.havysoft.cl/descargar.html",
-        "regex": "\\s+<td\\swidth=\"\\d+\">([\\d.]+)</td>"
-    },
-    "autoupdate": {
-        "url": "http://www.havysoft.cl/download/IE_Install.zip"
-    }
+    "persist": "Config.ini"
 }

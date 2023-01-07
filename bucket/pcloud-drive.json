@@ -1,7 +1,7 @@
 {
     "version": "4.0.1",
     "homepage": "https://www.pcloud.com",
-    "description": "The official Windows 10/11 client for syncronising local files/folders to your pCloud drive, and vice versa.",
+    "description": "The official Windows 10/11 client for synchronizing local files/folders to your pCloud drive, and vice versa.",
     "license": {
         "identifier": "Freeware",
         "url": "https://www.pcloud.com/terms_and_conditions.html"
@@ -53,9 +53,9 @@
         "script": [
             "# Checkver for pCloud",
             "$id = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'",
-            "(Invoke-WebRequest 'https://www.pcloud.com/release-notes/windows.html' -UserAgent \"$id\") -match '\\|\\s<a\\shref=\"(?<url64>https://u\\.pcloud\\.link/publink/show\\?code=[\\w]+)' | Out-Null",
+            "(Invoke-RestMethod 'https://www.pcloud.com/release-notes/windows.html' -UserAgent \"$id\") -match '\\|\\s<a\\shref=\"(?<url64>https://u\\.pcloud\\.link/publink/show\\?code=[\\w]+)' | Out-Null",
             "$resp_part1 = $Matches['url64']",
-            "(Invoke-WebRequest \"$resp_part1\" -UserAgent \"$id\") -match '\"name\":\\s\"pCloud_Windows_(?<version>[\\d.]+)_(x64|x86)\\.exe\",' | Out-Null",
+            "(Invoke-RestMethod \"$resp_part1\" -UserAgent \"$id\") -match '\"name\":\\s\"pCloud_Windows_(?<version>[\\d.]+)_(x64|x86)\\.exe\",' | Out-Null",
             "$resp_part2 = $Matches['version']",
             "return $resp_part2"
         ],

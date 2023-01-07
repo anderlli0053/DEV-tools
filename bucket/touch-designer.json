@@ -12,7 +12,7 @@
             "hash": "7f7737062392a2c394c04962d776db881ad04fcf53edc272f41ca758a0a35866"
         }
     },
-    "pre_install": "Rename-Item \"$dir\\TouchDesigner.*.exe\" 'TouchDesigner.exe'; Expand-InnoArchive \"$dir\\TouchDesigner.exe\" \"$dir\" -Removal",
+    "pre_install": "Get-ChildItem \"$dir\\TouchDesigner.*.exe\" | Rename-Item -NewName 'TouchDesigner.exe'; Expand-InnoArchive \"$dir\\TouchDesigner.exe\" \"$dir\" -Removal",
     "bin": [
         "bin\\TouchDesigner.exe",
         "bin\\TouchPlayer.exe"

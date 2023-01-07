@@ -3,12 +3,8 @@
     "description": "Personal document manager",
     "homepage": "https://openpaper.work",
     "license": "GPL-3.0-or-later",
-    "architecture": {
-        "64bit": {
-            "url": "https://download.openpaper.work/windows/amd64/paperwork-master-latest.zip",
-            "hash": "552101c83249a1c5cd03759ff21167a2efad984866afef39642def4c942403e1"
-        }
-    },
+    "url": "https://download.openpaper.work/windows/x86/paperwork-master-ea1b8b01.zip",
+    "hash": "559815cdfeb5e62c4ffcbfe41ab3986c3e30d1bc1c63179da9ef80886d0872bd",
     "shortcuts": [
         [
             "paperwork.exe",
@@ -18,14 +14,11 @@
         ]
     ],
     "checkver": {
-        "url": "https://gitlab.gnome.org/World/OpenPaperwork/paperwork/-/tags?format=atom",
-        "regex": "<title>([\\d.]+)</title>"
+        "url": "https://gitlab.gnome.org/api/v4/projects/World%2FOpenPaperwork%2Fpaperwork/repository/tags?order_by=name",
+        "regex": "{[^{}]*\"name\":\"(?<version>[0-9.]+)\"[^{}]*\"commit\":{[^}]*\"short_id\":\"(?<hash>[^\"]+)\"",
+        "replace": "${version}"
     },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://download.openpaper.work/windows/amd64/paperwork-master-latest.zip"
-            }
-        }
+        "url": "https://download.openpaper.work/windows/x86/paperwork-master-$matchHash.zip"
     }
 }

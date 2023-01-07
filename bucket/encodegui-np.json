@@ -10,7 +10,7 @@
         }
     },
     "post_install": [
-        "Rename-Item \"$dir\\EncodeGUI*setup.exe\" 'setup.exe'; $arguments = @('/VERYSILENT', '/CURRENTUSER', \"/DIR=$dir\", '/SUPPRESSMSGBOXES')",
+        "Get-ChildItem \"$dir\\EncodeGUI*setup.exe\" | Rename-Item -NewName 'setup.exe'; $arguments = @('/VERYSILENT', '/CURRENTUSER', \"/DIR=$dir\", '/SUPPRESSMSGBOXES')",
         "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
         "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList $arguments; Remove-Item \"$dir\\setup.exe\""
     ],

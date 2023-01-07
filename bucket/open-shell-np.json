@@ -1,7 +1,7 @@
 {
     "version": "4.4.170",
     "homepage": "https://github.com/Open-Shell/Open-Shell-Menu",
-    "description": "A fork of Classic Shell with additonal fixes and more features.",
+    "description": "A fork of Classic Shell with additional fixes and more features.",
     "license": "MIT",
     "url": "https://github.com/Open-Shell/Open-Shell-Menu/releases/download/v4.4.170/OpenShellSetup_4_4_170.exe#/setup.exe",
     "hash": "0417041CFFED3478F13A840E45EE304CCF8D1F9CA38E4126BC315161AC9F1669",
@@ -9,19 +9,19 @@
         "64bit": {
             "pre_install": [
                 "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
-                "Set-Location \"$dir\"; Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList 'extract64'; Set-Location '-'"
+                "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList 'extract64' -WorkingDirectory \"$dir\""
             ]
         },
         "32bit": {
             "pre_install": [
                 "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
-                "Set-Location \"$dir\"; Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList 'extract32'; Set-Location '-'"
+                "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList 'extract32' -WorkingDirectory \"$dir\""
             ]
         }
     },
     "installer": {
         "script": [
-            "Remove-Item \"$dir\\setup.exe\"; Rename-Item \"$dir\\*.msi\" 'setup.msi' | Out-Null",
+            "Remove-Item \"$dir\\setup.exe\"; Get-ChildItem \"$dir\\*.msi\" | Rename-Item -NewName 'setup.msi'",
             "Write-Host \"Replacing Start Menu with Open Shell, please wait and don't cancel the script...\" -F 'Yellow'",
             "Start-Process 'msiexec' -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList @('/i', \"$dir\\setup.msi\", '/qn')",
             "Stop-Process -Name 'explorer'; Start-Sleep -Seconds 2; Write-Host \"Done!\" -F 'Yellow'"
