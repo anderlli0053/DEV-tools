@@ -28,6 +28,8 @@
 [![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2Fanderlli0053%2FDEV-tools&labelColor=%2337d67a&countColor=%23697689)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Fanderlli0053%2FDEV-tools)
 <hr><hr>
 
+Everything regarding Scoop software can be found on [this](https://scoop.sh/) official page
+
 ### Scoop bucket for development tools, be it game dev or just regular software development, *and of course because i am not so well organized as it look like, there are also some games in here...*
 <hr><hr>
 Add this bucket after installing Scoop by typing:
