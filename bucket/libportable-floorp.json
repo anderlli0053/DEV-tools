@@ -1,46 +1,46 @@
 {
-    "version": "10.8.0",
-    "description": "(libportable patched) A new privacy-preserving Firefox-based browser developedby a community of students in Japan.",
-    "homepage": "https://floorp.ablaze.one/en/",
-    "license": "MPL-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/Floorp-Projects/Floorp/releases/download/v10.8.0/floorp-win64.installer.exe#/dl.7z",
-            "hash": "8c5df5543c226bcf0c1579357441be37deefb435fdf6d5e91967d73bdd10cfa6"
-        }
-    },
-    "depends": "lemon/libportable",
-    "pre_install": [
-        "if ($env:CI -eq \"true\") { Exit }",
-        "Remove-Item \"$dir\\setup.exe\", \"$dir\\core\\updater.*\" -Force",
-        "Copy-Item \"$(appdir libportable $global)\\current\\portable64.dll\" \"$dir\\core\\\"",
-        "if (!(installed 'libportable' $global)) { error 'Please install `libportable` first, then reinstall `libportable-floorp`.' ; Exit }",
-        "Invoke-ExternalCommand \"$(appdir libportable $global)\\current\\setdll64.exe\" -ArgumentList (\"/d:$dir\\core\\portable64.dll\", \"$dir\\core\\mozglue.dll\") -Activity \"Applying libportable patch...\" | Out-Null",
-        "if (!(Test-Path \"$persist_dir\\App\\portable.ini\" )) {",
-        "  Copy-Item \"$(appdir libportable $global)\\current\\portable(example).ini\" \"$dir\\core\\portable.ini\"",
-        "  ((Get-Content -path \"$dir\\core\\portable.ini\" -Raw) -replace 'Update=1','Update=0') | Set-Content -Path \"$dir\\core\\portable.ini\"",
-        "}"
-    ],
-    "bin": "core\\floorp.exe",
-    "shortcuts": [
-        [
-            "core\\floorp.exe",
-            "Floorp"
-        ]
-    ],
-    "persist": [
-        "core\\portable.ini",
-        "Profiles",
-        "Plugins"
-    ],
-    "checkver": {
-        "github": "https://github.com/Floorp-Projects/Floorp"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/Floorp-Projects/Floorp/releases/download/v$version/floorp-win64.installer.exe#/dl.7z"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "8c5df5543c226bcf0c1579357441be37deefb435fdf6d5e91967d73bdd10cfa6",
+   "url": "https://github.com/Floorp-Projects/Floorp/releases/download/v10.8.0/floorp-win64.installer.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/Floorp-Projects/Floorp/releases/download/v$version/floorp-win64.installer.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": "core\\floorp.exe",
+ "checkver": {
+  "github": "https://github.com/Floorp-Projects/Floorp"
+ },
+ "depends": "lemon/libportable",
+ "description": "(libportable patched) A new privacy-preserving Firefox-based browser developedby a community of students in Japan.",
+ "homepage": "https://floorp.ablaze.one/en/",
+ "license": "MPL-2.0",
+ "persist": [
+  "core\\portable.ini",
+  "Profiles",
+  "Plugins"
+ ],
+ "pre_install": [
+  "if ($env:CI -eq \"true\") { Exit }",
+  "Remove-Item \"$dir\\setup.exe\", \"$dir\\core\\updater.*\" -Force",
+  "Copy-Item \"$(appdir libportable $global)\\current\\portable64.dll\" \"$dir\\core\\\"",
+  "if (!(installed 'libportable' $global)) { error 'Please install `libportable` first, then reinstall `libportable-floorp`.' ; Exit }",
+  "Invoke-ExternalCommand \"$(appdir libportable $global)\\current\\setdll64.exe\" -ArgumentList (\"/d:$dir\\core\\portable64.dll\", \"$dir\\core\\mozglue.dll\") -Activity \"Applying libportable patch...\" | Out-Null",
+  "if (!(Test-Path \"$persist_dir\\App\\portable.ini\" )) {",
+  "  Copy-Item \"$(appdir libportable $global)\\current\\portable(example).ini\" \"$dir\\core\\portable.ini\"",
+  "  ((Get-Content -path \"$dir\\core\\portable.ini\" -Raw) -replace 'Update=1','Update=0') | Set-Content -Path \"$dir\\core\\portable.ini\"",
+  "}"
+ ],
+ "shortcuts": [
+  [
+   "core\\floorp.exe",
+   "Floorp"
+  ]
+ ],
+ "version": "10.8.0"
 }

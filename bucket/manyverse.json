@@ -1,46 +1,46 @@
 {
-    "version": "0.2301.6-beta",
-    "description": "A social network off the grid.",
-    "homepage": "https://www.manyver.se/",
-    "license": "MPL-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/staltz/manyverse/releases/download/v0.2301.6-beta/manyverse-0.2301.6-beta-windows-x64-nsis-installer.exe#/dl.7z",
-            "hash": "sha512:c488659a2316d7f68ae6b66e9ce5ca0cc07b0c4c870ff84dfccf9c945239820e5d1b53c6c66f5169d689d64b6f69ee1a841ce592512091618913c210c4a93595",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\", \"$dir\\resources\\app-update.yml\"  -Force -Recurse"
-            ]
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "sha512:c488659a2316d7f68ae6b66e9ce5ca0cc07b0c4c870ff84dfccf9c945239820e5d1b53c6c66f5169d689d64b6f69ee1a841ce592512091618913c210c4a93595",
+   "pre_install": [
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\", \"$dir\\resources\\app-update.yml\"  -Force -Recurse"
+   ],
+   "url": "https://github.com/staltz/manyverse/releases/download/v0.2301.6-beta/manyverse-0.2301.6-beta-windows-x64-nsis-installer.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "regex": "sha512:\\s*$base64",
+     "url": "$baseurl/latest.yml"
     },
-    "bin": [
-        [
-            "Manyverse.exe",
-            "Manyverse",
-            "--user-data-dir=\"$dir\\User Data\""
-        ]
-    ],
-    "shortcuts": [
-        [
-            "Manyverse.exe",
-            "Manyverse",
-            "--user-data-dir=\"$dir\\User Data\""
-        ]
-    ],
-    "persist": "User Data",
-    "checkver": {
-        "url": "https://github.com/staltz/manyverse/releases/latest/download/latest.yml",
-        "regex": "version: (.+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/staltz/manyverse/releases/download/v$version/manyverse-$version-windows-x64-nsis-installer.exe#/dl.7z",
-                "hash": {
-                    "url": "$baseurl/latest.yml",
-                    "regex": "sha512:\\s*$base64"
-                }
-            }
-        }
-    }
+    "url": "https://github.com/staltz/manyverse/releases/download/v$version/manyverse-$version-windows-x64-nsis-installer.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": [
+  [
+   "Manyverse.exe",
+   "Manyverse",
+   "--user-data-dir=\"$dir\\User Data\""
+  ]
+ ],
+ "checkver": {
+  "regex": "version: (.+)",
+  "url": "https://github.com/staltz/manyverse/releases/latest/download/latest.yml"
+ },
+ "description": "A social network off the grid.",
+ "homepage": "https://www.manyver.se/",
+ "license": "MPL-2.0",
+ "persist": "User Data",
+ "shortcuts": [
+  [
+   "Manyverse.exe",
+   "Manyverse",
+   "--user-data-dir=\"$dir\\User Data\""
+  ]
+ ],
+ "version": "0.2301.6-beta"
 }

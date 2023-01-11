@@ -1,58 +1,58 @@
 {
-    "version": "2.0.12",
-    "description": "Regular expression search and replace tool for Windows.",
-    "homepage": "https://tools.stefankueng.com/grepWin.html",
-    "license": "GPL-3.0-only",
-    "notes": "Run '$dir\\install-context.reg' to add grepWin to right-click context menu.",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/stefankueng/grepWin/releases/download/2.0.12/grepWin-x64-2.0.12_portable.zip",
-            "hash": "274c21d91385c077834ea6501b0422b4cd631bbe2803d19cfeae3c1a3b1160a4",
-            "pre_install": "Rename-Item \"$dir\\grepWin-x64-${version}_portable.exe\" 'grepWin.exe'"
-        },
-        "32bit": {
-            "url": "https://github.com/stefankueng/grepWin/releases/download/2.0.12/grepWin-2.0.12_portable.zip",
-            "hash": "355209d3a7d04bc6e43d8f6ce9a8a3839a4d591d16af410090b70d113b47d724",
-            "pre_install": "Rename-Item \"$dir\\grepWin-${version}_portable.exe\" 'grepWin.exe'"
-        }
-    },
-    "post_install": [
-        "$app_path = \"$dir\\grepWin.exe\".Replace('\\', '\\\\')",
-        "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\extras\\scripts\\grepwin\\$_\") {",
-        "        $content = Get-Content \"$bucketsdir\\extras\\scripts\\grepwin\\$_\"",
-        "        $content = $content.Replace('$app_path', $app_path)",
-        "        if ($global) {",
-        "            $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
-        "        }",
-        "    }",
-        "    $content | Set-Content -Path \"$dir\\$_\" -Encoding ascii",
-        "}",
-        "if (-not (Test-Path \"$persist_dir\\grepwin.ini\")) {",
-        "    Set-Content \"$dir\\grepwin.ini\" (@('[global]', '[Software\\grepWin\\History]') -join \"`r`n\") -Encoding ASCII",
-        "}"
-    ],
-    "pre_uninstall": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" }",
-    "bin": "grepWin.exe",
-    "persist": "grepwin.ini",
-    "shortcuts": [
-        [
-            "grepWin.exe",
-            "grepWin",
-            "/portable"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/stefankueng/grepWin"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/stefankueng/grepWin/releases/download/$version/grepWin-x64-$version_portable.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/stefankueng/grepWin/releases/download/$version/grepWin-$version_portable.zip"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "355209d3a7d04bc6e43d8f6ce9a8a3839a4d591d16af410090b70d113b47d724",
+   "pre_install": "Rename-Item \"$dir\\grepWin-${version}_portable.exe\" 'grepWin.exe'",
+   "url": "https://github.com/stefankueng/grepWin/releases/download/2.0.12/grepWin-2.0.12_portable.zip"
+  },
+  "64bit": {
+   "hash": "274c21d91385c077834ea6501b0422b4cd631bbe2803d19cfeae3c1a3b1160a4",
+   "pre_install": "Rename-Item \"$dir\\grepWin-x64-${version}_portable.exe\" 'grepWin.exe'",
+   "url": "https://github.com/stefankueng/grepWin/releases/download/2.0.12/grepWin-x64-2.0.12_portable.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://github.com/stefankueng/grepWin/releases/download/$version/grepWin-$version_portable.zip"
+   },
+   "64bit": {
+    "url": "https://github.com/stefankueng/grepWin/releases/download/$version/grepWin-x64-$version_portable.zip"
+   }
+  }
+ },
+ "bin": "grepWin.exe",
+ "checkver": {
+  "github": "https://github.com/stefankueng/grepWin"
+ },
+ "description": "Regular expression search and replace tool for Windows.",
+ "homepage": "https://tools.stefankueng.com/grepWin.html",
+ "license": "GPL-3.0-only",
+ "notes": "Run '$dir\\install-context.reg' to add grepWin to right-click context menu.",
+ "persist": "grepwin.ini",
+ "post_install": [
+  "$app_path = \"$dir\\grepWin.exe\".Replace('\\', '\\\\')",
+  "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
+  "    if (Test-Path \"$bucketsdir\\extras\\scripts\\grepwin\\$_\") {",
+  "        $content = Get-Content \"$bucketsdir\\extras\\scripts\\grepwin\\$_\"",
+  "        $content = $content.Replace('$app_path', $app_path)",
+  "        if ($global) {",
+  "            $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+  "        }",
+  "    }",
+  "    $content | Set-Content -Path \"$dir\\$_\" -Encoding ascii",
+  "}",
+  "if (-not (Test-Path \"$persist_dir\\grepwin.ini\")) {",
+  "    Set-Content \"$dir\\grepwin.ini\" (@('[global]', '[Software\\grepWin\\History]') -join \"`r`n\") -Encoding ASCII",
+  "}"
+ ],
+ "pre_uninstall": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" }",
+ "shortcuts": [
+  [
+   "grepWin.exe",
+   "grepWin",
+   "/portable"
+  ]
+ ],
+ "version": "2.0.12"
 }

@@ -1,34 +1,34 @@
 {
-    "architecture": {
-        "64bit": {
-            "extract_dir": "frp_0.46.1_windows_amd64",
-            "hash": "200244a2c1bc9e186f875c23d0b78c9ab59a88052f4f4132e5c28a70fdc356b6",
-            "url": "https://github.com/fatedier/frp/releases/download/v0.46.1/frp_0.46.1_windows_amd64.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "extract_dir": "frp_$version_windows_amd64",
-                "url": "https://github.com/fatedier/frp/releases/download/v$version/frp_$version_windows_amd64.zip"
-            }
-        }
-    },
-    "bin": "frpc.exe",
-    "checkver": "github",
-    "description": "frp 客户端.",
-    "homepage": "https://github.com/fatedier/frp",
-    "license": "Apache-2.0",
-    "persist": [
-        "frpc.ini",
-        "frpc_full.ini"
-    ],
-    "post_install": [
-        "if (Test-Path \"$dir\\frps.exe\") {",
-        "  Remove-Item \"$dir\\frps.exe\" -Force",
-        "  Remove-Item \"$dir\\frps.ini\" -Force",
-        "  Remove-Item \"$dir\\frps_full.ini\" -Force",
-        "}"
-    ],
-    "version": "0.46.1"
+ "architecture": {
+  "64bit": {
+   "extract_dir": "frp_0.46.1_windows_amd64",
+   "hash": "200244a2c1bc9e186f875c23d0b78c9ab59a88052f4f4132e5c28a70fdc356b6",
+   "url": "https://github.com/fatedier/frp/releases/download/v0.46.1/frp_0.46.1_windows_amd64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "extract_dir": "frp_$version_windows_amd64",
+    "url": "https://github.com/fatedier/frp/releases/download/v$version/frp_$version_windows_amd64.zip"
+   }
+  }
+ },
+ "bin": "frpc.exe",
+ "checkver": "github",
+ "description": "frp \u5ba2\u6237\u7aef.",
+ "homepage": "https://github.com/fatedier/frp",
+ "license": "Apache-2.0",
+ "persist": [
+  "frpc.ini",
+  "frpc_full.ini"
+ ],
+ "post_install": [
+  "if (Test-Path \"$dir\\frps.exe\") {",
+  "  Remove-Item \"$dir\\frps.exe\" -Force",
+  "  Remove-Item \"$dir\\frps.ini\" -Force",
+  "  Remove-Item \"$dir\\frps_full.ini\" -Force",
+  "}"
+ ],
+ "version": "0.46.1"
 }

@@ -1,67 +1,67 @@
 {
-    "version": "1.14.4-188-g350cb55c6",
-    "description": "Sony PlayStation Portable (PSP) emulator. Development build",
-    "homepage": "https://www.ppsspp.org",
-    "license": "GPL-2.0-or-later",
-    "architecture": {
-        "64bit": {
-            "url": "https://buildbot.orphis.net/ppsspp/index.php?m=dl&rev=v1.14.4-188-g350cb55c6&platform=windows-amd64#/dl.zip",
-            "hash": "9a4dacb8bd3a48d50ab6eaeb6c2fcca56e03ad5edd0f4220d31141015c2a8ab6",
-            "bin": [
-                [
-                    "PPSSPPWindows64.exe",
-                    "ppsspp-dev"
-                ]
-            ],
-            "shortcuts": [
-                [
-                    "PPSSPPWindows64.exe",
-                    "PPSSPP (Development)"
-                ]
-            ]
-        },
-        "32bit": {
-            "url": "https://buildbot.orphis.net/ppsspp/index.php?m=dl&rev=v1.14.4-188-g350cb55c6&platform=windows-x86#/dl.zip",
-            "hash": "da8bc0e231241170f4633f6203feddff3a0c382b830860d85e9ce7c57d944339",
-            "bin": [
-                [
-                    "PPSSPPWindows.exe",
-                    "ppsspp-dev"
-                ]
-            ],
-            "shortcuts": [
-                [
-                    "PPSSPPWindows.exe",
-                    "PPSSPP (Development)"
-                ]
-            ]
-        }
-    },
-    "extract_dir": "ppsspp",
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\")) {",
-        "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
-        "   New-item \"$persist_dir\\memstick\" -ItemType Directory | Out-Null",
-        "}"
-    ],
-    "persist": [
-        "memstick",
-        "assets",
-        "demos"
-    ],
-    "checkver": {
-        "url": "https://buildbot.orphis.net/ppsspp/index.php",
-        "regex": "rev=v(?<version>[\\d.]+)-(?<build>[\\d]+)-g(?<commit>[\\da-fA-F]+)&(?:amp;)platform=windows-amd64",
-        "replace": "${version}-${build}-g${commit}"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://buildbot.orphis.net/ppsspp/index.php?m=dl&rev=v$matchVersion-$matchBuild-g$matchCommit&platform=windows-amd64#/dl.zip"
-            },
-            "32bit": {
-                "url": "https://buildbot.orphis.net/ppsspp/index.php?m=dl&rev=v$matchVersion-$matchBuild-g$matchCommit&platform=windows-x86#/dl.zip"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "bin": [
+    [
+     "PPSSPPWindows.exe",
+     "ppsspp-dev"
+    ]
+   ],
+   "hash": "da8bc0e231241170f4633f6203feddff3a0c382b830860d85e9ce7c57d944339",
+   "shortcuts": [
+    [
+     "PPSSPPWindows.exe",
+     "PPSSPP (Development)"
+    ]
+   ],
+   "url": "https://buildbot.orphis.net/ppsspp/index.php?m=dl&rev=v1.14.4-188-g350cb55c6&platform=windows-x86#/dl.zip"
+  },
+  "64bit": {
+   "bin": [
+    [
+     "PPSSPPWindows64.exe",
+     "ppsspp-dev"
+    ]
+   ],
+   "hash": "9a4dacb8bd3a48d50ab6eaeb6c2fcca56e03ad5edd0f4220d31141015c2a8ab6",
+   "shortcuts": [
+    [
+     "PPSSPPWindows64.exe",
+     "PPSSPP (Development)"
+    ]
+   ],
+   "url": "https://buildbot.orphis.net/ppsspp/index.php?m=dl&rev=v1.14.4-188-g350cb55c6&platform=windows-amd64#/dl.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://buildbot.orphis.net/ppsspp/index.php?m=dl&rev=v$matchVersion-$matchBuild-g$matchCommit&platform=windows-x86#/dl.zip"
+   },
+   "64bit": {
+    "url": "https://buildbot.orphis.net/ppsspp/index.php?m=dl&rev=v$matchVersion-$matchBuild-g$matchCommit&platform=windows-amd64#/dl.zip"
+   }
+  }
+ },
+ "checkver": {
+  "regex": "rev=v(?<version>[\\d.]+)-(?<build>[\\d]+)-g(?<commit>[\\da-fA-F]+)&(?:amp;)platform=windows-amd64",
+  "replace": "${version}-${build}-g${commit}",
+  "url": "https://buildbot.orphis.net/ppsspp/index.php"
+ },
+ "description": "Sony PlayStation Portable (PSP) emulator. Development build",
+ "extract_dir": "ppsspp",
+ "homepage": "https://www.ppsspp.org",
+ "license": "GPL-2.0-or-later",
+ "persist": [
+  "memstick",
+  "assets",
+  "demos"
+ ],
+ "pre_install": [
+  "if (!(Test-Path \"$persist_dir\")) {",
+  "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
+  "   New-item \"$persist_dir\\memstick\" -ItemType Directory | Out-Null",
+  "}"
+ ],
+ "version": "1.14.4-188-g350cb55c6"
 }

@@ -1,30 +1,30 @@
 {
-    "version": "2.53",
-    "description": "Light-weight and easy-to-use password manager",
-    "homepage": "https://keepass.info",
-    "license": "GPL-2.0-or-later",
-    "url": "https://downloads.sourceforge.net/project/keepass/KeePass%202.x/2.53/KeePass-2.53.zip",
-    "hash": "dca1b9709a87ba67ecef890580c0b2ad6e3acf38546a642cafe36d7062e40ad4",
-    "pre_install": "if (Test-Path \"$persist_dir\\KeePass.config.xml\") { Copy-Item \"$persist_dir\\KeePass.config.xml\" \"$dir\" }",
-    "uninstaller": {
-        "script": "if (Test-Path \"$dir\\KeePass.config.xml\") { Copy-Item \"$dir\\KeePass.config.xml\" \"$persist_dir\" -Force }"
-    },
-    "bin": "KeePass.exe",
-    "shortcuts": [
-        [
-            "KeePass.exe",
-            "KeePass"
-        ]
-    ],
-    "persist": [
-        "Plugins",
-        "Languages"
-    ],
-    "checkver": {
-        "url": "https://keepass.info/update/version2x.txt",
-        "regex": "KeePass:([\\d.]+)"
-    },
-    "autoupdate": {
-        "url": "https://downloads.sourceforge.net/project/keepass/KeePass%20$majorVersion.x/$version/KeePass-$version.zip"
-    }
+ "autoupdate": {
+  "url": "https://downloads.sourceforge.net/project/keepass/KeePass%20$majorVersion.x/$version/KeePass-$version.zip"
+ },
+ "bin": "KeePass.exe",
+ "checkver": {
+  "regex": "KeePass:([\\d.]+)",
+  "url": "https://keepass.info/update/version2x.txt"
+ },
+ "description": "Light-weight and easy-to-use password manager",
+ "hash": "dca1b9709a87ba67ecef890580c0b2ad6e3acf38546a642cafe36d7062e40ad4",
+ "homepage": "https://keepass.info",
+ "license": "GPL-2.0-or-later",
+ "persist": [
+  "Plugins",
+  "Languages"
+ ],
+ "pre_install": "if (Test-Path \"$persist_dir\\KeePass.config.xml\") { Copy-Item \"$persist_dir\\KeePass.config.xml\" \"$dir\" }",
+ "shortcuts": [
+  [
+   "KeePass.exe",
+   "KeePass"
+  ]
+ ],
+ "uninstaller": {
+  "script": "if (Test-Path \"$dir\\KeePass.config.xml\") { Copy-Item \"$dir\\KeePass.config.xml\" \"$persist_dir\" -Force }"
+ },
+ "url": "https://downloads.sourceforge.net/project/keepass/KeePass%202.x/2.53/KeePass-2.53.zip",
+ "version": "2.53"
 }

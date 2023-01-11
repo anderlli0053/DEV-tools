@@ -1,44 +1,44 @@
 {
-    "version": "2.1.4",
-    "description": "github加速神器，解决github打不开、用户头像无法加载、releases无法上传下载、git-clone、git-pull、git-push失败等问题. ",
-    "homepage": "https://github.com/dotnetcore/FastGithub",
-    "license": "MIT",
-    "depends": "sudo",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_win-x64.zip",
-            "hash": "b439afc7b730766aed894876696e9aeb411e3b45f60ebdcfdff247890742c0f6"
-        }
-    },
-    "extract_dir": "fastgithub_win-x64",
-    "uninstaller": {
-        "script": [
-            "sudo taskkill /F /IM 'FastGithub.UI.exe' /FI 'status eq running' | Out-Null",
-            "sudo \"$dir\\fastgithub.exe\" stop"
-        ]
-    },
-    "bin": [
-        "fastgithub.exe",
-        "FastGithub.UI.exe"
-    ],
-    "shortcuts": [
-        [
-            "FastGithub.UI.exe",
-            "FastGithub.UI"
-        ]
-    ],
-    "persist": [
-        "appsettings",
-        "cacert",
-        "logs",
-        "appsettings.json"
-    ],
-    "checkver": "github",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/dotnetcore/FastGithub/releases/download/$version/fastgithub_win-x64.zip"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "b439afc7b730766aed894876696e9aeb411e3b45f60ebdcfdff247890742c0f6",
+   "url": "https://github.com/dotnetcore/FastGithub/releases/download/2.1.4/fastgithub_win-x64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/dotnetcore/FastGithub/releases/download/$version/fastgithub_win-x64.zip"
+   }
+  }
+ },
+ "bin": [
+  "fastgithub.exe",
+  "FastGithub.UI.exe"
+ ],
+ "checkver": "github",
+ "depends": "sudo",
+ "description": "github\u52a0\u901f\u795e\u5668\uff0c\u89e3\u51b3github\u6253\u4e0d\u5f00\u3001\u7528\u6237\u5934\u50cf\u65e0\u6cd5\u52a0\u8f7d\u3001releases\u65e0\u6cd5\u4e0a\u4f20\u4e0b\u8f7d\u3001git-clone\u3001git-pull\u3001git-push\u5931\u8d25\u7b49\u95ee\u9898. ",
+ "extract_dir": "fastgithub_win-x64",
+ "homepage": "https://github.com/dotnetcore/FastGithub",
+ "license": "MIT",
+ "persist": [
+  "appsettings",
+  "cacert",
+  "logs",
+  "appsettings.json"
+ ],
+ "shortcuts": [
+  [
+   "FastGithub.UI.exe",
+   "FastGithub.UI"
+  ]
+ ],
+ "uninstaller": {
+  "script": [
+   "sudo taskkill /F /IM 'FastGithub.UI.exe' /FI 'status eq running' | Out-Null",
+   "sudo \"$dir\\fastgithub.exe\" stop"
+  ]
+ },
+ "version": "2.1.4"
 }

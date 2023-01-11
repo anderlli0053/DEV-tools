@@ -1,45 +1,45 @@
 {
-    "version": "3.4.1",
-    "description": "A SQLite database manager",
-    "homepage": "https://sqlitestudio.pl",
-    "license": "GPL-3.0-only",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/pawelsalawa/sqlitestudio/releases/download/3.4.1/sqlitestudio_x64-3.4.1.zip",
-            "hash": "cbb7481f072afa5cfbbc2c9dcded0fef347a0c18bf6257a311f876c2fa35b006"
-        },
-        "32bit": {
-            "url": "https://github.com/pawelsalawa/sqlitestudio/releases/download/3.4.1/sqlitestudio_i386-3.4.1.zip",
-            "hash": "4dc8662bf7aadfa47181cbf633601340dff7ac261310b543f27d69b4a5841da2"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "4dc8662bf7aadfa47181cbf633601340dff7ac261310b543f27d69b4a5841da2",
+   "url": "https://github.com/pawelsalawa/sqlitestudio/releases/download/3.4.1/sqlitestudio_i386-3.4.1.zip"
+  },
+  "64bit": {
+   "hash": "cbb7481f072afa5cfbbc2c9dcded0fef347a0c18bf6257a311f876c2fa35b006",
+   "url": "https://github.com/pawelsalawa/sqlitestudio/releases/download/3.4.1/sqlitestudio_x64-3.4.1.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "find": "<td>Windows\\s+?i386<\\/td>\\s*?<td>Portable<\\/td>[\\s\\S]*?<code>(.*?)<\\/code>",
+     "url": "https://github.com/pawelsalawa/sqlitestudio/releases/tag/$version"
     },
-    "extract_dir": "SQLiteStudio",
-    "bin": "SQLiteStudio.exe",
-    "shortcuts": [
-        [
-            "SQLiteStudio.exe",
-            "SQLiteStudio"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/pawelsalawa/sqlitestudio"
+    "url": "https://github.com/pawelsalawa/sqlitestudio/releases/download/$version/sqlitestudio_i386-$version.zip"
+   },
+   "64bit": {
+    "hash": {
+     "find": "<td>Windows\\s+?x64<\\/td>\\s*?<td>Portable<\\/td>[\\s\\S]*?<code>(.*?)<\\/code>",
+     "url": "https://github.com/pawelsalawa/sqlitestudio/releases/tag/$version"
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/pawelsalawa/sqlitestudio/releases/download/$version/sqlitestudio_x64-$version.zip",
-                "hash": {
-                    "url": "https://github.com/pawelsalawa/sqlitestudio/releases/tag/$version",
-                    "find": "<td>Windows\\s+?x64<\\/td>\\s*?<td>Portable<\\/td>[\\s\\S]*?<code>(.*?)<\\/code>"
-                }
-            },
-            "32bit": {
-                "url": "https://github.com/pawelsalawa/sqlitestudio/releases/download/$version/sqlitestudio_i386-$version.zip",
-                "hash": {
-                    "url": "https://github.com/pawelsalawa/sqlitestudio/releases/tag/$version",
-                    "find": "<td>Windows\\s+?i386<\\/td>\\s*?<td>Portable<\\/td>[\\s\\S]*?<code>(.*?)<\\/code>"
-                }
-            }
-        }
-    }
+    "url": "https://github.com/pawelsalawa/sqlitestudio/releases/download/$version/sqlitestudio_x64-$version.zip"
+   }
+  }
+ },
+ "bin": "SQLiteStudio.exe",
+ "checkver": {
+  "github": "https://github.com/pawelsalawa/sqlitestudio"
+ },
+ "description": "A SQLite database manager",
+ "extract_dir": "SQLiteStudio",
+ "homepage": "https://sqlitestudio.pl",
+ "license": "GPL-3.0-only",
+ "shortcuts": [
+  [
+   "SQLiteStudio.exe",
+   "SQLiteStudio"
+  ]
+ ],
+ "version": "3.4.1"
 }

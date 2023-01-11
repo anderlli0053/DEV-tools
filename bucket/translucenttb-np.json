@@ -1,22 +1,22 @@
 {
-    "version": "2022.1",
-    "description": "Makes the Windows taskbar translucent/transparent.",
-    "homepage": "https://github.com/TranslucentTB/TranslucentTB",
-    "license": "GPL-3.0-only",
-    "url": "https://github.com/TranslucentTB/TranslucentTB/releases/download/2022.1/bundle.msixbundle",
-    "hash": "8ce52a1a445ed00f75d65c17929e345d04436a48ac30651fc53cd76719936360",
-    "pre_install": [
-        "Start-Process 'powershell' -Wait -WindowStyle 'Hidden' -ArgumentList @('-C', \"Add-AppxPackage \"\"$dir\\bundle.msixbundle\"\"\")",
-        "Remove-Item \"$dir\\bundle.msixbundle\""
-    ],
-    "pre_uninstall": [
-        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-        "Remove-Item \"$env:ProgramData\\Packages\\*.TranslucentTB_*\" -Force -Recurse",
-        "Start-Process 'powershell' -Wait -WindowStyle 'Hidden' -ArgumentList @('-C', 'Get-AppxPackage ''*.TranslucentTB'' | Remove-AppxPackage')",
-        "Start-Sleep -Seconds 2"
-    ],
-    "checkver": "github",
-    "autoupdate": {
-        "url": "https://github.com/TranslucentTB/TranslucentTB/releases/download/$version/bundle.msixbundle"
-    }
+ "autoupdate": {
+  "url": "https://github.com/TranslucentTB/TranslucentTB/releases/download/$version/bundle.msixbundle"
+ },
+ "checkver": "github",
+ "description": "Makes the Windows taskbar translucent/transparent.",
+ "hash": "8ce52a1a445ed00f75d65c17929e345d04436a48ac30651fc53cd76719936360",
+ "homepage": "https://github.com/TranslucentTB/TranslucentTB",
+ "license": "GPL-3.0-only",
+ "pre_install": [
+  "Start-Process 'powershell' -Wait -WindowStyle 'Hidden' -ArgumentList @('-C', \"Add-AppxPackage \"\"$dir\\bundle.msixbundle\"\"\")",
+  "Remove-Item \"$dir\\bundle.msixbundle\""
+ ],
+ "pre_uninstall": [
+  "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+  "Remove-Item \"$env:ProgramData\\Packages\\*.TranslucentTB_*\" -Force -Recurse",
+  "Start-Process 'powershell' -Wait -WindowStyle 'Hidden' -ArgumentList @('-C', 'Get-AppxPackage ''*.TranslucentTB'' | Remove-AppxPackage')",
+  "Start-Sleep -Seconds 2"
+ ],
+ "url": "https://github.com/TranslucentTB/TranslucentTB/releases/download/2022.1/bundle.msixbundle",
+ "version": "2022.1"
 }

@@ -1,32 +1,32 @@
 {
-    "homepage": "https://www.tradingview.com/chart",
-    "description": "TradingView Desktop",
-    "version": "2.0.1",
-    "license": "Proprietary",
-    "architecture": {
-        "64bit": {
-            "url": "https://tvd-packages.tradingview.com/stable/2.0.1/win32/x64/TradingView.msix",
-            "hash": "139cc734a9575855a44983ad046b69ea7fc407573c041b6004e3bc4a35850afd"
-        }
-    },
-    "installer": {
-        "script": "Expand-7zipArchive -Path \"$dir\\$fname\" -DestinationPath \"$dir\" -Removal"
-    },
-    "shortcuts": [
-        [
-            "TradingView.exe",
-            "TradingView"
-        ]
-    ],
-    "checkver": {
-        "url": "https://www.tradingview.com/support/solutions/43000673888-tradingview-desktop-releases-and-release-notes/",
-        "regex": "version ([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://tvd-packages.tradingview.com/stable/$version/win32/x64/TradingView.msix"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "139cc734a9575855a44983ad046b69ea7fc407573c041b6004e3bc4a35850afd",
+   "url": "https://tvd-packages.tradingview.com/stable/2.0.1/win32/x64/TradingView.msix"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://tvd-packages.tradingview.com/stable/$version/win32/x64/TradingView.msix"
+   }
+  }
+ },
+ "checkver": {
+  "regex": "version ([\\d.]+)",
+  "url": "https://www.tradingview.com/support/solutions/43000673888-tradingview-desktop-releases-and-release-notes/"
+ },
+ "description": "TradingView Desktop",
+ "homepage": "https://www.tradingview.com/chart",
+ "installer": {
+  "script": "Expand-7zipArchive -Path \"$dir\\$fname\" -DestinationPath \"$dir\" -Removal"
+ },
+ "license": "Proprietary",
+ "shortcuts": [
+  [
+   "TradingView.exe",
+   "TradingView"
+  ]
+ ],
+ "version": "2.0.1"
 }

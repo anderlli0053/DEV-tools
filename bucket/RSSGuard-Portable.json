@@ -1,32 +1,32 @@
 {
-    "version": "4.2.7",
-    "description": "RSS Guard. A simple, light and easy-to-use RSS/ATOM feed aggregator developed using Qt framework which supports online feed synchronization.",
-    "homepage": "https://github.com/martinrotter/rssguard",
-    "license": "GPL-3.0-only",
-    "changelog": "https://github.com/martinrotter/rssguard/releases",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/martinrotter/rssguard/releases/download/4.2.7/rssguard-4.2.7-0bbf91af-win10.7z",
-            "hash": "84cfd5b6749a4242d4522ad7881b3fd18b1f03349ad22c23f287e824fbf8caf0"
-        }
-    },
-    "pre_install": "if (!(Test-Path \"$persist_dir\\data4\\\")) { New-Item -Path \"$dir\\data4\\\" -ItemType Directory | Out-Null }",
-    "persist": "data4",
-    "shortcuts": [
-        [
-            "rssguard.exe",
-            "RSS Guard"
-        ]
-    ],
-    "checkver": {
-        "url": "https://api.github.com/repos/martinrotter/rssguard/releases/latest",
-        "regex": "rssguard-(?<version>[\\d.]+)-(?<commit>[\\d\\w.]+)-win10\\.7z"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/martinrotter/rssguard/releases/download/$matchVersion/rssguard-$matchVersion-$matchCommit-win10.7z"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "84cfd5b6749a4242d4522ad7881b3fd18b1f03349ad22c23f287e824fbf8caf0",
+   "url": "https://github.com/martinrotter/rssguard/releases/download/4.2.7/rssguard-4.2.7-0bbf91af-win10.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/martinrotter/rssguard/releases/download/$matchVersion/rssguard-$matchVersion-$matchCommit-win10.7z"
+   }
+  }
+ },
+ "changelog": "https://github.com/martinrotter/rssguard/releases",
+ "checkver": {
+  "regex": "rssguard-(?<version>[\\d.]+)-(?<commit>[\\d\\w.]+)-win10\\.7z",
+  "url": "https://api.github.com/repos/martinrotter/rssguard/releases/latest"
+ },
+ "description": "RSS Guard. A simple, light and easy-to-use RSS/ATOM feed aggregator developed using Qt framework which supports online feed synchronization.",
+ "homepage": "https://github.com/martinrotter/rssguard",
+ "license": "GPL-3.0-only",
+ "persist": "data4",
+ "pre_install": "if (!(Test-Path \"$persist_dir\\data4\\\")) { New-Item -Path \"$dir\\data4\\\" -ItemType Directory | Out-Null }",
+ "shortcuts": [
+  [
+   "rssguard.exe",
+   "RSS Guard"
+  ]
+ ],
+ "version": "4.2.7"
 }

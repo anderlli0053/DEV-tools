@@ -1,33 +1,33 @@
 {
-    "homepage": "https://www.python.org/",
-    "license": "Python-2.0",
-    "version": "3.11.1",
-    "architecture": {
-        "64bit": {
-            "url": "https://www.python.org/ftp/python/3.11.1/python-3.11.1-embed-amd64.zip",
-            "hash": "md5:f16900451e15abe1ba3ea657f3c7fe9e"
-        },
-        "32bit": {
-            "url": "https://www.python.org/ftp/python/3.11.1/python-3.11.1-embed-win32.zip",
-            "hash": "md5:cc960a3a6d5d1529117c463ac00aae43"
-        }
-    },
-    "checkver": {
-        "url": "https://www.python.org/downloads/windows/",
-        "re": "Latest Python 3 Release - Python ([\\d\\.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://www.python.org/ftp/python/$version/python-$version-embed-amd64.zip"
-            },
-            "32bit": {
-                "url": "https://www.python.org/ftp/python/$version/python-$version-embed-win32.zip"
-            }
-        },
-        "hash": {
-            "url": "https://www.python.org/downloads/release/python-$cleanVersion/",
-            "find": "(?sm)$basename.*?$md5"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "md5:cc960a3a6d5d1529117c463ac00aae43",
+   "url": "https://www.python.org/ftp/python/3.11.1/python-3.11.1-embed-win32.zip"
+  },
+  "64bit": {
+   "hash": "md5:f16900451e15abe1ba3ea657f3c7fe9e",
+   "url": "https://www.python.org/ftp/python/3.11.1/python-3.11.1-embed-amd64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://www.python.org/ftp/python/$version/python-$version-embed-win32.zip"
+   },
+   "64bit": {
+    "url": "https://www.python.org/ftp/python/$version/python-$version-embed-amd64.zip"
+   }
+  },
+  "hash": {
+   "find": "(?sm)$basename.*?$md5",
+   "url": "https://www.python.org/downloads/release/python-$cleanVersion/"
+  }
+ },
+ "checkver": {
+  "re": "Latest Python 3 Release - Python ([\\d\\.]+)",
+  "url": "https://www.python.org/downloads/windows/"
+ },
+ "homepage": "https://www.python.org/",
+ "license": "Python-2.0",
+ "version": "3.11.1"
 }

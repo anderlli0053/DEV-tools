@@ -1,44 +1,44 @@
 {
-    "version": "1.2.0.1165.gabf054ab",
-    "description": "Spotify. A digital music service that gives you access to millions of songs.",
-    "homepage": "https://www.spotify.com/",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.spotify.com/legal/end-user-agreement/"
-    },
-    "url": "https://download.scdn.co/SpotifyFullSetup.exe",
-    "hash": "9e2429f5ab41493cb86aef5daa0115c9cabe773ca21d83cba652bb50f5a9d986",
-    "installer": {
-        "script": [
-            "Start-Process -Wait \"$dir\\$fname\" -ArgumentList '/extract', \"`\"$dir`\"\"",
-            "# Disable built-in updater",
-            "Remove-Item -ErrorAction Ignore -Recurse \"$env:LOCALAPPDATA\\Spotify\\Update\" | Out-Null",
-            "$updateFile = New-Item -Path \"$env:LOCALAPPDATA\\Spotify\" -Name Update -ItemType File -Value \"Disabled by Scoop\" -Force",
-            "$updatefile.Attributes = 'ReadOnly', 'System'",
-            "Remove-Item \"$dir\\$fname\", \"$dir\\SpotifyMigrator.exe\""
-        ]
-    },
-    "shortcuts": [
-        [
-            "Spotify.exe",
-            "Spotify"
-        ]
-    ],
-    "uninstaller": {
-        "script": "Start-Process -Wait \"$dir\\Spotify.exe\" -ArgumentList '/Uninstall', '/Silent'"
-    },
-    "checkver": {
-        "script": [
-            "$download_url = 'https://download.scdn.co/SpotifyFullSetup.exe'",
-            "$download = cache_path 'spotify' 'unknown' $download_url",
-            "do_dl $download_url $download",
-            "$spotify_version = (Get-Item $download).VersionInfo.ProductVersion",
-            "Move-Item -Force $download -Destination (cache_path 'spotify' $spotify_version $download_url)",
-            "return $spotify_version"
-        ],
-        "regex": "(.+)"
-    },
-    "autoupdate": {
-        "url": "https://download.scdn.co/SpotifyFullSetup.exe"
-    }
+ "autoupdate": {
+  "url": "https://download.scdn.co/SpotifyFullSetup.exe"
+ },
+ "checkver": {
+  "regex": "(.+)",
+  "script": [
+   "$download_url = 'https://download.scdn.co/SpotifyFullSetup.exe'",
+   "$download = cache_path 'spotify' 'unknown' $download_url",
+   "do_dl $download_url $download",
+   "$spotify_version = (Get-Item $download).VersionInfo.ProductVersion",
+   "Move-Item -Force $download -Destination (cache_path 'spotify' $spotify_version $download_url)",
+   "return $spotify_version"
+  ]
+ },
+ "description": "Spotify. A digital music service that gives you access to millions of songs.",
+ "hash": "9e2429f5ab41493cb86aef5daa0115c9cabe773ca21d83cba652bb50f5a9d986",
+ "homepage": "https://www.spotify.com/",
+ "installer": {
+  "script": [
+   "Start-Process -Wait \"$dir\\$fname\" -ArgumentList '/extract', \"`\"$dir`\"\"",
+   "# Disable built-in updater",
+   "Remove-Item -ErrorAction Ignore -Recurse \"$env:LOCALAPPDATA\\Spotify\\Update\" | Out-Null",
+   "$updateFile = New-Item -Path \"$env:LOCALAPPDATA\\Spotify\" -Name Update -ItemType File -Value \"Disabled by Scoop\" -Force",
+   "$updatefile.Attributes = 'ReadOnly', 'System'",
+   "Remove-Item \"$dir\\$fname\", \"$dir\\SpotifyMigrator.exe\""
+  ]
+ },
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://www.spotify.com/legal/end-user-agreement/"
+ },
+ "shortcuts": [
+  [
+   "Spotify.exe",
+   "Spotify"
+  ]
+ ],
+ "uninstaller": {
+  "script": "Start-Process -Wait \"$dir\\Spotify.exe\" -ArgumentList '/Uninstall', '/Silent'"
+ },
+ "url": "https://download.scdn.co/SpotifyFullSetup.exe",
+ "version": "1.2.0.1165.gabf054ab"
 }

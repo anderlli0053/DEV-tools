@@ -1,55 +1,55 @@
 {
-    "version": "11.2.7.0",
-    "homepage": "https://www.driverscloud.com/",
-    "description": "The essential specialist for detecting and downloading drivers for internal components and external devices of your Windows PC.",
-    "license": "Freeware",
-    "architecture": {
-        "64bit": {
-            "url": "https://mcdrivers.driverscloud.com/applis/DriversCloudx64_11_2_7_0.zip",
-            "hash": "08d4cc702ed81b6629d35d900be6613120a1805817a5a4f2b57ce1d8bb3d73cf"
-        },
-        "32bit": {
-            "url": "https://mcdrivers.driverscloud.com/applis/DriversCloud_11_2_7_0.zip",
-            "hash": "3c67f1dce0a80c1dc53ca8268771b0a2840adcbb76f4f1280cd460a01447dc5c"
-        }
-    },
-    "extract_dir": "DriversCloud",
-    "pre_install": [
-        "'Logs', 'config.xml' | ForEach-Object {",
-        "   Copy-Item \"$persist_dir\\$_\" \"$dir\" -ErrorAction 'SilentlyContinue' -Recurse",
-        "}",
-        "if (!(Test-Path \"$persist_dir\\backup.xml\")) { New-Item \"$dir\\backup.xml\" | Out-Null }"
-    ],
-    "bin": "driverscloud.exe",
-    "shortcuts": [
-        [
-            "driverscloud.exe",
-            "DriversCloud"
-        ]
-    ],
-    "persist": [
-        "backup.xml",
-        "DriversBackup"
-    ],
-    "pre_uninstall": [
-        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-        "'Logs', 'config.xml' | ForEach-Object {",
-        "   Copy-Item \"$dir\\$_\" \"$persist_dir\" -ErrorAction 'SilentlyContinue' -Recurse",
-        "}",
-        "Remove-item 'HKLM:\\SOFTWARE\\Classes\\driverscloud' -Recurse -Force"
-    ],
-    "checkver": {
-        "url": "https://www.driverscloud.com/en/my-drivers",
-        "regex": ">Current\\sagent\\sversion:\\s([\\d.]+)<"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://mcdrivers.driverscloud.com/applis/DriversCloudx64_$underscoreVersion.zip"
-            },
-            "32bit": {
-                "url": "https://mcdrivers.driverscloud.com/applis/DriversCloud_$underscoreVersion.zip"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "3c67f1dce0a80c1dc53ca8268771b0a2840adcbb76f4f1280cd460a01447dc5c",
+   "url": "https://mcdrivers.driverscloud.com/applis/DriversCloud_11_2_7_0.zip"
+  },
+  "64bit": {
+   "hash": "08d4cc702ed81b6629d35d900be6613120a1805817a5a4f2b57ce1d8bb3d73cf",
+   "url": "https://mcdrivers.driverscloud.com/applis/DriversCloudx64_11_2_7_0.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://mcdrivers.driverscloud.com/applis/DriversCloud_$underscoreVersion.zip"
+   },
+   "64bit": {
+    "url": "https://mcdrivers.driverscloud.com/applis/DriversCloudx64_$underscoreVersion.zip"
+   }
+  }
+ },
+ "bin": "driverscloud.exe",
+ "checkver": {
+  "regex": ">Current\\sagent\\sversion:\\s([\\d.]+)<",
+  "url": "https://www.driverscloud.com/en/my-drivers"
+ },
+ "description": "The essential specialist for detecting and downloading drivers for internal components and external devices of your Windows PC.",
+ "extract_dir": "DriversCloud",
+ "homepage": "https://www.driverscloud.com/",
+ "license": "Freeware",
+ "persist": [
+  "backup.xml",
+  "DriversBackup"
+ ],
+ "pre_install": [
+  "'Logs', 'config.xml' | ForEach-Object {",
+  "   Copy-Item \"$persist_dir\\$_\" \"$dir\" -ErrorAction 'SilentlyContinue' -Recurse",
+  "}",
+  "if (!(Test-Path \"$persist_dir\\backup.xml\")) { New-Item \"$dir\\backup.xml\" | Out-Null }"
+ ],
+ "pre_uninstall": [
+  "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+  "'Logs', 'config.xml' | ForEach-Object {",
+  "   Copy-Item \"$dir\\$_\" \"$persist_dir\" -ErrorAction 'SilentlyContinue' -Recurse",
+  "}",
+  "Remove-item 'HKLM:\\SOFTWARE\\Classes\\driverscloud' -Recurse -Force"
+ ],
+ "shortcuts": [
+  [
+   "driverscloud.exe",
+   "DriversCloud"
+  ]
+ ],
+ "version": "11.2.7.0"
 }

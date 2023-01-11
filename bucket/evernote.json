@@ -1,34 +1,34 @@
 {
-    "version": "10.51.7.3866-10d8cd4f38",
-    "homepage": "https://evernote.com/",
-    "description": "Remember everything and tackle any project with your notes, tasks, and schedule all in one place.",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://evernote.com/legal"
-    },
-    "url": "https://cdn1.evernote.com/boron/win/builds/Evernote-10.51.7-win-ddl-ga-3866-10d8cd4f38-setup.exe#/dl.7z",
-    "hash": "001bf6ca3a10ac8951bc827aeba50b2ef9defca17182b573323106ccbd6f166c",
-    "extract_dir": "$PLUGINSDIR",
-    "pre_install": [
-        "if ($architecture -eq '32bit') { Expand-7zipArchive \"$dir\\app-32.7z\" \"$dir\" -Removal; Remove-Item \"$dir\\app-64.7z\" }",
-        "elseif ($architecture -eq '64bit') { Expand-7zipArchive \"$dir\\app-64.7z\" \"$dir\" -Removal; Remove-Item \"$dir\\app-32.7z\" }"
-    ],
-    "shortcuts": [
-        [
-            "Evernote.exe",
-            "Evernote"
-        ]
-    ],
-    "checkver": {
-        "script": [
-            "$userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'",
-            "(Invoke-RestMethod 'https://evernote.com/download' -UserAgent $userAgent) -match '(?<File>Evernote-(?<Ver>[\\d.]+)-win-ddl-ga-(?<Build>[\\w-]+)-setup\\.exe)' | Out-Null",
-            "$getFile = $Matches['File']; $getVersion = $Matches['Ver']; $getBuild = $Matches['Build']",
-            "Write-Output \"$getFile, $getVersion.$getBuild\""
-        ],
-        "regex": "(?<File>[\\w.-]+),\\s([\\w.-]+)"
-    },
-    "autoupdate": {
-        "url": "https://cdn1.evernote.com/boron/win/builds/$matchFile#/dl.7z"
-    }
+ "autoupdate": {
+  "url": "https://cdn1.evernote.com/boron/win/builds/$matchFile#/dl.7z"
+ },
+ "checkver": {
+  "regex": "(?<File>[\\w.-]+),\\s([\\w.-]+)",
+  "script": [
+   "$userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'",
+   "(Invoke-RestMethod 'https://evernote.com/download' -UserAgent $userAgent) -match '(?<File>Evernote-(?<Ver>[\\d.]+)-win-ddl-ga-(?<Build>[\\w-]+)-setup\\.exe)' | Out-Null",
+   "$getFile = $Matches['File']; $getVersion = $Matches['Ver']; $getBuild = $Matches['Build']",
+   "Write-Output \"$getFile, $getVersion.$getBuild\""
+  ]
+ },
+ "description": "Remember everything and tackle any project with your notes, tasks, and schedule all in one place.",
+ "extract_dir": "$PLUGINSDIR",
+ "hash": "001bf6ca3a10ac8951bc827aeba50b2ef9defca17182b573323106ccbd6f166c",
+ "homepage": "https://evernote.com/",
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://evernote.com/legal"
+ },
+ "pre_install": [
+  "if ($architecture -eq '32bit') { Expand-7zipArchive \"$dir\\app-32.7z\" \"$dir\" -Removal; Remove-Item \"$dir\\app-64.7z\" }",
+  "elseif ($architecture -eq '64bit') { Expand-7zipArchive \"$dir\\app-64.7z\" \"$dir\" -Removal; Remove-Item \"$dir\\app-32.7z\" }"
+ ],
+ "shortcuts": [
+  [
+   "Evernote.exe",
+   "Evernote"
+  ]
+ ],
+ "url": "https://cdn1.evernote.com/boron/win/builds/Evernote-10.51.7-win-ddl-ga-3866-10d8cd4f38-setup.exe#/dl.7z",
+ "version": "10.51.7.3866-10d8cd4f38"
 }

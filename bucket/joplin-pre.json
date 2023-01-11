@@ -1,35 +1,35 @@
 {
-    "version": "2.10.4",
-    "description": "A note taking and to-do application with synchronization capabilities",
-    "homepage": "https://joplinapp.org",
-    "license": "MIT",
-    "url": "https://github.com/laurent22/joplin/releases/download/v2.10.4/Joplin-Setup-2.10.4.exe#/dl.7z",
-    "hash": "sha512:fb1492a8a9f6f4059506cfc0cdf6303e9b83cf1b3ace0b56042956da098c64966673e3534e0006640d15092c978f8dac0de540bac18cc18615aa3f59e506f601",
-    "architecture": {
-        "64bit": {
-            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
-        },
-        "32bit": {
-            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
-        }
-    },
-    "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse",
-    "bin": "Joplin.exe",
-    "shortcuts": [
-        [
-            "Joplin.exe",
-            "Joplin-Pre"
-        ]
-    ],
-    "checkver": {
-        "url": "https://github.com/laurent22/joplin/tags",
-        "regex": "/laurent22/joplin/releases/tag/v([\\d.]+)"
-    },
-    "autoupdate": {
-        "url": "https://github.com/laurent22/joplin/releases/download/v$version/Joplin-Setup-$version.exe#/dl.7z",
-        "hash": {
-            "url": "$baseurl/latest.yml",
-            "regex": "sha512:\\s+$base64"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
+  },
+  "64bit": {
+   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+  }
+ },
+ "autoupdate": {
+  "hash": {
+   "regex": "sha512:\\s+$base64",
+   "url": "$baseurl/latest.yml"
+  },
+  "url": "https://github.com/laurent22/joplin/releases/download/v$version/Joplin-Setup-$version.exe#/dl.7z"
+ },
+ "bin": "Joplin.exe",
+ "checkver": {
+  "regex": "/laurent22/joplin/releases/tag/v([\\d.]+)",
+  "url": "https://github.com/laurent22/joplin/tags"
+ },
+ "description": "A note taking and to-do application with synchronization capabilities",
+ "hash": "sha512:fb1492a8a9f6f4059506cfc0cdf6303e9b83cf1b3ace0b56042956da098c64966673e3534e0006640d15092c978f8dac0de540bac18cc18615aa3f59e506f601",
+ "homepage": "https://joplinapp.org",
+ "license": "MIT",
+ "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse",
+ "shortcuts": [
+  [
+   "Joplin.exe",
+   "Joplin-Pre"
+  ]
+ ],
+ "url": "https://github.com/laurent22/joplin/releases/download/v2.10.4/Joplin-Setup-2.10.4.exe#/dl.7z",
+ "version": "2.10.4"
 }

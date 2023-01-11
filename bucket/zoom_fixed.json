@@ -1,63 +1,63 @@
 {
-    "version": "5.13.4.11835",
-    "description": "Video and audio conferencing, chat, and webinars",
-    "homepage": "https://zoom.us",
-    "license": {
-        "identifier": "Proprietary",
-        "url": "https://zoom.us/terms"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://cdn.zoom.us/prod/5.13.4.11835/x64/ZoomInstallerFull.exe#/dl.7z",
-            "hash": "87065958104f08ffdf9aa1d1f046adf520373edd0af60022105676c933bda715",
-            "pre_install": "Remove-Item \"$dir\\Installer.exe\"; Expand-7zipArchive \"$dir\\ZoomFull_Sip.cab\" -Removal"
-        },
-        "32bit": {
-            "url": "https://cdn.zoom.us/prod/5.13.4.11835/ZoomInstaller.exe#/dl.7z",
-            "hash": "26330ed1b5e254f907da231d150b29b29631d817ad62cd3b5baa184f4258d202",
-            "pre_install": "Remove-Item \"$dir\\Installer.exe\"; Expand-7zipArchive \"$dir\\Zoom.msi\" -Removal"
-        },
-        "arm64": {
-            "url": "https://cdn.zoom.us/prod/5.13.4.11835/arm64/ZoomInstallerFull.exe#/dl.7z",
-            "hash": "871e92260a69f8854a8acc62a3ad40e6e6cd12d5983efda517a1efe6e30c19a2",
-            "pre_install": "Remove-Item \"$dir\\Installer.exe\"; Expand-7zipArchive \"$dir\\ZoomFull_Sip.cab\" -Removal"
-        }
-    },
-    "post_install": [
-        "Write-Host \"Registering zoommtg:// protocol handler\"",
-        "$regpath = \"HKCU:\\SOFTWARE\\Classes\\zoommtg\"",
-        "New-Item -Path $regpath -Value \"Zoom (Application Name)\" -Force | Out-Null",
-        "New-ItemProperty -Path $regpath -Name \"URL Protocol\" -PropertyType String -Force | Out-Null",
-        "New-Item -Path \"$regpath\\shell\\open\\command\" -Value \"`\"$dir\\Zoom.exe`\" --url=`\"%1`\"\" -Force| Out-Null"
-    ],
-    "uninstaller": {
-        "script": [
-            "Write-Host \"Unregistering zoommtg:// protocol handler\"",
-            "Remove-Item \"HKCU:\\SOFTWARE\\Classes\\zoommtg\" -Recurse -Force"
-        ]
-    },
-    "bin": "Zoom.exe",
-    "shortcuts": [
-        [
-            "Zoom.exe",
-            "Zoom"
-        ]
-    ],
-    "checkver": {
-        "url": "https://www.zoom.us/rest/download?os=win",
-        "jsonpath": "$.result.downloadVO.zoom.version"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://cdn.zoom.us/prod/$version/x64/ZoomInstallerFull.exe#/dl.7z"
-            },
-            "32bit": {
-                "url": "https://cdn.zoom.us/prod/$version/ZoomInstaller.exe#/dl.7z"
-            },
-            "arm64": {
-                "url": "https://cdn.zoom.us/prod/$version/arm64/ZoomInstallerFull.exe#/dl.7z"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "26330ed1b5e254f907da231d150b29b29631d817ad62cd3b5baa184f4258d202",
+   "pre_install": "Remove-Item \"$dir\\Installer.exe\"; Expand-7zipArchive \"$dir\\Zoom.msi\" -Removal",
+   "url": "https://cdn.zoom.us/prod/5.13.4.11835/ZoomInstaller.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "87065958104f08ffdf9aa1d1f046adf520373edd0af60022105676c933bda715",
+   "pre_install": "Remove-Item \"$dir\\Installer.exe\"; Expand-7zipArchive \"$dir\\ZoomFull_Sip.cab\" -Removal",
+   "url": "https://cdn.zoom.us/prod/5.13.4.11835/x64/ZoomInstallerFull.exe#/dl.7z"
+  },
+  "arm64": {
+   "hash": "871e92260a69f8854a8acc62a3ad40e6e6cd12d5983efda517a1efe6e30c19a2",
+   "pre_install": "Remove-Item \"$dir\\Installer.exe\"; Expand-7zipArchive \"$dir\\ZoomFull_Sip.cab\" -Removal",
+   "url": "https://cdn.zoom.us/prod/5.13.4.11835/arm64/ZoomInstallerFull.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://cdn.zoom.us/prod/$version/ZoomInstaller.exe#/dl.7z"
+   },
+   "64bit": {
+    "url": "https://cdn.zoom.us/prod/$version/x64/ZoomInstallerFull.exe#/dl.7z"
+   },
+   "arm64": {
+    "url": "https://cdn.zoom.us/prod/$version/arm64/ZoomInstallerFull.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": "Zoom.exe",
+ "checkver": {
+  "jsonpath": "$.result.downloadVO.zoom.version",
+  "url": "https://www.zoom.us/rest/download?os=win"
+ },
+ "description": "Video and audio conferencing, chat, and webinars",
+ "homepage": "https://zoom.us",
+ "license": {
+  "identifier": "Proprietary",
+  "url": "https://zoom.us/terms"
+ },
+ "post_install": [
+  "Write-Host \"Registering zoommtg:// protocol handler\"",
+  "$regpath = \"HKCU:\\SOFTWARE\\Classes\\zoommtg\"",
+  "New-Item -Path $regpath -Value \"Zoom (Application Name)\" -Force | Out-Null",
+  "New-ItemProperty -Path $regpath -Name \"URL Protocol\" -PropertyType String -Force | Out-Null",
+  "New-Item -Path \"$regpath\\shell\\open\\command\" -Value \"`\"$dir\\Zoom.exe`\" --url=`\"%1`\"\" -Force| Out-Null"
+ ],
+ "shortcuts": [
+  [
+   "Zoom.exe",
+   "Zoom"
+  ]
+ ],
+ "uninstaller": {
+  "script": [
+   "Write-Host \"Unregistering zoommtg:// protocol handler\"",
+   "Remove-Item \"HKCU:\\SOFTWARE\\Classes\\zoommtg\" -Recurse -Force"
+  ]
+ },
+ "version": "5.13.4.11835"
 }

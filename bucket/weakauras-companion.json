@@ -1,31 +1,31 @@
 {
-    "version": "4.1.3",
-    "description": "Updates WeakAuras installed from Wago.",
-    "homepage": "https://weakauras.wtf/",
-    "license": "GPL-2.0-or-later",
-    "url": "https://github.com/WeakAuras/WeakAuras-Companion/releases/download/v4.1.3/WeakAuras-Companion-Setup-4.1.3.exe#/dl.7z",
-    "hash": "sha512:6668931b7d16606276e6d558376a6f917b1b5616dfbac7314e7fd117a11a26a35452519e1de5f70451b969f70c6a6bd25495e38008cbe1a387c60220bd0108c6",
-    "extract_dir": "$PLUGINSDIR",
-    "installer": {
-        "script": [
-            "Remove-Item \"$dir\\*\" -Exclude 'app-64.7z'",
-            "Expand-7zipArchive \"$dir\\app-64.7z\" \"$dir\" -Removal"
-        ]
-    },
-    "shortcuts": [
-        [
-            "WeakAuras Companion.exe",
-            "WeakAuras Companion"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/WeakAuras/WeakAuras-Companion"
-    },
-    "autoupdate": {
-        "url": "https://github.com/WeakAuras/WeakAuras-Companion/releases/download/v$version/WeakAuras-Companion-Setup-$version.exe#/dl.7z",
-        "hash": {
-            "url": "$baseurl/latest.yml",
-            "find": "sha512:\\s+(.*)"
-        }
-    }
+ "autoupdate": {
+  "hash": {
+   "find": "sha512:\\s+(.*)",
+   "url": "$baseurl/latest.yml"
+  },
+  "url": "https://github.com/WeakAuras/WeakAuras-Companion/releases/download/v$version/WeakAuras-Companion-Setup-$version.exe#/dl.7z"
+ },
+ "checkver": {
+  "github": "https://github.com/WeakAuras/WeakAuras-Companion"
+ },
+ "description": "Updates WeakAuras installed from Wago.",
+ "extract_dir": "$PLUGINSDIR",
+ "hash": "sha512:6668931b7d16606276e6d558376a6f917b1b5616dfbac7314e7fd117a11a26a35452519e1de5f70451b969f70c6a6bd25495e38008cbe1a387c60220bd0108c6",
+ "homepage": "https://weakauras.wtf/",
+ "installer": {
+  "script": [
+   "Remove-Item \"$dir\\*\" -Exclude 'app-64.7z'",
+   "Expand-7zipArchive \"$dir\\app-64.7z\" \"$dir\" -Removal"
+  ]
+ },
+ "license": "GPL-2.0-or-later",
+ "shortcuts": [
+  [
+   "WeakAuras Companion.exe",
+   "WeakAuras Companion"
+  ]
+ ],
+ "url": "https://github.com/WeakAuras/WeakAuras-Companion/releases/download/v4.1.3/WeakAuras-Companion-Setup-4.1.3.exe#/dl.7z",
+ "version": "4.1.3"
 }

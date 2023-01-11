@@ -1,43 +1,43 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "md5:25e240653f9514cc224da9b9f3b09469",
-            "url": "https://dl-cdn.oray.com/sunlogin/windows/SunloginClient_13.1.0.48900_x64.exe#/Sunlogin.exe"
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "md5:25e240653f9514cc224da9b9f3b09469",
+   "url": "https://dl-cdn.oray.com/sunlogin/windows/SunloginClient_13.1.0.48900_x64.exe#/Sunlogin.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "jp": "$.md5",
+     "url": "https://client-api.oray.com/softwares/SUNLOGIN_X_WINDOWS?x64=1"
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "hash": {
-                    "jp": "$.md5",
-                    "url": "https://client-api.oray.com/softwares/SUNLOGIN_X_WINDOWS?x64=1"
-                },
-                "url": "https://dl-cdn.oray.com/sunlogin/windows/SunloginClient_$version_$matchArch.exe#/Sunlogin.exe"
-            }
-        }
-    },
-    "checkver": {
-        "jp": "$.downloadurl",
-        "re": "/SunloginClient_([\\d\\.]+)_(?<arch>[Xx\\d]+)",
-        "url": "https://client-api.oray.com/softwares/SUNLOGIN_X_WINDOWS?x64=1"
-    },
-    "description": "Sunlogin by Oray",
-    "homepage": "https://sunlogin.oray.com/",
-    "installer": {
-        "script": [
-            "$path = 'HKCU:\\Software\\Oray\\SunLogin\\SunloginClient'",
-            "New-Item $path -ErrorAction SilentlyContinue -Force | Out-Null",
-            "New-ItemProperty -Path $path -Name \"${version}_IsRunSeted\" -Value \"1\" -PropertyType String -ErrorAction SilentlyContinue"
-        ]
-    },
-    "license": {
-        "identifier": "Freeware"
-    },
-    "shortcuts": [
-        [
-            "Sunlogin.exe",
-            "Sunlogin"
-        ]
-    ],
-    "version": "13.1.0.48900"
+    "url": "https://dl-cdn.oray.com/sunlogin/windows/SunloginClient_$version_$matchArch.exe#/Sunlogin.exe"
+   }
+  }
+ },
+ "checkver": {
+  "jp": "$.downloadurl",
+  "re": "/SunloginClient_([\\d\\.]+)_(?<arch>[Xx\\d]+)",
+  "url": "https://client-api.oray.com/softwares/SUNLOGIN_X_WINDOWS?x64=1"
+ },
+ "description": "Sunlogin by Oray",
+ "homepage": "https://sunlogin.oray.com/",
+ "installer": {
+  "script": [
+   "$path = 'HKCU:\\Software\\Oray\\SunLogin\\SunloginClient'",
+   "New-Item $path -ErrorAction SilentlyContinue -Force | Out-Null",
+   "New-ItemProperty -Path $path -Name \"${version}_IsRunSeted\" -Value \"1\" -PropertyType String -ErrorAction SilentlyContinue"
+  ]
+ },
+ "license": {
+  "identifier": "Freeware"
+ },
+ "shortcuts": [
+  [
+   "Sunlogin.exe",
+   "Sunlogin"
+  ]
+ ],
+ "version": "13.1.0.48900"
 }

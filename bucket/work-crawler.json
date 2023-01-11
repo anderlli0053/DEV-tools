@@ -1,28 +1,28 @@
 {
-    "version": "2.13.0",
-    "description": "Download comics and novels 小说漫画下载工具",
-    "homepage": "https://github.com/kanasimi/work_crawler",
-    "license": "Unknown",
-    "url": "https://github.com/kanasimi/work_crawler/releases/download/v2.13.0/work_crawler-Setup-2.13.0.exe#/dl.7z",
-    "hash": "bce4558bbcf695ae30e4f24f3eddc2c14440ab176d453e642581ec83159556bd",
-    "architecture": {
-        "64bit": {
-            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
-        },
-        "32bit": {
-            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
-        }
-    },
-    "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Recurse -Force",
-    "bin": "work_crawler.exe",
-    "shortcuts":[
-        [
-            "work_crawler.exe",
-            "work crawler"
-        ]
-    ],
-    "checkver": "github",
-    "autoupdate": {
-        "url": "https://github.com/kanasimi/work_crawler/releases/download/v$version/work_crawler-Setup-$version.exe#/dl.7z"
-    }
+ "architecture": {
+  "32bit": {
+   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
+  },
+  "64bit": {
+   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+  }
+ },
+ "autoupdate": {
+  "url": "https://github.com/kanasimi/work_crawler/releases/download/v$version/work_crawler-Setup-$version.exe#/dl.7z"
+ },
+ "bin": "work_crawler.exe",
+ "checkver": "github",
+ "description": "Download comics and novels \u5c0f\u8bf4\u6f2b\u753b\u4e0b\u8f7d\u5de5\u5177",
+ "hash": "bce4558bbcf695ae30e4f24f3eddc2c14440ab176d453e642581ec83159556bd",
+ "homepage": "https://github.com/kanasimi/work_crawler",
+ "license": "Unknown",
+ "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Recurse -Force",
+ "shortcuts": [
+  [
+   "work_crawler.exe",
+   "work crawler"
+  ]
+ ],
+ "url": "https://github.com/kanasimi/work_crawler/releases/download/v2.13.0/work_crawler-Setup-2.13.0.exe#/dl.7z",
+ "version": "2.13.0"
 }

@@ -1,40 +1,40 @@
 {
-    "version": "106.0.1370.30",
-    "description": "Microsoft Edge Beta. The chromium based Microsoft Edge browser (Beta Channel)",
-    "homepage": "https://www.microsoftedgeinsider.com/en-us/welcome?channel=beta",
-    "license": "Freeware",
-    "changelog": "https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnote-beta-channel",
-    "architecture": {
-        "64bit": {
-            "url": "https://dorado-api.deno.dev/edge?arch=64&channel=beta&version=106.0.1370.30&dl#/MicrosoftEdge-106.0.1370.30-x64.7z"
-        },
-        "32bit": {
-            "url": "https://dorado-api.deno.dev/edge?arch=86&channel=beta&version=106.0.1370.30&dl#/MicrosoftEdge-106.0.1370.30-x86.7z"
-        }
-    },
-    "installer": {
-        "script": "Expand-7zipArchive -Path \"$dir\\MSEDGE.7z\" -ExtractDir \"Chrome-bin\\$version\" -Removal"
-    },
-    "shortcuts": [
-        [
-            "msedge.exe",
-            "Microsoft Edge Beta",
-            "--user-data-dir=\"$dir\\User Data\""
-        ]
-    ],
-    "persist": "User Data",
-    "checkver": {
-        "url": "https://dorado-api.deno.dev/edge?arch=64&channel=beta",
-        "regex": "MicrosoftEdge_X64_([\\d.]+).exe"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://dorado-api.deno.dev/edge?arch=64&channel=beta&version=$version&dl#/MicrosoftEdge-$version-x64.7z"
-            },
-            "32bit": {
-                "url": "https://dorado-api.deno.dev/edge?arch=86&channel=beta&version=$version&dl#/MicrosoftEdge-$version-x86.7z"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "url": "https://dorado-api.deno.dev/edge?arch=86&channel=beta&version=106.0.1370.30&dl#/MicrosoftEdge-106.0.1370.30-x86.7z"
+  },
+  "64bit": {
+   "url": "https://dorado-api.deno.dev/edge?arch=64&channel=beta&version=106.0.1370.30&dl#/MicrosoftEdge-106.0.1370.30-x64.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://dorado-api.deno.dev/edge?arch=86&channel=beta&version=$version&dl#/MicrosoftEdge-$version-x86.7z"
+   },
+   "64bit": {
+    "url": "https://dorado-api.deno.dev/edge?arch=64&channel=beta&version=$version&dl#/MicrosoftEdge-$version-x64.7z"
+   }
+  }
+ },
+ "changelog": "https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnote-beta-channel",
+ "checkver": {
+  "regex": "MicrosoftEdge_X64_([\\d.]+).exe",
+  "url": "https://dorado-api.deno.dev/edge?arch=64&channel=beta"
+ },
+ "description": "Microsoft Edge Beta. The chromium based Microsoft Edge browser (Beta Channel)",
+ "homepage": "https://www.microsoftedgeinsider.com/en-us/welcome?channel=beta",
+ "installer": {
+  "script": "Expand-7zipArchive -Path \"$dir\\MSEDGE.7z\" -ExtractDir \"Chrome-bin\\$version\" -Removal"
+ },
+ "license": "Freeware",
+ "persist": "User Data",
+ "shortcuts": [
+  [
+   "msedge.exe",
+   "Microsoft Edge Beta",
+   "--user-data-dir=\"$dir\\User Data\""
+  ]
+ ],
+ "version": "106.0.1370.30"
 }

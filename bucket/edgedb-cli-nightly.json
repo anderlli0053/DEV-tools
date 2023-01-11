@@ -1,28 +1,28 @@
 {
-    "version": "2.3.0-dev.902+580aa00",
-    "description": "(Nightly Version) Command-line tools for EdgeDB.",
-    "homepage": "https://www.edgedb.com/docs/cli/index",
-    "license": "Apache-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc.nightly/edgedb-cli-2.3.0-dev.902+580aa00.exe#/edgedb.exe",
-            "hash": "6cd04061b537e4e901791743c706756e0c1804433c7d1aa541f79611f2aeb850"
-        }
-    },
-    "bin": "edgedb.exe",
-    "checkver": {
-        "script": [
-            "$indexes = Invoke-RestMethod 'https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.nightly.json'",
-            "$latest = $indexes.packages | Sort-Object -Property revision | Select-Object -Last 1",
-            "return $latest.version"
-        ],
-        "regex": "(.+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc.nightly/edgedb-cli-$version.exe#/edgedb.exe"
-            }
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "6cd04061b537e4e901791743c706756e0c1804433c7d1aa541f79611f2aeb850",
+   "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc.nightly/edgedb-cli-2.3.0-dev.902+580aa00.exe#/edgedb.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc.nightly/edgedb-cli-$version.exe#/edgedb.exe"
+   }
+  }
+ },
+ "bin": "edgedb.exe",
+ "checkver": {
+  "regex": "(.+)",
+  "script": [
+   "$indexes = Invoke-RestMethod 'https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.nightly.json'",
+   "$latest = $indexes.packages | Sort-Object -Property revision | Select-Object -Last 1",
+   "return $latest.version"
+  ]
+ },
+ "description": "(Nightly Version) Command-line tools for EdgeDB.",
+ "homepage": "https://www.edgedb.com/docs/cli/index",
+ "license": "Apache-2.0",
+ "version": "2.3.0-dev.902+580aa00"
 }

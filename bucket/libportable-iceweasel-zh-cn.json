@@ -1,45 +1,45 @@
 {
-    "version": "108.0",
-    "description": "(Simplified Chinese Version) Portable Runtime For Iceweasel (Firefox), an independent browser derived from Firefox/Mozilla community code.",
-    "homepage": "https://sourceforge.net/projects/libportable",
-    "license": "Freeware",
-    "architecture": {
-        "64bit": {
-            "url": "https://sourceforge.net/projects/libportable/files/Iceweasel/Stable/108.x/x86_64/Iceweasel-v108.0.zh_CN_win64_clang_pgo.7z",
-            "hash": "sha1:a27e9b16e1a6268d0f02dd96390c8ef9d41d833a",
-            "extract_dir": "Iceweasel_x64"
-        },
-        "32bit": {
-            "url": "https://sourceforge.net/projects/libportable/files/Iceweasel/Stable/108.x/i686/Iceweasel-v108.0.zh_CN_win32_clang_pgo.7z",
-            "hash": "sha1:116cfd581f2b9f2124ce1f707f5823be8981706c",
-            "extract_dir": "Iceweasel_x86"
-        }
-    },
-    "pre_install": "if (!(Test-Path \"$persist_dir\\App\\portable.ini\")) { Copy-Item \"$dir\\App\\portable(example).ini\" \"$dir\\App\\portable.ini\" }",
-    "persist": [
-        "App\\portable.ini",
-        "Profiles",
-        "Plugins"
-    ],
-    "bin": "App\\Iceweasel.exe",
-    "shortcuts": [
-        [
-            "App\\Iceweasel.exe",
-            "Iceweasel"
-        ]
-    ],
-    "checkver": {
-        "url": "https://sourceforge.net/projects/libportable/rss",
-        "regex": "/Iceweasel/Stable/(?<main>[\\d\\w.]+)/x86_64/Iceweasel-v([\\d.]+).zh_CN_win64_clang_pgo.7z"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://sourceforge.net/projects/libportable/files/Iceweasel/Stable/$matchMain/x86_64/Iceweasel-v$version.zh_CN_win64_clang_pgo.7z"
-            },
-            "32bit": {
-                "url": "https://sourceforge.net/projects/libportable/files/Iceweasel/Stable/$matchMain/i686/Iceweasel-v$version.zh_CN_win32_clang_pgo.7z"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "extract_dir": "Iceweasel_x86",
+   "hash": "sha1:116cfd581f2b9f2124ce1f707f5823be8981706c",
+   "url": "https://sourceforge.net/projects/libportable/files/Iceweasel/Stable/108.x/i686/Iceweasel-v108.0.zh_CN_win32_clang_pgo.7z"
+  },
+  "64bit": {
+   "extract_dir": "Iceweasel_x64",
+   "hash": "sha1:a27e9b16e1a6268d0f02dd96390c8ef9d41d833a",
+   "url": "https://sourceforge.net/projects/libportable/files/Iceweasel/Stable/108.x/x86_64/Iceweasel-v108.0.zh_CN_win64_clang_pgo.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://sourceforge.net/projects/libportable/files/Iceweasel/Stable/$matchMain/i686/Iceweasel-v$version.zh_CN_win32_clang_pgo.7z"
+   },
+   "64bit": {
+    "url": "https://sourceforge.net/projects/libportable/files/Iceweasel/Stable/$matchMain/x86_64/Iceweasel-v$version.zh_CN_win64_clang_pgo.7z"
+   }
+  }
+ },
+ "bin": "App\\Iceweasel.exe",
+ "checkver": {
+  "regex": "/Iceweasel/Stable/(?<main>[\\d\\w.]+)/x86_64/Iceweasel-v([\\d.]+).zh_CN_win64_clang_pgo.7z",
+  "url": "https://sourceforge.net/projects/libportable/rss"
+ },
+ "description": "(Simplified Chinese Version) Portable Runtime For Iceweasel (Firefox), an independent browser derived from Firefox/Mozilla community code.",
+ "homepage": "https://sourceforge.net/projects/libportable",
+ "license": "Freeware",
+ "persist": [
+  "App\\portable.ini",
+  "Profiles",
+  "Plugins"
+ ],
+ "pre_install": "if (!(Test-Path \"$persist_dir\\App\\portable.ini\")) { Copy-Item \"$dir\\App\\portable(example).ini\" \"$dir\\App\\portable.ini\" }",
+ "shortcuts": [
+  [
+   "App\\Iceweasel.exe",
+   "Iceweasel"
+  ]
+ ],
+ "version": "108.0"
 }

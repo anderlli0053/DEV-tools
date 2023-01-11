@@ -1,31 +1,31 @@
 {
-    "autoupdate": {
-        "url": "https://files.pythonhosted.org/$match1"
-    },
-    "bin": "venv\\Scripts\\pdm.exe",
-    "checkver": {
-        "re": "https://files.pythonhosted.org/(packages/.*/pdm-(?<version>[\\d.]+)-.*\\.whl)",
-        "replace": "${version}",
-        "url": "https://pypi.org/project/pdm/#files"
-    },
-    "depends": "python",
-    "hash": "7226ecb534d0b437b2f7d9cefdd0257d3570521af5f094d480597d230a4239f4",
-    "homepage": "http://pdm.fming.dev",
-    "installer": {
-        "script": [
-            "python -m venv \"$dir\\venv\"",
-            "& \"$dir\\venv\\Scripts\\python.exe\" -m pip install \"$dir\\$fname\""
-        ]
-    },
-    "license": "MIT",
-    "post_install": "& \"$dir\\venv\\Scripts\\pdm.exe\" --pep582",
-    "uninstaller": {
-        "script": [
-            "$oldPath = [Environment]::GetEnvironmentVariable(\"PYTHONPATH\", [System.EnvironmentVariableTarget]::User)",
-            "$newPath = ($oldPath.Split(';') | Where { $_ -notlike \"$dir\\venv\\*\" }) -join ';'",
-            "[Environment]::SetEnvironmentVariable(\"PYTHONPATH\", $newPath, [System.EnvironmentVariableTarget]::User)"
-        ]
-    },
-    "url": "https://files.pythonhosted.org/packages/22/4c/6bdb6613c8e45d82bb4eb7ad1728f340afb5bb97416896a7827da0b5876c/pdm-2.3.4-py3-none-any.whl",
-    "version": "2.3.4"
+ "autoupdate": {
+  "url": "https://files.pythonhosted.org/$match1"
+ },
+ "bin": "venv\\Scripts\\pdm.exe",
+ "checkver": {
+  "re": "https://files.pythonhosted.org/(packages/.*/pdm-(?<version>[\\d.]+)-.*\\.whl)",
+  "replace": "${version}",
+  "url": "https://pypi.org/project/pdm/#files"
+ },
+ "depends": "python",
+ "hash": "7226ecb534d0b437b2f7d9cefdd0257d3570521af5f094d480597d230a4239f4",
+ "homepage": "http://pdm.fming.dev",
+ "installer": {
+  "script": [
+   "python -m venv \"$dir\\venv\"",
+   "& \"$dir\\venv\\Scripts\\python.exe\" -m pip install \"$dir\\$fname\""
+  ]
+ },
+ "license": "MIT",
+ "post_install": "& \"$dir\\venv\\Scripts\\pdm.exe\" --pep582",
+ "uninstaller": {
+  "script": [
+   "$oldPath = [Environment]::GetEnvironmentVariable(\"PYTHONPATH\", [System.EnvironmentVariableTarget]::User)",
+   "$newPath = ($oldPath.Split(';') | Where { $_ -notlike \"$dir\\venv\\*\" }) -join ';'",
+   "[Environment]::SetEnvironmentVariable(\"PYTHONPATH\", $newPath, [System.EnvironmentVariableTarget]::User)"
+  ]
+ },
+ "url": "https://files.pythonhosted.org/packages/22/4c/6bdb6613c8e45d82bb4eb7ad1728f340afb5bb97416896a7827da0b5876c/pdm-2.3.4-py3-none-any.whl",
+ "version": "2.3.4"
 }

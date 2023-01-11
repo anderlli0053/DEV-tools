@@ -1,38 +1,38 @@
 {
-    "description": "The Microsoft Build of OpenJDK is a no-cost long-term supported distribution and Microsoft's way to collaborate and contribute to the Java ecosystem.",
-    "homepage": "https://www.microsoft.com/openjdk/",
-    "version": "11.0.17",
-    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://aka.ms/download-jdk/microsoft-jdk-11.0.17-windows-x64.zip",
-            "hash": "1c7518e6de8e345071742e694f7a69b7e91a1a9983653de71a169f194a7b32b8"
-        }
-    },
-    "extract_to": "tmp",
-    "installer": {
-        "script": [
-            "(Get-ChildItem -Directory \"$dir\\tmp\").FullName | % { Move-Item \"$_\\*\" \"$dir\" }",
-            "Remove-Item -Recurse \"$dir\\tmp\""
-        ]
-    },
-    "env_add_path": "bin",
-    "env_set": {
-        "JAVA_HOME": "$dir"
-    },
-    "checkver": {
-        "url": "https://docs.microsoft.com/java/openjdk/download",
-        "regex": "(?<ms>microsoft-jdk-((?<ver>11[\\d.]*?).(?<build>[\\d]+).[\\d]+)-windows-x64).zip"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://aka.ms/download-jdk/microsoft-jdk-$version-windows-x64.zip"
-            }
-        },
-        "hash": {
-            "url": "$url.sha256sum.txt"
-        },
-        "extract_dir": "jdk-$matchVer+$matchBuild"
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "1c7518e6de8e345071742e694f7a69b7e91a1a9983653de71a169f194a7b32b8",
+   "url": "https://aka.ms/download-jdk/microsoft-jdk-11.0.17-windows-x64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://aka.ms/download-jdk/microsoft-jdk-$version-windows-x64.zip"
+   }
+  },
+  "extract_dir": "jdk-$matchVer+$matchBuild",
+  "hash": {
+   "url": "$url.sha256sum.txt"
+  }
+ },
+ "checkver": {
+  "regex": "(?<ms>microsoft-jdk-((?<ver>11[\\d.]*?).(?<build>[\\d]+).[\\d]+)-windows-x64).zip",
+  "url": "https://docs.microsoft.com/java/openjdk/download"
+ },
+ "description": "The Microsoft Build of OpenJDK is a no-cost long-term supported distribution and Microsoft's way to collaborate and contribute to the Java ecosystem.",
+ "env_add_path": "bin",
+ "env_set": {
+  "JAVA_HOME": "$dir"
+ },
+ "extract_to": "tmp",
+ "homepage": "https://www.microsoft.com/openjdk/",
+ "installer": {
+  "script": [
+   "(Get-ChildItem -Directory \"$dir\\tmp\").FullName | % { Move-Item \"$_\\*\" \"$dir\" }",
+   "Remove-Item -Recurse \"$dir\\tmp\""
+  ]
+ },
+ "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+ "version": "11.0.17"
 }

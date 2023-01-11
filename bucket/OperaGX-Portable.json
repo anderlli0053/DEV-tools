@@ -1,52 +1,52 @@
 {
-    "version": "93.0.4585.84",
-    "description": "Opera GX. is a special version of the Opera browser built specifically to complement gaming",
-    "homepage": "https://www.opera.com/gx",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.opera.com/eula/computers"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://download1.operacdn.com/pub/opera_gx/93.0.4585.84/win/Opera_GX_93.0.4585.84_Setup_x64.exe#/dl.7z",
-            "hash": "cb6c7ab4acae77ac5c19d58e6eb6dbd4af60090e592a7468c42f90cabc6223d2"
-        },
-        "32bit": {
-            "url": "https://download1.operacdn.com/pub/opera_gx/93.0.4585.84/win/Opera_GX_93.0.4585.84_Setup.exe#/dl.7z",
-            "hash": "ed7b9b424040d7aa583131d8e9dc251c858cd1e65d004aad587702cd94e8453e"
-        }
-    },
-    "installer": {
-        "script": [
-            "Remove-Item -Path \"$dir\\*_list\" -Force",
-            "Move-Item -Path \"$dir\\*\" -Destination \"$dir\\$version\" -Exclude 'Assets', 'launcher*', 'Resources.pri' -ErrorAction Ignore",
-            "if (!(Test-Path \"$dir\\$version\\localization\")) {",
-            "   New-Item -Path \"$dir\\$version\\localization\" -ItemType Directory | Out-Null",
-            "   Move-Item -Path \"$dir\\$version\\*.pak\" -Destination \"$dir\\$version\\localization\" -Exclude 'opera*' -ErrorAction Ignore",
-            "}",
-            "Set-Content -Path \"$dir\\installer_prefs.json\" -Value (@{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json) -Encoding ASCII"
-        ]
-    },
-    "shortcuts": [
-        [
-            "launcher.exe",
-            "Opera GX"
-        ]
-    ],
-    "persist": "profile",
-    "checkver": {
-        "url": "https://download1.operacdn.com/pub/opera_gx/",
-        "regex": "([\\d.]+)/",
-        "reverse": true
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://download1.operacdn.com/pub/opera_gx/$version/win/Opera_GX_$version_Setup_x64.exe#/dl.7z"
-            },
-            "32bit": {
-                "url": "https://download1.operacdn.com/pub/opera_gx/$version/win/Opera_GX_$version_Setup.exe#/dl.7z"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "ed7b9b424040d7aa583131d8e9dc251c858cd1e65d004aad587702cd94e8453e",
+   "url": "https://download1.operacdn.com/pub/opera_gx/93.0.4585.84/win/Opera_GX_93.0.4585.84_Setup.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "cb6c7ab4acae77ac5c19d58e6eb6dbd4af60090e592a7468c42f90cabc6223d2",
+   "url": "https://download1.operacdn.com/pub/opera_gx/93.0.4585.84/win/Opera_GX_93.0.4585.84_Setup_x64.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://download1.operacdn.com/pub/opera_gx/$version/win/Opera_GX_$version_Setup.exe#/dl.7z"
+   },
+   "64bit": {
+    "url": "https://download1.operacdn.com/pub/opera_gx/$version/win/Opera_GX_$version_Setup_x64.exe#/dl.7z"
+   }
+  }
+ },
+ "checkver": {
+  "regex": "([\\d.]+)/",
+  "reverse": true,
+  "url": "https://download1.operacdn.com/pub/opera_gx/"
+ },
+ "description": "Opera GX. is a special version of the Opera browser built specifically to complement gaming",
+ "homepage": "https://www.opera.com/gx",
+ "installer": {
+  "script": [
+   "Remove-Item -Path \"$dir\\*_list\" -Force",
+   "Move-Item -Path \"$dir\\*\" -Destination \"$dir\\$version\" -Exclude 'Assets', 'launcher*', 'Resources.pri' -ErrorAction Ignore",
+   "if (!(Test-Path \"$dir\\$version\\localization\")) {",
+   "   New-Item -Path \"$dir\\$version\\localization\" -ItemType Directory | Out-Null",
+   "   Move-Item -Path \"$dir\\$version\\*.pak\" -Destination \"$dir\\$version\\localization\" -Exclude 'opera*' -ErrorAction Ignore",
+   "}",
+   "Set-Content -Path \"$dir\\installer_prefs.json\" -Value (@{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json) -Encoding ASCII"
+  ]
+ },
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://www.opera.com/eula/computers"
+ },
+ "persist": "profile",
+ "shortcuts": [
+  [
+   "launcher.exe",
+   "Opera GX"
+  ]
+ ],
+ "version": "93.0.4585.84"
 }

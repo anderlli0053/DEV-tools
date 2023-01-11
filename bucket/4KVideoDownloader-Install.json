@@ -1,66 +1,66 @@
 {
-    "version": "4.23.0.5200",
-    "description": "4K Video Downloader. Allows downloading videos, playlists, channels and subtitles from YouTube, Facebook, Vimeo and other video sites in high quality.",
-    "homepage": "https://www.4kdownload.com/products/product-videodownloader",
-    "notes": "This manifest only installs and updates 4K Video Downloader",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.4kdownload.com/agreement/freeware"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://dl.4kdownload.com/app/4kvideodownloader_4.23.0_x64.msi#/setup.msi_",
-            "hash": "15e90948c88b85af9be4fb7b6880c6191898af63099255e697711cd505fa73b3"
-        },
-        "32bit": {
-            "url": "https://dl.4kdownload.com/app/4kvideodownloader_4.23.0.msi#/setup.msi_",
-            "hash": "6575569b8b8c9c9f481346aeb3a5108f37c537141775f98e7da9266e870183b2"
-        }
-    },
-    "pre_download": "Assert-Administrator",
-    "pre_install": [
-        "$processname = \"4kvideodownloader\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "installer": {
-        "script": [
-            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
-            "$filepath = \"$ProgramFiles\\4KDownload\\4kvideodownloader\\4kvideodownloader.exe\"",
-            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-            "{",
-            "   Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn') -RunAs | Out-Null",
-            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-            "   {",
-            "       exit 1",
-            "   }",
-            "}",
-            "if (Test-Path -Path \"$dir\\setup.msi_\") { Remove-Item \"$dir\\setup.msi_\" -Force }"
-        ]
-    },
-    "post_install": [
-        "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
-        "if (Test-Path \"$CommonDesktopPath\\4K Video Downloader.lnk\") {Remove-Item \"$CommonDesktopPath\\4K Video Downloader.lnk\" -Force}"
-    ],
-    "checkver": {
-        "url": "https://www.4kdownload.com/products/product-videodownloader",
-        "regex": "\"videodownloader_([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://dl.4kdownload.com/app/4kvideodownloader_$majorVersion.$minorVersion.$patchVersion_x64.msi#/setup.msi_"
-            },
-            "32bit": {
-                "url": "https://dl.4kdownload.com/app/4kvideodownloader_$majorVersion.$minorVersion.$patchVersion.msi#/setup.msi_"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "6575569b8b8c9c9f481346aeb3a5108f37c537141775f98e7da9266e870183b2",
+   "url": "https://dl.4kdownload.com/app/4kvideodownloader_4.23.0.msi#/setup.msi_"
+  },
+  "64bit": {
+   "hash": "15e90948c88b85af9be4fb7b6880c6191898af63099255e697711cd505fa73b3",
+   "url": "https://dl.4kdownload.com/app/4kvideodownloader_4.23.0_x64.msi#/setup.msi_"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://dl.4kdownload.com/app/4kvideodownloader_$majorVersion.$minorVersion.$patchVersion.msi#/setup.msi_"
+   },
+   "64bit": {
+    "url": "https://dl.4kdownload.com/app/4kvideodownloader_$majorVersion.$minorVersion.$patchVersion_x64.msi#/setup.msi_"
+   }
+  }
+ },
+ "checkver": {
+  "regex": "\"videodownloader_([\\d.]+)",
+  "url": "https://www.4kdownload.com/products/product-videodownloader"
+ },
+ "description": "4K Video Downloader. Allows downloading videos, playlists, channels and subtitles from YouTube, Facebook, Vimeo and other video sites in high quality.",
+ "homepage": "https://www.4kdownload.com/products/product-videodownloader",
+ "installer": {
+  "script": [
+   "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
+   "$filepath = \"$ProgramFiles\\4KDownload\\4kvideodownloader\\4kvideodownloader.exe\"",
+   "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+   "{",
+   "   Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn') -RunAs | Out-Null",
+   "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+   "   {",
+   "       exit 1",
+   "   }",
+   "}",
+   "if (Test-Path -Path \"$dir\\setup.msi_\") { Remove-Item \"$dir\\setup.msi_\" -Force }"
+  ]
+ },
+ "license": {
+  "identifier": "Freeware",
+  "url": "https://www.4kdownload.com/agreement/freeware"
+ },
+ "notes": "This manifest only installs and updates 4K Video Downloader",
+ "post_install": [
+  "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
+  "if (Test-Path \"$CommonDesktopPath\\4K Video Downloader.lnk\") {Remove-Item \"$CommonDesktopPath\\4K Video Downloader.lnk\" -Force}"
+ ],
+ "pre_download": "Assert-Administrator",
+ "pre_install": [
+  "$processname = \"4kvideodownloader\"",
+  "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+  "if ($process) {",
+  "   $process.CloseMainWindow()",
+  "   Start-Sleep -Seconds 5",
+  "   if (!$process.HasExited) {",
+  "       Start-Sleep -Seconds 25",
+  "       $process | Stop-Process -Force",
+  "   }",
+  "}"
+ ],
+ "version": "4.23.0.5200"
 }

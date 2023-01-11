@@ -1,39 +1,39 @@
 {
-    "version": "3.8.15",
-    "description": "Desktop application for Rocket.Chat using Electron",
-    "homepage": "https://rocket.chat",
-    "license": "MIT",
-    "url": "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/3.8.15/rocketchat-3.8.15-win.exe#/dl.7z",
-    "hash": "sha512:f3e6d2e403e4ecd7e92fdf347fca68a60b7a58fbabef22b8d3b35fab6e0709e27443194973b6045804f69d1f69ce38e13e5150b9f965404f5c1d6fd14ccf1b1f",
-    "architecture": {
-        "64bit": {
-            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
-        },
-        "32bit": {
-            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
-        }
-    },
-    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*exe\" -Recurse",
-    "bin": [
-        [
-            "Rocket.Chat.exe",
-            "rocketchat"
-        ]
-    ],
-    "shortcuts": [
-        [
-            "Rocket.Chat.exe",
-            "Rocket Chat"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/RocketChat/Rocket.Chat.Electron"
-    },
-    "autoupdate": {
-        "url": "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/$version/rocketchat-$version-win.exe#/dl.7z",
-        "hash": {
-            "url": "$baseurl/latest.yml",
-            "regex": "sha512:\\s+$base64"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
+  },
+  "64bit": {
+   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+  }
+ },
+ "autoupdate": {
+  "hash": {
+   "regex": "sha512:\\s+$base64",
+   "url": "$baseurl/latest.yml"
+  },
+  "url": "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/$version/rocketchat-$version-win.exe#/dl.7z"
+ },
+ "bin": [
+  [
+   "Rocket.Chat.exe",
+   "rocketchat"
+  ]
+ ],
+ "checkver": {
+  "github": "https://github.com/RocketChat/Rocket.Chat.Electron"
+ },
+ "description": "Desktop application for Rocket.Chat using Electron",
+ "hash": "sha512:f3e6d2e403e4ecd7e92fdf347fca68a60b7a58fbabef22b8d3b35fab6e0709e27443194973b6045804f69d1f69ce38e13e5150b9f965404f5c1d6fd14ccf1b1f",
+ "homepage": "https://rocket.chat",
+ "license": "MIT",
+ "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*exe\" -Recurse",
+ "shortcuts": [
+  [
+   "Rocket.Chat.exe",
+   "Rocket Chat"
+  ]
+ ],
+ "url": "https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/3.8.15/rocketchat-3.8.15-win.exe#/dl.7z",
+ "version": "3.8.15"
 }

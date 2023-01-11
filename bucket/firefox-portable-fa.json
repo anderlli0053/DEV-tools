@@ -1,54 +1,54 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "sha512:1a5533cd8e1f075d0c68ab659bb157ce7e8a8a3a0aa8af7697f26968ce37840573bfed8aa46ec1b592d3a06258d2d21b7e380954cbbce5a96a261b3735dad7a2",
-            "url": "https://archive.mozilla.org/pub/firefox/releases/108.0.2/win32/fa-IR/Firefox%20Setup%20108.0.2.exe#/dl.7z"
-        },
-        "64bit": {
-            "hash": "sha512:1a5533cd8e1f075d0c68ab659bb157ce7e8a8a3a0aa8af7697f26968ce37840573bfed8aa46ec1b592d3a06258d2d21b7e380954cbbce5a96a261b3735dad7a2",
-            "url": "https://archive.mozilla.org/pub/firefox/releases/108.0.2/win64/fa-IR/Firefox%20Setup%20108.0.2.exe#/dl.7z"
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:1a5533cd8e1f075d0c68ab659bb157ce7e8a8a3a0aa8af7697f26968ce37840573bfed8aa46ec1b592d3a06258d2d21b7e380954cbbce5a96a261b3735dad7a2",
+   "url": "https://archive.mozilla.org/pub/firefox/releases/108.0.2/win32/fa-IR/Firefox%20Setup%20108.0.2.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "sha512:1a5533cd8e1f075d0c68ab659bb157ce7e8a8a3a0aa8af7697f26968ce37840573bfed8aa46ec1b592d3a06258d2d21b7e380954cbbce5a96a261b3735dad7a2",
+   "url": "https://archive.mozilla.org/pub/firefox/releases/108.0.2/win64/fa-IR/Firefox%20Setup%20108.0.2.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "regex": "$sha512\\s+win32/fa-IR/$basename",
+     "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS"
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "regex": "$sha512\\s+win32/fa-IR/$basename",
-                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS"
-                },
-                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/fa-IR/Firefox%20Setup%20$version.exe#/dl.7z"
-            },
-            "64bit": {
-                "hash": {
-                    "regex": "$sha512\\s+win64/fa-IR/$basename",
-                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS"
-                },
-                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/fa-IR/Firefox%20Setup%20$version.exe#/dl.7z"
-            }
-        }
+    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/fa-IR/Firefox%20Setup%20$version.exe#/dl.7z"
+   },
+   "64bit": {
+    "hash": {
+     "regex": "$sha512\\s+win64/fa-IR/$basename",
+     "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS"
     },
-    "bin": [
-        [
-            "firefox.exe",
-            "firefox-fa",
-            "-profile \"$dir\\profile\""
-        ]
-    ],
-    "checkver": {
-        "regex": "<div class=\"c-release-version\">([\\d.]+)</div>",
-        "url": "https://www.mozilla.org/fa-IR/firefox/notes/"
-    },
-    "description": "Popular open source web browser.",
-    "extract_dir": "core",
-    "homepage": "https://www.mozilla.org/firefox/",
-    "license": "MPL-2.0",
-    "persist": "Profile",
-    "shortcuts": [
-        [
-            "firefox.exe",
-            "Firefox (fa)",
-            "-profile \"$dir\\profile\""
-        ]
-    ],
-    "version": "108.0.2"
+    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/fa-IR/Firefox%20Setup%20$version.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": [
+  [
+   "firefox.exe",
+   "firefox-fa",
+   "-profile \"$dir\\profile\""
+  ]
+ ],
+ "checkver": {
+  "regex": "<div class=\"c-release-version\">([\\d.]+)</div>",
+  "url": "https://www.mozilla.org/fa-IR/firefox/notes/"
+ },
+ "description": "Popular open source web browser.",
+ "extract_dir": "core",
+ "homepage": "https://www.mozilla.org/firefox/",
+ "license": "MPL-2.0",
+ "persist": "Profile",
+ "shortcuts": [
+  [
+   "firefox.exe",
+   "Firefox (fa)",
+   "-profile \"$dir\\profile\""
+  ]
+ ],
+ "version": "108.0.2"
 }

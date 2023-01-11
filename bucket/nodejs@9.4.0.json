@@ -1,61 +1,61 @@
 {
-    "homepage": "https://nodejs.org",
-    "version": "19.4.0",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://nodejs.org/dist/v19.4.0/node-v19.4.0-win-x64.7z",
-            "hash": "4fd543fa3eff180d5d7dabf8f8a4400f47a38c054e167808d9403e7196b114f4",
-            "extract_dir": "node-v19.4.0-win-x64"
-        },
-        "32bit": {
-            "url": "https://nodejs.org/dist/v19.4.0/node-v19.4.0-win-x86.7z",
-            "hash": "43278b59b4682d5587ebabb0b044ec06f75808e0f7bf6e9334c73a7a350e65a7",
-            "extract_dir": "node-v19.4.0-win-x86"
-        }
-    },
-    "persist": [
-        "bin",
-        "cache"
-    ],
-    "env_add_path": [
-        ".",
-        "bin"
-    ],
-    "##": "maint!: [2019-03-17] depend on `yarn` to install and update `npm` and `npx` as the current `npm` upgrade system fails (see <https://stackoverflow.com/questions/18412129/how-can-i-update-npm-on-windows/31520672#31520672>)",
-    "post_install": [
-        "",
-        "# install yarn, if needed; doing it here avoids a circular dependency between nodejs and yarn",
-        "# * finalize current install prior to installing `yarn` (which requires nodejs) to avoid circular dependency issues",
-        "env_add_path $manifest $dir $global; env_set $manifest $dir $global; save_installed_manifest $app $dir $url",
-        "$null, $bucket, $null = app_parse $app ; save_install_info @{ 'architecture' = $architecture; 'url' = $url; 'bucket' = $bucket } $dir",
-        "if ( -not $( get-command yarn -ea silent ) ) { scoop install rivy/yarn; }",
-        "env 'PATH' $env:PATH",
-        "yarn global add npm npx",
-        "# Remove broken included `npm` and `npx`; replacing them with `yarn`-installed versions",
-        "$path = \"$dir\\npm\" ; if (test-path $path) { echo $('removing ' + $path); remove-item $path }",
-        "$path = \"$dir\\npm.cmd\" ; if (test-path $path) { echo $('removing ' + $path); remove-item $path }",
-        "$path = \"$dir\\npx\" ; if (test-path $path) { echo $('removing ' + $path); remove-item $path }",
-        "$path = \"$dir\\npx.cmd\" ; if (test-path $path) { echo $('removing ' + $path); remove-item $path }",
-        "$path = \"$dir\\node_modules\\npm\" ; if (test-path $path) { echo $('removing ' + $path); remove-item $path -recurse }"
-    ],
-    "checkver": {
-        "url": "https://nodejs.org/dist/latest/",
-        "re": "node-v([\\d.]+)-x86.msi"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://nodejs.org/dist/v$version/node-v$version-win-x64.7z",
-                "extract_dir": "node-v$version-win-x64"
-            },
-            "32bit": {
-                "url": "https://nodejs.org/dist/v$version/node-v$version-win-x86.7z",
-                "extract_dir": "node-v$version-win-x86"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/SHASUMS256.txt.asc"
-        }
-    }
+ "##": "maint!: [2019-03-17] depend on `yarn` to install and update `npm` and `npx` as the current `npm` upgrade system fails (see <https://stackoverflow.com/questions/18412129/how-can-i-update-npm-on-windows/31520672#31520672>)",
+ "architecture": {
+  "32bit": {
+   "extract_dir": "node-v19.4.0-win-x86",
+   "hash": "43278b59b4682d5587ebabb0b044ec06f75808e0f7bf6e9334c73a7a350e65a7",
+   "url": "https://nodejs.org/dist/v19.4.0/node-v19.4.0-win-x86.7z"
+  },
+  "64bit": {
+   "extract_dir": "node-v19.4.0-win-x64",
+   "hash": "4fd543fa3eff180d5d7dabf8f8a4400f47a38c054e167808d9403e7196b114f4",
+   "url": "https://nodejs.org/dist/v19.4.0/node-v19.4.0-win-x64.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "extract_dir": "node-v$version-win-x86",
+    "url": "https://nodejs.org/dist/v$version/node-v$version-win-x86.7z"
+   },
+   "64bit": {
+    "extract_dir": "node-v$version-win-x64",
+    "url": "https://nodejs.org/dist/v$version/node-v$version-win-x64.7z"
+   }
+  },
+  "hash": {
+   "url": "$baseurl/SHASUMS256.txt.asc"
+  }
+ },
+ "checkver": {
+  "re": "node-v([\\d.]+)-x86.msi",
+  "url": "https://nodejs.org/dist/latest/"
+ },
+ "env_add_path": [
+  ".",
+  "bin"
+ ],
+ "homepage": "https://nodejs.org",
+ "license": "MIT",
+ "persist": [
+  "bin",
+  "cache"
+ ],
+ "post_install": [
+  "",
+  "# install yarn, if needed; doing it here avoids a circular dependency between nodejs and yarn",
+  "# * finalize current install prior to installing `yarn` (which requires nodejs) to avoid circular dependency issues",
+  "env_add_path $manifest $dir $global; env_set $manifest $dir $global; save_installed_manifest $app $dir $url",
+  "$null, $bucket, $null = app_parse $app ; save_install_info @{ 'architecture' = $architecture; 'url' = $url; 'bucket' = $bucket } $dir",
+  "if ( -not $( get-command yarn -ea silent ) ) { scoop install rivy/yarn; }",
+  "env 'PATH' $env:PATH",
+  "yarn global add npm npx",
+  "# Remove broken included `npm` and `npx`; replacing them with `yarn`-installed versions",
+  "$path = \"$dir\\npm\" ; if (test-path $path) { echo $('removing ' + $path); remove-item $path }",
+  "$path = \"$dir\\npm.cmd\" ; if (test-path $path) { echo $('removing ' + $path); remove-item $path }",
+  "$path = \"$dir\\npx\" ; if (test-path $path) { echo $('removing ' + $path); remove-item $path }",
+  "$path = \"$dir\\npx.cmd\" ; if (test-path $path) { echo $('removing ' + $path); remove-item $path }",
+  "$path = \"$dir\\node_modules\\npm\" ; if (test-path $path) { echo $('removing ' + $path); remove-item $path -recurse }"
+ ],
+ "version": "19.4.0"
 }

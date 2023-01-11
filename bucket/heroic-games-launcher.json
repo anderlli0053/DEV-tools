@@ -1,35 +1,35 @@
 {
-    "version": "2.5.2",
-    "description": "Unofficial native GUI reimplementation for GOG and Epic Games Launcher",
-    "homepage": "https://heroicgameslauncher.com/",
-    "license": "GPL-3.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.5.2/Heroic-2.5.2-Setup.exe#/dl.7z",
-            "hash": "sha512:78dd78fdc60adaba9aec7502165f5a01e4477ac25786b17ce2959fdf396a60e72cc8fab82cb1c5001fa29aa58c89fe6785ad5be7e10fb0e9c290d3ded5e8c85c"
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "sha512:78dd78fdc60adaba9aec7502165f5a01e4477ac25786b17ce2959fdf396a60e72cc8fab82cb1c5001fa29aa58c89fe6785ad5be7e10fb0e9c290d3ded5e8c85c",
+   "url": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.5.2/Heroic-2.5.2-Setup.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "regex": "sha512:\\s$sha512",
+     "url": "$baseurl/latest.yml"
     },
-    "extract_dir": "$PLUGINSDIR",
-    "pre_install": "Remove-Item \"$dir\\*.dll\"; Expand-7ZipArchive \"$dir\\app-64.7z\" \"$dir\" -Removal",
-    "bin": "Heroic.exe",
-    "shortcuts": [
-        [
-            "Heroic.exe",
-            "Heroic"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v$version/Heroic-$version-Setup.exe#/dl.7z",
-                "hash": {
-                    "url": "$baseurl/latest.yml",
-                    "regex": "sha512:\\s$sha512"
-                }
-            }
-        }
-    }
+    "url": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v$version/Heroic-$version-Setup.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": "Heroic.exe",
+ "checkver": {
+  "github": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
+ },
+ "description": "Unofficial native GUI reimplementation for GOG and Epic Games Launcher",
+ "extract_dir": "$PLUGINSDIR",
+ "homepage": "https://heroicgameslauncher.com/",
+ "license": "GPL-3.0",
+ "pre_install": "Remove-Item \"$dir\\*.dll\"; Expand-7ZipArchive \"$dir\\app-64.7z\" \"$dir\" -Removal",
+ "shortcuts": [
+  [
+   "Heroic.exe",
+   "Heroic"
+  ]
+ ],
+ "version": "2.5.2"
 }

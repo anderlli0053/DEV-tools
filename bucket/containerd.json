@@ -1,35 +1,35 @@
 {
-    "version": "1.6.15",
-    "description": "An open and reliable container runtime",
-    "homepage": "https://containerd.io",
-    "license": "Apache-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/containerd/containerd/releases/download/v1.6.15/containerd-1.6.15-windows-amd64.tar.gz",
-            "hash": "5b723eb58f7678a63928ec6eadc4a837d52a727e264f365a888d1ee97046bc7f"
-        }
-    },
-    "bin": [
-        "bin\\containerd.exe",
-        "bin\\containerd-shim-runhcs-v1.exe",
-        "bin\\ctr.exe"
-    ],
-    "checkver": {
-        "github": "https://github.com/containerd/containerd"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/containerd/containerd/releases/download/v$version/containerd-$version-windows-amd64.tar.gz"
-            }
-        },
-        "hash": {
-            "url": "$url.sha256sum"
-        }
-    },
-    "notes": [
-        "To register containerd as a service, run `containerd --register-service` as an elevated user",
-        "To start the containerd service, run `Start-Service containerd` in PowerShell",
-        "or `sc start containerd` in Cmd."
-    ]
+ "architecture": {
+  "64bit": {
+   "hash": "5b723eb58f7678a63928ec6eadc4a837d52a727e264f365a888d1ee97046bc7f",
+   "url": "https://github.com/containerd/containerd/releases/download/v1.6.15/containerd-1.6.15-windows-amd64.tar.gz"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/containerd/containerd/releases/download/v$version/containerd-$version-windows-amd64.tar.gz"
+   }
+  },
+  "hash": {
+   "url": "$url.sha256sum"
+  }
+ },
+ "bin": [
+  "bin\\containerd.exe",
+  "bin\\containerd-shim-runhcs-v1.exe",
+  "bin\\ctr.exe"
+ ],
+ "checkver": {
+  "github": "https://github.com/containerd/containerd"
+ },
+ "description": "An open and reliable container runtime",
+ "homepage": "https://containerd.io",
+ "license": "Apache-2.0",
+ "notes": [
+  "To register containerd as a service, run `containerd --register-service` as an elevated user",
+  "To start the containerd service, run `Start-Service containerd` in PowerShell",
+  "or `sc start containerd` in Cmd."
+ ],
+ "version": "1.6.15"
 }

@@ -1,47 +1,47 @@
 {
-    "version": "8.5.84",
-    "description": "Tomcat, an open source implementation of the Java Servlet, JavaServer Pages, Java Expression Language and Java WebSocket technologies. (version 8)",
-    "homepage": "https://tomcat.apache.org/",
-    "license": "Apache-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.84/bin/apache-tomcat-8.5.84-windows-x64.zip",
-            "hash": "sha512:0bca318365ccce300d9dce48946d4002ef72980153254b9a8641244d98f68a7afba6a3f7d17f125cd836c5e991646bcdc731d32e8a8134b190c4f2c330b48482"
-        },
-        "32bit": {
-            "url": "https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.84/bin/apache-tomcat-8.5.84-windows-x86.zip",
-            "hash": "sha512:e0f98b2859a834cb37b119bfc3f2055726f7e18d7f806414a62695f00850767b8d7546f8b0ebdb62ea1104402fcb119177ac43a2c5d657f4438300430ea66e8b"
-        }
-    },
-    "extract_dir": "apache-tomcat-8.5.84",
-    "bin": "bin\\catalina.bat",
-    "env_set": {
-        "CATALINA_HOME": "$dir",
-        "CATALINA_BASE": "$dir"
-    },
-    "persist": [
-        "conf",
-        "webapps"
-    ],
-    "suggest": {
-        "JRE": "java/openjdk"
-    },
-    "checkver": {
-        "url": "https://archive.apache.org/dist/tomcat/tomcat-8/?C=M;O=D",
-        "regex": "v(?<version>[\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://archive.apache.org/dist/tomcat/tomcat-8/v$version/bin/apache-tomcat-$version-windows-x64.zip"
-            },
-            "32bit": {
-                "url": "https://archive.apache.org/dist/tomcat/tomcat-8/v$version/bin/apache-tomcat-$version-windows-x86.zip"
-            }
-        },
-        "hash": {
-            "url": "$url.sha512"
-        },
-        "extract_dir": "apache-tomcat-$version"
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "sha512:e0f98b2859a834cb37b119bfc3f2055726f7e18d7f806414a62695f00850767b8d7546f8b0ebdb62ea1104402fcb119177ac43a2c5d657f4438300430ea66e8b",
+   "url": "https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.84/bin/apache-tomcat-8.5.84-windows-x86.zip"
+  },
+  "64bit": {
+   "hash": "sha512:0bca318365ccce300d9dce48946d4002ef72980153254b9a8641244d98f68a7afba6a3f7d17f125cd836c5e991646bcdc731d32e8a8134b190c4f2c330b48482",
+   "url": "https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.84/bin/apache-tomcat-8.5.84-windows-x64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://archive.apache.org/dist/tomcat/tomcat-8/v$version/bin/apache-tomcat-$version-windows-x86.zip"
+   },
+   "64bit": {
+    "url": "https://archive.apache.org/dist/tomcat/tomcat-8/v$version/bin/apache-tomcat-$version-windows-x64.zip"
+   }
+  },
+  "extract_dir": "apache-tomcat-$version",
+  "hash": {
+   "url": "$url.sha512"
+  }
+ },
+ "bin": "bin\\catalina.bat",
+ "checkver": {
+  "regex": "v(?<version>[\\d.]+)",
+  "url": "https://archive.apache.org/dist/tomcat/tomcat-8/?C=M;O=D"
+ },
+ "description": "Tomcat, an open source implementation of the Java Servlet, JavaServer Pages, Java Expression Language and Java WebSocket technologies. (version 8)",
+ "env_set": {
+  "CATALINA_BASE": "$dir",
+  "CATALINA_HOME": "$dir"
+ },
+ "extract_dir": "apache-tomcat-8.5.84",
+ "homepage": "https://tomcat.apache.org/",
+ "license": "Apache-2.0",
+ "persist": [
+  "conf",
+  "webapps"
+ ],
+ "suggest": {
+  "JRE": "java/openjdk"
+ },
+ "version": "8.5.84"
 }

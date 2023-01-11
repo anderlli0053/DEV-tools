@@ -1,37 +1,37 @@
 {
-    "version": "1.13.1",
-    "description": "Flash OS images to SD cards & USB drives, safely and easily.",
-    "homepage": "https://www.balena.io/etcher/",
-    "license": "Apache-2.0",
-    "url": "https://github.com/balena-io/etcher/releases/download/v1.13.1/balenaEtcher-Setup-1.13.1.exe#/dl.7z",
-    "hash": "sha512:26f5274c809f51e89bab9f7388aff15a668c2f77380380b58463da77dc6929258708f941d70781d3ad619bb3f2bcde5ab970f23affd9911bc34347b39667cc0c",
-    "architecture": {
-        "64bit": {
-            "installer": {
-                "script": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR/app-64.7z\" \"$dir\""
-            }
-        },
-        "32bit": {
-            "installer": {
-                "script": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR/app-32.7z\" \"$dir\""
-            }
-        }
-    },
-    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse",
-    "shortcuts": [
-        [
-            "balenaEtcher.exe",
-            "Etcher"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/balena-io/etcher"
-    },
-    "autoupdate": {
-        "url": "https://github.com/balena-io/etcher/releases/download/v$version/balenaEtcher-Setup-$version.exe#/dl.7z",
-        "hash": {
-            "url": "$baseurl/latest.yml",
-            "regex": "sha512: $base64"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "installer": {
+    "script": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR/app-32.7z\" \"$dir\""
+   }
+  },
+  "64bit": {
+   "installer": {
+    "script": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR/app-64.7z\" \"$dir\""
+   }
+  }
+ },
+ "autoupdate": {
+  "hash": {
+   "regex": "sha512: $base64",
+   "url": "$baseurl/latest.yml"
+  },
+  "url": "https://github.com/balena-io/etcher/releases/download/v$version/balenaEtcher-Setup-$version.exe#/dl.7z"
+ },
+ "checkver": {
+  "github": "https://github.com/balena-io/etcher"
+ },
+ "description": "Flash OS images to SD cards & USB drives, safely and easily.",
+ "hash": "sha512:26f5274c809f51e89bab9f7388aff15a668c2f77380380b58463da77dc6929258708f941d70781d3ad619bb3f2bcde5ab970f23affd9911bc34347b39667cc0c",
+ "homepage": "https://www.balena.io/etcher/",
+ "license": "Apache-2.0",
+ "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse",
+ "shortcuts": [
+  [
+   "balenaEtcher.exe",
+   "Etcher"
+  ]
+ ],
+ "url": "https://github.com/balena-io/etcher/releases/download/v1.13.1/balenaEtcher-Setup-1.13.1.exe#/dl.7z",
+ "version": "1.13.1"
 }

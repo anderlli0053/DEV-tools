@@ -1,36 +1,36 @@
 {
-    "version": "2022.12.5",
-    "homepage": "https://portswigger.net/burp",
-    "description": "An application that comes with set of tools used for penetration and security testing of web applications.",
-    "license": {
-        "identifier": "Shareware",
-        "url": "https://portswigger.net/legal"
-    },
-    "suggest": {
-        "JDK": "java/openjdk",
-        "JRE": "java/temurin-jre"
-    },
-    "url": "https://portswigger-cdn.net/burp/releases/download?product=pro&version=2022.12.5&type=Jar#/burpsuite-pro.jar",
-    "hash": "2e22d759bced5afef87ee55f2a10203c24c62ba3684befe2276a61082b36ee27",
-    "pre_install": [
-        "$currentDir = $dir.Replace(\"$version\", 'current')",
-        "Set-Content \"$dir\\burpsuite-pro.cmd\" -Value \"@start javaw -jar \"\"$currentDir\\burpsuite-pro.jar\"\"\" -Encoding 'utf8' -Force"
-    ],
-    "bin": "burpsuite-pro.jar",
-    "shortcuts": [
-        [
-            "burpsuite-pro.cmd",
-            "Burp Suite Professional Edition",
-            "",
-            "favicon.ico"
-        ]
-    ],
-    "checkver": {
-        "url": "https://portswigger.net/burp/releases/data",
-        "jsonpath": "$.ResultSet.Results..version",
-        "regex": "([\\d.]+)"
-    },
-    "autoupdate": {
-        "url": "https://portswigger-cdn.net/burp/releases/download?product=pro&version=$version&type=Jar#/burpsuite-pro.jar"
-    }
+ "autoupdate": {
+  "url": "https://portswigger-cdn.net/burp/releases/download?product=pro&version=$version&type=Jar#/burpsuite-pro.jar"
+ },
+ "bin": "burpsuite-pro.jar",
+ "checkver": {
+  "jsonpath": "$.ResultSet.Results..version",
+  "regex": "([\\d.]+)",
+  "url": "https://portswigger.net/burp/releases/data"
+ },
+ "description": "An application that comes with set of tools used for penetration and security testing of web applications.",
+ "hash": "2e22d759bced5afef87ee55f2a10203c24c62ba3684befe2276a61082b36ee27",
+ "homepage": "https://portswigger.net/burp",
+ "license": {
+  "identifier": "Shareware",
+  "url": "https://portswigger.net/legal"
+ },
+ "pre_install": [
+  "$currentDir = $dir.Replace(\"$version\", 'current')",
+  "Set-Content \"$dir\\burpsuite-pro.cmd\" -Value \"@start javaw -jar \"\"$currentDir\\burpsuite-pro.jar\"\"\" -Encoding 'utf8' -Force"
+ ],
+ "shortcuts": [
+  [
+   "burpsuite-pro.cmd",
+   "Burp Suite Professional Edition",
+   "",
+   "favicon.ico"
+  ]
+ ],
+ "suggest": {
+  "JDK": "java/openjdk",
+  "JRE": "java/temurin-jre"
+ },
+ "url": "https://portswigger-cdn.net/burp/releases/download?product=pro&version=2022.12.5&type=Jar#/burpsuite-pro.jar",
+ "version": "2022.12.5"
 }

@@ -1,54 +1,54 @@
 {
-    "version": "6.73",
-    "description": "Digital Audio Workstation",
-    "homepage": "https://www.reaper.fm",
-    "license": {
-        "identifier": "Proprietary",
-        "url": "https://www.reaper.fm/dist-agreement.php"
-    },
-    "notes": "The portable version of Reaper does not include ReWire.",
-    "architecture": {
-        "64bit": {
-            "url": "https://www.reaper.fm/files/6.x/reaper673_x64-install.exe#/dl.7z",
-            "hash": "c313e426619538431aa9689bcb0671aa81a9e380091a0920b06745fd513d05f6"
-        },
-        "32bit": {
-            "url": "https://www.reaper.fm/files/6.x/reaper673-install.exe#/dl.7z",
-            "hash": "76e26450e33f703c5038fa0c8f79a12539f030ffd97afcbfedb163fe8f6027f7"
-        }
-    },
-    "bin": [
-        "reaper.exe",
-        "reamote.exe"
-    ],
-    "shortcuts": [
-        [
-            "reaper.exe",
-            "Reaper"
-        ],
-        [
-            "reamote.exe",
-            "ReaMote"
-        ]
-    ],
-    "installer": {
-        "script": [
-            "Rename-Item \"$dir\\`$INSTDIR`$_8_\" 'InstallData'",
-            "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Recurse -Force"
-        ]
-    },
-    "checkver": {
-        "url": "https://www.reaper.fm/download.php",
-        "regex": "Version ([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://www.reaper.fm/files/$majorVersion.x/reaper$cleanVersion_x64-install.exe#/dl.7z"
-            },
-            "32bit": {
-                "url": "https://www.reaper.fm/files/$majorVersion.x/reaper$cleanVersion-install.exe#/dl.7z"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "76e26450e33f703c5038fa0c8f79a12539f030ffd97afcbfedb163fe8f6027f7",
+   "url": "https://www.reaper.fm/files/6.x/reaper673-install.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "c313e426619538431aa9689bcb0671aa81a9e380091a0920b06745fd513d05f6",
+   "url": "https://www.reaper.fm/files/6.x/reaper673_x64-install.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://www.reaper.fm/files/$majorVersion.x/reaper$cleanVersion-install.exe#/dl.7z"
+   },
+   "64bit": {
+    "url": "https://www.reaper.fm/files/$majorVersion.x/reaper$cleanVersion_x64-install.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": [
+  "reaper.exe",
+  "reamote.exe"
+ ],
+ "checkver": {
+  "regex": "Version ([\\d.]+)",
+  "url": "https://www.reaper.fm/download.php"
+ },
+ "description": "Digital Audio Workstation",
+ "homepage": "https://www.reaper.fm",
+ "installer": {
+  "script": [
+   "Rename-Item \"$dir\\`$INSTDIR`$_8_\" 'InstallData'",
+   "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Recurse -Force"
+  ]
+ },
+ "license": {
+  "identifier": "Proprietary",
+  "url": "https://www.reaper.fm/dist-agreement.php"
+ },
+ "notes": "The portable version of Reaper does not include ReWire.",
+ "shortcuts": [
+  [
+   "reaper.exe",
+   "Reaper"
+  ],
+  [
+   "reamote.exe",
+   "ReaMote"
+  ]
+ ],
+ "version": "6.73"
 }

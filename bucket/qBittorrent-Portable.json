@@ -1,40 +1,40 @@
 {
-    "version": "4.5.0",
-    "description": "qBittorrent. Free and reliable P2P Bittorent client",
-    "homepage": "https://www.qbittorrent.org",
-    "license": {
-        "identifier": "GPL-2.0-only",
-        "url": "https://github.com/qbittorrent/qBittorrent/blob/master/COPYING"
+ "architecture": {
+  "64bit": {
+   "hash": "14ceeccc4473e02417726cd01614b6c1cc9556ab3aa899118552af82d69db22a",
+   "url": "https://ixpeering.dl.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-4.5.0/qbittorrent_4.5.0_x64_setup.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "regex": "64-bit.*\\s+.*<code>$checksum</code>",
+     "url": "https://www.qbittorrent.org/download.php"
     },
-    "notes": "Web UI Theme https://github.com/WDaan/VueTorrent",
-    "architecture": {
-        "64bit": {
-            "url": "https://ixpeering.dl.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-4.5.0/qbittorrent_4.5.0_x64_setup.exe#/dl.7z",
-            "hash": "14ceeccc4473e02417726cd01614b6c1cc9556ab3aa899118552af82d69db22a"
-        }
-    },
-    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
-    "bin": "qbittorrent.exe",
-    "shortcuts": [
-        [
-            "qbittorrent.exe",
-            "qBittorrent"
-        ]
-    ],
-    "persist": "profile",
-    "checkver": {
-        "url": "https://www.qbittorrent.org/download.php",
-        "regex": "Latest:\\s+v([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://ixpeering.dl.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-$version/qbittorrent_$version_x64_setup.exe#/dl.7z",
-                "hash": {
-                    "url": "https://www.qbittorrent.org/download.php",
-                    "regex": "64-bit.*\\s+.*<code>$checksum</code>"
-                }
-            }
-        }
-    }
+    "url": "https://ixpeering.dl.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-$version/qbittorrent_$version_x64_setup.exe#/dl.7z"
+   }
+  }
+ },
+ "bin": "qbittorrent.exe",
+ "checkver": {
+  "regex": "Latest:\\s+v([\\d.]+)",
+  "url": "https://www.qbittorrent.org/download.php"
+ },
+ "description": "qBittorrent. Free and reliable P2P Bittorent client",
+ "homepage": "https://www.qbittorrent.org",
+ "license": {
+  "identifier": "GPL-2.0-only",
+  "url": "https://github.com/qbittorrent/qBittorrent/blob/master/COPYING"
+ },
+ "notes": "Web UI Theme https://github.com/WDaan/VueTorrent",
+ "persist": "profile",
+ "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+ "shortcuts": [
+  [
+   "qbittorrent.exe",
+   "qBittorrent"
+  ]
+ ],
+ "version": "4.5.0"
 }

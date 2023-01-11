@@ -1,19 +1,19 @@
 {
-    "version": "1.6.2",
-    "description": "A plugin that adds OTP support (two factor authentication) to KeePass.",
-    "homepage": "https://github.com/Rookiestyle/KeePassOTP",
-    "license": "GPL-3.0-only",
-    "depends": "extras/keepass",
-    "url": "https://github.com/Rookiestyle/KeePassOTP/releases/download/v1.6.2/KeePassOTP.plgx",
-    "hash": "9758d644f5623b90e957d50297eb60c61cf94dcfe86ce1b6d40bf937970c966b",
-    "checkver": "github",
-    "autoupdate": {
-        "url": "https://github.com/Rookiestyle/KeePassOTP/releases/download/v$version/KeePassOTP.plgx"
-    },
-    "installer": {
-        "script": "if (installed 'keepass' $global) {Copy-Item \"$dir\\KeePassOTP.plgx\" \"$(appdir keepass $global)\\current\\Plugins\"} else { error 'Please install `keepass` first, then reinstall `keepass-plugin-keepassotp`.'}"
-    },
-    "uninstaller": {
-        "script": "if (installed 'keepass' $global) {Remove-Item \"$(appdir keepass $global)\\current\\Plugins\\KeePassOTP.plgx\"}"
-    }
+ "autoupdate": {
+  "url": "https://github.com/Rookiestyle/KeePassOTP/releases/download/v$version/KeePassOTP.plgx"
+ },
+ "checkver": "github",
+ "depends": "extras/keepass",
+ "description": "A plugin that adds OTP support (two factor authentication) to KeePass.",
+ "hash": "9758d644f5623b90e957d50297eb60c61cf94dcfe86ce1b6d40bf937970c966b",
+ "homepage": "https://github.com/Rookiestyle/KeePassOTP",
+ "installer": {
+  "script": "if (installed 'keepass' $global) {Copy-Item \"$dir\\KeePassOTP.plgx\" \"$(appdir keepass $global)\\current\\Plugins\"} else { error 'Please install `keepass` first, then reinstall `keepass-plugin-keepassotp`.'}"
+ },
+ "license": "GPL-3.0-only",
+ "uninstaller": {
+  "script": "if (installed 'keepass' $global) {Remove-Item \"$(appdir keepass $global)\\current\\Plugins\\KeePassOTP.plgx\"}"
+ },
+ "url": "https://github.com/Rookiestyle/KeePassOTP/releases/download/v1.6.2/KeePassOTP.plgx",
+ "version": "1.6.2"
 }

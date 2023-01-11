@@ -1,51 +1,51 @@
 {
-    "description": "Zulu is certified build of OpenJDK",
-    "homepage": "https://www.azul.com/products/zulu-community/",
-    "version": "13.52.15",
-    "license": {
-        "identifier": "GPL-2.0-only WITH Classpath-exception-2.0",
-        "url": "https://www.azulsystems.com/license/zulu_third_party_licenses.html"
+ "architecture": {
+  "32bit": {
+   "extract_dir": "zulu13.52.15-ca-jre13.0.13-win_i686",
+   "hash": "725a42f61e335c14c57a69b4290aecca5d9e81ff5fc997f88029980f9db6b0f4",
+   "url": "https://cdn.azul.com/zulu/bin/zulu13.52.15-ca-jre13.0.13-win_i686.zip"
+  },
+  "64bit": {
+   "extract_dir": "zulu13.52.15-ca-jre13.0.13-win_x64",
+   "hash": "d75da12063cb69db0e8cba93f70753a79a2218219221a2a218a4dc7494123dfc",
+   "url": "https://cdn.azul.com/zulu/bin/zulu13.52.15-ca-jre13.0.13-win_x64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "extract_dir": "$matchName_i686",
+    "hash": {
+     "jp": "$.sha256_hash",
+     "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=13&bundle_type=jre&features=headfull&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=32"
     },
-    "architecture": {
-        "64bit": {
-            "url": "https://cdn.azul.com/zulu/bin/zulu13.52.15-ca-jre13.0.13-win_x64.zip",
-            "hash": "d75da12063cb69db0e8cba93f70753a79a2218219221a2a218a4dc7494123dfc",
-            "extract_dir": "zulu13.52.15-ca-jre13.0.13-win_x64"
-        },
-        "32bit": {
-            "url": "https://cdn.azul.com/zulu/bin/zulu13.52.15-ca-jre13.0.13-win_i686.zip",
-            "hash": "725a42f61e335c14c57a69b4290aecca5d9e81ff5fc997f88029980f9db6b0f4",
-            "extract_dir": "zulu13.52.15-ca-jre13.0.13-win_i686"
-        }
+    "url": "https://cdn.azul.com/zulu/bin/$matchName_i686.zip"
+   },
+   "64bit": {
+    "extract_dir": "$matchName_x64",
+    "hash": {
+     "jp": "$.sha256_hash",
+     "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=13&bundle_type=jre&features=headfull&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64"
     },
-    "env_add_path": "bin",
-    "env_set": {
-        "JAVA_HOME": "$dir"
-    },
-    "checkver": {
-        "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=13&bundle_type=jre&features=headfull&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64",
-        "jsonpath": "$.name",
-        "regex": "(?<name>zulu(?<version>[\\d.]+)-ca-jre(?<java>[\\d.]+)-win)_x64.zip",
-        "replace": "${version}"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://cdn.azul.com/zulu/bin/$matchName_x64.zip",
-                "extract_dir": "$matchName_x64",
-                "hash": {
-                    "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=13&bundle_type=jre&features=headfull&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64",
-                    "jp": "$.sha256_hash"
-                }
-            },
-            "32bit": {
-                "url": "https://cdn.azul.com/zulu/bin/$matchName_i686.zip",
-                "extract_dir": "$matchName_i686",
-                "hash": {
-                    "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=13&bundle_type=jre&features=headfull&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=32",
-                    "jp": "$.sha256_hash"
-                }
-            }
-        }
-    }
+    "url": "https://cdn.azul.com/zulu/bin/$matchName_x64.zip"
+   }
+  }
+ },
+ "checkver": {
+  "jsonpath": "$.name",
+  "regex": "(?<name>zulu(?<version>[\\d.]+)-ca-jre(?<java>[\\d.]+)-win)_x64.zip",
+  "replace": "${version}",
+  "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=13&bundle_type=jre&features=headfull&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64"
+ },
+ "description": "Zulu is certified build of OpenJDK",
+ "env_add_path": "bin",
+ "env_set": {
+  "JAVA_HOME": "$dir"
+ },
+ "homepage": "https://www.azul.com/products/zulu-community/",
+ "license": {
+  "identifier": "GPL-2.0-only WITH Classpath-exception-2.0",
+  "url": "https://www.azulsystems.com/license/zulu_third_party_licenses.html"
+ },
+ "version": "13.52.15"
 }

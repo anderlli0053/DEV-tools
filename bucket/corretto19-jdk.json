@@ -1,34 +1,34 @@
 {
-    "description": "Amazon Corretto is a no-cost, multiplatform, production-ready distribution of the Open Java Development Kit (OpenJDK)",
-    "homepage": "https://aws.amazon.com/corretto/",
-    "version": "19.0.1.10.1",
-    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://corretto.aws/downloads/resources/19.0.1.10.1/amazon-corretto-19.0.1.10.1-windows-x64-jdk.zip",
-            "hash": "0d9db675bf59726f0af02a3c31805e3bdeb6183ece2db25878163907d7d8e997"
-        }
+ "architecture": {
+  "64bit": {
+   "hash": "0d9db675bf59726f0af02a3c31805e3bdeb6183ece2db25878163907d7d8e997",
+   "url": "https://corretto.aws/downloads/resources/19.0.1.10.1/amazon-corretto-19.0.1.10.1-windows-x64-jdk.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "hash": {
+     "jsonpath": "$.windows.x64.jdk.19.zip.checksum_sha256",
+     "url": "https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json"
     },
-    "extract_dir": "jdk19.0.1_10",
-    "env_add_path": "bin",
-    "env_set": {
-        "JAVA_HOME": "$dir"
-    },
-    "checkver": {
-        "url": "https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
-        "jsonpath": "$.windows.x64.jdk.19.zip.resource",
-        "regex": "/([\\d.]+)/"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://corretto.aws/downloads/resources/$version/amazon-corretto-$version-windows-x64-jdk.zip",
-                "hash": {
-                    "url": "https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
-                    "jsonpath": "$.windows.x64.jdk.19.zip.checksum_sha256"
-                }
-            }
-        },
-        "extract_dir": "jdk$matchHead_$buildVersion"
-    }
+    "url": "https://corretto.aws/downloads/resources/$version/amazon-corretto-$version-windows-x64-jdk.zip"
+   }
+  },
+  "extract_dir": "jdk$matchHead_$buildVersion"
+ },
+ "checkver": {
+  "jsonpath": "$.windows.x64.jdk.19.zip.resource",
+  "regex": "/([\\d.]+)/",
+  "url": "https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json"
+ },
+ "description": "Amazon Corretto is a no-cost, multiplatform, production-ready distribution of the Open Java Development Kit (OpenJDK)",
+ "env_add_path": "bin",
+ "env_set": {
+  "JAVA_HOME": "$dir"
+ },
+ "extract_dir": "jdk19.0.1_10",
+ "homepage": "https://aws.amazon.com/corretto/",
+ "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+ "version": "19.0.1.10.1"
 }

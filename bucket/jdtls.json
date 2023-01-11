@@ -1,29 +1,29 @@
 {
-    "version": "1.19.0-202301091827",
-    "description": "Java language server",
-    "homepage": "https://projects.eclipse.org/projects/eclipse.jdt.ls",
-    "license": "EPL-2.0",
-    "suggest": {
-        "JDK": "java/openjdk",
-        "Python": "python"
-    },
-    "url": "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-1.19.0-202301091827.tar.gz",
-    "hash": "3b4ee4a11643c909dbc0b7d39291e1721256719e92bdee02a1d5d519dd1aa7b3",
-    "installer": {
-        "script": "shim (search_in_path python.exe) $global jdtls \"$dir\\bin\\jdtls\""
-    },
-    "uninstaller": {
-        "script": "rm_shim jdtls (shimdir $global) jdtls"
-    },
-    "checkver": {
-        "url": "https://download.eclipse.org/jdtls/snapshots/latest.txt",
-        "regex": "jdt-language-server-([\\d.]+)-(\\d+)",
-        "replace": "${1}-${2}"
-    },
-    "autoupdate": {
-        "url": "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-$match1-$match2.tar.gz",
-        "hash": {
-            "url": "$url.sha256"
-        }
-    }
+ "autoupdate": {
+  "hash": {
+   "url": "$url.sha256"
+  },
+  "url": "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-$match1-$match2.tar.gz"
+ },
+ "checkver": {
+  "regex": "jdt-language-server-([\\d.]+)-(\\d+)",
+  "replace": "${1}-${2}",
+  "url": "https://download.eclipse.org/jdtls/snapshots/latest.txt"
+ },
+ "description": "Java language server",
+ "hash": "3b4ee4a11643c909dbc0b7d39291e1721256719e92bdee02a1d5d519dd1aa7b3",
+ "homepage": "https://projects.eclipse.org/projects/eclipse.jdt.ls",
+ "installer": {
+  "script": "shim (search_in_path python.exe) $global jdtls \"$dir\\bin\\jdtls\""
+ },
+ "license": "EPL-2.0",
+ "suggest": {
+  "JDK": "java/openjdk",
+  "Python": "python"
+ },
+ "uninstaller": {
+  "script": "rm_shim jdtls (shimdir $global) jdtls"
+ },
+ "url": "https://download.eclipse.org/jdtls/snapshots/jdt-language-server-1.19.0-202301091827.tar.gz",
+ "version": "1.19.0-202301091827"
 }

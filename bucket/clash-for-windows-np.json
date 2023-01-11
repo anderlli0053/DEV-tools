@@ -1,67 +1,67 @@
 {
-    "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
-    "description": "A Windows GUI based on Clash",
-    "version": "0.20.12",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.12/Clash.for.Windows.Setup.0.20.12.exe#/dl.7z",
-            "hash": "67cbb53a83d65207be38f7fa06dd9b5dbde89a377c2120a149a947eb6abd9b9e",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
-            ]
-        },
-        "32bit": {
-            "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.12/Clash.for.Windows.Setup.0.20.12.ia32.exe#/dl.7z",
-            "hash": "f08041eab05e76c90754b04044ce63eaeb9aaf62ba3c191bfc2c062317f470d1",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
-            ]
-        },
-        "arm64": {
-            "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.12/Clash.for.Windows.Setup.0.20.12.arm64.exe#/dl.7z",
-            "hash": "4bc342467dcaff729da50888ec17aab0f4601c6a0bffd689ed5b142a28e348bc",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
-            ]
-        }
+ "architecture": {
+  "32bit": {
+   "hash": "f08041eab05e76c90754b04044ce63eaeb9aaf62ba3c191bfc2c062317f470d1",
+   "pre_install": [
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
+   ],
+   "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.12/Clash.for.Windows.Setup.0.20.12.ia32.exe#/dl.7z"
+  },
+  "64bit": {
+   "hash": "67cbb53a83d65207be38f7fa06dd9b5dbde89a377c2120a149a947eb6abd9b9e",
+   "pre_install": [
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
+   ],
+   "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.12/Clash.for.Windows.Setup.0.20.12.exe#/dl.7z"
+  },
+  "arm64": {
+   "hash": "4bc342467dcaff729da50888ec17aab0f4601c6a0bffd689ed5b142a28e348bc",
+   "pre_install": [
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\"",
+    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
+   ],
+   "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.12/Clash.for.Windows.Setup.0.20.12.arm64.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "hash": {
+     "mode": "extract",
+     "regex": "(?m)^ia32-exe: $sha256",
+     "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum"
     },
-    "shortcuts": [
-        [
-            "Clash for Windows.exe",
-            "Clash for Windows"
-        ]
-    ],
-    "checkver": "github",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.exe#/dl.7z",
-                "hash": {
-                    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum",
-                    "mode": "extract",
-                    "regex": "(?m)^exe: $sha256"
-                }
-            },
-            "32bit": {
-                "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.ia32.exe#/dl.7z",
-                "hash": {
-                    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum",
-                    "mode": "extract",
-                    "regex": "(?m)^ia32-exe: $sha256"
-                }
-            },
-            "arm64": {
-                "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.arm64.exe#/dl.7z",
-                "hash": {
-                    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum",
-                    "mode": "extract",
-                    "regex": "(?m)^arm64-exe: $sha256"
-                }
-            }
-        }
-    }
+    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.ia32.exe#/dl.7z"
+   },
+   "64bit": {
+    "hash": {
+     "mode": "extract",
+     "regex": "(?m)^exe: $sha256",
+     "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum"
+    },
+    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.exe#/dl.7z"
+   },
+   "arm64": {
+    "hash": {
+     "mode": "extract",
+     "regex": "(?m)^arm64-exe: $sha256",
+     "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum"
+    },
+    "url": "https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.arm64.exe#/dl.7z"
+   }
+  }
+ },
+ "checkver": "github",
+ "description": "A Windows GUI based on Clash",
+ "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
+ "license": "MIT",
+ "shortcuts": [
+  [
+   "Clash for Windows.exe",
+   "Clash for Windows"
+  ]
+ ],
+ "version": "0.20.12"
 }

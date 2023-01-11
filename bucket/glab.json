@@ -1,34 +1,34 @@
 {
-    "version": "1.24.1",
-    "description": "GitLab CLI",
-    "homepage": "https://gitlab.com/gitlab-org/cli",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://gitlab.com/gitlab-org/cli/-/releases/v1.24.1/downloads/glab_1.24.1_Windows_x86_64.zip",
-            "hash": "6b553a556ba7011a0c9fcf8a5f947ab60c6aabfaada47391ea7ba5703b08392b"
-        },
-        "32bit": {
-            "url": "https://gitlab.com/gitlab-org/cli/-/releases/v1.24.1/downloads/glab_1.24.1_Windows_i386.zip",
-            "hash": "85e9b4ee96337ebe48b040a552b2cb7327be86d235ff6e2c9d555be32c9fe56c"
-        }
-    },
-    "bin": "bin\\glab.exe",
-    "checkver": {
-        "url": "https://gitlab.com/gitlab-org/cli/-/tags?format=atom",
-        "regex": "/tags/v([\\d.]+)<"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://gitlab.com/gitlab-org/cli/-/releases/v$version/downloads/glab_$version_Windows_x86_64.zip"
-            },
-            "32bit": {
-                "url": "https://gitlab.com/gitlab-org/cli/-/releases/v$version/downloads/glab_$version_Windows_i386.zip"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/checksums.txt"
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "85e9b4ee96337ebe48b040a552b2cb7327be86d235ff6e2c9d555be32c9fe56c",
+   "url": "https://gitlab.com/gitlab-org/cli/-/releases/v1.24.1/downloads/glab_1.24.1_Windows_i386.zip"
+  },
+  "64bit": {
+   "hash": "6b553a556ba7011a0c9fcf8a5f947ab60c6aabfaada47391ea7ba5703b08392b",
+   "url": "https://gitlab.com/gitlab-org/cli/-/releases/v1.24.1/downloads/glab_1.24.1_Windows_x86_64.zip"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://gitlab.com/gitlab-org/cli/-/releases/v$version/downloads/glab_$version_Windows_i386.zip"
+   },
+   "64bit": {
+    "url": "https://gitlab.com/gitlab-org/cli/-/releases/v$version/downloads/glab_$version_Windows_x86_64.zip"
+   }
+  },
+  "hash": {
+   "url": "$baseurl/checksums.txt"
+  }
+ },
+ "bin": "bin\\glab.exe",
+ "checkver": {
+  "regex": "/tags/v([\\d.]+)<",
+  "url": "https://gitlab.com/gitlab-org/cli/-/tags?format=atom"
+ },
+ "description": "GitLab CLI",
+ "homepage": "https://gitlab.com/gitlab-org/cli",
+ "license": "MIT",
+ "version": "1.24.1"
 }

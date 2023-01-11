@@ -1,67 +1,67 @@
 {
-    "version": "5.0.73.1",
-    "description": "火绒弹窗拦截独立版",
-    "homepage": "https://www.huorong.cn/person5.html",
-    "license": "Freeware",
-    "notes": [
-        "安装 / 卸载过程需要写入 / 删除注册表内容，需要管理员权限。",
-        "安装时会修改注册表中拦截数据库路径至 <persist_dir>, 与火绒完整版不兼容。",
-        "卸载时会删除相应的注册表，若同时存在火绒完整版，需重新安装以修复注册表。"
-    ],
-    "url": "https://down5.huorong.cn/sysdiag-all-5.0.73.1-2023.01.03.2.exe#/dl.7z",
-    "hash": "40a03e27c05bf0035d436744b14d9bc1d1f945c77224b93136d5e8ec3dd6f6fa",
-    "depends": "sudo",
-    "extract_to": "temp",
-    "pre_install": [
-        "if (-not (Test-Path \"$persist_dir\\db\\popblk.db\")) {",
-        "    ensure \"$persist_dir\\db\" | Out-Null",
-        "    Copy-Item \"$dir\\temp\\`$_1_\\Huorong\\Sysdiag\\db\\popblk.db\" \"$persist_dir\\db\" -Force",
-        "}",
-        "if (-not (Test-Path \"$persist_dir\\popblkuser.db\")) {",
-        "    New-Item \"$persist_dir\\popblkuser.db\" -Force | Out-Null",
-        "}"
-    ],
-    "installer": {
-        "script": [
-            "$bin_dir = \"$dir\\temp\\bin\"",
-            "if (Test-Path \"$bin_dir\") {",
-            "    Copy-Item \"$bin_dir\\CrashHandler.dll\" \"$dir\" -Force",
-            "    Copy-Item \"$bin_dir\\DuiLib.dll\" \"$dir\" -Force",
-            "    Copy-Item \"$bin_dir\\jansson.dll\" \"$dir\" -Force",
-            "    Copy-Item \"$bin_dir\\libcodecs.dll\" \"$dir\" -Force",
-            "    Copy-Item \"$bin_dir\\libxsse.dll\" \"$dir\" -Force",
-            "    Copy-Item \"$bin_dir\\PopBlkEng.dll\" \"$dir\" -Force",
-            "    Copy-Item \"$bin_dir\\PopBlock.exe\" \"$dir\" -Force",
-            "    Copy-Item \"$bin_dir\\popblock.ui\" \"$dir\" -Force",
-            "    Copy-Item \"$bin_dir\\selfprot.dll\" \"$dir\" -Force",
-            "    Copy-Item \"$bin_dir\\sqlite.dll\" \"$dir\" -Force",
-            "}",
-            "Remove-Item \"$dir\\temp\" -Recurse -Force | Out-Null",
-            "info \"Registering PopBlock database path\"",
-            "sudo reg.exe add HKLM\\SOFTWARE\\Huorong\\Sysdiag\\app /f /v DataPath /t reg_sz /d \"$persist_dir\""
-        ]
-    },
-    "uninstaller": {
-        "script": [
-            "info \"Unregistering PopBlock database path\"",
-            "sudo Remove-ItemProperty -Path \"HKLM:Software\\Huorong\\Sysdiag\\app\" -Name \"DataPath\" -Force | Out-Null"
-        ]
-    },
-    "persist": [
-        "db",
-        "popblkuser.db"
-    ],
-    "shortcuts": [
-        [
-            "PopBlock.exe",
-            "火绒弹窗拦截"
-        ]
-    ],
-    "checkver": {
-        "url": "https://www.huorong.cn/5.0.version.json",
-        "regex": "sysdiag-all-([\\d\\.]+)-(?<build>[\\d\\.]+)\\.exe"
-    },
-    "autoupdate": {
-        "url": "https://down5.huorong.cn/sysdiag-all-$version-$matchBuild.exe#/dl.7z"
-    }
+ "autoupdate": {
+  "url": "https://down5.huorong.cn/sysdiag-all-$version-$matchBuild.exe#/dl.7z"
+ },
+ "checkver": {
+  "regex": "sysdiag-all-([\\d\\.]+)-(?<build>[\\d\\.]+)\\.exe",
+  "url": "https://www.huorong.cn/5.0.version.json"
+ },
+ "depends": "sudo",
+ "description": "\u706b\u7ed2\u5f39\u7a97\u62e6\u622a\u72ec\u7acb\u7248",
+ "extract_to": "temp",
+ "hash": "40a03e27c05bf0035d436744b14d9bc1d1f945c77224b93136d5e8ec3dd6f6fa",
+ "homepage": "https://www.huorong.cn/person5.html",
+ "installer": {
+  "script": [
+   "$bin_dir = \"$dir\\temp\\bin\"",
+   "if (Test-Path \"$bin_dir\") {",
+   "    Copy-Item \"$bin_dir\\CrashHandler.dll\" \"$dir\" -Force",
+   "    Copy-Item \"$bin_dir\\DuiLib.dll\" \"$dir\" -Force",
+   "    Copy-Item \"$bin_dir\\jansson.dll\" \"$dir\" -Force",
+   "    Copy-Item \"$bin_dir\\libcodecs.dll\" \"$dir\" -Force",
+   "    Copy-Item \"$bin_dir\\libxsse.dll\" \"$dir\" -Force",
+   "    Copy-Item \"$bin_dir\\PopBlkEng.dll\" \"$dir\" -Force",
+   "    Copy-Item \"$bin_dir\\PopBlock.exe\" \"$dir\" -Force",
+   "    Copy-Item \"$bin_dir\\popblock.ui\" \"$dir\" -Force",
+   "    Copy-Item \"$bin_dir\\selfprot.dll\" \"$dir\" -Force",
+   "    Copy-Item \"$bin_dir\\sqlite.dll\" \"$dir\" -Force",
+   "}",
+   "Remove-Item \"$dir\\temp\" -Recurse -Force | Out-Null",
+   "info \"Registering PopBlock database path\"",
+   "sudo reg.exe add HKLM\\SOFTWARE\\Huorong\\Sysdiag\\app /f /v DataPath /t reg_sz /d \"$persist_dir\""
+  ]
+ },
+ "license": "Freeware",
+ "notes": [
+  "\u5b89\u88c5 / \u5378\u8f7d\u8fc7\u7a0b\u9700\u8981\u5199\u5165 / \u5220\u9664\u6ce8\u518c\u8868\u5185\u5bb9\uff0c\u9700\u8981\u7ba1\u7406\u5458\u6743\u9650\u3002",
+  "\u5b89\u88c5\u65f6\u4f1a\u4fee\u6539\u6ce8\u518c\u8868\u4e2d\u62e6\u622a\u6570\u636e\u5e93\u8def\u5f84\u81f3 <persist_dir>, \u4e0e\u706b\u7ed2\u5b8c\u6574\u7248\u4e0d\u517c\u5bb9\u3002",
+  "\u5378\u8f7d\u65f6\u4f1a\u5220\u9664\u76f8\u5e94\u7684\u6ce8\u518c\u8868\uff0c\u82e5\u540c\u65f6\u5b58\u5728\u706b\u7ed2\u5b8c\u6574\u7248\uff0c\u9700\u91cd\u65b0\u5b89\u88c5\u4ee5\u4fee\u590d\u6ce8\u518c\u8868\u3002"
+ ],
+ "persist": [
+  "db",
+  "popblkuser.db"
+ ],
+ "pre_install": [
+  "if (-not (Test-Path \"$persist_dir\\db\\popblk.db\")) {",
+  "    ensure \"$persist_dir\\db\" | Out-Null",
+  "    Copy-Item \"$dir\\temp\\`$_1_\\Huorong\\Sysdiag\\db\\popblk.db\" \"$persist_dir\\db\" -Force",
+  "}",
+  "if (-not (Test-Path \"$persist_dir\\popblkuser.db\")) {",
+  "    New-Item \"$persist_dir\\popblkuser.db\" -Force | Out-Null",
+  "}"
+ ],
+ "shortcuts": [
+  [
+   "PopBlock.exe",
+   "\u706b\u7ed2\u5f39\u7a97\u62e6\u622a"
+  ]
+ ],
+ "uninstaller": {
+  "script": [
+   "info \"Unregistering PopBlock database path\"",
+   "sudo Remove-ItemProperty -Path \"HKLM:Software\\Huorong\\Sysdiag\\app\" -Name \"DataPath\" -Force | Out-Null"
+  ]
+ },
+ "url": "https://down5.huorong.cn/sysdiag-all-5.0.73.1-2023.01.03.2.exe#/dl.7z",
+ "version": "5.0.73.1"
 }

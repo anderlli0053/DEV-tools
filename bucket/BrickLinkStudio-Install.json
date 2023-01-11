@@ -1,60 +1,60 @@
 {
-    "version": "2.22.12",
-    "description": "BrickLink Studio. Studio is a desktop application that allows users to build LEGO models using virtual parts.",
-    "homepage": "https://www.bricklink.com/v2/build/studio.page",
-    "license": "Unknown",
-    "changelog": "https://www.bricklink.com/v2/build/studio.page",
-    "architecture": {
-        "64bit": {
-            "url": "https://s3.amazonaws.com/blstudio/Studio2.0/Studio+2.0.exe#/setup.exe",
-            "hash": "f99d3de1dd6bcdc0e8430258570ac82a7060642a4ba8a58a25d34ca2d944bfcd"
-        },
-        "32bit": {
-            "url": "https://s3.amazonaws.com/blstudio/Studio2.0/Studio+2.0_32.exe#/setup.exe",
-            "hash": "96b89120f5bd19888cb1e02dadaef638ad31b5865a63169bba1b3aef2f3d6dc2"
-        }
-    },
-    "pre_download": "Assert-Administrator",
-    "pre_install": [
-        "$processname = \"Studio\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "installer": {
-        "script": [
-            "$programname = \"Studio 2.0*\"",
-            "$ProgramFilesPath = [Environment]::GetFolderPath(\"ProgramFiles\")",
-            "if(!(Select-String -Path \"$ProgramFilesPath\\$programname\\version.txt\" -Pattern \"$version\" -SimpleMatch -Quiet -ErrorAction SilentlyContinue))",
-            "{",
-            "   &\"$dir\\setup.exe\" /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP- | Out-Null",
-            "   if(!(Select-String -Path \"$ProgramFilesPath\\$programname\\version.txt\" -Pattern \"$version\" -SimpleMatch -Quiet -ErrorAction SilentlyContinue))",
-            "   {",
-            "       exit 1",
-            "   }",
-            "}",
-            "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
-        ]
-    },
-    "checkver": {
-        "url": "https://www.bricklink.com/v2/build/studio.page",
-        "regex": "\"version\":\"([\\d.]+)",
-        "reverse": true
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://s3.amazonaws.com/blstudio/Studio$majorVersion.0/Studio+$majorVersion.0.exe#/setup.exe"
-            },
-            "32bit": {
-                "url": "https://s3.amazonaws.com/blstudio/Studio$majorVersion.0/Studio+$majorVersion.0_32.exe#/setup.exe"
-            }
-        }
-    }
+ "architecture": {
+  "32bit": {
+   "hash": "96b89120f5bd19888cb1e02dadaef638ad31b5865a63169bba1b3aef2f3d6dc2",
+   "url": "https://s3.amazonaws.com/blstudio/Studio2.0/Studio+2.0_32.exe#/setup.exe"
+  },
+  "64bit": {
+   "hash": "f99d3de1dd6bcdc0e8430258570ac82a7060642a4ba8a58a25d34ca2d944bfcd",
+   "url": "https://s3.amazonaws.com/blstudio/Studio2.0/Studio+2.0.exe#/setup.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "32bit": {
+    "url": "https://s3.amazonaws.com/blstudio/Studio$majorVersion.0/Studio+$majorVersion.0_32.exe#/setup.exe"
+   },
+   "64bit": {
+    "url": "https://s3.amazonaws.com/blstudio/Studio$majorVersion.0/Studio+$majorVersion.0.exe#/setup.exe"
+   }
+  }
+ },
+ "changelog": "https://www.bricklink.com/v2/build/studio.page",
+ "checkver": {
+  "regex": "\"version\":\"([\\d.]+)",
+  "reverse": true,
+  "url": "https://www.bricklink.com/v2/build/studio.page"
+ },
+ "description": "BrickLink Studio. Studio is a desktop application that allows users to build LEGO models using virtual parts.",
+ "homepage": "https://www.bricklink.com/v2/build/studio.page",
+ "installer": {
+  "script": [
+   "$programname = \"Studio 2.0*\"",
+   "$ProgramFilesPath = [Environment]::GetFolderPath(\"ProgramFiles\")",
+   "if(!(Select-String -Path \"$ProgramFilesPath\\$programname\\version.txt\" -Pattern \"$version\" -SimpleMatch -Quiet -ErrorAction SilentlyContinue))",
+   "{",
+   "   &\"$dir\\setup.exe\" /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP- | Out-Null",
+   "   if(!(Select-String -Path \"$ProgramFilesPath\\$programname\\version.txt\" -Pattern \"$version\" -SimpleMatch -Quiet -ErrorAction SilentlyContinue))",
+   "   {",
+   "       exit 1",
+   "   }",
+   "}",
+   "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
+  ]
+ },
+ "license": "Unknown",
+ "pre_download": "Assert-Administrator",
+ "pre_install": [
+  "$processname = \"Studio\"",
+  "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+  "if ($process) {",
+  "   $process.CloseMainWindow()",
+  "   Start-Sleep -Seconds 5",
+  "   if (!$process.HasExited) {",
+  "       Start-Sleep -Seconds 25",
+  "       $process | Stop-Process -Force",
+  "   }",
+  "}"
+ ],
+ "version": "2.22.12"
 }

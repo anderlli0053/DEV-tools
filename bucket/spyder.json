@@ -1,27 +1,27 @@
 {
-    "version": "5.4.1",
-    "homepage": "https://www.spyder-ide.org/",
-    "description": "The Scientific Python Development Environment.",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/spyder-ide/spyder/releases/download/v5.4.1/Spyder_64bit_full.exe#/dl.7z",
-            "hash": "1a2db60a02ab2abfa47bb6c7eb64d9c21e8b5dbeca05d87fa24dcad44184d713"
-        }
-    },
-    "pre_install": "Remove-Item \"$dir\" -Include @('uninstall.exe', '$PLUGINSDIR')",
-    "shortcuts": [
-        [
-            "Python\\pythonw.exe",
-            "SPYDER",
-            "$dir\\Spyder.launch.pyw",
-            "spyder.ico"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/spyder-ide/spyder"
-    },
-    "autoupdate": {
-        "url": "https://github.com/spyder-ide/spyder/releases/download/v$version/Spyder_64bit_full.exe#/dl.7z"
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "1a2db60a02ab2abfa47bb6c7eb64d9c21e8b5dbeca05d87fa24dcad44184d713",
+   "url": "https://github.com/spyder-ide/spyder/releases/download/v5.4.1/Spyder_64bit_full.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "url": "https://github.com/spyder-ide/spyder/releases/download/v$version/Spyder_64bit_full.exe#/dl.7z"
+ },
+ "checkver": {
+  "github": "https://github.com/spyder-ide/spyder"
+ },
+ "description": "The Scientific Python Development Environment.",
+ "homepage": "https://www.spyder-ide.org/",
+ "license": "MIT",
+ "pre_install": "Remove-Item \"$dir\" -Include @('uninstall.exe', '$PLUGINSDIR')",
+ "shortcuts": [
+  [
+   "Python\\pythonw.exe",
+   "SPYDER",
+   "$dir\\Spyder.launch.pyw",
+   "spyder.ico"
+  ]
+ ],
+ "version": "5.4.1"
 }

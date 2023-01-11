@@ -1,33 +1,33 @@
 {
-    "version": "1.0.13",
-    "description": "A music player and music collection organizer",
-    "homepage": "https://www.strawbs.org/",
-    "license": "GPL-3.0-only",
-    "architecture": {
-        "64bit": {
-            "url": "https://files.jkvinge.net/packages/strawberry/StrawberrySetup-1.0.13-mingw-x64.exe#/dl.7z",
-            "hash": "37c8b069b3f51a3e0fe64f6907e1a97a38482cf77eedb314f978bbfc61091355"
-        }
-    },
-    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
-    "bin": "strawberry.exe",
-    "shortcuts": [
-        [
-            "strawberry.exe",
-            "Strawberry Music Player"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/jonaski/strawberry"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://files.jkvinge.net/packages/strawberry/StrawberrySetup-$version-mingw-x64.exe#/dl.7z"
-            }
-        },
-        "hash": {
-            "url": "$url.sha256sum"
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "37c8b069b3f51a3e0fe64f6907e1a97a38482cf77eedb314f978bbfc61091355",
+   "url": "https://files.jkvinge.net/packages/strawberry/StrawberrySetup-1.0.13-mingw-x64.exe#/dl.7z"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://files.jkvinge.net/packages/strawberry/StrawberrySetup-$version-mingw-x64.exe#/dl.7z"
+   }
+  },
+  "hash": {
+   "url": "$url.sha256sum"
+  }
+ },
+ "bin": "strawberry.exe",
+ "checkver": {
+  "github": "https://github.com/jonaski/strawberry"
+ },
+ "description": "A music player and music collection organizer",
+ "homepage": "https://www.strawbs.org/",
+ "license": "GPL-3.0-only",
+ "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
+ "shortcuts": [
+  [
+   "strawberry.exe",
+   "Strawberry Music Player"
+  ]
+ ],
+ "version": "1.0.13"
 }

@@ -1,27 +1,27 @@
 {
-    "version": "1.27.0",
-    "description": "Conversion tool for Docker Compose to container orchestrators such as Kubernetes (or OpenShift).",
-    "homepage": "https://kompose.io/",
-    "license": "Apache-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/kubernetes/kompose/releases/download/v1.27.0/kompose-windows-amd64.exe#/kompose.exe",
-            "hash": "dabbadd592d2ace2d94d7b2c5f429d76d02ef6befe07c5088f4527a9d1f93e5c"
-        }
-    },
-    "checkver": {
-        "github": "https://github.com/kubernetes/kompose"
-    },
-    "bin": "kompose.exe",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/kubernetes/kompose/releases/download/v$version/kompose-windows-amd64.exe#/kompose.exe"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/SHA256_SUM",
-            "regex": "$sha256\\s+$basenameNoExt-windows-amd64"
-        }
-    }
+ "architecture": {
+  "64bit": {
+   "hash": "dabbadd592d2ace2d94d7b2c5f429d76d02ef6befe07c5088f4527a9d1f93e5c",
+   "url": "https://github.com/kubernetes/kompose/releases/download/v1.27.0/kompose-windows-amd64.exe#/kompose.exe"
+  }
+ },
+ "autoupdate": {
+  "architecture": {
+   "64bit": {
+    "url": "https://github.com/kubernetes/kompose/releases/download/v$version/kompose-windows-amd64.exe#/kompose.exe"
+   }
+  },
+  "hash": {
+   "regex": "$sha256\\s+$basenameNoExt-windows-amd64",
+   "url": "$baseurl/SHA256_SUM"
+  }
+ },
+ "bin": "kompose.exe",
+ "checkver": {
+  "github": "https://github.com/kubernetes/kompose"
+ },
+ "description": "Conversion tool for Docker Compose to container orchestrators such as Kubernetes (or OpenShift).",
+ "homepage": "https://kompose.io/",
+ "license": "Apache-2.0",
+ "version": "1.27.0"
 }
