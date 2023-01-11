@@ -1,95 +1,95 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "b68b375c5ffe3913377d5c679b09d37eb1a0e7daa5926ba418d8ac65c5035837",
-   "url": "https://update.code.visualstudio.com/1.74.2/win32-archive/stable#/dl.7z"
-  },
-  "64bit": {
-   "hash": "0afc364b08c1a998902542cd372c2d78ae30d8ab60b472d83245d004af9d4946",
-   "url": "https://update.code.visualstudio.com/1.74.2/win32-x64-archive/stable#/dl.7z"
-  },
-  "arm64": {
-   "hash": "844aa34b40d93f4601fcdf40f7df6693570fc8a5fac0d35d9ca5dea235a2174b",
-   "url": "https://update.code.visualstudio.com/1.74.2/win32-arm64-archive/stable#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "hash": {
-     "jsonpath": "$.products[?(@.platform.os == 'win32-archive')].sha256hash",
-     "url": "https://code.visualstudio.com/sha?build=stable"
+    "architecture": {
+        "32bit": {
+            "hash": "1e382e3d2dd867316fddfc7f44285d570141476cb60534539727e6e28d756e3f",
+            "url": "https://update.code.visualstudio.com/1.74.3/win32-archive/stable#/dl.7z"
+        },
+        "64bit": {
+            "hash": "a31bdec3a5e7914f99d46bd78cef6d60d0759477dc76802f3f19f720f8b6ee47",
+            "url": "https://update.code.visualstudio.com/1.74.3/win32-x64-archive/stable#/dl.7z"
+        },
+        "arm64": {
+            "hash": "1eaf3a1f3c6503bad7d0eb0e5a711efe3634be2c664ca72db1b901807045a9b6",
+            "url": "https://update.code.visualstudio.com/1.74.3/win32-arm64-archive/stable#/dl.7z"
+        }
     },
-    "url": "https://update.code.visualstudio.com/$version/win32-archive/stable#/dl.7z"
-   },
-   "64bit": {
-    "hash": {
-     "jsonpath": "$.products[?(@.platform.os == 'win32-x64-archive')].sha256hash",
-     "url": "https://code.visualstudio.com/sha?build=stable"
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "hash": {
+                    "jsonpath": "$.products[?(@.platform.os == 'win32-archive')].sha256hash",
+                    "url": "https://code.visualstudio.com/sha?build=stable"
+                },
+                "url": "https://update.code.visualstudio.com/$version/win32-archive/stable#/dl.7z"
+            },
+            "64bit": {
+                "hash": {
+                    "jsonpath": "$.products[?(@.platform.os == 'win32-x64-archive')].sha256hash",
+                    "url": "https://code.visualstudio.com/sha?build=stable"
+                },
+                "url": "https://update.code.visualstudio.com/$version/win32-x64-archive/stable#/dl.7z"
+            },
+            "arm64": {
+                "hash": {
+                    "jsonpath": "$.products[?(@.platform.os == 'win32-arm64-archive')].sha256hash",
+                    "url": "https://code.visualstudio.com/sha?build=stable"
+                },
+                "url": "https://update.code.visualstudio.com/$version/win32-arm64-archive/stable#/dl.7z"
+            }
+        }
     },
-    "url": "https://update.code.visualstudio.com/$version/win32-x64-archive/stable#/dl.7z"
-   },
-   "arm64": {
-    "hash": {
-     "jsonpath": "$.products[?(@.platform.os == 'win32-arm64-archive')].sha256hash",
-     "url": "https://code.visualstudio.com/sha?build=stable"
+    "checkver": {
+        "jsonpath": "$.products[?(@.platform.os == 'win32-x64-archive')].name",
+        "url": "https://code.visualstudio.com/sha?build=stable"
     },
-    "url": "https://update.code.visualstudio.com/$version/win32-arm64-archive/stable#/dl.7z"
-   }
-  }
- },
- "checkver": {
-  "jsonpath": "$.products[?(@.platform.os == 'win32-x64-archive')].name",
-  "url": "https://code.visualstudio.com/sha?build=stable"
- },
- "description": "Lightweight but powerful source code editor",
- "env_add_path": "bin",
- "homepage": "https://code.visualstudio.com/",
- "license": {
-  "identifier": "Freeware",
-  "url": "https://code.visualstudio.com/License/"
- },
- "notes": [
-  "Add Visual Studio Code as a context menu option by running: 'reg import \"$dir\\install-context.reg\"'",
-  "For file associations, run 'reg import \"$dir\\install-associations.reg\"'"
- ],
- "persist": "data",
- "post_install": [
-  "$dirpath = \"$dir\".Replace('\\', '\\\\')",
-  "$exepath = \"$dir\\Code.exe\".Replace('\\', '\\\\')",
-  "'install-associations', 'uninstall-associations', 'install-context', 'uninstall-context' | ForEach-Object {",
-  "  if (Test-Path \"$bucketsdir\\extras\\scripts\\vscode\\$_.reg\") {",
-  "    $content = Get-Content \"$bucketsdir\\extras\\scripts\\vscode\\$_.reg\"",
-  "    $content = $content.Replace('$codedir', $dirpath)",
-  "    $content = $content.Replace('$code', $exepath)",
-  "    if ($global) {",
-  "      $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
-  "    }",
-  "    $content | Set-Content -Path \"$dir\\$_.reg\"",
-  "  }",
-  "}",
-  "if (!(Test-Path \"$dir\\data\\extensions\") -and (Test-Path \"$env:USERPROFILE\\.vscode\\extensions\")) {",
-  "    info '[Portable Mode] Copying extensions...'",
-  "    Copy-Item \"$env:USERPROFILE\\.vscode\\extensions\" \"$dir\\data\" -Recurse",
-  "}",
-  "if (!(Test-Path \"$dir\\data\\user-data\") -and (Test-Path \"$env:AppData\\Code\")) {",
-  "    info '[Portable Mode] Copying user data...'",
-  "    Copy-Item \"$env:AppData\\Code\" \"$dir\\data\\user-data\" -Recurse",
-  "}",
-  "$extensions_file = \"$dir\\data\\extensions\\extensions.json\"",
-  "if ((Test-Path \"$extensions_file\")) {",
-  "    info 'Adjusting path in extensions file...'",
-  "    (Get-Content \"$extensions_file\") -replace '(?<=vscode(/|\\\\\\\\)).*?(?=(/|\\\\\\\\)data(/|\\\\\\\\)extensions)', $version | Set-Content \"$extensions_file\"",
-  "}"
- ],
- "shortcuts": [
-  [
-   "code.exe",
-   "Visual Studio Code"
-  ]
- ],
- "uninstaller": {
-  "script": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" }"
- },
- "version": "1.74.2"
+    "description": "Lightweight but powerful source code editor",
+    "env_add_path": "bin",
+    "homepage": "https://code.visualstudio.com/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://code.visualstudio.com/License/"
+    },
+    "notes": [
+        "Add Visual Studio Code as a context menu option by running: 'reg import \"$dir\\install-context.reg\"'",
+        "For file associations, run 'reg import \"$dir\\install-associations.reg\"'"
+    ],
+    "persist": "data",
+    "post_install": [
+        "$dirpath = \"$dir\".Replace('\\', '\\\\')",
+        "$exepath = \"$dir\\Code.exe\".Replace('\\', '\\\\')",
+        "'install-associations', 'uninstall-associations', 'install-context', 'uninstall-context' | ForEach-Object {",
+        "  if (Test-Path \"$bucketsdir\\extras\\scripts\\vscode\\$_.reg\") {",
+        "    $content = Get-Content \"$bucketsdir\\extras\\scripts\\vscode\\$_.reg\"",
+        "    $content = $content.Replace('$codedir', $dirpath)",
+        "    $content = $content.Replace('$code', $exepath)",
+        "    if ($global) {",
+        "      $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "    }",
+        "    $content | Set-Content -Path \"$dir\\$_.reg\"",
+        "  }",
+        "}",
+        "if (!(Test-Path \"$dir\\data\\extensions\") -and (Test-Path \"$env:USERPROFILE\\.vscode\\extensions\")) {",
+        "    info '[Portable Mode] Copying extensions...'",
+        "    Copy-Item \"$env:USERPROFILE\\.vscode\\extensions\" \"$dir\\data\" -Recurse",
+        "}",
+        "if (!(Test-Path \"$dir\\data\\user-data\") -and (Test-Path \"$env:AppData\\Code\")) {",
+        "    info '[Portable Mode] Copying user data...'",
+        "    Copy-Item \"$env:AppData\\Code\" \"$dir\\data\\user-data\" -Recurse",
+        "}",
+        "$extensions_file = \"$dir\\data\\extensions\\extensions.json\"",
+        "if ((Test-Path \"$extensions_file\")) {",
+        "    info 'Adjusting path in extensions file...'",
+        "    (Get-Content \"$extensions_file\") -replace '(?<=vscode(/|\\\\\\\\)).*?(?=(/|\\\\\\\\)data(/|\\\\\\\\)extensions)', $version | Set-Content \"$extensions_file\"",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "code.exe",
+            "Visual Studio Code"
+        ]
+    ],
+    "uninstaller": {
+        "script": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" }"
+    },
+    "version": "1.74.3"
 }
