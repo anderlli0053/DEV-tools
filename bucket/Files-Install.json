@@ -1,25 +1,25 @@
 {
- "autoupdate": {
-  "url": "https://github.com/files-community/Files/releases/download/v$version/Files.Package_$version.0_x64_arm64_Sideload.msixbundle#/setup.msixbundle"
- },
- "changelog": "https://github.com/files-community/Files/releases",
- "checkver": {
-  "github": "https://github.com/files-community/Files"
- },
- "description": "Files. A modern file explorer that pushes the boundaries of the Windows platform.",
- "hash": "c56c32c160b0802fbfd6c7be0582a97d069a2722ec9cc85a7557f385c6471aba",
- "homepage": "https://files.community/",
- "license": "MIT",
- "pre_install": [
-  "Start-Process 'powershell' -Wait -WindowStyle 'Hidden' -ArgumentList @('-C', \"Add-AppxPackage \"\"$dir\\setup.msixbundle\"\"\")",
-  "Remove-Item \"$dir\\setup.msixbundle\""
- ],
- "pre_uninstall": [
-  "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
-  "Remove-Item \"$env:ProgramData\\Packages\\Files_*\" -Force -Recurse",
-  "Start-Process 'powershell' -Wait -WindowStyle 'Hidden' -ArgumentList @('-C', 'Get-AppxPackage ''Files'' | Remove-AppxPackage')",
-  "Start-Sleep -Seconds 2"
- ],
- "url": "https://github.com/files-community/Files/releases/download/v2.4.20/Files.Package_2.4.20.0_x64_arm64_Sideload.msixbundle#/setup.msixbundle",
- "version": "2.4.20"
+    "autoupdate": {
+        "url": "https://github.com/files-community/Files/releases/download/v$version/Files.Package_$version.0_x64_arm64_Sideload.msixbundle#/setup.msixbundle"
+    },
+    "changelog": "https://github.com/files-community/Files/releases",
+    "checkver": {
+        "github": "https://github.com/files-community/Files"
+    },
+    "description": "Files. A modern file explorer that pushes the boundaries of the Windows platform.",
+    "hash": "47e56d739bdf502a6aee537f8a268180e3f0f069c1c6fb06391dc498e309a9f5",
+    "homepage": "https://files.community/",
+    "license": "MIT",
+    "pre_install": [
+        "Start-Process 'powershell' -Wait -WindowStyle 'Hidden' -ArgumentList @('-C', \"Add-AppxPackage \"\"$dir\\setup.msixbundle\"\"\")",
+        "Remove-Item \"$dir\\setup.msixbundle\""
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
+        "Remove-Item \"$env:ProgramData\\Packages\\Files_*\" -Force -Recurse",
+        "Start-Process 'powershell' -Wait -WindowStyle 'Hidden' -ArgumentList @('-C', 'Get-AppxPackage ''Files'' | Remove-AppxPackage')",
+        "Start-Sleep -Seconds 2"
+    ],
+    "url": "https://github.com/files-community/Files/releases/download/v2.4.21/Files.Package_2.4.21.0_x64_arm64_Sideload.msixbundle#/setup.msixbundle",
+    "version": "2.4.21"
 }
