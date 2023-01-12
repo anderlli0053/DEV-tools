@@ -1,78 +1,78 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "da378ee88eb382b4391611775a7195448be96f1b1a50d43dd0961dc594bdc2af",
-   "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_1.17.0-w32.exe#/dl.7z"
-  },
-  "64bit": {
-   "hash": "e8b3c3ed5798449308e7feef271af53af13b3dea634bf8899c78e4cf2fb9008b",
-   "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_1.17.0.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_$version-w32.exe#/dl.7z"
-   },
-   "64bit": {
-    "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_$version.exe#/dl.7z"
-   }
-  },
-  "hash": {
-   "url": "$url.sha256"
-  }
- },
- "bin": [
-  [
-   "unbound.exe",
-   "unbound",
-   "-c \"$dir\\service.conf\""
-  ],
-  [
-   "unbound-anchor.exe",
-   "unbound-anchor",
-   "-a \"$dir\\root.key\""
-  ],
-  [
-   "unbound-checkconf.exe",
-   "unbound-checkconf",
-   "\"$dir\\service.conf\""
-  ],
-  [
-   "unbound-control.exe",
-   "unbound-control",
-   "-c \"$dir\\service.conf\""
-  ],
-  "unbound-control-setup.cmd",
-  "unbound-host.exe"
- ],
- "checkver": {
-  "regex": "Unbound ([\\d.]+) \\(Current version\\)",
-  "url": "https://nlnetlabs.nl/projects/unbound/download/"
- },
- "description": "A validating, recursive, caching DNS resolver",
- "homepage": "https://nlnetlabs.nl/projects/unbound/about/",
- "license": "BSD-3-Clause",
- "persist": [
-  "service.conf",
-  "root.key"
- ],
- "pre_install": [
-  "$content = Get-Content \"$dir\\unbound-control-setup.cmd\"",
-  "$content = $content -replace 'C:\\\\Program Files( \\(x86\\))?', (Convert-Path \"$dir\\..\")",
-  "$content = $content -replace '%prefix%\\\\Unbound', '%prefix%\\current'",
-  "Set-Content \"$dir\\unbound-control-setup.cmd\" $content -Encoding Ascii",
-  "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst.exe\" -Recurse"
- ],
- "suggest": {
-  "openssl": [
-   "openssl",
-   "openssl-mingw",
-   "versions/openssl10",
-   "versions/openssl-light",
-   "versions/openssl10-light"
-  ],
-  "wget": "wget"
- },
- "version": "1.17.0"
+    "architecture": {
+        "32bit": {
+            "hash": "4a5a6027617fcab39625d03001f9f6d284636d6067a072bc9ca6716e19ac5d89",
+            "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_1.17.1-w32.exe#/dl.7z"
+        },
+        "64bit": {
+            "hash": "e6b86efe52364e0f55d81f2ffb22d078f50a938ad05208a0259776e362a364a4",
+            "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_1.17.1.exe#/dl.7z"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_$version-w32.exe#/dl.7z"
+            },
+            "64bit": {
+                "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_$version.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    },
+    "bin": [
+        [
+            "unbound.exe",
+            "unbound",
+            "-c \"$dir\\service.conf\""
+        ],
+        [
+            "unbound-anchor.exe",
+            "unbound-anchor",
+            "-a \"$dir\\root.key\""
+        ],
+        [
+            "unbound-checkconf.exe",
+            "unbound-checkconf",
+            "\"$dir\\service.conf\""
+        ],
+        [
+            "unbound-control.exe",
+            "unbound-control",
+            "-c \"$dir\\service.conf\""
+        ],
+        "unbound-control-setup.cmd",
+        "unbound-host.exe"
+    ],
+    "checkver": {
+        "regex": "Unbound ([\\d.]+) \\(Current version\\)",
+        "url": "https://nlnetlabs.nl/projects/unbound/download/"
+    },
+    "description": "A validating, recursive, caching DNS resolver",
+    "homepage": "https://nlnetlabs.nl/projects/unbound/about/",
+    "license": "BSD-3-Clause",
+    "persist": [
+        "service.conf",
+        "root.key"
+    ],
+    "pre_install": [
+        "$content = Get-Content \"$dir\\unbound-control-setup.cmd\"",
+        "$content = $content -replace 'C:\\\\Program Files( \\(x86\\))?', (Convert-Path \"$dir\\..\")",
+        "$content = $content -replace '%prefix%\\\\Unbound', '%prefix%\\current'",
+        "Set-Content \"$dir\\unbound-control-setup.cmd\" $content -Encoding Ascii",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst.exe\" -Recurse"
+    ],
+    "suggest": {
+        "openssl": [
+            "openssl",
+            "openssl-mingw",
+            "versions/openssl10",
+            "versions/openssl-light",
+            "versions/openssl10-light"
+        ],
+        "wget": "wget"
+    },
+    "version": "1.17.1"
 }
