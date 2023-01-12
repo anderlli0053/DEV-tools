@@ -1,34 +1,34 @@
 {
- "architecture": {
-  "32bit": {
-   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
-  },
-  "64bit": {
-   "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
-  }
- },
- "autoupdate": {
-  "hash": {
-   "regex": "sha512:\\s+$base64",
-   "url": "$baseurl/latest.yml"
-  },
-  "url": "https://autoupdate.termius.com/windows/Termius.exe#/dl.7z"
- },
- "checkver": {
-  "regex": "version:\\s*([\\d.]+)",
-  "url": "https://autoupdate.termius.com/windows/latest.yml"
- },
- "description": "Modern SSH client",
- "hash": "sha512:12b27cff5268b40dfe97089733fd0a7b98ba05d76f1fd08b8e415a963023cfc2bb4aa9754695c872b017d079542ebd341acdb2f8496a19db74d38debfc0f0d8e",
- "homepage": "https://www.termius.com",
- "license": "Unknown",
- "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Recurse",
- "shortcuts": [
-  [
-   "Termius.exe",
-   "Termius"
-  ]
- ],
- "url": "https://autoupdate.termius.com/windows/Termius.exe#/dl.7z",
- "version": "7.54.3"
+    "architecture": {
+        "32bit": {
+            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
+        },
+        "64bit": {
+            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+        }
+    },
+    "autoupdate": {
+        "hash": {
+            "regex": "sha512:\\s+$base64",
+            "url": "$baseurl/latest.yml"
+        },
+        "url": "https://autoupdate.termius.com/windows/Termius.exe#/dl.7z"
+    },
+    "checkver": {
+        "regex": "version:\\s*([\\d.]+)",
+        "url": "https://autoupdate.termius.com/windows/latest.yml"
+    },
+    "description": "Modern SSH client",
+    "hash": "sha512:304b1a96ba1e19be2c788d7b13a9206e0385f54f714438ee700900ab733f2f5aadf94280a2d8dfe6d0ef8ac3a45e77cab07596f5b99ba983d877259b7f350b72",
+    "homepage": "https://www.termius.com",
+    "license": "Unknown",
+    "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Recurse",
+    "shortcuts": [
+        [
+            "Termius.exe",
+            "Termius"
+        ]
+    ],
+    "url": "https://autoupdate.termius.com/windows/Termius.exe#/dl.7z",
+    "version": "7.55.2"
 }
