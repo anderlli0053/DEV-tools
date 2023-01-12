@@ -1,56 +1,56 @@
 {
- "autoupdate": {
-  "url": "https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-x64-release.zip"
- },
- "checkver": {
-  "regex": " datetime=\"(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})[\\s\\S]*?.*duckstation/commit/(?<commit>[0-9a-f]{7})",
-  "replace": "${year}${month}${day}-g${commit}",
-  "url": "https://github.com/stenzek/duckstation/releases/tag/preview"
- },
- "description": "A fast PlayStation 1 emulator for PC and Android (preview build)",
- "hash": "cebf6bac094a3dc123e3f625acc807332bf83f83f5f90e5758a219a2dfc462c7",
- "homepage": "https://github.com/stenzek/duckstation/",
- "installer": {
-  "script": [
-   "if (!(Test-Path \"$persist_dir\")) {",
-   "   '[Main]', 'SettingsVersion = 3', '[AutoUpdater]', 'CheckAtStartup = false' | Set-Content \"$dir\\settings.ini\"",
-   "   New-item \"$dir\\portable.txt\" -ItemType File | Out-Null",
-   "}"
-  ]
- },
- "license": {
-  "identifier": "GPL-3.0-only",
-  "url": "https://github.com/stenzek/duckstation/blob/master/LICENSE"
- },
- "notes": [
-  "ATTENTION: Duckstation requires a PSX BIOS to function.",
-  "Place the BIOS file in $persist_dir\\bios",
-  "Learn more at: https://www.duckstation.org/wiki/BIOS"
- ],
- "persist": [
-  "bios",
-  "cache",
-  "cheats",
-  "covers",
-  "database\\chtdb.txt",
-  "database\\gamecontrollerdb.txt",
-  "database\\gamesettings.ini",
-  "dump",
-  "inputprofiles",
-  "memcards",
-  "savestates",
-  "screenshots",
-  "shaders",
-  "textures",
-  "portable.txt",
-  "settings.ini"
- ],
- "shortcuts": [
-  [
-   "duckstation-qt-x64-ReleaseLTCG.exe",
-   "DuckStation (preview)"
-  ]
- ],
- "url": "https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-x64-release.zip",
- "version": "20230111-ga56ce29"
+    "autoupdate": {
+        "url": "https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-x64-release.zip"
+    },
+    "checkver": {
+        "regex": " datetime=\"(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})[\\s\\S]*?.*duckstation/commit/(?<commit>[0-9a-f]{7})",
+        "replace": "${year}${month}${day}-g${commit}",
+        "url": "https://github.com/stenzek/duckstation/releases/tag/preview"
+    },
+    "description": "A fast PlayStation 1 emulator for PC and Android (preview build)",
+    "hash": "953d021badf8dadfc6f25a0e11fa566433b1ebb0179db5a0f6abb58ab978aec3",
+    "homepage": "https://github.com/stenzek/duckstation/",
+    "installer": {
+        "script": [
+            "if (!(Test-Path \"$persist_dir\")) {",
+            "   '[Main]', 'SettingsVersion = 3', '[AutoUpdater]', 'CheckAtStartup = false' | Set-Content \"$dir\\settings.ini\"",
+            "   New-item \"$dir\\portable.txt\" -ItemType File | Out-Null",
+            "}"
+        ]
+    },
+    "license": {
+        "identifier": "GPL-3.0-only",
+        "url": "https://github.com/stenzek/duckstation/blob/master/LICENSE"
+    },
+    "notes": [
+        "ATTENTION: Duckstation requires a PSX BIOS to function.",
+        "Place the BIOS file in $persist_dir\\bios",
+        "Learn more at: https://www.duckstation.org/wiki/BIOS"
+    ],
+    "persist": [
+        "bios",
+        "cache",
+        "cheats",
+        "covers",
+        "database\\chtdb.txt",
+        "database\\gamecontrollerdb.txt",
+        "database\\gamesettings.ini",
+        "dump",
+        "inputprofiles",
+        "memcards",
+        "savestates",
+        "screenshots",
+        "shaders",
+        "textures",
+        "portable.txt",
+        "settings.ini"
+    ],
+    "shortcuts": [
+        [
+            "duckstation-qt-x64-ReleaseLTCG.exe",
+            "DuckStation (preview)"
+        ]
+    ],
+    "url": "https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-x64-release.zip",
+    "version": "20230112-g2c2304b"
 }
