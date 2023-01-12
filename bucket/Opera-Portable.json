@@ -1,52 +1,52 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "dd2fbf4aa0a0103c80888d06597849d6573da1bc7aa85e4f24f61544c59b7dc9",
-   "url": "https://download1.operacdn.com/pub/opera/desktop/94.0.4606.54/win/Opera_94.0.4606.54_Autoupdate.exe#/dl.7z"
-  },
-  "64bit": {
-   "hash": "adcc61fddb491c75edb7a836f70b6261a8c975a569f3f3a7a8468c4315e2c89b",
-   "url": "https://download1.operacdn.com/pub/opera/desktop/94.0.4606.54/win/Opera_94.0.4606.54_Autoupdate_x64.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://download1.operacdn.com/pub/opera/desktop/$version/win/Opera_$version_Autoupdate.exe#/dl.7z"
-   },
-   "64bit": {
-    "url": "https://download1.operacdn.com/pub/opera/desktop/$version/win/Opera_$version_Autoupdate_x64.exe#/dl.7z"
-   }
-  }
- },
- "checkver": {
-  "regex": "([\\d.]+)/",
-  "reverse": true,
-  "url": "https://download1.operacdn.com/pub/opera/desktop/"
- },
- "description": "Opera. Fast, secure, easy-to-use browser.",
- "homepage": "https://www.opera.com/",
- "installer": {
-  "script": [
-   "Remove-Item -Path \"$dir\\*_list\" -Force",
-   "Move-Item -Path \"$dir\\*\" -Destination \"$dir\\$version\" -Exclude 'Assets', 'launcher*', 'Resources.pri' -ErrorAction Ignore",
-   "if (!(Test-Path \"$dir\\$version\\localization\")) {",
-   "   New-Item -Path \"$dir\\$version\\localization\" -ItemType Directory | Out-Null",
-   "   Move-Item -Path \"$dir\\$version\\*.pak\" -Destination \"$dir\\$version\\localization\" -Exclude 'opera*' -ErrorAction Ignore",
-   "}",
-   "Set-Content -Path \"$dir\\installer_prefs.json\" -Value (@{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json) -Encoding ASCII"
-  ]
- },
- "license": {
-  "identifier": "Freeware",
-  "url": "https://www.opera.com/eula/computers"
- },
- "persist": "profile",
- "shortcuts": [
-  [
-   "launcher.exe",
-   "Opera"
-  ]
- ],
- "version": "94.0.4606.54"
+    "architecture": {
+        "32bit": {
+            "hash": "9f2c7611cf84e31eabd93bf35f2959fe00e7b9008ae26be80fcf0fd4dccd2412",
+            "url": "https://download1.operacdn.com/pub/opera/desktop/94.0.4606.65/win/Opera_94.0.4606.65_Autoupdate.exe#/dl.7z"
+        },
+        "64bit": {
+            "hash": "9a1a941a054782b872fbe8fe4244b16e60f0a9d544b39704e2811a6fd72e8534",
+            "url": "https://download1.operacdn.com/pub/opera/desktop/94.0.4606.65/win/Opera_94.0.4606.65_Autoupdate_x64.exe#/dl.7z"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://download1.operacdn.com/pub/opera/desktop/$version/win/Opera_$version_Autoupdate.exe#/dl.7z"
+            },
+            "64bit": {
+                "url": "https://download1.operacdn.com/pub/opera/desktop/$version/win/Opera_$version_Autoupdate_x64.exe#/dl.7z"
+            }
+        }
+    },
+    "checkver": {
+        "regex": "([\\d.]+)/",
+        "reverse": true,
+        "url": "https://download1.operacdn.com/pub/opera/desktop/"
+    },
+    "description": "Opera. Fast, secure, easy-to-use browser.",
+    "homepage": "https://www.opera.com/",
+    "installer": {
+        "script": [
+            "Remove-Item -Path \"$dir\\*_list\" -Force",
+            "Move-Item -Path \"$dir\\*\" -Destination \"$dir\\$version\" -Exclude 'Assets', 'launcher*', 'Resources.pri' -ErrorAction Ignore",
+            "if (!(Test-Path \"$dir\\$version\\localization\")) {",
+            "   New-Item -Path \"$dir\\$version\\localization\" -ItemType Directory | Out-Null",
+            "   Move-Item -Path \"$dir\\$version\\*.pak\" -Destination \"$dir\\$version\\localization\" -Exclude 'opera*' -ErrorAction Ignore",
+            "}",
+            "Set-Content -Path \"$dir\\installer_prefs.json\" -Value (@{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json) -Encoding ASCII"
+        ]
+    },
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.opera.com/eula/computers"
+    },
+    "persist": "profile",
+    "shortcuts": [
+        [
+            "launcher.exe",
+            "Opera"
+        ]
+    ],
+    "version": "94.0.4606.65"
 }
