@@ -1,43 +1,43 @@
 {
- "autoupdate": {
-  "extract_dir": "youtrack-$version",
-  "hash": {
-   "url": "$url.sha256"
-  },
-  "url": "https://download.jetbrains.com/charisma/youtrack-$version.zip"
- },
- "bin": "youtrack.ps1",
- "checkver": {
-  "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d]+)\"",
-  "replace": "${ver}.${build}",
-  "url": "https://data.services.jetbrains.com/products/releases?code=YTD&platform=zip&latest=true&type=release"
- },
- "description": "Web-based issue tracking and agile project management tool by JetBrains.",
- "extract_dir": "youtrack-2022.3.65360",
- "hash": "3eb8eb28286be5f29570c07afdcbec40af2febaa15e4e7a0a55900ced4a42800",
- "homepage": "https://jetbrains.com/youtrack/",
- "installer": {
-  "script": [
-   "$ver_path = \"$dir\\bin\"",
-   "$cont = @(",
-   "    \"Push-Location \"\"$ver_path\"\"\"",
-   "    '& .\\youtrack.bat @args'",
-   "    'Pop-Location'",
-   ")",
-   "Set-Content \"$dir\\youtrack.ps1\" $cont -Encoding Ascii"
-  ]
- },
- "license": {
-  "identifier": "Proprietary",
-  "url": "https://jetbrains.com/youtrack/buy/license.html"
- },
- "notes": "YouTrack can be started from anywhere using 'youtrack' command.",
- "persist": [
-  "backup",
-  "conf",
-  "data",
-  "logs"
- ],
- "url": "https://download.jetbrains.com/charisma/youtrack-2022.3.65360.zip",
- "version": "2022.3.65360"
+    "autoupdate": {
+        "extract_dir": "youtrack-$version",
+        "hash": {
+            "url": "$url.sha256"
+        },
+        "url": "https://download.jetbrains.com/charisma/youtrack-$version.zip"
+    },
+    "bin": "youtrack.ps1",
+    "checkver": {
+        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d]+)\"",
+        "replace": "${ver}.${build}",
+        "url": "https://data.services.jetbrains.com/products/releases?code=YTD&platform=zip&latest=true&type=release"
+    },
+    "description": "Web-based issue tracking and agile project management tool by JetBrains.",
+    "extract_dir": "youtrack-2022.3.65366",
+    "hash": "86ca6cde8978065c55a130204373a36a2a83b0730ea28449fd93269ef3eac388",
+    "homepage": "https://jetbrains.com/youtrack/",
+    "installer": {
+        "script": [
+            "$ver_path = \"$dir\\bin\"",
+            "$cont = @(",
+            "    \"Push-Location \"\"$ver_path\"\"\"",
+            "    '& .\\youtrack.bat @args'",
+            "    'Pop-Location'",
+            ")",
+            "Set-Content \"$dir\\youtrack.ps1\" $cont -Encoding Ascii"
+        ]
+    },
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://jetbrains.com/youtrack/buy/license.html"
+    },
+    "notes": "YouTrack can be started from anywhere using 'youtrack' command.",
+    "persist": [
+        "backup",
+        "conf",
+        "data",
+        "logs"
+    ],
+    "url": "https://download.jetbrains.com/charisma/youtrack-2022.3.65366.zip",
+    "version": "2022.3.65366"
 }
