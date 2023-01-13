@@ -1,31 +1,31 @@
 {
- "autoupdate": {
-  "url": "https://github.com/bitwarden/clients/releases/download/desktop-v$version/Bitwarden-Portable-$version.exe"
- },
- "bin": "Bitwarden.exe",
- "checkver": {
-  "regex": "tag/desktop-v([\\d.]+)",
-  "url": "https://api.github.com/repos/bitwarden/clients/releases"
- },
- "description": "Password management solutions for individuals, teams, and business organizations",
- "hash": "5223449025ff2a3e3e37d6c67e89d1834d9d77e52c34a00947dc91c266a54718",
- "homepage": "https://bitwarden.com",
- "license": "GPL-3.0-or-later",
- "persist": "bitwarden-appdata",
- "pre_install": [
-  "Rename-Item \"$dir\\Bitwarden-Portable-$version.exe\" 'Bitwarden.exe'",
-  "# copy config from non-portable version",
-  "if (!(Test-Path \"$dir\\bitwarden-appdata\\*\") -and (Test-Path \"$env:Appdata\\Bitwarden\")) {",
-  "    if (!(Test-Path \"$dir\\bitwarden-appdata\")) { New-Item \"$dir\\bitwarden-appdata\" -ItemType Directory | Out-Null }",
-  "    Copy-Item \"$env:Appdata\\Bitwarden\\*\" \"$dir\\bitwarden-appdata\\\" -Recurse -Force",
-  "}"
- ],
- "shortcuts": [
-  [
-   "Bitwarden.exe",
-   "Bitwarden"
-  ]
- ],
- "url": "https://github.com/bitwarden/clients/releases/download/desktop-v2023.1.0/Bitwarden-Portable-2023.1.0.exe",
- "version": "2023.1.0"
+    "autoupdate": {
+        "url": "https://github.com/bitwarden/clients/releases/download/desktop-v$version/Bitwarden-Portable-$version.exe"
+    },
+    "bin": "Bitwarden.exe",
+    "checkver": {
+        "regex": "tag/desktop-v([\\d.]+)",
+        "url": "https://api.github.com/repos/bitwarden/clients/releases"
+    },
+    "description": "Password management solutions for individuals, teams, and business organizations",
+    "hash": "a2c876cb39e6f2c0f94b58161fdae0f0521d2dc29014d08c1fe4e2a7d81afbec",
+    "homepage": "https://bitwarden.com",
+    "license": "GPL-3.0-or-later",
+    "persist": "bitwarden-appdata",
+    "pre_install": [
+        "Rename-Item \"$dir\\Bitwarden-Portable-$version.exe\" 'Bitwarden.exe'",
+        "# copy config from non-portable version",
+        "if (!(Test-Path \"$dir\\bitwarden-appdata\\*\") -and (Test-Path \"$env:Appdata\\Bitwarden\")) {",
+        "    if (!(Test-Path \"$dir\\bitwarden-appdata\")) { New-Item \"$dir\\bitwarden-appdata\" -ItemType Directory | Out-Null }",
+        "    Copy-Item \"$env:Appdata\\Bitwarden\\*\" \"$dir\\bitwarden-appdata\\\" -Recurse -Force",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "Bitwarden.exe",
+            "Bitwarden"
+        ]
+    ],
+    "url": "https://github.com/bitwarden/clients/releases/download/desktop-v2023.1.1/Bitwarden-Portable-2023.1.1.exe",
+    "version": "2023.1.1"
 }
