@@ -1,53 +1,53 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "a33c545c8ecbdd4135532807f0b094b6deeea1f9a4f7cb185b19a1796ce8445f",
-   "url": "https://github.com/HandBrake/HandBrake-snapshots/releases/download/win/HandBrake-20230108-6faee6042-x86_64-Win_GUI.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "hash": {
-     "regex": "<td>$sha256</td>\\s+<td>HandBrake-([\\d]+-[\\w]+)-x86_64-Win_GUI.zip</td>",
-     "url": "https://github.com/HandBrake/handbrake-snapshots/releases/tag/win"
+    "architecture": {
+        "64bit": {
+            "hash": "e3eb24b726100715f38af39098cdec21ed0a5025ccbba2d7fc07039435a33d72",
+            "url": "https://github.com/HandBrake/HandBrake-snapshots/releases/download/win/HandBrake-20230110-82905bb9c-x86_64-Win_GUI.zip"
+        }
     },
-    "url": "https://github.com/HandBrake/HandBrake-snapshots/releases/download/win/HandBrake-$version-x86_64-Win_GUI.zip"
-   }
-  }
- },
- "checkver": {
-  "regex": "<td>HandBrake-([\\d]+-[\\w]+)-x86_64-Win_GUI.zip</td>",
-  "url": "https://github.com/HandBrake/handbrake-snapshots/releases/tag/win"
- },
- "description": "Snapshot releases of the tool for converting video from nearly any format to a selection of modern, widely supported codecs.",
- "extract_dir": "HandBrake",
- "homepage": "https://handbrake.fr",
- "installer": {
-  "script": [
-   "if (!(Test-Path \"$persist_dir\\portable.ini\")) {",
-   "    if (!(Test-Path \"$persist_dir\\storage\") -And (Test-Path \"$env:APPDATA\\HandBrake\")) {",
-   "        New-Item \"$persist_dir\" -ItemType Directory -ErrorAction SilentlyContinue | Out-Null",
-   "        Move-Item -Path \"$env:APPDATA\\HandBrake\" -Destination \"$persist_dir\\storage\" -Force",
-   "    }",
-   "    Copy-Item \"$dir\\portable.ini.template\" \"$dir\\portable.ini\" -Force",
-   "}"
-  ]
- },
- "license": "GPL-2.0-only",
- "persist": [
-  "portable.ini",
-  "storage",
-  "tmp"
- ],
- "shortcuts": [
-  [
-   "HandBrake.exe",
-   "HandBrake Snapshot"
-  ]
- ],
- "suggest": {
-  ".NET Desktop Runtime": "extras/windowsdesktop-runtime-lts"
- },
- "version": "20230108-6faee6042"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "hash": {
+                    "regex": "<td>$sha256</td>\\s+<td>HandBrake-([\\d]+-[\\w]+)-x86_64-Win_GUI.zip</td>",
+                    "url": "https://github.com/HandBrake/handbrake-snapshots/releases/tag/win"
+                },
+                "url": "https://github.com/HandBrake/HandBrake-snapshots/releases/download/win/HandBrake-$version-x86_64-Win_GUI.zip"
+            }
+        }
+    },
+    "checkver": {
+        "regex": "<td>HandBrake-([\\d]+-[\\w]+)-x86_64-Win_GUI.zip</td>",
+        "url": "https://github.com/HandBrake/handbrake-snapshots/releases/tag/win"
+    },
+    "description": "Snapshot releases of the tool for converting video from nearly any format to a selection of modern, widely supported codecs.",
+    "extract_dir": "HandBrake",
+    "homepage": "https://handbrake.fr",
+    "installer": {
+        "script": [
+            "if (!(Test-Path \"$persist_dir\\portable.ini\")) {",
+            "    if (!(Test-Path \"$persist_dir\\storage\") -And (Test-Path \"$env:APPDATA\\HandBrake\")) {",
+            "        New-Item \"$persist_dir\" -ItemType Directory -ErrorAction SilentlyContinue | Out-Null",
+            "        Move-Item -Path \"$env:APPDATA\\HandBrake\" -Destination \"$persist_dir\\storage\" -Force",
+            "    }",
+            "    Copy-Item \"$dir\\portable.ini.template\" \"$dir\\portable.ini\" -Force",
+            "}"
+        ]
+    },
+    "license": "GPL-2.0-only",
+    "persist": [
+        "portable.ini",
+        "storage",
+        "tmp"
+    ],
+    "shortcuts": [
+        [
+            "HandBrake.exe",
+            "HandBrake Snapshot"
+        ]
+    ],
+    "suggest": {
+        ".NET Desktop Runtime": "extras/windowsdesktop-runtime-lts"
+    },
+    "version": "20230110-82905bb9c"
 }
