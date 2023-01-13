@@ -1,40 +1,40 @@
 {
- "autoupdate": {
-  "url": "https://img.kookapp.cn/assets/$matchPath#/dl.7z"
- },
- "checkver": {
-  "jsonpath": "$.url",
-  "regex": "https://img.kookapp.cn/assets/(?<path>release/.*?v([\\d.]+).*?\\.exe)",
-  "url": "https://www.kookapp.cn/api/v2/updates/latest-version?platform=windows"
- },
- "description": "KOOK(Kaiheila), a useful voice communication tool. KOOK is a free and ad-free voice communication tool, which currently covers PC, Android, iOS and web devices. No matter where you are, you can communicate smoothly. There are servers with various themes in KOOK, and you can also create servers with games, music, reading, foreign languages and other topics according to your preferences, and invite friends to join your server to chat.",
- "extract_to": "tmp",
- "hash": "d82ab7633fcfe5c051790942119985c16ab1802918427fbcef9c847144dae822",
- "homepage": "https://www.kookapp.cn",
- "license": {
-  "identifier": "Proprietary",
-  "url": "https://www.kookapp.cn/protocol.html"
- },
- "persist": "User Data",
- "post_install": [
-  "Remove-Item \"$dir\\tmp\" -ErrorAction SilentlyContinue -Recurse -Force",
-  "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:AppData\\kook\")) {",
-  "    info '[Portable Mode]: Copying user data...'",
-  "    ensure \"$dir\\User Data\" | Out-Null",
-  "    Copy-Item \"$env:AppData\\kook\\*\" \"$dir\\User Data\" -Recurse -Force -ErrorAction SilentlyContinue",
-  "}"
- ],
- "pre_install": [
-  "Expand-7zipArchive \"$dir\\tmp\\`$1\\SquirrelTemp\\app.7z\" \"$dir\"",
-  "Expand-Archive \"$dir\\KOOK-0.58.1-full.nupkg\" \"$dir\""
- ],
- "shortcuts": [
-  [
-   "lib\\net45\\KOOK.exe",
-   "KOOK",
-   "--user-data-dir=\"$dir\\User Data\""
-  ]
- ],
- "url": "https://img.kookapp.cn/assets/release/html_pc/kook_56/Kook_PC_Setup_v0.62.0.0_b2ZmaWNpYWwuc2l0ZS4uLi5wYw==.exe#/dl.7z",
- "version": "0.62.0.0"
+    "autoupdate": {
+        "url": "https://img.kookapp.cn/assets/$matchPath#/dl.7z"
+    },
+    "checkver": {
+        "jsonpath": "$.url",
+        "regex": "https://img.kookapp.cn/assets/(?<path>release/.*?v([\\d.]+).*?\\.exe)",
+        "url": "https://www.kookapp.cn/api/v2/updates/latest-version?platform=windows"
+    },
+    "description": "KOOK(Kaiheila), a useful voice communication tool. KOOK is a free and ad-free voice communication tool, which currently covers PC, Android, iOS and web devices. No matter where you are, you can communicate smoothly. There are servers with various themes in KOOK, and you can also create servers with games, music, reading, foreign languages and other topics according to your preferences, and invite friends to join your server to chat.",
+    "extract_to": "tmp",
+    "hash": "bf8be56c9065ba4ab952935f2694fea98d279b8b854659e70545dd7706d8aace",
+    "homepage": "https://www.kookapp.cn",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.kookapp.cn/protocol.html"
+    },
+    "persist": "User Data",
+    "post_install": [
+        "Remove-Item \"$dir\\tmp\" -ErrorAction SilentlyContinue -Recurse -Force",
+        "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:AppData\\kook\")) {",
+        "    info '[Portable Mode]: Copying user data...'",
+        "    ensure \"$dir\\User Data\" | Out-Null",
+        "    Copy-Item \"$env:AppData\\kook\\*\" \"$dir\\User Data\" -Recurse -Force -ErrorAction SilentlyContinue",
+        "}"
+    ],
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\tmp\\`$1\\SquirrelTemp\\app.7z\" \"$dir\"",
+        "Expand-Archive \"$dir\\KOOK-0.58.1-full.nupkg\" \"$dir\""
+    ],
+    "shortcuts": [
+        [
+            "lib\\net45\\KOOK.exe",
+            "KOOK",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "url": "https://img.kookapp.cn/assets/release/html_pc/kook_58/Kook_PC_Setup_v0.62.1.0_b2ZmaWNpYWwuc2l0ZS4uLi5wYw==.exe#/dl.7z",
+    "version": "0.62.1.0"
 }
