@@ -1,37 +1,37 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "532a4dc6bdd7e4588fd25f56ebcacbf368836a5a07dd7a3c1521cc3321bad1bb",
-   "url": "https://gajim.org/downloads/1.6/Gajim-Portable-1.6.0-64bit.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://gajim.org/downloads/$majorVersion.$minorVersion/Gajim-Portable-$version-64bit.exe#/dl.7z"
-   }
-  }
- },
- "checkver": ">Gajim\\s([\\d.]+)\\s+",
- "description": "A fully-featured open source XMPP client.",
- "homepage": "https://gajim.org/",
- "license": "GPL-3.0",
- "post_install": [
-  "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
-  "Write-Host 'Registering the XMPP Protocol...'",
-  "New-Item 'HKCU:\\SOFTWARE\\Classes\\xmpp\\shell\\open\\command' -Value \"\"\"$dir\\bin\\Gajim.exe\"\" \"\"%1\"\"\" -Force | Out-Null",
-  "New-Item 'HKCU:\\SOFTWARE\\Classes\\xmpp\\DefaultIcon' -Value \"$dir\\bin\\Gajim.exe,1\" -Force | Out-Null",
-  "New-ItemProperty 'HKCU:\\SOFTWARE\\Classes\\xmpp\\shell\\open' -Name 'FriendlyAppName' -PropertyType 'String' -Value 'Gajim' | Out-Null",
-  "New-ItemProperty 'HKCU:\\SOFTWARE\\Classes\\xmpp' -Name '(Default)' -PropertyType 'String' -Value 'URL:xmpp-uri' | Out-Null",
-  "New-ItemProperty 'HKCU:\\SOFTWARE\\Classes\\xmpp' -Name 'URL Protocol' -PropertyType 'String' -Value '' | Out-Null",
-  "Write-Host 'Done!'"
- ],
- "pre_uninstall": "Remove-Item 'HKCU:\\SOFTWARE\\Classes\\xmpp' -Force -Recurse",
- "shortcuts": [
-  [
-   "bin\\Gajim.exe",
-   "Gajim"
-  ]
- ],
- "version": "1.6.0"
+    "architecture": {
+        "64bit": {
+            "hash": "0718e735abc87ce3b6d3daf256b883da11d7015f7f794c41c24d631c945ed40b",
+            "url": "https://gajim.org/downloads/1.6/Gajim-Portable-1.6.1-64bit.exe#/dl.7z"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gajim.org/downloads/$majorVersion.$minorVersion/Gajim-Portable-$version-64bit.exe#/dl.7z"
+            }
+        }
+    },
+    "checkver": ">Gajim\\s([\\d.]+)\\s+",
+    "description": "A fully-featured open source XMPP client.",
+    "homepage": "https://gajim.org/",
+    "license": "GPL-3.0",
+    "post_install": [
+        "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
+        "Write-Host 'Registering the XMPP Protocol...'",
+        "New-Item 'HKCU:\\SOFTWARE\\Classes\\xmpp\\shell\\open\\command' -Value \"\"\"$dir\\bin\\Gajim.exe\"\" \"\"%1\"\"\" -Force | Out-Null",
+        "New-Item 'HKCU:\\SOFTWARE\\Classes\\xmpp\\DefaultIcon' -Value \"$dir\\bin\\Gajim.exe,1\" -Force | Out-Null",
+        "New-ItemProperty 'HKCU:\\SOFTWARE\\Classes\\xmpp\\shell\\open' -Name 'FriendlyAppName' -PropertyType 'String' -Value 'Gajim' | Out-Null",
+        "New-ItemProperty 'HKCU:\\SOFTWARE\\Classes\\xmpp' -Name '(Default)' -PropertyType 'String' -Value 'URL:xmpp-uri' | Out-Null",
+        "New-ItemProperty 'HKCU:\\SOFTWARE\\Classes\\xmpp' -Name 'URL Protocol' -PropertyType 'String' -Value '' | Out-Null",
+        "Write-Host 'Done!'"
+    ],
+    "pre_uninstall": "Remove-Item 'HKCU:\\SOFTWARE\\Classes\\xmpp' -Force -Recurse",
+    "shortcuts": [
+        [
+            "bin\\Gajim.exe",
+            "Gajim"
+        ]
+    ],
+    "version": "1.6.1"
 }
