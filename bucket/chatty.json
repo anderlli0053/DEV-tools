@@ -1,36 +1,36 @@
 {
- "autoupdate": {
-  "hash": {
-   "url": "https://tduva.com/chatty/checksums/v$version/$basename.sha256"
-  },
-  "url": "https://github.com/chatty/chatty/releases/download/v$version/Chatty_$version_win_standalone.zip"
- },
- "bin": "Chatty.exe",
- "checkver": {
-  "github": "https://github.com/chatty/chatty"
- },
- "description": "Twitch Chat Client",
- "hash": "9c117fcd4011d3a978653b8e2507507c0a75856fba41bc9ec0c0b3e990dd183a",
- "homepage": "https://chatty.github.io",
- "license": "GPL-3.0-or-later",
- "persist": [
-  "app\\portable_settings",
-  "app\\Chatty.cfg"
- ],
- "pre_install": [
-  "if (!(Test-Path \"$persist_dir\\app\\Chatty.cfg\")) {",
-  "    ensure \"$dir\\app\\portable_settings\" | Out-Null",
-  "    $cfg = \"$dir\\app\\Chatty.cfg\"",
-  "    (Get-Content $cfg) -replace '(\\[ArgOptions\\])', \"`$1`r`n-portable\" | Set-Content $cfg -Encoding Ascii -Force",
-  "    Set-Content \"$dir\\app\\portable_settings\\settings\" '{ \"checkNewVersion\": false }' -Encoding Ascii",
-  "}"
- ],
- "shortcuts": [
-  [
-   "Chatty.exe",
-   "Chatty"
-  ]
- ],
- "url": "https://github.com/chatty/chatty/releases/download/v0.21/Chatty_0.21_win_standalone.zip",
- "version": "0.21"
+    "autoupdate": {
+        "hash": {
+            "url": "https://tduva.com/chatty/checksums/v$version/$basename.sha256"
+        },
+        "url": "https://github.com/chatty/chatty/releases/download/v$version/Chatty_$version_win_standalone.zip"
+    },
+    "bin": "Chatty.exe",
+    "checkver": {
+        "github": "https://github.com/chatty/chatty"
+    },
+    "description": "Twitch Chat Client",
+    "hash": "07ff24eaf96a90cb3a195b947f7ec06a1e362c6fae2412baf76837731e772d5a",
+    "homepage": "https://chatty.github.io",
+    "license": "GPL-3.0-or-later",
+    "persist": [
+        "app\\portable_settings",
+        "app\\Chatty.cfg"
+    ],
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\app\\Chatty.cfg\")) {",
+        "    ensure \"$dir\\app\\portable_settings\" | Out-Null",
+        "    $cfg = \"$dir\\app\\Chatty.cfg\"",
+        "    (Get-Content $cfg) -replace '(\\[ArgOptions\\])', \"`$1`r`n-portable\" | Set-Content $cfg -Encoding Ascii -Force",
+        "    Set-Content \"$dir\\app\\portable_settings\\settings\" '{ \"checkNewVersion\": false }' -Encoding Ascii",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "Chatty.exe",
+            "Chatty"
+        ]
+    ],
+    "url": "https://github.com/chatty/chatty/releases/download/v0.22/Chatty_0.22_win_standalone.zip",
+    "version": "0.22"
 }
