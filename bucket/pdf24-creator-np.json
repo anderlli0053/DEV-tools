@@ -1,41 +1,41 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "de08e166cee27c3f45df074dc8b29af4f6f6ee9c0fc310e5e0938cf510020bef",
-   "url": "https://download.pdf24.org/pdf24-creator-11.9.1.msi#/setup.msi_"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "hash": {
-     "find": "<td>$sha256</td>",
-     "url": "https://creator.pdf24.org/listVersions.php"
+    "architecture": {
+        "64bit": {
+            "hash": "fbf1f30d5762a82d25a94dfed40cd2f7566f529884a9992d642c9a31635db07b",
+            "url": "https://download.pdf24.org/pdf24-creator-11.10.0.msi#/setup.msi_"
+        }
     },
-    "url": "https://download.pdf24.org/pdf24-creator-$version.msi#/setup.msi_"
-   }
-  }
- },
- "checkver": "Version\\s([\\d.]+)",
- "description": "Free and easy to use PDF software with several functions",
- "homepage": "https://tools.pdf24.org/en/creator",
- "license": {
-  "identifier": "Freeware",
-  "url": "https://www.pdf24.org/en/terms-of-use"
- },
- "post_install": [
-  "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
-  "Write-Host \"Please wait and don't cancel the script...\" -F 'Yellow'",
-  "Start-Process 'msiexec' -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn', \"INSTALLDIR=$dir\", \"TARGETDIR=$dir\")",
-  "Stop-Service -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'; Stop-Process -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'",
-  "Stop-Process -Name 'explorer' -Force -ErrorAction 'SilentlyContinue'; Start-Sleep -Seconds 3"
- ],
- "pre_uninstall": [
-  "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
-  "Stop-Service -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'; Stop-Process -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'",
-  "Write-Host \"Please wait and don't cancel the script...\" -F 'Yellow'",
-  "Start-Process 'msiexec' -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn')",
-  "Stop-Process -Name 'explorer' -Force -ErrorAction 'SilentlyContinue'; Start-Sleep -Seconds 3"
- ],
- "version": "11.9.1"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "hash": {
+                    "find": "<td>$sha256</td>",
+                    "url": "https://creator.pdf24.org/listVersions.php"
+                },
+                "url": "https://download.pdf24.org/pdf24-creator-$version.msi#/setup.msi_"
+            }
+        }
+    },
+    "checkver": "Version\\s([\\d.]+)",
+    "description": "Free and easy to use PDF software with several functions",
+    "homepage": "https://tools.pdf24.org/en/creator",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.pdf24.org/en/terms-of-use"
+    },
+    "post_install": [
+        "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
+        "Write-Host \"Please wait and don't cancel the script...\" -F 'Yellow'",
+        "Start-Process 'msiexec' -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn', \"INSTALLDIR=$dir\", \"TARGETDIR=$dir\")",
+        "Stop-Service -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'; Stop-Process -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'",
+        "Stop-Process -Name 'explorer' -Force -ErrorAction 'SilentlyContinue'; Start-Sleep -Seconds 3"
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
+        "Stop-Service -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'; Stop-Process -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'",
+        "Write-Host \"Please wait and don't cancel the script...\" -F 'Yellow'",
+        "Start-Process 'msiexec' -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn')",
+        "Stop-Process -Name 'explorer' -Force -ErrorAction 'SilentlyContinue'; Start-Sleep -Seconds 3"
+    ],
+    "version": "11.10.0"
 }
