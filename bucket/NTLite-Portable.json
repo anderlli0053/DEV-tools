@@ -1,35 +1,35 @@
 {
- "autoupdate": {
-  "url": "http://downloads.ntlite.com/files/NTLite_setup_x64.exe"
- },
- "changelog": "https://www.ntlite.com/changelog/",
- "checkver": {
-  "regex": "<span.+>v([\\d.]+)<\\/span>",
-  "url": "https://www.ntlite.com/download/"
- },
- "depends": "innounp",
- "description": "NTLite. Cutting-edge Windows configuration tool",
- "hash": "5abd41889a5e6658783412ea1bd2c334c037267cf440bc08e6f305ee82ab88ff",
- "homepage": "https://www.ntlite.com/",
- "installer": {
-  "script": [
-   "Expand-InnoArchive -Path \"$dir\\$fname\"",
-   "Expand-InnoArchive -Path \"$dir\\$fname\" -ExtractDir '{code_CefInstallDir}' -Removal"
-  ]
- },
- "license": "Proprietary",
- "persist": [
-  "settings.xml",
-  "Presets",
-  "Updates"
- ],
- "pre_install": "if(!(Test-Path \"$persist_dir\\settings.xml\")) {Set-Content -Encoding ASCII -Path \"$dir\\settings.xml\" -Value '<?xml version=\"1.0\" encoding=\"utf-8\"?><WebDAVClientSetting xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"></WebDAVClientSetting>'}",
- "shortcuts": [
-  [
-   "NTLite.exe",
-   "NTLite"
-  ]
- ],
- "url": "http://downloads.ntlite.com/files/NTLite_setup_x64.exe",
- "version": "2.3.9.9020"
+    "autoupdate": {
+        "url": "http://downloads.ntlite.com/files/NTLite_setup_x64.exe"
+    },
+    "changelog": "https://www.ntlite.com/changelog/",
+    "checkver": {
+        "regex": "<span.+>v([\\d.]+)<\\/span>",
+        "url": "https://www.ntlite.com/download/"
+    },
+    "depends": "innounp",
+    "description": "NTLite. Cutting-edge Windows configuration tool",
+    "hash": "fda8f6181caa85fa3badb0f90f99f5207a11a2f63a02593b470b4ce5e50e1cc1",
+    "homepage": "https://www.ntlite.com/",
+    "installer": {
+        "script": [
+            "Expand-InnoArchive -Path \"$dir\\$fname\"",
+            "Expand-InnoArchive -Path \"$dir\\$fname\" -ExtractDir '{code_CefInstallDir}' -Removal"
+        ]
+    },
+    "license": "Proprietary",
+    "persist": [
+        "settings.xml",
+        "Presets",
+        "Updates"
+    ],
+    "pre_install": "if(!(Test-Path \"$persist_dir\\settings.xml\")) {Set-Content -Encoding ASCII -Path \"$dir\\settings.xml\" -Value '<?xml version=\"1.0\" encoding=\"utf-8\"?><WebDAVClientSetting xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"></WebDAVClientSetting>'}",
+    "shortcuts": [
+        [
+            "NTLite.exe",
+            "NTLite"
+        ]
+    ],
+    "url": "http://downloads.ntlite.com/files/NTLite_setup_x64.exe",
+    "version": "2.3.9.9039"
 }
