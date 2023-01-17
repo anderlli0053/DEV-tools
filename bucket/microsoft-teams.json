@@ -1,58 +1,58 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "sha1:59403639e1b8249fa2af06bc636d469ea78e3518",
-   "url": "https://statics.teams.microsoft.com/production-windows/1.5.00.33362/Teams-1.5.00.33362-full.nupkg"
-  },
-  "64bit": {
-   "hash": "sha1:b67d542bc4d496be23b1ed5ad1054ca0f763207b",
-   "url": "https://statics.teams.microsoft.com/production-windows-x64/1.5.00.33362/Teams-1.5.00.33362-full.nupkg"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://statics.teams.microsoft.com/production-windows/$version/Teams-$version-full.nupkg"
-   },
-   "64bit": {
-    "url": "https://statics.teams.microsoft.com/production-windows-x64/$version/Teams-$version-full.nupkg"
-   }
-  },
-  "hash": {
-   "url": "$baseurl/RELEASES"
-  }
- },
- "bin": "Teams.exe",
- "checkver": {
-  "regex": "/([\\d.]+)/Teams_windows_x64\\.exe",
-  "url": "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=windows&arch=x64&download=false"
- },
- "description": "Office 365's chats, meetings, files and apps together in one place",
- "extract_dir": "lib\\net45",
- "homepage": "https://teams.microsoft.com/start",
- "license": "Freeware",
- "post_install": [
-  "$ErrorActionPreference = \"silentlycontinue\"",
-  "$file = ${env:APPDATA} + \"\\Microsoft\\Teams\\desktop-config.json\"",
-  "$key = \"isLoggedOut\"",
-  "$val = $false",
-  "try {",
-  "  $json = Get-Content $file | ConvertFrom-Json",
-  "  if ($json -eq $null) { throw }",
-  "} catch {",
-  "  $json = \"{}\" | ConvertFrom-Json",
-  "}",
-  "if (!($json.$key -eq $val)) {",
-  "  New-Item -Force -Path $file -Type \"file\" | Out-Null",
-  "  $json | Add-Member -Force -MemberType \"noteproperty\" -Name $key -Value $val",
-  "  $json | ConvertTo-Json -Compress | Set-Content $file",
-  "}"
- ],
- "shortcuts": [
-  [
-   "Teams.exe",
-   "Microsoft Teams"
-  ]
- ],
- "version": "1.5.00.33362"
+    "architecture": {
+        "32bit": {
+            "hash": "sha1:bb0d7517789b993403351d564c504cda936b4a3e",
+            "url": "https://statics.teams.microsoft.com/production-windows/1.5.00.36367/Teams-1.5.00.36367-full.nupkg"
+        },
+        "64bit": {
+            "hash": "sha1:0706f69c201c016a1c13e646b07535170ce423a1",
+            "url": "https://statics.teams.microsoft.com/production-windows-x64/1.5.00.36367/Teams-1.5.00.36367-full.nupkg"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://statics.teams.microsoft.com/production-windows/$version/Teams-$version-full.nupkg"
+            },
+            "64bit": {
+                "url": "https://statics.teams.microsoft.com/production-windows-x64/$version/Teams-$version-full.nupkg"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/RELEASES"
+        }
+    },
+    "bin": "Teams.exe",
+    "checkver": {
+        "regex": "/([\\d.]+)/Teams_windows_x64\\.exe",
+        "url": "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=windows&arch=x64&download=false"
+    },
+    "description": "Office 365's chats, meetings, files and apps together in one place",
+    "extract_dir": "lib\\net45",
+    "homepage": "https://teams.microsoft.com/start",
+    "license": "Freeware",
+    "post_install": [
+        "$ErrorActionPreference = \"silentlycontinue\"",
+        "$file = ${env:APPDATA} + \"\\Microsoft\\Teams\\desktop-config.json\"",
+        "$key = \"isLoggedOut\"",
+        "$val = $false",
+        "try {",
+        "  $json = Get-Content $file | ConvertFrom-Json",
+        "  if ($json -eq $null) { throw }",
+        "} catch {",
+        "  $json = \"{}\" | ConvertFrom-Json",
+        "}",
+        "if (!($json.$key -eq $val)) {",
+        "  New-Item -Force -Path $file -Type \"file\" | Out-Null",
+        "  $json | Add-Member -Force -MemberType \"noteproperty\" -Name $key -Value $val",
+        "  $json | ConvertTo-Json -Compress | Set-Content $file",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "Teams.exe",
+            "Microsoft Teams"
+        ]
+    ],
+    "version": "1.5.00.36367"
 }
