@@ -1,41 +1,41 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "8e585c85371ff707cfee97109d03de5f5fe944e4f10f6ed36511cc659b8485f2",
-   "url": "https://cdn.geekbench.com/Geekbench-5.4.6-WindowsSetup.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://cdn.geekbench.com/Geekbench-$version-WindowsSetup.exe"
-   }
-  }
- },
- "bin": "geekbench.exe",
- "checkver": {
-  "regex": "Geekbench-([\\d.]+)-WindowsSetup\\.exe",
-  "url": "https://www.geekbench.com/download/windows/"
- },
- "description": "CPU/GPU benchmark software",
- "homepage": "https://www.geekbench.com/",
- "installer": {
-  "script": [
-   "Expand-7zipArchive \"$dir\\$fname\" -Overwrite 'Skip' -Removal",
-   "Move-Item \"$dir\\geekbench ?.exe\" \"$dir\\geekbench_gui.exe\"",
-   "Move-Item \"$dir\\geekbench?.exe\" \"$dir\\geekbench.exe\"",
-   "Remove-Item \"$dir\\$*\", \"$dir\\geekbench_aarch64.exe\", \"$dir\\Uninstall*\" -Recurse"
-  ]
- },
- "license": {
-  "identifier": "Proprietary",
-  "url": "https://www.primatelabs.com/legal/eula-v5.html"
- },
- "shortcuts": [
-  [
-   "geekbench_gui.exe",
-   "GeekBench"
-  ]
- ],
- "version": "5.4.6"
+    "architecture": {
+        "64bit": {
+            "hash": "8d260cddee2a8d74b31111de20a696b7d1a4b7e1b81bd1d83bf924f284dc8b79",
+            "url": "https://cdn.geekbench.com/Geekbench-5.5.0-WindowsSetup.exe"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cdn.geekbench.com/Geekbench-$version-WindowsSetup.exe"
+            }
+        }
+    },
+    "bin": "geekbench.exe",
+    "checkver": {
+        "regex": "Geekbench-([\\d.]+)-WindowsSetup\\.exe",
+        "url": "https://www.geekbench.com/download/windows/"
+    },
+    "description": "CPU/GPU benchmark software",
+    "homepage": "https://www.geekbench.com/",
+    "installer": {
+        "script": [
+            "Expand-7zipArchive \"$dir\\$fname\" -Overwrite 'Skip' -Removal",
+            "Move-Item \"$dir\\geekbench ?.exe\" \"$dir\\geekbench_gui.exe\"",
+            "Move-Item \"$dir\\geekbench?.exe\" \"$dir\\geekbench.exe\"",
+            "Remove-Item \"$dir\\$*\", \"$dir\\geekbench_aarch64.exe\", \"$dir\\Uninstall*\" -Recurse"
+        ]
+    },
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.primatelabs.com/legal/eula-v5.html"
+    },
+    "shortcuts": [
+        [
+            "geekbench_gui.exe",
+            "GeekBench"
+        ]
+    ],
+    "version": "5.5.0"
 }
