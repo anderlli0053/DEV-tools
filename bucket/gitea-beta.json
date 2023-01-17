@@ -1,45 +1,45 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "7c4bc3587e09fbc9820c3d83830b6a971b17cf3806b0b8672274ae6cc7adbfdb",
-   "url": "https://github.com/go-gitea/gitea/releases/download/v1.18.0/gitea-1.18.0-windows-4.0-386.exe#/gitea.exe"
-  },
-  "64bit": {
-   "hash": "92698cf1a4eb7b5f2de7acdbf3915874e474a4c34dca8eb38b35fb2120005ec0",
-   "url": "https://github.com/go-gitea/gitea/releases/download/v1.18.0/gitea-1.18.0-windows-4.0-amd64.exe#/gitea.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://github.com/go-gitea/gitea/releases/download/v$version/gitea-$version-windows-4.0-386.exe#/gitea.exe"
-   },
-   "64bit": {
-    "url": "https://github.com/go-gitea/gitea/releases/download/v$version/gitea-$version-windows-4.0-amd64.exe#/gitea.exe"
-   }
-  },
-  "hash": {
-   "url": "$url.sha256"
-  }
- },
- "bin": "gitea.exe",
- "checkver": {
-  "regex": ">v([\\d.]+(-\\w+)?)<",
-  "url": "https://github.com/go-gitea/gitea/releases"
- },
- "description": "Git with a cup of tea, painless self-hosted git service. (beta channel)",
- "homepage": "https://gitea.io/",
- "license": "MIT",
- "notes": "Run 'gitea web -c \"$persist_dir\\custom\\conf\\app.ini\"' to start the webserver",
- "post_install": [
-  "echo 'Creating $persist_dir\\custom\\conf.app.ini'",
-  "if(!(test-path \"$persist_dir\\custom\\conf\")) { mkdir \"$persist_dir\\custom\\conf\" > $null }",
-  "if(!(test-path \"$persist_dir\\custom\\conf\\app.ini\")) {",
-  "    $gitea = \"[database]`nPATH = $persist_dir/data/gitea.db\"",
-  "    $gitea += \"`n[repository]`nROOT = $persist_dir/repositories\"",
-  "    $gitea += \"`n[log]`nROOT_PATH = $persist_dir/log\"",
-  "    echo $gitea | % {$_.replace(\"\\\",\"/\") } | out-file -encoding oem \"$persist_dir\\custom\\conf\\app.ini\"",
-  "}"
- ],
- "version": "1.18.0"
+    "architecture": {
+        "32bit": {
+            "hash": "cb1db6b32dff6c11007a4adc7fe04a2ea1708a9b7be2f8c37d1e172257de1284",
+            "url": "https://github.com/go-gitea/gitea/releases/download/v1.18.1/gitea-1.18.1-windows-4.0-386.exe#/gitea.exe"
+        },
+        "64bit": {
+            "hash": "4501dfe25cbfccb4ea63c056437b9f399b160f093bf448a05b8507e24569b2b5",
+            "url": "https://github.com/go-gitea/gitea/releases/download/v1.18.1/gitea-1.18.1-windows-4.0-amd64.exe#/gitea.exe"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/go-gitea/gitea/releases/download/v$version/gitea-$version-windows-4.0-386.exe#/gitea.exe"
+            },
+            "64bit": {
+                "url": "https://github.com/go-gitea/gitea/releases/download/v$version/gitea-$version-windows-4.0-amd64.exe#/gitea.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    },
+    "bin": "gitea.exe",
+    "checkver": {
+        "regex": ">v([\\d.]+(-\\w+)?)<",
+        "url": "https://github.com/go-gitea/gitea/releases"
+    },
+    "description": "Git with a cup of tea, painless self-hosted git service. (beta channel)",
+    "homepage": "https://gitea.io/",
+    "license": "MIT",
+    "notes": "Run 'gitea web -c \"$persist_dir\\custom\\conf\\app.ini\"' to start the webserver",
+    "post_install": [
+        "echo 'Creating $persist_dir\\custom\\conf.app.ini'",
+        "if(!(test-path \"$persist_dir\\custom\\conf\")) { mkdir \"$persist_dir\\custom\\conf\" > $null }",
+        "if(!(test-path \"$persist_dir\\custom\\conf\\app.ini\")) {",
+        "    $gitea = \"[database]`nPATH = $persist_dir/data/gitea.db\"",
+        "    $gitea += \"`n[repository]`nROOT = $persist_dir/repositories\"",
+        "    $gitea += \"`n[log]`nROOT_PATH = $persist_dir/log\"",
+        "    echo $gitea | % {$_.replace(\"\\\",\"/\") } | out-file -encoding oem \"$persist_dir\\custom\\conf\\app.ini\"",
+        "}"
+    ],
+    "version": "1.18.1"
 }
