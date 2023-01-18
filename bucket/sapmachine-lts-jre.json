@@ -1,35 +1,35 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "d18796848ce78e41cc2242ca3664620ef41b4571fa6104272adbbc8e21429a57",
-   "url": "https://github.com/SAP/SapMachine/releases/download//sapmachine-17.0.5/sapmachine-jre-17.0.5_windows-x64_bin.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://github.com/SAP/SapMachine/releases/download/$matchSap.zip"
-   }
-  },
-  "extract_dir": "sapmachine-jre-$matchVersion",
-  "hash": {
-   "find": "^($sha256)\\s",
-   "url": "https://github.com/SAP/SapMachine/releases/download/$matchSap.sha256.txt"
-  }
- },
- "checkver": {
-  "jsonpath": "$.assets.17.releases[0].jre.windows-x64",
-  "re": "(?<sap>/sapmachine-(?:[\\d.]+)(?:\\%2B|\\+)?(?:[\\d]*)/sapmachine-jre-(?<version>[\\d.]+)(?:(?<dash>-)(?<ea>ea)\\.(?<build>[\\d]+))?_windows-x64_bin).zip",
-  "replace": "${version}${dash}${build}${dash}${ea}",
-  "url": "https://sap.github.io/SapMachine/assets/data/sapmachine_releases.json"
- },
- "description": "SapMachine LTS: An OpenJDK release maintained and supported by SAP",
- "env_add_path": "bin",
- "env_set": {
-  "JAVA_HOME": "$dir"
- },
- "extract_dir": "sapmachine-jre-17.0.5",
- "homepage": "https://sap.github.io/SapMachine/",
- "license": "GPL-2.0-only WITH Classpath-exception-2.0",
- "version": "17.0.5"
+    "architecture": {
+        "64bit": {
+            "hash": "59a987eed3a616f83e5a8d4236b7c92a5e6e1ea5c4b136d30609985ca8a959d3",
+            "url": "https://github.com/SAP/SapMachine/releases/download//sapmachine-17.0.6/sapmachine-jre-17.0.6_windows-x64_bin.zip"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/SAP/SapMachine/releases/download/$matchSap.zip"
+            }
+        },
+        "extract_dir": "sapmachine-jre-$matchVersion",
+        "hash": {
+            "find": "^($sha256)\\s",
+            "url": "https://github.com/SAP/SapMachine/releases/download/$matchSap.sha256.txt"
+        }
+    },
+    "checkver": {
+        "jsonpath": "$.assets.17.releases[0].jre.windows-x64",
+        "re": "(?<sap>/sapmachine-(?:[\\d.]+)(?:\\%2B|\\+)?(?:[\\d]*)/sapmachine-jre-(?<version>[\\d.]+)(?:(?<dash>-)(?<ea>ea)\\.(?<build>[\\d]+))?_windows-x64_bin).zip",
+        "replace": "${version}${dash}${build}${dash}${ea}",
+        "url": "https://sap.github.io/SapMachine/assets/data/sapmachine_releases.json"
+    },
+    "description": "SapMachine LTS: An OpenJDK release maintained and supported by SAP",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "extract_dir": "sapmachine-jre-17.0.6",
+    "homepage": "https://sap.github.io/SapMachine/",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "version": "17.0.6"
 }
