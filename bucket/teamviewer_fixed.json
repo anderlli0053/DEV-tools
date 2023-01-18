@@ -1,36 +1,36 @@
 {
- "autoupdate": {
-  "url": "https://download.teamviewer.com/download/version_$majorVersionx/TeamViewerPortable.zip"
- },
- "bin": "teamviewer.exe",
- "checkver": {
-  "regex": "<p>Current\\sversion:\\s([\\d.]+)</p>",
-  "url": "https://www.teamviewer.com/en-us/download/windows/",
-  "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.26 Safari/537.36"
- },
- "description": "Remote control, desktop sharing, online meetings, web conferencing and file transfer between computers",
- "hash": "ecf31ece87b7351d1f40652e7747f06f452f1562031fca52f95473a0b35e2a0e",
- "homepage": "https://www.teamviewer.com",
- "license": {
-  "identifier": "Shareware",
-  "url": "https://www.teamviewer.com/en/eula/"
- },
- "persist": "teamviewer.ini",
- "pre_uninstall": [
-  "# For details, see: https://community.teamviewer.com/English/discussion/49721",
-  "Stop-Process -Name 'teamviewer' -ErrorAction SilentlyContinue",
-  "if (Test-Path \"$dir\\rolloutfile.tv13\") {",
-  "    Write-Host 'Removing rolloutfile.tv13.' -f Yellow",
-  "    icacls \"$dir\\rolloutfile.tv13\" /reset",
-  "    Remove-Item \"$dir\\rolloutfile.tv13\" -Force",
-  "}"
- ],
- "shortcuts": [
-  [
-   "TeamViewer.exe",
-   "TeamViewer"
-  ]
- ],
- "url": "https://download.teamviewer.com/download/version_15x/TeamViewerPortable.zip",
- "version": "15.37.3"
+    "autoupdate": {
+        "url": "https://download.teamviewer.com/download/version_$majorVersionx/TeamViewerPortable.zip"
+    },
+    "bin": "teamviewer.exe",
+    "checkver": {
+        "regex": "<p>Current\\sversion:\\s([\\d.]+)</p>",
+        "url": "https://www.teamviewer.com/en-us/download/windows/",
+        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.26 Safari/537.36"
+    },
+    "description": "Remote control, desktop sharing, online meetings, web conferencing and file transfer between computers",
+    "hash": "6bfb90dc46229b4500aac3cb029f91dc69aab0c5178d5173f977a3f5c2cbf6f5",
+    "homepage": "https://www.teamviewer.com",
+    "license": {
+        "identifier": "Shareware",
+        "url": "https://www.teamviewer.com/en/eula/"
+    },
+    "persist": "teamviewer.ini",
+    "pre_uninstall": [
+        "# For details, see: https://community.teamviewer.com/English/discussion/49721",
+        "Stop-Process -Name 'teamviewer' -ErrorAction SilentlyContinue",
+        "if (Test-Path \"$dir\\rolloutfile.tv13\") {",
+        "    Write-Host 'Removing rolloutfile.tv13.' -f Yellow",
+        "    icacls \"$dir\\rolloutfile.tv13\" /reset",
+        "    Remove-Item \"$dir\\rolloutfile.tv13\" -Force",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "TeamViewer.exe",
+            "TeamViewer"
+        ]
+    ],
+    "url": "https://download.teamviewer.com/download/version_15x/TeamViewerPortable.zip",
+    "version": "15.37.8"
 }
