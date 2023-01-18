@@ -1,51 +1,51 @@
 {
- "architecture": {
-  "32bit": {
-   "extract_dir": "zulu15.44.13-ca-jdk15.0.9-win_i686",
-   "hash": "fc4ada4d05bced4ce27d68f0c34e7d57cad52b3213a6d016941c71de70889ba0",
-   "url": "https://cdn.azul.com/zulu/bin/zulu15.44.13-ca-jdk15.0.9-win_i686.zip"
-  },
-  "64bit": {
-   "extract_dir": "zulu15.44.13-ca-jdk15.0.9-win_x64",
-   "hash": "97d205a5e55c995184cb38a4f41809b05bc2b32edb3887d15b84067667d17ccb",
-   "url": "https://cdn.azul.com/zulu/bin/zulu15.44.13-ca-jdk15.0.9-win_x64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "extract_dir": "$matchName_i686",
-    "hash": {
-     "jp": "$.sha256_hash",
-     "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=15&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=32"
+    "architecture": {
+        "32bit": {
+            "extract_dir": "zulu15.46.17-ca-jdk15.0.10-win_i686",
+            "hash": "84e00be4d8890c6306a0fff065c473bd4bb7ea748cb6345548cee0ba58cdb381",
+            "url": "https://cdn.azul.com/zulu/bin/zulu15.46.17-ca-jdk15.0.10-win_i686.zip"
+        },
+        "64bit": {
+            "extract_dir": "zulu15.46.17-ca-jdk15.0.10-win_x64",
+            "hash": "2695ab277ee1dd41baf692982ea71ed516ff9182ce71a2a73a54d7972e90b0fd",
+            "url": "https://cdn.azul.com/zulu/bin/zulu15.46.17-ca-jdk15.0.10-win_x64.zip"
+        }
     },
-    "url": "https://cdn.azul.com/zulu/bin/$matchName_i686.zip"
-   },
-   "64bit": {
-    "extract_dir": "$matchName_x64",
-    "hash": {
-     "jp": "$.sha256_hash",
-     "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=15&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64"
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "extract_dir": "$matchName_i686",
+                "hash": {
+                    "jp": "$.sha256_hash",
+                    "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=15&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=32"
+                },
+                "url": "https://cdn.azul.com/zulu/bin/$matchName_i686.zip"
+            },
+            "64bit": {
+                "extract_dir": "$matchName_x64",
+                "hash": {
+                    "jp": "$.sha256_hash",
+                    "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=15&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64"
+                },
+                "url": "https://cdn.azul.com/zulu/bin/$matchName_x64.zip"
+            }
+        }
     },
-    "url": "https://cdn.azul.com/zulu/bin/$matchName_x64.zip"
-   }
-  }
- },
- "checkver": {
-  "jsonpath": "$.name",
-  "regex": "(?<name>zulu(?<version>[\\d.]+)-ca-jdk(?<java>[\\d.]+)-win)_x64.zip",
-  "replace": "${version}",
-  "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=15&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64"
- },
- "description": "Zulu is certified build of OpenJDK",
- "env_add_path": "bin",
- "env_set": {
-  "JAVA_HOME": "$dir"
- },
- "homepage": "https://www.azul.com/products/zulu-community/",
- "license": {
-  "identifier": "GPL-2.0-only WITH Classpath-exception-2.0",
-  "url": "https://www.azulsystems.com/license/zulu_third_party_licenses.html"
- },
- "version": "15.44.13"
+    "checkver": {
+        "jsonpath": "$.name",
+        "regex": "(?<name>zulu(?<version>[\\d.]+)-ca-jdk(?<java>[\\d.]+)-win)_x64.zip",
+        "replace": "${version}",
+        "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=15&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64"
+    },
+    "description": "Zulu is certified build of OpenJDK",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "homepage": "https://www.azul.com/products/zulu-community/",
+    "license": {
+        "identifier": "GPL-2.0-only WITH Classpath-exception-2.0",
+        "url": "https://www.azulsystems.com/license/zulu_third_party_licenses.html"
+    },
+    "version": "15.46.17"
 }
