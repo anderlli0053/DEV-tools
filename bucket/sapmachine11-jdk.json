@@ -1,35 +1,35 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "35ccd8bdbcfc58c1443bb277796b7ce32ccaddf5b0bfddec624b90c8fea7e4ad",
-   "url": "https://github.com/SAP/SapMachine/releases/download//sapmachine-11.0.17/sapmachine-jdk-11.0.17_windows-x64_bin.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://github.com/SAP/SapMachine/releases/download/$matchSap.zip"
-   }
-  },
-  "extract_dir": "sapmachine-jdk-$matchVersion",
-  "hash": {
-   "find": "^($sha256)\\s",
-   "url": "https://github.com/SAP/SapMachine/releases/download/$matchSap.sha256.txt"
-  }
- },
- "checkver": {
-  "jsonpath": "$.assets.11.releases[0].jdk.windows-x64",
-  "regex": "(?<sap>/sapmachine-(?:[\\d.]+)(?:\\%2B|\\+)?(?:[\\d]*)/sapmachine-jdk-(?<version>[\\d.]+)(?:(?<dash>-)(?<ea>ea)\\.(?<build>[\\d]+))?_windows-x64_bin).zip",
-  "replace": "${version}${dash}${build}${dash}${ea}",
-  "url": "https://sap.github.io/SapMachine/assets/data/sapmachine_releases.json"
- },
- "description": "SapMachine 11: An OpenJDK release maintained and supported by SAP",
- "env_add_path": "bin",
- "env_set": {
-  "JAVA_HOME": "$dir"
- },
- "extract_dir": "sapmachine-jdk-11.0.17",
- "homepage": "https://sap.github.io/SapMachine/",
- "license": "GPL-2.0-only WITH Classpath-exception-2.0",
- "version": "11.0.17"
+    "architecture": {
+        "64bit": {
+            "hash": "255b2186e42943bd822eaec5a163cbfccee4f390598d99335f260be180f448d9",
+            "url": "https://github.com/SAP/SapMachine/releases/download//sapmachine-11.0.18/sapmachine-jdk-11.0.18_windows-x64_bin.zip"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/SAP/SapMachine/releases/download/$matchSap.zip"
+            }
+        },
+        "extract_dir": "sapmachine-jdk-$matchVersion",
+        "hash": {
+            "find": "^($sha256)\\s",
+            "url": "https://github.com/SAP/SapMachine/releases/download/$matchSap.sha256.txt"
+        }
+    },
+    "checkver": {
+        "jsonpath": "$.assets.11.releases[0].jdk.windows-x64",
+        "regex": "(?<sap>/sapmachine-(?:[\\d.]+)(?:\\%2B|\\+)?(?:[\\d]*)/sapmachine-jdk-(?<version>[\\d.]+)(?:(?<dash>-)(?<ea>ea)\\.(?<build>[\\d]+))?_windows-x64_bin).zip",
+        "replace": "${version}${dash}${build}${dash}${ea}",
+        "url": "https://sap.github.io/SapMachine/assets/data/sapmachine_releases.json"
+    },
+    "description": "SapMachine 11: An OpenJDK release maintained and supported by SAP",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "extract_dir": "sapmachine-jdk-11.0.18",
+    "homepage": "https://sap.github.io/SapMachine/",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "version": "11.0.18"
 }
