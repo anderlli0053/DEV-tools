@@ -1,42 +1,42 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "sha1:820b3a7154cb6481bf452187a56c2ed6b37e5513",
-   "url": "https://github.com/bell-sw/Liberica/releases/download/11.0.17%2B7/bellsoft-jdk11.0.17%2B7-windows-i586.zip"
-  },
-  "64bit": {
-   "hash": "sha1:c3c9b5247759644cceac93498e61700086a7b76f",
-   "url": "https://github.com/bell-sw/Liberica/releases/download/11.0.17%2B7/bellsoft-jdk11.0.17%2B7-windows-amd64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://github.com/bell-sw/Liberica/releases/download/$matchMajor%2B$matchBuild/bellsoft-jdk$matchMajor%2B$matchBuild-windows-i586.zip"
-   },
-   "64bit": {
-    "url": "https://github.com/bell-sw/Liberica/releases/download/$matchMajor%2B$matchBuild/bellsoft-jdk$matchMajor%2B$matchBuild-windows-amd64.zip"
-   }
-  },
-  "extract_dir": "jdk-$matchMajor",
-  "hash": {
-   "jsonpath": "$.sha1",
-   "url": "https://api.bell-sw.com/v1/liberica/releases/$basename"
-  }
- },
- "checkver": {
-  "jsonpath": "$.version",
-  "regex": "(?<major>[\\d.]+)(?:\\+)(?<build>[\\d]+)",
-  "replace": "${major}-${build}",
-  "url": "https://api.bell-sw.com/v1/liberica/releases?version-feature=11&bundle-type=jdk&version-modifier=latest&release-type=all&os=windows&arch=x86&installation-type=archive&package-type=zip&output=json&fields=version"
- },
- "description": "BellSoft Liberica is a 100% open-source Java 11 implementation",
- "env_add_path": "bin",
- "env_set": {
-  "JAVA_HOME": "$dir"
- },
- "extract_dir": "jdk-11.0.17",
- "homepage": "https://bell-sw.com/java",
- "license": "GPL-2.0-only WITH Classpath-exception-2.0",
- "version": "11.0.17-7"
+    "architecture": {
+        "32bit": {
+            "hash": "sha1:4858f02485c40b0b9879e9743764da11380e1aac",
+            "url": "https://github.com/bell-sw/Liberica/releases/download/11.0.18%2B10/bellsoft-jdk11.0.18%2B10-windows-i586.zip"
+        },
+        "64bit": {
+            "hash": "sha1:37e971e33fbfe77b458fc13e605603386371fe82",
+            "url": "https://github.com/bell-sw/Liberica/releases/download/11.0.18%2B10/bellsoft-jdk11.0.18%2B10-windows-amd64.zip"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/bell-sw/Liberica/releases/download/$matchMajor%2B$matchBuild/bellsoft-jdk$matchMajor%2B$matchBuild-windows-i586.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/bell-sw/Liberica/releases/download/$matchMajor%2B$matchBuild/bellsoft-jdk$matchMajor%2B$matchBuild-windows-amd64.zip"
+            }
+        },
+        "extract_dir": "jdk-$matchMajor",
+        "hash": {
+            "jsonpath": "$.sha1",
+            "url": "https://api.bell-sw.com/v1/liberica/releases/$basename"
+        }
+    },
+    "checkver": {
+        "jsonpath": "$.version",
+        "regex": "(?<major>[\\d.]+)(?:\\+)(?<build>[\\d]+)",
+        "replace": "${major}-${build}",
+        "url": "https://api.bell-sw.com/v1/liberica/releases?version-feature=11&bundle-type=jdk&version-modifier=latest&release-type=all&os=windows&arch=x86&installation-type=archive&package-type=zip&output=json&fields=version"
+    },
+    "description": "BellSoft Liberica is a 100% open-source Java 11 implementation",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "extract_dir": "jdk-11.0.18",
+    "homepage": "https://bell-sw.com/java",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "version": "11.0.18-10"
 }
