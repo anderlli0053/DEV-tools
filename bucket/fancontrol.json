@@ -1,46 +1,46 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "870f988eec9b21f986e19e95b76b89b662c007d3c32f038f832ccfbf8c5e48d0",
-   "url": "https://github.com/Rem0o/FanControl.Releases/releases/download/V142/FanControl_net_7_0.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://github.com/Rem0o/FanControl.Releases/releases/download/V$version/FanControl_net_$matchRelease.zip"
-   }
-  }
- },
- "bin": "FanControl.exe",
- "checkver": {
-  "jsonpath": "$.assets..browser_download_url",
-  "regex": "/V([\\d.]+)/FanControl_net_(?<Release>[\\d?_|.]+).zip",
-  "reverse": true,
-  "url": "https://api.github.com/repos/Rem0o/FanControl.Releases/releases/latest"
- },
- "description": "A highly customizable fan controlling software for the Windows OS.",
- "homepage": "https://getfancontrol.com/",
- "license": "Freeware",
- "notes": "Make sure to install both the 64bit & 32bit versions of Microsoft .NET Desktop Runtime before running the application.",
- "persist": [
-  "userConfig.json",
-  "CACHE",
-  "Plugins"
- ],
- "pre_install": [
-  "'userConfig.json', 'CACHE' | ForEach-Object {",
-  "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
-  "}"
- ],
- "shortcuts": [
-  [
-   "FanControl.exe",
-   "FanControl"
-  ]
- ],
- "suggest": {
-  ".NET Runtime": "extras/windowsdesktop-runtime"
- },
- "version": "142"
+    "architecture": {
+        "64bit": {
+            "hash": "ce00b2a49942eac8915913ed5948918978f28c0d24212b5eeede60ed845e6f19",
+            "url": "https://github.com/Rem0o/FanControl.Releases/releases/download/V143/FanControl_net_4_8.zip"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Rem0o/FanControl.Releases/releases/download/V$version/FanControl_net_$matchRelease.zip"
+            }
+        }
+    },
+    "bin": "FanControl.exe",
+    "checkver": {
+        "jsonpath": "$.assets..browser_download_url",
+        "regex": "/V([\\d.]+)/FanControl_net_(?<Release>[\\d?_|.]+).zip",
+        "reverse": true,
+        "url": "https://api.github.com/repos/Rem0o/FanControl.Releases/releases/latest"
+    },
+    "description": "A highly customizable fan controlling software for the Windows OS.",
+    "homepage": "https://getfancontrol.com/",
+    "license": "Freeware",
+    "notes": "Make sure to install both the 64bit & 32bit versions of Microsoft .NET Desktop Runtime before running the application.",
+    "persist": [
+        "userConfig.json",
+        "CACHE",
+        "Plugins"
+    ],
+    "pre_install": [
+        "'userConfig.json', 'CACHE' | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "FanControl.exe",
+            "FanControl"
+        ]
+    ],
+    "suggest": {
+        ".NET Runtime": "extras/windowsdesktop-runtime"
+    },
+    "version": "143"
 }
