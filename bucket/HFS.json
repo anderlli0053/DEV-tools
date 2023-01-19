@@ -1,13 +1,22 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/rejetto/hfs/releases/download/v$version/hfs-windows.zip"
-    },
+    "homepage": "http://www.rejetto.com/hfs/",
+    "description": "HFS is a free, one single executable file Http File Server software.",
+    "license": "GPL-2.0-only",
+    "version": "2.3m",
+    "url": "https://downloads.sourceforge.net/project/hfs/HFS/2.3m/hfs2.3m.zip",
+    "hash": "sha1:adec3861661cba9d04c214223aaa078b4f4d35dd",
     "bin": "hfs.exe",
-    "checkver": "github",
-    "description": "A file server offering a virtual file system (vfs).",
-    "hash": "45f73029c462102ae183d7dcdad645b2161defe800b63a5a208ad0a3e35369d0",
-    "homepage": "https://github.com/rejetto/hfs",
-    "license": "GPL-3.0-or-later",
-    "url": "https://github.com/rejetto/hfs/releases/download/v0.27.2/hfs-windows.zip",
-    "version": "0.27.2"
+    "shortcuts": [
+        [
+            "hfs.exe",
+            "HFS"
+        ]
+    ],
+    "checkver": {
+        "url": "http://www.rejetto.com/hfs/?f=dl",
+        "regex": "(?sm)Latest version: <b>([\\w\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/project/hfs/HFS/$version/hfs$version.zip"
+    }
 }

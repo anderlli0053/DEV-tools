@@ -1,30 +1,39 @@
 {
+    "version": "109.0-1",
+    "description": "LibreWolf. A fork of Firefox, focused on privacy, security and freedom.",
+    "homepage": "https://librewolf.net/",
+    "license": "MPL-2.0",
+    "changelog": "https://gitlab.com/librewolf-community/browser/windows/-/releases",
     "architecture": {
         "64bit": {
-            "hash": "febe67fdef8b72a90a13908dba7c69acb21bc4e83ba695ee3c598325b2a48158",
-            "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/59ec82b7cf9b5d309bb6da1eefc15dcc/librewolf-109.0-1.en-US.win64-portable.zip"
+            "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/59ec82b7cf9b5d309bb6da1eefc15dcc/librewolf-109.0-1.en-US.win64-portable.zip",
+            "hash": "febe67fdef8b72a90a13908dba7c69acb21bc4e83ba695ee3c598325b2a48158"
         }
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "hash": {
-                    "regex": "$sha256\\s+$basename",
-                    "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/$matchChecksumid/sha256sums.txt"
-                },
-                "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/$matchZipid/librewolf-$version.en-US.win64-portable.zip"
-            }
-        }
-    },
+    "pre_install": [
+        "$lw_name = (Get-Item \"$dir\\librewolf-*\").FullName",
+        "Move-Item \"$lw_name\\*\" \"$dir\"",
+        "Remove-Item \"$lw_name\"",
+        "if (Test-Path \"$persist_dir\\Librewolf\\*.js\") { Copy-Item \"$persist_dir\\Librewolf\\*.js\" \"$dir\\Librewolf\\\" }"
+    ],
+    "pre_uninstall": "if (Test-Path \"$dir\\Librewolf\\*.js\") { Copy-Item \"$dir\\Librewolf\\*.js\" \"$persist_dir\\Librewolf\\\" }",
     "bin": [
         [
             "librewolf-portable.exe",
             "librewolf"
         ]
     ],
-    "changelog": "https://gitlab.com/librewolf-community/browser/windows/-/releases",
+    "shortcuts": [
+        [
+            "librewolf-portable.exe",
+            "LibreWolf"
+        ]
+    ],
+    "persist": [
+        "Profiles",
+        "LibreWolf\\defaults\\prefs"
+    ],
     "checkver": {
-        "regex": "([\\d.-]+) (?<zipid>[0-9a-f]+) (?<checksumid>[0-9a-f]+)",
         "script": [
             "# using checkver script because checksum URL can be either above or below file URL",
             "$url = 'https://gitlab.com/api/v4/projects/13852981/releases'",
@@ -39,27 +48,18 @@
             "if (!($cont -match $regex2)) { error \"Could not match $regex2\"; break }",
             "$zipid = $matches[1]; $ver = $matches[2]",
             "Write-Output $ver $zipid $checksumid"
-        ]
+        ],
+        "regex": "([\\d.-]+) (?<zipid>[0-9a-f]+) (?<checksumid>[0-9a-f]+)"
     },
-    "description": "LibreWolf. A fork of Firefox, focused on privacy, security and freedom.",
-    "homepage": "https://librewolf.net/",
-    "license": "MPL-2.0",
-    "persist": [
-        "Profiles",
-        "LibreWolf\\defaults\\prefs"
-    ],
-    "pre_install": [
-        "$lw_name = (Get-Item \"$dir\\librewolf-*\").FullName",
-        "Move-Item \"$lw_name\\*\" \"$dir\"",
-        "Remove-Item \"$lw_name\"",
-        "if (Test-Path \"$persist_dir\\Librewolf\\*.js\") { Copy-Item \"$persist_dir\\Librewolf\\*.js\" \"$dir\\Librewolf\\\" }"
-    ],
-    "pre_uninstall": "if (Test-Path \"$dir\\Librewolf\\*.js\") { Copy-Item \"$dir\\Librewolf\\*.js\" \"$persist_dir\\Librewolf\\\" }",
-    "shortcuts": [
-        [
-            "librewolf-portable.exe",
-            "LibreWolf"
-        ]
-    ],
-    "version": "109.0-1"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/$matchZipid/librewolf-$version.en-US.win64-portable.zip",
+                "hash": {
+                    "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/$matchChecksumid/sha256sums.txt",
+                    "regex": "$sha256\\s+$basename"
+                }
+            }
+        }
+    }
 }

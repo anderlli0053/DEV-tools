@@ -1,30 +1,31 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "477758fee66874c35d9c833d2357540b41d8529daa33a37b93137f8ee1e6010e",
-            "url": "https://www.zoom.us/client/5.13.5.12053/ZoomInstallerFull.msi#/setup.msi_"
-        },
-        "64bit": {
-            "hash": "814b4f902d967be440b3ca99b146a3883b85e649327e4dc2855a82b1b4e96ff1",
-            "url": "https://www.zoom.us/client/5.13.5.12053/ZoomInstallerFull.msi?archType=x64#/setup.msi_"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi#/setup.msi_"
-            },
-            "64bit": {
-                "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi?archType=x64#/setup.msi_"
-            }
-        }
-    },
-    "checkver": {
-        "regex": "Current-version=([\\d.]+)",
-        "url": "https://launcher.zoom.us/upgrade?os=win"
-    },
+    "version": "5.13.5.12053",
     "description": "Zoom provides videotelephony and online chat services through a cloud-based peer-to-peer software platform and is used for teleconferencing, telecommuting, distance education, and social relations.",
     "homepage": "https://zoom.us/",
+    "license": "Proprietary",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.zoom.us/client/5.13.5.12053/ZoomInstallerFull.msi?archType=x64#/setup.msi_",
+            "hash": "814b4f902d967be440b3ca99b146a3883b85e649327e4dc2855a82b1b4e96ff1"
+        },
+        "32bit": {
+            "url": "https://www.zoom.us/client/5.13.5.12053/ZoomInstallerFull.msi#/setup.msi_",
+            "hash": "477758fee66874c35d9c833d2357540b41d8529daa33a37b93137f8ee1e6010e"
+        }
+    },
+    "pre_download": "Assert-Administrator",
+    "pre_install": [
+        "$processname = \"Zoom*\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
     "installer": {
         "script": [
             "$programname = \"Zoom*\"",
@@ -47,24 +48,23 @@
             "if (Test-Path -Path \"$dir\\setup.msi_\") { Remove-Item \"$dir\\setup.msi_\" -Force }"
         ]
     },
-    "license": "Proprietary",
     "post_install": [
         "$programname = \"Zoom\"",
         "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
         "if (Test-Path \"$CommonDesktopPath\\$programname.lnk\") {Remove-Item \"$CommonDesktopPath\\$programname.lnk\" -Force}"
     ],
-    "pre_download": "Assert-Administrator",
-    "pre_install": [
-        "$processname = \"Zoom*\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "version": "5.13.5.12053"
+    "checkver": {
+        "url": "https://launcher.zoom.us/upgrade?os=win",
+        "regex": "Current-version=([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi?archType=x64#/setup.msi_"
+            },
+            "32bit": {
+                "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi#/setup.msi_"
+            }
+        }
+    }
 }

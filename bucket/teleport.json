@@ -1,9 +1,19 @@
 {
+    "version": "11.2.1",
+    "description": "Privileged access management for cloud-native infrastructure",
+    "homepage": "https://gravitational.com/teleport",
+    "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "hash": "1fac351b406fbfd54940199a7ee0ca78075a1d47a4d78d469885e4feb105ea7c",
-            "url": "https://get.gravitational.com/teleport-v11.2.1-windows-amd64-bin.zip"
+            "url": "https://get.gravitational.com/teleport-v11.2.1-windows-amd64-bin.zip",
+            "hash": "1fac351b406fbfd54940199a7ee0ca78075a1d47a4d78d469885e4feb105ea7c"
         }
+    },
+    "extract_dir": "teleport",
+    "bin": "tsh.exe",
+    "checkver": {
+        "url": "https://goteleport.com/docs/installation",
+        "regex": "teleport-v([\\d.]+)-windows-amd64-bin\\.zip"
     },
     "autoupdate": {
         "architecture": {
@@ -14,15 +24,5 @@
         "hash": {
             "url": "$url.sha256"
         }
-    },
-    "bin": "tsh.exe",
-    "checkver": {
-        "regex": "teleport-v([\\d.]+)-windows-amd64-bin\\.zip",
-        "url": "https://goteleport.com/docs/installation"
-    },
-    "description": "Privileged access management for cloud-native infrastructure",
-    "extract_dir": "teleport",
-    "homepage": "https://gravitational.com/teleport",
-    "license": "Apache-2.0",
-    "version": "11.2.1"
+    }
 }

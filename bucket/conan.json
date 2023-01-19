@@ -1,24 +1,19 @@
 {
+    "version": "1.57.0",
+    "description": "The open-source, decentralized C/C++ package manager",
+    "homepage": "https://conan.io",
+    "license": "MIT",
     "architecture": {
-        "32bit": {
-            "hash": "bcb99b7a9a4133a2f015bd3840a0ef52eb62e52697e469772126b44587d7d455",
-            "url": "https://github.com/conan-io/conan/releases/download/1.57.0/conan-win-32.exe"
-        },
         "64bit": {
-            "hash": "5e0f9134f49b8fa972611b011d892f4d6945c618cff0c94574c1b70cf90306fa",
-            "url": "https://github.com/conan-io/conan/releases/download/1.57.0/conan-win-64.exe"
+            "url": "https://github.com/conan-io/conan/releases/download/1.57.0/conan-win-64.exe",
+            "hash": "5e0f9134f49b8fa972611b011d892f4d6945c618cff0c94574c1b70cf90306fa"
+        },
+        "32bit": {
+            "url": "https://github.com/conan-io/conan/releases/download/1.57.0/conan-win-32.exe",
+            "hash": "bcb99b7a9a4133a2f015bd3840a0ef52eb62e52697e469772126b44587d7d455"
         }
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/conan-io/conan/releases/download/$version/conan-win-32.exe"
-            },
-            "64bit": {
-                "url": "https://github.com/conan-io/conan/releases/download/$version/conan-win-64.exe"
-            }
-        }
-    },
+    "innosetup": true,
     "bin": [
         "conan\\conan.exe",
         "conan\\conan_build_info.exe",
@@ -27,9 +22,14 @@
     "checkver": {
         "github": "https://github.com/conan-io/conan"
     },
-    "description": "The open-source, decentralized C/C++ package manager",
-    "homepage": "https://conan.io",
-    "innosetup": true,
-    "license": "MIT",
-    "version": "1.57.0"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/conan-io/conan/releases/download/$version/conan-win-64.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/conan-io/conan/releases/download/$version/conan-win-32.exe"
+            }
+        }
+    }
 }

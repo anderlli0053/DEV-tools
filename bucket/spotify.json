@@ -1,21 +1,13 @@
 {
-    "autoupdate": {
-        "url": "https://download.scdn.co/SpotifyFullSetup.exe"
-    },
-    "checkver": {
-        "regex": "(\\S+)",
-        "script": [
-            "$dl_url = 'https://download.scdn.co/SpotifyFullSetup.exe'",
-            "$dl = cache_path 'spotify' 'unknown' $dl_url",
-            "Invoke-WebRequest $dl_url -OutFile $dl",
-            "$ver = (Get-Item $dl).VersionInfo.ProductVersion",
-            "Move-Item -Force $dl (cache_path 'spotify' $ver $dl_url)",
-            "$ver"
-        ]
-    },
+    "version": "1.2.3.1115.gd61a8f5c",
     "description": "A digital music service that gives you access to millions of songs.",
-    "hash": "0f90c8602ec4baced6d7ae1ccdd5b1fd9154653f555c4847e269a24dec4715d4",
     "homepage": "https://www.spotify.com/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.spotify.com/legal/end-user-agreement/"
+    },
+    "url": "https://download.scdn.co/SpotifyFullSetup.exe",
+    "hash": "0f90c8602ec4baced6d7ae1ccdd5b1fd9154653f555c4847e269a24dec4715d4",
     "installer": {
         "script": [
             "Start-Process -Wait \"$dir\\$fname\" -ArgumentList '/extract', \"`\"$dir`\"\"",
@@ -25,10 +17,6 @@
             "$updatefile.Attributes = 'ReadOnly', 'System'",
             "Remove-Item \"$dir\\$fname\", \"$dir\\SpotifyMigrator.exe\""
         ]
-    },
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.spotify.com/legal/end-user-agreement/"
     },
     "shortcuts": [
         [
@@ -42,6 +30,18 @@
             "Start-Process -Wait \"$dir\\Spotify.exe\" -ArgumentList '/Uninstall', '/Silent'"
         ]
     },
-    "url": "https://download.scdn.co/SpotifyFullSetup.exe",
-    "version": "1.2.3.1115.gd61a8f5c"
+    "checkver": {
+        "script": [
+            "$dl_url = 'https://download.scdn.co/SpotifyFullSetup.exe'",
+            "$dl = cache_path 'spotify' 'unknown' $dl_url",
+            "Invoke-WebRequest $dl_url -OutFile $dl",
+            "$ver = (Get-Item $dl).VersionInfo.ProductVersion",
+            "Move-Item -Force $dl (cache_path 'spotify' $ver $dl_url)",
+            "$ver"
+        ],
+        "regex": "(\\S+)"
+    },
+    "autoupdate": {
+        "url": "https://download.scdn.co/SpotifyFullSetup.exe"
+    }
 }

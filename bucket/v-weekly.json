@@ -1,9 +1,20 @@
 {
+    "version": "2023.03",
+    "description": "The V programming language (weekly release channel)",
+    "homepage": "https://vlang.io",
+    "license": "MIT",
+    "notes": "Windows SDK is required, you can either install it using Visual Studio Installer, or download from: https://developer.microsoft.com/en-us/windows/downloads/sdk-archive/",
     "architecture": {
         "64bit": {
-            "hash": "4c6ace0a498afcc34a259732c3a33a7b9e61a716e70d05fafa11cb2d2c3d134d",
-            "url": "https://github.com/vlang/v/releases/download/weekly.2023.03/v_windows.zip"
+            "url": "https://github.com/vlang/v/releases/download/weekly.2023.03/v_windows.zip",
+            "hash": "4c6ace0a498afcc34a259732c3a33a7b9e61a716e70d05fafa11cb2d2c3d134d"
         }
+    },
+    "extract_dir": "v",
+    "bin": "v.exe",
+    "checkver": {
+        "url": "https://github.com/vlang/v/releases",
+        "regex": "releases/tag/weekly\\.([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
@@ -11,16 +22,5 @@
                 "url": "https://github.com/vlang/v/releases/download/weekly.$version/v_windows.zip"
             }
         }
-    },
-    "bin": "v.exe",
-    "checkver": {
-        "regex": "releases/tag/weekly\\.([\\d.]+)",
-        "url": "https://github.com/vlang/v/releases"
-    },
-    "description": "The V programming language (weekly release channel)",
-    "extract_dir": "v",
-    "homepage": "https://vlang.io",
-    "license": "MIT",
-    "notes": "Windows SDK is required, you can either install it using Visual Studio Installer, or download from: https://developer.microsoft.com/en-us/windows/downloads/sdk-archive/",
-    "version": "2023.03"
+    }
 }

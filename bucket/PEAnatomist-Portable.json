@@ -1,28 +1,28 @@
 {
- "autoupdate": {
-  "hash": {
-   "regex": "$sha256",
-   "url": "https://web.archive.org/web/20420121101836/https://rammerlabs.alidml.ru/index-eng.html"
-  },
-  "url": "https://web.archive.org/web/20420121101836/https://rammerlabs.alidml.ru/files/$matchId/PEAnatomist-$version.zip"
- },
- "changelog": "https://rammerlabs.alidml.ru/changelog-eng.html",
- "checkver": {
-  "regex": "files/(?<id>[\\d\\w-]+)/PEAnatomist-([\\d.]+).zip",
-  "url": "https://web.archive.org/web/20420121101836/https://rammerlabs.alidml.ru/index-eng.html"
- },
- "description": "PE Anatomist. Shows almost all known data structures inside PE, OBJ or LIB files and makes some analytics.",
- "hash": "5af5e48fe22e7ee6a0881543eff434365c0da6f26c1a53c3ab621370fbae6d9d",
- "homepage": "https://rammerlabs.alidml.ru/index-eng.html",
- "license": "MIT",
- "persist": "PEAnatomist.cfg",
- "pre_install": "if (!(Test-Path \"$persist_dir\\PEAnatomist.cfg\")) { Set-Content -Encoding ASCII -Path \"$dir\\PEAnatomist.cfg\" -Value $null }",
- "shortcuts": [
-  [
-   "PEAnatomist.exe",
-   "PE Anatomist"
-  ]
- ],
- "url": "https://web.archive.org/web/20420121101836/https://rammerlabs.alidml.ru/files/0000-0002-29CD-0000/PEAnatomist-0.2.zip",
- "version": "0.2"
+    "version": "0.2",
+    "description": "PE Anatomist. Shows almost all known data structures inside PE, OBJ or LIB files and makes some analytics.",
+    "homepage": "https://rammerlabs.alidml.ru/index-eng.html",
+    "license": "MIT",
+    "changelog": "https://rammerlabs.alidml.ru/changelog-eng.html",
+    "url": "https://web.archive.org/web/20420121101836/https://rammerlabs.alidml.ru/files/0000-0002-29CD-0000/PEAnatomist-0.2.zip",
+    "hash": "5af5e48fe22e7ee6a0881543eff434365c0da6f26c1a53c3ab621370fbae6d9d",
+    "pre_install": "if (!(Test-Path \"$persist_dir\\PEAnatomist.cfg\")) { Set-Content -Encoding ASCII -Path \"$dir\\PEAnatomist.cfg\" -Value $null }",
+    "persist": "PEAnatomist.cfg",
+    "shortcuts": [
+        [
+            "PEAnatomist.exe",
+            "PE Anatomist"
+        ]
+    ],
+    "checkver": {
+        "url": "https://web.archive.org/web/20420121101836/https://rammerlabs.alidml.ru/index-eng.html",
+        "regex": "files/(?<id>[\\d\\w-]+)/PEAnatomist-([\\d.]+).zip"
+    },
+    "autoupdate": {
+        "url": "https://web.archive.org/web/20420121101836/https://rammerlabs.alidml.ru/files/$matchId/PEAnatomist-$version.zip",
+        "hash": {
+            "url": "https://web.archive.org/web/20420121101836/https://rammerlabs.alidml.ru/index-eng.html",
+            "regex": "$sha256"
+        }
+    }
 }

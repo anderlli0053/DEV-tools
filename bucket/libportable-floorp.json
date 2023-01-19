@@ -1,30 +1,15 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "9390a1cce675a9a2f676ea1ad9369632bc16ed4344b1573aacf6aa0b0ac511da",
-            "url": "https://github.com/Floorp-Projects/Floorp/releases/download/v10.9.0/floorp-win64.installer.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/Floorp-Projects/Floorp/releases/download/v$version/floorp-win64.installer.exe#/dl.7z"
-            }
-        }
-    },
-    "bin": "core\\floorp.exe",
-    "checkver": {
-        "github": "https://github.com/Floorp-Projects/Floorp"
-    },
-    "depends": "lemon/libportable",
+    "version": "10.9.0",
     "description": "(libportable patched) A new privacy-preserving Firefox-based browser developedby a community of students in Japan.",
     "homepage": "https://floorp.ablaze.one/en/",
     "license": "MPL-2.0",
-    "persist": [
-        "core\\portable.ini",
-        "Profiles",
-        "Plugins"
-    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Floorp-Projects/Floorp/releases/download/v10.9.0/floorp-win64.installer.exe#/dl.7z",
+            "hash": "9390a1cce675a9a2f676ea1ad9369632bc16ed4344b1573aacf6aa0b0ac511da"
+        }
+    },
+    "depends": "lemon/libportable",
     "pre_install": [
         "if ($env:CI -eq \"true\") { Exit }",
         "Remove-Item \"$dir\\setup.exe\", \"$dir\\core\\updater.*\" -Force",
@@ -36,11 +21,26 @@
         "  ((Get-Content -path \"$dir\\core\\portable.ini\" -Raw) -replace 'Update=1','Update=0') | Set-Content -Path \"$dir\\core\\portable.ini\"",
         "}"
     ],
+    "bin": "core\\floorp.exe",
     "shortcuts": [
         [
             "core\\floorp.exe",
             "Floorp"
         ]
     ],
-    "version": "10.9.0"
+    "persist": [
+        "core\\portable.ini",
+        "Profiles",
+        "Plugins"
+    ],
+    "checkver": {
+        "github": "https://github.com/Floorp-Projects/Floorp"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Floorp-Projects/Floorp/releases/download/v$version/floorp-win64.installer.exe#/dl.7z"
+            }
+        }
+    }
 }

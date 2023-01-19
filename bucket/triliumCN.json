@@ -1,26 +1,15 @@
 {
-    "architecture": {
-        "64bit": {
-            "extract_dir": "trilium-windows-x64",
-            "hash": "9179596c9e5226a004394d30c2cfb699e09f89df10eae4af2410f65a0f835452",
-            "url": "https://github.com/Nriver/trilium-translation/releases/download/v0.58.4_20230112/trilium-cn-windows-x64.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/Nriver/trilium-translation/releases/download/v$version/trilium-cn-windows-x64.zip"
-            }
-        }
-    },
-    "checkver": {
-        "regex": "download/v(.+?)/",
-        "url": "https://api.github.com/repos/Nriver/trilium-translation/releases"
-    },
+    "version": "0.58.4_20230112",
     "description": "Build your personal knowledge base with Trilium Notes",
     "homepage": "https://github.com/zadam/trilium",
     "license": "AGPL-3.0-or-later",
-    "persist": "trilium-data",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Nriver/trilium-translation/releases/download/v0.58.4_20230112/trilium-cn-windows-x64.zip",
+            "hash": "9179596c9e5226a004394d30c2cfb699e09f89df10eae4af2410f65a0f835452",
+            "extract_dir": "trilium-windows-x64"
+        }
+    },
     "shortcuts": [
         [
             "trilium.exe",
@@ -31,5 +20,16 @@
             "TriliumPortable"
         ]
     ],
-    "version": "0.58.4_20230112"
+    "persist": "trilium-data",
+    "checkver": {
+        "url": "https://api.github.com/repos/Nriver/trilium-translation/releases",
+        "regex": "download/v(.+?)/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Nriver/trilium-translation/releases/download/v$version/trilium-cn-windows-x64.zip"
+            }
+        }
+    }
 }

@@ -1,11 +1,10 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v$version/InconsolataLGC.zip"
-    },
-    "checkver": "github",
+    "version": "2.3.1",
     "description": "Nerd Fonts patched 'InconsolataLGC' Font family. (Monospace version, Nerd Fonts Symbol/Icon will be always 1 cell wide)",
-    "hash": "d32989cb851df7ce372e706e7d1f009c272e3e5a9d22c540dc52f431f7f14978",
     "homepage": "https://github.com/ryanoasis/nerd-fonts",
+    "license": "MIT",
+    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.1/InconsolataLGC.zip",
+    "hash": "d32989cb851df7ce372e706e7d1f009c272e3e5a9d22c540dc52f431f7f14978",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -51,7 +50,6 @@
             "}"
         ]
     },
-    "license": "MIT",
     "uninstaller": {
         "script": [
             "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
@@ -66,6 +64,8 @@
             "}"
         ]
     },
-    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.1/InconsolataLGC.zip",
-    "version": "2.3.1"
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v$version/InconsolataLGC.zip"
+    }
 }

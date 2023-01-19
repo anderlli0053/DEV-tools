@@ -1,43 +1,43 @@
 {
- "architecture": {
-  "32bit": {
-   "installer": {
-    "script": [
-     "Remove-Item \"$dir\\*\" -Exclude \"app-32.7z\"",
-     "Expand-7zipArchive \"$dir\\app-32.7z\" \"$dir\"",
-     "Remove-Item \"$dir\\app-32.7z\""
-    ]
-   }
-  },
-  "64bit": {
-   "installer": {
-    "script": [
-     "Remove-Item \"$dir\\*\" -Exclude \"app-64.7z\"",
-     "Expand-7zipArchive \"$dir\\app-64.7z\" \"$dir\"",
-     "Remove-Item \"$dir\\app-64.7z\""
-    ]
-   }
-  }
- },
- "autoupdate": {
-  "url": "https://github.com/balena-io/etcher/releases/download/v$version/balenaEtcher-Portable-$version.exe#/dl.7z"
- },
- "bin": "balenaEtcher.exe",
- "changelog": "https://github.com/balena-io/etcher/blob/master/CHANGELOG.md",
- "checkver": {
-  "github": "https://github.com/balena-io/etcher"
- },
- "description": "balenaEtcher. Flash OS images to SD cards & USB drives, safely and easily.",
- "extract_dir": "$PLUGINSDIR",
- "hash": "6248e386a711bcf6afce51da93b7f3fe3b608dc03e7543eb177db0f667fc2ecd",
- "homepage": "https://www.balena.io/etcher/",
- "license": "Apache-2.0",
- "shortcuts": [
-  [
-   "balenaEtcher.exe",
-   "balenaEtcher"
-  ]
- ],
- "url": "https://github.com/balena-io/etcher/releases/download/v1.13.3/balenaEtcher-Portable-1.13.3.exe#/dl.7z",
- "version": "1.13.3"
+    "version": "1.13.3",
+    "description": "balenaEtcher. Flash OS images to SD cards & USB drives, safely and easily.",
+    "homepage": "https://www.balena.io/etcher/",
+    "license": "Apache-2.0",
+    "changelog": "https://github.com/balena-io/etcher/blob/master/CHANGELOG.md",
+    "url": "https://github.com/balena-io/etcher/releases/download/v1.13.3/balenaEtcher-Portable-1.13.3.exe#/dl.7z",
+    "hash": "6248e386a711bcf6afce51da93b7f3fe3b608dc03e7543eb177db0f667fc2ecd",
+    "extract_dir": "$PLUGINSDIR",
+    "architecture": {
+        "64bit": {
+            "installer": {
+                "script": [
+                    "Remove-Item \"$dir\\*\" -Exclude \"app-64.7z\"",
+                    "Expand-7zipArchive \"$dir\\app-64.7z\" \"$dir\"",
+                    "Remove-Item \"$dir\\app-64.7z\""
+                ]
+            }
+        },
+        "32bit": {
+            "installer": {
+                "script": [
+                    "Remove-Item \"$dir\\*\" -Exclude \"app-32.7z\"",
+                    "Expand-7zipArchive \"$dir\\app-32.7z\" \"$dir\"",
+                    "Remove-Item \"$dir\\app-32.7z\""
+                ]
+            }
+        }
+    },
+    "bin": "balenaEtcher.exe",
+    "shortcuts": [
+        [
+            "balenaEtcher.exe",
+            "balenaEtcher"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/balena-io/etcher"
+    },
+    "autoupdate": {
+        "url": "https://github.com/balena-io/etcher/releases/download/v$version/balenaEtcher-Portable-$version.exe#/dl.7z"
+    }
 }

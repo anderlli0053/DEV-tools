@@ -1,56 +1,56 @@
 {
- "autoupdate": {
-  "hash": {
-   "url": "$baseurl/MapleMono-SC-NF.sha1"
-  },
-  "url": "https://gitee.com/subframe7536/Maple/releases/download/v$version/MapleMono-SC-NF.zip"
- },
- "checkver": "github",
- "description": "\u5f00\u6e90\u5706\u89d2\u7684\u7b49\u5bbd\u548c\u63a7\u5236\u53f0\u5b57\u4f53",
- "hash": "4f209b087cc03dae97be401a65f545c1cf0d5447a1bf11c48ca443f253ba8830",
- "homepage": "https://github.com/subframe7536/Maple-font",
- "installer": {
-  "script": [
-   "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
-   "$windows1809BuildNumber = 17763",
-   "$isPerUserFontInstallationSupported = $currentBuildNumber -ge $windows1809BuildNumber",
-   "$isFontInstallationForAllUsers = $global -or !$isPerUserFontInstallationSupported",
-   "if ($isFontInstallationForAllUsers -and !(is_admin)) {",
-   "    error \"Administrator rights are required to install $app.\"",
-   "    exit 1",
-   "}",
-   "$fontInstallDir = if ($isFontInstallationForAllUsers) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
-   "$registryRoot = if ($isFontInstallationForAllUsers) { \"HKLM\" } else { \"HKCU\" }",
-   "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
-   "New-Item $fontInstallDir -ItemType Directory -ErrorAction SilentlyContinue | Out-Null",
-   "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
-   "    $value = if ($isFontInstallationForAllUsers) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
-   "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-   "    Copy-Item $_.FullName -Destination $fontInstallDir",
-   "}"
-  ]
- },
- "license": "OFL-1.1",
- "uninstaller": {
-  "script": [
-   "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
-   "$windows1809BuildNumber = 17763",
-   "$isPerUserFontInstallationSupported = $currentBuildNumber -ge $windows1809BuildNumber",
-   "$isFontInstallationForAllUsers = $global -or !$isPerUserFontInstallationSupported",
-   "if ($isFontInstallationForAllUsers -and !(is_admin)) {",
-   "    error \"Administrator rights are required to uninstall $app.\"",
-   "    exit 1",
-   "}",
-   "$fontInstallDir = if ($isFontInstallationForAllUsers) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
-   "$registryRoot = if ($isFontInstallationForAllUsers) { \"HKLM\" } else { \"HKCU\" }",
-   "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
-   "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
-   "    Remove-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Force -ErrorAction SilentlyContinue",
-   "    Remove-Item \"$fontInstallDir\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
-   "}",
-   "Write-Host \"Font family 'Sarasa Mono SC Nerd' has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta"
-  ]
- },
- "url": "https://gitee.com/subframe7536/Maple/releases/download/v6.0/MapleMono-SC-NF.zip",
- "version": "6.0"
+    "version": "6.0",
+    "description": "开源圆角的等宽和控制台字体",
+    "homepage": "https://github.com/subframe7536/Maple-font",
+    "license": "OFL-1.1",
+    "url": "https://gitee.com/subframe7536/Maple/releases/download/v6.0/MapleMono-SC-NF.zip",
+    "hash": "4f209b087cc03dae97be401a65f545c1cf0d5447a1bf11c48ca443f253ba8830",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://gitee.com/subframe7536/Maple/releases/download/v$version/MapleMono-SC-NF.zip",
+        "hash": {
+            "url": "$baseurl/MapleMono-SC-NF.sha1"
+        }
+    },
+    "installer": {
+        "script": [
+            "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
+            "$windows1809BuildNumber = 17763",
+            "$isPerUserFontInstallationSupported = $currentBuildNumber -ge $windows1809BuildNumber",
+            "$isFontInstallationForAllUsers = $global -or !$isPerUserFontInstallationSupported",
+            "if ($isFontInstallationForAllUsers -and !(is_admin)) {",
+            "    error \"Administrator rights are required to install $app.\"",
+            "    exit 1",
+            "}",
+            "$fontInstallDir = if ($isFontInstallationForAllUsers) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
+            "$registryRoot = if ($isFontInstallationForAllUsers) { \"HKLM\" } else { \"HKCU\" }",
+            "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
+            "New-Item $fontInstallDir -ItemType Directory -ErrorAction SilentlyContinue | Out-Null",
+            "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
+            "    $value = if ($isFontInstallationForAllUsers) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
+            "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
+            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "}"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
+            "$windows1809BuildNumber = 17763",
+            "$isPerUserFontInstallationSupported = $currentBuildNumber -ge $windows1809BuildNumber",
+            "$isFontInstallationForAllUsers = $global -or !$isPerUserFontInstallationSupported",
+            "if ($isFontInstallationForAllUsers -and !(is_admin)) {",
+            "    error \"Administrator rights are required to uninstall $app.\"",
+            "    exit 1",
+            "}",
+            "$fontInstallDir = if ($isFontInstallationForAllUsers) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
+            "$registryRoot = if ($isFontInstallationForAllUsers) { \"HKLM\" } else { \"HKCU\" }",
+            "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
+            "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
+            "    Remove-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Force -ErrorAction SilentlyContinue",
+            "    Remove-Item \"$fontInstallDir\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
+            "}",
+            "Write-Host \"Font family 'Sarasa Mono SC Nerd' has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta"
+        ]
+    }
 }

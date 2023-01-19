@@ -1,40 +1,19 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "6140616cd71d24d2a686b50156a33734e231cf7ab9d571e0159fcacd4be95052",
-            "url": "https://github.com/OpenVPN/easy-rsa/releases/download/v3.1.2/EasyRSA-3.1.2-win32.zip"
-        },
-        "64bit": {
-            "hash": "4235183717f77c05438669a6edb5f80d1a388ac0932a3f5d4c5b446969c12507",
-            "url": "https://github.com/OpenVPN/easy-rsa/releases/download/v3.1.2/EasyRSA-3.1.2-win64.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/OpenVPN/easy-rsa/releases/download/v$version/EasyRSA-$version-win32.zip"
-            },
-            "64bit": {
-                "url": "https://github.com/OpenVPN/easy-rsa/releases/download/v$version/EasyRSA-$version-win64.zip"
-            }
-        },
-        "extract_dir": "EasyRSA-$version"
-    },
-    "bin": [
-        [
-            "bin\\sh.exe",
-            "easyrsa",
-            "$dir\\easyrsa-wrapper.sh"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/OpenVPN/easy-rsa"
-    },
+    "version": "3.1.2",
     "description": "A CLI utility to build and manage a PKI CA",
-    "extract_dir": "EasyRSA-3.1.2",
     "homepage": "https://openvpn.net/easyrsa.html",
     "license": "GPL-2.0-only",
-    "persist": "keys",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/OpenVPN/easy-rsa/releases/download/v3.1.2/EasyRSA-3.1.2-win64.zip",
+            "hash": "4235183717f77c05438669a6edb5f80d1a388ac0932a3f5d4c5b446969c12507"
+        },
+        "32bit": {
+            "url": "https://github.com/OpenVPN/easy-rsa/releases/download/v3.1.2/EasyRSA-3.1.2-win32.zip",
+            "hash": "6140616cd71d24d2a686b50156a33734e231cf7ab9d571e0159fcacd4be95052"
+        }
+    },
+    "extract_dir": "EasyRSA-3.1.2",
     "post_install": [
         "@\"",
         "setup_path=\"$($dir -replace '\\\\', '/')\"",
@@ -47,5 +26,26 @@
         "\"@ | Out-File \"$dir\\easyrsa-wrapper.sh\" -Encoding Ascii",
         "if (!(Test-Path \"$dir\\keys\\pki\")) { easyrsa init-pki }"
     ],
-    "version": "3.1.2"
+    "bin": [
+        [
+            "bin\\sh.exe",
+            "easyrsa",
+            "$dir\\easyrsa-wrapper.sh"
+        ]
+    ],
+    "persist": "keys",
+    "checkver": {
+        "github": "https://github.com/OpenVPN/easy-rsa"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/OpenVPN/easy-rsa/releases/download/v$version/EasyRSA-$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/OpenVPN/easy-rsa/releases/download/v$version/EasyRSA-$version-win32.zip"
+            }
+        },
+        "extract_dir": "EasyRSA-$version"
+    }
 }

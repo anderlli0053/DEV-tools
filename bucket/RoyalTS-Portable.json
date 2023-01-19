@@ -1,27 +1,15 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "43cf7152a6b0063f846be5e3932315c277878dd5178f3081eff2845643147604",
-            "url": "https://download.royalapps.com/RoyalTS/RoyalTS_6.01.60116.0.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://download.royalapps.com/RoyalTS/RoyalTS_$version.zip"
-            }
-        }
-    },
-    "bin": "rtscli.exe",
-    "changelog": "https://support.royalapps.com/support/solutions/articles/17000113667-royal-ts-v6-release-notes",
-    "checkver": {
-        "regex": "RoyalTS_([\\d.]+).zip",
-        "url": "https://www.royalapps.com/ts/win/download"
-    },
+    "version": "6.01.60116.0",
     "description": "Royal TS. Comprehensive Remote Management Solution",
     "homepage": "https://www.royalapps.com/ts/win",
     "license": "Shareware",
-    "persist": "config",
+    "changelog": "https://support.royalapps.com/support/solutions/articles/17000113667-royal-ts-v6-release-notes",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.royalapps.com/RoyalTS/RoyalTS_6.01.60116.0.zip",
+            "hash": "43cf7152a6b0063f846be5e3932315c277878dd5178f3081eff2845643147604"
+        }
+    },
     "post_install": [
         "$appsetting = Get-Content -Raw \"$dir\\appsettings-sample.json\" | ConvertFrom-Json",
         "$appsetting.RoyalTS.CreateApplicationShortcut = $false",
@@ -29,11 +17,23 @@
         "ConvertTo-json $appsetting | Set-Content -Encoding ASCII -Path \"$dir\\appsettings.json\"",
         "if(Test-Path \"$env:APPDATA\\code4ward\") { warn \"Found config in $env:APPDATA\\code4ward with higher priority. Royal TS would be NOT portable.\" }"
     ],
+    "persist": "config",
+    "bin": "rtscli.exe",
     "shortcuts": [
         [
             "RoyalTS.exe",
             "Royal TS"
         ]
     ],
-    "version": "6.01.60116.0"
+    "checkver": {
+        "url": "https://www.royalapps.com/ts/win/download",
+        "regex": "RoyalTS_([\\d.]+).zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.royalapps.com/RoyalTS/RoyalTS_$version.zip"
+            }
+        }
+    }
 }

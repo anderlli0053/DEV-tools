@@ -1,41 +1,41 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "7f7737062392a2c394c04962d776db881ad04fcf53edc272f41ca758a0a35866",
-   "url": "https://download.derivative.ca/TouchDesigner.2022.31030.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://download.derivative.ca/TouchDesigner.$version.exe#/dl.7z"
-   }
-  }
- },
- "bin": [
-  "bin\\TouchDesigner.exe",
-  "bin\\TouchPlayer.exe"
- ],
- "checkver": {
-  "regex": "([\\d.]+)</span>",
-  "url": "https://derivative.ca/download/archive"
- },
- "description": "A visual development platform that equips the users with the tools they need to build interactive 3D and 2D applications.",
- "homepage": "https://derivative.ca/",
- "license": {
-  "identifier": "Freeware",
-  "url": "https://derivative.ca/terms-use"
- },
- "pre_install": "Get-ChildItem \"$dir\\TouchDesigner.*.exe\" | Rename-Item -NewName 'TouchDesigner.exe'; Expand-InnoArchive \"$dir\\TouchDesigner.exe\" \"$dir\" -Removal",
- "shortcuts": [
-  [
-   "bin\\TouchDesigner.exe",
-   "TouchDesigner"
-  ],
-  [
-   "bin\\TouchPlayer.exe",
-   "TouchPlayer"
-  ]
- ],
- "version": "2022.31030"
+    "version": "2022.31030",
+    "homepage": "https://derivative.ca/",
+    "description": "A visual development platform that equips the users with the tools they need to build interactive 3D and 2D applications.",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://derivative.ca/terms-use"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.derivative.ca/TouchDesigner.2022.31030.exe#/dl.7z",
+            "hash": "7f7737062392a2c394c04962d776db881ad04fcf53edc272f41ca758a0a35866"
+        }
+    },
+    "pre_install": "Get-ChildItem \"$dir\\TouchDesigner.*.exe\" | Rename-Item -NewName 'TouchDesigner.exe'; Expand-InnoArchive \"$dir\\TouchDesigner.exe\" \"$dir\" -Removal",
+    "bin": [
+        "bin\\TouchDesigner.exe",
+        "bin\\TouchPlayer.exe"
+    ],
+    "shortcuts": [
+        [
+            "bin\\TouchDesigner.exe",
+            "TouchDesigner"
+        ],
+        [
+            "bin\\TouchPlayer.exe",
+            "TouchPlayer"
+        ]
+    ],
+    "checkver": {
+        "url": "https://derivative.ca/download/archive",
+        "regex": "([\\d.]+)</span>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.derivative.ca/TouchDesigner.$version.exe#/dl.7z"
+            }
+        }
+    }
 }

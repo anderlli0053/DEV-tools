@@ -1,24 +1,22 @@
 {
-    "autoupdate": {
-        "url": "https://portswigger-cdn.net/burp/releases/download?product=community&version=$version&type=Jar#/burpsuite-community.jar"
-    },
-    "bin": "burpsuite-community.jar",
-    "checkver": {
-        "jsonpath": "$.ResultSet.Results..version",
-        "regex": "([\\d.]+)",
-        "url": "https://portswigger.net/burp/releases/data"
-    },
-    "description": "An application that comes with set of tools used for penetration and security testing of web applications.",
-    "hash": "a534a238f88e56730c72c2aaff2e72b1312b939d14cf38dbc1bbb034f003c162",
+    "version": "2023.1",
     "homepage": "https://portswigger.net/burp",
+    "description": "An application that comes with set of tools used for penetration and security testing of web applications.",
     "license": {
         "identifier": "Freeware",
         "url": "https://portswigger.net/legal"
     },
+    "suggest": {
+        "JDK": "java/openjdk",
+        "JRE": "java/temurin-jre"
+    },
+    "url": "https://portswigger-cdn.net/burp/releases/download?product=community&version=2023.1&type=Jar#/burpsuite-community.jar",
+    "hash": "a534a238f88e56730c72c2aaff2e72b1312b939d14cf38dbc1bbb034f003c162",
     "pre_install": [
         "$currentDir = $dir.Replace(\"$version\", 'current')",
         "Set-Content \"$dir\\burpsuite-community.cmd\" -Value \"@start javaw -jar \"\"$currentDir\\burpsuite-community.jar\"\"\" -Encoding 'utf8' -Force"
     ],
+    "bin": "burpsuite-community.jar",
     "shortcuts": [
         [
             "burpsuite-community.cmd",
@@ -27,10 +25,12 @@
             "favicon.ico"
         ]
     ],
-    "suggest": {
-        "JDK": "java/openjdk",
-        "JRE": "java/temurin-jre"
+    "checkver": {
+        "url": "https://portswigger.net/burp/releases/data",
+        "jsonpath": "$.ResultSet.Results..version",
+        "regex": "([\\d.]+)"
     },
-    "url": "https://portswigger-cdn.net/burp/releases/download?product=community&version=2023.1&type=Jar#/burpsuite-community.jar",
-    "version": "2023.1"
+    "autoupdate": {
+        "url": "https://portswigger-cdn.net/burp/releases/download?product=community&version=$version&type=Jar#/burpsuite-community.jar"
+    }
 }

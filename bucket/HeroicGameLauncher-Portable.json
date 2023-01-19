@@ -1,41 +1,41 @@
 {
- "architecture": {
-  "32bit": {
-   "installer": {
-    "script": [
-     "Remove-Item \"$dir\\*\" -Exclude \"app-32.7z\"",
-     "Expand-7zipArchive \"$dir\\app-32.7z\" \"$dir\"",
-     "Remove-Item \"$dir\\app-32.7z\""
-    ]
-   }
-  },
-  "64bit": {
-   "installer": {
-    "script": [
-     "Remove-Item \"$dir\\*\" -Exclude \"app-64.7z\"",
-     "Expand-7zipArchive \"$dir\\app-64.7z\" \"$dir\"",
-     "Remove-Item \"$dir\\app-64.7z\""
-    ]
-   }
-  }
- },
- "autoupdate": {
-  "url": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v$version/Heroic-$version-Portable.exe#/dl.7z"
- },
- "checkver": {
-  "github": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
- },
- "description": "Heroic Game Launcher. Open Source Game Launcher for Linux, Windows and MacOS (for both Native and Windows Games using Crossover). Right now it supports launching games from the Epic Games Store using Legendary, a CLI alternative to the Epic Games Launcher.",
- "extract_dir": "$PLUGINSDIR",
- "hash": "4d28266ddc976813f0ec10cb3259db7f0c1068ce9f391f1fd123da11a44fb8e2",
- "homepage": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher",
- "license": "GPLv3",
- "shortcuts": [
-  [
-   "Heroic.exe",
-   "Heroic Game Launcher"
-  ]
- ],
- "url": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.5.2/Heroic-2.5.2-Portable.exe#/dl.7z",
- "version": "2.5.2"
+    "version": "2.5.2",
+    "description": "Heroic Game Launcher. Open Source Game Launcher for Linux, Windows and MacOS (for both Native and Windows Games using Crossover). Right now it supports launching games from the Epic Games Store using Legendary, a CLI alternative to the Epic Games Launcher.",
+    "homepage": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher",
+    "license": "GPLv3",
+    "url": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.5.2/Heroic-2.5.2-Portable.exe#/dl.7z",
+    "hash": "4d28266ddc976813f0ec10cb3259db7f0c1068ce9f391f1fd123da11a44fb8e2",
+    "extract_dir": "$PLUGINSDIR",
+    "architecture": {
+        "64bit": {
+            "installer": {
+                "script": [
+                    "Remove-Item \"$dir\\*\" -Exclude \"app-64.7z\"",
+                    "Expand-7zipArchive \"$dir\\app-64.7z\" \"$dir\"",
+                    "Remove-Item \"$dir\\app-64.7z\""
+                ]
+            }
+        },
+        "32bit": {
+            "installer": {
+                "script": [
+                    "Remove-Item \"$dir\\*\" -Exclude \"app-32.7z\"",
+                    "Expand-7zipArchive \"$dir\\app-32.7z\" \"$dir\"",
+                    "Remove-Item \"$dir\\app-32.7z\""
+                ]
+            }
+        }
+    },
+    "shortcuts": [
+        [
+            "Heroic.exe",
+            "Heroic Game Launcher"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
+    },
+    "autoupdate": {
+        "url": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v$version/Heroic-$version-Portable.exe#/dl.7z"
+    }
 }

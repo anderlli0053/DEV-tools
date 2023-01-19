@@ -1,38 +1,38 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "46884e7f993dbd1af0f36287425e2b5bc1c18f37b998b02f9279de0a402b4347",
-   "url": "https://github.com/justdan96/tsMuxer/releases/download/nightly-2023-01-02-02-15-09/w32.zip"
-  },
-  "64bit": {
-   "hash": "40a3cacb7e17cd4847dc06898a3a93601a22e0aae07b4242b73b33b8ad421e4f",
-   "url": "https://github.com/justdan96/tsMuxer/releases/download/nightly-2023-01-02-02-15-09/w64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://github.com/justdan96/tsMuxer/releases/download/nightly-$matchDate-$matchTime/w32.zip"
-   },
-   "64bit": {
-    "url": "https://github.com/justdan96/tsMuxer/releases/download/nightly-$matchDate-$matchTime/w64.zip"
-   }
-  }
- },
- "bin": "tsMuxeR.exe",
- "checkver": {
-  "regex": "/releases/download/nightly-(?<date>\\d{4}-\\d{2}-\\d{2})-(?<time>\\d{2}-\\d{2}-\\d{2})/w64.zip",
-  "replace": "${date}",
-  "url": "https://api.github.com/repos/justdan96/tsMuxer/releases"
- },
- "description": "A transport stream muxer for remuxing/muxing elementary streams, EVO/VOB/MPG, MKV/MKA, MP4/MOV, TS, M2TS to TS to M2TS.",
- "homepage": "https://github.com/justdan96/tsMuxer",
- "license": "Apache-2.0",
- "shortcuts": [
-  [
-   "tsMuxerGUI.exe",
-   "tsMuxeR GUI"
-  ]
- ],
- "version": "2023-01-02"
+    "version": "2023-01-02",
+    "description": "A transport stream muxer for remuxing/muxing elementary streams, EVO/VOB/MPG, MKV/MKA, MP4/MOV, TS, M2TS to TS to M2TS.",
+    "homepage": "https://github.com/justdan96/tsMuxer",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/justdan96/tsMuxer/releases/download/nightly-2023-01-02-02-15-09/w64.zip",
+            "hash": "40a3cacb7e17cd4847dc06898a3a93601a22e0aae07b4242b73b33b8ad421e4f"
+        },
+        "32bit": {
+            "url": "https://github.com/justdan96/tsMuxer/releases/download/nightly-2023-01-02-02-15-09/w32.zip",
+            "hash": "46884e7f993dbd1af0f36287425e2b5bc1c18f37b998b02f9279de0a402b4347"
+        }
+    },
+    "bin": "tsMuxeR.exe",
+    "shortcuts": [
+        [
+            "tsMuxerGUI.exe",
+            "tsMuxeR GUI"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/justdan96/tsMuxer/releases",
+        "regex": "/releases/download/nightly-(?<date>\\d{4}-\\d{2}-\\d{2})-(?<time>\\d{2}-\\d{2}-\\d{2})/w64.zip",
+        "replace": "${date}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/justdan96/tsMuxer/releases/download/nightly-$matchDate-$matchTime/w64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/justdan96/tsMuxer/releases/download/nightly-$matchDate-$matchTime/w32.zip"
+            }
+        }
+    }
 }

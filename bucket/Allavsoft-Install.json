@@ -1,19 +1,26 @@
 {
-    "autoupdate": {
-        "url": "https://www.allavsoft.com/downloads/allavsoft.exe#/setup.exe"
-    },
-    "checkver": {
-        "script": [
-            "$dl_url = 'https://www.allavsoft.com/downloads/allavsoft.exe'",
-            "$dl = cache_path 'IPVanish' 'unknown' $dl_url",
-            "do_dl $dl_url $dl",
-            "$version = (Get-Item $dl).VersionInfo.FileVersion.Trim()",
-            "return $version"
-        ]
-    },
+    "version": "3.25.0.8302",
     "description": "Allavsoft. Download free videos from 100+ sites and convert to popular video and audio format.",
-    "hash": "379067681134fd0f1283f6e08245da707df68105c832de8e6d21be7e3c8ef747",
     "homepage": "https://www.allavsoft.com/index.html",
+    "notes": "Installs the latest version from the website. You have to update the app using the programs updater.",
+    "license": {
+        "identifier": ""
+    },
+    "url": "https://www.allavsoft.com/downloads/allavsoft.exe#/setup.exe",
+    "hash": "379067681134fd0f1283f6e08245da707df68105c832de8e6d21be7e3c8ef747",
+    "pre_download": "Assert-Administrator",
+    "pre_install": [
+        "$processname = \"videodownloader\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
     "installer": {
         "script": [
             "$programname = \"Allavsoft *\"",
@@ -30,27 +37,20 @@
             "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
         ]
     },
-    "license": {
-        "identifier": ""
-    },
-    "notes": "Installs the latest version from the website. You have to update the app using the programs updater.",
     "post_install": [
         "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
         "if (Test-Path \"$CommonDesktopPath\\Allavsoft.lnk\") {Remove-Item \"$CommonDesktopPath\\Allavsoft.lnk\" -Force}"
     ],
-    "pre_download": "Assert-Administrator",
-    "pre_install": [
-        "$processname = \"videodownloader\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "url": "https://www.allavsoft.com/downloads/allavsoft.exe#/setup.exe",
-    "version": "3.25.0.8302"
+    "checkver": {
+        "script": [
+            "$dl_url = 'https://www.allavsoft.com/downloads/allavsoft.exe'",
+            "$dl = cache_path 'IPVanish' 'unknown' $dl_url",
+            "do_dl $dl_url $dl",
+            "$version = (Get-Item $dl).VersionInfo.FileVersion.Trim()",
+            "return $version"
+        ]
+    },
+    "autoupdate": {
+        "url": "https://www.allavsoft.com/downloads/allavsoft.exe#/setup.exe"
+    }
 }

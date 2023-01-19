@@ -1,11 +1,10 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v$version/Terminus.zip"
-    },
-    "checkver": "github",
+    "version": "2.3.1",
     "description": "Nerd Fonts patched 'Terminus' Font family. (Monospace version, Nerd Fonts Symbol/Icon will be always 1 cell wide)",
-    "hash": "3a89ee018ac71678f66a5f037f720eed530a2a7ffed6456c0749a9b365df1e03",
     "homepage": "https://github.com/ryanoasis/nerd-fonts",
+    "license": "MIT",
+    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.1/Terminus.zip",
+    "hash": "3a89ee018ac71678f66a5f037f720eed530a2a7ffed6456c0749a9b365df1e03",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -51,7 +50,6 @@
             "}"
         ]
     },
-    "license": "MIT",
     "uninstaller": {
         "script": [
             "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
@@ -66,6 +64,8 @@
             "}"
         ]
     },
-    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.1/Terminus.zip",
-    "version": "2.3.1"
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v$version/Terminus.zip"
+    }
 }

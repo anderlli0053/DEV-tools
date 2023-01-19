@@ -1,31 +1,26 @@
 {
+    "homepage": "https://www.yudit.org/",
+    "license": "GPL-2.0-only",
+    "version": "3.0.8-1",
     "architecture": {
-        "32bit": {
-            "hash": "md5:44a6bebb5c4715507ceadff0e05b28b3",
-            "url": "https://www.yudit.org/download/binary/yudit-3.0.8-1.x86_64.exe"
-        },
         "64bit": {
-            "hash": "md5:44a6bebb5c4715507ceadff0e05b28b3",
-            "url": "https://www.yudit.org/download/binary/yudit-3.0.8-1.x86_64.exe"
+            "url": "https://www.yudit.org/download/binary/yudit-3.0.8-1.x86_64.exe",
+            "hash": "md5:44a6bebb5c4715507ceadff0e05b28b3"
+        },
+        "32bit": {
+            "url": "https://www.yudit.org/download/binary/yudit-3.0.8-1.x86_64.exe",
+            "hash": "md5:44a6bebb5c4715507ceadff0e05b28b3"
         }
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "find": "$md5  yudit-$version.x86_64.exe",
-                    "url": "https://www.yudit.org/download/binary/"
-                },
-                "url": "https://www.yudit.org/download/binary/yudit-$version.x86_64.exe"
-            },
-            "64bit": {
-                "hash": {
-                    "find": "$md5  yudit-$version.x86_64.exe",
-                    "url": "https://www.yudit.org/download/binary/"
-                },
-                "url": "https://www.yudit.org/download/binary/yudit-$version.x86_64.exe"
-            }
-        }
+    "installer": {
+        "args": [
+            "/silent",
+            "/dir=\"$dir\""
+        ]
+    },
+    "uninstaller": {
+        "file": "unins000.exe",
+        "args": "/silent"
     },
     "bin": [
         "yudit.exe",
@@ -33,28 +28,33 @@
         "uniconv.exe",
         "uniprint.exe"
     ],
-    "checkver": {
-        "regex": "yudit-([\\d.-]+).x86_64.exe",
-        "url": "https://www.yudit.org/download/binary/"
-    },
-    "homepage": "https://www.yudit.org/",
-    "installer": {
-        "args": [
-            "/silent",
-            "/dir=\"$dir\""
-        ]
-    },
-    "license": "GPL-2.0-only",
-    "persist": "config",
     "shortcuts": [
         [
             "yudit.exe",
             "Yudit"
         ]
     ],
-    "uninstaller": {
-        "args": "/silent",
-        "file": "unins000.exe"
+    "persist": "config",
+    "checkver": {
+        "url": "https://www.yudit.org/download/binary/",
+        "regex": "yudit-([\\d.-]+).x86_64.exe"
     },
-    "version": "3.0.8-1"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.yudit.org/download/binary/yudit-$version.x86_64.exe",
+                "hash": {
+                    "url": "https://www.yudit.org/download/binary/",
+                    "find": "$md5  yudit-$version.x86_64.exe"
+                }
+            },
+            "32bit": {
+                "url": "https://www.yudit.org/download/binary/yudit-$version.x86_64.exe",
+                "hash": {
+                    "url": "https://www.yudit.org/download/binary/",
+                    "find": "$md5  yudit-$version.x86_64.exe"
+                }
+            }
+        }
+    }
 }

@@ -1,55 +1,55 @@
 {
- "architecture": {
-  "32bit": {
-   "extract_dir": "audacity-win-3.2.3-x32",
-   "hash": "3616b2fd522f3808d8572f6a781814fe374d54939085bba3525184604e77de6d",
-   "url": "https://github.com/audacity/audacity/releases/download/Audacity-3.2.3/audacity-win-3.2.3-x32.zip"
-  },
-  "64bit": {
-   "extract_dir": "audacity-win-3.2.3-x64",
-   "hash": "7a093f98a4695172f6994f1af8e10802ac4c46279f0b765337e68f71c2632295",
-   "url": "https://github.com/audacity/audacity/releases/download/Audacity-3.2.3/audacity-win-3.2.3-x64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "extract_dir": "audacity-win-$version-x32",
-    "url": "https://github.com/audacity/audacity/releases/download/Audacity-$version/audacity-win-$version-x32.zip"
-   },
-   "64bit": {
-    "extract_dir": "audacity-win-$version-x64",
-    "url": "https://github.com/audacity/audacity/releases/download/Audacity-$version/audacity-win-$version-x64.zip"
-   }
-  },
-  "hash": {
-   "regex": "$basename.*?$sha256",
-   "url": "$baseurl/CHECKSUMS.txt"
-  }
- },
- "bin": "Audacity.exe",
- "checkver": {
-  "github": "https://github.com/audacity/audacity",
-  "regex": "Audacity-([\\d.]+)"
- },
- "description": "An easy-to-use, multi-track audio editor and recorder",
- "homepage": "https://www.audacityteam.org",
- "license": {
-  "identifier": "GPL-2.0-or-later|GPL-3.0-only|CC-BY-3.0",
-  "url": "https://github.com/audacity/audacity/blob/master/LICENSE.txt"
- },
- "persist": "Portable Settings",
- "pre_install": [
-  "if (!(Test-Path \"$persist_dir\\Portable Settings\\audacity.cfg\")) {",
-  "    ensure \"$dir\\Portable Settings\" | Out-Null",
-  "    Set-Content \"$dir\\Portable Settings\\audacity.cfg\" '[Update]', 'DefaultUpdatesChecking=0' -Encoding Ascii",
-  "}"
- ],
- "shortcuts": [
-  [
-   "Audacity.exe",
-   "Audacity"
-  ]
- ],
- "version": "3.2.3"
+    "version": "3.2.3",
+    "description": "An easy-to-use, multi-track audio editor and recorder",
+    "homepage": "https://www.audacityteam.org",
+    "license": {
+        "identifier": "GPL-2.0-or-later|GPL-3.0-only|CC-BY-3.0",
+        "url": "https://github.com/audacity/audacity/blob/master/LICENSE.txt"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/audacity/audacity/releases/download/Audacity-3.2.3/audacity-win-3.2.3-x64.zip",
+            "hash": "7a093f98a4695172f6994f1af8e10802ac4c46279f0b765337e68f71c2632295",
+            "extract_dir": "audacity-win-3.2.3-x64"
+        },
+        "32bit": {
+            "url": "https://github.com/audacity/audacity/releases/download/Audacity-3.2.3/audacity-win-3.2.3-x32.zip",
+            "hash": "3616b2fd522f3808d8572f6a781814fe374d54939085bba3525184604e77de6d",
+            "extract_dir": "audacity-win-3.2.3-x32"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\Portable Settings\\audacity.cfg\")) {",
+        "    ensure \"$dir\\Portable Settings\" | Out-Null",
+        "    Set-Content \"$dir\\Portable Settings\\audacity.cfg\" '[Update]', 'DefaultUpdatesChecking=0' -Encoding Ascii",
+        "}"
+    ],
+    "bin": "Audacity.exe",
+    "shortcuts": [
+        [
+            "Audacity.exe",
+            "Audacity"
+        ]
+    ],
+    "persist": "Portable Settings",
+    "checkver": {
+        "github": "https://github.com/audacity/audacity",
+        "regex": "Audacity-([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/audacity/audacity/releases/download/Audacity-$version/audacity-win-$version-x64.zip",
+                "extract_dir": "audacity-win-$version-x64"
+            },
+            "32bit": {
+                "url": "https://github.com/audacity/audacity/releases/download/Audacity-$version/audacity-win-$version-x32.zip",
+                "extract_dir": "audacity-win-$version-x32"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/CHECKSUMS.txt",
+            "regex": "$basename.*?$sha256"
+        }
+    }
 }

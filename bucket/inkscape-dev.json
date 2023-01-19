@@ -1,30 +1,30 @@
 {
+    "version": "1.3-dev_2023-01-13",
+    "description": "Professional vector graphics editor",
+    "homepage": "https://inkscape.org",
+    "license": "GPL-3.0-or-later",
     "architecture": {
-        "32bit": {
-            "hash": "96a3eee067c9f7a524c1902cf70cf98c30e7486bae2038236b27860c294d82b5",
-            "url": "https://gitlab.com/inkscape/inkscape/-/jobs/3540397734/artifacts/raw/build/inkscape-1.3-dev_2022-12-31_326437285-x86.7z"
-        },
         "64bit": {
-            "hash": "2888bf97295970a83ca54fda77e78849bd313ca6bdd1c3f3db9a2b652e8161e0",
-            "url": "https://gitlab.com/inkscape/inkscape/-/jobs/3597662591/artifacts/raw/build/inkscape-1.3-dev_2023-01-13_fe4297a9c-x64.7z"
+            "url": "https://gitlab.com/inkscape/inkscape/-/jobs/3597662591/artifacts/raw/build/inkscape-1.3-dev_2023-01-13_fe4297a9c-x64.7z",
+            "hash": "2888bf97295970a83ca54fda77e78849bd313ca6bdd1c3f3db9a2b652e8161e0"
+        },
+        "32bit": {
+            "url": "https://gitlab.com/inkscape/inkscape/-/jobs/3540397734/artifacts/raw/build/inkscape-1.3-dev_2022-12-31_326437285-x86.7z",
+            "hash": "96a3eee067c9f7a524c1902cf70cf98c30e7486bae2038236b27860c294d82b5"
         }
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "$matchWin32bit"
-            },
-            "64bit": {
-                "url": "$matchWin64bit"
-            }
-        }
-    },
+    "extract_dir": "inkscape",
     "bin": [
         "bin\\inkscape.com",
         "bin\\inkview.com"
     ],
+    "shortcuts": [
+        [
+            "bin\\inkscape.exe",
+            "Inkscape Dev"
+        ]
+    ],
     "checkver": {
-        "regex": "urls:\"(?<win32bit>.+inkscape-[\\d._\\-dev]+_\\w+-.+)\\s(?<win64bit>.+inkscape-(?<version>[\\d._\\-dev]+)_\\w+-.+)\"",
         "script": [
             "$urls =  @()",
             "'x32', 'x64' | ForEach-Object {",
@@ -34,17 +34,17 @@
             "    $urls += $dl",
             "}",
             "Write-Output ('urls:\"' + $urls + '\"')"
-        ]
+        ],
+        "regex": "urls:\"(?<win32bit>.+inkscape-[\\d._\\-dev]+_\\w+-.+)\\s(?<win64bit>.+inkscape-(?<version>[\\d._\\-dev]+)_\\w+-.+)\""
     },
-    "description": "Professional vector graphics editor",
-    "extract_dir": "inkscape",
-    "homepage": "https://inkscape.org",
-    "license": "GPL-3.0-or-later",
-    "shortcuts": [
-        [
-            "bin\\inkscape.exe",
-            "Inkscape Dev"
-        ]
-    ],
-    "version": "1.3-dev_2023-01-13"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "$matchWin64bit"
+            },
+            "32bit": {
+                "url": "$matchWin32bit"
+            }
+        }
+    }
 }

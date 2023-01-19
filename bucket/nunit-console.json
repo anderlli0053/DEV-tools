@@ -1,32 +1,32 @@
 {
-    "autoupdate": {
-        "hash": {
-            "regex": "$sha256.*?$basename",
-            "url": "https://chocolatey.org/packages/nunit-console-runner"
-        },
-        "url": "https://packages.chocolatey.org/nunit-console-runner.$version.nupkg"
-    },
-    "bin": "nunit3-console.exe",
-    "checkver": {
-        "regex": "\\s+([\\d.]+)</title>",
-        "url": "https://chocolatey.org/packages/nunit-console-runner"
-    },
+    "version": "3.16.2",
     "description": "NUnit Console runner for NUnit, the most popular and widely used unit testing framework for .NET",
-    "extract_dir": "tools",
-    "hash": "ddbc67fd518c57843500dd65ff0021318870ecd7e4a6dda46501d4cafe46f524",
     "homepage": "https://nunit.org/",
     "license": "MIT",
-    "post_install": "New-Item -Path \"$dir\\nunit.scoop.addins\" -ItemType File -Value '../../nunit-extension-*/current/     # find extensions installed under scoop' | Out-Null",
     "suggest": {
+        "NuGet": "nuget",
         "NUnit Extension": [
             "nunit-extension-nunit-project-loader",
             "nunit-extension-nunit-v2-driver",
             "nunit-extension-nunit-v2-result-writer",
             "nunit-extension-teamcity-event-listener",
             "nunit-extension-vs-project-loader"
-        ],
-        "NuGet": "nuget"
+        ]
     },
     "url": "https://packages.chocolatey.org/nunit-console-runner.3.16.2.nupkg",
-    "version": "3.16.2"
+    "hash": "ddbc67fd518c57843500dd65ff0021318870ecd7e4a6dda46501d4cafe46f524",
+    "extract_dir": "tools",
+    "post_install": "New-Item -Path \"$dir\\nunit.scoop.addins\" -ItemType File -Value '../../nunit-extension-*/current/     # find extensions installed under scoop' | Out-Null",
+    "bin": "nunit3-console.exe",
+    "checkver": {
+        "url": "https://chocolatey.org/packages/nunit-console-runner",
+        "regex": "\\s+([\\d.]+)</title>"
+    },
+    "autoupdate": {
+        "url": "https://packages.chocolatey.org/nunit-console-runner.$version.nupkg",
+        "hash": {
+            "url": "https://chocolatey.org/packages/nunit-console-runner",
+            "regex": "$sha256.*?$basename"
+        }
+    }
 }

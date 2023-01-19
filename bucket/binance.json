@@ -1,15 +1,29 @@
 {
+    "homepage": "https://www.binance.com/",
+    "description": "Binance's cryptocurrency exchange. Trade. Anywhere.",
+    "version": "1.43.1",
+    "license": "MIT",
     "architecture": {
         "64bit": {
+            "url": "https://ftp.binance.com/electron-desktop/windows/production/binance-setup-1.43.1.exe#/binance-setup.7z",
             "hash": "sha512:df24983c430c7782197f64da97a42a1e59c31d4cc5075b9e3f85110f235d9e6c3d962fe6961c4da4c867152ec910a81b06e7a65b2d46b5cfc7a8eee35d1c21b8",
             "installer": {
                 "script": [
                     "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
                     "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninst*\" -Force -Recurse"
                 ]
-            },
-            "url": "https://ftp.binance.com/electron-desktop/windows/production/binance-setup-1.43.1.exe#/binance-setup.7z"
+            }
         }
+    },
+    "shortcuts": [
+        [
+            "Binance.exe",
+            "Binance"
+        ]
+    ],
+    "checkver": {
+        "url": "https://ftp.binance.com/electron-desktop/windows/production/latest.yml",
+        "regex": "binance-setup-([\\d.]+).exe"
     },
     "autoupdate": {
         "architecture": {
@@ -18,22 +32,8 @@
             }
         },
         "hash": {
-            "regex": "(?sm)$version.exe.*?sha512: $base64",
-            "url": "https://ftp.binance.com/electron-desktop/windows/production/latest.yml"
+            "url": "https://ftp.binance.com/electron-desktop/windows/production/latest.yml",
+            "regex": "(?sm)$version.exe.*?sha512: $base64"
         }
-    },
-    "checkver": {
-        "regex": "binance-setup-([\\d.]+).exe",
-        "url": "https://ftp.binance.com/electron-desktop/windows/production/latest.yml"
-    },
-    "description": "Binance's cryptocurrency exchange. Trade. Anywhere.",
-    "homepage": "https://www.binance.com/",
-    "license": "MIT",
-    "shortcuts": [
-        [
-            "Binance.exe",
-            "Binance"
-        ]
-    ],
-    "version": "1.43.1"
+    }
 }

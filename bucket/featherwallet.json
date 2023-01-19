@@ -1,28 +1,17 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "a319baf0bfeefff2880e901ade30f4205f680d3992712878dacfb1934ab39cea",
-            "url": "https://featherwallet.org/files/releases/win/feather-2.2.3-win.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://featherwallet.org/files/releases/win/feather-$version-win.zip"
-            }
-        },
-        "hash": {
-            "url": "https://featherwallet.org/files/releases/hashes-$version.txt"
-        }
-    },
-    "checkver": "The latest version is <code>([\\d.]+)</code>",
+    "version": "2.2.3",
     "description": "A Monero SPV Wallet",
     "homepage": "https://featherwallet.org/",
     "license": {
         "identifier": "BSD-3-Clause",
         "url": "https://git.featherwallet.org/feather/feather/raw/branch/master/LICENSE"
     },
-    "persist": "feather_data",
+    "architecture": {
+        "64bit": {
+            "url": "https://featherwallet.org/files/releases/win/feather-2.2.3-win.zip",
+            "hash": "a319baf0bfeefff2880e901ade30f4205f680d3992712878dacfb1934ab39cea"
+        }
+    },
     "pre_install": [
         "Rename-Item \"$dir\\feather-$version.exe\" \"$dir\\feather.exe\"",
         "New-Item \"$dir\\.portable\" -Force | Out-Null",
@@ -36,5 +25,16 @@
             "Feather Wallet"
         ]
     ],
-    "version": "2.2.3"
+    "persist": "feather_data",
+    "checkver": "The latest version is <code>([\\d.]+)</code>",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://featherwallet.org/files/releases/win/feather-$version-win.zip"
+            }
+        },
+        "hash": {
+            "url": "https://featherwallet.org/files/releases/hashes-$version.txt"
+        }
+    }
 }

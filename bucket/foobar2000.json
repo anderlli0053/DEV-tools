@@ -1,15 +1,16 @@
 {
-    "autoupdate": {
-        "url": "https://www.foobar2000.org/files/foobar2000_v$version.exe#/dl.7z"
-    },
-    "bin": "foobar2000.exe",
-    "checkver": {
-        "regex": "foobar2000_v([\\d.]+)\\.",
-        "url": "https://www.foobar2000.org/download"
-    },
+    "version": "1.6.16",
     "description": "An advanced freeware audio player for the Windows platform.",
-    "hash": "9679329dbfacba707d7ea22fcdac0677f5ba98934cfbc1fcbcbcf3134371f263",
     "homepage": "https://www.foobar2000.org/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.foobar2000.org/license"
+    },
+    "suggest": {
+        "Encoders": "extras/foobar2000-encoders"
+    },
+    "url": "https://www.foobar2000.org/files/foobar2000_v1.6.16.exe#/dl.7z",
+    "hash": "9679329dbfacba707d7ea22fcdac0677f5ba98934cfbc1fcbcbcf3134371f263",
     "installer": {
         "script": [
             "Remove-Item \"$dir\\`$*\", \"$dir\\uninstall.exe\" -Force -Recurse",
@@ -20,11 +21,6 @@
             "}"
         ]
     },
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.foobar2000.org/license"
-    },
-    "persist": "profile",
     "post_install": [
         "if (!(Test-Path \"$persist_dir\\profile\\*\")) {",
         "    Get-ChildItem -Path \"$persist_dir\" -Exclude \"profile\" | Move-Item -Destination \"$persist_dir\\profile\" -Force",
@@ -38,15 +34,19 @@
         "}",
         "Get-ChildItem -Path \"$persist_dir\\profile\" -Filter \"playlists\" | Remove-Item -Force -Recurse"
     ],
+    "bin": "foobar2000.exe",
     "shortcuts": [
         [
             "foobar2000.exe",
             "Foobar2000"
         ]
     ],
-    "suggest": {
-        "Encoders": "extras/foobar2000-encoders"
+    "persist": "profile",
+    "checkver": {
+        "url": "https://www.foobar2000.org/download",
+        "regex": "foobar2000_v([\\d.]+)\\."
     },
-    "url": "https://www.foobar2000.org/files/foobar2000_v1.6.16.exe#/dl.7z",
-    "version": "1.6.16"
+    "autoupdate": {
+        "url": "https://www.foobar2000.org/files/foobar2000_v$version.exe#/dl.7z"
+    }
 }

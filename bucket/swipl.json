@@ -1,44 +1,44 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "50e63e1cece1e006994e640f13f68f00448c0194532990ad549676c6edc4c4d6",
-   "url": "https://www.swi-prolog.org/download/stable/bin/swipl-9.0.3-1.x86.exe#/dl.7z"
-  },
-  "64bit": {
-   "hash": "caf7c68d5095845a8a310b3297721abf6465bc599a814efcfe831535ea546e29",
-   "url": "https://www.swi-prolog.org/download/stable/bin/swipl-9.0.3-1.x64.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://www.swi-prolog.org/download/stable/bin/swipl-$version.x86.exe#/dl.7z"
-   },
-   "64bit": {
-    "url": "https://www.swi-prolog.org/download/stable/bin/swipl-$version.x64.exe#/dl.7z"
-   }
-  },
-  "hash": {
-   "regex": "(?sm)$basename.*?$sha256",
-   "url": "https://www.swi-prolog.org/download/stable"
-  }
- },
- "bin": [
-  "bin\\swipl.exe",
-  "bin\\swipl-ld.exe"
- ],
- "checkver": {
-  "regex": "swipl-([\\d.-]+)\\.x64\\.exe",
-  "url": "https://www.swi-prolog.org/download/stable"
- },
- "description": "Comprehensive free Prolog environment.",
- "homepage": "https://www.swi-prolog.org/",
- "license": "MIT",
- "shortcuts": [
-  [
-   "bin\\swipl-win.exe",
-   "SWI-Prolog"
-  ]
- ],
- "version": "9.0.3-1"
+    "version": "9.0.3-1",
+    "description": "Comprehensive free Prolog environment.",
+    "homepage": "https://www.swi-prolog.org/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.swi-prolog.org/download/stable/bin/swipl-9.0.3-1.x64.exe#/dl.7z",
+            "hash": "caf7c68d5095845a8a310b3297721abf6465bc599a814efcfe831535ea546e29"
+        },
+        "32bit": {
+            "url": "https://www.swi-prolog.org/download/stable/bin/swipl-9.0.3-1.x86.exe#/dl.7z",
+            "hash": "50e63e1cece1e006994e640f13f68f00448c0194532990ad549676c6edc4c4d6"
+        }
+    },
+    "bin": [
+        "bin\\swipl.exe",
+        "bin\\swipl-ld.exe"
+    ],
+    "shortcuts": [
+        [
+            "bin\\swipl-win.exe",
+            "SWI-Prolog"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.swi-prolog.org/download/stable",
+        "regex": "swipl-([\\d.-]+)\\.x64\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.swi-prolog.org/download/stable/bin/swipl-$version.x64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://www.swi-prolog.org/download/stable/bin/swipl-$version.x86.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "https://www.swi-prolog.org/download/stable",
+            "regex": "(?sm)$basename.*?$sha256"
+        }
+    }
 }

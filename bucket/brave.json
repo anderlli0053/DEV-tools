@@ -1,25 +1,19 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "54841d98f6c38f78449b1f7cadc9d27fb0cdc414b9a83d14dbefeed46691c3ad",
-            "url": "https://github.com/brave/brave-browser/releases/download/v1.47.171/brave-v1.47.171-win32-ia32.zip"
-        },
-        "64bit": {
-            "hash": "1299ce02cf5e3bba3b020d40158f06ad8a7f4b961816ecf1ac36afa5278444a9",
-            "url": "https://github.com/brave/brave-browser/releases/download/v1.47.171/brave-v1.47.171-win32-x64.zip"
-        }
+    "version": "1.47.171",
+    "description": "Secure, Fast & Private Web Browser with Adblocker",
+    "homepage": "https://brave.com",
+    "license": {
+        "identifier": "Freeware,BSD-3-Clause,GPL-3.0-only,...",
+        "url": "https://github.com/brave/brave-browser/blob/master/LICENSE"
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-ia32.zip"
-            },
-            "64bit": {
-                "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-x64.zip"
-            }
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.47.171/brave-v1.47.171-win32-x64.zip",
+            "hash": "1299ce02cf5e3bba3b020d40158f06ad8a7f4b961816ecf1ac36afa5278444a9"
         },
-        "hash": {
-            "url": "$url.sha256"
+        "32bit": {
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.47.171/brave-v1.47.171-win32-ia32.zip",
+            "hash": "54841d98f6c38f78449b1f7cadc9d27fb0cdc414b9a83d14dbefeed46691c3ad"
         }
     },
     "bin": [
@@ -29,17 +23,13 @@
             "--user-data-dir=\"$dir\\User Data\""
         ]
     ],
-    "checkver": {
-        "regex": "([\\d.]+)",
-        "url": "https://brave-browser-downloads.s3.brave.com/latest/release.version"
-    },
-    "description": "Secure, Fast & Private Web Browser with Adblocker",
-    "homepage": "https://brave.com",
-    "license": {
-        "identifier": "Freeware,BSD-3-Clause,GPL-3.0-only,...",
-        "url": "https://github.com/brave/brave-browser/blob/master/LICENSE"
-    },
-    "persist": "User Data",
+    "shortcuts": [
+        [
+            "brave.exe",
+            "Brave",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
     "post_install": [
         "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$persist_dir\\data\")) {",
         "    info '[Portable Mode]: Copying user data from portapps data directory . . .'",
@@ -50,12 +40,22 @@
         "    Copy-Item \"$env:LocalAppData\\BraveSoftware\\Brave-Browser\\User Data\\*\" \"$dir\\User Data\" -Recurse",
         "}"
     ],
-    "shortcuts": [
-        [
-            "brave.exe",
-            "Brave",
-            "--user-data-dir=\"$dir\\User Data\""
-        ]
-    ],
-    "version": "1.47.171"
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://brave-browser-downloads.s3.brave.com/latest/release.version",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-ia32.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
 }

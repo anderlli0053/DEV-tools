@@ -1,11 +1,10 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v$version/ProggyClean.zip"
-    },
-    "checkver": "github",
+    "version": "2.3.1",
     "description": "Nerd Fonts patched 'ProggyClean' Font family. (Normal version, Nerd Fonts Symbol/Icon could be 1 or 2 cell wide)",
-    "hash": "8192edd15f2bf94ccec1db6e29c63a82d7e73d2b9caaa6d7363d6c18db17d318",
     "homepage": "https://github.com/ryanoasis/nerd-fonts",
+    "license": "MIT",
+    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.1/ProggyClean.zip",
+    "hash": "8192edd15f2bf94ccec1db6e29c63a82d7e73d2b9caaa6d7363d6c18db17d318",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -51,7 +50,6 @@
             "}"
         ]
     },
-    "license": "MIT",
     "uninstaller": {
         "script": [
             "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
@@ -66,6 +64,8 @@
             "}"
         ]
     },
-    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.1/ProggyClean.zip",
-    "version": "2.3.1"
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v$version/ProggyClean.zip"
+    }
 }

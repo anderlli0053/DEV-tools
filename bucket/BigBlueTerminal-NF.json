@@ -1,11 +1,10 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v$version/BigBlueTerminal.zip"
-    },
-    "checkver": "github",
+    "version": "2.3.1",
     "description": "Nerd Fonts patched 'BigBlueTerminal' Font family. (Normal version, Nerd Fonts Symbol/Icon could be 1 or 2 cell wide)",
-    "hash": "fa9883d49624bbc45dcb15233a1a1d9945ed778e3a91d29837a68a35b211178c",
     "homepage": "https://github.com/ryanoasis/nerd-fonts",
+    "license": "MIT",
+    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.1/BigBlueTerminal.zip",
+    "hash": "fa9883d49624bbc45dcb15233a1a1d9945ed778e3a91d29837a68a35b211178c",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -51,7 +50,6 @@
             "}"
         ]
     },
-    "license": "MIT",
     "uninstaller": {
         "script": [
             "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
@@ -66,6 +64,8 @@
             "}"
         ]
     },
-    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.1/BigBlueTerminal.zip",
-    "version": "2.3.1"
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v$version/BigBlueTerminal.zip"
+    }
 }

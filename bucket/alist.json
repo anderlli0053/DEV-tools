@@ -1,25 +1,16 @@
 {
+    "version": "3.9.1",
+    "description": "A file list program that supports multiple storage, powered by Gin and Solidjs.",
+    "homepage": "https://alist.nn.ci",
+    "license": "AGPL-3.0-or-later",
     "architecture": {
-        "32bit": {
-            "hash": "md5:508e2475b51485011093b4cfa7c41b36",
-            "url": "https://github.com/alist-org/alist/releases/download/v3.9.1/alist-windows-386.zip"
-        },
         "64bit": {
-            "hash": "md5:8c912111f2bfa407f9d1a06cf1479d8e",
-            "url": "https://github.com/alist-org/alist/releases/download/v3.9.1/alist-windows-amd64.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/alist-org/alist/releases/download/v$version/alist-windows-386.zip"
-            },
-            "64bit": {
-                "url": "https://github.com/alist-org/alist/releases/download/v$version/alist-windows-amd64.zip"
-            }
+            "url": "https://github.com/alist-org/alist/releases/download/v3.9.1/alist-windows-amd64.zip",
+            "hash": "md5:8c912111f2bfa407f9d1a06cf1479d8e"
         },
-        "hash": {
-            "url": "$baseurl/md5.txt"
+        "32bit": {
+            "url": "https://github.com/alist-org/alist/releases/download/v3.9.1/alist-windows-386.zip",
+            "hash": "md5:508e2475b51485011093b4cfa7c41b36"
         }
     },
     "bin": [
@@ -29,15 +20,24 @@
             "--force-bin-dir"
         ]
     ],
-    "checkver": {
-        "github": "https://github.com/alist-org/alist"
-    },
-    "description": "A file list program that supports multiple storage, powered by Gin and Solidjs.",
-    "homepage": "https://alist.nn.ci",
-    "license": "AGPL-3.0-or-later",
     "persist": [
         "data",
         "log"
     ],
-    "version": "3.9.1"
+    "checkver": {
+        "github": "https://github.com/alist-org/alist"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/alist-org/alist/releases/download/v$version/alist-windows-amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/alist-org/alist/releases/download/v$version/alist-windows-386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/md5.txt"
+        }
+    }
 }

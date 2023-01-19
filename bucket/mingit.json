@@ -1,37 +1,6 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "e36dc71d97359f584d25efbdabb4122fb71514bcba5a99df1b82a83cee9472e3",
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.39.1.windows.1/MinGit-2.39.1-32-bit.zip"
-        },
-        "64bit": {
-            "hash": "000649846ec6e28e8f76d4a0d02f02b3dd1ba19914385f7dead1c5cde25b3bad",
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.39.1.windows.1/MinGit-2.39.1-64-bit.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchFull-32-bit.zip"
-            },
-            "64bit": {
-                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchFull-64-bit.zip"
-            }
-        },
-        "hash": {
-            "regex": "<td>$basename</td>\\s*<td>$sha256</td>",
-            "url": "https://github.com/git-for-windows/git/releases/tag/v$version"
-        }
-    },
-    "bin": "cmd\\git.exe",
-    "checkver": {
-        "github": "https://github.com/git-for-windows/git",
-        "regex": "v([\\w.]+)/MinGit-(?<full>[\\w.]+)-64-bit"
-    },
+    "version": "2.39.1.windows.1",
     "description": "Minimal Git for Windows (MinGit) is a reduced sized package designed to support application integration (like integrated development environments, graph visualizers, etc.) where full console support (colorization, pagniation, etc.) is not needed.",
-    "env_set": {
-        "GIT_INSTALL_ROOT": "$dir"
-    },
     "homepage": "https://git-for-windows.github.io/",
     "license": "GPL-2.0-only",
     "notes": [
@@ -42,5 +11,36 @@
         "",
         "and then restart powershell."
     ],
-    "version": "2.39.1.windows.1"
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.39.1.windows.1/MinGit-2.39.1-64-bit.zip",
+            "hash": "000649846ec6e28e8f76d4a0d02f02b3dd1ba19914385f7dead1c5cde25b3bad"
+        },
+        "32bit": {
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.39.1.windows.1/MinGit-2.39.1-32-bit.zip",
+            "hash": "e36dc71d97359f584d25efbdabb4122fb71514bcba5a99df1b82a83cee9472e3"
+        }
+    },
+    "bin": "cmd\\git.exe",
+    "env_set": {
+        "GIT_INSTALL_ROOT": "$dir"
+    },
+    "checkver": {
+        "github": "https://github.com/git-for-windows/git",
+        "regex": "v([\\w.]+)/MinGit-(?<full>[\\w.]+)-64-bit"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchFull-64-bit.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/git-for-windows/git/releases/download/v$version/MinGit-$matchFull-32-bit.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/git-for-windows/git/releases/tag/v$version",
+            "regex": "<td>$basename</td>\\s*<td>$sha256</td>"
+        }
+    }
 }

@@ -1,9 +1,23 @@
 {
+    "description": "Official production-ready open-source builds of OpenJDK 20",
+    "homepage": "https://jdk.java.net/20",
+    "version": "20-32-ea",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "hash": "d3262d55f68f9b39161904f92008266aa3590d775dcd8fadf78291bd21be3b70",
-            "url": "https://download.java.net/java/early_access/jdk20/32/GPL/openjdk-20-ea+32_windows-x64_bin.zip"
+            "url": "https://download.java.net/java/early_access/jdk20/32/GPL/openjdk-20-ea+32_windows-x64_bin.zip",
+            "hash": "d3262d55f68f9b39161904f92008266aa3590d775dcd8fadf78291bd21be3b70"
         }
+    },
+    "extract_dir": "jdk-20",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://jdk.java.net/20",
+        "re": "/(?<type>early_access|GA)/(?<path>jdk(?<major>[\\d.]+)(?:.*)?/(?<build>[\\d]+)(?:/GPL|/binaries)?)/(?<file>openjdk-(?<version>[\\d.]+)(?<ea>-ea)?(?:\\+[\\d]+)?_windows-x64_bin.(zip|tar.gz))",
+        "replace": "${version}-${build}${ea}"
     },
     "autoupdate": {
         "architecture": {
@@ -11,23 +25,9 @@
                 "url": "https://download.java.net/java/$matchType/$matchPath/$matchFile"
             }
         },
-        "extract_dir": "jdk-$matchVersion",
         "hash": {
             "url": "$url.sha256"
-        }
-    },
-    "checkver": {
-        "re": "/(?<type>early_access|GA)/(?<path>jdk(?<major>[\\d.]+)(?:.*)?/(?<build>[\\d]+)(?:/GPL|/binaries)?)/(?<file>openjdk-(?<version>[\\d.]+)(?<ea>-ea)?(?:\\+[\\d]+)?_windows-x64_bin.(zip|tar.gz))",
-        "replace": "${version}-${build}${ea}",
-        "url": "https://jdk.java.net/20"
-    },
-    "description": "Official production-ready open-source builds of OpenJDK 20",
-    "env_add_path": "bin",
-    "env_set": {
-        "JAVA_HOME": "$dir"
-    },
-    "extract_dir": "jdk-20",
-    "homepage": "https://jdk.java.net/20",
-    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
-    "version": "20-32-ea"
+        },
+        "extract_dir": "jdk-$matchVersion"
+    }
 }

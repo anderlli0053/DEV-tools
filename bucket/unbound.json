@@ -1,27 +1,35 @@
 {
+    "version": "1.17.1",
+    "description": "A validating, recursive, caching DNS resolver",
+    "homepage": "https://nlnetlabs.nl/projects/unbound/about/",
+    "license": "BSD-3-Clause",
+    "suggest": {
+        "openssl": [
+            "openssl",
+            "openssl-mingw",
+            "versions/openssl10",
+            "versions/openssl-light",
+            "versions/openssl10-light"
+        ],
+        "wget": "wget"
+    },
     "architecture": {
-        "32bit": {
-            "hash": "4a5a6027617fcab39625d03001f9f6d284636d6067a072bc9ca6716e19ac5d89",
-            "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_1.17.1-w32.exe#/dl.7z"
-        },
         "64bit": {
-            "hash": "e6b86efe52364e0f55d81f2ffb22d078f50a938ad05208a0259776e362a364a4",
-            "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_1.17.1.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_$version-w32.exe#/dl.7z"
-            },
-            "64bit": {
-                "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_$version.exe#/dl.7z"
-            }
+            "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_1.17.1.exe#/dl.7z",
+            "hash": "e6b86efe52364e0f55d81f2ffb22d078f50a938ad05208a0259776e362a364a4"
         },
-        "hash": {
-            "url": "$url.sha256"
+        "32bit": {
+            "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_1.17.1-w32.exe#/dl.7z",
+            "hash": "4a5a6027617fcab39625d03001f9f6d284636d6067a072bc9ca6716e19ac5d89"
         }
     },
+    "pre_install": [
+        "$content = Get-Content \"$dir\\unbound-control-setup.cmd\"",
+        "$content = $content -replace 'C:\\\\Program Files( \\(x86\\))?', (Convert-Path \"$dir\\..\")",
+        "$content = $content -replace '%prefix%\\\\Unbound', '%prefix%\\current'",
+        "Set-Content \"$dir\\unbound-control-setup.cmd\" $content -Encoding Ascii",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst.exe\" -Recurse"
+    ],
     "bin": [
         [
             "unbound.exe",
@@ -46,33 +54,25 @@
         "unbound-control-setup.cmd",
         "unbound-host.exe"
     ],
-    "checkver": {
-        "regex": "Unbound ([\\d.]+) \\(Current version\\)",
-        "url": "https://nlnetlabs.nl/projects/unbound/download/"
-    },
-    "description": "A validating, recursive, caching DNS resolver",
-    "homepage": "https://nlnetlabs.nl/projects/unbound/about/",
-    "license": "BSD-3-Clause",
     "persist": [
         "service.conf",
         "root.key"
     ],
-    "pre_install": [
-        "$content = Get-Content \"$dir\\unbound-control-setup.cmd\"",
-        "$content = $content -replace 'C:\\\\Program Files( \\(x86\\))?', (Convert-Path \"$dir\\..\")",
-        "$content = $content -replace '%prefix%\\\\Unbound', '%prefix%\\current'",
-        "Set-Content \"$dir\\unbound-control-setup.cmd\" $content -Encoding Ascii",
-        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst.exe\" -Recurse"
-    ],
-    "suggest": {
-        "openssl": [
-            "openssl",
-            "openssl-mingw",
-            "versions/openssl10",
-            "versions/openssl-light",
-            "versions/openssl10-light"
-        ],
-        "wget": "wget"
+    "checkver": {
+        "url": "https://nlnetlabs.nl/projects/unbound/download/",
+        "regex": "Unbound ([\\d.]+) \\(Current version\\)"
     },
-    "version": "1.17.1"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_$version.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://nlnetlabs.nl/downloads/unbound/unbound_setup_$version-w32.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
 }

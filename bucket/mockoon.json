@@ -1,13 +1,27 @@
 {
+    "version": "1.22.0",
+    "description": "Easiest and quickest way to run mock APIs locally.",
+    "homepage": "https://mockoon.com",
+    "license": "Apache-2.0",
     "architecture": {
         "64bit": {
+            "url": "https://github.com/mockoon/mockoon/releases/download/v1.22.0/mockoon.setup.1.22.0.exe#/dl.7z",
             "hash": "6cc393f212c363481aaea98b90297faced70cf122c86443220bb2aa195e3ddda",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
                 "Remove-Item \"$dir\\`$*\" -Recurse"
-            ],
-            "url": "https://github.com/mockoon/mockoon/releases/download/v1.22.0/mockoon.setup.1.22.0.exe#/dl.7z"
+            ]
         }
+    },
+    "bin": "Mockoon.exe",
+    "shortcuts": [
+        [
+            "Mockoon.exe",
+            "Mockoon"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/mockoon/mockoon"
     },
     "autoupdate": {
         "architecture": {
@@ -15,19 +29,5 @@
                 "url": "https://github.com/mockoon/mockoon/releases/download/v$version/mockoon.setup.$version.exe#/dl.7z"
             }
         }
-    },
-    "bin": "Mockoon.exe",
-    "checkver": {
-        "github": "https://github.com/mockoon/mockoon"
-    },
-    "description": "Easiest and quickest way to run mock APIs locally.",
-    "homepage": "https://mockoon.com",
-    "license": "Apache-2.0",
-    "shortcuts": [
-        [
-            "Mockoon.exe",
-            "Mockoon"
-        ]
-    ],
-    "version": "1.22.0"
+    }
 }

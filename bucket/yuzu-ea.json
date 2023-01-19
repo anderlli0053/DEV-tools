@@ -1,17 +1,18 @@
 {
+    "version": "EA3316",
+    "description": "Early Access channel of yuzu, an experimental emulator for the Nintendo Switch.",
+    "homepage": "https://yuzu-emu.org/",
+    "license": {
+        "identifier": "GPL-2.0",
+        "url": "https://github.com/yuzu-emu/yuzu-mainline/blob/master/license.txt"
+    },
     "architecture": {
         "64bit": {
-            "hash": "1f7fe84baa67c14a270043c5ba9498a8751816df9130f099f45658e5ebde2b27",
-            "url": "https://github.com/Kryptuq/Yuzu-Early-Access-files/releases/download/EA3312/yuzu-early-access-EA3312.zip"
+            "url": "https://github.com/Kryptuq/Yuzu-Early-Access-files/releases/download/EA3316/yuzu-early-access-EA3316.zip",
+            "hash": "c0b340afb7158e3719c29a505ec1c6fa5112d7f114b672af35f8f7235170e02e"
         }
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/Kryptuq/Yuzu-Early-Access-files/releases/download/$version/yuzu-early-access-$version.zip"
-            }
-        }
-    },
+    "extract_dir": "yuzu-early-access",
     "bin": [
         [
             "yuzu.exe",
@@ -22,27 +23,26 @@
             "yuzu-cmd-ea"
         ]
     ],
-    "checkver": {
-        "regex": "/releases/tag/([^/]+?)\"",
-        "url": "https://github.com/Kryptuq/Yuzu-Early-Access-files/releases/latest"
-    },
-    "description": "Early Access channel of yuzu, an experimental emulator for the Nintendo Switch.",
-    "extract_dir": "yuzu-early-access",
-    "homepage": "https://yuzu-emu.org/",
-    "license": {
-        "identifier": "GPL-2.0",
-        "url": "https://github.com/yuzu-emu/yuzu-mainline/blob/master/license.txt"
-    },
-    "notes": "Data directory is $dir\\user\\",
-    "persist": [
-        "user",
-        "plugins"
-    ],
     "shortcuts": [
         [
             "yuzu.exe",
             "yuzu Early Access"
         ]
     ],
-    "version": "EA3312"
+    "persist": [
+        "user",
+        "plugins"
+    ],
+    "notes": "Data directory is $dir\\user\\",
+    "checkver": {
+        "url": "https://github.com/Kryptuq/Yuzu-Early-Access-files/releases/latest",
+        "regex": "/releases/tag/([^/]+?)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Kryptuq/Yuzu-Early-Access-files/releases/download/$version/yuzu-early-access-$version.zip"
+            }
+        }
+    }
 }

@@ -1,47 +1,47 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "b51625c288e25c38d5cb31b3e26f7fdcb641a6cbde0bacba783f693fa55de4df",
-   "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.5.7.2901.3.exe#/dl.7z"
-  },
-  "64bit": {
-   "hash": "1edb08de64f7f873b56fb60711791fe6b348c07b12b52cc96d333ca101a4ea7d",
-   "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.5.7.2901.3.x64.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.$version.exe#/dl.7z"
-   },
-   "64bit": {
-    "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.$version.x64.exe#/dl.7z"
-   }
-  }
- },
- "changelog": "https://vivaldi.com/blog/desktop/snapshots/",
- "checkver": {
-  "regex": "snapshot/Vivaldi.([\\d.]+).x64.exe",
-  "url": "https://vivaldi.com/blog/feed/"
- },
- "description": "Vivaldi Snapshot. An innovatively designed web browser, based on Blink, for users in Vivaldi.net community that replaced departed My Opera",
- "homepage": "https://vivaldi.com/",
- "installer": {
-  "script": [
-   "Expand-7zipArchive \"$dir\\vivaldi.7z\" \"$dir\"",
-   "Move-Item \"$dir\\Vivaldi-bin\" \"$dir\\Application\"",
-   "Remove-Item \"$dir\\vivaldi.7z\"",
-   "Remove-Item \"$dir\\Application\\update_notifier.exe\"",
-   "Write-Output \"// Vivaldi Standalone\" | Set-Content \"$dir\\Application\\stp.viv\""
-  ]
- },
- "license": "https://vivaldi.com/privacy/vivaldi-end-user-license-agreement/",
- "persist": "User Data",
- "shortcuts": [
-  [
-   "Application\\vivaldi.exe",
-   "Vivaldi Snapshot"
-  ]
- ],
- "version": "5.7.2901.3"
+    "version": "5.7.2901.3",
+    "description": "Vivaldi Snapshot. An innovatively designed web browser, based on Blink, for users in Vivaldi.net community that replaced departed My Opera",
+    "homepage": "https://vivaldi.com/",
+    "license": "https://vivaldi.com/privacy/vivaldi-end-user-license-agreement/",
+    "changelog": "https://vivaldi.com/blog/desktop/snapshots/",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.5.7.2901.3.x64.exe#/dl.7z",
+            "hash": "1edb08de64f7f873b56fb60711791fe6b348c07b12b52cc96d333ca101a4ea7d"
+        },
+        "32bit": {
+            "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.5.7.2901.3.exe#/dl.7z",
+            "hash": "b51625c288e25c38d5cb31b3e26f7fdcb641a6cbde0bacba783f693fa55de4df"
+        }
+    },
+    "installer": {
+        "script": [
+            "Expand-7zipArchive \"$dir\\vivaldi.7z\" \"$dir\"",
+            "Move-Item \"$dir\\Vivaldi-bin\" \"$dir\\Application\"",
+            "Remove-Item \"$dir\\vivaldi.7z\"",
+            "Remove-Item \"$dir\\Application\\update_notifier.exe\"",
+            "Write-Output \"// Vivaldi Standalone\" | Set-Content \"$dir\\Application\\stp.viv\""
+        ]
+    },
+    "shortcuts": [
+        [
+            "Application\\vivaldi.exe",
+            "Vivaldi Snapshot"
+        ]
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://vivaldi.com/blog/feed/",
+        "regex": "snapshot/Vivaldi.([\\d.]+).x64.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.$version.x64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://downloads.vivaldi.com/snapshot/Vivaldi.$version.exe#/dl.7z"
+            }
+        }
+    }
 }

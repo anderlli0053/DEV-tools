@@ -1,35 +1,5 @@
 {
-    "architecture": {
-        "64bit": {
-            "extract_dir": "MongoDB\\Server\\6.2",
-            "hash": "42717d66ff0dc3bac87ea01a42df4fa3582857695b6799a34bfb452558c7ff4f",
-            "url": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-6.2.0-rc6-signed.msi"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "extract_dir": "MongoDB\\Server\\$majorVersion.$minorVersion",
-                "url": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-$version-signed.msi"
-            }
-        },
-        "hash": {
-            "url": "$url.sha256"
-        }
-    },
-    "bin": [
-        "bin\\mongo.exe",
-        [
-            "bin\\mongod.exe",
-            "mongod",
-            "--config \"$dir\\bin\\mongod.cfg\""
-        ],
-        "bin\\mongos.exe"
-    ],
-    "checkver": {
-        "regex": "\"version\"\\:\\s+\"([\\d.]+(\\-rc\\d+)?)\"",
-        "url": "http://downloads.mongodb.org/current.json"
-    },
+    "version": "6.2.0-rc6",
     "description": "A document database with the scalability and flexibility.",
     "homepage": "https://www.mongodb.org",
     "license": {
@@ -45,11 +15,16 @@
         "To use a different config file, please run",
         "\"$dir\\bin\\mongod.exe --config NEW_CONFIG_FILE\""
     ],
-    "persist": [
-        "bin\\mongod.cfg",
-        "data",
-        "log"
-    ],
+    "suggest": {
+        "Visual C/C++ Redistributable": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-6.2.0-rc6-signed.msi",
+            "hash": "42717d66ff0dc3bac87ea01a42df4fa3582857695b6799a34bfb452558c7ff4f",
+            "extract_dir": "MongoDB\\Server\\6.2"
+        }
+    },
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\bin\\mongod.cfg\")) {",
         "    $cfg = Get-Content \"$dir\\bin\\mongod.cfg\"",
@@ -58,8 +33,33 @@
         "    Set-Content \"$dir\\bin\\mongod.cfg\" $cfg -Encoding Ascii -Force",
         "}"
     ],
-    "suggest": {
-        "Visual C/C++ Redistributable": "extras/vcredist2022"
+    "bin": [
+        "bin\\mongo.exe",
+        [
+            "bin\\mongod.exe",
+            "mongod",
+            "--config \"$dir\\bin\\mongod.cfg\""
+        ],
+        "bin\\mongos.exe"
+    ],
+    "persist": [
+        "bin\\mongod.cfg",
+        "data",
+        "log"
+    ],
+    "checkver": {
+        "url": "http://downloads.mongodb.org/current.json",
+        "regex": "\"version\"\\:\\s+\"([\\d.]+(\\-rc\\d+)?)\""
     },
-    "version": "6.2.0-rc6"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-$version-signed.msi",
+                "extract_dir": "MongoDB\\Server\\$majorVersion.$minorVersion"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
 }

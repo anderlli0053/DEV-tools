@@ -1,38 +1,24 @@
 {
-    "architecture": {
-        "32bit": {
-            "extract_dir": "Program Files (32-bit) Folder\\Zoom\\bin",
-            "hash": "477758fee66874c35d9c833d2357540b41d8529daa33a37b93137f8ee1e6010e",
-            "url": "https://www.zoom.us/client/5.13.5.12053/ZoomInstallerFull.msi"
-        },
-        "64bit": {
-            "extract_dir": "Program Files (64-bit) Folder\\Zoom\\bin",
-            "hash": "814b4f902d967be440b3ca99b146a3883b85e649327e4dc2855a82b1b4e96ff1",
-            "url": "https://www.zoom.us/client/5.13.5.12053/ZoomInstallerFull.msi?archType=x64"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi"
-            },
-            "64bit": {
-                "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi?archType=x64"
-            }
-        }
-    },
-    "bin": "Zoom.exe",
-    "checkver": {
-        "regex": "Current-version=([\\d.]+)",
-        "url": "https://launcher.zoom.us/upgrade?os=win"
-    },
+    "version": "5.13.5.12053",
     "description": "Zoom. Video and audio conferencing, chat, and webinars",
-    "extract_dir": "Program Files (64-bit) Folder\\Zoom\\bin",
     "homepage": "https://zoom.us",
     "license": {
         "identifier": "Proprietary",
         "url": "https://zoom.us/terms"
     },
+    "architecture": {
+        "64bit": {
+            "url": "https://www.zoom.us/client/5.13.5.12053/ZoomInstallerFull.msi?archType=x64",
+            "hash": "814b4f902d967be440b3ca99b146a3883b85e649327e4dc2855a82b1b4e96ff1",
+            "extract_dir": "Program Files (64-bit) Folder\\Zoom\\bin"
+        },
+        "32bit": {
+            "url": "https://www.zoom.us/client/5.13.5.12053/ZoomInstallerFull.msi",
+            "hash": "477758fee66874c35d9c833d2357540b41d8529daa33a37b93137f8ee1e6010e",
+            "extract_dir": "Program Files (32-bit) Folder\\Zoom\\bin"
+        }
+    },
+    "extract_dir": "Program Files (64-bit) Folder\\Zoom\\bin",
     "post_install": [
         "Write-Host \"Registering zoommtg:// protocol handler\"",
         "$regpath = \"HKCU:\\SOFTWARE\\Classes\\zoommtg\"",
@@ -40,17 +26,31 @@
         "New-ItemProperty -Path $regpath -Name \"URL Protocol\" -PropertyType String -Force | Out-Null",
         "New-Item -Path \"$regpath\\shell\\open\\command\" -Value \"`\"$dir\\Zoom.exe`\" --url=`\"%1`\"\" -Force| Out-Null"
     ],
-    "shortcuts": [
-        [
-            "Zoom.exe",
-            "Zoom"
-        ]
-    ],
     "uninstaller": {
         "script": [
             "Write-Host \"Unregistering zoommtg:// protocol handler\"",
             "Remove-Item \"HKCU:\\SOFTWARE\\Classes\\zoommtg\" -Recurse -Force"
         ]
     },
-    "version": "5.13.5.12053"
+    "bin": "Zoom.exe",
+    "shortcuts": [
+        [
+            "Zoom.exe",
+            "Zoom"
+        ]
+    ],
+    "checkver": {
+        "url": "https://launcher.zoom.us/upgrade?os=win",
+        "regex": "Current-version=([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi?archType=x64"
+            },
+            "32bit": {
+                "url": "https://www.zoom.us/client/$version/ZoomInstallerFull.msi"
+            }
+        }
+    }
 }

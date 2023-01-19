@@ -1,20 +1,13 @@
 {
+    "version": "0.1.374",
+    "description": "Collection of tools for analyzing open source packages.",
+    "homepage": "https://github.com/microsoft/OSSGadget",
+    "license": "MIT",
     "architecture": {
         "64bit": {
-            "extract_dir": "OSSGadget_win_0.1.374",
+            "url": "https://github.com/microsoft/OSSGadget/releases/download/v0.1.374/OSSGadget_win_0.1.374.zip",
             "hash": "997860990d6cafc1d96f1ef61389cac46897a8449b362606cfb712c490f7a0f7",
-            "url": "https://github.com/microsoft/OSSGadget/releases/download/v0.1.374/OSSGadget_win_0.1.374.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "extract_dir": "OSSGadget_win_$version",
-                "hash": {
-                    "url": "https://github.com/microsoft/OSSGadget/releases/download/v$version/HASHES.txt"
-                },
-                "url": "https://github.com/microsoft/OSSGadget/releases/download/v$version/OSSGadget_win_$version.zip"
-            }
+            "extract_dir": "OSSGadget_win_0.1.374"
         }
     },
     "bin": [
@@ -32,8 +25,15 @@
         "oss-risk-calculator.exe"
     ],
     "checkver": "github",
-    "description": "Collection of tools for analyzing open source packages.",
-    "homepage": "https://github.com/microsoft/OSSGadget",
-    "license": "MIT",
-    "version": "0.1.374"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/microsoft/OSSGadget/releases/download/v$version/OSSGadget_win_$version.zip",
+                "hash": {
+                    "url": "https://github.com/microsoft/OSSGadget/releases/download/v$version/HASHES.txt"
+                },
+                "extract_dir": "OSSGadget_win_$version"
+            }
+        }
+    }
 }

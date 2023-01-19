@@ -1,28 +1,28 @@
 {
-    "autoupdate": {
-        "extract_dir": "ProperTree-$matchSha",
-        "url": "https://github.com/corpnewt/ProperTree/archive/$matchSha.zip"
-    },
-    "bin": "ProperTree.bat",
-    "checkver": {
-        "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>[0-9a-f]{40})",
-        "replace": "0.${1}.${2}.${3}",
-        "url": "https://github.com/corpnewt/ProperTree/commits/master.atom"
-    },
-    "depends": "python",
+    "version": "0.2023.01.19",
     "description": "Cross platform GUI plist editor written in python.",
-    "extract_dir": "ProperTree-4edd7fbc3a43e63ba8d2fbbb2586994a15aa24e5",
-    "hash": "2be3b1c5ee99af86351300d07a490498cde57798737258b35e23bd1cd83292a3",
     "homepage": "https://github.com/corpnewt/ProperTree",
     "license": "BSD-3-Clause",
-    "persist": "Scripts\\settings.json",
-    "pre_install": "if (!(Test-Path \"$persist_dir\\Scripts\\settings.json\")) { Set-Content \"$dir\\Scripts\\settings.json\" '{}' -Encoding Ascii }",
+    "depends": "python",
+    "url": "https://github.com/corpnewt/ProperTree/archive/3f997ca67092a443f25199de6be2cb723f750f08.zip",
+    "hash": "5cfe7851218284127d04ea99c0c603383b6a105a8284473acfa6a24822b94de3",
+    "extract_dir": "ProperTree-3f997ca67092a443f25199de6be2cb723f750f08",
+    "bin": "ProperTree.bat",
     "shortcuts": [
         [
             "ProperTree.bat",
             "ProperTree"
         ]
     ],
-    "url": "https://github.com/corpnewt/ProperTree/archive/4edd7fbc3a43e63ba8d2fbbb2586994a15aa24e5.zip",
-    "version": "0.2023.01.19"
+    "pre_install": "if (!(Test-Path \"$persist_dir\\Scripts\\settings.json\")) { Set-Content \"$dir\\Scripts\\settings.json\" '{}' -Encoding Ascii }",
+    "persist": "Scripts\\settings.json",
+    "checkver": {
+        "url": "https://github.com/corpnewt/ProperTree/commits/master.atom",
+        "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>[0-9a-f]{40})",
+        "replace": "0.${1}.${2}.${3}"
+    },
+    "autoupdate": {
+        "url": "https://github.com/corpnewt/ProperTree/archive/$matchSha.zip",
+        "extract_dir": "ProperTree-$matchSha"
+    }
 }

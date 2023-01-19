@@ -1,19 +1,11 @@
 {
-    "autoupdate": {
-        "hash": {
-            "url": "$url.sha1"
-        },
-        "url": "https://repo1.maven.org/maven2/org/simplejavamail/cli-module/$version/cli-module-$version-standalone-cli.zip"
-    },
-    "bin": "bin\\sjm.bat",
-    "checkver": {
-        "jsonpath": "$.response.docs[0].latestVersion",
-        "url": "https://search.maven.org/solrsearch/select/?q=g:org.simplejavamail+AND+a:cli-module"
-    },
+    "version": "7.7.1",
     "description": "The CLI for Simple Java Mail, a mailing library with a super clean API.",
-    "hash": "sha1:8b15a67f4c2dd11707f5c3b5f79246e8125724e3",
     "homepage": "https://www.simplejavamail.org/",
     "license": "Apache-2.0",
+    "url": "https://repo1.maven.org/maven2/org/simplejavamail/cli-module/7.7.1/cli-module-7.7.1-standalone-cli.zip",
+    "hash": "sha1:8b15a67f4c2dd11707f5c3b5f79246e8125724e3",
+    "bin": "bin\\sjm.bat",
     "suggest": {
         "JDK": [
             "java/oraclejdk",
@@ -22,6 +14,14 @@
             "java/zulu"
         ]
     },
-    "url": "https://repo1.maven.org/maven2/org/simplejavamail/cli-module/7.7.1/cli-module-7.7.1-standalone-cli.zip",
-    "version": "7.7.1"
+    "checkver": {
+        "url": "https://search.maven.org/solrsearch/select/?q=g:org.simplejavamail+AND+a:cli-module",
+        "jsonpath": "$.response.docs[0].latestVersion"
+    },
+    "autoupdate": {
+        "url": "https://repo1.maven.org/maven2/org/simplejavamail/cli-module/$version/cli-module-$version-standalone-cli.zip",
+        "hash": {
+            "url": "$url.sha1"
+        }
+    }
 }

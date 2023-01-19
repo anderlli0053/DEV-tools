@@ -1,35 +1,35 @@
 {
+    "version": "2.18.7",
+    "description": "SDK for the Dart programming language",
+    "homepage": "https://dart.dev/",
+    "license": "BSD-3-Clause",
+    "extract_dir": "dart-sdk",
+    "env_add_path": "bin",
     "architecture": {
-        "32bit": {
-            "hash": "b9cbcd7a2a8ea78dc1a56afeb6208ae4d46907d9d4646742d7fe9317bb152a8d",
-            "url": "https://storage.googleapis.com/dart-archive/channels/stable/release/2.18.7/sdk/dartsdk-windows-ia32-release.zip"
-        },
         "64bit": {
-            "hash": "c8684c89357bffccb5f5ce8e44b930eb02943f0af5542e329654645b6f8e74d2",
-            "url": "https://storage.googleapis.com/dart-archive/channels/stable/release/2.18.7/sdk/dartsdk-windows-x64-release.zip"
+            "url": "https://storage.googleapis.com/dart-archive/channels/stable/release/2.18.7/sdk/dartsdk-windows-x64-release.zip",
+            "hash": "c8684c89357bffccb5f5ce8e44b930eb02943f0af5542e329654645b6f8e74d2"
+        },
+        "32bit": {
+            "url": "https://storage.googleapis.com/dart-archive/channels/stable/release/2.18.7/sdk/dartsdk-windows-ia32-release.zip",
+            "hash": "b9cbcd7a2a8ea78dc1a56afeb6208ae4d46907d9d4646742d7fe9317bb152a8d"
         }
+    },
+    "checkver": {
+        "url": "https://storage.googleapis.com/dart-archive/channels/stable/release/latest/VERSION",
+        "jsonpath": "$.version"
     },
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "https://storage.googleapis.com/dart-archive/channels/stable/release/$version/sdk/dartsdk-windows-ia32-release.zip"
-            },
             "64bit": {
                 "url": "https://storage.googleapis.com/dart-archive/channels/stable/release/$version/sdk/dartsdk-windows-x64-release.zip"
+            },
+            "32bit": {
+                "url": "https://storage.googleapis.com/dart-archive/channels/stable/release/$version/sdk/dartsdk-windows-ia32-release.zip"
             }
         },
         "hash": {
             "url": "$url.sha256sum"
         }
-    },
-    "checkver": {
-        "jsonpath": "$.version",
-        "url": "https://storage.googleapis.com/dart-archive/channels/stable/release/latest/VERSION"
-    },
-    "description": "SDK for the Dart programming language",
-    "env_add_path": "bin",
-    "extract_dir": "dart-sdk",
-    "homepage": "https://dart.dev/",
-    "license": "BSD-3-Clause",
-    "version": "2.18.7"
+    }
 }

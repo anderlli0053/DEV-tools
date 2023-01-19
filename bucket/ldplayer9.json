@@ -1,22 +1,14 @@
 {
-    "autoupdate": {
-        "url": "https://encdn.ldmnq.com/download/package/LDPlayer_$version.exe#/dl.7z"
-    },
-    "checkver": {
-        "regex": "download/package/LDPlayer_([\\d.]+?)\\.exe",
-        "url": "https://www.ldplayer.net/other/version-history-and-release-notes.html"
-    },
+    "version": "9.0.35",
     "description": "An Android emulator optimized for mobile gaming with lower resource consumption",
-    "hash": "d773c7ca94b97abc9660727ceefcdb8d98f122fe6dd08aca911fd85fe153d25f",
     "homepage": "https://www.ldplayer.net",
-    "installer": {
-        "script": "Start-Process -Wait \"$dir\\install.bat\""
-    },
     "license": "Unknown",
     "notes": "Administrator privileges are required to run repairer",
-    "persist": [
-        "ldrecord\\video",
-        "vms"
+    "url": "https://encdn.ldmnq.com/download/package/LDPlayer_9.0.35.exe#/dl.7z",
+    "hash": "d773c7ca94b97abc9660727ceefcdb8d98f122fe6dd08aca911fd85fe153d25f",
+    "pre_install": [
+        "Copy-Item \"$bucketsdir\\ownscoop\\scripts\\ldplayer9\\install.bat\" \"$dir\\\" | Out-Null",
+        "Copy-Item \"$bucketsdir\\ownscoop\\scripts\\ldplayer9\\uninstall.bat\" \"$dir\\\" | Out-Null"
     ],
     "post_install": [
         "Remove-Item \"$dir\\log\" -Force -Recurse",
@@ -27,10 +19,12 @@
         "Remove-Item \"$dir\\dnutility.dll\" -Force",
         "Remove-Item \"$dir\\zone.tab\" -Force"
     ],
-    "pre_install": [
-        "Copy-Item \"$bucketsdir\\ownscoop\\scripts\\ldplayer9\\install.bat\" \"$dir\\\" | Out-Null",
-        "Copy-Item \"$bucketsdir\\ownscoop\\scripts\\ldplayer9\\uninstall.bat\" \"$dir\\\" | Out-Null"
-    ],
+    "installer": {
+        "script": "Start-Process -Wait \"$dir\\install.bat\""
+    },
+    "uninstaller": {
+        "script": "Start-Process -Wait \"$dir\\uninstall.bat\""
+    },
     "shortcuts": [
         [
             "dnplayer.exe",
@@ -45,9 +39,15 @@
             "LDPlayer\\LDPlayer Repairer"
         ]
     ],
-    "uninstaller": {
-        "script": "Start-Process -Wait \"$dir\\uninstall.bat\""
+    "persist": [
+        "ldrecord\\video",
+        "vms"
+    ],
+    "checkver": {
+        "url": "https://www.ldplayer.net/other/version-history-and-release-notes.html",
+        "regex": "download/package/LDPlayer_([\\d.]+?)\\.exe"
     },
-    "url": "https://encdn.ldmnq.com/download/package/LDPlayer_9.0.35.exe#/dl.7z",
-    "version": "9.0.35"
+    "autoupdate": {
+        "url": "https://encdn.ldmnq.com/download/package/LDPlayer_$version.exe#/dl.7z"
+    }
 }

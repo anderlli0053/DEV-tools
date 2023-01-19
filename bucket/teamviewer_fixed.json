@@ -1,21 +1,13 @@
 {
-    "autoupdate": {
-        "url": "https://download.teamviewer.com/download/version_$majorVersionx/TeamViewerPortable.zip"
-    },
-    "bin": "teamviewer.exe",
-    "checkver": {
-        "regex": "<p>Current\\sversion:\\s([\\d.]+)</p>",
-        "url": "https://www.teamviewer.com/en-us/download/windows/",
-        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.26 Safari/537.36"
-    },
+    "version": "15.36.9",
     "description": "Remote control, desktop sharing, online meetings, web conferencing and file transfer between computers",
-    "hash": "6bfb90dc46229b4500aac3cb029f91dc69aab0c5178d5173f977a3f5c2cbf6f5",
     "homepage": "https://www.teamviewer.com",
     "license": {
         "identifier": "Shareware",
         "url": "https://www.teamviewer.com/en/eula/"
     },
-    "persist": "teamviewer.ini",
+    "url": "https://download.teamviewer.com/download/version_15x/TeamViewerPortable.zip",
+    "hash": "11d28be89ba4ae7ef85d9e8a28fe80e181507d0a99054c46e133b39e37e72797",
     "pre_uninstall": [
         "# For details, see: https://community.teamviewer.com/English/discussion/49721",
         "Stop-Process -Name 'teamviewer' -ErrorAction SilentlyContinue",
@@ -25,12 +17,20 @@
         "    Remove-Item \"$dir\\rolloutfile.tv13\" -Force",
         "}"
     ],
+    "bin": "teamviewer.exe",
     "shortcuts": [
         [
             "TeamViewer.exe",
             "TeamViewer"
         ]
     ],
-    "url": "https://download.teamviewer.com/download/version_15x/TeamViewerPortable.zip",
-    "version": "15.37.8"
+    "persist": "teamviewer.ini",
+    "checkver": {
+        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.26 Safari/537.36",
+        "url": "https://www.teamviewer.com/en-us/download/windows/",
+        "regex": "<p>Current\\sversion:\\s([\\d.]+)</p>"
+    },
+    "autoupdate": {
+        "url": "https://download.teamviewer.com/download/version_$majorVersionx/TeamViewerPortable.zip"
+    }
 }

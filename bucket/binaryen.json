@@ -1,40 +1,40 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "6cecc591bb9f6a1d5b7e28db9318b0c7f79ce6bf8eac43ba87d6241b74f2c9fd",
-   "url": "https://github.com/WebAssembly/binaryen/releases/download/version_111/binaryen-version_111-x86_64-windows.tar.gz"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "hash": {
-     "url": "$url.sha256"
+    "version": "111",
+    "description": "Compiler infrastructure and toolchain library for WebAssembly",
+    "homepage": "https://github.com/WebAssembly/binaryen",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/WebAssembly/binaryen/releases/download/version_111/binaryen-version_111-x86_64-windows.tar.gz",
+            "hash": "6cecc591bb9f6a1d5b7e28db9318b0c7f79ce6bf8eac43ba87d6241b74f2c9fd"
+        }
     },
-    "url": "https://github.com/WebAssembly/binaryen/releases/download/version_$version/binaryen-version_$version-x86_64-windows.tar.gz"
-   }
-  },
-  "extract_dir": "binaryen-version_$version"
- },
- "bin": [
-  "bin\\wasm2js.exe",
-  "bin\\wasm-as.exe",
-  "bin\\wasm-ctor-eval.exe",
-  "bin\\wasm-dis.exe",
-  "bin\\wasm-emscripten-finalize.exe",
-  "bin\\wasm-metadce.exe",
-  "bin\\wasm-opt.exe",
-  "bin\\wasm-reduce.exe",
-  "bin\\wasm-shell.exe",
-  "bin\\wasm-split.exe"
- ],
- "checkver": {
-  "github": "https://github.com/WebAssembly/binaryen",
-  "regex": "tag/version_(\\d+)"
- },
- "description": "Compiler infrastructure and toolchain library for WebAssembly",
- "extract_dir": "binaryen-version_111",
- "homepage": "https://github.com/WebAssembly/binaryen",
- "license": "Apache-2.0",
- "version": "111"
+    "extract_dir": "binaryen-version_111",
+    "bin": [
+        "bin\\wasm2js.exe",
+        "bin\\wasm-as.exe",
+        "bin\\wasm-ctor-eval.exe",
+        "bin\\wasm-dis.exe",
+        "bin\\wasm-emscripten-finalize.exe",
+        "bin\\wasm-metadce.exe",
+        "bin\\wasm-opt.exe",
+        "bin\\wasm-reduce.exe",
+        "bin\\wasm-shell.exe",
+        "bin\\wasm-split.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/WebAssembly/binaryen",
+        "regex": "tag/version_(\\d+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/WebAssembly/binaryen/releases/download/version_$version/binaryen-version_$version-x86_64-windows.tar.gz",
+                "hash": {
+                    "url": "$url.sha256"
+                }
+            }
+        },
+        "extract_dir": "binaryen-version_$version"
+    }
 }

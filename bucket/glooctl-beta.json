@@ -1,9 +1,18 @@
 {
+    "version": "1.11.49",
+    "description": "The unified CLI for Gloo, a feature-rich, Kubernetes-native, next-generation API gateway built on Envoy.",
+    "homepage": "https://docs.solo.io/gloo-edge/latest/reference/cli/glooctl/",
+    "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "hash": "dfb52874f987c6b4bfd1426b354ce7eaa00b879eac45df6c6affb585e6e19f18",
-            "url": "https://github.com/solo-io/gloo/releases/download/v1.11.49/glooctl-windows-amd64.exe#/glooctl.exe"
+            "url": "https://github.com/solo-io/gloo/releases/download/v1.11.49/glooctl-windows-amd64.exe#/glooctl.exe",
+            "hash": "dfb52874f987c6b4bfd1426b354ce7eaa00b879eac45df6c6affb585e6e19f18"
         }
+    },
+    "bin": "glooctl.exe",
+    "checkver": {
+        "url": "https://github.com/solo-io/gloo/releases/",
+        "regex": "/releases/tag/v([^/]+?)\""
     },
     "autoupdate": {
         "architecture": {
@@ -12,17 +21,8 @@
             }
         },
         "hash": {
-            "regex": "$sha256",
-            "url": "$url.sha256"
+            "url": "$url.sha256",
+            "regex": "$sha256"
         }
-    },
-    "bin": "glooctl.exe",
-    "checkver": {
-        "regex": "/releases/tag/v([^/]+?)\"",
-        "url": "https://github.com/solo-io/gloo/releases/"
-    },
-    "description": "The unified CLI for Gloo, a feature-rich, Kubernetes-native, next-generation API gateway built on Envoy.",
-    "homepage": "https://docs.solo.io/gloo-edge/latest/reference/cli/glooctl/",
-    "license": "Apache-2.0",
-    "version": "1.11.49"
+    }
 }

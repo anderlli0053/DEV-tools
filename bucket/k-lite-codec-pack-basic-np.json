@@ -1,18 +1,10 @@
 {
-    "autoupdate": {
-        "hash": {
-            "find": "([a-fA-F0-9]{64})",
-            "url": "https://codecguide.com/download_k-lite_codec_pack_basic.htm"
-        },
-        "url": "https://files3.codecguide.com/K-Lite_Codec_Pack_$cleanVersion_Basic.exe"
-    },
-    "checkver": {
-        "regex": "Version ([\\d.]+) Basic",
-        "url": "https://codecguide.com/download_k-lite_codec_pack_basic.htm"
-    },
+    "version": "17.4.0",
     "description": "Basic variant of the K-Lite Codec Pack, a collection of DirectShow filters, VFW/ACM codecs and tools.",
-    "hash": "59dc6a29978b65032698368a4302590c7ea8aca5436c4ee9f0ba6e8ca84d05e2",
     "homepage": "https://codecguide.com/about_kl.htm",
+    "license": "Freeware",
+    "url": "https://files3.codecguide.com/K-Lite_Codec_Pack_1740_Basic.exe",
+    "hash": "59dc6a29978b65032698368a4302590c7ea8aca5436c4ee9f0ba6e8ca84d05e2",
     "installer": {
         "args": [
             "/verysilent",
@@ -21,15 +13,23 @@
             "/dir=$dir"
         ]
     },
-    "license": "Freeware",
     "uninstaller": {
+        "file": "unins000.exe",
         "args": [
             "/verysilent",
             "/nocancel",
             "/norestart"
-        ],
-        "file": "unins000.exe"
+        ]
     },
-    "url": "https://files3.codecguide.com/K-Lite_Codec_Pack_1740_Basic.exe",
-    "version": "17.4.0"
+    "checkver": {
+        "url": "https://codecguide.com/download_k-lite_codec_pack_basic.htm",
+        "regex": "Version ([\\d.]+) Basic"
+    },
+    "autoupdate": {
+        "url": "https://files3.codecguide.com/K-Lite_Codec_Pack_$cleanVersion_Basic.exe",
+        "hash": {
+            "url": "https://codecguide.com/download_k-lite_codec_pack_basic.htm",
+            "find": "([a-fA-F0-9]{64})"
+        }
+    }
 }

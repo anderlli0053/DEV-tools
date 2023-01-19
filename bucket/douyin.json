@@ -1,7 +1,12 @@
 {
-    "autoupdate": {
-        "url": "https://www.douyin.com/download/pc/obj/douyin-pc-client/$matchId/releases/$matchBuild/$version/win32-ia32/douyin-v$version-win32-ia32-douyin.exe#/dl.7z"
-    },
+    "version": "1.8.0",
+    "description": "抖音是一款可在智能手机上浏览的短视频社交应用程序",
+    "homepage": "https://www.douyin.com/",
+    "license": "Proprietary",
+    "url": "https://www.douyin.com/download/pc/obj/douyin-pc-client/7044145585217083655/releases/9818478/1.8.0/win32-ia32/douyin-v1.8.0-win32-ia32-douyin.exe#/dl.7z",
+    "hash": "dfbb8a775203fa44c89b9a5c9c00d490c8b9210fdd92b406517fff2ddea0fa09",
+    "pre_install": "Expand-7zipArchive \"$dir\\app.7z\" \"$dir\"",
+    "post_install": "Remove-Item \"$dir\\app.7z\", \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst*\", \"$dir\\resources\\app-update.yml\" -Force -Recurse",
     "bin": [
         [
             "douyin.exe",
@@ -9,17 +14,6 @@
             "--user-data-dir=\"$dir\\User Data\""
         ]
     ],
-    "checkver": {
-        "regex": "/douyin-pc-client/(?<id>\\d+)/releases/(?<build>\\d+)/([\\d.]+)/win32-ia32/",
-        "url": "https://www.douyin.com/downloadpage/pc"
-    },
-    "description": "抖音是一款可在智能手机上浏览的短视频社交应用程序",
-    "hash": "dfbb8a775203fa44c89b9a5c9c00d490c8b9210fdd92b406517fff2ddea0fa09",
-    "homepage": "https://www.douyin.com/",
-    "license": "Proprietary",
-    "persist": "User Data",
-    "post_install": "Remove-Item \"$dir\\app.7z\", \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst*\", \"$dir\\resources\\app-update.yml\" -Force -Recurse",
-    "pre_install": "Expand-7zipArchive \"$dir\\app.7z\" \"$dir\"",
     "shortcuts": [
         [
             "douyin.exe",
@@ -27,6 +21,12 @@
             "--user-data-dir=\"$dir\\User Data\""
         ]
     ],
-    "url": "https://www.douyin.com/download/pc/obj/douyin-pc-client/7044145585217083655/releases/9818478/1.8.0/win32-ia32/douyin-v1.8.0-win32-ia32-douyin.exe#/dl.7z",
-    "version": "1.8.0"
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://www.douyin.com/downloadpage/pc",
+        "regex": "/douyin-pc-client/(?<id>\\d+)/releases/(?<build>\\d+)/([\\d.]+)/win32-ia32/"
+    },
+    "autoupdate": {
+        "url": "https://www.douyin.com/download/pc/obj/douyin-pc-client/$matchId/releases/$matchBuild/$version/win32-ia32/douyin-v$version-win32-ia32-douyin.exe#/dl.7z"
+    }
 }

@@ -1,41 +1,23 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "ae1db9f83faac00fdb219a1a43bfd72c66c56ce421552285bed69a7c913093ab",
-            "url": "https://github.com/Ryochan7/DS4Windows/releases/download/v3.2.7/DS4Windows_3.2.7_x86.zip"
-        },
-        "64bit": {
-            "hash": "a64f0bc170aac7a9708de9684b1caba99604980e203a4ea89aa0b6bdad06ff61",
-            "url": "https://github.com/Ryochan7/DS4Windows/releases/download/v3.2.7/DS4Windows_3.2.7_x64.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/Ryochan7/DS4Windows/releases/download/v$version/DS4Windows_$version_x86.zip"
-            },
-            "64bit": {
-                "url": "https://github.com/Ryochan7/DS4Windows/releases/download/v$version/DS4Windows_$version_x64.zip"
-            }
-        }
-    },
-    "checkver": {
-        "github": "https://github.com/Ryochan7/DS4Windows"
-    },
+    "version": "3.2.7",
     "description": "Allows to get the best experience while using a DualShock 4 on PC.",
-    "extract_dir": "DS4Windows",
     "homepage": "https://ryochan7.github.io/ds4windows-site/",
     "license": "MIT",
     "notes": "ViGEmBus is required for DS4Windows to work. You can install it within the app.",
-    "persist": [
-        "Profiles",
-        "Actions.xml",
-        "Auto Profiles.xml",
-        "ControllerConfigs.xml",
-        "LinkedProfiles.xml",
-        "OutputSlots.xml",
-        "Profiles.xml"
-    ],
+    "suggest": {
+        ".NET Core Runtime": "extras/windowsdesktop-runtime"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Ryochan7/DS4Windows/releases/download/v3.2.7/DS4Windows_3.2.7_x64.zip",
+            "hash": "a64f0bc170aac7a9708de9684b1caba99604980e203a4ea89aa0b6bdad06ff61"
+        },
+        "32bit": {
+            "url": "https://github.com/Ryochan7/DS4Windows/releases/download/v3.2.7/DS4Windows_3.2.7_x86.zip",
+            "hash": "ae1db9f83faac00fdb219a1a43bfd72c66c56ce421552285bed69a7c913093ab"
+        }
+    },
+    "extract_dir": "DS4Windows",
     "pre_install": [
         "$conf = @(",
         "    @{'Actions.xml' = @'",
@@ -71,8 +53,26 @@
             "DS4Windows"
         ]
     ],
-    "suggest": {
-        ".NET Core Runtime": "extras/windowsdesktop-runtime"
+    "persist": [
+        "Profiles",
+        "Actions.xml",
+        "Auto Profiles.xml",
+        "ControllerConfigs.xml",
+        "LinkedProfiles.xml",
+        "OutputSlots.xml",
+        "Profiles.xml"
+    ],
+    "checkver": {
+        "github": "https://github.com/Ryochan7/DS4Windows"
     },
-    "version": "3.2.7"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Ryochan7/DS4Windows/releases/download/v$version/DS4Windows_$version_x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/Ryochan7/DS4Windows/releases/download/v$version/DS4Windows_$version_x86.zip"
+            }
+        }
+    }
 }

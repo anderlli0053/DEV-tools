@@ -1,16 +1,13 @@
 {
+    "version": "1674134771",
+    "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "homepage": "https://ffmpeg.org",
+    "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "extract_dir": "ffmpeg-master-latest-win64-gpl",
+            "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip",
             "hash": "cae0f1a7cb7a9a566f4cb635b8519dbb0dc3162f85ed25a05db89498c9424eed",
-            "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip"
-            }
+            "extract_dir": "ffmpeg-master-latest-win64-gpl"
         }
     },
     "bin": [
@@ -19,11 +16,14 @@
         "bin\\ffprobe.exe"
     ],
     "checkver": {
-        "regex": "\\A(\\d+)\\Z",
-        "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repositories/292087234/releases/latest).published_at -UFormat %s } catch { '' }"
+        "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repositories/292087234/releases/latest).published_at -UFormat %s } catch { '' }",
+        "regex": "\\A(\\d+)\\Z"
     },
-    "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
-    "homepage": "https://ffmpeg.org",
-    "license": "GPL-3.0-or-later",
-    "version": "1674134771"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip"
+            }
+        }
+    }
 }

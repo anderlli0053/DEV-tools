@@ -1,29 +1,34 @@
 {
- "autoupdate": {
-  "url": "https://www.zhornsoftware.co.uk/stickies/stickies_setup_$underscoreVersion.exe#/dl.7z"
- },
- "checkver": {
-  "regex": "v([\\d.]+[a-z]*)\\s*-",
-  "url": "https://www.zhornsoftware.co.uk/stickies/versions.html"
- },
- "description": "A small and simple sticky notes utility.",
- "hash": "0d5c0825253ee4e6fce15e4d4cbb64834ca120c6fefa2392776c6bbca55ae04c",
- "homepage": "https://www.zhornsoftware.co.uk/stickies/index.html",
- "license": "Freeware",
- "persist": [
-  "stickies.db",
-  "backups"
- ],
- "pre_install": [
-  "if (!(Test-Path \"$persist_dir\\stickies.db\")) { Set-Content -Encoding ASCII -Path \"$dir\\stickies.db\" -Value $null }",
-  "if (!(Test-Path \"$persist_dir\\backups\\\")) { New-Item -Path \"$dir\\backups\\\" -ItemType Directory | Out-Null }"
- ],
- "shortcuts": [
-  [
-   "stickies.exe",
-   "Stickies"
-  ]
- ],
- "url": "https://www.zhornsoftware.co.uk/stickies/stickies_setup_10_1c.exe#/dl.7z",
- "version": "10.1c"
+    "version": "10.1c",
+    "homepage": "https://www.zhornsoftware.co.uk/stickies/index.html",
+    "description": "A small and simple utility for creating virtual sticky notes on the user's desktop.",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://infozip.sourceforge.net/license.html"
+    },
+    "url": "https://www.zhornsoftware.co.uk/stickies/stickies_setup_10_1c.exe#/setup.exe",
+    "hash": "CF5CAD37C983E62599D50025D748B9FAF2151B272646AE600C873ED4F5D922C4",
+    "pre_install": "Start-Process \"$dir\\setup.exe\" -Wait -ArgumentList '-extract' -WorkingDirectory \"$dir\"; Remove-Item \"$dir\\setup.exe\"",
+    "bin": "stickies.exe",
+    "shortcuts": [
+        [
+            "stickies.exe",
+            "Stickies"
+        ],
+        [
+            "stickies.chm",
+            "Stickies Help"
+        ],
+        [
+            "mdb2db.exe",
+            "Stickies Data Converter"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.zhornsoftware.co.uk/stickies/versions.html",
+        "regex": ">v([\\w.]+)\\s"
+    },
+    "autoupdate": {
+        "url": "https://www.zhornsoftware.co.uk/stickies/stickies_setup_$underscoreVersion.exe#/dl.exe"
+    }
 }

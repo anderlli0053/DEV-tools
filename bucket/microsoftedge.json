@@ -1,47 +1,47 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "526dac8290c66361543848abd6885fae65231ac81d3987073ababd6a83b412c4",
-            "url": "https://dorado-api.deno.dev/edge?arch=86&channel=stable&version=109.0.1518.55&dl#/MicrosoftEdge-109.0.1518.55-x86.7z"
-        },
-        "64bit": {
-            "hash": "79258dc501aad22bd895b083801189fb2254188de9c086b6b528405a5bbf698e",
-            "url": "https://dorado-api.deno.dev/edge?arch=64&channel=stable&version=109.0.1518.55&dl#/MicrosoftEdge-109.0.1518.55-x64.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "hash": {
-                    "jsonpath": "$.Hashes.Sha256",
-                    "url": "https://dorado-api.deno.dev/edge?arch=86&channel=stable&version=$version"
-                },
-                "url": "https://dorado-api.deno.dev/edge?arch=86&channel=stable&version=$version&dl#/MicrosoftEdge-$version-x86.7z"
-            },
-            "64bit": {
-                "hash": {
-                    "jsonpath": "$.Hashes.Sha256",
-                    "url": "https://dorado-api.deno.dev/edge?arch=64&channel=stable&version=$version"
-                },
-                "url": "https://dorado-api.deno.dev/edge?arch=64&channel=stable&version=$version&dl#/MicrosoftEdge-$version-x64.7z"
-            }
-        }
-    },
-    "checkver": {
-        "jsonpath": "$.Version",
-        "url": "https://dorado-api.deno.dev/edge?arch=64&channel=stable"
-    },
-    "description": "The chromium based Microsoft Edge browser",
     "homepage": "https://www.microsoft.com/en-us/edge",
+    "description": "The chromium based Microsoft Edge browser",
+    "version": "109.0.1518.55",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://dorado-api.deno.dev/edge?arch=64&channel=stable&version=109.0.1518.55&dl#/MicrosoftEdge-109.0.1518.55-x64.7z",
+            "hash": "79258dc501aad22bd895b083801189fb2254188de9c086b6b528405a5bbf698e"
+        },
+        "32bit": {
+            "url": "https://dorado-api.deno.dev/edge?arch=86&channel=stable&version=109.0.1518.55&dl#/MicrosoftEdge-109.0.1518.55-x86.7z",
+            "hash": "526dac8290c66361543848abd6885fae65231ac81d3987073ababd6a83b412c4"
+        }
+    },
     "installer": {
         "script": "Expand-7zipArchive -Path \"$dir\\MSEDGE.7z\" -ExtractDir \"Chrome-bin\\$version\" -Removal"
     },
-    "license": "Freeware",
     "shortcuts": [
         [
             "msedge.exe",
             "Microsoft Edge"
         ]
     ],
-    "version": "109.0.1518.55"
+    "checkver": {
+        "url": "https://dorado-api.deno.dev/edge?arch=64&channel=stable",
+        "jsonpath": "$.Version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dorado-api.deno.dev/edge?arch=64&channel=stable&version=$version&dl#/MicrosoftEdge-$version-x64.7z",
+                "hash": {
+                    "url": "https://dorado-api.deno.dev/edge?arch=64&channel=stable&version=$version",
+                    "jsonpath": "$.Hashes.Sha256"
+                }
+            },
+            "32bit": {
+                "url": "https://dorado-api.deno.dev/edge?arch=86&channel=stable&version=$version&dl#/MicrosoftEdge-$version-x86.7z",
+                "hash": {
+                    "url": "https://dorado-api.deno.dev/edge?arch=86&channel=stable&version=$version",
+                    "jsonpath": "$.Hashes.Sha256"
+                }
+            }
+        }
+    }
 }

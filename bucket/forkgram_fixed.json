@@ -1,20 +1,6 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/Forkgram/tdesktop/releases/download/v$version/Telegram.zip"
-    },
-    "bin": [
-        "Telegram.exe",
-        [
-            "Telegram.exe",
-            "Forkgram"
-        ],
-        "protocol-handler.ps1"
-    ],
-    "checkver": {
-        "github": "https://github.com/Forkgram/tdesktop"
-    },
+    "version": "4.5.7",
     "description": "Fork of Telegram Desktop messaging app.",
-    "hash": "13ab8a1288fee5a7530667a21c67249c0dd5a861fc60c87a10d08dbbc8b13230",
     "homepage": "http://t.me/forkgram",
     "license": {
         "identifier": "GPL-3.0-openssl-exception",
@@ -26,7 +12,8 @@
         "To unregister the 'URL:Telegram Link' protocol, run:",
         "protocol-handler.ps1 unregister"
     ],
-    "persist": "tdata",
+    "url": "https://github.com/Forkgram/tdesktop/releases/download/v4.5.7/Telegram.zip",
+    "hash": "13ab8a1288fee5a7530667a21c67249c0dd5a861fc60c87a10d08dbbc8b13230",
     "pre_install": [
         "if (Test-Path \"$persist_dir\\log.txt\") { Copy-Item \"$persist_dir\\log.txt\" \"$dir\\\" }",
         "$currentDir = $dir.Replace($version, 'current')",
@@ -34,10 +21,13 @@
         "$content = $content.Replace('REPLACE_HERE', $currentDir)",
         "Set-Content \"$dir\\protocol-handler.ps1\" $content -Force"
     ],
-    "pre_uninstall": [
-        "if (Test-Path \"$dir\\log.txt\") { Copy-Item \"$dir\\log.txt\" \"$persist_dir\\\" }",
-        "Write-Host 'Unregistering ''URL:Telegram Link'' protocol handler...'",
-        "Remove-Item 'HKCU:\\SOFTWARE\\Classes\\tg', 'HKCU:\\SOFTWARE\\Classes\\TelegramDesktop' -Force -Recurse -ErrorAction 'SilentlyContinue'; Write-Host 'Done!'"
+    "bin": [
+        "Telegram.exe",
+        [
+            "Telegram.exe",
+            "Forkgram"
+        ],
+        "protocol-handler.ps1"
     ],
     "shortcuts": [
         [
@@ -45,6 +35,16 @@
             "Forkgram"
         ]
     ],
-    "url": "https://github.com/Forkgram/tdesktop/releases/download/v4.5.7/Telegram.zip",
-    "version": "4.5.7"
+    "persist": "tdata",
+    "pre_uninstall": [
+        "if (Test-Path \"$dir\\log.txt\") { Copy-Item \"$dir\\log.txt\" \"$persist_dir\\\" }",
+        "Write-Host 'Unregistering ''URL:Telegram Link'' protocol handler...'",
+        "Remove-Item 'HKCU:\\SOFTWARE\\Classes\\tg', 'HKCU:\\SOFTWARE\\Classes\\TelegramDesktop' -Force -Recurse -ErrorAction 'SilentlyContinue'; Write-Host 'Done!'"
+    ],
+    "checkver": {
+        "github": "https://github.com/Forkgram/tdesktop"
+    },
+    "autoupdate": {
+        "url": "https://github.com/Forkgram/tdesktop/releases/download/v$version/Telegram.zip"
+    }
 }

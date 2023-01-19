@@ -1,15 +1,12 @@
 {
-    "autoupdate": {
-        "url": "https://imsreleases.blob.core.windows.net/universal/production/$version/PowerShellUniversal.$version.msi#/setup.msi_"
-    },
-    "changelog": "https://docs.powershelluniversal.com/changelog",
-    "checkver": {
-        "regex": " Universal ([\\d.]+)",
-        "url": "https://www.powershellgallery.com/packages/Universal/"
-    },
+    "version": "3.7.6",
     "description": "PowerShell Universal. Universal is a cross-platform solution for developing web-based tools with PowerShell. It currently provides three main features which include APIs, Automation and Dashboards",
-    "hash": "07cd3da457bed11a233dea396d98e6216e4aeae8ba0ad2e66707ba1baecd2900",
     "homepage": "https://docs.powershelluniversal.com/",
+    "license": "Proprietary",
+    "changelog": "https://docs.powershelluniversal.com/changelog",
+    "url": "https://imsreleases.blob.core.windows.net/universal/production/3.7.6/PowerShellUniversal.3.7.6.msi#/setup.msi_",
+    "hash": "07cd3da457bed11a233dea396d98e6216e4aeae8ba0ad2e66707ba1baecd2900",
+    "pre_download": "Assert-Administrator",
     "installer": {
         "script": [
             "$programname = \"PowerShell Universal*\"",
@@ -26,8 +23,11 @@
             "Remove-Item \"$dir\\setup.msi_\" -Force"
         ]
     },
-    "license": "Proprietary",
-    "pre_download": "Assert-Administrator",
-    "url": "https://imsreleases.blob.core.windows.net/universal/production/3.7.6/PowerShellUniversal.3.7.6.msi#/setup.msi_",
-    "version": "3.7.6"
+    "checkver": {
+        "url": "https://www.powershellgallery.com/packages/Universal/",
+        "regex": " Universal ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://imsreleases.blob.core.windows.net/universal/production/$version/PowerShellUniversal.$version.msi#/setup.msi_"
+    }
 }

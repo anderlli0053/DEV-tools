@@ -1,32 +1,32 @@
 {
- "architecture": {
-  "32bit": {
-   "extract_dir": "resizer-pro-portable\\x32"
-  },
-  "64bit": {
-   "extract_dir": "resizer-pro-portable\\x64"
-  }
- },
- "autoupdate": {
-  "url": "https://download.resize-c.com/resizer-pro-portable.zip"
- },
- "checkver": {
-  "regex": "What's New: Partition Resizer has been upgraded to new version v([\\d.]+)",
-  "url": "https://www.resize-c.com/"
- },
- "description": "IM-Magic Partition Resizer. Resize Disk Volume without losing data -Redistribute disk space - Pro Edition",
- "hash": "e090c6693dc1cf9133e9135d8a8655b57bfaf8497e55d98edca553d14285833b",
- "homepage": "https://www.resize-c.com/",
- "license": "Proprietary",
- "persist": "impr.lkeys",
- "post_install": "Remove-Item -Path $dir\\resizer-pro-portable",
- "pre_install": "if (!(Test-Path \"$persist_dir\\impr.lkeys\")) { New-Item \"$dir\\impr.lkeys\" | Out-Null }",
- "shortcuts": [
-  [
-   "dm.resizer.exe",
-   "IM Magic Partition Resizer Pro"
-  ]
- ],
- "url": "https://download.resize-c.com/resizer-pro-portable.zip",
- "version": "6.2"
+    "version": "6.2",
+    "description": "IM-Magic Partition Resizer. Resize Disk Volume without losing data -Redistribute disk space - Pro Edition",
+    "homepage": "https://www.resize-c.com/",
+    "license": "Proprietary",
+    "url": "https://download.resize-c.com/resizer-pro-portable.zip",
+    "hash": "e090c6693dc1cf9133e9135d8a8655b57bfaf8497e55d98edca553d14285833b",
+    "architecture": {
+        "64bit": {
+            "extract_dir": "resizer-pro-portable\\x64"
+        },
+        "32bit": {
+            "extract_dir": "resizer-pro-portable\\x32"
+        }
+    },
+    "pre_install": "if (!(Test-Path \"$persist_dir\\impr.lkeys\")) { New-Item \"$dir\\impr.lkeys\" | Out-Null }",
+    "post_install": "Remove-Item -Path $dir\\resizer-pro-portable",
+    "shortcuts": [
+        [
+            "dm.resizer.exe",
+            "IM Magic Partition Resizer Pro"
+        ]
+    ],
+    "persist": "impr.lkeys",
+    "checkver": {
+        "url": "https://www.resize-c.com/",
+        "regex": "What's New: Partition Resizer has been upgraded to new version v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.resize-c.com/resizer-pro-portable.zip"
+    }
 }

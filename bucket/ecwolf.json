@@ -1,13 +1,33 @@
 {
+    "version": "1.4.0",
+    "description": "Source port for Wolfenstein 3D",
+    "homepage": "https://maniacsvault.net/ecwolf/",
+    "license": "GPL-2.0-or-later",
+    "notes": [
+        "Place WL6/SOD/SD1/SD2/SD3 files (game data) in:",
+        "",
+        "    %APPDATA%\\ECWolf"
+    ],
     "architecture": {
         "32bit": {
-            "hash": "0f0228e0d01b1edf1195c4249ee7e0de5ea1086b292bd909062047c7d9da2943",
-            "url": "http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-1.4.0_x86.zip"
+            "url": "http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-1.4.0_x86.zip",
+            "hash": "0f0228e0d01b1edf1195c4249ee7e0de5ea1086b292bd909062047c7d9da2943"
         },
         "64bit": {
-            "hash": "15a3ac25443b60d441f118c8e9cc57dd4a783c741663c60d99cb9f8145670a59",
-            "url": "http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-1.4.0_x64.zip"
+            "url": "http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-1.4.0_x64.zip",
+            "hash": "15a3ac25443b60d441f118c8e9cc57dd4a783c741663c60d99cb9f8145670a59"
         }
+    },
+    "bin": "ecwolf.exe",
+    "shortcuts": [
+        [
+            "ecwolf.exe",
+            "ECWolf"
+        ]
+    ],
+    "checkver": {
+        "url": "https://maniacsvault.net/ecwolf/download.php",
+        "regex": "\\/ecwolf-([\\d.-]+)_x[\\d]{2}\\.zip"
     },
     "autoupdate": {
         "architecture": {
@@ -18,25 +38,5 @@
                 "url": "http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-$version_x64.zip"
             }
         }
-    },
-    "bin": "ecwolf.exe",
-    "checkver": {
-        "regex": "\\/ecwolf-([\\d.-]+)_x[\\d]{2}\\.zip",
-        "url": "https://maniacsvault.net/ecwolf/download.php"
-    },
-    "description": "Source port for Wolfenstein 3D",
-    "homepage": "https://maniacsvault.net/ecwolf/",
-    "license": "GPL-2.0-or-later",
-    "notes": [
-        "Place WL6/SOD/SD1/SD2/SD3 files (game data) in:",
-        "",
-        "    %APPDATA%\\ECWolf"
-    ],
-    "shortcuts": [
-        [
-            "ecwolf.exe",
-            "ECWolf"
-        ]
-    ],
-    "version": "1.4.0"
+    }
 }

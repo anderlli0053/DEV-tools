@@ -1,30 +1,30 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "5a408900e795da5a8c92acb979184b868250b9d9c87d8bdb060443f995ceb41b",
-   "url": "https://github.com/slonopotamus/stevedore/releases/download/0.9.0/stevedore-0.9.0-x86_64.msi#/setup.msi_"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://github.com/slonopotamus/stevedore/releases/download/$version/stevedore-$version-x86_64.msi#/setup.msi_"
-   }
-  }
- },
- "checkver": "github",
- "description": "Docker distribution that aims to provide a frictionless Docker experience on Windows",
- "homepage": "https://github.com/slonopotamus/stevedore",
- "installer": {
-  "script": "Start-Process -Wait msiexec \"/i `\"$dir\\setup.msi_`\" /qn /norestart\" -Verb RunAs"
- },
- "license": "Apache-2.0",
- "notes": [
-  "A restart may be required, at least on the first install.",
-  "Please run `sc start stevedored` as an administrator if `docker run` does not work."
- ],
- "uninstaller": {
-  "script": "Start-Process -Wait msiexec \"/x `\"$dir\\setup.msi_`\" /qn /norestart\" -Verb RunAs"
- },
- "version": "0.9.0"
+    "version": "0.9.0",
+    "description": "Docker distribution that aims to provide a frictionless Docker experience on Windows",
+    "homepage": "https://github.com/slonopotamus/stevedore",
+    "license": "Apache-2.0",
+    "notes": [
+        "A restart may be required, at least on the first install.",
+        "Please run `sc start stevedored` as an administrator if `docker run` does not work."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/slonopotamus/stevedore/releases/download/0.9.0/stevedore-0.9.0-x86_64.msi#/setup.msi_",
+            "hash": "5a408900e795da5a8c92acb979184b868250b9d9c87d8bdb060443f995ceb41b"
+        }
+    },
+    "installer": {
+        "script": "Start-Process -Wait msiexec \"/i `\"$dir\\setup.msi_`\" /qn /norestart\" -Verb RunAs"
+    },
+    "uninstaller": {
+        "script": "Start-Process -Wait msiexec \"/x `\"$dir\\setup.msi_`\" /qn /norestart\" -Verb RunAs"
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/slonopotamus/stevedore/releases/download/$version/stevedore-$version-x86_64.msi#/setup.msi_"
+            }
+        }
+    }
 }

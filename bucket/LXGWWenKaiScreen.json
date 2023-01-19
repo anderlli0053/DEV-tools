@@ -1,11 +1,14 @@
 {
+    "version": "1.250",
+    "description": "LXGW WenKai for Screen Reading.",
+    "homepage": "https://github.com/lxgw/LxgwWenKai-Screen",
+    "license": "OFL-1.1",
+    "url": "https://github.com/lxgw/LxgwWenKai-Screen/releases/download/v1.250/LXGWWenKaiScreen.ttf",
+    "hash": "f74f4b419d5af7be6f1edc4b10df1eb546241a2b5491fae552f80be5786b0a32",
+    "checkver": "github",
     "autoupdate": {
         "url": "https://github.com/lxgw/LxgwWenKai-Screen/releases/download/v$version/LXGWWenKaiScreen.ttf"
     },
-    "checkver": "github",
-    "description": "LXGW WenKai for Screen Reading.",
-    "hash": "f74f4b419d5af7be6f1edc4b10df1eb546241a2b5491fae552f80be5786b0a32",
-    "homepage": "https://github.com/lxgw/LxgwWenKai-Screen",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -51,7 +54,6 @@
             "}"
         ]
     },
-    "license": "OFL-1.1",
     "uninstaller": {
         "script": [
             "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
@@ -65,7 +67,5 @@
             "    Write-Host \"Font 'LXGWWenKaiScreen' has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta",
             "}"
         ]
-    },
-    "url": "https://github.com/lxgw/LxgwWenKai-Screen/releases/download/v1.250/LXGWWenKaiScreen.ttf",
-    "version": "1.250"
+    }
 }

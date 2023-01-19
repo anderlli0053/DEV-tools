@@ -1,56 +1,56 @@
 {
- "architecture": {
-  "32bit": {
-   "bin": [
-    [
-     "DiskInfo32.exe",
-     "DiskInfo"
-    ]
-   ],
-   "shortcuts": [
-    [
-     "DiskInfo32.exe",
-     "CrystalDiskInfo"
-    ]
-   ]
-  },
-  "64bit": {
-   "bin": [
-    [
-     "DiskInfo64.exe",
-     "DiskInfo"
-    ]
-   ],
-   "shortcuts": [
-    [
-     "DiskInfo64.exe",
-     "CrystalDiskInfo"
-    ]
-   ]
-  }
- },
- "autoupdate": {
-  "hash": {
-   "regex": "<dd>$sha256</dd>",
-   "url": "https://osdn.net/projects/crystaldiskinfo/downloads/$matchRelease/CrystalDiskInfo$underscoreVersion.zip/"
-  },
-  "url": "https://free.nchc.org.tw/osdn//crystaldiskinfo/$matchRelease/CrystalDiskInfo$underscoreVersion.zip"
- },
- "checkver": "releases/(?<release>\\d+)\">CrystalDiskInfo\\s+([\\w.]+)<",
- "description": "HDD/SSD utility software which supports S.M.A.R.T and a part of USB-HDD",
- "hash": "5306bd867e9c0905400c728bbe77527ed893a96549c6c37526522f9a6a984b1a",
- "homepage": "https://osdn.net/projects/crystaldiskinfo/",
- "license": "MIT",
- "persist": [
-  "Smart",
-  "DiskInfo.ini"
- ],
- "pre_install": [
-  "if (!(Test-Path \"$persist_dir\\DiskInfo.ini\")) { New-Item \"$dir\\DiskInfo.ini\" | Out-Null }",
-  "# Manually persist AMD RAID plugins (AMD_RC2t7x64.dll, AMD_RC2t7x86.dll)",
-  "if (Test-Path \"$persist_dir\\AMD_RC2t7*.dll\") { Copy-Item \"$persist_dir\\AMD_RC2t7*.dll\" \"$dir\\\" }"
- ],
- "pre_uninstall": "if (Test-Path \"$dir\\AMD_RC2t7*.dll\") { Copy-Item \"$dir\\AMD_RC2t7*.dll\" \"$persist_dir\\\" }",
- "url": "https://free.nchc.org.tw/osdn//crystaldiskinfo/78047/CrystalDiskInfo8_17_13.zip",
- "version": "8.17.13"
+    "version": "8.17.13",
+    "description": "HDD/SSD utility software which supports S.M.A.R.T and a part of USB-HDD",
+    "homepage": "https://osdn.net/projects/crystaldiskinfo/",
+    "license": "MIT",
+    "url": "https://free.nchc.org.tw/osdn//crystaldiskinfo/78047/CrystalDiskInfo8_17_13.zip",
+    "hash": "5306bd867e9c0905400c728bbe77527ed893a96549c6c37526522f9a6a984b1a",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\DiskInfo.ini\")) { New-Item \"$dir\\DiskInfo.ini\" | Out-Null }",
+        "# Manually persist AMD RAID plugins (AMD_RC2t7x64.dll, AMD_RC2t7x86.dll)",
+        "if (Test-Path \"$persist_dir\\AMD_RC2t7*.dll\") { Copy-Item \"$persist_dir\\AMD_RC2t7*.dll\" \"$dir\\\" }"
+    ],
+    "pre_uninstall": "if (Test-Path \"$dir\\AMD_RC2t7*.dll\") { Copy-Item \"$dir\\AMD_RC2t7*.dll\" \"$persist_dir\\\" }",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "DiskInfo64.exe",
+                    "DiskInfo"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "DiskInfo64.exe",
+                    "CrystalDiskInfo"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": [
+                [
+                    "DiskInfo32.exe",
+                    "DiskInfo"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "DiskInfo32.exe",
+                    "CrystalDiskInfo"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "Smart",
+        "DiskInfo.ini"
+    ],
+    "checkver": "releases/(?<release>\\d+)\">CrystalDiskInfo\\s+([\\w.]+)<",
+    "autoupdate": {
+        "url": "https://free.nchc.org.tw/osdn//crystaldiskinfo/$matchRelease/CrystalDiskInfo$underscoreVersion.zip",
+        "hash": {
+            "url": "https://osdn.net/projects/crystaldiskinfo/downloads/$matchRelease/CrystalDiskInfo$underscoreVersion.zip/",
+            "regex": "<dd>$sha256</dd>"
+        }
+    }
 }

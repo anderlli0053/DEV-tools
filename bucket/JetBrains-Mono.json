@@ -1,17 +1,11 @@
 {
-    "autoupdate": {
-        "hash": {
-            "mode": "download"
-        },
-        "url": "https://github.com/JetBrains/JetBrainsMono/releases/download/v$version/JetBrainsMono-$version.zip"
-    },
-    "checkver": {
-        "github": "https://github.com/JetBrains/JetBrainsMono"
-    },
+    "version": "2.304",
     "description": "JetBrains Mono. A typeface for developers.",
-    "extract_dir": "fonts/ttf",
-    "hash": "6f6376c6ed2960ea8a963cd7387ec9d76e3f629125bc33d1fdcd7eb7012f7bbf",
     "homepage": "https://www.jetbrains.com/lp/mono/",
+    "license": "Apache-2.0",
+    "url": "https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip",
+    "hash": "6f6376c6ed2960ea8a963cd7387ec9d76e3f629125bc33d1fdcd7eb7012f7bbf",
+    "extract_dir": "fonts/ttf",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -57,7 +51,6 @@
             "}"
         ]
     },
-    "license": "Apache-2.0",
     "uninstaller": {
         "script": [
             "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
@@ -72,6 +65,13 @@
             "}"
         ]
     },
-    "url": "https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip",
-    "version": "2.304"
+    "checkver": {
+        "github": "https://github.com/JetBrains/JetBrainsMono"
+    },
+    "autoupdate": {
+        "url": "https://github.com/JetBrains/JetBrainsMono/releases/download/v$version/JetBrainsMono-$version.zip",
+        "hash": {
+            "mode": "download"
+        }
+    }
 }

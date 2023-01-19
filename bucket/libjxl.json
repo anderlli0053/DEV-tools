@@ -1,22 +1,17 @@
 {
+    "version": "0.8.0",
+    "description": "JPEG XL image format (.jxl) encode/decode tools",
+    "homepage": "https://jpeg.org/jpegxl",
+    "license": "BSD-3-Clause",
+    "notes": "If the shim for brotli.exe was overwritten by this app's version and you'd like to point it back to brotli's version, run `scoop reset brotli`.",
     "architecture": {
-        "32bit": {
-            "hash": "936ae815e2f0041d20c41acab34ed66bd1e09ca1c9a712431099f789b4219b5e",
-            "url": "https://github.com/libjxl/libjxl/releases/download/v0.8.0/jxl-x86-windows-static.zip"
-        },
         "64bit": {
-            "hash": "4cfa5acc4b24bcb2b20beddf246d9c3c24768354a185477b91d584b4bd1dd6a7",
-            "url": "https://github.com/libjxl/libjxl/releases/download/v0.8.0/jxl-x64-windows-static.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/libjxl/libjxl/releases/download/v$version/jxl-x86-windows-static.zip"
-            },
-            "64bit": {
-                "url": "https://github.com/libjxl/libjxl/releases/download/v$version/jxl-x64-windows-static.zip"
-            }
+            "url": "https://github.com/libjxl/libjxl/releases/download/v0.8.0/jxl-x64-windows-static.zip",
+            "hash": "4cfa5acc4b24bcb2b20beddf246d9c3c24768354a185477b91d584b4bd1dd6a7"
+        },
+        "32bit": {
+            "url": "https://github.com/libjxl/libjxl/releases/download/v0.8.0/jxl-x86-windows-static.zip",
+            "hash": "936ae815e2f0041d20c41acab34ed66bd1e09ca1c9a712431099f789b4219b5e"
         }
     },
     "bin": [
@@ -30,9 +25,14 @@
     "checkver": {
         "github": "https://github.com/libjxl/libjxl"
     },
-    "description": "JPEG XL image format (.jxl) encode/decode tools",
-    "homepage": "https://jpeg.org/jpegxl",
-    "license": "BSD-3-Clause",
-    "notes": "If the shim for brotli.exe was overwritten by this app's version and you'd like to point it back to brotli's version, run `scoop reset brotli`.",
-    "version": "0.8.0"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/libjxl/libjxl/releases/download/v$version/jxl-x64-windows-static.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/libjxl/libjxl/releases/download/v$version/jxl-x86-windows-static.zip"
+            }
+        }
+    }
 }

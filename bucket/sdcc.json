@@ -1,32 +1,32 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "14a7b65d03197c0cd9d1c2895b7949c672c4b350bb129d79514b3908f0177443",
-            "url": "https://downloads.sourceforge.net/project/sdcc/sdcc-win32/4.2.0/sdcc-4.2.0-setup.exe#/dl.7z"
-        },
-        "64bit": {
-            "hash": "443868fe8f6cd26d74c248d3354ccfa9a7a659dbdf38427d11dccbb94cc50c10",
-            "url": "https://downloads.sourceforge.net/project/sdcc/sdcc-win64/4.2.0/sdcc-4.2.0-x64-setup.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://downloads.sourceforge.net/project/sdcc/sdcc-win32/$version/sdcc-$version-setup.exe#/dl.7z"
-            },
-            "64bit": {
-                "url": "https://downloads.sourceforge.net/project/sdcc/sdcc-win64/$version/sdcc-$version-x64-setup.exe#/dl.7z"
-            }
-        }
-    },
-    "bin": "bin\\sdcc.exe",
-    "checkver": {
-        "regex": "sdcc-([\\d.]+)-x64-setup\\.exe\\]\\]",
-        "url": "https://sourceforge.net/projects/sdcc/rss?path=/sdcc-win64"
-    },
+    "version": "4.2.0",
     "description": "Small Device C Compiler",
     "homepage": "http://sdcc.sourceforge.net",
     "license": "GPL-2.0-only,LGPL-2.1-only,GPL-3.0-only,Zlib,Libpng,BSL-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.sourceforge.net/project/sdcc/sdcc-win64/4.2.0/sdcc-4.2.0-x64-setup.exe#/dl.7z",
+            "hash": "sha1:843f2f2f3fb2be4a57980dd5479e9dc73343d169"
+        },
+        "32bit": {
+            "url": "https://downloads.sourceforge.net/project/sdcc/sdcc-win32/4.2.0/sdcc-4.2.0-setup.exe#/dl.7z",
+            "hash": "sha1:d69ac9a79411e75caf86e40ab18238bf51f7497d"
+        }
+    },
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\uninstall*\" -Force -Recurse",
-    "version": "4.2.0"
+    "bin": "bin\\sdcc.exe",
+    "checkver": {
+        "url": "https://sourceforge.net/projects/sdcc/rss?path=/sdcc-win64",
+        "regex": "sdcc-([\\d.]+)-x64-setup\\.exe\\]\\]"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/project/sdcc/sdcc-win64/$version/sdcc-$version-x64-setup.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://downloads.sourceforge.net/project/sdcc/sdcc-win32/$version/sdcc-$version-setup.exe#/dl.7z"
+            }
+        }
+    }
 }

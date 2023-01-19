@@ -1,14 +1,21 @@
 {
+    "version": "2022.3.2-223.8617.12",
+    "description": "Cross-Platform IDE for PHP by JetBrains. (Early Access Program)",
+    "homepage": "https://www.jetbrains.com/phpstorm/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/store/license.html"
+    },
+    "url": "https://download.jetbrains.com/webide/PhpStorm-223.8617.12.exe#/dl.7z",
+    "hash": "1436d39ef2d900feb6c0e6a155a3b2a036bc1c2bff8312394de36b0b93220a2e",
+    "extract_to": "IDE",
+    "installer": {
+        "script": [
+            "& \"$bucketsdir\\versions\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
+            "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
+        ]
+    },
     "architecture": {
-        "32bit": {
-            "bin": "IDE\\bin\\phpstorm.exe",
-            "shortcuts": [
-                [
-                    "IDE\\bin\\phpstorm.exe",
-                    "JetBrains\\PhpStorm (Early Access Program)"
-                ]
-            ]
-        },
         "64bit": {
             "bin": [
                 [
@@ -22,37 +29,30 @@
                     "JetBrains\\PhpStorm (Early Access Program)"
                 ]
             ]
-        }
-    },
-    "autoupdate": {
-        "hash": {
-            "url": "$url.sha256"
         },
-        "url": "https://download.jetbrains.com/webide/PhpStorm-$preReleaseVersion.exe#/dl.7z"
-    },
-    "checkver": {
-        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
-        "replace": "${ver}-${build}",
-        "url": "https://data.services.jetbrains.com/products/releases?code=PS&latest=true&platform=zip&type=eap"
-    },
-    "description": "Cross-Platform IDE for PHP by JetBrains. (Early Access Program)",
-    "extract_to": "IDE",
-    "hash": "1436d39ef2d900feb6c0e6a155a3b2a036bc1c2bff8312394de36b0b93220a2e",
-    "homepage": "https://www.jetbrains.com/phpstorm/",
-    "installer": {
-        "script": [
-            "& \"$bucketsdir\\versions\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
-            "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
-        ]
-    },
-    "license": {
-        "identifier": "Proprietary",
-        "url": "https://www.jetbrains.com/store/license.html"
+        "32bit": {
+            "bin": "IDE\\bin\\phpstorm.exe",
+            "shortcuts": [
+                [
+                    "IDE\\bin\\phpstorm.exe",
+                    "JetBrains\\PhpStorm (Early Access Program)"
+                ]
+            ]
+        }
     },
     "persist": [
         "IDE\\bin\\idea.properties",
         "profile"
     ],
-    "url": "https://download.jetbrains.com/webide/PhpStorm-223.8617.12.exe#/dl.7z",
-    "version": "2022.3.2-223.8617.12"
+    "checkver": {
+        "url": "https://data.services.jetbrains.com/products/releases?code=PS&latest=true&platform=zip&type=eap",
+        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
+        "replace": "${ver}-${build}"
+    },
+    "autoupdate": {
+        "url": "https://download.jetbrains.com/webide/PhpStorm-$preReleaseVersion.exe#/dl.7z",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
 }

@@ -1,16 +1,18 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/bitwarden/clients/releases/download/desktop-v$version/Bitwarden-Portable-$version.exe"
-    },
-    "bin": "Bitwarden.exe",
-    "checkver": {
-        "regex": "Desktop v([\\d.]+)",
-        "url": "https://github.com/bitwarden/clients/releases"
-    },
+    "version": "2023.1.1",
     "description": "Bitwarden. Password management solutions for individuals, teams, and business organizations",
-    "hash": "a2c876cb39e6f2c0f94b58161fdae0f0521d2dc29014d08c1fe4e2a7d81afbec",
     "homepage": "https://bitwarden.com",
     "license": "GPL-3.0-or-later",
+    "url": "https://github.com/bitwarden/clients/releases/download/desktop-v2023.1.1/Bitwarden-Portable-2023.1.1.exe",
+    "hash": "a2c876cb39e6f2c0f94b58161fdae0f0521d2dc29014d08c1fe4e2a7d81afbec",
+    "pre_install": "Rename-Item \"$dir\\Bitwarden-Portable-$version.exe\" 'Bitwarden.exe'",
+    "bin": "Bitwarden.exe",
+    "shortcuts": [
+        [
+            "Bitwarden.exe",
+            "Bitwarden"
+        ]
+    ],
     "persist": "bitwarden-appdata",
     "post_install": [
         "if(Test-Path \"$env:Appdata\\Bitwarden\") {",
@@ -18,13 +20,11 @@
         "    Remove-Item \"$env:Appdata\\Bitwarden\" -Recurse",
         "}"
     ],
-    "pre_install": "Rename-Item \"$dir\\Bitwarden-Portable-$version.exe\" 'Bitwarden.exe'",
-    "shortcuts": [
-        [
-            "Bitwarden.exe",
-            "Bitwarden"
-        ]
-    ],
-    "url": "https://github.com/bitwarden/clients/releases/download/desktop-v2023.1.1/Bitwarden-Portable-2023.1.1.exe",
-    "version": "2023.1.1"
+    "checkver": {
+        "url": "https://github.com/bitwarden/clients/releases",
+        "regex": "Desktop v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/bitwarden/clients/releases/download/desktop-v$version/Bitwarden-Portable-$version.exe"
+    }
 }

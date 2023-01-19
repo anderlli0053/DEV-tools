@@ -1,31 +1,19 @@
 {
     "##": "This package is nonportable because the installer cannot be properly extracted after version 5.5.6.",
-    "architecture": {
-        "32bit": {
-            "hash": "b3e162dae4106d5f10c50ddc080d5e6118f8a8f31f4604f05fafa6a936f9e8bb",
-            "url": "https://media.githubusercontent.com/media/getlantern/lantern-binaries/main/lantern-installer.exe#/setup.exe"
-        },
-        "64bit": {
-            "hash": "6669bc336d0e1d28954324f0ee1febdf9ec6b3f93ee77a7c3cea8594adb1827b",
-            "url": "https://media.githubusercontent.com/media/getlantern/lantern-binaries/main/lantern-installer-64-bit.exe#/setup.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://media.githubusercontent.com/media/getlantern/lantern-binaries/main/lantern-installer.exe#/setup.exe"
-            },
-            "64bit": {
-                "url": "https://media.githubusercontent.com/media/getlantern/lantern-binaries/main/lantern-installer-64-bit.exe#/setup.exe"
-            }
-        }
-    },
-    "checkver": {
-        "regex": "(?sm)lantern-installer-64-bit\\.exe.*?Lantern binaries for version ([\\d.]+)",
-        "url": "https://github.com/getlantern/lantern-binaries"
-    },
+    "version": "7.2.0",
     "description": "HTTP/HTTPS proxy.",
     "homepage": "https://getlantern.org/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://media.githubusercontent.com/media/getlantern/lantern-binaries/main/lantern-installer-64-bit.exe#/setup.exe",
+            "hash": "482f0ffa7a6c1ef08ef4969fcc04b4e966ee210870995a528790648a6a9b3317"
+        },
+        "32bit": {
+            "url": "https://media.githubusercontent.com/media/getlantern/lantern-binaries/main/lantern-installer.exe#/setup.exe",
+            "hash": "40f65c3faf5b169aa9298c26f07c518900a8666656ae2d0fb5c497c7ec732b1f"
+        }
+    },
     "installer": {
         "script": [
             "Start-Process \"$dir\\setup.exe\" -ArgumentList '/S' -Wait -Verb RunAs | Out-Null",
@@ -34,9 +22,21 @@
             "Remove-Item \"$([Environment]::GetFolderPath('Desktop'))\\Lantern.lnk\""
         ]
     },
-    "license": "Apache-2.0",
     "uninstaller": {
         "script": "Start-Process \"$Env:AppData\\Lantern\\uninstall.exe\" -ArgumentList '/S' -Wait -Verb RunAs | Out-Null"
     },
-    "version": "7.2.2"
+    "checkver": {
+        "url": "https://github.com/getlantern/lantern-binaries",
+        "regex": "(?sm)lantern-installer-64-bit\\.exe.*?Lantern binaries for version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://media.githubusercontent.com/media/getlantern/lantern-binaries/main/lantern-installer-64-bit.exe#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://media.githubusercontent.com/media/getlantern/lantern-binaries/main/lantern-installer.exe#/setup.exe"
+            }
+        }
+    }
 }

@@ -1,16 +1,16 @@
 {
+    "version": "7.25.1",
+    "description": "A fast and disk space efficient Node package manager.",
+    "homepage": "https://pnpm.io/",
+    "license": "MIT",
     "architecture": {
         "64bit": {
-            "hash": "8c03a4cb79322102821b06a58882d79cfa5141a6bd26d66649e88446c54d1423",
-            "url": "https://github.com/pnpm/pnpm/releases/download/v7.25.1/pnpm-win-x64.exe#/pnpm.exe"
+            "url": "https://github.com/pnpm/pnpm/releases/download/v7.25.1/pnpm-win-x64.exe#/pnpm.exe",
+            "hash": "8c03a4cb79322102821b06a58882d79cfa5141a6bd26d66649e88446c54d1423"
         }
-    },
-    "autoupdate": {
-        "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-x64.exe#/pnpm.exe"
     },
     "bin": "pnpm.exe",
     "checkver": {
-        "regex": "([\\d.]+)",
         "script": [
             "# Using checkver script to check through all release tags",
             "$url = 'https://api.github.com/repos/pnpm/pnpm/releases'",
@@ -23,10 +23,10 @@
             "}",
             "if ($latest_ver -eq [Version]::new(0,0,0,0)) { error \"Could not match version string in '$url'\"; break }",
             "Write-Output $latest_ver"
-        ]
+        ],
+        "regex": "([\\d.]+)"
     },
-    "description": "A fast and disk space efficient Node package manager.",
-    "homepage": "https://pnpm.io/",
-    "license": "MIT",
-    "version": "7.25.1"
+    "autoupdate": {
+        "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-x64.exe#/pnpm.exe"
+    }
 }

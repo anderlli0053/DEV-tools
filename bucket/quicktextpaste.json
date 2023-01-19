@@ -1,63 +1,63 @@
 {
- "architecture": {
-  "32bit": {
-   "bin": [
-    [
-     "QuickTextPaste_p.exe",
-     "QuickTextPaste"
-    ]
-   ],
-   "hash": "ddf5ec6c5537a445dab90fd830590900ae2fc102a6047b5b7912302fcdbfea17",
-   "shortcuts": [
-    [
-     "QuickTextPaste_p.exe",
-     "QuickTextPaste"
-    ]
-   ],
-   "url": "https://www.softwareok.com/Download/QuickTextPaste_Portable.zip"
-  },
-  "64bit": {
-   "bin": [
-    [
-     "QuickTextPaste_x64_p.exe",
-     "QuickTextPaste"
-    ]
-   ],
-   "hash": "b6ddb57d614f1dd6afe1297b3903ad4baa4c22e082584f10a1373ee8721a2db6",
-   "shortcuts": [
-    [
-     "QuickTextPaste_x64_p.exe",
-     "QuickTextPaste"
-    ]
-   ],
-   "url": "https://www.softwareok.com/Download/QuickTextPaste_x64_Portable.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://www.softwareok.com/Download/QuickTextPaste_Portable.zip"
-   },
-   "64bit": {
-    "url": "https://www.softwareok.com/Download/QuickTextPaste_x64_Portable.zip"
-   }
-  },
-  "hash": {
-   "regex": "$basename.*?$sha256<",
-   "url": "https://www.softwareok.com/?Download=QuickTextPaste"
-  }
- },
- "checkver": {
-  "regex": "version ([\\d.]+)",
-  "url": "https://www.softwareok.com/?seite=Microsoft/QuickTextPaste/History"
- },
- "description": "Insert pre-defined text in any Windows applications via keyboard shortcut.",
- "homepage": "https://www.softwareok.com/?Download=QuickTextPaste",
- "license": {
-  "identifier": "Freeware",
-  "url": "https://www.softwareok.com/?seite=Microsoft/QuickTextPaste/Eula"
- },
- "persist": "QuickTextPaste.ini",
- "pre_install": "if (-not (Test-Path \"$persist_dir\\QuickTextPaste.ini\")) { New-Item \"$dir\\QuickTextPaste.ini\" | Out-Null }",
- "version": "8.51"
+    "version": "8.51",
+    "description": "Insert pre-defined text in any Windows applications via keyboard shortcut.",
+    "homepage": "https://www.softwareok.com/?Download=QuickTextPaste",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.softwareok.com/?seite=Microsoft/QuickTextPaste/Eula"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://www.softwareok.com/Download/QuickTextPaste_x64_Portable.zip",
+            "hash": "b6ddb57d614f1dd6afe1297b3903ad4baa4c22e082584f10a1373ee8721a2db6",
+            "bin": [
+                [
+                    "QuickTextPaste_x64_p.exe",
+                    "QuickTextPaste"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "QuickTextPaste_x64_p.exe",
+                    "QuickTextPaste"
+                ]
+            ]
+        },
+        "32bit": {
+            "url": "https://www.softwareok.com/Download/QuickTextPaste_Portable.zip",
+            "hash": "ddf5ec6c5537a445dab90fd830590900ae2fc102a6047b5b7912302fcdbfea17",
+            "bin": [
+                [
+                    "QuickTextPaste_p.exe",
+                    "QuickTextPaste"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "QuickTextPaste_p.exe",
+                    "QuickTextPaste"
+                ]
+            ]
+        }
+    },
+    "pre_install": "if (-not (Test-Path \"$persist_dir\\QuickTextPaste.ini\")) { New-Item \"$dir\\QuickTextPaste.ini\" | Out-Null }",
+    "persist": "QuickTextPaste.ini",
+    "checkver": {
+        "url": "https://www.softwareok.com/?seite=Microsoft/QuickTextPaste/History",
+        "regex": "version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.softwareok.com/Download/QuickTextPaste_x64_Portable.zip"
+            },
+            "32bit": {
+                "url": "https://www.softwareok.com/Download/QuickTextPaste_Portable.zip"
+            }
+        },
+        "hash": {
+            "url": "https://www.softwareok.com/?Download=QuickTextPaste",
+            "regex": "$basename.*?$sha256<"
+        }
+    }
 }

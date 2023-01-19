@@ -1,32 +1,32 @@
 {
- "autoupdate": {
-  "hash": {
-   "regex": "<td><code>$sha256</code></td>",
-   "url": "https://github.com/ShareX/DevBuilds/releases"
-  },
-  "url": "https://github.com/ShareX/DevBuilds/releases/download/v$version/ShareX-$majorVersion.$minorVersion.$patchVersion-portable.zip"
- },
- "bin": "ShareX.exe",
- "checkver": {
-  "jsonpath": "$..tag_name",
-  "regex": "v([\\d.]+)",
-  "url": "https://api.github.com/repos/ShareX/DevBuilds/releases"
- },
- "description": "Screen capture, file sharing and productivity tool. (Dev. Version)",
- "hash": "ae3af9d70d582dcd92be523e18c6f23a8a729ba03be302f1dd0a479be34f763e",
- "homepage": "https://getsharex.com",
- "license": "GPL-3.0-only",
- "persist": [
-  "PersonalPath.cfg",
-  "ShareX"
- ],
- "pre_install": "if (!(Test-Path \"$persist_dir\\PersonalPath.cfg\")) { New-Item \"$dir\\PersonalPath.cfg\" | Out-Null }",
- "shortcuts": [
-  [
-   "ShareX.exe",
-   "ShareX Dev"
-  ]
- ],
- "url": "https://github.com/ShareX/DevBuilds/releases/download/v14.1.4.9/ShareX-14.1.4-portable.zip",
- "version": "14.1.4.9"
+    "version": "15.0.0.58",
+    "homepage": "https://getsharex.com",
+    "description": "Screen capture, file sharing and productivity tool. (Dev. Version)",
+    "license": "GPL-3.0-only",
+    "url": "https://github.com/ShareX/DevBuilds/releases/download/v15.0.0.58/ShareX-15.0.0-portable.zip",
+    "hash": "a9e3045c8a589b4e4c5a1866a1cbb7d43e7a88b4f8fa06fc7b70d2aabf00a05a",
+    "pre_install": "if (!(Test-Path \"$persist_dir\\PersonalPath.cfg\")) { New-Item \"$dir\\PersonalPath.cfg\" | Out-Null }",
+    "bin": "ShareX.exe",
+    "shortcuts": [
+        [
+            "ShareX.exe",
+            "ShareX Dev"
+        ]
+    ],
+    "persist": [
+        "PersonalPath.cfg",
+        "ShareX"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/ShareX/DevBuilds/releases",
+        "jsonpath": "$..tag_name",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/ShareX/DevBuilds/releases/download/v$version/ShareX-$majorVersion.$minorVersion.$patchVersion-portable.zip",
+        "hash": {
+            "url": "https://github.com/ShareX/DevBuilds/releases",
+            "regex": "<td><code>$sha256</code></td>"
+        }
+    }
 }

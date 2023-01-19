@@ -1,15 +1,27 @@
 {
-    "autoupdate": {
-        "url": "https://dl.teamviewer.com/download/TeamViewer_Setup.exe#/setup.exe"
+    "version": "15.37.8",
+    "description": "TeamViewer. Software for remote control, desktop sharing, online meetings, web conferencing and file transfer between computers.",
+    "homepage": "https://www.teamviewer.com",
+    "license": {
+        "identifier": "Shareware",
+        "url": "https://www.teamviewer.com/en/eula/"
     },
     "changelog": "https://community.teamviewer.com/English/categories/change-logs-en",
-    "checkver": {
-        "regex": "Current version:.*?([\\d.]+)",
-        "url": "https://www.teamviewer.com/en/download/windows/"
-    },
-    "description": "TeamViewer. Software for remote control, desktop sharing, online meetings, web conferencing and file transfer between computers.",
+    "url": "https://dl.teamviewer.com/download/TeamViewer_Setup.exe#/setup.exe",
     "hash": "cba844d3074ea4faac79c6d238aa24e9a7caf44c2f37f21747fc513f83de69e3",
-    "homepage": "https://www.teamviewer.com",
+    "pre_download": "Assert-Administrator",
+    "pre_install": [
+        "$processname = \"teamviewer*\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
     "installer": {
         "script": [
             "$programname = \"Teamviewer*\"",
@@ -26,27 +38,15 @@
             "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
         ]
     },
-    "license": {
-        "identifier": "Shareware",
-        "url": "https://www.teamviewer.com/en/eula/"
-    },
     "post_install": [
         "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
         "if (Test-Path \"$CommonDesktopPath\\TeamViewer.lnk\") {Remove-Item \"$CommonDesktopPath\\TeamViewer.lnk\" -Force}"
     ],
-    "pre_download": "Assert-Administrator",
-    "pre_install": [
-        "$processname = \"teamviewer*\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "url": "https://dl.teamviewer.com/download/TeamViewer_Setup.exe#/setup.exe",
-    "version": "15.37.8"
+    "checkver": {
+        "url": "https://www.teamviewer.com/en/download/windows/",
+        "regex": "Current version:.*?([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://dl.teamviewer.com/download/TeamViewer_Setup.exe#/setup.exe"
+    }
 }

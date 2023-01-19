@@ -1,29 +1,11 @@
 {
-    "autoupdate": {
-        "hash": {
-            "regex": "<code>$sha256",
-            "url": "https://github.com/metabase/metabase/releases/tag/v$version"
-        },
-        "url": "https://downloads.metabase.com/v$version/metabase.jar"
-    },
-    "bin": "metabase.jar",
-    "checkver": {
-        "jsonpath": "$.latest.version",
-        "regex": "v([\\d.]+)",
-        "url": "http://static.metabase.com/version-info.json"
-    },
+    "version": "0.45.2",
     "description": "Metabase is the easy, open source way for everyone in your company to ask questions and learn from data.",
-    "env_set": {
-        "MB_DB_FILE": "$dir\\data\\metabase.db",
-        "MB_PLUGINS_DIR": "$dir\\plugins"
-    },
-    "hash": "c72e8d30f369522381951774b7053d33cd0b6e1d0dc8ceba3d115fd03240bba7",
     "homepage": "https://github.com/metabase/metabase",
     "license": "AGPL-3.0-only",
-    "persist": [
-        "data",
-        "plugins"
-    ],
+    "url": "https://downloads.metabase.com/v0.45.2/metabase.jar",
+    "hash": "c72e8d30f369522381951774b7053d33cd0b6e1d0dc8ceba3d115fd03240bba7",
+    "bin": "metabase.jar",
     "suggest": {
         "JDK": [
             "java/oraclejdk",
@@ -32,6 +14,24 @@
             "java/zulu"
         ]
     },
-    "url": "https://downloads.metabase.com/v0.45.2/metabase.jar",
-    "version": "0.45.2"
+    "env_set": {
+        "MB_PLUGINS_DIR": "$dir\\plugins",
+        "MB_DB_FILE": "$dir\\data\\metabase.db"
+    },
+    "persist": [
+        "data",
+        "plugins"
+    ],
+    "checkver": {
+        "url": "http://static.metabase.com/version-info.json",
+        "jsonpath": "$.latest.version",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://downloads.metabase.com/v$version/metabase.jar",
+        "hash": {
+            "url": "https://github.com/metabase/metabase/releases/tag/v$version",
+            "regex": "<code>$sha256"
+        }
+    }
 }

@@ -1,52 +1,52 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "38f61f6b1a3bc90bdf572db7d93e929688bc5b415454ff06dacbb89a5ab6abae",
-            "url": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk17u-2023-01-13-12-03-beta/OpenJDK17U-jre_x86-32_windows_hotspot_2023-01-13-12-03.zip"
-        },
-        "64bit": {
-            "hash": "56ff87b2dfe16d34b2251c5b82afa6e78b7606bf8a694d9babfdea88c987b7a4",
-            "url": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk17u-2023-01-13-12-03-beta/OpenJDK17U-jre_x64_windows_hotspot_2023-01-13-12-03.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/$matchLink/download/$matchTag/$matchPrefix_x86-32_$matchSuffix"
-            },
-            "64bit": {
-                "url": "https://github.com/$matchLink/download/$matchTag/$matchName"
-            }
-        },
-        "hash": {
-            "find": "^([a-fA-F0-9]+)\\s",
-            "url": "$url.sha256.txt"
-        }
-    },
-    "checkver": {
-        "regex": "(?<ver>.*?) https://github.com/(?<link>.*?)/tag/(?<tag>.*?) (?<name>(?<prefix>OpenJDK[\\dU]*-[dejkr]{3})_x64_(?<suffix>.*))",
-        "replace": "${ver}",
-        "script": [
-            "$ver = (json_path $page $..version_data.semver).replace('+', '-').replace('-beta','')",
-            "$link = (json_path $page $..release_link).replace('%2B', '+')",
-            "$name = json_path $page $..binaries[0].package.name",
-            "Write-Output \"$ver $link $name\""
-        ],
-        "url": "https://api.adoptium.net/v3/assets/feature_releases/17/ea?jvm_impl=hotspot&heap_size=normal&os=windows&architecture=x64&image_type=jre&project=jdk&vendor=eclipse&page_size=1&sort_order=DESC"
-    },
     "description": "Eclipse Temurin is a runtime provided by Eclipse Adoptium for general use across the Java ecosystem",
-    "env_add_path": "bin",
-    "env_set": {
-        "JAVA_HOME": "$dir"
+    "homepage": "https://adoptium.net",
+    "version": "17.0.6-9.0.202301130010",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk17u-2023-01-13-12-03-beta/OpenJDK17U-jre_x64_windows_hotspot_2023-01-13-12-03.zip",
+            "hash": "56ff87b2dfe16d34b2251c5b82afa6e78b7606bf8a694d9babfdea88c987b7a4"
+        },
+        "32bit": {
+            "url": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk17u-2023-01-13-12-03-beta/OpenJDK17U-jre_x86-32_windows_hotspot_2023-01-13-12-03.zip",
+            "hash": "38f61f6b1a3bc90bdf572db7d93e929688bc5b415454ff06dacbb89a5ab6abae"
+        }
     },
     "extract_to": "tmp",
-    "homepage": "https://adoptium.net",
     "installer": {
         "script": [
             "(Get-ChildItem -Directory \"$dir\\tmp\").FullName | % { Move-Item \"$_\\*\" \"$dir\" }",
             "Remove-Item -Recurse \"$dir\\tmp\""
         ]
     },
-    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
-    "version": "17.0.6-9.0.202301130010"
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://api.adoptium.net/v3/assets/feature_releases/17/ea?jvm_impl=hotspot&heap_size=normal&os=windows&architecture=x64&image_type=jre&project=jdk&vendor=eclipse&page_size=1&sort_order=DESC",
+        "script": [
+            "$ver = (json_path $page $..version_data.semver).replace('+', '-').replace('-beta','')",
+            "$link = (json_path $page $..release_link).replace('%2B', '+')",
+            "$name = json_path $page $..binaries[0].package.name",
+            "Write-Output \"$ver $link $name\""
+        ],
+        "regex": "(?<ver>.*?) https://github.com/(?<link>.*?)/tag/(?<tag>.*?) (?<name>(?<prefix>OpenJDK[\\dU]*-[dejkr]{3})_x64_(?<suffix>.*))",
+        "replace": "${ver}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/$matchLink/download/$matchTag/$matchName"
+            },
+            "32bit": {
+                "url": "https://github.com/$matchLink/download/$matchTag/$matchPrefix_x86-32_$matchSuffix"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256.txt",
+            "find": "^([a-fA-F0-9]+)\\s"
+        }
+    }
 }

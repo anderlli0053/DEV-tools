@@ -1,50 +1,50 @@
 {
- "architecture": {
-  "32bit": {
-   "installer": {
-    "script": [
-     "$winVer = [Environment]::OSVersion.Version",
-     "if (($winver.Major -lt '10') -or ($winVer.Build -lt 18362)) { throw 'At least Windows 10 18362 is required.' }",
-     "Get-ChildItem \"$dir\" '*x86.msix' | Select-Object -ExpandProperty Fullname | Expand-7zipArchive -DestinationPath \"$dir\" -Removal",
-     "Get-ChildItem \"$dir\\ProfileIcons\" '*.png' | Rename-Item -NewName { $_.Name.Replace('%7B', '{').Replace('%7D', '}') }"
-    ]
-   },
-   "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x86.msix' | Remove-Item -Force -Recurse"
-  },
-  "64bit": {
-   "installer": {
-    "script": [
-     "$winVer = [Environment]::OSVersion.Version",
-     "if (($winver.Major -lt '10') -or ($winVer.Build -lt 18362)) { throw 'At least Windows 10 18362 is required.' }",
-     "Get-ChildItem \"$dir\" '*x64.msix' | Select-Object -ExpandProperty Fullname | Expand-7zipArchive -DestinationPath \"$dir\"",
-     "Get-ChildItem \"$dir\\ProfileIcons\" '*.png' | Rename-Item -NewName { $_.Name.Replace('%7B', '{').Replace('%7D', '}') }"
-    ]
-   },
-   "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x64.msix' | Remove-Item -Force -Recurse"
-  }
- },
- "autoupdate": {
-  "url": "https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminal_Win10_$version_8wekyb3d8bbwe.msixbundle#/dl.7z"
- },
- "bin": [
-  "WindowsTerminal.exe",
-  "wt.exe"
- ],
- "changelog": "https://github.com/microsoft/terminal/releases",
- "checkver": "github",
- "description": "Windows Terminal. The new Windows Terminal, and the original Windows console host - all in the same place!",
- "hash": "cafef84e6c40260c30f9424193736c24337b93f1413008e47964e957ec1361a3",
- "homepage": "https://github.com/microsoft/terminal",
- "license": "MIT",
- "shortcuts": [
-  [
-   "WindowsTerminal.exe",
-   "Windows Terminal"
-  ]
- ],
- "suggest": {
-  "vcredist": "extras/vcredist2022"
- },
- "url": "https://github.com/microsoft/terminal/releases/download/v1.15.3465.0/Microsoft.WindowsTerminal_Win10_1.15.3465.0_8wekyb3d8bbwe.msixbundle#/dl.7z",
- "version": "1.15.3465.0"
+    "version": "1.15.3465.0",
+    "description": "Windows Terminal. The new Windows Terminal, and the original Windows console host - all in the same place!",
+    "homepage": "https://github.com/microsoft/terminal",
+    "license": "MIT",
+    "changelog": "https://github.com/microsoft/terminal/releases",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "url": "https://github.com/microsoft/terminal/releases/download/v1.15.3465.0/Microsoft.WindowsTerminal_Win10_1.15.3465.0_8wekyb3d8bbwe.msixbundle#/dl.7z",
+    "hash": "cafef84e6c40260c30f9424193736c24337b93f1413008e47964e957ec1361a3",
+    "architecture": {
+        "64bit": {
+            "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x64.msix' | Remove-Item -Force -Recurse",
+            "installer": {
+                "script": [
+                    "$winVer = [Environment]::OSVersion.Version",
+                    "if (($winver.Major -lt '10') -or ($winVer.Build -lt 18362)) { throw 'At least Windows 10 18362 is required.' }",
+                    "Get-ChildItem \"$dir\" '*x64.msix' | Select-Object -ExpandProperty Fullname | Expand-7zipArchive -DestinationPath \"$dir\"",
+                    "Get-ChildItem \"$dir\\ProfileIcons\" '*.png' | Rename-Item -NewName { $_.Name.Replace('%7B', '{').Replace('%7D', '}') }"
+                ]
+            }
+        },
+        "32bit": {
+            "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x86.msix' | Remove-Item -Force -Recurse",
+            "installer": {
+                "script": [
+                    "$winVer = [Environment]::OSVersion.Version",
+                    "if (($winver.Major -lt '10') -or ($winVer.Build -lt 18362)) { throw 'At least Windows 10 18362 is required.' }",
+                    "Get-ChildItem \"$dir\" '*x86.msix' | Select-Object -ExpandProperty Fullname | Expand-7zipArchive -DestinationPath \"$dir\" -Removal",
+                    "Get-ChildItem \"$dir\\ProfileIcons\" '*.png' | Rename-Item -NewName { $_.Name.Replace('%7B', '{').Replace('%7D', '}') }"
+                ]
+            }
+        }
+    },
+    "bin": [
+        "WindowsTerminal.exe",
+        "wt.exe"
+    ],
+    "shortcuts": [
+        [
+            "WindowsTerminal.exe",
+            "Windows Terminal"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminal_Win10_$version_8wekyb3d8bbwe.msixbundle#/dl.7z"
+    }
 }

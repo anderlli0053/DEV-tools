@@ -1,28 +1,28 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "5ca3cd5de97013a607207b608faae0848d00c95872e01feb26ee5148694815dd",
-   "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-2.2.6+af56767.exe#/edgedb.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "hash": {
-     "jsonpath": "$..packages[-1:].installrefs[?(@.encoding=='identity')].verification.sha256",
-     "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json"
+    "version": "2.2.6+af56767",
+    "description": "A graph-relational database",
+    "homepage": "https://www.edgedb.com/",
+    "license": "Apache-2.0|MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-2.2.6+af56767.exe#/edgedb.exe",
+            "hash": "5ca3cd5de97013a607207b608faae0848d00c95872e01feb26ee5148694815dd"
+        }
     },
-    "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-$version.exe#/edgedb.exe"
-   }
-  }
- },
- "bin": "edgedb.exe",
- "checkver": {
-  "jsonpath": "$..packages[-1:].version",
-  "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json"
- },
- "description": "A graph-relational database",
- "homepage": "https://www.edgedb.com/",
- "license": "Apache-2.0|MIT",
- "version": "2.2.6+af56767"
+    "bin": "edgedb.exe",
+    "checkver": {
+        "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json",
+        "jsonpath": "$..packages[-1:].version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/edgedb-cli-$version.exe#/edgedb.exe",
+                "hash": {
+                    "url": "https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json",
+                    "jsonpath": "$..packages[-1:].installrefs[?(@.encoding=='identity')].verification.sha256"
+                }
+            }
+        }
+    }
 }

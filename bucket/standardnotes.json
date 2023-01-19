@@ -1,42 +1,42 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "sha512:891c6bf9950992414acf22c1dd029e3a6a90f15a4327749d48bc7c3d811be603ac355d11b0baf8b5e2aaa66a1c57de83e01911ec0013633d04c9ca61121bc45a",
-            "url": "https://github.com/standardnotes/app/releases/download/@standardnotes/desktop@3.139.0/standard-notes-3.139.0-win-ia32.exe#/dl.7z"
-        },
-        "64bit": {
-            "hash": "sha512:5a6ad0ebed51253db7bcfaff0783c32c01a47677b63e34a08175db3e9c7b452537b6c9783945dad5f2a9c1780d96dd1fb1365231c29ea309eafb5a5c172db47b",
-            "url": "https://github.com/standardnotes/app/releases/download/@standardnotes/desktop@3.139.0/standard-notes-3.139.0-win-x64.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/standardnotes/app/releases/download/@standardnotes/desktop@$version/standard-notes-$version-win-ia32.exe#/dl.7z"
-            },
-            "64bit": {
-                "url": "https://github.com/standardnotes/app/releases/download/@standardnotes/desktop@$version/standard-notes-$version-win-x64.exe#/dl.7z"
-            }
-        },
-        "hash": {
-            "regex": "(?is)$basename.*?$base64",
-            "url": "$baseurl/latest.yml"
-        }
-    },
-    "checkver": {
-        "regex": "@standardnotes/desktop@([\\d.]+)",
-        "url": "https://api.github.com/repos/standardnotes/app/releases/latest"
-    },
+    "version": "3.139.0",
     "description": "A safe place for your notes, thoughts, and life's work.",
     "homepage": "https://standardnotes.org/",
     "license": "AGPL-3.0-or-later",
-    "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/standardnotes/app/releases/download/@standardnotes/desktop@3.139.0/standard-notes-3.139.0-win-x64.exe#/dl.7z",
+            "hash": "sha512:5a6ad0ebed51253db7bcfaff0783c32c01a47677b63e34a08175db3e9c7b452537b6c9783945dad5f2a9c1780d96dd1fb1365231c29ea309eafb5a5c172db47b"
+        },
+        "32bit": {
+            "url": "https://github.com/standardnotes/app/releases/download/@standardnotes/desktop@3.139.0/standard-notes-3.139.0-win-ia32.exe#/dl.7z",
+            "hash": "sha512:891c6bf9950992414acf22c1dd029e3a6a90f15a4327749d48bc7c3d811be603ac355d11b0baf8b5e2aaa66a1c57de83e01911ec0013633d04c9ca61121bc45a"
+        }
+    },
     "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-$($architecture.Substring(0,2)).7z\" \"$dir\"",
+    "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse",
     "shortcuts": [
         [
             "Standard Notes.exe",
             "Standard Notes"
         ]
     ],
-    "version": "3.139.0"
+    "checkver": {
+        "url": "https://api.github.com/repos/standardnotes/app/releases/latest",
+        "regex": "@standardnotes/desktop@([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/standardnotes/app/releases/download/@standardnotes/desktop@$version/standard-notes-$version-win-x64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://github.com/standardnotes/app/releases/download/@standardnotes/desktop@$version/standard-notes-$version-win-ia32.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/latest.yml",
+            "regex": "(?is)$basename.*?$base64"
+        }
+    }
 }

@@ -1,36 +1,36 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "edfd16c88986a2adc5852b5c15772c7be24ef9ca1462b25c98aa2b315575f5f2",
-   "url": "https://github.com/akiyosi/goneovim/releases/download/nightly/goneovim-windows.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://github.com/akiyosi/goneovim/releases/download/nightly/goneovim-windows.zip"
-   }
-  }
- },
- "bin": "goneovim.exe",
- "checkver": {
-  "jsonpath": "$.assets[?(@.name=='goneovim-windows.zip')].updated_at",
-  "regex": ".*(?<year>\\d{4})\\D(?<month>\\d{2})\\D(?<day>\\d{2}).*",
-  "replace": "${year}${month}${day}",
-  "url": "https://api.github.com/repos/akiyosi/goneovim/releases/tags/nightly"
- },
- "description": "Neovim GUI which uses a Golang Qt backend",
- "extract_dir": "goneovim-windows",
- "homepage": "https://github.com/akiyosi/goneovim",
- "license": "MIT",
- "shortcuts": [
-  [
-   "goneovim.exe",
-   "Goneovim-nightly"
-  ]
- ],
- "suggest": {
-  "neovim": "neovim"
- },
- "version": "20230103"
+    "version": "20230103",
+    "description": "Neovim GUI which uses a Golang Qt backend",
+    "homepage": "https://github.com/akiyosi/goneovim",
+    "license": "MIT",
+    "suggest": {
+        "neovim": "neovim"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/akiyosi/goneovim/releases/download/nightly/goneovim-windows.zip",
+            "hash": "edfd16c88986a2adc5852b5c15772c7be24ef9ca1462b25c98aa2b315575f5f2"
+        }
+    },
+    "extract_dir": "goneovim-windows",
+    "bin": "goneovim.exe",
+    "shortcuts": [
+        [
+            "goneovim.exe",
+            "Goneovim-nightly"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/akiyosi/goneovim/releases/tags/nightly",
+        "jsonpath": "$.assets[?(@.name=='goneovim-windows.zip')].updated_at",
+        "regex": ".*(?<year>\\d{4})\\D(?<month>\\d{2})\\D(?<day>\\d{2}).*",
+        "replace": "${year}${month}${day}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/akiyosi/goneovim/releases/download/nightly/goneovim-windows.zip"
+            }
+        }
+    }
 }

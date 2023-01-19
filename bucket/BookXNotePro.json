@@ -1,39 +1,39 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "eab48d94310fb27b3391d223fbef80e5eeab76368f285337ca502d22309be742",
-            "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x86-2.0.0.1102-20230111.zip"
-        },
-        "64bit": {
-            "hash": "c3f21445ecaff57e5a89d6455e35de21e73191579fd8d84e75f7b98a61e2dc53",
-            "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x64-2.0.0.1102-20230111.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x86-$version-$matchDate.zip"
-            },
-            "64bit": {
-                "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x64-$version-$matchDate.zip"
-            }
-        }
-    },
-    "bin": "BookxNotePro.exe",
-    "checkver": "bookxnotepro-windows-x64-([\\d.]+)-(?<date>\\d{6,8}).zip",
     "homepage": "http://www.bookxnote.com/",
+    "license": "Proprietary",
+    "version": "2.0.0.1102",
+    "architecture": {
+        "64bit": {
+            "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x64-2.0.0.1102-20230111.zip",
+            "hash": "c3f21445ecaff57e5a89d6455e35de21e73191579fd8d84e75f7b98a61e2dc53"
+        },
+        "32bit": {
+            "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x86-2.0.0.1102-20230111.zip",
+            "hash": "eab48d94310fb27b3391d223fbef80e5eeab76368f285337ca502d22309be742"
+        }
+    },
     "installer": {
         "script": [
             "$exefile = (Get-ChildItem \"$dir\" '*.exe' | Select-Object -First 1).FullName",
             "Expand-7ZipArchive \"$exefile\" \"$dir\" -Removal"
         ]
     },
-    "license": "Proprietary",
+    "bin": "BookxNotePro.exe",
     "shortcuts": [
         [
             "BookxNotePro.exe",
             "BookxNote Pro"
         ]
     ],
-    "version": "2.0.0.1102"
+    "checkver": "bookxnotepro-windows-x64-([\\d.]+)-(?<date>\\d{6,8}).zip",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x64-$version-$matchDate.zip"
+            },
+            "32bit": {
+                "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x86-$version-$matchDate.zip"
+            }
+        }
+    }
 }

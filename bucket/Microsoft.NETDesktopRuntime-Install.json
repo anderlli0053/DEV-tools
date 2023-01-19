@@ -1,48 +1,48 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "bf8f4a1dedf6a056e6139b28d8a9c23cf8893c7e26de8a82528efb652f6f6068",
-   "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.13/windowsdesktop-runtime-6.0.13-win-x86.exe#/setup.exe"
-  },
-  "64bit": {
-   "hash": "a2e875d7734b468225da5786616bab5bede1b8c4e71c5dd2e4faffa83b34dec5",
-   "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.13/windowsdesktop-runtime-6.0.13-win-x64.exe#/setup.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe#/setup.exe"
-   },
-   "64bit": {
-    "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe#/setup.exe"
-   }
-  }
- },
- "checkver": {
-  "regex": "(?s)([\\d.]+)[^\\d]*?(?<sdkversion>[\\d.]+)[^\\d]*?(?:current|lts)",
-  "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json"
- },
- "description": "Microsoft .NET Desktop Runtime. The .NET Desktop Runtime enables you to run existing Windows desktop applications.",
- "homepage": "https://dotnet.microsoft.com/",
- "installer": {
-  "script": [
-   "$programname = \"Microsoft Windows Desktop Runtime*\"",
-   "$downloadlink = \"https://dotnet.microsoft.com/download/dotnet/5.0\"",
-   "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
-   "$filepath = \"$ProgramFiles\\dotnet\\shared\\Microsoft.NETCore.App\\$version\\\"",
-   "if((Test-Path -Path $filepath) -eq $false)",
-   "{",
-   "   &\"$dir\\setup.exe\" /quiet | Out-Null",
-   "   if((Test-Path -Path $filepath) -eq $false)",
-   "   {",
-   "       exit 1",
-   "   }",
-   "}",
-   "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
-  ]
- },
- "license": "MIT",
- "pre_download": "Assert-Administrator",
- "version": "6.0.13"
+    "version": "6.0.13",
+    "description": "Microsoft .NET Desktop Runtime. The .NET Desktop Runtime enables you to run existing Windows desktop applications.",
+    "homepage": "https://dotnet.microsoft.com/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.13/windowsdesktop-runtime-6.0.13-win-x64.exe#/setup.exe",
+            "hash": "a2e875d7734b468225da5786616bab5bede1b8c4e71c5dd2e4faffa83b34dec5"
+        },
+        "32bit": {
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.13/windowsdesktop-runtime-6.0.13-win-x86.exe#/setup.exe",
+            "hash": "bf8f4a1dedf6a056e6139b28d8a9c23cf8893c7e26de8a82528efb652f6f6068"
+        }
+    },
+    "pre_download": "Assert-Administrator",
+    "installer": {
+        "script": [
+            "$programname = \"Microsoft Windows Desktop Runtime*\"",
+            "$downloadlink = \"https://dotnet.microsoft.com/download/dotnet/5.0\"",
+            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
+            "$filepath = \"$ProgramFiles\\dotnet\\shared\\Microsoft.NETCore.App\\$version\\\"",
+            "if((Test-Path -Path $filepath) -eq $false)",
+            "{",
+            "   &\"$dir\\setup.exe\" /quiet | Out-Null",
+            "   if((Test-Path -Path $filepath) -eq $false)",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}",
+            "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
+        ]
+    },
+    "checkver": {
+        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
+        "regex": "(?s)([\\d.]+)[^\\d]*?(?<sdkversion>[\\d.]+)[^\\d]*?(?:current|lts)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe#/setup.exe"
+            }
+        }
+    }
 }

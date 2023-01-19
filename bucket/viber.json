@@ -1,9 +1,32 @@
 {
+    "version": "19.2.0.0",
+    "homepage": "https://www.viber.com/",
+    "description": "A freenium service that allows for secure calls and messages to anyone, anywhere.",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.viber.com/en/terms/viber-terms-use/"
+    },
     "architecture": {
         "64bit": {
-            "hash": "3c769dc6a5bbd9e564fefb4c03303ca7227b70bd887ff14cc62a4ad6995f14bc",
-            "url": "https://download.cdn.viber.com/desktop/windows/ViberSetup.exe"
+            "url": "https://download.cdn.viber.com/desktop/windows/ViberSetup.exe",
+            "hash": "3c769dc6a5bbd9e564fefb4c03303ca7227b70bd887ff14cc62a4ad6995f14bc"
         }
+    },
+    "pre_install": [
+        "Expand-DarkArchive \"$dir\\ViberSetup.exe\" \"$dir\\extract_folder\" -Removal",
+        "Expand-MsiArchive \"$dir\\extract_folder\\AttachedContainer\\ViberSetup.msi\" \"$dir\\extract_folder\\AttachedContainer\" -Removal",
+        "Move-Item \"$dir\\extract_folder\\AttachedContainer\\Viber\\*\" \"$dir\"; Remove-Item \"$dir\\extract_folder\" -Recurse | Out-Null"
+    ],
+    "bin": "Viber.exe",
+    "shortcuts": [
+        [
+            "Viber.exe",
+            "Viber"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.filehorse.com/download-viber-for-windows/",
+        "regex": "<li>Viber\\sfor\\sWindows\\s([\\d.]+)</li>"
     },
     "autoupdate": {
         "architecture": {
@@ -11,28 +34,5 @@
                 "url": "https://download.cdn.viber.com/desktop/windows/ViberSetup.exe"
             }
         }
-    },
-    "bin": "Viber.exe",
-    "checkver": {
-        "regex": "<li>Viber\\sfor\\sWindows\\s([\\d.]+)</li>",
-        "url": "https://www.filehorse.com/download-viber-for-windows/"
-    },
-    "description": "A freenium service that allows for secure calls and messages to anyone, anywhere.",
-    "homepage": "https://www.viber.com/",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.viber.com/en/terms/viber-terms-use/"
-    },
-    "pre_install": [
-        "Expand-DarkArchive \"$dir\\ViberSetup.exe\" \"$dir\\extract_folder\" -Removal",
-        "Expand-MsiArchive \"$dir\\extract_folder\\AttachedContainer\\ViberSetup.msi\" \"$dir\\extract_folder\\AttachedContainer\" -Removal",
-        "Move-Item \"$dir\\extract_folder\\AttachedContainer\\Viber\\*\" \"$dir\"; Remove-Item \"$dir\\extract_folder\" -Recurse | Out-Null"
-    ],
-    "shortcuts": [
-        [
-            "Viber.exe",
-            "Viber"
-        ]
-    ],
-    "version": "19.2.0.0"
+    }
 }

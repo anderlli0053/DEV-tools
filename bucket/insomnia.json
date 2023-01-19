@@ -1,9 +1,24 @@
 {
+    "version": "2022.7.5",
+    "description": "HTTP and GraphQL client",
+    "homepage": "https://insomnia.rest",
+    "license": "MIT",
     "architecture": {
         "64bit": {
-            "hash": "sha1:440c9865618eec7457a115a26f667f042c9c0d03",
-            "url": "https://github.com/Kong/insomnia/releases/download/core%402022.7.4/insomnia-2022.7.4-full.nupkg"
+            "url": "https://github.com/Kong/insomnia/releases/download/core%402022.7.5/insomnia-2022.7.5-full.nupkg",
+            "hash": "sha1:6a4ad7b222f8f1a4ec095c6f4f1ccf126ae99ebd"
         }
+    },
+    "extract_dir": "lib\\net45",
+    "shortcuts": [
+        [
+            "Insomnia.exe",
+            "Insomnia"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/Kong/insomnia/releases",
+        "regex": "\"core@([\\d.]+)\""
     },
     "autoupdate": {
         "architecture": {
@@ -14,20 +29,5 @@
         "hash": {
             "url": "$baseurl/RELEASES"
         }
-    },
-    "checkver": {
-        "regex": "\"core@([\\d.]+)\"",
-        "url": "https://api.github.com/repos/Kong/insomnia/releases"
-    },
-    "description": "HTTP and GraphQL client",
-    "extract_dir": "lib\\net45",
-    "homepage": "https://insomnia.rest",
-    "license": "MIT",
-    "shortcuts": [
-        [
-            "Insomnia.exe",
-            "Insomnia"
-        ]
-    ],
-    "version": "2022.7.4"
+    }
 }

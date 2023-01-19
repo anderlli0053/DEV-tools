@@ -1,32 +1,14 @@
 {
-    "autoupdate": {
-        "hash": {
-            "regex": "<code>$sha256",
-            "url": "https://github.com/metabase/metabase/releases/tag/v$version"
-        },
-        "url": "https://downloads.metabase.com/enterprise/v$version/metabase.jar"
-    },
-    "bin": "metabase.jar",
-    "checkver": {
-        "jsonpath": "$.latest.version",
-        "regex": "v([\\d.]+)",
-        "url": "http://static.metabase.com/version-info-ee.json"
-    },
+    "version": "1.45.2",
     "description": "Metabase Enterprise Edition is the easy way for everyone in your company to ask questions and learn from data.",
-    "env_set": {
-        "MB_DB_FILE": "$dir\\data\\metabase.db",
-        "MB_PLUGINS_DIR": "$dir\\plugins"
-    },
-    "hash": "3a6617ced00f4f822038ad15202deaabbc12dbc967de798d389c7fe944a5f034",
     "homepage": "https://www.metabase.com/enterprise/",
     "license": {
         "identifier": "Metabase Commercial License",
         "url": "https://www.metabase.com/license/commercial/"
     },
-    "persist": [
-        "data",
-        "plugins"
-    ],
+    "url": "https://downloads.metabase.com/enterprise/v1.45.2/metabase.jar",
+    "hash": "3a6617ced00f4f822038ad15202deaabbc12dbc967de798d389c7fe944a5f034",
+    "bin": "metabase.jar",
     "suggest": {
         "JDK": [
             "java/oraclejdk",
@@ -35,6 +17,24 @@
             "java/zulu"
         ]
     },
-    "url": "https://downloads.metabase.com/enterprise/v1.45.2/metabase.jar",
-    "version": "1.45.2"
+    "env_set": {
+        "MB_PLUGINS_DIR": "$dir\\plugins",
+        "MB_DB_FILE": "$dir\\data\\metabase.db"
+    },
+    "persist": [
+        "data",
+        "plugins"
+    ],
+    "checkver": {
+        "url": "http://static.metabase.com/version-info-ee.json",
+        "jsonpath": "$.latest.version",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://downloads.metabase.com/enterprise/v$version/metabase.jar",
+        "hash": {
+            "url": "https://github.com/metabase/metabase/releases/tag/v$version",
+            "regex": "<code>$sha256"
+        }
+    }
 }

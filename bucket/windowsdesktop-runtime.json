@@ -1,38 +1,38 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "72277cb5afe64e8afc68073a9726cd153715646db7ab5e9c5a782a1fd76a591c",
-   "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/7.0.1/windowsdesktop-runtime-7.0.1-win-x86.exe"
-  },
-  "64bit": {
-   "hash": "9fa9e18db9580422b9bf9f48dc3ef122d396b5ce4cf02d226c1135969c0db6de",
-   "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/7.0.1/windowsdesktop-runtime-7.0.1-win-x64.exe"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe"
-   },
-   "64bit": {
-    "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe"
-   }
-  }
- },
- "checkver": {
-  "regex": "([\\d.]+)$",
-  "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/Current/latest.version"
- },
- "description": "Microsoft .NET 7.0 Desktop Runtime",
- "homepage": "https://dotnet.microsoft.com/download/dotnet",
- "installer": {
-  "script": "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList '/install', '/quiet', '/norestart' -RunAs | Out-Null"
- },
- "license": {
-  "identifier": "Freeware",
-  "url": "https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx"
- },
- "notes": "You can now remove this installer with 'scoop uninstall windowsdesktop-runtime'",
- "pre_install": "if (!(is_admin)) { throw 'Admin privileges are required.' }",
- "version": "7.0.1"
+    "version": "7.0.1",
+    "description": "Microsoft .NET 7.0 Desktop Runtime",
+    "homepage": "https://dotnet.microsoft.com/download/dotnet",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx"
+    },
+    "notes": "You can now remove this installer with 'scoop uninstall windowsdesktop-runtime'",
+    "architecture": {
+        "64bit": {
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/7.0.1/windowsdesktop-runtime-7.0.1-win-x64.exe",
+            "hash": "9fa9e18db9580422b9bf9f48dc3ef122d396b5ce4cf02d226c1135969c0db6de"
+        },
+        "32bit": {
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/7.0.1/windowsdesktop-runtime-7.0.1-win-x86.exe",
+            "hash": "72277cb5afe64e8afc68073a9726cd153715646db7ab5e9c5a782a1fd76a591c"
+        }
+    },
+    "pre_install": "if (!(is_admin)) { throw 'Admin privileges are required.' }",
+    "installer": {
+        "script": "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList '/install', '/quiet', '/norestart' -RunAs | Out-Null"
+    },
+    "checkver": {
+        "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/Current/latest.version",
+        "regex": "([\\d.]+)$"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe"
+            },
+            "32bit": {
+                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe"
+            }
+        }
+    }
 }

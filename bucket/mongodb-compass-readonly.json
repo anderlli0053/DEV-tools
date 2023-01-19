@@ -1,28 +1,17 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "8988bea3bfcfee39b3f24b7d6ea1fc7e7db73399f7765199d67851329ec124d5",
-            "url": "https://downloads.mongodb.com/compass/mongodb-compass-readonly-1.35.0-win32-x64.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://downloads.mongodb.com/compass/mongodb-compass-readonly-$version-win32-x64.zip"
-            }
-        }
-    },
-    "checkver": {
-        "regex": "mongodb-compass-readonly-([\\d.]+)-win32-x64.zip",
-        "url": "https://www.mongodb.com/try/download/compass"
-    },
+    "version": "1.35.0",
     "description": "The GUI (Readonly Edition) for MongoDB, which allows you to make smarter decisions about document structure, querying, indexing, document validation, and more.",
     "homepage": "https://www.mongodb.com/products/compass",
     "license": {
         "identifier": "Freeware",
         "url": "https://www.mongodb.com/compass-community-license-agreement"
     },
-    "persist": "User Data",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.mongodb.com/compass/mongodb-compass-readonly-1.35.0-win32-x64.zip",
+            "hash": "8988bea3bfcfee39b3f24b7d6ea1fc7e7db73399f7765199d67851329ec124d5"
+        }
+    },
     "shortcuts": [
         [
             "MongoDBCompassReadonly.exe",
@@ -30,5 +19,16 @@
             "--user-data-dir=\"$dir\\User Data\""
         ]
     ],
-    "version": "1.35.0"
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://www.mongodb.com/try/download/compass",
+        "regex": "mongodb-compass-readonly-([\\d.]+)-win32-x64.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.mongodb.com/compass/mongodb-compass-readonly-$version-win32-x64.zip"
+            }
+        }
+    }
 }

@@ -1,21 +1,14 @@
 {
-    "autoupdate": {
-        "url": "https://www.resplendence.com/download/whocrashedSetup.exe"
-    },
-    "checkver": {
-        "regex": ">LatestVersion=([\\d.]+),\\sbuild\\s([\\d.]+)<",
-        "replace": "$1-$2",
-        "url": "https://www.resplendence.com/bin/rspupdate.dll/checkforupdate?product=WhoCrashed&edition=home",
-        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
-    },
-    "description": "A utility application that reveals the drivers responsible for crashing your computer.",
-    "hash": "501df10ac3aed785f58e69cce000e8733975db2eda05e262bdcdc5578505f917",
+    "version": "7.05-705.30114",
     "homepage": "https://www.resplendence.com/whocrashed",
-    "innosetup": true,
+    "description": "A utility application that reveals the drivers responsible for crashing your computer.",
     "license": {
         "identifier": "Freeware",
         "url": "https://www.resplendence.com/licensing"
     },
+    "url": "https://www.resplendence.com/download/whocrashedSetup.exe",
+    "hash": "501df10ac3aed785f58e69cce000e8733975db2eda05e262bdcdc5578505f917",
+    "innosetup": true,
     "pre_install": [
         "if ($architecture -eq '32bit') {",
         "   Get-ChildItem \"$dir\" -Recurse -Filter '*,2.*' | Remove-Item; $get32bit_Items = Get-ChildItem \"$dir\" -Recurse -Filter '*,1.*'",
@@ -31,6 +24,13 @@
             "WhoCrashed"
         ]
     ],
-    "url": "https://www.resplendence.com/download/whocrashedSetup.exe",
-    "version": "7.05-705.30114"
+    "checkver": {
+        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
+        "url": "https://www.resplendence.com/bin/rspupdate.dll/checkforupdate?product=WhoCrashed&edition=home",
+        "regex": ">LatestVersion=([\\d.]+),\\sbuild\\s([\\d.]+)<",
+        "replace": "$1-$2"
+    },
+    "autoupdate": {
+        "url": "https://www.resplendence.com/download/whocrashedSetup.exe"
+    }
 }

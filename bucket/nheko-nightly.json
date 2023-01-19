@@ -1,19 +1,24 @@
 {
+    "version": "20230119-c98231",
+    "description": "Desktop client for Matrix using Qt and C++17.",
+    "homepage": "https://nheko-reborn.github.io/",
+    "license": "GPL-3.0-or-later",
+    "suggest": {
+        "Visual C++ Redistributable 2015-2022": "extras/vcredist2022"
+    },
     "architecture": {
         "64bit": {
-            "hash": "6c8106c01a1e39f7da24f3d073c9051f16d148421e5dd7ed772ce8198bc2f611",
-            "url": "https://matrix.org/_matrix/media/r0/download/neko.dev/HuNBLQOpjOGyOFjiNqcqlLVO#/dl.zip"
+            "url": "https://matrix.org/_matrix/media/r0/download/neko.dev/HuNBLQOpjOGyOFjiNqcqlLVO#/dl.zip",
+            "hash": "6c8106c01a1e39f7da24f3d073c9051f16d148421e5dd7ed772ce8198bc2f611"
         }
     },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://matrix.org/_matrix/media/r0/download/neko.dev/$matchFileurl#/dl.zip"
-            }
-        }
-    },
+    "shortcuts": [
+        [
+            "nheko.exe",
+            "Nheko"
+        ]
+    ],
     "checkver": {
-        "regex": "(\\d{8}-\\w+) (?<fileurl>\\w+)",
         "script": [
             "$url = 'https://view.matrix.org/room/!TshDrgpBNBDmfDeEGN:neko.dev'",
             "$regex = '(?sm)download/neko\\.dev/([A-Za-z]+)((?!download/neko\\.dev/).)*?nheko-master-([0-9a-f]+)-win64\\.zip.*?(\\d{1,2} [A-Za-z]{3} \\d{4})'",
@@ -27,19 +32,14 @@
             "$commitSha = $match.Groups[3].Value.SubString(0,6)",
             "$fileUrl = $match.Groups[1].Value",
             "Write-Output $date-$commitSha $fileUrl"
-        ]
+        ],
+        "regex": "(\\d{8}-\\w+) (?<fileurl>\\w+)"
     },
-    "description": "Desktop client for Matrix using Qt and C++17.",
-    "homepage": "https://nheko-reborn.github.io/",
-    "license": "GPL-3.0-or-later",
-    "shortcuts": [
-        [
-            "nheko.exe",
-            "Nheko"
-        ]
-    ],
-    "suggest": {
-        "Visual C++ Redistributable 2015-2022": "extras/vcredist2022"
-    },
-    "version": "20230119-c98231"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://matrix.org/_matrix/media/r0/download/neko.dev/$matchFileurl#/dl.zip"
+            }
+        }
+    }
 }

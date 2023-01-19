@@ -1,14 +1,12 @@
 {
+    "version": "6.08.10255",
+    "description": "CCleaner. Number-one tool for cleaning your PC.",
+    "homepage": "https://www.ccleaner.com/ccleaner",
+    "license": "Freeware",
+    "changelog": "https://www.ccleaner.com/ccleaner/version-history",
+    "url": "https://download.ccleaner.com/portable/ccsetup608.zip",
+    "hash": "6cb8aa7e4b19aecb992cb5689702c29b3e0aa35d42fbf33b9fddde7b74895ace",
     "architecture": {
-        "32bit": {
-            "bin": "CCleaner.exe",
-            "shortcuts": [
-                [
-                    "CCleaner.exe",
-                    "CCleaner"
-                ]
-            ]
-        },
         "64bit": {
             "bin": [
                 [
@@ -22,26 +20,17 @@
                     "CCleaner"
                 ]
             ]
+        },
+        "32bit": {
+            "bin": "CCleaner.exe",
+            "shortcuts": [
+                [
+                    "CCleaner.exe",
+                    "CCleaner"
+                ]
+            ]
         }
     },
-    "autoupdate": {
-        "url": "https://download.ccleaner.com/portable/ccsetup$majorVersion$minorVersion.zip"
-    },
-    "changelog": "https://www.ccleaner.com/ccleaner/version-history",
-    "checkver": {
-        "regex": ">v([\\d.]+)",
-        "url": "https://www.ccleaner.com/ccleaner/release-notes"
-    },
-    "description": "CCleaner. Number-one tool for cleaning your PC.",
-    "hash": "6cb8aa7e4b19aecb992cb5689702c29b3e0aa35d42fbf33b9fddde7b74895ace",
-    "homepage": "https://www.ccleaner.com/ccleaner",
-    "license": "Freeware",
-    "persist": [
-        "ccleaner.ini",
-        "winapp.ini",
-        "winreg.ini",
-        "winsys.ini"
-    ],
     "pre_install": [
         "if(!(Test-Path \"$persist_dir\\ccleaner.ini\")) {",
         "   Set-Content \"$dir\\ccleaner.ini\" (@('[Options]', 'UpdateAuto=0', 'UpdateNotify=0', 'UpdateCheck=0', 'HelpImproveCCleaner=0') -join \"`r`n\") -Encoding ASCII",
@@ -50,6 +39,17 @@
         "   if(!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
         "}"
     ],
-    "url": "https://download.ccleaner.com/portable/ccsetup608.zip",
-    "version": "6.08.10255"
+    "persist": [
+        "ccleaner.ini",
+        "winapp.ini",
+        "winreg.ini",
+        "winsys.ini"
+    ],
+    "checkver": {
+        "url": "https://www.ccleaner.com/ccleaner/release-notes",
+        "regex": ">v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.ccleaner.com/portable/ccsetup$majorVersion$minorVersion.zip"
+    }
 }

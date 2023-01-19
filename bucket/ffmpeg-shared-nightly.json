@@ -1,17 +1,13 @@
 {
+    "version": "109647",
+    "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "homepage": "https://ffmpeg.org",
+    "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "extract_dir": "ffmpeg-N-109649-gab8cde6efa-win64-gpl-shared",
-            "hash": "006c96ea3f3cf832b828bddc01fcfddbd276a76239c314f0f31fdab50b926461",
-            "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2023-01-19-12-37/ffmpeg-N-109649-gab8cde6efa-win64-gpl-shared.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "extract_dir": "ffmpeg-N-$version-g$matchHash-win64-gpl-shared",
-                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchTime/ffmpeg-N-$version-g$matchHash-win64-gpl-shared.zip"
-            }
+            "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2023-01-18-12-37/ffmpeg-N-109647-gba36e6ed52-win64-gpl-shared.zip",
+            "hash": "d6cacd7bd6382bbe2a1aa2422cfc9f108e9ce00e4b9e132dec9dfa38b6fec6ff",
+            "extract_dir": "ffmpeg-N-109647-gba36e6ed52-win64-gpl-shared"
         }
     },
     "bin": [
@@ -20,11 +16,15 @@
         "bin\\ffprobe.exe"
     ],
     "checkver": {
-        "regex": "/autobuild-(?<time>[\\d-]+)/ffmpeg-N-(\\d+)-g(?<hash>[a-z\\d]+)-win64-gpl-shared\\.zip",
-        "url": "https://github.com/BtbN/FFmpeg-Builds/releases"
+        "url": "https://github.com/BtbN/FFmpeg-Builds/releases",
+        "regex": "/autobuild-(?<time>[\\d-]+)/ffmpeg-N-(\\d+)-g(?<hash>[a-z\\d]+)-win64-gpl-shared\\.zip"
     },
-    "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
-    "homepage": "https://ffmpeg.org",
-    "license": "GPL-3.0-or-later",
-    "version": "109649"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchTime/ffmpeg-N-$version-g$matchHash-win64-gpl-shared.zip",
+                "extract_dir": "ffmpeg-N-$version-g$matchHash-win64-gpl-shared"
+            }
+        }
+    }
 }

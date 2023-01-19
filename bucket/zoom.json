@@ -1,44 +1,27 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "27f60f524c7ae69679333123c81bc33f5e6557f5df7342970ff9c2c26a18929d",
-            "pre_install": "Expand-7zipArchive \"$dir\\Zoom.msi\" -Removal",
-            "url": "https://cdn.zoom.us/prod/5.13.5.12053/ZoomInstaller.exe#/dl.7z"
-        },
-        "64bit": {
-            "hash": "73f58c92e93c4511b24c913851048b6b0defc1daa55aac98e2810fbf215163df",
-            "pre_install": "Expand-7zipArchive \"$dir\\ZoomFull_Sip.cab\" -Removal",
-            "url": "https://cdn.zoom.us/prod/5.13.5.12053/x64/ZoomInstallerFull.exe#/dl.7z"
-        },
-        "arm64": {
-            "hash": "af202906c45a23c49cde9de17f50cd2de6b4ee0780eef3afde1ac5c1a365af67",
-            "pre_install": "Expand-7zipArchive \"$dir\\ZoomFull_Sip.cab\" -Removal",
-            "url": "https://cdn.zoom.us/prod/5.13.5.12053/arm64/ZoomInstallerFull.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://cdn.zoom.us/prod/$version/ZoomInstaller.exe#/dl.7z"
-            },
-            "64bit": {
-                "url": "https://cdn.zoom.us/prod/$version/x64/ZoomInstallerFull.exe#/dl.7z"
-            },
-            "arm64": {
-                "url": "https://cdn.zoom.us/prod/$version/arm64/ZoomInstallerFull.exe#/dl.7z"
-            }
-        }
-    },
-    "bin": "Zoom.exe",
-    "checkver": {
-        "jsonpath": "$.result.downloadVO.zoom.version",
-        "url": "https://www.zoom.us/rest/download?os=win"
-    },
+    "version": "5.13.5.12053",
     "description": "Video and audio conferencing, chat, and webinars",
     "homepage": "https://zoom.us",
     "license": {
         "identifier": "Proprietary",
         "url": "https://zoom.us/terms"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://cdn.zoom.us/prod/5.13.5.12053/x64/ZoomInstallerFull.exe#/dl.7z",
+            "hash": "73f58c92e93c4511b24c913851048b6b0defc1daa55aac98e2810fbf215163df",
+            "pre_install": "Expand-7zipArchive \"$dir\\ZoomFull_Sip.cab\" -Removal"
+        },
+        "32bit": {
+            "url": "https://cdn.zoom.us/prod/5.13.5.12053/ZoomInstaller.exe#/dl.7z",
+            "hash": "27f60f524c7ae69679333123c81bc33f5e6557f5df7342970ff9c2c26a18929d",
+            "pre_install": "Expand-7zipArchive \"$dir\\Zoom.msi\" -Removal"
+        },
+        "arm64": {
+            "url": "https://cdn.zoom.us/prod/5.13.5.12053/arm64/ZoomInstallerFull.exe#/dl.7z",
+            "hash": "af202906c45a23c49cde9de17f50cd2de6b4ee0780eef3afde1ac5c1a365af67",
+            "pre_install": "Expand-7zipArchive \"$dir\\ZoomFull_Sip.cab\" -Removal"
+        }
     },
     "post_install": [
         "Remove-Item \"$dir\\Install*\"",
@@ -48,17 +31,34 @@
         "New-ItemProperty -Path $regpath -Name \"URL Protocol\" -PropertyType String -Force | Out-Null",
         "New-Item -Path \"$regpath\\shell\\open\\command\" -Value \"`\"$dir\\Zoom.exe`\" --url=`\"%1`\"\" -Force| Out-Null"
     ],
-    "shortcuts": [
-        [
-            "Zoom.exe",
-            "Zoom"
-        ]
-    ],
     "uninstaller": {
         "script": [
             "Write-Host \"Unregistering zoommtg:// protocol handler\"",
             "Remove-Item \"HKCU:\\SOFTWARE\\Classes\\zoommtg\" -Recurse -Force"
         ]
     },
-    "version": "5.13.5.12053"
+    "bin": "Zoom.exe",
+    "shortcuts": [
+        [
+            "Zoom.exe",
+            "Zoom"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.zoom.us/rest/download?os=win",
+        "jsonpath": "$.result.downloadVO.zoom.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cdn.zoom.us/prod/$version/x64/ZoomInstallerFull.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://cdn.zoom.us/prod/$version/ZoomInstaller.exe#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://cdn.zoom.us/prod/$version/arm64/ZoomInstallerFull.exe#/dl.7z"
+            }
+        }
+    }
 }

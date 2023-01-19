@@ -1,9 +1,19 @@
 {
+    "version": "0.5.0-beta.3",
+    "description": "A developer CLI that accelerates the time it takes for you to get started on Azure.",
+    "homepage": "https://aka.ms/azure-dev/devhub",
+    "license": "MIT",
     "architecture": {
         "64bit": {
-            "hash": "bcdec21254094f15d0fb3912cbbd7a896f234056f5809b5276554de7587d34a1",
-            "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_0.5.0-beta.3/azd-windows-amd64.zip"
+            "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_0.5.0-beta.3/azd-windows-amd64.zip",
+            "hash": "bcdec21254094f15d0fb3912cbbd7a896f234056f5809b5276554de7587d34a1"
         }
+    },
+    "pre_install": "Get-ChildItem \"$dir\" 'azd-*.exe' | Select-Object -First 1 | Rename-Item -NewName 'azd.exe'",
+    "bin": "azd.exe",
+    "checkver": {
+        "url": "https://github.com/Azure/azure-dev/releases/latest",
+        "regex": "/releases/tag/azure-dev-cli_([^/]+)\""
     },
     "autoupdate": {
         "architecture": {
@@ -11,15 +21,5 @@
                 "url": "https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_$version/azd-windows-amd64.zip"
             }
         }
-    },
-    "bin": "azd.exe",
-    "checkver": {
-        "regex": "/releases/tag/azure-dev-cli_([^/]+)\"",
-        "url": "https://github.com/Azure/azure-dev/releases/latest"
-    },
-    "description": "A developer CLI that accelerates the time it takes for you to get started on Azure.",
-    "homepage": "https://aka.ms/azure-dev/devhub",
-    "license": "MIT",
-    "pre_install": "Get-ChildItem \"$dir\" 'azd-*.exe' | Select-Object -First 1 | Rename-Item -NewName 'azd.exe'",
-    "version": "0.5.0-beta.3"
+    }
 }

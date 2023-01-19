@@ -1,39 +1,39 @@
 {
- "architecture": {
-  "32bit": {
-   "url": "https://dorado-api.deno.dev/edge?arch=86&channel=canary&version=107.0.1418.3&dl#/MicrosoftEdge-107.0.1418.3-x86.7z"
-  },
-  "64bit": {
-   "url": "https://dorado-api.deno.dev/edge?arch=64&channel=canary&version=107.0.1418.3&dl#/MicrosoftEdge-107.0.1418.3-x64.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://dorado-api.deno.dev/edge?arch=86&channel=canary&version=$version&dl#/MicrosoftEdge-$version-x86.7z"
-   },
-   "64bit": {
-    "url": "https://dorado-api.deno.dev/edge?arch=64&channel=canary&version=$version&dl#/MicrosoftEdge-$version-x64.7z"
-   }
-  }
- },
- "checkver": {
-  "regex": "MicrosoftEdge_X64_([\\d.]+).exe",
-  "url": "https://dorado-api.deno.dev/edge?arch=64&channel=canary"
- },
- "description": "Microsoft Edge Canary. The chromium based Microsoft Edge browser (Canary Channel)",
- "homepage": "https://www.microsoftedgeinsider.com/en-us/welcome?channel=canary",
- "installer": {
-  "script": "Expand-7zipArchive -Path \"$dir\\MSEDGE.7z\" -ExtractDir \"Chrome-bin\\$version\" -Removal"
- },
- "license": "Freeware",
- "persist": "User Data",
- "shortcuts": [
-  [
-   "msedge.exe",
-   "Microsoft Edge Canary",
-   "--user-data-dir=\"$dir\\User Data\""
-  ]
- ],
- "version": "107.0.1418.3"
+    "version": "107.0.1418.3",
+    "description": "Microsoft Edge Canary. The chromium based Microsoft Edge browser (Canary Channel)",
+    "homepage": "https://www.microsoftedgeinsider.com/en-us/welcome?channel=canary",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://dorado-api.deno.dev/edge?arch=64&channel=canary&version=107.0.1418.3&dl#/MicrosoftEdge-107.0.1418.3-x64.7z"
+        },
+        "32bit": {
+            "url": "https://dorado-api.deno.dev/edge?arch=86&channel=canary&version=107.0.1418.3&dl#/MicrosoftEdge-107.0.1418.3-x86.7z"
+        }
+    },
+    "installer": {
+        "script": "Expand-7zipArchive -Path \"$dir\\MSEDGE.7z\" -ExtractDir \"Chrome-bin\\$version\" -Removal"
+    },
+    "shortcuts": [
+        [
+            "msedge.exe",
+            "Microsoft Edge Canary",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://dorado-api.deno.dev/edge?arch=64&channel=canary",
+        "regex": "MicrosoftEdge_X64_([\\d.]+).exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dorado-api.deno.dev/edge?arch=64&channel=canary&version=$version&dl#/MicrosoftEdge-$version-x64.7z"
+            },
+            "32bit": {
+                "url": "https://dorado-api.deno.dev/edge?arch=86&channel=canary&version=$version&dl#/MicrosoftEdge-$version-x86.7z"
+            }
+        }
+    }
 }

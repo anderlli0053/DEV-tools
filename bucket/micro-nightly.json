@@ -1,34 +1,34 @@
 {
+    "version": "2.0.12-dev.27-2023-01-19",
+    "description": "A terminal-based text editor that aims to be easy to use and intuitive, while also taking advantage of the full capabilities of modern terminals.",
+    "homepage": "https://micro-editor.github.io/",
+    "license": "MIT",
     "architecture": {
-        "32bit": {
-            "hash": "398050619a400101ab8cf54a46c9024929c1780d53206b95f0c10b7704aa84b8",
-            "url": "https://github.com/zyedidia/micro/releases/download/nightly/micro-2.0.12-dev.27-win64.zip"
-        },
         "64bit": {
-            "hash": "398050619a400101ab8cf54a46c9024929c1780d53206b95f0c10b7704aa84b8",
-            "url": "https://github.com/zyedidia/micro/releases/download/nightly/micro-2.0.12-dev.27-win64.zip"
+            "url": "https://github.com/zyedidia/micro/releases/download/nightly/micro-2.0.12-dev.27-win64.zip",
+            "hash": "398050619a400101ab8cf54a46c9024929c1780d53206b95f0c10b7704aa84b8"
+        },
+        "32bit": {
+            "url": "https://github.com/zyedidia/micro/releases/download/nightly/micro-2.0.12-dev.27-win64.zip",
+            "hash": "398050619a400101ab8cf54a46c9024929c1780d53206b95f0c10b7704aa84b8"
         }
+    },
+    "extract_dir": "micro-2.0.12-dev.27",
+    "bin": "micro.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/zyedidia/micro/releases/tags/nightly",
+        "regex": "updated_at.+\"([\\d\\-]+)T.*micro-(?<micro>.+)-win",
+        "replace": "${2}-${1}"
     },
     "autoupdate": {
         "architecture": {
-            "32bit": {
+            "64bit": {
                 "url": "https://github.com/zyedidia/micro/releases/download/nightly/micro-$matchMicro-win64.zip"
             },
-            "64bit": {
+            "32bit": {
                 "url": "https://github.com/zyedidia/micro/releases/download/nightly/micro-$matchMicro-win64.zip"
             }
         },
         "extract_dir": "micro-$matchMicro"
-    },
-    "bin": "micro.exe",
-    "checkver": {
-        "regex": "updated_at.+\"([\\d\\-]+)T.*micro-(?<micro>.+)-win",
-        "replace": "${2}-${1}",
-        "url": "https://api.github.com/repos/zyedidia/micro/releases/tags/nightly"
-    },
-    "description": "A terminal-based text editor that aims to be easy to use and intuitive, while also taking advantage of the full capabilities of modern terminals.",
-    "extract_dir": "micro-2.0.12-dev.27",
-    "homepage": "https://micro-editor.github.io/",
-    "license": "MIT",
-    "version": "2.0.12-dev.27-2023-01-19"
+    }
 }

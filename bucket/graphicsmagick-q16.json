@@ -1,24 +1,19 @@
 {
+    "homepage": "http://www.graphicsmagick.org/",
+    "description": "Robust and efficient collection of tools and libraries which support reading, writing, and manipulating an image in over 89 major formats. (48/64 bit pixel support for high-resolution color)",
+    "license": "MIT",
+    "version": "1.3.40",
     "architecture": {
-        "32bit": {
-            "hash": "163b1e7bfe2d89f9463425e42c6243b1110f8d36298fdc2a669d20d8dd922258",
-            "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/1.3.40/GraphicsMagick-1.3.40-Q16-win32-dll.exe"
-        },
         "64bit": {
-            "hash": "86b50e11142efc663e4b5d287148ea7606df08d64c8995fb2c7e697d5ae24ce9",
-            "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/1.3.40/GraphicsMagick-1.3.40-Q16-win64-dll.exe"
+            "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/1.3.40/GraphicsMagick-1.3.40-Q16-win64-dll.exe",
+            "hash": "sha1:0310b311d6fd3b5e57ad6e46eeebfa2689791174"
+        },
+        "32bit": {
+            "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/1.3.40/GraphicsMagick-1.3.40-Q16-win32-dll.exe",
+            "hash": "sha1:a089eec610bb43001c53ecd6b8a127e0b87a4224"
         }
     },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/$version/GraphicsMagick-$version-Q16-win32-dll.exe"
-            },
-            "64bit": {
-                "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/$version/GraphicsMagick-$version-Q16-win64-dll.exe"
-            }
-        }
-    },
+    "innosetup": true,
     "bin": [
         "gm.exe",
         [
@@ -27,12 +22,17 @@
         ]
     ],
     "checkver": {
-        "regex": "GraphicsMagick ([\\d].[\\d].[\\d]+)",
-        "url": "https://sourceforge.net/p/graphicsmagick/news/?source=navbar"
+        "url": "https://sourceforge.net/p/graphicsmagick/news/?source=navbar",
+        "regex": "GraphicsMagick ([\\d].[\\d].[\\d]+)"
     },
-    "description": "Robust and efficient collection of tools and libraries which support reading, writing, and manipulating an image in over 89 major formats. (48/64 bit pixel support for high-resolution color)",
-    "homepage": "http://www.graphicsmagick.org/",
-    "innosetup": true,
-    "license": "MIT",
-    "version": "1.3.40"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/$version/GraphicsMagick-$version-Q16-win64-dll.exe"
+            },
+            "32bit": {
+                "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/$version/GraphicsMagick-$version-Q16-win32-dll.exe"
+            }
+        }
+    }
 }

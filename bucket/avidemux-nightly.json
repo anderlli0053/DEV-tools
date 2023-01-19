@@ -1,41 +1,41 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "28d24dca79a1b1714d656ee345189d3ae2b1bb53892fd17fe7a0726e18b877b8",
-   "url": "https://www.avidemux.org/nightly/win64/avidemux_2.8.2%20r230111_win64.exe#/dl.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://www.avidemux.org/nightly/win64/$matchWin64bit%20r$version_win64.exe#/dl.7z"
-   }
-  }
- },
- "bin": [
-  [
-   "avidemux_cli.exe",
-   "avidemux"
-  ]
- ],
- "checkver": {
-  "regex": "(?<win64bit>avidemux_[\\d.]+) r(?<version>\\d+)_win64.exe",
-  "reverse": true,
-  "url": "https://www.avidemux.org/nightly/win64/"
- },
- "description": "Video editor designed for simple cutting, filtering and encoding tasks",
- "homepage": "http://fixounet.free.fr/avidemux/",
- "license": "GPL-2.0-only",
- "post_install": "'$PLUGINSDIR', 'uninstall.exe' | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force }",
- "shortcuts": [
-  [
-   "avidemux.exe",
-   "Avidemux Nightly"
-  ],
-  [
-   "avidemux_jobs.exe",
-   "Avidemux Nightly Jobs"
-  ]
- ],
- "version": "230111"
+    "version": "230111",
+    "description": "Video editor designed for simple cutting, filtering and encoding tasks",
+    "homepage": "http://fixounet.free.fr/avidemux/",
+    "license": "GPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.avidemux.org/nightly/win64/avidemux_2.8.2%20r230111_win64.exe#/dl.7z",
+            "hash": "28d24dca79a1b1714d656ee345189d3ae2b1bb53892fd17fe7a0726e18b877b8"
+        }
+    },
+    "bin": [
+        [
+            "avidemux_cli.exe",
+            "avidemux"
+        ]
+    ],
+    "post_install": "'$PLUGINSDIR', 'uninstall.exe' | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force }",
+    "shortcuts": [
+        [
+            "avidemux.exe",
+            "Avidemux Nightly"
+        ],
+        [
+            "avidemux_jobs.exe",
+            "Avidemux Nightly Jobs"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.avidemux.org/nightly/win64/",
+        "regex": "(?<win64bit>avidemux_[\\d.]+) r(?<version>\\d+)_win64.exe",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.avidemux.org/nightly/win64/$matchWin64bit%20r$version_win64.exe#/dl.7z"
+            }
+        }
+    }
 }

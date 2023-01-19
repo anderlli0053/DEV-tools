@@ -1,52 +1,52 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "234e97babdb52eeed87a2bb4e8fa262244800dfd248f304d985dbda6f9a233ba",
-   "url": "https://get.enterprisedb.com/postgresql/postgresql-15.1-1-windows-x64-binaries.zip#/dl.zip_"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-x64-binaries.zip#/dl.zip_"
-   }
-  }
- },
- "checkver": {
-  "regex": "Binaries from installer .+?Version ([\\d.]+)",
-  "url": "https://www.enterprisedb.com/download-postgresql-binaries"
- },
- "depends": "7zip19.00-helper",
- "description": "Object-relational database management system based on POSTGRES.",
- "env_add_path": "bin",
- "env_set": {
-  "PGDATA": "$dir\\data",
-  "PG_INCLUDE_DIR": "$dir\\include",
-  "PG_LIB_DIR": "$dir\\lib"
- },
- "homepage": "https://www.postgresql.org",
- "license": "PostgreSQL",
- "notes": [
-  "Run run 'pg_ctl start' or 'pg_ctl stop' to start and stop the database or",
-  "register it as a service by running 'pg_ctl register -N PostgreSQL' from an elevated shell.",
-  "Default superuser login: postgres, password: <blank>"
- ],
- "persist": "data",
- "post_install": [
-  "if (!(Test-Path \"$dir\\data\\pg_hba.conf\")) {",
-  "   Invoke-ExternalCommand -FilePath \"$dir\\bin\\initdb.exe\" -ArgumentList @('--username=postgres', '--encoding=UTF8', '--locale=en', '--lc-collate=C') | Out-Null",
-  "}"
- ],
- "pre_install": [
-  "Invoke-ExternalCommand 7z1900-helper -ArgumentList @('x', '-bso0', \"$dir\\dl.zip_\", \"-o$dir\") | Out-Null",
-  "Move-Item \"$dir\\pgsql\\*\" \"$dir\\\"",
-  "Remove-Item \"$dir\\pgsql\", \"$dir\\dl.zip_\" -Force -Recurse"
- ],
- "shortcuts": [
-  [
-   "pgAdmin 4\\bin\\pgAdmin4.exe",
-   "pgAdmin 4"
-  ]
- ],
- "version": "15.1"
+    "version": "15.1",
+    "description": "Object-relational database management system based on POSTGRES.",
+    "homepage": "https://www.postgresql.org",
+    "license": "PostgreSQL",
+    "depends": "7zip19.00-helper",
+    "notes": [
+        "Run run 'pg_ctl start' or 'pg_ctl stop' to start and stop the database or",
+        "register it as a service by running 'pg_ctl register -N PostgreSQL' from an elevated shell.",
+        "Default superuser login: postgres, password: <blank>"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://get.enterprisedb.com/postgresql/postgresql-15.1-1-windows-x64-binaries.zip#/dl.zip_",
+            "hash": "234e97babdb52eeed87a2bb4e8fa262244800dfd248f304d985dbda6f9a233ba"
+        }
+    },
+    "pre_install": [
+        "Invoke-ExternalCommand 7z1900-helper -ArgumentList @('x', '-bso0', \"$dir\\dl.zip_\", \"-o$dir\") | Out-Null",
+        "Move-Item \"$dir\\pgsql\\*\" \"$dir\\\"",
+        "Remove-Item \"$dir\\pgsql\", \"$dir\\dl.zip_\" -Force -Recurse"
+    ],
+    "post_install": [
+        "if (!(Test-Path \"$dir\\data\\pg_hba.conf\")) {",
+        "   Invoke-ExternalCommand -FilePath \"$dir\\bin\\initdb.exe\" -ArgumentList @('--username=postgres', '--encoding=UTF8', '--locale=en', '--lc-collate=C') | Out-Null",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "pgAdmin 4\\bin\\pgAdmin4.exe",
+            "pgAdmin 4"
+        ]
+    ],
+    "env_add_path": "bin",
+    "env_set": {
+        "PGDATA": "$dir\\data",
+        "PG_LIB_DIR": "$dir\\lib",
+        "PG_INCLUDE_DIR": "$dir\\include"
+    },
+    "persist": "data",
+    "checkver": {
+        "url": "https://www.enterprisedb.com/download-postgresql-binaries",
+        "regex": "Binaries from installer .+?Version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://get.enterprisedb.com/postgresql/postgresql-$version-1-windows-x64-binaries.zip#/dl.zip_"
+            }
+        }
+    }
 }

@@ -1,15 +1,30 @@
 {
-    "autoupdate": {
-        "url": "https://download.zotero.org/client/release/$version/Zotero-$version_setup.exe#/setup.exe"
+    "version": "6.0.20",
+    "description": "Zotero. Free, easy-to-use tool to help you collect, organize, cite, and share research",
+    "homepage": "https://www.zotero.org/",
+    "license": "Proprietary",
+    "suggest": {
+        "sudo": [
+            "main/gsudo",
+            "main/sudo"
+        ]
     },
     "changelog": "https://www.zotero.org/support/changelog",
-    "checkver": {
-        "regex": "\"win32\":\"([\\d.]+)",
-        "url": "https://www.zotero.org/download/"
-    },
-    "description": "Zotero. Free, easy-to-use tool to help you collect, organize, cite, and share research",
+    "url": "https://download.zotero.org/client/release/6.0.20/Zotero-6.0.20_setup.exe#/setup.exe",
     "hash": "d6e86c9aff08da167343d17b38bef76ba1af7ff7a7db313f65e3db5ea52448d6",
-    "homepage": "https://www.zotero.org/",
+    "pre_download": "Assert-Administrator",
+    "pre_install": [
+        "$processname = \"Zotero\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
     "installer": {
         "script": [
             "$programname = \"programname*\"",
@@ -26,31 +41,16 @@
             "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
         ]
     },
-    "license": "Proprietary",
     "post_install": [
         "$programname = \"Zotero\"",
         "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
         "if (Test-Path \"$CommonDesktopPath\\$programname.lnk\") {Remove-Item \"$CommonDesktopPath\\$programname.lnk\" -Force}"
     ],
-    "pre_download": "Assert-Administrator",
-    "pre_install": [
-        "$processname = \"Zotero\"",
-        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-        "if ($process) {",
-        "   $process.CloseMainWindow()",
-        "   Start-Sleep -Seconds 5",
-        "   if (!$process.HasExited) {",
-        "       Start-Sleep -Seconds 25",
-        "       $process | Stop-Process -Force",
-        "   }",
-        "}"
-    ],
-    "suggest": {
-        "sudo": [
-            "main/gsudo",
-            "main/sudo"
-        ]
+    "checkver": {
+        "url": "https://www.zotero.org/download/",
+        "regex": "\"win32\":\"([\\d.]+)"
     },
-    "url": "https://download.zotero.org/client/release/6.0.20/Zotero-6.0.20_setup.exe#/setup.exe",
-    "version": "6.0.20"
+    "autoupdate": {
+        "url": "https://download.zotero.org/client/release/$version/Zotero-$version_setup.exe#/setup.exe"
+    }
 }

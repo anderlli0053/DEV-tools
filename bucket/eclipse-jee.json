@@ -1,9 +1,25 @@
 {
+    "version": "2022-12",
+    "description": "Eclipse IDE for Java EE Developers",
+    "homepage": "https://www.eclipse.org",
+    "license": "EPL-1.0",
     "architecture": {
         "64bit": {
-            "hash": "sha512:b030312108154f2a201311e7cbf651e13a34e6c486e3ec4a8bb727ab9c78225cd29cdd588ebd83917318b7df41ee945e96766800c6570f03ea4c39f3032e54e6",
-            "url": "http://download.eclipse.org/technology/epp/downloads/release/2022-12/R/eclipse-jee-2022-12-R-win32-x86_64.zip"
+            "url": "http://download.eclipse.org/technology/epp/downloads/release/2022-12/R/eclipse-jee-2022-12-R-win32-x86_64.zip",
+            "hash": "sha512:b030312108154f2a201311e7cbf651e13a34e6c486e3ec4a8bb727ab9c78225cd29cdd588ebd83917318b7df41ee945e96766800c6570f03ea4c39f3032e54e6"
         }
+    },
+    "extract_dir": "eclipse",
+    "shortcuts": [
+        [
+            "eclipse.exe",
+            "Eclipse IDE for Java EE Developers"
+        ]
+    ],
+    "checkver": {
+        "url": "https://download.eclipse.org/technology/epp/downloads/release/release.xml",
+        "xpath": "/packages/present",
+        "regex": "([\\d-]+)"
     },
     "autoupdate": {
         "architecture": {
@@ -14,21 +30,5 @@
         "hash": {
             "url": "$url.sha512"
         }
-    },
-    "checkver": {
-        "regex": "([\\d-]+)",
-        "url": "https://download.eclipse.org/technology/epp/downloads/release/release.xml",
-        "xpath": "/packages/present"
-    },
-    "description": "Eclipse IDE for Java EE Developers",
-    "extract_dir": "eclipse",
-    "homepage": "https://www.eclipse.org",
-    "license": "EPL-1.0",
-    "shortcuts": [
-        [
-            "eclipse.exe",
-            "Eclipse IDE for Java EE Developers"
-        ]
-    ],
-    "version": "2022-12"
+    }
 }

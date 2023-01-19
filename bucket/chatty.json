@@ -1,22 +1,10 @@
 {
-    "autoupdate": {
-        "hash": {
-            "url": "https://tduva.com/chatty/checksums/v$version/$basename.sha256"
-        },
-        "url": "https://github.com/chatty/chatty/releases/download/v$version/Chatty_$version_win_standalone.zip"
-    },
-    "bin": "Chatty.exe",
-    "checkver": {
-        "github": "https://github.com/chatty/chatty"
-    },
+    "version": "0.22",
     "description": "Twitch Chat Client",
-    "hash": "07ff24eaf96a90cb3a195b947f7ec06a1e362c6fae2412baf76837731e772d5a",
     "homepage": "https://chatty.github.io",
     "license": "GPL-3.0-or-later",
-    "persist": [
-        "app\\portable_settings",
-        "app\\Chatty.cfg"
-    ],
+    "url": "https://github.com/chatty/chatty/releases/download/v0.22/Chatty_0.22_win_standalone.zip",
+    "hash": "07ff24eaf96a90cb3a195b947f7ec06a1e362c6fae2412baf76837731e772d5a",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\app\\Chatty.cfg\")) {",
         "    ensure \"$dir\\app\\portable_settings\" | Out-Null",
@@ -25,12 +13,24 @@
         "    Set-Content \"$dir\\app\\portable_settings\\settings\" '{ \"checkNewVersion\": false }' -Encoding Ascii",
         "}"
     ],
+    "bin": "Chatty.exe",
     "shortcuts": [
         [
             "Chatty.exe",
             "Chatty"
         ]
     ],
-    "url": "https://github.com/chatty/chatty/releases/download/v0.22/Chatty_0.22_win_standalone.zip",
-    "version": "0.22"
+    "persist": [
+        "app\\portable_settings",
+        "app\\Chatty.cfg"
+    ],
+    "checkver": {
+        "github": "https://github.com/chatty/chatty"
+    },
+    "autoupdate": {
+        "url": "https://github.com/chatty/chatty/releases/download/v$version/Chatty_$version_win_standalone.zip",
+        "hash": {
+            "url": "https://tduva.com/chatty/checksums/v$version/$basename.sha256"
+        }
+    }
 }

@@ -1,33 +1,33 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "a450eb9a06e8fb08beb5e3550ed3f45cab52ab06b18f64606ecd9ebd8773b0cc",
-   "url": "https://github.com/skydevil88/XboxDownload/releases/download/v2.0.0.8/XboxDownload.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://github.com/skydevil88/XboxDownload/releases/download/$version/XboxDownload.zip"
-   }
-  }
- },
- "checkver": {
-  "regex": "/releases/tag/([^/]+?)\"",
-  "url": "https://github.com/skydevil88/XboxDownload/releases/latest"
- },
- "description": "Xbox \u4e0b\u8f7d\u52a9\u624b\uff0c\u652f\u6301Xbox\u3001\u5fae\u8f6f\u5546\u5e97\u3001PSN\u3001NS\u3001EA Desktop & Origin\u3001\u6218\u7f51\u56fd\u9645\u670d\u3001Epic \u4e0b\u8f7d\u52a0\u901f\u3002",
- "homepage": "https://github.com/skydevil88/XboxDownload",
- "license": "Freeware",
- "pre_install": [
-  "Move-Item -Path \"$dir\\Xbox*\\*\" -Destination \"$dir\"",
-  "Get-ChildItem -Directory -Path \"$dir\" -Filter 'Xbox*' | Remove-Item -Force -Recurse"
- ],
- "shortcuts": [
-  [
-   "XboxDownload.exe",
-   "Xbox \u4e0b\u8f7d\u52a9\u624b"
-  ]
- ],
- "version": "v2.0.0.8"
+    "version": "v2.0.0.8",
+    "description": "Xbox 下载助手，支持Xbox、微软商店、PSN、NS、EA Desktop & Origin、战网国际服、Epic 下载加速。",
+    "homepage": "https://github.com/skydevil88/XboxDownload",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/skydevil88/XboxDownload/releases/download/v2.0.0.8/XboxDownload.zip",
+            "hash": "a450eb9a06e8fb08beb5e3550ed3f45cab52ab06b18f64606ecd9ebd8773b0cc"
+        }
+    },
+    "pre_install": [
+        "Move-Item -Path \"$dir\\Xbox*\\*\" -Destination \"$dir\"",
+        "Get-ChildItem -Directory -Path \"$dir\" -Filter 'Xbox*' | Remove-Item -Force -Recurse"
+    ],
+    "shortcuts": [
+        [
+            "XboxDownload.exe",
+            "Xbox 下载助手"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/skydevil88/XboxDownload/releases/latest",
+        "regex": "/releases/tag/([^/]+?)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/skydevil88/XboxDownload/releases/download/$version/XboxDownload.zip"
+            }
+        }
+    }
 }

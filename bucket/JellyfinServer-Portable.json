@@ -1,45 +1,45 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "9b9e09c1bab82e176056d93f2230871d829a885ec721a22f7f63da098eaf87a6",
-   "url": "https://repo.jellyfin.org/releases/server/windows/versions/stable/combined/10.8.8/jellyfin_10.8.8.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "url": "https://repo.jellyfin.org/releases/server/windows/versions/stable/combined/$version/jellyfin_$version.zip"
-   }
-  },
-  "extract_dir": "jellyfin_$version",
-  "hash": {
-   "url": "$url.sha256sum"
-  }
- },
- "bin": [
-  [
-   "system\\jellyfin.exe",
-   "jellyfin",
-   "-d \"$dir\\data\""
-  ]
- ],
- "checkver": {
-  "regex": "\"([\\d.]+)/",
-  "reverse": true,
-  "url": "https://repo.jellyfin.org/releases/server/windows/versions/stable/combined/"
- },
- "description": "Jellyfin Server. Software Media System",
- "extract_dir": "jellyfin_10.8.8",
- "extract_to": "system",
- "homepage": "https://jellyfin.org",
- "license": "GPL-2.0-only",
- "persist": "data",
- "suggest": {
-  "ffmpeg": [
-   "ffmpeg",
-   "ffmpeg-nightly"
-  ],
-  "nssm": "nssm"
- },
- "version": "10.8.8"
+    "version": "10.8.8",
+    "description": "Jellyfin Server. Software Media System",
+    "homepage": "https://jellyfin.org",
+    "license": "GPL-2.0-only",
+    "suggest": {
+        "ffmpeg": [
+            "ffmpeg",
+            "ffmpeg-nightly"
+        ],
+        "nssm": "nssm"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://repo.jellyfin.org/releases/server/windows/versions/stable/combined/10.8.8/jellyfin_10.8.8.zip",
+            "hash": "9b9e09c1bab82e176056d93f2230871d829a885ec721a22f7f63da098eaf87a6"
+        }
+    },
+    "extract_dir": "jellyfin_10.8.8",
+    "extract_to": "system",
+    "bin": [
+        [
+            "system\\jellyfin.exe",
+            "jellyfin",
+            "-d \"$dir\\data\""
+        ]
+    ],
+    "persist": "data",
+    "checkver": {
+        "url": "https://repo.jellyfin.org/releases/server/windows/versions/stable/combined/",
+        "regex": "\"([\\d.]+)/",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://repo.jellyfin.org/releases/server/windows/versions/stable/combined/$version/jellyfin_$version.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256sum"
+        },
+        "extract_dir": "jellyfin_$version"
+    }
 }

@@ -1,32 +1,32 @@
 {
- "architecture": {
-  "64bit": {
-   "extract_dir": "etcd-v3.4.23-windows-amd64",
-   "hash": "5917f8685bdf96298b157b44ee3dca04038ac64af878bd5fb162fde721d3d7ef",
-   "url": "https://github.com/etcd-io/etcd/releases/download/v3.4.23/etcd-v3.4.23-windows-amd64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "64bit": {
-    "extract_dir": "etcd-v$version-windows-amd64",
-    "hash": {
-     "regex": "^$sha256\\s+$url$",
-     "url": "$baseurl/SHA256SUMS"
+    "version": "3.4.23",
+    "description": "A distributed, reliable key-value store for the most critical data of a distributed system",
+    "homepage": "https://etcd.io/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/etcd-io/etcd/releases/download/v3.4.23/etcd-v3.4.23-windows-amd64.zip",
+            "hash": "5917f8685bdf96298b157b44ee3dca04038ac64af878bd5fb162fde721d3d7ef",
+            "extract_dir": "etcd-v3.4.23-windows-amd64"
+        }
     },
-    "url": "https://github.com/etcd-io/etcd/releases/download/v$version/etcd-v$version-windows-amd64.zip"
-   }
-  }
- },
- "bin": [
-  "etcd.exe",
-  "etcdctl.exe"
- ],
- "checkver": {
-  "github": "https://github.com/etcd-io/etcd"
- },
- "description": "A distributed, reliable key-value store for the most critical data of a distributed system",
- "homepage": "https://etcd.io/",
- "license": "Apache-2.0",
- "version": "3.4.23"
+    "bin": [
+        "etcd.exe",
+        "etcdctl.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/etcd-io/etcd"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/etcd-io/etcd/releases/download/v$version/etcd-v$version-windows-amd64.zip",
+                "extract_dir": "etcd-v$version-windows-amd64",
+                "hash": {
+                    "url": "$baseurl/SHA256SUMS",
+                    "regex": "^$sha256\\s+$url$"
+                }
+            }
+        }
+    }
 }

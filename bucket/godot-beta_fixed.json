@@ -1,42 +1,42 @@
 {
-    "architecture": {
-        "32bit": {
-            "hash": "sha512:fef7dd14d2d1dd19c246c2757cf7acdeebc849142b9f277980f629c759d20e18d0d2ab6d3d7c6e2909903cb5e96a8224d720ca6cd56ff27f68c985d89893df5a",
-            "url": "https://downloads.tuxfamily.org/godotengine/4.0/beta12/Godot_v4.0-beta12_win32.exe.zip"
-        },
-        "64bit": {
-            "hash": "sha512:0c4a40250a7824178fa762a5da9686736c8b07592d3037eab1e231f94472aab4493a577b2a47f798251a7c7212a7a2c4b8d6f0c1e3f88439ba668816d45fe946",
-            "url": "https://downloads.tuxfamily.org/godotengine/4.0/beta12/Godot_v4.0-beta12_win64.exe.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/beta$matchBeta/Godot_v$version_win32.exe.zip"
-            },
-            "64bit": {
-                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/beta$matchBeta/Godot_v$version_win64.exe.zip"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/SHA512-SUMS.txt"
-        }
-    },
-    "bin": "godot.exe",
-    "checkver": {
-        "regex": "Dev snapshot: Godot (?<ver>[\\d.]+) beta (?<beta>[\\d.]+)",
-        "replace": "${1}-beta${2}",
-        "url": "https://godotengine.org/news"
-    },
+    "version": "4.0-beta5",
     "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
     "homepage": "https://godotengine.org/",
     "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.tuxfamily.org/godotengine/4.0/beta5/Godot_v4.0-beta5_win64.exe.zip",
+            "hash": "sha512:491ad7c400faf19d1c56291c1424e39a5ba70153c6a06485a626ceeb9372d633b3f9352661223ce9216da0d24c705ee11a24296096a209b8e2f0ed9d305cb8f1"
+        },
+        "32bit": {
+            "url": "https://downloads.tuxfamily.org/godotengine/4.0/beta5/Godot_v4.0-beta5_win32.exe.zip",
+            "hash": "sha512:62d460808572b57658b219fff8532f5fbf1bde98e49b06008f1ac7d69a00abac81b7d6fa76c6af2abb857f1f366c50a0ccf8c5c12c6b6073e0a2f0f4921e3a2c"
+        }
+    },
     "pre_install": "Remove-Item \"$dir\\Godot_*_console.exe\"; Rename-Item \"$dir\\Godot_*.exe\" 'godot.exe'",
+    "bin": "godot.exe",
     "shortcuts": [
         [
             "godot.exe",
             "Godot Engine"
         ]
     ],
-    "version": "4.0-beta12"
+    "checkver": {
+        "url": "https://godotengine.org/news",
+        "regex": "Dev snapshot: Godot (?<ver>[\\d.]+) beta (?<beta>[\\d.]+)",
+        "replace": "${1}-beta${2}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/beta$matchBeta/Godot_v$version_win64.exe.zip"
+            },
+            "32bit": {
+                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/beta$matchBeta/Godot_v$version_win32.exe.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA512-SUMS.txt"
+        }
+    }
 }

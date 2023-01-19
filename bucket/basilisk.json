@@ -1,42 +1,42 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "2a885059b9782e981dce76919fbf517f4eafc784d5c45e54232fda783e624f8f",
-   "url": "https://archive.basilisk-browser.org/2023.01.07/windows/x86_32/basilisk-20230108050212.win32.7z"
-  },
-  "64bit": {
-   "hash": "76ba07eecd576923a079b518635c6089ba087566cb9d29d4e5e214c07777667c",
-   "url": "https://archive.basilisk-browser.org/2023.01.07/windows/x86_64/basilisk-20230108041406.win64.7z"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "url": "https://archive.basilisk-browser.org/$version/windows/x86_32/basilisk-$matchWin32.win32.7z"
-   },
-   "64bit": {
-    "url": "https://archive.basilisk-browser.org/$version/windows/x86_64/basilisk-$matchWin64.win64.7z"
-   }
-  },
-  "hash": {
-   "regex": "$basename:\\s+$sha256",
-   "url": "https://www.basilisk-browser.org/download.shtml"
-  }
- },
- "bin": "basilisk.exe",
- "checkver": {
-  "regex": "https://archive.basilisk-browser.org/([\\d.]+)/windows/x86_32/basilisk-(?<win32>\\d+).win32.7z.*https://archive.basilisk-browser.org/[\\d.]+/windows/x86_64/basilisk-(?<win64>\\d+).win64.7z",
-  "url": "https://www.basilisk-browser.org/download.shtml"
- },
- "description": "A XUL-based web-browser demonstrating the Unified XUL Platform (UXP). This browser is a close twin to pre-Servo Firefox in how it operates.",
- "extract_dir": "basilisk",
- "homepage": "https://www.basilisk-browser.org",
- "license": "MPL-2.0",
- "shortcuts": [
-  [
-   "basilisk.exe",
-   "Basilisk"
-  ]
- ],
- "version": "2023.01.07"
+    "version": "2023.01.07",
+    "description": "A XUL-based web-browser demonstrating the Unified XUL Platform (UXP). This browser is a close twin to pre-Servo Firefox in how it operates.",
+    "homepage": "https://www.basilisk-browser.org",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://archive.basilisk-browser.org/2023.01.07/windows/x86_64/basilisk-20230108041406.win64.7z",
+            "hash": "76ba07eecd576923a079b518635c6089ba087566cb9d29d4e5e214c07777667c"
+        },
+        "32bit": {
+            "url": "https://archive.basilisk-browser.org/2023.01.07/windows/x86_32/basilisk-20230108050212.win32.7z",
+            "hash": "2a885059b9782e981dce76919fbf517f4eafc784d5c45e54232fda783e624f8f"
+        }
+    },
+    "extract_dir": "basilisk",
+    "bin": "basilisk.exe",
+    "shortcuts": [
+        [
+            "basilisk.exe",
+            "Basilisk"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.basilisk-browser.org/download.shtml",
+        "regex": "https://archive.basilisk-browser.org/([\\d.]+)/windows/x86_32/basilisk-(?<win32>\\d+).win32.7z.*https://archive.basilisk-browser.org/[\\d.]+/windows/x86_64/basilisk-(?<win64>\\d+).win64.7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://archive.basilisk-browser.org/$version/windows/x86_64/basilisk-$matchWin64.win64.7z"
+            },
+            "32bit": {
+                "url": "https://archive.basilisk-browser.org/$version/windows/x86_32/basilisk-$matchWin32.win32.7z"
+            }
+        },
+        "hash": {
+            "url": "https://www.basilisk-browser.org/download.shtml",
+            "regex": "$basename:\\s+$sha256"
+        }
+    }
 }

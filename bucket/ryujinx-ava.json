@@ -1,23 +1,6 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "eada637a57336e5567dedc80661ca81fbcec413cf488f797bf97fea814af3794",
-            "url": "https://github.com/Ryujinx/release-channel-master/releases/download/1.1.557/test-ava-ryujinx-1.1.557-win_x64.zip"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/Ryujinx/release-channel-master/releases/download/$version/test-ava-ryujinx-$version-win_x64.zip"
-            }
-        }
-    },
-    "bin": "Ryujinx.Ava.exe",
-    "checkver": {
-        "github": "https://github.com/Ryujinx/release-channel-master"
-    },
+    "version": "1.1.574",
     "description": "A simple, experimental Nintendo Switch emulator (Avalonia UI test build)",
-    "extract_dir": "publish",
     "homepage": "https://ryujinx.org/",
     "license": {
         "identifier": "MIT",
@@ -27,7 +10,13 @@
         "ATTENTION: Ryujinx requires Nintendo Switch firmware and a prod.keys file to function.",
         "Learn more at https://github.com/Ryujinx/Ryujinx/wiki/Ryujinx-Setup-&-Configuration-Guide"
     ],
-    "persist": "portable",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Ryujinx/release-channel-master/releases/download/1.1.574/test-ava-ryujinx-1.1.574-win_x64.zip",
+            "hash": "75b5a7e289934bef74587e7d4f5d8b03331a1e6cafa53125d87c94d3e5d6989a"
+        }
+    },
+    "extract_dir": "publish",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\")) {",
         "   New-item \"$persist_dir\\portable\" -ItemType Directory | Out-Null",
@@ -38,11 +27,22 @@
         "   }",
         "}"
     ],
+    "bin": "Ryujinx.Ava.exe",
     "shortcuts": [
         [
             "Ryujinx.Ava.exe",
             "Ryujinx"
         ]
     ],
-    "version": "1.1.557"
+    "persist": "portable",
+    "checkver": {
+        "github": "https://github.com/Ryujinx/release-channel-master"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Ryujinx/release-channel-master/releases/download/$version/test-ava-ryujinx-$version-win_x64.zip"
+            }
+        }
+    }
 }

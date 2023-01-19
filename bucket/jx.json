@@ -1,10 +1,17 @@
 {
+    "version": "3.10.41",
+    "description": "A command line tool for installing and using Jenkins X",
+    "homepage": "https://github.com/jenkins-x/jx",
+    "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "hash": "100fed7299b92d04a13e736c343677339b38bfaad159d82c367cac0f6b1d3219",
-            "url": "https://github.com/jenkins-x/jx/releases/download/v3.10.41/jx-windows-amd64.zip"
+            "url": "https://github.com/jenkins-x/jx/releases/download/v3.10.41/jx-windows-amd64.zip",
+            "hash": "100fed7299b92d04a13e736c343677339b38bfaad159d82c367cac0f6b1d3219"
         }
     },
+    "pre_install": "Stop-Process -Name 'jx' -ErrorAction 'Ignore' -Verbose",
+    "bin": "jx.exe",
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -12,15 +19,8 @@
             }
         },
         "hash": {
-            "regex": "(?m)$checksum[\\x20\\t]+.*$basename(?:[\\x20\\t]+\\d+)?$",
-            "url": "$baseurl/jx-checksums.txt"
+            "url": "$baseurl/jx-checksums.txt",
+            "regex": "(?m)$checksum[\\x20\\t]+.*$basename(?:[\\x20\\t]+\\d+)?$"
         }
-    },
-    "bin": "jx.exe",
-    "checkver": "github",
-    "description": "A command line tool for installing and using Jenkins X",
-    "homepage": "https://github.com/jenkins-x/jx",
-    "license": "Apache-2.0",
-    "pre_install": "Stop-Process -Name 'jx' -ErrorAction 'Ignore' -Verbose",
-    "version": "3.10.41"
+    }
 }

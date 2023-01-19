@@ -1,56 +1,41 @@
 {
+    "version": "4.0.3",
+    "homepage": "https://www.pcloud.com",
+    "description": "The official Windows 10/11 client for synchronizing local files/folders to your pCloud drive, and vice versa.",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.pcloud.com/terms_and_conditions.html"
+    },
     "architecture": {
-        "32bit": {
-            "hash": "0e1009c4b6dfea4f56bb6a5d9c7f8f47bed883f371e4107c5c94ef4c3802a5b2",
-            "post_install": [
-                "Start-Process 'regsvr32' -ArgumentList @(\"$dir\\OverlayIcon.dll\", '/s') -Verb 'RunAs' -Wait",
-                "Stop-Process -Name 'explorer' -ErrorAction 'SilentlyContinue' -Force; Start-Sleep -Seconds 2"
-            ],
-            "url": "https://partner.pcloud.com/dl/win#/setup.exe"
-        },
         "64bit": {
+            "url": "https://partner.pcloud.com/dl/win64#/setup.exe",
             "hash": "2a1e92b9b5eefad39531bdabfb2bec5597b219edc843fec30039c7080e69ef05",
             "post_install": [
                 "Start-Process 'regsvr32' -ArgumentList @(\"$dir\\OverlayIcon64.dll\", '/s') -Verb 'RunAs' -Wait",
                 "Stop-Process -Name 'explorer' -ErrorAction 'SilentlyContinue' -Force; Start-Sleep -Seconds 2"
-            ],
-            "url": "https://partner.pcloud.com/dl/win64#/setup.exe"
+            ]
+        },
+        "32bit": {
+            "url": "https://partner.pcloud.com/dl/win#/setup.exe",
+            "hash": "0e1009c4b6dfea4f56bb6a5d9c7f8f47bed883f371e4107c5c94ef4c3802a5b2",
+            "post_install": [
+                "Start-Process 'regsvr32' -ArgumentList @(\"$dir\\OverlayIcon.dll\", '/s') -Verb 'RunAs' -Wait",
+                "Stop-Process -Name 'explorer' -ErrorAction 'SilentlyContinue' -Force; Start-Sleep -Seconds 2"
+            ]
         }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://partner.pcloud.com/dl/win#/setup.exe"
-            },
-            "64bit": {
-                "url": "https://partner.pcloud.com/dl/win64#/setup.exe"
-            }
-        }
-    },
-    "bin": "pCloud.exe",
-    "checkver": {
-        "regex": "([\\d.]+)",
-        "script": [
-            "# Checkver for pCloud",
-            "$id = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'",
-            "(Invoke-RestMethod 'https://www.pcloud.com/release-notes/windows.html' -UserAgent \"$id\") -match '\\|\\s<a\\shref=\"(?<url64>https://u\\.pcloud\\.link/publink/show\\?code=[\\w]+)' | Out-Null",
-            "$resp_part1 = $Matches['url64']",
-            "(Invoke-RestMethod \"$resp_part1\" -UserAgent \"$id\") -match '\"name\":\\s\"pCloud_Windows_(?<version>[\\d.]+)_(x64|x86)\\.exe\",' | Out-Null",
-            "$resp_part2 = $Matches['version']",
-            "return $resp_part2"
-        ]
-    },
-    "description": "The official Windows 10/11 client for synchronizing local files/folders to your pCloud drive, and vice versa.",
-    "homepage": "https://www.pcloud.com",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.pcloud.com/terms_and_conditions.html"
     },
     "pre_install": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
         "Expand-DarkArchive \"$dir\\setup.exe\" \"$dir\\extracted\" -Removal",
         "Expand-MsiArchive \"$dir\\extracted\\AttachedContainer\\pCloud Drive.msi\" \"$dir\" -ExtractDir 'pCloud Drive' -Removal",
         "Remove-Item \"$dir\\extracted\" -Recurse"
+    ],
+    "bin": "pCloud.exe",
+    "shortcuts": [
+        [
+            "pCloud.exe",
+            "pCloud Drive"
+        ]
     ],
     "pre_uninstall": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
@@ -64,11 +49,26 @@
         "   Stop-Process -Name 'explorer' -ErrorAction 'SilentlyContinue' -Force; Start-Sleep -Seconds 2",
         "}"
     ],
-    "shortcuts": [
-        [
-            "pCloud.exe",
-            "pCloud Drive"
-        ]
-    ],
-    "version": "4.0.3"
+    "checkver": {
+        "script": [
+            "# Checkver for pCloud",
+            "$id = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'",
+            "(Invoke-RestMethod 'https://www.pcloud.com/release-notes/windows.html' -UserAgent \"$id\") -match '\\|\\s<a\\shref=\"(?<url64>https://u\\.pcloud\\.link/publink/show\\?code=[\\w]+)' | Out-Null",
+            "$resp_part1 = $Matches['url64']",
+            "(Invoke-RestMethod \"$resp_part1\" -UserAgent \"$id\") -match '\"name\":\\s\"pCloud_Windows_(?<version>[\\d.]+)_(x64|x86)\\.exe\",' | Out-Null",
+            "$resp_part2 = $Matches['version']",
+            "return $resp_part2"
+        ],
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://partner.pcloud.com/dl/win64#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://partner.pcloud.com/dl/win#/setup.exe"
+            }
+        }
+    }
 }

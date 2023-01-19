@@ -1,45 +1,45 @@
 {
- "autoupdate": {
-  "extract_dir": "$_$majorVersion_",
-  "url": "https://official-pacakge.wpscdn.cn/wps/download/WPS_Setup_$matchNum.exe#/dl.7z"
- },
- "checkver": "WPS_Setup_(?<num>\\d+).exe",
- "description": "Complete office suite",
- "extract_dir": "$_11_",
- "hash": "e83ecd5a62991ce3018004329bcfc61f5733b3d29191338ea3e5539b3c5b86a4",
- "homepage": "https://platform.wps.cn",
- "license": {
-  "identifier": "Freeware",
-  "url": "https://www.wps.com/eula"
- },
- "pre_install": [
-  "Expand-7zipArchive \"$dir\\`$EXEFILE\" -Switches '-t#'",
-  "Remove-Item \"$dir\\*\" -Exclude '4.7z','2.7z' -Recurse",
-  "Expand-7zipArchive \"$dir\\4.7z\" -ExtractDir 'office6' -Removal",
-  "Expand-7zipArchive \"$dir\\2.7z\" -ExtractDir 'CONTROL\\office6' -Removal"
- ],
- "shortcuts": [
-  [
-   "wpsoffice.exe",
-   "WPS Office"
-  ],
-  [
-   "wps.exe",
-   "WPS \u6587\u5b57"
-  ],
-  [
-   "et.exe",
-   "WPS \u8868\u683c"
-  ],
-  [
-   "wpp.exe",
-   "WPS \u6f14\u793a"
-  ],
-  [
-   "ksomisc.exe",
-   "WPS \u914d\u7f6e\u5de5\u5177"
-  ]
- ],
- "url": "https://official-package.wpscdn.cn/wps/download/WPS_Setup_12598.exe#/dl.7z",
- "version": "11.2.0.12763"
+    "homepage": "https://platform.wps.cn",
+    "description": "Complete office suite",
+    "version": "11.2.0.12763",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.wps.com/eula"
+    },
+    "url": "https://official-package.wpscdn.cn/wps/download/WPS_Setup_12598.exe#/dl.7z",
+    "hash": "e83ecd5a62991ce3018004329bcfc61f5733b3d29191338ea3e5539b3c5b86a4",
+    "extract_dir": "$_11_",
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\`$EXEFILE\" -Switches '-t#'",
+        "Remove-Item \"$dir\\*\" -Exclude '4.7z','2.7z' -Recurse",
+        "Expand-7zipArchive \"$dir\\4.7z\" -ExtractDir 'office6' -Removal",
+        "Expand-7zipArchive \"$dir\\2.7z\" -ExtractDir 'CONTROL\\office6' -Removal"
+    ],
+    "shortcuts": [
+        [
+            "wpsoffice.exe",
+            "WPS Office"
+        ],
+        [
+            "wps.exe",
+            "WPS 文字"
+        ],
+        [
+            "et.exe",
+            "WPS 表格"
+        ],
+        [
+            "wpp.exe",
+            "WPS 演示"
+        ],
+        [
+            "ksomisc.exe",
+            "WPS 配置工具"
+        ]
+    ],
+    "checkver": "WPS_Setup_(?<num>\\d+).exe",
+    "autoupdate": {
+        "url": "https://official-pacakge.wpscdn.cn/wps/download/WPS_Setup_$matchNum.exe#/dl.7z",
+        "extract_dir": "$_$majorVersion_"
+    }
 }
