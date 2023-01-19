@@ -1,64 +1,64 @@
 {
- "architecture": {
-  "32bit": {
-   "hash": "141032190f12797e704d11c1c20009b32b5e491c93b6bec98aafc1a87bcd8c88",
-   "url": "https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.108.0-b.24/AdGuardHome_windows_386.zip"
-  },
-  "64bit": {
-   "hash": "b6e44df31179f8774479ef071c6df02a33ee2f394c7c7ee8265e87a505e00f46",
-   "url": "https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.108.0-b.24/AdGuardHome_windows_amd64.zip"
-  }
- },
- "autoupdate": {
-  "architecture": {
-   "32bit": {
-    "hash": {
-     "mode": "extract",
-     "regex": "$sha256\\s+./$basename",
-     "url": "$baseurl/checksums.txt"
+    "architecture": {
+        "32bit": {
+            "hash": "e23446af118ce90be84bb5c18d5bb2ac37de445f25d391bd4aeebca4f08e2d77",
+            "url": "https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.108.0-b.25/AdGuardHome_windows_386.zip"
+        },
+        "64bit": {
+            "hash": "d8658238572aa1fdd31855d93b8708efa73effae7e43ed876fc0d369ee436643",
+            "url": "https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.108.0-b.25/AdGuardHome_windows_amd64.zip"
+        }
     },
-    "url": "https://github.com/AdguardTeam/AdGuardHome/releases/download/v$version/AdGuardHome_windows_386.zip"
-   },
-   "64bit": {
-    "hash": {
-     "mode": "extract",
-     "regex": "$sha256\\s+./$basename",
-     "url": "$baseurl/checksums.txt"
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "hash": {
+                    "mode": "extract",
+                    "regex": "$sha256\\s+./$basename",
+                    "url": "$baseurl/checksums.txt"
+                },
+                "url": "https://github.com/AdguardTeam/AdGuardHome/releases/download/v$version/AdGuardHome_windows_386.zip"
+            },
+            "64bit": {
+                "hash": {
+                    "mode": "extract",
+                    "regex": "$sha256\\s+./$basename",
+                    "url": "$baseurl/checksums.txt"
+                },
+                "url": "https://github.com/AdguardTeam/AdGuardHome/releases/download/v$version/AdGuardHome_windows_amd64.zip"
+            }
+        }
     },
-    "url": "https://github.com/AdguardTeam/AdGuardHome/releases/download/v$version/AdGuardHome_windows_amd64.zip"
-   }
-  }
- },
- "bin": [
-  [
-   "AdGuardHome.exe",
-   "adguardhome-beta"
-  ]
- ],
- "checkver": {
-  "jsonpath": "$[0].tag_name",
-  "regex": "v(.*)",
-  "url": "https://api.github.com/repos/AdguardTeam/AdGuardHome/releases?per_page=1"
- },
- "description": "AdGuard Home is a network-wide software for blocking ads & tracking. After you set it up, it'll cover ALL your home devices, and you don't need any client-side software for that.",
- "extract_dir": "AdGuardHome",
- "homepage": "https://github.com/AdguardTeam/AdGuardHome",
- "license": {
-  "identifier": "GPL-3.0-or-later"
- },
- "persist": "data",
- "pre_install": [
-  "if (Test-Path \"$persist_dir\\AdGuardHome.yaml\") {",
-  "    Copy-Item \"$persist_dir\\AdGuardHome.yaml\" \"$dir\\\" | Out-Null",
-  "}"
- ],
- "uninstaller": {
-  "script": [
-   "if (Test-Path \"$dir\\AdGuardHome.yaml\") {",
-   "    ensure \"$persist_dir\" | Out-Null",
-   "    Copy-Item \"$dir\\AdGuardHome.yaml\" \"$persist_dir\\\" | Out-Null",
-   "}"
-  ]
- },
- "version": "0.108.0-b.24"
+    "bin": [
+        [
+            "AdGuardHome.exe",
+            "adguardhome-beta"
+        ]
+    ],
+    "checkver": {
+        "jsonpath": "$[0].tag_name",
+        "regex": "v(.*)",
+        "url": "https://api.github.com/repos/AdguardTeam/AdGuardHome/releases?per_page=1"
+    },
+    "description": "AdGuard Home is a network-wide software for blocking ads & tracking. After you set it up, it'll cover ALL your home devices, and you don't need any client-side software for that.",
+    "extract_dir": "AdGuardHome",
+    "homepage": "https://github.com/AdguardTeam/AdGuardHome",
+    "license": {
+        "identifier": "GPL-3.0-or-later"
+    },
+    "persist": "data",
+    "pre_install": [
+        "if (Test-Path \"$persist_dir\\AdGuardHome.yaml\") {",
+        "    Copy-Item \"$persist_dir\\AdGuardHome.yaml\" \"$dir\\\" | Out-Null",
+        "}"
+    ],
+    "uninstaller": {
+        "script": [
+            "if (Test-Path \"$dir\\AdGuardHome.yaml\") {",
+            "    ensure \"$persist_dir\" | Out-Null",
+            "    Copy-Item \"$dir\\AdGuardHome.yaml\" \"$persist_dir\\\" | Out-Null",
+            "}"
+        ]
+    },
+    "version": "0.108.0-b.25"
 }
