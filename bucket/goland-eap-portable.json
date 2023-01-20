@@ -1,57 +1,57 @@
 {
- "architecture": {
-  "32bit": {
-   "shortcuts": [
-    [
-     "IDE\\bin\\goland.exe",
-     "JetBrains\\GoLand (Early Access Program)"
-    ]
-   ]
-  },
-  "64bit": {
-   "shortcuts": [
-    [
-     "IDE\\bin\\goland64.exe",
-     "JetBrains\\GoLand (Early Access Program)"
-    ]
-   ]
-  }
- },
- "autoupdate": {
-  "hash": {
-   "url": "$url.sha256"
-  },
-  "url": "https://download.jetbrains.com/go/goland-$preReleaseVersion.exe#/cosi.7z"
- },
- "checkver": {
-  "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
-  "replace": "${ver}-${build}",
-  "url": "https://data.services.jetbrains.com/products/releases?code=GO&latest=true&platform=zip&type=eap"
- },
- "description": "GoLand Early Access Program. Cross-Platform, Clever IDE to Go by JetBrains.",
- "extract_to": "IDE",
- "hash": [
-  "075b9296b3d936ac0ce0e358732b30761d7fe6e4fecd85c411248463213814fd",
-  "2255673952a7909596b8783f6e913d2301f91f0def0275fcfbc6371b0ca021f8"
- ],
- "homepage": "https://www.jetbrains.com/goland/",
- "installer": {
-  "script": [
-   "& \"$dir\\portable.ps1\" $dir $persist_dir",
-   "Remove-Item \"$dir\\IDE\\`$*\", \"$dir\\portable.ps1\" -Force -Recurse"
-  ]
- },
- "license": {
-  "identifier": "Proprietary",
-  "url": "https://www.jetbrains.com/legal/agreements/user_eap.html"
- },
- "persist": [
-  "IDE\\bin\\idea.properties",
-  "profile"
- ],
- "url": [
-  "https://download.jetbrains.com/go/goland-223.7571.10.exe#/cosi.7z",
-  "https://raw.githubusercontent.com/Ash258/Scoop-JetBrains/main/scripts/portable.ps1"
- ],
- "version": "2022.3-223.7571.10"
+    "architecture": {
+        "32bit": {
+            "shortcuts": [
+                [
+                    "IDE\\bin\\goland.exe",
+                    "JetBrains\\GoLand (Early Access Program)"
+                ]
+            ]
+        },
+        "64bit": {
+            "shortcuts": [
+                [
+                    "IDE\\bin\\goland64.exe",
+                    "JetBrains\\GoLand (Early Access Program)"
+                ]
+            ]
+        }
+    },
+    "autoupdate": {
+        "hash": {
+            "url": "$url.sha256"
+        },
+        "url": "https://download.jetbrains.com/go/goland-$preReleaseVersion.exe#/cosi.7z"
+    },
+    "checkver": {
+        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
+        "replace": "${ver}-${build}",
+        "url": "https://data.services.jetbrains.com/products/releases?code=GO&latest=true&platform=zip&type=eap"
+    },
+    "description": "GoLand Early Access Program. Cross-Platform, Clever IDE to Go by JetBrains.",
+    "extract_to": "IDE",
+    "hash": [
+        "f5ba26c8c60d61c5710f2030df2bd3461e03e66fb3bc32f73363531f7f7cfba7",
+        "2255673952a7909596b8783f6e913d2301f91f0def0275fcfbc6371b0ca021f8"
+    ],
+    "homepage": "https://www.jetbrains.com/goland/",
+    "installer": {
+        "script": [
+            "& \"$dir\\portable.ps1\" $dir $persist_dir",
+            "Remove-Item \"$dir\\IDE\\`$*\", \"$dir\\portable.ps1\" -Force -Recurse"
+        ]
+    },
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/legal/agreements/user_eap.html"
+    },
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "profile"
+    ],
+    "url": [
+        "https://download.jetbrains.com/go/goland-231.4840.388.exe#/cosi.7z",
+        "https://raw.githubusercontent.com/Ash258/Scoop-JetBrains/main/scripts/portable.ps1"
+    ],
+    "version": "2023.1-231.4840.388"
 }
