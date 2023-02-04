@@ -1,10 +1,10 @@
 {
     "autoupdate": {
-        "url": "https://img.kookapp.cn/assets/$matchPath#/dl.7z"
+        "url": "https://img.kookapp.cn/$matchPath#/dl.7z"
     },
     "checkver": {
         "jsonpath": "$.url",
-        "regex": "https://img.kookapp.cn/assets/(?<path>release/.*?v([\\d.]+).*?\\.exe)",
+        "regex": "(?<path>assets/release/.*?v([\\d.]+)\\.\\d.*?\\.exe)",
         "url": "https://www.kookapp.cn/api/v2/updates/latest-version?platform=windows"
     },
     "description": "KOOK(Kaiheila), a useful voice communication tool. KOOK is a free and ad-free voice communication tool, which currently covers PC, Android, iOS and web devices. No matter where you are, you can communicate smoothly. There are servers with various themes in KOOK, and you can also create servers with games, music, reading, foreign languages and other topics according to your preferences, and invite friends to join your server to chat.",
@@ -26,7 +26,7 @@
     ],
     "pre_install": [
         "Expand-7zipArchive \"$dir\\tmp\\`$1\\SquirrelTemp\\app.7z\" \"$dir\"",
-        "Expand-Archive \"$dir\\KOOK-0.58.1-full.nupkg\" \"$dir\""
+        "Expand-Archive \"$dir\\KOOK-$version-full.nupkg\" \"$dir\""
     ],
     "shortcuts": [
         [
@@ -36,5 +36,5 @@
         ]
     ],
     "url": "https://img.kookapp.cn/assets/release/html_pc/kook_64/Kook_PC_Setup_v0.63.0.0_b2ZmaWNpYWwuc2l0ZS4uLi5wYw==.exe#/dl.7z",
-    "version": "0.63.0.0"
+    "version": "0.63.0"
 }
