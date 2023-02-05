@@ -13,16 +13,33 @@
         "while (!(Test-Path \"$env:LOCALAPPDATA\\Grammarly\\DesktopIntegrations\\Uninstall.exe\")) {",
         "   Start-Sleep -Milliseconds 6500",
         "}",
-        "Remove-Item \"$dir\\GrammarlyInstaller.exe\" -Force",
+        "Start-Sleep -Milliseconds 6500",
+        "try {",
+        "   Remove-Item \"$dir\\GrammarlyInstaller.exe\" -Force",
+        "} catch {",
+        "    Write-Host \"Failed to remove '$dir\\GrammarlyInstaller.exe'\" -Foreground Red",
+        "}",
         "Stop-Process -Name 'Grammarly.Desktop' -ErrorAction 'SilentlyContinue' -Force"
     ],
     "pre_uninstall": [
         "Stop-Process -Name 'Grammarly.Desktop' -ErrorAction 'SilentlyContinue' -Force",
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-        "Remove-Item 'HKCU:\\SOFTWARE\\Grammarly', 'REGISTRY::HKEY_CLASSES_ROOT\\grammarly.windows-extension' -ErrorAction 'SilentlyContinue' -Recurse -Force",
-        "Start-Process \"$env:LOCALAPPDATA\\Grammarly\\DesktopIntegrations\\Uninstall.exe\" -Wait -Verb 'RunAs' -Args '/S'",
-        "Remove-Item 'HKCU:\\SOFTWARE\\Grammarly', 'REGISTRY::HKEY_CLASSES_ROOT\\grammarly.windows-extension' -ErrorAction 'SilentlyContinue' -Recurse -Force",
-        "Remove-Item \"$env:LOCALAPPDATA\\Grammarly\" -Recurse -Force"
+        "Start-Process \"$env:LOCALAPPDATA\\Grammarly\\DesktopIntegrations\\Uninstall.exe\" -Args '/S'",
+        "while ((Test-Path \"$env:LOCALAPPDATA\\Grammarly\\DesktopIntegrations\")) {",
+        "   Start-Sleep -Milliseconds 6500",
+        "}",
+        "Start-Sleep -Milliseconds 6500",
+        "try {",
+        "    Remove-Item 'HKCU:\\SOFTWARE\\Grammarly', 'REGISTRY::HKEY_CLASSES_ROOT\\grammarly.windows-extension' -ErrorAction 'SilentlyContinue' -Recurse -Force",
+        "    Remove-Item 'HKCU:\\SOFTWARE\\Grammarly', 'REGISTRY::HKEY_CLASSES_ROOT\\grammarly.windows-extension' -ErrorAction 'SilentlyContinue' -Recurse -Force",
+        "} catch {",
+        "    Write-Host \"Failed to remove registry entries\" -Foreground Red",
+        "}",
+        "try {",
+        "    Remove-Item \"$env:LOCALAPPDATA\\Grammarly\" -Recurse -Force",
+        "} catch {",
+        "    Write-Host \"Failed to remove '$env:LOCALAPPDATA\\Grammarly'\" -Foreground Red",
+        "}"
     ],
     "checkver": {
         "script": [

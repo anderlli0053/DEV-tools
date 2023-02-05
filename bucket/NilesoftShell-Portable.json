@@ -1,17 +1,21 @@
 {
-    "version": "1.7",
+    "version": "1.8",
     "description": "Nilesoft Shell. A context menu extender that lets you handpick the items to integrate into Windows File Explorer context menu.",
     "homepage": "https://nilesoft.org/",
     "license": "MIT",
     "changelog": "https://nilesoft.org/download/changes",
     "architecture": {
         "64bit": {
-            "url": "https://nilesoft.org/download/shell.zip",
-            "hash": "f99468755e6ccae7dc46f1db605ddfe9d27deeba9008d46c4fb1e5616ac5a1ae"
+            "url": "https://nilesoft.org/download/shell/1.8/shell-x64.zip",
+            "hash": "c86e9ddec951e3236877b769fafc17d131a42c76c59c561853f0de3e83a8b98d"
         },
         "32bit": {
-            "url": "https://nilesoft.org/download/shell-32.zip",
-            "hash": "c5a85c7416a8b1c5ed47a2ed4bf1b779aa56c5da9bd3ae255d7effe286963826"
+            "url": "https://nilesoft.org/download/shell/1.8/shell-x86.zip",
+            "hash": "a2d0a9de4e9a1619ee0d63c1353920ca995d7ae694d99f49093cc6d12fdf7224"
+        },
+        "arm64": {
+            "url": "https://nilesoft.org/download/shell/1.8/shell-arm64.zip",
+            "hash": "2fa77001ee9cdfd94aa2eab944eca2914f7f0fbbe81b5e20cac38c4aa30f2ca6"
         }
     },
     "pre_install": "if(!(Test-Path \"$persist_dir\\shell.log\")) { New-Item \"$dir\\shell.log\" | Out-Null }",
@@ -45,11 +49,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://nilesoft.org/download/$version/shell-x64.zip"
+                "url": "https://nilesoft.org/download/shell/$version/shell-x64.zip"
             },
             "32bit": {
-                "url": "https://nilesoft.org/download/$version/shell-x86.zip"
-            }
+                "url": "https://nilesoft.org/download/shell/$version/shell-x86.zip"
+            },
+			"arm64": {
+				"url": "https://nilesoft.org/download/shell/$version/shell-arm64.zip"
+			}
         }
     }
 }

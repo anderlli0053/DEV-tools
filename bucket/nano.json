@@ -4,7 +4,6 @@
     "homepage": "https://www.nano-editor.org/",
     "license": "GPL-3.0-only",
     "notes": [
-        "Configure nano interface, colors, key assignments and more by typing nano ~/.nanorc",
         "Default folders have been updated, no custom setting has been modified. Find a backup of",
         "the old config file at \"$dir\\.nanorc.bak\"",
         "Visit https://github.com/okibcn/nano-for-windows for more information."
@@ -13,12 +12,14 @@
     "hash": "04778fc33c2dac15434245807a226fe312480b550f6d1759f2799aa2f84ef3cd",
     "bin": "nano.exe",
     "pre_install": [
-        "$arch=if ($architecture -match '64') {'x86_64'} else {'i686'}",
-        "$scoopdir=$scoopdir -replace '\\\\','/'",
-        "if (-not (Test-Path ~/.nanorc)){",
+        "$arch = if ($architecture -match '64') {'x86_64'} else {'i686'}",
+        "$scoopdir = $scoopdir -replace '\\\\','/'",
+        "if (-not (Test-Path ~/.nanorc)) {",
         "    Move-Item \"$dir/.nanorc\" ~/.nanorc",
-        "    Add-Content ~/.nanorc \"include `\"$scoopdir/apps/nano/current/syntax/*.nanorc`\"\"}",
-        "else{Copy-Item ~/.nanorc \"$dir/.nanorc.bak\"}",
+        "    Add-Content ~/.nanorc \"include `\"$scoopdir/apps/nano/current/syntax/*.nanorc`\"\"",
+        "} else {",
+        "    Copy-Item ~/.nanorc \"$dir/.nanorc.bak\"",
+        "}",
         "Move-Item \"$dir/pkg_$arch-w64-mingw32/bin/*\" \"$dir\"",
         "Move-Item \"$dir/pkg_$arch-w64-mingw32/share/nano\" \"$dir/syntax\" -Force",
         "Remove-Item  \"$dir/pkg*\" -Force -Recurse",

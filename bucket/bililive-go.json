@@ -1,42 +1,39 @@
 {
-    "version": "v0.7.4",
-    "description": "一个支持多种直播平台的直播录制工具",
+    "version": "0.7.4",
+    "description": "A Stream Recorder For Bilibili Live",
     "homepage": "https://github.com/hr3lxphr6j/bililive-go",
     "license": "GPL-3.0-only",
+    "suggest": {
+        "ffmpeg": "ffmpeg"
+    },
     "architecture": {
         "64bit": {
             "url": "https://github.com/hr3lxphr6j/bililive-go/releases/download/v0.7.4/bililive-windows-amd64.zip",
             "hash": "81fcefc3815f3fb72de75b0532db863601cd1b95291f0c4a1b57d90de6c9e172",
-            "bin": [
-                [
-                    "bililive-windows-amd64.exe",
-                    "bililive"
-                ]
-            ]
+            "pre_install": "Rename-Item -Path \"$dir\\bililive-windows-amd64.exe\" -NewName \"bililive-go.exe\" -Force"
         },
         "32bit": {
             "url": "https://github.com/hr3lxphr6j/bililive-go/releases/download/v0.7.4/bililive-windows-386.zip",
             "hash": "850e640037ee545783a41b39319002ca74cd550080e7c1d011a87462205ef275",
-            "bin": [
-                [
-                    "bililive-windows-386.exe",
-                    "bililive"
-                ]
-            ]
+            "pre_install": "Rename-Item -Path \"$dir\\bililive-windows-386.exe\" -NewName \"bililive-go.exe\" -Force"
         }
     },
+    "bin": "bililive-go.exe",
+    "shortcuts": [
+        [
+            "bililive-go.exe",
+            "bililive-go"
+        ]
+    ],
     "persist": "config.yml",
-    "checkver": {
-        "url": "https://github.com/hr3lxphr6j/bililive-go/releases/latest",
-        "regex": "/releases/tag/([\\w-.]+)\""
-    },
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/hr3lxphr6j/bililive-go/releases/download/$version/bililive-windows-amd64.zip"
+                "url": "https://github.com/hr3lxphr6j/bililive-go/releases/download/v$version/bililive-windows-amd64.zip"
             },
             "32bit": {
-                "url": "https://github.com/hr3lxphr6j/bililive-go/releases/download/$version/bililive-windows-386.zip"
+                "url": "https://github.com/hr3lxphr6j/bililive-go/releases/download/v$version/bililive-windows-386.zip"
             }
         }
     }

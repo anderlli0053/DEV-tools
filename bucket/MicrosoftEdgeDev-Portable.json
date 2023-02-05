@@ -1,15 +1,17 @@
 {
-    "version": "107.0.1402.2",
+    "version": "111.0.1660.1",
     "description": "Microsoft Edge Dev. The chromium based Microsoft Edge browser (Dev Channel)",
     "homepage": "https://www.microsoftedgeinsider.com/en-us/welcome?channel=dev",
     "license": "Freeware",
     "changelog": "",
     "architecture": {
         "64bit": {
-            "url": "https://dorado-api.deno.dev/edge?arch=64&channel=dev&version=107.0.1402.2&dl#/MicrosoftEdge-107.0.1402.2-x64.7z"
+            "url": "https://dorado-api.deno.dev/edge?arch=64&channel=dev&version=111.0.1660.1&dl#/dl.7z",
+            "hash": "c83a42a991a5a14939b73c5a6f803306de69b50d224fbecdd1acf02e4b7811eb"
         },
         "32bit": {
-            "url": "https://dorado-api.deno.dev/edge?arch=86&channel=dev&version=107.0.1402.2&dl#/MicrosoftEdge-107.0.1402.2-x86.7z"
+            "url": "https://dorado-api.deno.dev/edge?arch=86&channel=dev&version=111.0.1660.1&dl#/dl.7z",
+            "hash": "0f7d0c8d5bd3c216ac1be7f471d0591137d0f75f1a027edaf5c2565d1f120b87"
         }
     },
     "installer": {
@@ -25,15 +27,15 @@
     "persist": "User Data",
     "checkver": {
         "url": "https://dorado-api.deno.dev/edge?arch=64&channel=dev",
-        "regex": "MicrosoftEdge_X64_([\\d.]+).exe"
+        "jsonpath": "$.Version"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dorado-api.deno.dev/edge?arch=64&channel=dev&version=$version&dl#/MicrosoftEdge-$version-x64.7z"
+                "url": "https://dorado-api.deno.dev/edge?arch=64&channel=dev&version=$version&dl#/dl.7z"
             },
             "32bit": {
-                "url": "https://dorado-api.deno.dev/edge?arch=86&channel=dev&version=$version&dl#/MicrosoftEdge-$version-x86.7z"
+                "url": "https://dorado-api.deno.dev/edge?arch=86&channel=dev&version=$version&dl#/dl.7z"
             }
         }
     }

@@ -29,11 +29,20 @@
     },
     "pre_uninstall": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-        "Stop-Process -Name 'StartMenu' -Force -ErrorAction 'SilentlyContinue'",
         "Write-Host \"Restoring previous Start Menu, please wait and don't cancel the script...\" -F 'Yellow'",
-        "Start-Process 'msiexec' -Wait -Verb 'RunAs' -ArgumentList @('/x', \"$dir\\setup.msi\", '/qn')",
-        "Start-Process 'taskkill' -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList ('/F', '/IM', 'explorer.exe'); Start-Sleep -Seconds 16",
-        "Write-Host 'Previous Start Menu Restored!' -F 'Yellow'; Start-Process 'explorer.exe' -Wait -Verb 'RunAs' -WindowStyle 'Hidden'"
+        "Stop-Process -Name 'StartMenu' -Force -ErrorAction 'SilentlyContinue'",
+        "Start-Sleep -Milliseconds 1000",
+        "Start-Process 'msiexec' -Verb 'RunAs' -ArgumentList @('/x', \"$dir\\setup.msi\", '/qn')",
+        "for ($i = 0; $i -lt 60; $i++) {",
+        "  if (-Not (Test-Path \"$env:ProgramFiles\\Open-Shell\")) {",
+        "       break",
+        "   }",
+        "   Start-Sleep -Milliseconds 1000",
+        "}",
+        "Start-Process 'taskkill' -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList ('/F', '/IM', 'explorer.exe')",
+        "Start-Sleep -Milliseconds 5000",
+        "Start-Process 'explorer.exe' -Verb 'RunAs' -WindowStyle 'Hidden'",
+        "Write-Host 'Previous Start Menu Restored!' -F 'Yellow'"
     ],
     "checkver": "github",
     "autoupdate": {
