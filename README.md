@@ -34,9 +34,9 @@ Everything regarding Scoop software can be found on [this](https://scoop.sh/) of
 <hr><hr>
 Add this bucket after installing Scoop by typing:
 
-```scoop bucket add DEV-Tools https://github.com/anderlli0053/DEV-tools.git```
+```scoop bucket add anderlli0053_DEV-tools https://github.com/anderlli0053/DEV-tools.git```
 
-Even faster way is ```scoop bucket add DEV-Tools https://github.com/anderlli0053/DEV-tools.git && scoop update && scoop install <anyAPPNameInTheBucket>```
+Even faster way is ```scoop bucket add anderlli0053_DEV-tools https://github.com/anderlli0053/DEV-tools.git && scoop update && scoop install <anyAPPNameInTheBucket>```
 <hr><hr>
 Installing example:
 
