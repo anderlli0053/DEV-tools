@@ -1,30 +1,33 @@
 {
+    "homepage": "https://freefilesync.org/",
     "version": "12.1",
-    "description": "FreeFileSync. Folder comparison and synchronization",
-    "homepage": "https://freefilesync.org",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://freefilesync.org/faq.php#commercial-usage"
+        "license": {
+        "identifier": "GPL-3.0-only"
     },
-    "url": "https://freefilesync.org/download/FreeFileSync_12.1_Windows_Setup.exe",
-    "hash": "75d34c184bf7dd04f429de9c4aea7c262318c9961ce3ff8769d000c57b063812",
-    "notes": "Need interaction.",
-    "installer": {
-        "keep": false
-    },
-    "uninstaller": {
-        "file": "Uninstall\\unins000.exe",
-        "args": [
-            "/VERYSILENT",
-            "/CLOSEAPPLICATIONS",
-            "/FORCECLOSEAPPLICATIONS"
-        ]
-    },
-    "checkver": {
-        "url": "https://freefilesync.org/download.php",
-        "regex": "FreeFileSync ([\\d.]+) Windows"
-    },
-    "autoupdate": {
-        "url": "https://freefilesync.org/download/FreeFileSync_$version_Windows_Setup.exe"
-    }
+	"description": "FreeFileSync is a folder comparison and synchronization software that creates and manages backup copies of all your important files.",
+	"url": "https://freefilesync.org/download/FreeFileSync_12.1_Windows_Setup.exe",
+	"hash": "8cdb76562a3664fa11e329b81f65a2993640a4313ac79c3c392715dc3e89fd6b",
+	"innosetup": true,	
+	"pre_install":[
+			"New-Item \"$dir\\Install.dat\" -ItemType File ",
+			"[byte[]]$myHeader = 0x5a, 0x8e, 0xc3, 0xf8, 0x2d, 0x48, 0x6f, 0x6e, 0xfc, 0x30, 0x30, 0x9b, 0x4d, 0xe6, 0x52, 0x4a, 0xd1, 0xbe, 0xef, 0xb1, 0x80, 0x75, 0x81, 0x41, 0x55, 0xdf, 0x6b, 0xe5, 0x81, 0x98",
+			"Set-Content -Path \"$dir\\Install.dat\" -Value $myHeader -Encoding Byte"	
+	], 
+    "bin": ["FreeFileSync.exe", "RealTimeSync.exe"  ],
+    "shortcuts": [
+        [
+            "FreeFileSync.exe",
+            "FreeFileSync"
+        ],
+		[
+			"RealTimeSync.exe",
+			"RealTimeSync"		
+		]
+    ],
+    "checkver": { 
+		"regex" : "FreeFileSync_(\\d+\\.\\d+)_Windows_Setup.exe",
+		"url" : "https://freefilesync.org/download.php"		
+	},
+	"notes":  "You will see an error the first time you run the app. Close the app, and then re-open it."
+
 }
