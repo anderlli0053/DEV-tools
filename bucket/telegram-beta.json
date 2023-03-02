@@ -1,4 +1,8 @@
 {
+    "version": "4.6.6",
+    "description": "A messaging app with a focus on speed and security",
+    "homepage": "https://telegram.org",
+    "license": "GPL-3.0-only",
     "architecture": {
         "32bit": {
             "hash": "dfe1a2f43f80d14fd0a3b1e22f262440c96451555f20ab7103e178fb9a4bbdb0",
@@ -9,6 +13,20 @@
             "url": "https://github.com/telegramdesktop/tdesktop/releases/download/v4.6.6/tportable-x64.4.6.6.beta.zip"
         }
     },
+    "extract_dir": "Telegram",
+    "pre_install": "Set-Content \"$dir\\telegram-beta.cmd\" '@start \"Telegram\" /D \"%~dp0\" \"%~dp0Telegram.exe\" %*' -Encoding Ascii",
+    "bin": "telegram-beta.cmd",
+    "persist": "tdata",
+    "shortcuts": [
+        [
+            "Telegram.exe",
+            "Telegram (Beta)"
+        ]
+    ],
+    "checkver": {
+        "regex": "\\/telegramdesktop\\/tdesktop\\/releases\\/tag\\/v([\\d.]+).+\\n.+Pre-release",
+        "url": "https://github.com/telegramdesktop/tdesktop/releases/"
+    },
     "autoupdate": {
         "architecture": {
             "32bit": {
@@ -18,23 +36,5 @@
                 "url": "https://github.com/telegramdesktop/tdesktop/releases/download/v$version/tportable-x64.$version.beta.zip"
             }
         }
-    },
-    "bin": "telegram-beta.cmd",
-    "checkver": {
-        "regex": "\\/telegramdesktop\\/tdesktop\\/releases\\/tag\\/v([\\d.]+).+\\n.+Pre-release",
-        "url": "https://github.com/telegramdesktop/tdesktop/releases/"
-    },
-    "description": "A messaging app with a focus on speed and security",
-    "extract_dir": "Telegram",
-    "homepage": "https://telegram.org",
-    "license": "GPL-3.0-only",
-    "persist": "tdata",
-    "pre_install": "Set-Content \"$dir\\telegram-beta.cmd\" '@start \"Telegram\" /D \"%~dp0\" \"%~dp0Telegram.exe\" %*' -Encoding Ascii",
-    "shortcuts": [
-        [
-            "Telegram.exe",
-            "Telegram (Beta)"
-        ]
-    ],
-    "version": "4.6.6"
+    }
 }
