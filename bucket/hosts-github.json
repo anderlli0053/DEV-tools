@@ -1,40 +1,38 @@
 {
-  "version": "0.2022.03.15",
-  "description": "hosts-github",
-  "homepage": "https://github.com/ineo6/hosts",
-  "license": "MIT",
-  "depends": [
-    "sudo",
-    "silentcmd",
-    "hostctl"
-  ],
-  "url": [
-    "https://github.com/ineo6/hosts/raw/master/hosts"
-  ],
-  "hash": [
-    ""
-  ],
-  "pre_install": [],
-  "post_install": [
-    "",
-    "$null, $bucket = find_manifest($appName)",
-    "$bucketdir = Find-BucketDirectory($bucket)",
-    "",
-    "$hostfile = \"$dir\\hosts\"",
-    "sudo hostctl replace github --from $hostfile",
-    "Write-Host 'DONE' -ForegroundColor Yellow",
-    "",
-    "cmd /c ipconfig /flushdns",
-    "",
-    ""
-  ],
-  "checkver": {
-    "url": "https://github.com/ineo6/hosts/commits/master.atom",
-    "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>[0-9a-f]{40})",
-    "replace": "0.${1}.${2}.${3}"
-  },
-  "autoupdate": {
-    "url": "https://github.com/ineo6/hosts/raw/master/hosts"
-  },
-  "_from": "okibcn/ScoopMaster"
+    "version": "0.2023.03.05",
+    "description": "hosts-github",
+    "homepage": "https://github.com/ineo6/hosts",
+    "license": "MIT",
+    "depends": [
+        "sudo",
+        "silentcmd",
+        "hostctl"
+    ],
+    "url": "https://github.com/ineo6/hosts/raw/master/hosts",
+    "hash": "880d082c17c919bf27a9ee0f6495c0b5e03e11a3a0b14fd3601eaf884cee44bb",
+    "pre_install": [
+        
+    ],
+    "post_install": [
+        "",
+        "$null, $bucket = find_manifest($appName)",
+        "$bucketdir = Find-BucketDirectory($bucket)",
+        "",
+        "$hostfile = \"$dir\\hosts\"",
+        "sudo hostctl replace github --from $hostfile",
+        "Write-Host 'DONE' -ForegroundColor Yellow",
+        "",
+        "cmd /c ipconfig /flushdns",
+        "",
+        ""
+    ],
+    "checkver": {
+        "url": "https://github.com/ineo6/hosts/commits/master.atom",
+        "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>[0-9a-f]{40})",
+        "replace": "0.${1}.${2}.${3}"
+    },
+    "autoupdate": {
+        "url": "https://github.com/ineo6/hosts/raw/master/hosts"
+    },
+    "_from": "okibcn/ScoopMaster"
 }
