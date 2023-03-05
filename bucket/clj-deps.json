@@ -1,0 +1,62 @@
+{
+  "version": "1.11.1.1237",
+  "description": "Modern, dynamic a functional dialect of the LISP programming language for JVM",
+  "homepage": "https://clojure.org",
+  "license": "EPL-1.0",
+  "notes": "Please fully exit and restart any active terminal sessions.",
+  "suggest": {
+    "JDK": [
+      "java/openjdk",
+      "java/temurin-jdk",
+      "java/oraclejdk"
+    ]
+  },
+  "depends": "extras/vcredist2015",
+  "architecture": {
+    "64bit": {
+      "url": [
+        "https://ghproxy.com/https://github.com/borkdude/deps.clj/releases/download/v1.11.1.1237/deps.clj-1.11.1.1237-windows-amd64.zip",
+        "https://download.clojure.org/install/clojure-tools-1.11.1.1237.zip"
+      ],
+      "hash": [
+        "82724b000a337d2d21b0489958c0d84dc4f002bd7e72b1c35cac6510f5da8a8e",
+        "d773501d8c65dd4aec73709111085f3dd65b2477c4dd600a24a3a6f32664d637"
+      ]
+    }
+  },
+  "pre_install": [
+    "Move-Item \"$dir\\ClojureTools\\*\" \"$dir\\\"",
+    "Remove-Item -Path \"$dir\\ClojureTools\",\"$dir\\ClojureTools.psd1\",\"$dir\\ClojureTools.psm1\" -Force -Recurse"
+  ],
+  "env_set": {
+    "DEPS_CLJ_TOOLS_DIR": "$dir"
+  },
+  "bin": [
+    [
+      "deps.exe",
+      "deps"
+    ],
+    [
+      "deps.exe",
+      "clojure"
+    ],
+    [
+      "deps.exe",
+      "clj"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/borkdude/deps.clj"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": [
+          "https://ghproxy.com/https://github.com/borkdude/deps.clj/releases/download/v$version/deps.clj-$version-windows-amd64.zip",
+          "https://download.clojure.org/install/clojure-tools-$version.zip"
+        ]
+      }
+    }
+  },
+  "_from": "littleli/scoop-clojure"
+}

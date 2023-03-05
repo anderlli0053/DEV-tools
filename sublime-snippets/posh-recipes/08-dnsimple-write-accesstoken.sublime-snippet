@@ -1,0 +1,34 @@
+<snippet>
+	<content><![CDATA[
+param(
+        [Parameter(Mandatory,Position=0)]
+        \$AccessToken,
+        [Parameter(Mandatory,Position=1)]
+        \$Account
+    )
+
+    \$Path = "\$(join-path (split-path \$PROFILE) '.dnsimple.tokens')"
+    \$store = @{}
+    if (test-path \$Path) {
+        Write-debug "Reading access tokens from \$Path"
+        \$store = Import-CliXml -Path \$Path
+        Write-debug "\$(\$store.Count) tokens read"
+    } else {
+        Write-debug "Access tokens store at \$Path does not exist"
+    }
+
+    if (\$AccessToken -isnot [System.Security.SecureString]) {
+        Write-debug 'Input is cleartext - creating SecureString'
+        \$AccessTokenSecure = ConvertTo-SecureString -AsPlainText \$AccessToken -Force
+    } else {
+        Write-debug 'Input is already SecureString'
+        \$AccessTokenSecure = \$AccessToken
+    }
+    \$store[\$Account] = (ConvertFrom-SecureString \$AccessTokenSecure)
+
+    Write-debug "Writing access tokens (count: \$(\$store.Count)) to store at \$Path"
+    Export-CliXml -Path \$Path -InputObject \$store
+]]></content>
+	<tabTrigger>dnsimple-writeaccesstoken</tabTrigger>
+	<scope>source.powershell</scope>
+</snippet>

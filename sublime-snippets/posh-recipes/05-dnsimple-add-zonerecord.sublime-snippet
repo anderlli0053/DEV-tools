@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[
+    #Input: \$Zone, \$RecordType, \$Name, \$Content, \$Account, \$AccessToken
+    \$data = [pscustomobject]@{
+        'name' = \$Name
+        'content' = \$Content
+        'type' = \$RecordType
+    } | ConvertTo-Json
+
+    \$uri = "https://api.dnsimple.com/v2/\$Account/zones/\$Zone/records"
+    Write-Debug "Calling Uri \$uri with payload \$data"
+
+    Invoke-RestMethod -Method POST -Uri \$uri `
+        -Headers @{'Authorization'="Bearer \$AccessToken"} `
+        -Body \$data -ContentType 'application/json' `
+        | Select-Object -ExpandProperty data
+]]></content>
+	<tabTrigger>dnsimple-addzone</tabTrigger>
+	<scope>source.powershell</scope>
+</snippet>

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://ghproxy.com/https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
+  "homepage": "https://github.com/kiennq/emacs-build",
+  "license": "GPLv3",
+  "version": "30.175.20230301.b7b1123",
+  "url": "https://ghproxy.com/https://github.com/kiennq/emacs-build/releases/download/v30.175.20230301.b7b1123/emacs-master-x86_64-full.zip",
+  "hash": "37f3ce28380df814808405be8674f9d3ee825583fdcf05ce7c29b0ee749fdf6c",
+  "bin": [
+    "bin\\runemacs.exe",
+    "bin\\emacs.exe",
+    "bin\\emacsclient.exe",
+    "bin\\emacsclientw.exe",
+    "bin\\etags.exe",
+    "bin\\ctags.exe",
+    [
+      "bin\\emacsclientw.exe",
+      "emw",
+      "-c -n -a \"\""
+    ]
+  ],
+  "checkver": {
+    "url": "https://api.github.com/repos/kiennq/emacs-build/releases/latest",
+    "jsonpath": "$.tag_name",
+    "re": "v([\\d\\w.-]+)"
+  },
+  "autoupdate": {
+    "url": "https://ghproxy.com/https://github.com/kiennq/emacs-build/releases/download/v$version/emacs-master-x86_64-full.zip"
+  },
+  "shortcuts": [
+    [
+      "bin\\runemacs.exe",
+      "Emacs"
+    ],
+    [
+      "bin\\emacsclientw.exe",
+      "Emacs Client",
+      "-c -n -a \"\""
+    ]
+  ],
+  "_from": "kiennq/scoop-misc"
+}

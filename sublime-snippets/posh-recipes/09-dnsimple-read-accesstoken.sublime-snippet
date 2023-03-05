@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[
+param(
+        [Parameter(Mandatory,Position=0)]
+        \$Account
+        )
+
+    \$Path = "\$(join-path (split-path \$PROFILE) '.dnsimple.tokens')"
+    if (-not(test-path \$Path)) {
+        Write-error "Access token store at \$Path not found"
+        return
+    }
+    Write-debug "Reading access tokens from \$Path"
+    \$store = Import-CliXml -Path \$Path
+    Write-debug "\$(\$store.Count) tokens read"
+    if (\$Account) {
+        [pscustomobject]@{
+            Account=\$Account
+            AccessToken = (new-object PSCredential 'doesntmatter',`
+                (ConvertTo-SecureString \$store[\$Account])).GetNetworkCredential().Password 
+        }
+    } else {
+        \$store.Keys | foreach-object { new-object PSObject -Property @{Account=\$_} }
+    }
+]]></content>
+	<tabTrigger>dnsimple-readaccesstoken</tabTrigger>
+	<scope>source.powershell</scope>
+</snippet>

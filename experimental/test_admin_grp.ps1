@@ -1,0 +1,1 @@
+if([System.Security.Principal.WindowsIdentity]::GetCurrent().UserClaims | ? { $_.Value -eq 'S-1-5-32-544'}) { Write-host 'You are in admin group'} else { Write-host 'You are NOT in admin group'}

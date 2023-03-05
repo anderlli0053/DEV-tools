@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[
+[CmdletBinding()]
+    param (
+        [Parameter(Mandatory,Position=0)]
+        [ValidateScript({[Uri]::CheckHostName(\$_) -eq 'Dns'})]
+        \$Zone,
+        [Parameter(Mandatory,Position=1)]
+        \$Name,
+        [Parameter(Mandatory,Position=2)]
+        [ValidateScript({[Uri]::IsWellFormedUriString(\$_,[UriKind]::Absolute)})]
+        \$Url,
+        [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
+        [ValidateRange(10000,99999)]
+        [int]\$Account,
+        [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
+        [System.Security.SecureString]\$AccessToken
+        )
+
+    \$record = Get-ZoneRecord -Zone \$Zone -Name \$Name -Account \$Account -AccessToken \$AccessToken
+    if (\$record) {
+        Write-Error "Record with name \$Name and type URL already exists in zone \$Zone"
+        return
+    }
+    Add-ZoneRecord -Zone \$Zone -RecordType URL -Name \$Name -Content \$Url -Account \$Account -AccessToken \$AccessToken
+]]></content>
+	<tabTrigger>dnsimple-addshorturl</tabTrigger>
+	<scope>source.powershell</scope>
+</snippet>

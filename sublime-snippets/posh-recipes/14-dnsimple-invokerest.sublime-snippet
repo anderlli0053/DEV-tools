@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+Invoke-RestMethod -Method GET `
+            -Uri "https://api.dnsimple.com/v2/$($this.account)/zones/$zone/records" `
+            -Headers @{'Authorization'="Bearer $($this.AccessToken)"} `
+            -ContentType 'application/json' `
+        | Select-Object -ExpandProperty data
+]]></content>
+	<tabTrigger>dnsimple-invokerest</tabTrigger>
+	<scope>source.powershell</scope>
+</snippet>

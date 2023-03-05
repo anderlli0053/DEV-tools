@@ -1,0 +1,36 @@
+<snippet>
+	<content><![CDATA[
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory,Position=0)]
+        \$Zone,
+        [Parameter(Position=1)]
+        \$RecordType,
+        [Parameter()]
+        \$Name,
+        [Parameter()]
+        \$NameLike,
+        [Parameter(Mandatory)]
+        \$Account,
+        [Parameter(Mandatory)]
+        \$AccessToken
+        )
+
+    \$Uri = "https://api.dnsimple.com/v2/\$Account/zones/\$Zone/records"
+    \$query = @{}
+    if (\$RecordType) { \$query.Add('type',\$RecordType) }
+    if (\$Name) { \$query.Add('name', \$Name) }
+    if (\$NameLike) { \$query.Add('name_like', \$NameLike) }
+    if (\$query.Count -gt 0) {
+        \$qRaw = (\$query.Keys | ForEach-Object { "\$_=\$([Uri]::EscapeDataString(\$query[\$_]))" }) `
+            -join '&'
+        \$Uri += "?\$qRaw"
+    }
+    Write-Debug "Requesting: GET \$Uri"
+    Invoke-RestMethod -Method Get -Uri \$Uri `
+    	-Headers @{'Authorization'="Bearer \$AccessToken"} -UseBasicParsing `
+        | Select-Object -ExpandProperty data
+]]></content>
+	<tabTrigger>dnsimple-getzone</tabTrigger>
+	<scope>source.powershell</scope>
+</snippet>

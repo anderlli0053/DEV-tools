@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[
+[CmdletBinding()]
+    param (
+        [Parameter(Mandatory,Position=0)]
+        [ValidateScript({[Uri]::CheckHostName(\$_) -eq 'Dns'})]
+        \$Zone,
+        [Parameter(Mandatory,Position=1)]
+        \$Name,
+        [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
+        [ValidateRange(10000,99999)]
+        [int]\$Account,
+        [Parameter(Mandatory,ValueFromPipelineByPropertyName)]
+        [System.Security.SecureString]\$AccessToken
+        )
+
+    \$record = Get-ZoneRecord -Zone \$Zone -Name \$Name -Account \$Account -AccessToken \$AccessToken
+    if (-not(\$record)) {
+        Write-Output "Record with name \$Name and type URL does not exist in zone \$Zone"
+        return
+    }
+    Remove-ZoneRecord -Zone \$Zone -Id \$record.id -Account \$Account -AccessToken \$AccessToken
+]]></content>
+	<tabTrigger>dnsimple-removeshorturl</tabTrigger>
+	<scope>source.powershell</scope>
+</snippet>

@@ -1,0 +1,34 @@
+{
+  "version": "3.5.0",
+  "homepage": "https://ys.mihoyo.com/",
+  "url": "https://autopatchcn.yuanshen.com/client_app/download/pc_zip/20230220120841_NrIMna0roQkFHA3c/YuanShen_3.5.0.zip",
+  "hash": "md5:11f9a0d145f5d9b48e16ce6365797fd0",
+  "shortcuts": [
+    [
+      "YuanShen.exe",
+      "YuanShen"
+    ]
+  ],
+  "pre_install": [
+    "$configFile = \"[General]`r`n\"",
+    "$configFile += \"cps=mihoyo`r`n\"",
+    "$configFile += \"channel=1`r`n\"",
+    "$configFile += \"sub_channel=1`r`n\"",
+    "$configFile += \"game_version=$version\"",
+    "Set-Content \"$dir\\config.ini\" -Value $configFile -Encoding Ascii"
+  ],
+  "persist": "ScreenShot",
+  "checkver": {
+    "url": "https://sdk-static.mihoyo.com/hk4e_cn/mdk/launcher/api/resource?key=eYd89JmJ&launcher_id=18",
+    "jsonpath": "$.data.game.latest.path",
+    "regex": "(?<url>.+)/YuanShen_([\\d.]+)\\.zip"
+  },
+  "autoupdate": {
+    "url": "$matchUrl/YuanShen_$version.zip",
+    "hash": {
+      "url": "https://sdk-static.mihoyo.com/hk4e_cn/mdk/launcher/api/resource?key=eYd89JmJ&launcher_id=18",
+      "jsonpath": "$.data.game.latest.md5"
+    }
+  },
+  "_from": "wzv5/ScoopBucket"
+}

@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+    # Input: \$Zone, \$Id, \$Account, \$AccessToken
+    \$Uri = "https://api.dnsimple.com/v2/\$Account/zones/\$Zone/records/\$Id" 
+    Write-Debug "Requesting: DELETE \$Uri"
+    Invoke-WebRequest -Method DELETE -Uri \$Uri `
+        -Headers @{'Authorization'="Bearer \$AccessToken"} `
+        | select-object StatusCode,StatusDescription
+]]></content>
+	<tabTrigger>dnsimple-removezone</tabTrigger>
+	<scope>source.powershell</scope>
+</snippet>
