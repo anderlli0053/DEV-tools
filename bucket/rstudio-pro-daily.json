@@ -1,43 +1,43 @@
 {
-  "version": "2023.03.0+380.pro7",
-  "homepage": "https://www.rstudio.com/",
-  "description": "An IDE for R, which includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.",
-  "license": "https://rstudio.com/about/eula/",
-  "architecture": {
-    "64bit": {
-      "url": "https://s3.amazonaws.com/rstudio-ide-build/desktop/windows/RStudio-pro-2023.03.0-380.pro7.zip",
-      "hash": "8248eb88f810bb089a98fc1ae47996609c873ec363fd835a8b19544ba50d0f7e"
-    }
-  },
-  "bin": [
-    [
-      "bin\\rstudio.exe",
-      "rstudio-pro-daily"
-    ]
-  ],
-  "shortcuts": [
-    [
-      "bin\\rstudio.exe",
-      "RStudio Pro Daily"
-    ]
-  ],
-  "checkver": {
-    "url": "https://dailies.rstudio.com/rstudio/latest/index.json",
-    "jsonpath": ".products['desktop-pro'].platforms['windows-xcopy'].version",
-    "regex": "(?<date>[\\d.]+)(?<type>-(daily|preview))?\\+(?<build>\\d+)(?<pro>\\.pro\\d+)",
-    "replace": "${date}+${build}${pro}${type}"
-  },
-  "autoupdate": {
+    "version": "2023.03.0+382.pro1",
+    "homepage": "https://www.rstudio.com/",
+    "description": "An IDE for R, which includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.",
+    "license": "https://rstudio.com/about/eula/",
     "architecture": {
-      "64bit": {
-        "url": "https://s3.amazonaws.com/rstudio-ide-build/desktop/windows/RStudio-pro-$matchDate$matchType-$matchBuild$matchPro.zip",
-        "hash": {
-          "mode": "json",
-          "jsonpath": ".products['desktop-pro'].platforms['windows-xcopy'].sha256",
-          "url": "https://dailies.rstudio.com/rstudio/latest/index.json"
+        "64bit": {
+            "url": "https://s3.amazonaws.com/rstudio-ide-build/desktop/windows/RStudio-pro-2023.03.0-382.pro1.zip",
+            "hash": "8747fdb79ef3a5d8f45bb54200873f29d9cd88bdbb4257894fd0cf90a779aa8f"
         }
-      }
-    }
-  },
-  "_from": "cderv/r-bucket"
+    },
+    "bin": [
+        [
+            "bin\\rstudio.exe",
+            "rstudio-pro-daily"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "bin\\rstudio.exe",
+            "RStudio Pro Daily"
+        ]
+    ],
+    "checkver": {
+        "url": "https://dailies.rstudio.com/rstudio/latest/index.json",
+        "jsonpath": ".products['desktop-pro'].platforms['windows-xcopy'].version",
+        "regex": "(?<date>[\\d.]+)(?<type>-(daily|preview))?\\+(?<build>\\d+)(?<pro>\\.pro\\d+)",
+        "replace": "${date}+${build}${pro}${type}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://s3.amazonaws.com/rstudio-ide-build/desktop/windows/RStudio-pro-$matchDate$matchType-$matchBuild$matchPro.zip",
+                "hash": {
+                    "mode": "json",
+                    "jsonpath": ".products['desktop-pro'].platforms['windows-xcopy'].sha256",
+                    "url": "https://dailies.rstudio.com/rstudio/latest/index.json"
+                }
+            }
+        }
+    },
+    "_from": "cderv/r-bucket"
 }
