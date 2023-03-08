@@ -1,42 +1,42 @@
 {
-  "version": "9.0.179.3",
-  "description": "Manifold 9 is powerful parallel GIS, ETL, data science and DBMS tool",
-  "homepage": "http://manifold.net/",
-  "license": "Proprietary",
-  "suggest": {
-    "Microsoft Visual C++ Redistributable 2022": "extras/vcredist2022"
-  },
-  "url": "https://manifold.net/updates/working/manifold-9.0.179.3.zip",
-  "hash": "c5460208023cbe8e952b7f91bb78eae3bc0920bed6cadb5cd6895073a7fd0bab",
-  "extract_dir": "manifold-9.0.179.3",
-  "bin": "manifold.exe",
-  "shortcuts": [
-    [
-      "manifold.exe",
-      "Manifold 9"
-    ]
-  ],
-  "persist": [
-    "extras\\logfiles",
-    "extras\\Addins"
-  ],
-  "post_install": [
-    "if (!(Test-Path \"$persist_dir\\extras\\logfiles\")) { New-Item -ItemType Directory \"$dir\\extras\\logfiles\" | Out-Null }",
-    "if (!(Test-Path \"$persist_dir\\extras\\logfiles\\manifold.loghere\")) { New-Item \"$dir\\extras\\logfiles\\manifold.loghere\" | Out-Null }"
-  ],
-  "checkver": {
-    "url": "https://manifold.net/updates/download_9.shtml",
-    "regex": "href=\"https://manifold.net/updates/working/manifold-([\\d.\\-r]+).zip\">Release 9 Edge</a>",
-    "replace": "$1"
-  },
-  "autoupdate": {
-    "url": "https://manifold.net/updates/working/manifold-$version.zip",
-    "extract_dir": "manifold-$version",
-    "hash": {
-      "url": "https://manifold.net/updates/download_9.shtml",
-      "regex": "manifold-$version.zip.+ $sha256"
+    "version": "9.0.179.4",
+    "description": "Manifold 9 is powerful parallel GIS, ETL, data science and DBMS tool",
+    "homepage": "http://manifold.net/",
+    "license": "Proprietary",
+    "suggest": {
+        "Microsoft Visual C++ Redistributable 2022": "extras/vcredist2022"
     },
-    "note": "Note after autoupdate"
-  },
-  "_from": "okibcn/ScoopMaster"
+    "url": "https://manifold.net/updates/working/manifold-9.0.179.4.zip",
+    "hash": "576c890ee84b9f3c7471ae3ff78dd197bf5f81dc816f9c2413ebea90391a9474",
+    "extract_dir": "manifold-9.0.179.4",
+    "bin": "manifold.exe",
+    "shortcuts": [
+        [
+            "manifold.exe",
+            "Manifold 9"
+        ]
+    ],
+    "persist": [
+        "extras\\logfiles",
+        "extras\\Addins"
+    ],
+    "post_install": [
+        "if (!(Test-Path \"$persist_dir\\extras\\logfiles\")) { New-Item -ItemType Directory \"$dir\\extras\\logfiles\" | Out-Null }",
+        "if (!(Test-Path \"$persist_dir\\extras\\logfiles\\manifold.loghere\")) { New-Item \"$dir\\extras\\logfiles\\manifold.loghere\" | Out-Null }"
+    ],
+    "checkver": {
+        "url": "https://manifold.net/updates/download_9.shtml",
+        "regex": "href=\"https://manifold.net/updates/working/manifold-([\\d.\\-r]+).zip\">Release 9 Edge</a>",
+        "replace": "$1"
+    },
+    "autoupdate": {
+        "url": "https://manifold.net/updates/working/manifold-$version.zip",
+        "extract_dir": "manifold-$version",
+        "hash": {
+            "url": "https://manifold.net/updates/download_9.shtml",
+            "regex": "manifold-$version.zip.+ $sha256"
+        },
+        "note": "Note after autoupdate"
+    },
+    "_from": "okibcn/ScoopMaster"
 }
