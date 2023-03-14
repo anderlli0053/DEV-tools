@@ -1,51 +1,25 @@
 {
-    "architecture": {
-        "64bit": {
-            "hash": "sha512:523ed2263c10f9cabc61f8db7e2fb02e871fb0724b8d6f128dbc91b28677e22812791ffb8e04b575f1a9d3f720ace905f11b9a80a2527e93cb588e298d64872c",
-            "installer": {
-                "script": "Start-Process -filepath \"$dir\\installer.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"/S /D=$dir\" -Wait"
-            },
-            "post_install": "@('installer.exe', 'uninstallerIcon.ico') | ForEach-Object { Remove-Item \"$dir\\$_\" -Force -ErrorAction SilentlyContinue }",
-            "pre_install": [
-                "info 'Copying user data...'",
-                "if (Test-Path \"$persist_dir\\User Data\\*\") {",
-                "    Copy-Item \"$persist_dir\\User Data\\*\" \"$env:AppData\\apifox\\\" -Recurse -Force | Out-Null",
-                "}"
-            ],
-            "uninstaller": {
-                "script": [
-                    "Start-Process -filepath \"$dir\\Uninstall Apifox.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"/S\" -Wait",
-                    "info 'Backing up user data...'",
-                    "if (Test-Path \"$env:AppData\\apifox\\*\") {",
-                    "    Copy-Item \"$env:AppData\\apifox\\*\" \"$persist_dir\\User Data\\\" -Recurse -Force | Out-Null",
-                    "}"
-                ]
-            },
-            "url": "http://cdn.apifox.cn/download/2.2.27/Apifox-2.2.27.exe#/installer.exe"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "hash": {
-                    "mode": "extract",
-                    "regex": "sha512.*?$base64",
-                    "url": "http://cdn.apifox.cn/download/latest.yml"
-                },
-                "url": "http://$matchUrl#/installer.exe"
-            }
-        }
-    },
-    "bin": "Apifox.exe",
-    "checkver": {
-        "regex": "(?sm)version:[\\s]+([\\d.]+).*?http://(?<url>.*?\\.exe)",
-        "url": "http://cdn.apifox.cn/download/latest.yml"
-    },
-    "depends": "sudo",
-    "description": "Apifox = Postman + Swagger + Mock + JMeter",
+    "version": "2.2.24",
+    "description": "Apifox 是 API 文档、API 调试、API Mock、API 自动化测试一体化协作平台，定位 Postman + Swagger + Mock + JMeter。",
     "homepage": "https://www.apifox.cn/",
-    "license": {
-        "identifier": "Freeware"
+    "license": "Freeware",
+    "architecture": {
+        "32bit": {
+            "url": "https://cdn.apifox.cn/download/2.1.25/Apifox-windows-x86-2.1.25.exe#/dl.7z",
+            "hash": "80412de1c7bcdd668d7064f1001c4439d587e36267756e799d5c7a152ac5399c",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
+            ]
+        },
+        "64bit": {
+            "url": "https://cdn.apifox.cn/download/2.1.25/Apifox-2.1.25.exe#/dl.7z",
+            "hash": "b545cdf256712b06b3c6e0b680f16b1fb53c8a4bc4cd4e4b18eec7fc9ea994d4",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
+            ]
+        }
     },
     "shortcuts": [
         [
@@ -53,5 +27,16 @@
             "Apifox"
         ]
     ],
-    "version": "2.2.27"
+    "checkver": {
+        "url": "https://cdn.apifox.cn/download/latest.yml",
+        "regex": "version: ([\\d.]+)"
+    },
+    "autoupdate": {
+        "32bit": {
+            "url": "https://cdn.apifox.cn/download/$version/Apifox-windows-x86-$version.exe#/dl.7z"
+        },
+        "64bit": {
+            "url": "https://cdn.apifox.cn/download/$version/Apifox-$version.exe#/dl.7z"
+        }
+    }
 }
