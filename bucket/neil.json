@@ -1,32 +1,32 @@
 {
-  "version": "0.1.57",
-  "description": "A CLI to add common aliases and features to deps.edn-based projects",
-  "homepage": "https://github.com/babashka/neil",
-  "license": "MIT",
-  "depends": "scoop-clojure/babashka",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/babashka/neil/archive/refs/tags/v0.1.57.zip",
-      "hash": "2aa472f91c2cc7c64509c3b1a52fc112fa008d0d24c7af559fff7414d10ef456",
-      "extract_dir": "neil-0.1.57"
-    }
-  },
-  "pre_install": [
-    "Remove-Item \"$dir\\*\" -Recurse -Exclude 'neil'",
-    "Set-Content \"$dir\\neil.bat\" \"@bb.exe \"\"%~dp0neil\"\" %*\""
-  ],
-  "bin": "neil.bat",
-  "checkver": {
-    "url": "https://api.github.com/repos/babashka/neil/tags",
-    "regex": "\"v([\\d.]+)\""
-  },
-  "autoupdate": {
+    "version": "0.1.59",
+    "description": "A CLI to add common aliases and features to deps.edn-based projects",
+    "homepage": "https://github.com/babashka/neil",
+    "license": "MIT",
+    "depends": "scoop-clojure/babashka",
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.com/https://github.com/babashka/neil/archive/refs/tags/v$version.zip",
-        "extract_dir": "neil-$version"
-      }
-    }
-  },
-  "_from": "littleli/scoop-clojure"
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/babashka/neil/archive/refs/tags/v0.1.59.zip",
+            "hash": "2ebe4104d6b8101a720ed7e3488e4c9e8a8e15c41e884f11b801b3aee2d37721",
+            "extract_dir": "neil-0.1.59"
+        }
+    },
+    "pre_install": [
+        "Remove-Item \"$dir\\*\" -Recurse -Exclude 'neil'",
+        "Set-Content \"$dir\\neil.bat\" \"@bb.exe \"\"%~dp0neil\"\" %*\""
+    ],
+    "bin": "neil.bat",
+    "checkver": {
+        "url": "https://api.github.com/repos/babashka/neil/tags",
+        "regex": "\"v([\\d.]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/babashka/neil/archive/refs/tags/v$version.zip",
+                "extract_dir": "neil-$version"
+            }
+        }
+    },
+    "_from": "littleli/scoop-clojure"
 }
