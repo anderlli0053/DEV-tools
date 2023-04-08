@@ -1,37 +1,37 @@
 {
+  "version": "1.9.2",
+  "description": "哔哩哔哩PC客户端",
+  "homepage": "https://app.bilibili.com",
+  "license": "Freeware",
+  "architecture": {
+    "64bit": {
+      "url": "https://dl.hdslb.com/mobile/fixed/bili_win/bili_win-install.exe#/dl.7z",
+      "hash": "sha512:c0258285aef92d7494263367f168cff4ea0e18337c572ae6705ffee6d0e561d14de881fd4b7f2b185ab180fc72baa48e7c3e8aa6dcf285f88953672a9d701791",
+      "pre_install": [
+        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
+      ]
+    }
+  },
+  "shortcuts": [
+    [
+      "哔哩哔哩.exe",
+      "哔哩哔哩"
+    ]
+  ],
+  "checkver": {
+    "url": "http://api.bilibili.com/x/elec-frontend/update/latest.yml",
+    "regex": "bilibili-setup-v([\\d\\.]+)\\.exe"
+  },
+  "autoupdate": {
     "architecture": {
-        "64bit": {
-            "hash": "sha512:c0258285aef92d7494263367f168cff4ea0e18337c572ae6705ffee6d0e561d14de881fd4b7f2b185ab180fc72baa48e7c3e8aa6dcf285f88953672a9d701791",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
-            ],
-            "url": "https://dl.hdslb.com/mobile/fixed/bili_win/bili_win-install.exe#/dl.7z"
+      "64bit": {
+        "url": "https://dl.hdslb.com/mobile/fixed/bili_win/bili_win-install.exe#/dl.7z",
+        "hash": {
+          "url": "http://api.bilibili.com/x/elec-frontend/update/latest.yml",
+          "regex": "sha512: ([\\w\\d+\\/=]{24,88})"
         }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "hash": {
-                    "regex": "sha512: ([\\w\\d+\\/=]{24,88})",
-                    "url": "http://api.bilibili.com/x/elec-frontend/update/latest.yml"
-                },
-                "url": "https://dl.hdslb.com/mobile/fixed/bili_win/bili_win-install.exe#/dl.7z"
-            }
-        }
-    },
-    "checkver": {
-        "regex": "bilibili-setup-v([\\d\\.]+)\\.exe",
-        "url": "http://api.bilibili.com/x/elec-frontend/update/latest.yml"
-    },
-    "description": "哔哩哔哩PC客户端",
-    "homepage": "https://app.bilibili.com",
-    "license": "Freeware",
-    "shortcuts": [
-        [
-            "哔哩哔哩.exe",
-            "哔哩哔哩"
-        ]
-    ],
-    "version": "1.9.2"
+      }
+    }
+  }
 }

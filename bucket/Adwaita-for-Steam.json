@@ -1,28 +1,27 @@
 {
-    "version": "0.37",
-    "description": "A skin to make Steam look more like a native GNOME app",
-    "homepage": "https://github.com/tkashkin/Adwaita-for-Steam",
-    "license": "MIT",
-    "depends": "steam",
-    "architecture": {
-        "64bit": {
-            "url": "https://ghproxy.com/https://github.com/tkashkin/Adwaita-for-Steam/archive/master.zip",
-            "hash": "7cac385f9f4fc7cb6212e44e50082a38b6e5094513f84b96b6ad925d224c1fc8",
-            "extract_dir": "Adwaita-for-Steam-master"
-        }
-    },
-    "pre_install": [
-        "Remove-Item -Recurse -Force $env:SCOOP\\persist\\steam\\skins\\Adwaita | Out-Null",
-        "New-Item -Type Junction -Path $env:SCOOP\\persist\\steam\\skins\\Adwaita -Target $dir\\Adwaita | Out-Null"
-    ],
-    "checkver": {
-        "github": "https://github.com/tkashkin/Adwaita-for-Steam"
-    },
-    "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/tkashkin/Adwaita-for-Steam/archive/master.zip",
-        "hash": {
-            "mode": "download"
-        }
-    },
-    "_from": "Weidows-projects/scoop-3rd"
+  "version": "0.37",
+  "description": "A skin to make Steam look more like a native GNOME app",
+  "homepage": "https://github.com/tkashkin/Adwaita-for-Steam",
+  "license": "MIT",
+  "depends": "steam",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.com/https://github.com/tkashkin/Adwaita-for-Steam/archive/master.zip",
+      "hash": "7cac385f9f4fc7cb6212e44e50082a38b6e5094513f84b96b6ad925d224c1fc8",
+      "extract_dir": "Adwaita-for-Steam-master"
+    }
+  },
+  "pre_install": [
+    "Remove-Item -Recurse -Force $env:SCOOP\\persist\\steam\\skins\\Adwaita -ErrorAction SilentlyContinue",
+    "New-Item -Type Junction -Path $env:SCOOP\\persist\\steam\\skins\\Adwaita -Target $dir\\Adwaita | Out-Null"
+  ],
+  "checkver": {
+    "github": "https://github.com/tkashkin/Adwaita-for-Steam"
+  },
+  "autoupdate": {
+    "url": "https://ghproxy.com/https://github.com/tkashkin/Adwaita-for-Steam/archive/master.zip",
+    "hash": {
+      "mode": "download"
+    }
+  }
 }

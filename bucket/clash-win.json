@@ -1,42 +1,41 @@
 {
-    "version": "0.20.20",
-    "description": "A Windows GUI for Clash, a proxy client program.",
-    "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
-    "license": "Freeware",
+  "version": "0.20.20",
+  "description": "A Windows GUI for Clash, a proxy client program.",
+  "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
+  "license": "Freeware",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.20/Clash.for.Windows-0.20.20-win.7z",
+      "hash": "e6dd2833cc25ece06eb7811c7634b7ca2ad5498de475eb380c0530661c0534f3"
+    },
+    "32bit": {
+      "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.20/Clash.for.Windows-0.20.20-ia32-win.7z",
+      "hash": "9dfcd27478acf7be3f92b3f4f582b67c5f4bc4427b00c98e331cf5019b8f9042"
+    }
+  },
+  "shortcuts": [
+    [
+      "Clash for Windows.exe",
+      "Clash for Windows"
+    ]
+  ],
+  "checkver": "github",
+  "autoupdate": {
     "architecture": {
-        "64bit": {
-            "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.20/Clash.for.Windows-0.20.20-win.7z",
-            "hash": "e6dd2833cc25ece06eb7811c7634b7ca2ad5498de475eb380c0530661c0534f3"
-        },
-        "32bit": {
-            "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.20/Clash.for.Windows-0.20.20-ia32-win.7z",
-            "hash": "9dfcd27478acf7be3f92b3f4f582b67c5f4bc4427b00c98e331cf5019b8f9042"
+      "64bit": {
+        "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows-$version-win.7z",
+        "hash": {
+          "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum",
+          "find": "[^-]7z: ([a-fA-F0-9]{64})"
         }
-    },
-    "shortcuts": [
-        [
-            "Clash for Windows.exe",
-            "Clash for Windows"
-        ]
-    ],
-    "checkver": "github",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows-$version-win.7z",
-                "hash": {
-                    "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum",
-                    "find": "[^-]7z: ([a-fA-F0-9]{64})"
-                }
-            },
-            "32bit": {
-                "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows-$version-ia32-win.7z",
-                "hash": {
-                    "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum",
-                    "find": "ia32-7z: ([a-fA-F0-9]{64})"
-                }
-            }
+      },
+      "32bit": {
+        "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows-$version-ia32-win.7z",
+        "hash": {
+          "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum",
+          "find": "ia32-7z: ([a-fA-F0-9]{64})"
         }
-    },
-    "_from": "seumsc/scoop-seu"
+      }
+    }
+  }
 }
