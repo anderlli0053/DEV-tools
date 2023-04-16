@@ -1,48 +1,48 @@
 {
-    "version": "2023-04-15-run349-id4707411226",
-    "description": "Revival of the well known .NET debugger and assembly editor, dnSpy",
-    "homepage": "https://github.com/dnSpyEx/dnSpy",
-    "license": "GPL-3.0-only",
+  "version": "2023-04-15-run349-id4707411226",
+  "description": "Revival of the well known .NET debugger and assembly editor, dnSpy",
+  "homepage": "https://github.com/dnSpyEx/dnSpy",
+  "license": "GPL-3.0-only",
+  "architecture": {
+    "64bit": {
+      "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win64.zip#/dl.7z",
+      "hash": "893c53182a6983570a87abe791577f08aee50f7652e031de1c1a65f4025f8a92"
+    },
+    "32bit": {
+      "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win32.zip#/dl.7z",
+      "hash": "e330c8ba9aa27226aeb45f97572fda6b48711b9de5bddd09abaaeed58a56ab2c"
+    }
+  },
+  "bin": [
+    [
+      "dnSpy.Console.exe",
+      "dnSpyEx.Console-nightly"
+    ],
+    [
+      "dnSpy.exe",
+      "dnSpyEx-nightly"
+    ]
+  ],
+  "shortcuts": [
+    [
+      "dnSpy.exe",
+      "dnSpyEx Nightly"
+    ]
+  ],
+  "checkver": {
+    "url": "https://github.com/dnSpyEx/dnSpy/actions/workflows/build.yml?query=branch%3Amaster+is%3Asuccess",
+    "regex": "<a class=\"Link--primary css-truncate css-truncate-target\" .*? aria-label=\"Run (?<runCount>[\\d]+) of.*? href=\".*?/runs/(?<runId>[\\d]+?)\">[\\S\\s]+? datetime=\"(?<buildDate>\\d{4}-\\d{2}-\\d{2})T",
+    "replace": "${buildDate}-run${runCount}-id${runId}"
+  },
+  "autoupdate": {
     "architecture": {
-        "64bit": {
-            "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win64.zip#/dl.7z",
-            "hash": "893c53182a6983570a87abe791577f08aee50f7652e031de1c1a65f4025f8a92"
-        },
-        "32bit": {
-            "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win32.zip#/dl.7z",
-            "hash": "e330c8ba9aa27226aeb45f97572fda6b48711b9de5bddd09abaaeed58a56ab2c"
-        }
-    },
-    "bin": [
-        [
-            "dnSpy.Console.exe",
-            "dnSpyEx.Console-nightly"
-        ],
-        [
-            "dnSpy.exe",
-            "dnSpyEx-nightly"
-        ]
-    ],
-    "shortcuts": [
-        [
-            "dnSpy.exe",
-            "dnSpyEx Nightly"
-        ]
-    ],
-    "checkver": {
-        "url": "https://github.com/dnSpyEx/dnSpy/actions/workflows/build.yml?query=branch%3Amaster+is%3Asuccess",
-        "regex": "<a class=\"Link--primary css-truncate css-truncate-target\" .*? aria-label=\"Run (?<runCount>[\\d]+) of.*? href=\".*?/runs/(?<runId>[\\d]+?)\">[\\S\\s]+? datetime=\"(?<buildDate>\\d{4}-\\d{2}-\\d{2})T",
-        "replace": "${buildDate}-run${runCount}-id${runId}"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win64.zip#/dl.7z"
-            },
-            "32bit": {
-                "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win32.zip#/dl.7z"
-            }
-        }
-    },
-    "_from": "okibcn/ScoopMaster"
+      "64bit": {
+        "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win64.zip#/dl.7z"
+      },
+      "32bit": {
+        "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win32.zip#/dl.7z"
+      }
+    }
+  },
+  "_from": "okibcn/ScoopMaster"
 }

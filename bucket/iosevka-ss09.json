@@ -1,31 +1,31 @@
 {
-    "autoupdate": {
-        "url": "https://github.com/be5invis/Iosevka/releases/download/v$version/super-ttc-iosevka-ss09-$version.zip"
-    },
-    "checkver": "github",
-    "description": "Versatile typeface for code, from code.",
-    "hash": "bed2bbe364df8018a141203572167cab6afe9b76550bc2de82b08e6db89ac56e",
-    "homepage": "https://github.com/be5invis/Iosevka",
-    "installer": {
-        "script": [
-            "if(!(is_admin)) { error \"Admin rights are required.\"; exit 1 }",
-            "Get-ChildItem $dir -Filter '*.ttc' -Recurse | ForEach-Object {",
-            "  New-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $_.Name -Force | Out-Null",
-            "  Copy-Item $_.FullName -destination \"$env:windir\\Fonts\"",
-            "}"
-        ]
-    },
-    "license": "OFL-1.1",
-    "uninstaller": {
-        "script": [
-            "if(!(is_admin)) { error \"Admin rights are required.\"; exit 1 }",
-            "Get-ChildItem $dir -filter '*.ttc' -Recurse | ForEach-Object {",
-            "  Remove-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Force -ErrorAction SilentlyContinue",
-            "  Remove-Item \"$env:windir\\Fonts\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
-            "}",
-            "Write-Host \"'Iosevka SS09' has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta"
-        ]
-    },
-    "url": "https://github.com/be5invis/Iosevka/releases/download/v22.0.1/super-ttc-iosevka-ss09-22.0.1.zip",
-    "version": "22.0.1"
+  "version": "22.0.2",
+  "description": "Versatile typeface for code, from code.",
+  "license": "OFL-1.1",
+  "homepage": "https://github.com/be5invis/Iosevka",
+  "url": "https://ghproxy.com/https://github.com/be5invis/Iosevka/releases/download/v22.0.2/super-ttc-iosevka-ss09-22.0.2.zip",
+  "hash": "a9f004f35d87a91e574432f7c2872fecf406017a39e52c09200e5e65347b9b13",
+  "checkver": "github",
+  "autoupdate": {
+    "url": "https://ghproxy.com/https://github.com/be5invis/Iosevka/releases/download/v$version/super-ttc-iosevka-ss09-$version.zip"
+  },
+  "installer": {
+    "script": [
+      "if(!(is_admin)) { error \"Admin rights are required.\"; exit 1 }",
+      "Get-ChildItem $dir -Filter '*.ttc' -Recurse | ForEach-Object {",
+      "  New-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $_.Name -Force | Out-Null",
+      "  Copy-Item $_.FullName -destination \"$env:windir\\Fonts\"",
+      "}"
+    ]
+  },
+  "uninstaller": {
+    "script": [
+      "if(!(is_admin)) { error \"Admin rights are required.\"; exit 1 }",
+      "Get-ChildItem $dir -filter '*.ttc' -Recurse | ForEach-Object {",
+      "  Remove-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Force -ErrorAction SilentlyContinue",
+      "  Remove-Item \"$env:windir\\Fonts\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
+      "}",
+      "Write-Host \"'Iosevka SS09' has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta"
+    ]
+  }
 }

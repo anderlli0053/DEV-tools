@@ -1,36 +1,36 @@
 {
-    "autoupdate": {
-        "hash": {
-            "url": "$url.sha256"
-        },
-        "url": "https://pkg.osquery.io/windows/osquery-$version.msi"
+  "autoupdate": {
+    "hash": {
+      "url": "$url.sha256"
     },
-    "bin": [
-        "osqueryi.exe",
-        "osqueryd\\osqueryd.exe",
-        "manage-osqueryd.ps1"
-    ],
-    "checkver": {
-        "jp": "$.current_version",
-        "url": "https://raw.githubusercontent.com/osquery/osquery-site/source/src/data/osquery_metadata.json"
-    },
-    "description": "Performant endpoint visibility",
-    "extract_dir": "osquery",
-    "hash": "d319837d4e95d1e477c2126d383501180925a29f488ff1164fa16d2e576f96dd",
-    "homepage": "https://osquery.io/",
-    "license": "Apache-2.0|GPL-2.0-only",
-    "notes": [
-        "run \"manage-osqueryd.ps1 -help\" to learn howto install/uninstall/start/stop the osqueryd daemon... and more...",
-        "run \"osqueryd --help\" for the osqueryd daemon help",
-        "run \"osqueryi --help\" for the interactive shell help"
-    ],
-    "persist": "osquery.conf",
-    "post_install": [
-        "$mng_d = \"$dir\\manage-osqueryd.ps1\"",
-        "$find = \"$PSScriptRoot, '..', 'osquery', 'osqueryd', 'osqueryd.exe'\"",
-        "$replace = \"$PSScriptRoot, 'osqueryd', 'osqueryd.exe'\"",
-        "(Get-Content \"$mng_d\").replace(\"$find\", \"$replace\") | Set-Content \"$mng_d\" | Out-Null"
-    ],
-    "url": "https://pkg.osquery.io/windows/osquery-5.8.2.msi",
-    "version": "5.8.2"
+    "url": "https://pkg.osquery.io/windows/osquery-$version.msi"
+  },
+  "bin": [
+    "osqueryi.exe",
+    "osqueryd\\osqueryd.exe",
+    "manage-osqueryd.ps1"
+  ],
+  "checkver": {
+    "jp": "$.current_version",
+    "url": "https://ghproxy.com/https://raw.githubusercontent.com/osquery/osquery-site/source/src/data/osquery_metadata.json"
+  },
+  "description": "Performant endpoint visibility",
+  "extract_dir": "osquery",
+  "hash": "d319837d4e95d1e477c2126d383501180925a29f488ff1164fa16d2e576f96dd",
+  "homepage": "https://osquery.io/",
+  "license": "Apache-2.0|GPL-2.0-only",
+  "notes": [
+    "run \"manage-osqueryd.ps1 -help\" to learn howto install/uninstall/start/stop the osqueryd daemon... and more...",
+    "run \"osqueryd --help\" for the osqueryd daemon help",
+    "run \"osqueryi --help\" for the interactive shell help"
+  ],
+  "persist": "osquery.conf",
+  "post_install": [
+    "$mng_d = \"$dir\\manage-osqueryd.ps1\"",
+    "$find = \"$PSScriptRoot, '..', 'osquery', 'osqueryd', 'osqueryd.exe'\"",
+    "$replace = \"$PSScriptRoot, 'osqueryd', 'osqueryd.exe'\"",
+    "(Get-Content \"$mng_d\").replace(\"$find\", \"$replace\") | Set-Content \"$mng_d\" | Out-Null"
+  ],
+  "url": "https://pkg.osquery.io/windows/osquery-5.8.2.msi",
+  "version": "5.8.2"
 }

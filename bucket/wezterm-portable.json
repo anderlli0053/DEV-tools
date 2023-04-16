@@ -1,37 +1,37 @@
 {
- "architecture": {
-  "64bit": {
-   "hash": "86b2db1a44d4a5b262885b299c0e03fe6bdaad2172d1e6a5f69f4c16cbcc305d",
-   "url": "https://github.com/wez/wezterm/releases/download/20220905-102802-7d4b8249/WezTerm-windows-20220905-102802-7d4b8249.zip"
-  }
- },
- "autoupdate": {
+  "version": "20230408-112425-69ae8472",
+  "description": "GPU-accelerated terminal emulator",
+  "homepage": "https://github.com/wez/wezterm",
+  "license": "Apache-2.0",
   "architecture": {
-   "64bit": {
-    "url": "https://github.com/wez/wezterm/releases/download/$matchPath/WezTerm-windows-$version.zip"
-   }
+    "64bit": {
+      "url": "https://ghproxy.com/https://github.com/wez/wezterm/releases/download/20230408-112425-69ae8472/WezTerm-windows-20230408-112425-69ae8472.zip",
+      "hash": "a9bac1b22cc8a20b892e6b4aaac8c27f6078210aa242f686c3e055cc7452368d"
+    }
   },
-  "extract_dir": "WezTerm-windows-$version"
- },
- "bin": "wezterm.exe",
- "checkver": {
-  "regex": "/releases/tag/(.+)?\"",
-  "url": "https://github.com/wez/wezterm/tags"
- },
- "description": "GPU-accelerated terminal emulator",
- "extract_dir": "WezTerm-windows-20220905-102802-7d4b8249",
- "homepage": "https://github.com/wez/wezterm",
- "license": "Apache-2.0",
- "persist": [
-  "colors",
-  "wezterm.lua"
- ],
- "pre_install": "if(!(Test-Path \"$dir/wezterm.lua\")) { Add-Content \"$dir/wezterm.lua\" $null }",
- "shortcuts": [
-  [
-   "wezterm-gui.exe",
-   "WezTerm"
-  ]
- ],
- "version": "20220905-102802-7d4b8249"
+  "extract_dir": "WezTerm-windows-20230408-112425-69ae8472",
+  "pre_install": "if(!(Test-Path \"$dir/wezterm.lua\")) { Add-Content \"$dir/wezterm.lua\" \"return {}\" }",
+  "bin": "wezterm.exe",
+  "persist": [
+    "colors",
+    "wezterm.lua"
+  ],
+  "shortcuts": [
+    [
+      "wezterm-gui.exe",
+      "WezTerm"
+    ]
+  ],
+  "checkver": {
+    "url": "https://github.com/wez/wezterm/releases",
+    "regex": "/wezterm/tree/(.+?)\""
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.com/https://github.com/wez/wezterm/releases/download/$version/WezTerm-windows-$version.zip"
+      }
+    },
+    "extract_dir": "WezTerm-windows-$version"
+  }
 }

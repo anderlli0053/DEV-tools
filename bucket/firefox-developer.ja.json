@@ -1,57 +1,57 @@
 {
-    "version": "113.0b3",
-    "description": "Developer builds of Firefox: the popular open source web browser.",
-    "homepage": "https://www.mozilla.org/ja/firefox/developer/",
-    "license": "MPL-2.0",
+  "version": "113.0b3",
+  "description": "Developer builds of Firefox: the popular open source web browser.",
+  "homepage": "https://www.mozilla.org/ja/firefox/developer/",
+  "license": "MPL-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://archive.mozilla.org/pub/devedition/releases/113.0b3/win64/ja/Firefox%20Setup%20113.0b3.exe#/dl.7z",
+      "hash": "sha512:e2d4878c9ef5a9bac71a04a878be08d5380c220ac0cc1a54bfaf1a644b60bfd13c4e73f62f31d632c25cb9ff00a69d30770f9c6621337d238db2453e95eb9a0b"
+    },
+    "32bit": {
+      "url": "https://archive.mozilla.org/pub/devedition/releases/113.0b3/win32/ja/Firefox%20Setup%20113.0b3.exe#/dl.7z",
+      "hash": "sha512:f1a771c17a4d6b7936b60ba76e29f46d9ccd60517613f3d23df421203934b93d304fb50cf54a43496145095e89bf471762c68ae59789c8057876b3a400d7235c"
+    }
+  },
+  "extract_dir": "core",
+  "bin": [
+    [
+      "firefox.exe",
+      "firefox-dev"
+    ],
+    [
+      "firefox.exe",
+      "firefox-developer"
+    ]
+  ],
+  "shortcuts": [
+    [
+      "firefox.exe",
+      "Firefox Developer Edition"
+    ]
+  ],
+  "checkver": {
+    "url": "https://aus5.mozilla.org/update/6/Firefox/78.0/_/WINNT_x86_64-msvc-x64/ja/aurora/_/_/_/_/update.xml",
+    "xpath": "/updates/update/patch/@URL",
+    "regex": "devedition-([\\db.]+)-"
+  },
+  "autoupdate": {
     "architecture": {
-        "64bit": {
-            "url": "https://archive.mozilla.org/pub/devedition/releases/113.0b3/win64/ja/Firefox%20Setup%20113.0b3.exe#/dl.7z",
-            "hash": "sha512:e2d4878c9ef5a9bac71a04a878be08d5380c220ac0cc1a54bfaf1a644b60bfd13c4e73f62f31d632c25cb9ff00a69d30770f9c6621337d238db2453e95eb9a0b"
-        },
-        "32bit": {
-            "url": "https://archive.mozilla.org/pub/devedition/releases/113.0b3/win32/ja/Firefox%20Setup%20113.0b3.exe#/dl.7z",
-            "hash": "sha512:f1a771c17a4d6b7936b60ba76e29f46d9ccd60517613f3d23df421203934b93d304fb50cf54a43496145095e89bf471762c68ae59789c8057876b3a400d7235c"
+      "64bit": {
+        "url": "https://archive.mozilla.org/pub/devedition/releases/$version/win64/ja/Firefox%20Setup%20$version.exe#/dl.7z",
+        "hash": {
+          "url": "https://archive.mozilla.org/pub/devedition/releases/$version/SHA512SUMS",
+          "regex": "$sha512\\s+win64/ja/$basename"
         }
-    },
-    "extract_dir": "core",
-    "bin": [
-        [
-            "firefox.exe",
-            "firefox-dev"
-        ],
-        [
-            "firefox.exe",
-            "firefox-developer"
-        ]
-    ],
-    "shortcuts": [
-        [
-            "firefox.exe",
-            "Firefox Developer Edition"
-        ]
-    ],
-    "checkver": {
-        "url": "https://aus5.mozilla.org/update/6/Firefox/78.0/_/WINNT_x86_64-msvc-x64/ja/aurora/_/_/_/_/update.xml",
-        "xpath": "/updates/update/patch/@URL",
-        "regex": "devedition-([\\db.]+)-"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://archive.mozilla.org/pub/devedition/releases/$version/win64/ja/Firefox%20Setup%20$version.exe#/dl.7z",
-                "hash": {
-                    "url": "https://archive.mozilla.org/pub/devedition/releases/$version/SHA512SUMS",
-                    "regex": "$sha512\\s+win64/ja/$basename"
-                }
-            },
-            "32bit": {
-                "url": "https://archive.mozilla.org/pub/devedition/releases/$version/win32/ja/Firefox%20Setup%20$version.exe#/dl.7z",
-                "hash": {
-                    "url": "https://archive.mozilla.org/pub/devedition/releases/$version/SHA512SUMS",
-                    "regex": "$sha512\\s+win32/ja/$basename"
-                }
-            }
+      },
+      "32bit": {
+        "url": "https://archive.mozilla.org/pub/devedition/releases/$version/win32/ja/Firefox%20Setup%20$version.exe#/dl.7z",
+        "hash": {
+          "url": "https://archive.mozilla.org/pub/devedition/releases/$version/SHA512SUMS",
+          "regex": "$sha512\\s+win32/ja/$basename"
         }
-    },
-    "_from": "okibcn/ScoopMaster"
+      }
+    }
+  },
+  "_from": "okibcn/ScoopMaster"
 }

@@ -1,40 +1,40 @@
 {
+  "architecture": {
+    "64bit": {
+      "hash": "sha1:d20d6b0ad088ff790b884c8d220c8cda8ebce081",
+      "url": "https://downloads.plex.tv/plex-desktop/1.67.2.3705-db506a00/windows/Plex-1.67.2.3705-db506a00-x86_64.exe#/dl.7z"
+    }
+  },
+  "autoupdate": {
     "architecture": {
-        "64bit": {
-            "hash": "sha1:d20d6b0ad088ff790b884c8d220c8cda8ebce081",
-            "url": "https://downloads.plex.tv/plex-desktop/1.67.2.3705-db506a00/windows/Plex-1.67.2.3705-db506a00-x86_64.exe#/dl.7z"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "hash": {
-                    "jsonpath": "$.computer.Windows.releases[?(@.build == 'windows-x86_64')].checksum",
-                    "url": "https://plex.tv/pms/downloads/6.json"
-                },
-                "url": "https://downloads.plex.tv/plex-desktop/$version/windows/Plex-$version-x86_64.exe#/dl.7z"
-            }
-        }
-    },
-    "checkver": {
-        "jsonpath": "$.computer.Windows.version",
-        "url": "https://plex.tv/pms/downloads/6.json"
-    },
-    "description": "Official Plex client",
-    "homepage": "https://www.plex.tv/apps-devices/#modal-devices-plex-for-windows",
-    "license": {
-        "identifier": "Proprietary",
-        "url": "https://www.plex.tv/media-server-downloads/?platform=windows#remodal-terms"
-    },
-    "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\", \"$dir\\vc_red*\" -Recurse",
-    "shortcuts": [
-        [
-            "Plex.exe",
-            "Plex for Windows"
-        ]
-    ],
-    "suggest": {
-        "vcredist": "vcredist2022"
-    },
-    "version": "1.67.2.3705-db506a00"
+      "64bit": {
+        "hash": {
+          "jsonpath": "$.computer.Windows.releases[?(@.build == 'windows-x86_64')].checksum",
+          "url": "https://plex.tv/pms/downloads/6.json"
+        },
+        "url": "https://downloads.plex.tv/plex-desktop/$version/windows/Plex-$version-x86_64.exe#/dl.7z"
+      }
+    }
+  },
+  "checkver": {
+    "jsonpath": "$.computer.Windows.version",
+    "url": "https://plex.tv/pms/downloads/6.json"
+  },
+  "description": "Official Plex client",
+  "homepage": "https://www.plex.tv/apps-devices/#modal-devices-plex-for-windows",
+  "license": {
+    "identifier": "Proprietary",
+    "url": "https://www.plex.tv/media-server-downloads/?platform=windows#remodal-terms"
+  },
+  "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\", \"$dir\\vc_red*\" -Recurse",
+  "shortcuts": [
+    [
+      "Plex.exe",
+      "Plex for Windows"
+    ]
+  ],
+  "suggest": {
+    "vcredist": "vcredist2022"
+  },
+  "version": "1.67.2.3705-db506a00"
 }

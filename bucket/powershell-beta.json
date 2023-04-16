@@ -1,50 +1,50 @@
 {
-    "homepage": "https://github.com/PowerShell/PowerShell",
-    "description": "PowerShell, open-source and cross-platform shell. [Latest (pre-release) version.]",
-    "license": "MIT",
-    "version": "7.3.4",
+  "homepage": "https://github.com/PowerShell/PowerShell",
+  "description": "PowerShell, open-source and cross-platform shell. [Latest (pre-release) version.]",
+  "license": "MIT",
+  "version": "7.3.4",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.com/https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/PowerShell-7.3.4-win-x64.msi",
+      "hash": "61b31ec847d4fdc4d39050f4f650968c55acf6f16cb66b1f00bf05db4e946559"
+    },
+    "32bit": {
+      "url": "https://ghproxy.com/https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/PowerShell-7.3.4-win-x86.msi",
+      "hash": "f408178d37ae91d80ed58362ff729b97c1839008dcd1383ab97190316d9f8661"
+    }
+  },
+  "installer": {
+    "script": [
+      "mv $dir\\PowerShell\\*\\* $dir",
+      "rm $dir\\PowerShell -recurse"
+    ]
+  },
+  "##": "The installer also has an option to add 'Open here' context menus but those are handled by the installer itself so that isnt available.",
+  "notes": [
+    "Register Windows event logging manifest: $dir\\RegisterManifest.ps1",
+    "Enable PowerShell remoting: $dir\\Install-PowerShellRemoting.ps1"
+  ],
+  "shortcuts": [
+    [
+      "pwsh.exe",
+      "PowerShell",
+      "-WorkingDirectory ~"
+    ]
+  ],
+  "bin": "pwsh.exe",
+  "checkver": {
+    "url": "https://github.com/PowerShell/PowerShell/tags",
+    "regex": "/releases/tag/(?:v|V)?([\\d.\\w\\-]+)"
+  },
+  "autoupdate": {
     "architecture": {
-        "64bit": {
-            "url": "https://ghproxy.com/https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/PowerShell-7.3.4-win-x64.msi",
-            "hash": "61b31ec847d4fdc4d39050f4f650968c55acf6f16cb66b1f00bf05db4e946559"
-        },
-        "32bit": {
-            "url": "https://ghproxy.com/https://github.com/PowerShell/PowerShell/releases/download/v7.3.4/PowerShell-7.3.4-win-x86.msi",
-            "hash": "f408178d37ae91d80ed58362ff729b97c1839008dcd1383ab97190316d9f8661"
-        }
-    },
-    "installer": {
-        "script": [
-            "mv $dir\\PowerShell\\*\\* $dir",
-            "rm $dir\\PowerShell -recurse"
-        ]
-    },
-    "##": "The installer also has an option to add 'Open here' context menus but those are handled by the installer itself so that isnt available.",
-    "notes": [
-        "Register Windows event logging manifest: $dir\\RegisterManifest.ps1",
-        "Enable PowerShell remoting: $dir\\Install-PowerShellRemoting.ps1"
-    ],
-    "shortcuts": [
-        [
-            "pwsh.exe",
-            "PowerShell",
-            "-WorkingDirectory ~"
-        ]
-    ],
-    "bin": "pwsh.exe",
-    "checkver": {
-        "url": "https://github.com/PowerShell/PowerShell/tags",
-        "regex": "/releases/tag/(?:v|V)?([\\d.\\w\\-]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://ghproxy.com/https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x64.msi"
-            },
-            "32bit": {
-                "url": "https://ghproxy.com/https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x86.msi"
-            }
-        }
-    },
-    "_from": "okibcn/ScoopMaster"
+      "64bit": {
+        "url": "https://ghproxy.com/https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x64.msi"
+      },
+      "32bit": {
+        "url": "https://ghproxy.com/https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x86.msi"
+      }
+    }
+  },
+  "_from": "okibcn/ScoopMaster"
 }

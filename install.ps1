@@ -45,7 +45,7 @@
 .PARAMETER Proxy
     Specifies proxy to use during the installation.
 .PARAMETER ProxyCredential
-    Specifies credential for the given prxoy.
+    Specifies credential for the given proxy.
 .PARAMETER ProxyUseDefaultCredentials
     Use the credentials of the current user for the proxy server that is specified by the -Proxy parameter.
 .PARAMETER RunAsAdmin
@@ -376,6 +376,30 @@ function Get-Env {
     $EnvRegisterKey.GetValue($name, $null, $RegistryValueOption)
 }
 
+function Publish-Env {
+    if (-not ("Win32.NativeMethods" -as [Type])) {
+        Add-Type -Namespace Win32 -Name NativeMethods -MemberDefinition @"
+[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+public static extern IntPtr SendMessageTimeout(
+    IntPtr hWnd, uint Msg, UIntPtr wParam, string lParam,
+    uint fuFlags, uint uTimeout, out UIntPtr lpdwResult);
+"@
+    }
+
+    $HWND_BROADCAST = [IntPtr] 0xffff
+    $WM_SETTINGCHANGE = 0x1a
+    $result = [UIntPtr]::Zero
+
+    [Win32.Nativemethods]::SendMessageTimeout($HWND_BROADCAST,
+        $WM_SETTINGCHANGE,
+        [UIntPtr]::Zero,
+        "Environment",
+        2,
+        5000,
+        [ref] $result
+    ) | Out-Null
+}
+
 function Write-Env {
     param(
         [String] $name,
@@ -402,6 +426,7 @@ function Write-Env {
         }
         $EnvRegisterKey.SetValue($name, $val, $RegistryValueKind)
     }
+    Publish-Env
 }
 
 function Add-ShimsDirToPath {
@@ -518,6 +543,14 @@ function Add-DefaultConfig {
     Add-Config -Name 'last_update' -Value ([System.DateTime]::Now.ToString('o')) | Out-Null
 }
 
+function Test-CommandAvailable {
+    param (
+        [Parameter(Mandatory = $True, Position = 0)]
+        [String] $Command
+    )
+    return [Boolean](Get-Command $Command -ErrorAction Ignore)
+}
+
 function Install-Scoop {
     Write-InstallInfo "Initializing..."
     # Validate install parameters
@@ -527,43 +560,64 @@ function Install-Scoop {
     # Enable TLS 1.2
     Optimize-SecurityProtocol
 
-    # Download scoop zip from GitHub
-    Write-InstallInfo "Downloading..."
+    # Download scoop from GitHub
+    Write-InstallInfo "Downloading ..."
     $downloader = Get-Downloader
-    # 1. download scoop
-    $scoopZipfile = "$SCOOP_APP_DIR\scoop.zip"
-    if (!(Test-Path $SCOOP_APP_DIR)) {
-        New-Item -Type Directory $SCOOP_APP_DIR | Out-Null
+
+    if (Test-CommandAvailable('git')) {
+        $old_https = $env:HTTPS_PROXY
+        $old_http = $env:HTTP_PROXY
+        try {
+            if ($downloader.Proxy) {
+                #define env vars for git when behind a proxy
+                $Env:HTTP_PROXY = $downloader.Proxy.Address
+                $Env:HTTPS_PROXY = $downloader.Proxy.Address
+            }
+            Write-Verbose "Cloning $SCOOP_PACKAGE_GIT_REPO to $SCOOP_APP_DIR"
+            git clone -q $SCOOP_PACKAGE_GIT_REPO $SCOOP_APP_DIR
+            Write-Verbose "Cloning $SCOOP_MAIN_BUCKET_GIT_REPO to $SCOOP_MAIN_BUCKET_DIR"
+            git clone -q $SCOOP_MAIN_BUCKET_GIT_REPO $SCOOP_MAIN_BUCKET_DIR
+        } catch {
+            Get-Error $_
+        } finally {
+            $env:HTTPS_PROXY = $old_https
+            $env:HTTP_PROXY = $old_http
+        }
+    } else {
+        # 1. download scoop
+        $scoopZipfile = "$SCOOP_APP_DIR\scoop.zip"
+        if (!(Test-Path $SCOOP_APP_DIR)) {
+            New-Item -Type Directory $SCOOP_APP_DIR | Out-Null
+        }
+        Write-Verbose "Downloading $SCOOP_PACKAGE_REPO to $scoopZipfile"
+        $downloader.downloadFile($SCOOP_PACKAGE_REPO, $scoopZipfile)
+        # 2. download scoop main bucket
+        $scoopMainZipfile = "$SCOOP_MAIN_BUCKET_DIR\scoop-main.zip"
+        if (!(Test-Path $SCOOP_MAIN_BUCKET_DIR)) {
+            New-Item -Type Directory $SCOOP_MAIN_BUCKET_DIR | Out-Null
+        }
+        Write-Verbose "Downloading $SCOOP_MAIN_BUCKET_REPO to $scoopMainZipfile"
+        $downloader.downloadFile($SCOOP_MAIN_BUCKET_REPO, $scoopMainZipfile)
+
+        # Extract files from downloaded zip
+        Write-InstallInfo "Extracting..."
+        # 1. extract scoop
+        $scoopUnzipTempDir = "$SCOOP_APP_DIR\_tmp"
+        Write-Verbose "Extracting $scoopZipfile to $scoopUnzipTempDir"
+        Expand-ZipArchive $scoopZipfile $scoopUnzipTempDir
+        Copy-Item "$scoopUnzipTempDir\scoop-*\*" $SCOOP_APP_DIR -Recurse -Force
+        # 2. extract scoop main bucket
+        $scoopMainUnzipTempDir = "$SCOOP_MAIN_BUCKET_DIR\_tmp"
+        Write-Verbose "Extracting $scoopMainZipfile to $scoopMainUnzipTempDir"
+        Expand-ZipArchive $scoopMainZipfile $scoopMainUnzipTempDir
+        Copy-Item "$scoopMainUnzipTempDir\Main-*\*" $SCOOP_MAIN_BUCKET_DIR -Recurse -Force
+
+        # Cleanup
+        Remove-Item $scoopUnzipTempDir -Recurse -Force
+        Remove-Item $scoopZipfile
+        Remove-Item $scoopMainUnzipTempDir -Recurse -Force
+        Remove-Item $scoopMainZipfile
     }
-    Write-Verbose "Downloading $SCOOP_PACKAGE_REPO to $scoopZipfile"
-    $downloader.downloadFile($SCOOP_PACKAGE_REPO, $scoopZipfile)
-    # 2. download scoop main bucket
-    $scoopMainZipfile = "$SCOOP_MAIN_BUCKET_DIR\scoop-main.zip"
-    if (!(Test-Path $SCOOP_MAIN_BUCKET_DIR)) {
-        New-Item -Type Directory $SCOOP_MAIN_BUCKET_DIR | Out-Null
-    }
-    Write-Verbose "Downloading $SCOOP_MAIN_BUCKET_REPO to $scoopMainZipfile"
-    $downloader.downloadFile($SCOOP_MAIN_BUCKET_REPO, $scoopMainZipfile)
-
-    # Extract files from downloaded zip
-    Write-InstallInfo "Extracting..."
-    # 1. extract scoop
-    $scoopUnzipTempDir = "$SCOOP_APP_DIR\_tmp"
-    Write-Verbose "Extracting $scoopZipfile to $scoopUnzipTempDir"
-    Expand-ZipArchive $scoopZipfile $scoopUnzipTempDir
-    Copy-Item "$scoopUnzipTempDir\scoop-*\*" $SCOOP_APP_DIR -Recurse -Force
-    # 2. extract scoop main bucket
-    $scoopMainUnzipTempDir = "$SCOOP_MAIN_BUCKET_DIR\_tmp"
-    Write-Verbose "Extracting $scoopMainZipfile to $scoopMainUnzipTempDir"
-    Expand-ZipArchive $scoopMainZipfile $scoopMainUnzipTempDir
-    Copy-Item "$scoopMainUnzipTempDir\Main-*\*" $SCOOP_MAIN_BUCKET_DIR -Recurse -Force
-
-    # Cleanup
-    Remove-Item $scoopUnzipTempDir -Recurse -Force
-    Remove-Item $scoopZipfile
-    Remove-Item $scoopMainUnzipTempDir -Recurse -Force
-    Remove-Item $scoopMainZipfile
-
     # Create the scoop shim
     Import-ScoopShim
     # Finially ensure scoop shims is in the PATH
@@ -613,8 +667,11 @@ $SCOOP_CONFIG_HOME = $env:XDG_CONFIG_HOME, "$env:USERPROFILE\.config" | Select-O
 $SCOOP_CONFIG_FILE = "$SCOOP_CONFIG_HOME\scoop\config.json"
 
 # TODO: Use a specific version of Scoop and the main bucket
-$SCOOP_PACKAGE_REPO = "https://ghproxy.com/github.com/ScoopInstaller/Scoop/archive/master.zip"
-$SCOOP_MAIN_BUCKET_REPO = "https://ghproxy.com/github.com/ScoopInstaller/Main/archive/master.zip"
+$SCOOP_PACKAGE_REPO = "https://ghproxy.com/https://github.com/ScoopInstaller/Scoop/archive/master.zip"
+$SCOOP_MAIN_BUCKET_REPO = "https://ghproxy.com/https://github.com/ScoopInstaller/Main/archive/master.zip"
+
+$SCOOP_PACKAGE_GIT_REPO = "https://github.com/ScoopInstaller/Scoop.git"
+$SCOOP_MAIN_BUCKET_GIT_REPO = "https://github.com/ScoopInstaller/Main.git"
 
 # Quit if anything goes wrong
 $oldErrorActionPreference = $ErrorActionPreference

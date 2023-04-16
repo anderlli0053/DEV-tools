@@ -1,64 +1,37 @@
 {
-    "homepage": "https://kmiya-culti.github.io/RLogin/",
-    "version": "2.28.0",
-    "license": "MIT",
-    "description": "RLogin",
+  "version": "2.28.1",
+  "description": "RLogin",
+  "homepage": "http://nanno.dip.jp/softlib/man/rlogin/",
+  "license": "MIT",
+  "architecture": {
+    "32bit": {
+      "url": "https://github.com/kmiya-culti/RLogin/files/11186447/rlogin_x32.zip",
+      "hash": "3d114f6fd711b06a5e912d155ed54eeb17c22570e68eae328bbc7654b1d67cda"
+    },
+    "64bit": {
+      "url": "https://github.com/kmiya-culti/RLogin/files/11186448/rlogin_x64.zip",
+      "hash": "4474395a6561f8088143d09c7bf435b2d8b7d0a80d478a1fa2d9c3171cfbf4ca"
+    }
+  },
+  "bin": "RLogin.exe",
+  "shortcuts": [
+    [
+      "RLogin.exe",
+      "RLogin"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/kmiya-culti/RLogin",
+    "re": "RLogin-(?<version>\\d+.\\d+.\\d+)[\\s\\S]+files\\/(?<x86url>\\d+)\\/rlogin_x32.zip[\\s\\S]+files\\/(?<x64url>\\d+)\\/rlogin_x64.zip"
+  },
+  "autoupdate": {
     "architecture": {
-        "64bit": {
-            "url": "https://github.com/kmiya-culti/RLogin/files/10996333/rlogin_x64.zip",
-            "hash": "fea714c02b64ca30b3eaa2caef37e313099806302af38f19c966799185cfa733"
-        },
-        "32bit": {
-            "url": "https://github.com/kmiya-culti/RLogin/files/10996332/rlogin_x32.zip",
-            "hash": "3714c7c491f4df452e71d994d618cee82f4fc21452aad2cdd8260db4409268e7"
-        }
-    },
-    "bin": "RLogin.exe",
-    "shortcuts": [
-        [
-            "RLogin.exe",
-            "RLogin"
-        ]
-    ],
-    "pre_install": [
-        "$ini = \"$dir\\RLogin.ini\"",
-        "if (!(Test-Path \"$ini\")) {",
-        "   # Using $dir instead of $persist_dir, causes this error:",
-        "   Add-Content -Path \"$ini\" -Value \"\"",
-        "}"
-    ],
-    "post_install": [
-        "",
-        "$shortcuts = @(arch_specific 'shortcuts' $manifest $arch)",
-        "$shortcutName = $shortcuts[0].item(1)",
-        "$scoop_startmenu_folder = shortcut_folder $global",
-        "$wsShell = New-Object -ComObject WScript.Shell",
-        "$shortcut = $wsShell.CreateShortcut(\"$scoop_startmenu_folder\\$shortcutName.lnk\")",
-        "$shortcut.WorkingDirectory = \"$dir\"",
-        "$shortcut.Save()",
-        ""
-    ],
-    "persist": [
-        "userdata",
-        [
-            "RLogin.ini",
-            "userdata\\RLogin.ini"
-        ]
-    ],
-    "checkver": {
-        "url": "https://mwlab.net/scoop.cgi",
-        "re": "rLogin:(?<version>.*):32bit=(?<x32>[\\d]*):64bit=(?<x64>[\\d]*)",
-        "replace": "${version}"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/kmiya-culti/RLogin/files/$matchX64/rlogin_x64.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/kmiya-culti/RLogin/files/$matchX32/rlogin_x32.zip"
-            }
-        }
-    },
-    "_from": "okibcn/ScoopMaster"
+      "32bit": {
+        "url": "https://github.com/kmiya-culti/RLogin/files/$matchX86url/rlogin_x32.zip"
+      },
+      "64bit": {
+        "url": "https://github.com/kmiya-culti/RLogin/files/$matchX64url/rlogin_x64.zip"
+      }
+    }
+  }
 }

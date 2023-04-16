@@ -1,36 +1,36 @@
 {
-    "version": "0.10.0-dev-75-gc2e47e7be",
-    "description": "Vim fork focused on extensibility and usability",
-    "homepage": "https://neovim.io",
-    "license": {
-        "identifier": "Apache-2.0,Vim",
-        "url": "https://github.com/neovim/neovim/blob/master/LICENSE"
-    },
-    "suggest": {
-        "vcredist": "extras/vcredist2015"
-    },
+  "version": "0.10.0-dev-75-gc2e47e7be",
+  "description": "Vim fork focused on extensibility and usability",
+  "homepage": "https://neovim.io",
+  "license": {
+    "identifier": "Apache-2.0,Vim",
+    "url": "https://github.com/neovim/neovim/blob/master/LICENSE"
+  },
+  "suggest": {
+    "vcredist": "extras/vcredist2015"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.com/https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip",
+      "hash": "436a844a0df9486865516e6ffd8ca8cf3642cabf059214bd0c01101770641d43"
+    }
+  },
+  "extract_dir": "nvim-win64",
+  "bin": "bin\\nvim.exe",
+  "checkver": {
+    "url": "https://api.github.com/repos/neovim/neovim/releases",
+    "regex": "NVIM v([\\w.-]+)\\+([\\w.-]+)",
+    "replace": "${1}-${2}"
+  },
+  "autoupdate": {
     "architecture": {
-        "64bit": {
-            "url": "https://ghproxy.com/https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip",
-            "hash": "436a844a0df9486865516e6ffd8ca8cf3642cabf059214bd0c01101770641d43"
+      "64bit": {
+        "url": "https://ghproxy.com/https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip",
+        "hash": {
+          "url": "$url.sha256sum"
         }
-    },
-    "extract_dir": "nvim-win64",
-    "bin": "bin\\nvim.exe",
-    "checkver": {
-        "url": "https://api.github.com/repos/neovim/neovim/releases",
-        "regex": "NVIM v([\\w.-]+)\\+([\\w.-]+)",
-        "replace": "${1}-${2}"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://ghproxy.com/https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip",
-                "hash": {
-                    "url": "$url.sha256sum"
-                }
-            }
-        }
-    },
-    "_from": "okibcn/ScoopMaster"
+      }
+    }
+  },
+  "_from": "okibcn/ScoopMaster"
 }

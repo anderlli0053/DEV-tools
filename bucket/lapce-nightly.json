@@ -1,38 +1,38 @@
 {
-    "version": "nightly-4-15-2023_1-08-34",
-    "description": "Lightning-fast and Powerful Code Editor written in Rust (nightly builds)",
-    "homepage": "http://lapce.dev/",
-    "license": "Apache-2.0",
+  "version": "nightly-4-15-2023_1-08-34",
+  "description": "Lightning-fast and Powerful Code Editor written in Rust (nightly builds)",
+  "homepage": "http://lapce.dev/",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.com/https://github.com/lapce/lapce/releases/download/nightly/Lapce-windows-portable.zip",
+      "hash": "9e69a7a2e1349b60ee731b9119017da97207adadc01b4603c59596c62dde3d9b"
+    }
+  },
+  "bin": [
+    [
+      "lapce.exe",
+      "lapce-nightly"
+    ]
+  ],
+  "shortcuts": [
+    [
+      "lapce.exe",
+      "Lapce Nightly"
+    ]
+  ],
+  "checkver": {
+    "url": "https://api.github.com/repos/lapce/lapce/releases",
+    "jsonpath": "$.[?(@.tag_name == 'nightly')].assets[?(@.name == 'Lapce-windows-portable.zip')].updated_at",
+    "regex": "(\\d{1,2})/(\\d{1,2})/(\\d{4}) (\\d{1,2}):(\\d{2}):(\\d{2})",
+    "replace": "nightly-${1}-${2}-${3}_${4}-${5}-${6}"
+  },
+  "autoupdate": {
     "architecture": {
-        "64bit": {
-            "url": "https://ghproxy.com/https://github.com/lapce/lapce/releases/download/nightly/Lapce-windows-portable.zip",
-            "hash": "9e69a7a2e1349b60ee731b9119017da97207adadc01b4603c59596c62dde3d9b"
-        }
-    },
-    "bin": [
-        [
-            "lapce.exe",
-            "lapce-nightly"
-        ]
-    ],
-    "shortcuts": [
-        [
-            "lapce.exe",
-            "Lapce Nightly"
-        ]
-    ],
-    "checkver": {
-        "url": "https://api.github.com/repos/lapce/lapce/releases",
-        "jsonpath": "$.[?(@.tag_name == 'nightly')].assets[?(@.name == 'Lapce-windows-portable.zip')].updated_at",
-        "regex": "(\\d{1,2})/(\\d{1,2})/(\\d{4}) (\\d{1,2}):(\\d{2}):(\\d{2})",
-        "replace": "nightly-${1}-${2}-${3}_${4}-${5}-${6}"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://ghproxy.com/https://github.com/lapce/lapce/releases/download/nightly/Lapce-windows-portable.zip"
-            }
-        }
-    },
-    "_from": "okibcn/ScoopMaster"
+      "64bit": {
+        "url": "https://ghproxy.com/https://github.com/lapce/lapce/releases/download/nightly/Lapce-windows-portable.zip"
+      }
+    }
+  },
+  "_from": "okibcn/ScoopMaster"
 }
