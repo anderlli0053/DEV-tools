@@ -1,59 +1,59 @@
 {
-  "version": "1647-5adbc1fc",
-  "description": "Nintendo NES and Famicom emulator",
-  "homepage": "http://www.fceux.com",
-  "license": {
-    "url": "https://github.com/TASEmulators/fceux/blob/master/COPYING",
-    "identifier": "GPL-2.0"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://ci.appveyor.com/api/buildjobs/cfcl1a021b8ysy3d/artifacts/fceux-win64-QtSDL.zip",
-      "hash": "02a281b88f87d52dd04d9820126bc9af0e8b3556589622bca1813fe31ad4932b"
-    }
-  },
-  "extract_dir": "bin",
-  "pre_install": [
-    "if (!(Test-Path \"$persist_dir\\fceux.cfg\")) {",
-    "    New-Item \"$dir\\fceux.cfg\" -Type File | Out-Null",
-    "}"
-  ],
-  "bin": [
-    [
-      "qfceux.exe",
-      "qfceux-dev"
-    ]
-  ],
-  "shortcuts": [
-    [
-      "qfceux.exe",
-      "FCEUX Qt-SDL (Dev)"
-    ]
-  ],
-  "persist": [
-    "cheats",
-    "fcs",
-    "movies",
-    "sav",
-    "snaps",
-    "fceux.cfg"
-  ],
-  "checkver": {
-    "url": "https://ci.appveyor.com/api/projects/zeromus/fceux",
-    "script": [
-      "$jobqt = json_path $page $.build.jobs[2].jobId",
-      "$build = json_path $page $.build.buildNumber",
-      "$commit = json_path $page $.build.commitId",
-      "Write-Output \"$jobqt $build $commit\""
-    ],
-    "regex": "(?<jobqt>[\\w]{16}) (?<build>[\\d]+) (?<commit>[a-f0-9]{8})",
-    "replace": "${build}-${commit}"
-  },
-  "autoupdate": {
+    "version": "1649-8649a38e",
+    "description": "Nintendo NES and Famicom emulator",
+    "homepage": "http://www.fceux.com",
+    "license": {
+        "url": "https://github.com/TASEmulators/fceux/blob/master/COPYING",
+        "identifier": "GPL-2.0"
+    },
     "architecture": {
-      "64bit": {
-        "url": "https://ci.appveyor.com/api/buildjobs/$matchJobqt/artifacts/fceux-win64-QtSDL.zip"
-      }
+        "64bit": {
+            "url": "https://ci.appveyor.com/api/buildjobs/8203jyrqfjfsnqeo/artifacts/fceux-win64-QtSDL.zip",
+            "hash": "d39dee7b10b3cd4569bbdaae6db1ec024e67470bea4e0bcea1b477d0c23778a9"
+        }
+    },
+    "extract_dir": "bin",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\fceux.cfg\")) {",
+        "    New-Item \"$dir\\fceux.cfg\" -Type File | Out-Null",
+        "}"
+    ],
+    "bin": [
+        [
+            "qfceux.exe",
+            "qfceux-dev"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "qfceux.exe",
+            "FCEUX Qt-SDL (Dev)"
+        ]
+    ],
+    "persist": [
+        "cheats",
+        "fcs",
+        "movies",
+        "sav",
+        "snaps",
+        "fceux.cfg"
+    ],
+    "checkver": {
+        "url": "https://ci.appveyor.com/api/projects/zeromus/fceux",
+        "script": [
+            "$jobqt = json_path $page $.build.jobs[2].jobId",
+            "$build = json_path $page $.build.buildNumber",
+            "$commit = json_path $page $.build.commitId",
+            "Write-Output \"$jobqt $build $commit\""
+        ],
+        "regex": "(?<jobqt>[\\w]{16}) (?<build>[\\d]+) (?<commit>[a-f0-9]{8})",
+        "replace": "${build}-${commit}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ci.appveyor.com/api/buildjobs/$matchJobqt/artifacts/fceux-win64-QtSDL.zip"
+            }
+        }
     }
-  }
 }
