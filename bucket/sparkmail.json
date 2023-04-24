@@ -1,51 +1,51 @@
 {
-  "version": "3.3.7.46631",
-  "license": "Proprietary",
-  "description": "Spark is the perfect tool for businesses, allowing you to compose, delegate and manage emails directly with your colleagues",
-  "homepage": "https://www.sparkmailapp.com/",
-  "architecture": {
-    "64bit": {
-      "url": "https://downloads.sparkmailapp.com/Spark3/win/dist/3.3.7.46631/Spark.exe",
-      "hash": "11035a318504b75b1315167cb611e2bd0b36211d702c009cde6e1a3303ea7500",
-      "installer": {
-        "args": [
-          "/s",
-          "/S",
-          "/q",
-          "/Q",
-          "/quiet",
-          "/qn",
-          "/silent",
-          "/SILENT"
-        ]
-      },
-      "uninstaller": {
-        "script": "$p = \"$env:LOCALAPPDATA\\Programs\\SparkDesktop\\Uninstall Spark Desktop.exe\"; Invoke-Expression \"& '$p' /currentuser /S\""
-      }
-    }
-  },
-  "post_install": [
-    "$null, $null2, $bucket = Get-Manifest($app)",
-    "$bucketdir = Find-BucketDirectory($bucket)",
-    "$bucketdir = $bucketdir.Trim()",
-    "& \"$bucketdir\\scripts\\track.ps1\" install $app $version"
-  ],
-  "post_uninstall": [
-    "$null, $null2, $bucket = Get-Manifest($app)",
-    "$bucketdir = Find-BucketDirectory($bucket)",
-    "$bucketdir = $bucketdir.Trim()",
-    "& \"$bucketdir\\scripts\\track.ps1\" uninstall $app $version"
-  ],
-  "checkver": {
-    "url": "https://downloads.sparkmailapp.com/Spark3/win/dist/appcast.xml",
-    "regex": "Version ([\\d.]+)"
-  },
-  "autoupdate": {
+    "version": "3.4.0.47191",
+    "license": "Proprietary",
+    "description": "Spark is the perfect tool for businesses, allowing you to compose, delegate and manage emails directly with your colleagues",
+    "homepage": "https://www.sparkmailapp.com/",
     "architecture": {
-      "64bit": {
-        "url": "https://downloads.sparkmailapp.com/Spark3/win/dist/$version/Spark.exe"
-      }
-    }
-  },
-  "_from": "okibcn/ScoopMaster"
+        "64bit": {
+            "url": "https://downloads.sparkmailapp.com/Spark3/win/dist/3.4.0.47191/Spark.exe",
+            "hash": "679d605d6692749574960b09411e71ca3f9891551f5fef92f9b7c4706b1b239b",
+            "installer": {
+                "args": [
+                    "/s",
+                    "/S",
+                    "/q",
+                    "/Q",
+                    "/quiet",
+                    "/qn",
+                    "/silent",
+                    "/SILENT"
+                ]
+            },
+            "uninstaller": {
+                "script": "$p = \"$env:LOCALAPPDATA\\Programs\\SparkDesktop\\Uninstall Spark Desktop.exe\"; Invoke-Expression \"& '$p' /currentuser /S\""
+            }
+        }
+    },
+    "post_install": [
+        "$null, $null2, $bucket = Get-Manifest($app)",
+        "$bucketdir = Find-BucketDirectory($bucket)",
+        "$bucketdir = $bucketdir.Trim()",
+        "& \"$bucketdir\\scripts\\track.ps1\" install $app $version"
+    ],
+    "post_uninstall": [
+        "$null, $null2, $bucket = Get-Manifest($app)",
+        "$bucketdir = Find-BucketDirectory($bucket)",
+        "$bucketdir = $bucketdir.Trim()",
+        "& \"$bucketdir\\scripts\\track.ps1\" uninstall $app $version"
+    ],
+    "checkver": {
+        "url": "https://downloads.sparkmailapp.com/Spark3/win/dist/appcast.xml",
+        "regex": "Version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.sparkmailapp.com/Spark3/win/dist/$version/Spark.exe"
+            }
+        }
+    },
+    "_from": "okibcn/ScoopMaster"
 }
