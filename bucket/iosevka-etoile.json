@@ -1,31 +1,31 @@
 {
-  "version": "22.0.2",
-  "description": "Versatile typeface for code, from code.",
-  "license": "OFL-1.1",
-  "homepage": "https://github.com/be5invis/Iosevka",
-  "url": "https://ghproxy.com/https://github.com/be5invis/Iosevka/releases/download/v22.0.2/super-ttc-iosevka-etoile-22.0.2.zip",
-  "hash": "6fbd83615da989c235ef3eef820063632bfcd89b40c96fc49deaa5a93b9364ea",
-  "checkver": "github",
-  "autoupdate": {
-    "url": "https://ghproxy.com/https://github.com/be5invis/Iosevka/releases/download/v$version/super-ttc-iosevka-etoile-$version.zip"
-  },
-  "installer": {
-    "script": [
-      "if(!(is_admin)) { error \"Admin rights are required.\"; exit 1 }",
-      "Get-ChildItem $dir -Filter '*.ttc' -Recurse | ForEach-Object {",
-      "  New-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $_.Name -Force | Out-Null",
-      "  Copy-Item $_.FullName -destination \"$env:windir\\Fonts\"",
-      "}"
-    ]
-  },
-  "uninstaller": {
-    "script": [
-      "if(!(is_admin)) { error \"Admin rights are required.\"; exit 1 }",
-      "Get-ChildItem $dir -filter '*.ttc' -Recurse | ForEach-Object {",
-      "  Remove-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Force -ErrorAction SilentlyContinue",
-      "  Remove-Item \"$env:windir\\Fonts\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
-      "}",
-      "Write-Host \"'Iosevka Etoile' has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta"
-    ]
-  }
+    "version": "22.1.0",
+    "description": "Versatile typeface for code, from code.",
+    "license": "OFL-1.1",
+    "homepage": "https://github.com/be5invis/Iosevka",
+    "url": "https://ghproxy.com/https://github.com/be5invis/Iosevka/releases/download/v22.1.0/super-ttc-iosevka-etoile-22.1.0.zip",
+    "hash": "f7e99f35ab25663ecf45c6240577476aea674443d11efa989de25f3f5576c381",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/be5invis/Iosevka/releases/download/v$version/super-ttc-iosevka-etoile-$version.zip"
+    },
+    "installer": {
+        "script": [
+            "if(!(is_admin)) { error \"Admin rights are required.\"; exit 1 }",
+            "Get-ChildItem $dir -Filter '*.ttc' -Recurse | ForEach-Object {",
+            "  New-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $_.Name -Force | Out-Null",
+            "  Copy-Item $_.FullName -destination \"$env:windir\\Fonts\"",
+            "}"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if(!(is_admin)) { error \"Admin rights are required.\"; exit 1 }",
+            "Get-ChildItem $dir -filter '*.ttc' -Recurse | ForEach-Object {",
+            "  Remove-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Force -ErrorAction SilentlyContinue",
+            "  Remove-Item \"$env:windir\\Fonts\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
+            "}",
+            "Write-Host \"'Iosevka Etoile' has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta"
+        ]
+    }
 }
