@@ -1,0 +1,29 @@
+{
+  "homepage": "https://github.com/NyaMisty/Fermion",
+  "description": "Fermion (misty fork)",
+  "version": "v1.9.2-frida16.0.19-gumjs18.3.1",
+  "license": "BSD 3-Clause",
+  "hash": "054ce3af003a6dfdd03fcddba33631ca136ee97304908fe66fcf401514a69494",
+  "url": "https://ghproxy.net/https://github.com/NyaMisty/Fermion/releases/download/v1.9.2-frida16.0.19-gumjs18.3.1/fermion-win32-x64-v1.9.2-frida16.0.19-gumjs18.3.1.zip",
+  "bin": [
+    [
+      "fermion.exe",
+      "fermion"
+    ]
+  ],
+  "shortcuts": [
+    [
+      "fermion.exe",
+      "Fermion"
+    ]
+  ],
+  "checkver": {
+    "url": "https://api.github.com/repos/NyaMisty/Fermion/releases?per_page=1",
+    "github_": "https://github.com/NyaMisty/Fermion",
+    "regex": "/download/(?<tag>[A-Za-z0-9\\-._]+?)/fermion-win32-x64-[A-Za-z0-9\\-._]+?\\.zip",
+    "replace": "${tag}"
+  },
+  "autoupdate": {
+    "url": "https://ghproxy.net/https://github.com/NyaMisty/Fermion/releases/download/$matchTag/fermion-win32-x64-$matchTag.zip"
+  }
+}
