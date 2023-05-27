@@ -1,0 +1,34 @@
+{
+    "version": "23.04.1-2042",
+    "description": "Multi-document editor",
+    "homepage": "https://kate-editor.org",
+    "license": "LGPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://binary-factory.kde.org/view/Windows%2064-bit/job/Kate_Release_win64/2042/artifact/kate-23.04.1-2042-windows-cl-msvc2019-x86_64.7z",
+            "hash": "6c8e737be594d31243d195226f18bcfc01982b24238d7304f51f9cc665c86927"
+        }
+    },
+    "bin": "bin\\kate.exe",
+    "shortcuts": [
+        [
+            "bin\\kate.exe",
+            "Kate"
+        ]
+    ],
+    "checkver": {
+        "url": "https://binary-factory.kde.org/view/Windows%2064-bit/job/Kate_Release_win64/lastSuccessfulBuild/artifact/",
+        "regex": "kate-([\\d.-]+)-windows-cl-(?<lib>\\w+)-x86_64\\.7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://binary-factory.kde.org/view/Windows%2064-bit/job/Kate_Release_win64/$preReleaseVersion/artifact/kate-$version-windows-cl-$matchLib-x86_64.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256",
+            "regex": "$sha256"
+        }
+    }
+}

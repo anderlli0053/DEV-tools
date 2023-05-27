@@ -1,0 +1,53 @@
+{
+    "version": "1.79.0-202305260335",
+    "description": "Visual Studio Code is a lightweight but powerful source code editor (Insiders).",
+    "homepage": "https://code.visualstudio.com/insiders/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://code.visualstudio.com/License/"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://az764295.vo.msecnd.net/insider/2dfb838f494f035099e999f0cd0eff5f1f488a30/VSCode-win32-x64-1.79.0-insider.zip",
+            "hash": "3982d329ba4abc933767711658636b819de52c9d18e9c5da841d6d0179e76efc"
+        },
+        "32bit": {
+            "url": "https://az764295.vo.msecnd.net/insider/2dfb838f494f035099e999f0cd0eff5f1f488a30/VSCode-win32-ia32-1.79.0-insider.zip",
+            "hash": "f02354153d5aeeb9da57af6af233af72b17168bd2a1b2abb8192b80c9e20c28d"
+        }
+    },
+    "bin": [
+        [
+            "bin\\code-insiders.cmd",
+            "code-insiders"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "Code - Insiders.exe",
+            "Visual Studio Code - Insiders"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.xuann.wang/api/vscode-insiders",
+        "regex": "([\\d.-]+) (?<commit>\\w+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://az764295.vo.msecnd.net/insider/$matchCommit/VSCode-win32-x64-$matchHead-insider.zip",
+                "hash": {
+                    "url": "https://code.visualstudio.com/sha?build=insider",
+                    "jsonpath": "$.products[5].sha256hash"
+                }
+            },
+            "32bit": {
+                "url": "https://az764295.vo.msecnd.net/insider/$matchCommit/VSCode-win32-ia32-$matchHead-insider.zip",
+                "hash": {
+                    "url": "https://code.visualstudio.com/sha?build=insider",
+                    "jsonpath": "$.products[2].sha256hash"
+                }
+            }
+        }
+    }
+}

@@ -1,56 +1,53 @@
 {
-    "version": "2.2.34",
-    "homepage": "https://www.apifox.cn/",
+    "version": "2.2.40",
+    "description": "All-in-one collaboration platform for API documentation, API debugging, API Mock and API test automation.",
+    "homepage": "https://apifox.com",
     "license": "Freeware",
-    "description": "",
     "architecture": {
         "64bit": {
-            "url": "https://cdn.apifox.cn/download/Apifox-windows-latest.zip",
-            "hash": "1a2a566ff38d8dc62e7a6f2f8c1a75b90dfc5259341474d9f9266cead9b643ae",
+            "url": "https://cdn.apifox.cn/download/2.2.40/Apifox-2.2.40.exe#/dl.7z",
+            "hash": "sha512:4013315534bc11e8812a424438e3ed07101fd23b8d1bbd5ff41588e369ab75299924c2fc83e8732357737c1203b882e62377e1d13a7f60ec15ba18d30d5aa3d5",
             "pre_install": [
-                "Move-Item \"$dir/*.exe\" \"$dir/Setup.7z\"",
-                "Expand-7zipArchive \"$dir\\Setup.7z\" \"$dir\"",
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                "Remove-Item \"$dir/`$PLUGINSDIR\", \"$dir/Setup.7z\" -Recurse -Force"
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
             ]
         },
         "32bit": {
-            "url": "https://cdn.apifox.cn/download/Apifox-win32-latest.zip",
-            "hash": "73674c5038edddae74b168dc0f83f9f09ea33bdf12e71da62a62c013e828f89b",
+            "url": "https://cdn.apifox.cn/download/2.2.40/Apifox-windows-x86-2.2.40.exe#/dl.7z",
+            "hash": "sha512:fbe53ab6d237bbfa55b2833ba5940cb25fb833a28b1679ca83fdff53065ec9bfb05b975a0aa59291d388f5553091ef6e9604060ca7a3282f5c6f4d94499a7b47",
             "pre_install": [
-                "Move-Item \"$dir/*.exe\" \"$dir/Setup.7z\"",
-                "Expand-7zipArchive \"$dir\\Setup.7z\" \"$dir\"",
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
-                "Remove-Item \"$dir/`$PLUGINSDIR\", \"$dir\\Setup.7z\" -Recurse -Force"
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
             ]
         }
     },
-    "uninstaller": {
-        "file": "Uninstall Apifox.exe"
-    },
-    "bin": [
-        [
-            "Apifox.exe",
-            "Apifox"
-        ]
-    ],
     "shortcuts": [
         [
             "Apifox.exe",
-            "Apifox"
+            "Apifox",
+            "--user-data-dir=\"$dir\\UserData\""
         ]
     ],
+    "persist": "UserData",
     "checkver": {
-        "url": "https://apifox.com/help/app/changelog",
-        "re": ">([\\d.]+) <"
+        "url": "https://cdn.apifox.cn/download/latest.yml",
+        "regex": "version: ([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cdn.apifox.cn/download/Apifox-windows-latest.zip"
+                "url": "https://cdn.apifox.cn/download/$version/Apifox-$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://cdn.apifox.cn/download/latest.yml",
+                    "regex": "sha512: $base64"
+                }
             },
             "32bit": {
-                "url": "https://cdn.apifox.cn/download/Apifox-win32-latest.zip"
+                "url": "https://cdn.apifox.cn/download/$version/Apifox-windows-x86-$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://cdn.apifox.cn/download/x32/latest.yml",
+                    "regex": "sha512: $base64"
+                }
             }
         }
     }

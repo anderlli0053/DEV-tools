@@ -1,0 +1,25 @@
+{
+    "version": "4.3.3",
+    "homepage": "https://www.aliyundrive.com/",
+    "license": "Freeware",
+    "url": "https://cdn.aliyundrive.net/downloads/apps/desktop/update/4.3.3/win32/ia32/aDrive-4.3.3.exe#/dl.7z",
+    "hash": "sha512:eb1eca4dc2f988dc7913331f35cfda5937a00f2ffa5dcb73a3d95b09059592032acd880fcda06e74f9ed9f44957dd6ca61ace5135c67cd37f64512cb1f7d4b94",
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$TEMP\" -Force -Recurse",
+    "shortcuts": [
+        [
+            "aDrive.exe",
+            "aliyun drive"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.nicoconi.com/updater/aliyundrive",
+        "regex": "version: ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://cdn.aliyundrive.net/downloads/apps/desktop/update/$version/win32/ia32/aDrive-$version.exe#/dl.7z",
+        "hash": {
+            "url": "https://api.nicoconi.com/updater/aliyundrive",
+            "regex": "sha512: $base64"
+        }
+    }
+}

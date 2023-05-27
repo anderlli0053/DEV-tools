@@ -1,10 +1,10 @@
 {
-    "version": "2.3.3",
+    "version": "3.0.1",
     "description": "Nerd Fonts patched 'DaddyTimeMono' Font family. (Normal version, Nerd Fonts Symbol/Icon could be 1 or 2 cell wide)",
     "homepage": "https://github.com/ryanoasis/nerd-fonts",
     "license": "MIT",
-    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/DaddyTimeMono.zip",
-    "hash": "8d050b0f96e218fd706fdea6ee773754f147b9120cd1bac057efe1dbc9a20563",
+    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/DaddyTimeMono.zip",
+    "hash": "d384b31785f635b3cdb744039223e4a0753850b02b849c7861d7953016a35718",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -37,24 +37,51 @@
             "}",
             "$registryRoot = if ($global) { \"HKLM\" } else { \"HKCU\" }",
             "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
-            "Get-ChildItem $dir -Filter '*Complete Windows Compatible*' | ForEach-Object {",
+            "Get-ChildItem $dir -Filter '*NerdFont-*' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
             "    Copy-Item $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },
+    "pre_uninstall": [
+        "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
+        "Get-ChildItem $dir -Filter '*NerdFont-*' | ForEach-Object {",
+        "    Get-ChildItem $fontInstallDir -Filter $_.Name | ForEach-Object {",
+        "        try {",
+        "            Rename-Item $_.FullName $_.FullName -ErrorVariable LockError -ErrorAction Stop",
+        "        } catch {",
+        "            Write-Host \"\"",
+        "            Write-Host \" Error \" -Background DarkRed -Foreground White -NoNewline",
+        "            Write-Host \"\"",
+        "            Write-Host \" Cannot uninstall '$app' font.\" -Foreground DarkRed",
+        "            Write-Host \"\"",
+        "            Write-Host \" Reason \" -Background DarkCyan -Foreground White -NoNewline",
+        "            Write-Host \"\"",
+        "            Write-Host \" The '$app' font is currently being used by another application,\" -Foreground DarkCyan",
+        "            Write-Host \" so it cannot be deleted.\" -Foreground DarkCyan",
+        "            Write-Host \"\"",
+        "            Write-Host \" Suggestion \" -Background Magenta -Foreground White -NoNewline",
+        "            Write-Host \"\"",
+        "            Write-Host \" Close all applications that are using '$app' font (e.g. vscode),\" -Foreground Magenta",
+        "            Write-Host \" and then try again.\" -Foreground Magenta",
+        "            Write-Host \"\"",
+        "            exit 1",
+        "        }",
+        "    }",
+        "}"
+    ],
     "uninstaller": {
         "script": [
             "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
             "$registryRoot = if ($global) { \"HKLM\" } else { \"HKCU\" }",
             "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
-            "Get-ChildItem $dir -Filter '*Complete Windows Compatible*' | ForEach-Object {",
+            "Get-ChildItem $dir -Filter '*NerdFont-*' | ForEach-Object {",
             "    Remove-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Force -ErrorAction SilentlyContinue",
             "    Remove-Item \"$fontInstallDir\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
             "}",
             "if ($cmd -eq \"uninstall\") {",
-            "    Write-Host \"The '$($app.Replace('-NF', ''))' Font family has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta",
+            "    Write-Host \"The '$app' Font family has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta",
             "}"
         ]
     },

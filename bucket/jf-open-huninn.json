@@ -4,7 +4,7 @@
     "homepage": "https://github.com/justfont/open-huninn-font",
     "license": "OFL-1.1",
     "url": "https://github.com/justfont/open-huninn-font/releases/download/v2.0/jf-openhuninn-2.0.ttf",
-    "hash": "86cb149f056f52e11fd6ce7fecfe33e3914415a44d0f56275aabaab90f4a21ae",
+    "hash": "eec8b0b68c34b9166ae37bed839b6126116b225d97f21a5954bb542b9fd1e68c",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -44,6 +44,33 @@
             "}"
         ]
     },
+    "pre_uninstall": [
+        "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
+        "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
+        "    Get-ChildItem $fontInstallDir -Filter $_.Name | ForEach-Object {",
+        "        try {",
+        "            Rename-Item $_.FullName $_.FullName -ErrorVariable LockError -ErrorAction Stop",
+        "        } catch {",
+        "            Write-Host \"\"",
+        "            Write-Host \" Error \" -Background DarkRed -Foreground White -NoNewline",
+        "            Write-Host \"\"",
+        "            Write-Host \" Cannot uninstall '$app' font.\" -Foreground DarkRed",
+        "            Write-Host \"\"",
+        "            Write-Host \" Reason \" -Background DarkCyan -Foreground White -NoNewline",
+        "            Write-Host \"\"",
+        "            Write-Host \" The '$app' font is currently being used by another application,\" -Foreground DarkCyan",
+        "            Write-Host \" so it cannot be deleted.\" -Foreground DarkCyan",
+        "            Write-Host \"\"",
+        "            Write-Host \" Suggestion \" -Background Magenta -Foreground White -NoNewline",
+        "            Write-Host \"\"",
+        "            Write-Host \" Close all applications that are using '$app' font (e.g. vscode),\" -Foreground Magenta",
+        "            Write-Host \" and then try again.\" -Foreground Magenta",
+        "            Write-Host \"\"",
+        "            exit 1",
+        "        }",
+        "    }",
+        "}"
+    ],
     "uninstaller": {
         "script": [
             "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",

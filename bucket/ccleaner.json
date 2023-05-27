@@ -1,10 +1,10 @@
 {
-    "version": "6.1.1",
+    "version": "6.12.10490",
     "description": "Number-one tool for cleaning PC",
     "homepage": "https://www.ccleaner.com/ccleaner",
     "license": "Freeware",
-    "url": "https://download.ccleaner.com/portable/ccsetup611.zip",
-    "hash": "2f297c51ea7140e38c8cfed75c42cd30a7dec792b0dd0e4174f3f2358edcf13c",
+    "url": "https://download.ccleaner.com/portable/ccsetup612.zip",
+    "hash": "b4218eab89fcbc595a722950357ab0eb2b6acfc4124ba46a47dc9be8f4e3d234",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\ccleaner.ini\")) {",
         "   Set-Content \"$dir\\ccleaner.ini\" @('[Options]', 'UpdateAuto=0', 'UpdateNotify=0', 'UpdateCheck=0', 'HelpImproveCCleaner=0') -Encoding ASCII",
@@ -50,10 +50,9 @@
     ],
     "checkver": {
         "url": "https://www.ccleaner.com/ccleaner/builds",
-        "regex": "ccsetup(\\d)(\\d)(\\d)\\.zip",
-        "replace": "${1}.${2}.${3}"
+        "regex": "CCleaner Free \\(v([\\d.]+)\\) - Latest official release"
     },
     "autoupdate": {
-        "url": "https://download.ccleaner.com/portable/ccsetup$cleanVersion.zip"
+        "url": "https://download.ccleaner.com/portable/ccsetup$majorVersion$minorVersion.zip"
     }
 }

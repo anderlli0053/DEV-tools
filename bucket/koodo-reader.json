@@ -1,16 +1,22 @@
 {
-    "version": "1.5.4",
+    "version": "1.5.5",
     "homepage": "https://koodo.960960.xyz/en",
     "description": "All-in-one ebook reader.",
     "license": "AGPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/troyeguo/koodo-reader/releases/download/v1.5.4/Koodo-Reader-1.5.4.exe#/dl.7z",
-            "hash": "sha512:c2fcdf4a8c06d780e00b5b929b4361d6d6a44feb55ce4ec5ff9b6e425ab65d4fcd08c349bd2b0d86b54a835a48e85c26895f38a77fb0a71cdfee790cf45f03fd"
+            "url": "https://github.com/troyeguo/koodo-reader/releases/download/v1.5.5/Koodo-Reader-1.5.5-x64-Win.zip",
+            "hash": "ffc88ad282a0703e86a7ff5fe98f726f89e65d168bbf80d9abeda357181c5d76"
+        },
+        "32bit": {
+            "url": "https://github.com/troyeguo/koodo-reader/releases/download/v1.5.5/Koodo-Reader-1.5.5-ia32-Win.zip",
+            "hash": "6e6cb7b447ce1a51a2e6ef8d14ab8d7606eaddfefc66be845128f7493494bd54"
+        },
+        "arm64": {
+            "url": "https://github.com/troyeguo/koodo-reader/releases/download/v1.5.5/Koodo-Reader-1.5.5-arm64-Win.zip",
+            "hash": "7976d4d06012e114fc24b135beab4d4eb400a40d238ab830fd2b28b836781132"
         }
     },
-    "extract_dir": "$PLUGINSDIR",
-    "pre_install": "Expand-7zipArchive \"$dir\\app-64.7z\" $dir -Removal",
     "shortcuts": [
         [
             "Koodo Reader.exe",
@@ -23,11 +29,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/troyeguo/koodo-reader/releases/download/v$version/Koodo-Reader-$version.exe#/dl.7z",
-                "hash": {
-                    "url": "$baseurl/latest.yml",
-                    "regex": "sha512:\\s$base64"
-                }
+                "url": "https://github.com/troyeguo/koodo-reader/releases/download/v$version/Koodo-Reader-$version-x64-Win.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/troyeguo/koodo-reader/releases/download/v$version/Koodo-Reader-$version-ia32-Win.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/troyeguo/koodo-reader/releases/download/v$version/Koodo-Reader-$version-arm64-Win.zip"
             }
         }
     }

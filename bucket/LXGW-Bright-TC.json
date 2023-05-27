@@ -1,23 +1,23 @@
 {
-    "version": "4.158",
+    "version": "5.300",
     "description": "An open-source Traditional Chinese font. Combination of LXGW WenKai TC (霞鹜文楷 TC) and Ysabeau Office",
     "homepage": "https://github.com/lxgw/LxgwBright",
     "license": "OFL-1.1",
     "url": [
-        "https://raw.githubusercontent.com/lxgw/LxgwBright/main/LXGWBrightTC/LXGWBrightTC-Italic.otf",
-        "https://raw.githubusercontent.com/lxgw/LxgwBright/main/LXGWBrightTC/LXGWBrightTC-Medium.otf",
-        "https://raw.githubusercontent.com/lxgw/LxgwBright/main/LXGWBrightTC/LXGWBrightTC-MediumItalic.otf",
-        "https://raw.githubusercontent.com/lxgw/LxgwBright/main/LXGWBrightTC/LXGWBrightTC-Regular.otf",
-        "https://raw.githubusercontent.com/lxgw/LxgwBright/main/LXGWBrightTC/LXGWBrightTC-SemiLight.otf",
-        "https://raw.githubusercontent.com/lxgw/LxgwBright/main/LXGWBrightTC/LXGWBrightTC-SemiLightItalic.otf"
+        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.300/LXGWBrightTC/LXGWBrightTC-Italic.otf",
+        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.300/LXGWBrightTC/LXGWBrightTC-Medium.otf",
+        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.300/LXGWBrightTC/LXGWBrightTC-MediumItalic.otf",
+        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.300/LXGWBrightTC/LXGWBrightTC-Regular.otf",
+        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.300/LXGWBrightTC/LXGWBrightTC-SemiLight.otf",
+        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.300/LXGWBrightTC/LXGWBrightTC-SemiLightItalic.otf"
     ],
     "hash": [
-        "01471031c9c689ccdc6655f98738efa02fe833f185f14a92826e6b8696363460",
-        "75333cf7a06615da5402dd3b3204bede6c620ec87906372ca09acb92c5492986",
-        "50b2e39ace3aa029d4953cceb6a64f3fe659386b24135ea526ec50348bedfca6",
-        "3cbe7ba6b2f701182c85ee20afa858d613456c7ac17298b82bc5b610b50cba9c",
-        "8f39a54fe7e79df3ad51668feebc3e429e002b79b6bf0a8c41340105314b865e",
-        "f932de7a02762eb531f13824b46fe8a881774661f5d6c92aec3a405b8ff4cf89"
+        "1b6f181c6c5845033baf0a43222afefc5563131a156d36e6a43e15c6e918f6d0",
+        "10611ebb2326624c07f3b1db174ac18ab2fd9a7aa3521c33345f4db84be53de8",
+        "366d14c33afe6e621bca4c4bc564cf22445870a102ffe37d38bfe548c246a6a8",
+        "15ba151ec3f6e2409baca4b6678469583022860459b267e16033a42b4b4a6d77",
+        "f52e4b6c501a51ddfe7be05ef8a0968902bd2f00060cb61c4f9a2b93af904a51",
+        "bc131c3714bc2ae87a6d0461bb7c90ee908db8ef2e2a4682ddfb3e489209536e"
     ],
     "installer": {
         "script": [
@@ -58,6 +58,33 @@
             "}"
         ]
     },
+    "pre_uninstall": [
+        "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
+        "Get-ChildItem $dir -Filter '*.otf' | ForEach-Object {",
+        "    Get-ChildItem $fontInstallDir -Filter $_.Name | ForEach-Object {",
+        "        try {",
+        "            Rename-Item $_.FullName $_.FullName -ErrorVariable LockError -ErrorAction Stop",
+        "        } catch {",
+        "            Write-Host \"\"",
+        "            Write-Host \" Error \" -Background DarkRed -Foreground White -NoNewline",
+        "            Write-Host \"\"",
+        "            Write-Host \" Cannot uninstall '$app' font.\" -Foreground DarkRed",
+        "            Write-Host \"\"",
+        "            Write-Host \" Reason \" -Background DarkCyan -Foreground White -NoNewline",
+        "            Write-Host \"\"",
+        "            Write-Host \" The '$app' font is currently being used by another application,\" -Foreground DarkCyan",
+        "            Write-Host \" so it cannot be deleted.\" -Foreground DarkCyan",
+        "            Write-Host \"\"",
+        "            Write-Host \" Suggestion \" -Background Magenta -Foreground White -NoNewline",
+        "            Write-Host \"\"",
+        "            Write-Host \" Close all applications that are using '$app' font (e.g. vscode),\" -Foreground Magenta",
+        "            Write-Host \" and then try again.\" -Foreground Magenta",
+        "            Write-Host \"\"",
+        "            exit 1",
+        "        }",
+        "    }",
+        "}"
+    ],
     "uninstaller": {
         "script": [
             "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
@@ -75,12 +102,12 @@
     "checkver": "github",
     "autoupdate": {
         "url": [
-            "https://raw.githubusercontent.com/lxgw/LxgwBright/main/LXGWBrightTC/LXGWBrightTC-Italic.otf",
-            "https://raw.githubusercontent.com/lxgw/LxgwBright/main/LXGWBrightTC/LXGWBrightTC-Medium.otf",
-            "https://raw.githubusercontent.com/lxgw/LxgwBright/main/LXGWBrightTC/LXGWBrightTC-MediumItalic.otf",
-            "https://raw.githubusercontent.com/lxgw/LxgwBright/main/LXGWBrightTC/LXGWBrightTC-Regular.otf",
-            "https://raw.githubusercontent.com/lxgw/LxgwBright/main/LXGWBrightTC/LXGWBrightTC-SemiLight.otf",
-            "https://raw.githubusercontent.com/lxgw/LxgwBright/main/LXGWBrightTC/LXGWBrightTC-SemiLightItalic.otf"
+            "https://raw.githubusercontent.com/lxgw/LxgwBright/v$version/LXGWBrightTC/LXGWBrightTC-Italic.otf",
+            "https://raw.githubusercontent.com/lxgw/LxgwBright/v$version/LXGWBrightTC/LXGWBrightTC-Medium.otf",
+            "https://raw.githubusercontent.com/lxgw/LxgwBright/v$version/LXGWBrightTC/LXGWBrightTC-MediumItalic.otf",
+            "https://raw.githubusercontent.com/lxgw/LxgwBright/v$version/LXGWBrightTC/LXGWBrightTC-Regular.otf",
+            "https://raw.githubusercontent.com/lxgw/LxgwBright/v$version/LXGWBrightTC/LXGWBrightTC-SemiLight.otf",
+            "https://raw.githubusercontent.com/lxgw/LxgwBright/v$version/LXGWBrightTC/LXGWBrightTC-SemiLightItalic.otf"
         ]
     }
 }
