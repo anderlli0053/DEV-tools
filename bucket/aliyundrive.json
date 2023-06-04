@@ -1,27 +1,61 @@
 {
-    "version": "4.3.0",
+    "version": "4.3.4",
     "description": "The official client for Alibaba's cloud dirve service",
     "homepage": "https://www.aliyundrive.com/",
     "license": {
         "identifier": "EULA",
         "url": "https://www.aliyundrive.com/protocol/service"
     },
-    "url": "https://cdn.aliyundrive.net/downloads/apps/desktop/update/4.3.0/win32/ia32/aDrive-4.3.0.exe#/aDrive-4.3.0.7z",
-    "hash": "sha512:c5b0f4580aa07f7037bb2cb12bb2fccac4421069d82662dcdba29da7a40b8165e401537301bb0ba566af6f72c8d3fb7ef25fa56aaa192a8e12e54a06fdfa2fc4",
+    "url": "https://cdn.aliyundrive.net/downloads/apps/desktop/update/4.3.4/win32/ia32/aDrive-4.3.4.exe#/aDrive-4.3.4.7z",
+    "hash": "sha512:341d93400548ccfb21125df689282985ede812f0120af3fedffc35f2d3b833640aaaa494bc7e0b28388f018938e73a2f5fa24051ce2e3d6fc963658d099fd45c",
     "post_install": [
         "@('$PLUGINSDIR', '$TEMP') | ForEach-Object {",
         "    Remove-Item \"$dir\\$_\" -Recurse -Force",
         "}"
     ],
-    "shortcuts": [
-        [
-            "aDrive.exe",
-            "阿里云盘"
+    "installer": {
+        "script": [
+            "if (!(Test-Path \"$persist_dir\\Cache\")) {",
+            "    New-Item \"$persist_dir\\Cache\" -Type Directory -Force | Out-Null",
+            "}",
+            "$runtimeCache = \"$env:APPDATA\\aDrive\"",
+            "$runtimeutForpcCache = \"$env:APPDATA\\utForpc\"",
+            "$runtimeCachePersist = \"$persist_dir\\Cache\"",
+            "if (Test-Path $runtimeCachePersist) {",
+            "    Remove-Item $runtimeCache -Force -Recurse -ErrorAction SilentlyContinue",
+            "    Remove-Item $runtimeutForpcCache -Force -Recurse -ErrorAction SilentlyContinue",
+            "    New-Item -Type Junction -Path $runtimeCache -Target $runtimeCachePersist | Out-Null",
+            "    New-Item -Type Junction -Path $runtimeutForpcCache -Target $runtimeCachePersist | Out-Null",
+            "} else {",
+            "    if (Test-Path $runtimeCache) {",
+            "        Move-Item $runtimeCache $runtimeCachePersist -Force",
+            "        New-Item -Type Junction -Path $runtimeCache -Target $runtimeCachePersist | Out-Null",
+            "    }",
+            "    if (Test-Path $runtimeutForpcCache) {",
+            "        Move-Item $runtimeutForpcCache $runtimeCachePersist -Force",
+            "        New-Item -Type Junction -Path $runtimeutForpcCache -Target $runtimeCachePersist | Out-Null",
+            "    }",
+            "}"
         ]
-    ],
+    },
+    "uninstaller": {
+        "script": [
+            "$runtimeCache = \"$env:APPDATA\\aDrive\"",
+            "$runtimeutForpcCache = \"$env:APPDATA\\utForpc\"",
+            "$runtimeCachePersist = \"$persist_dir\\Cache\"",
+            "if (!(Test-Path $runtimeCachePersist)) {",
+            "    Move-Item $runtimeCache $runtimeCachePersist -Force",
+            "    Move-Item $runtimeutForpcCache $runtimeCachePersist -Force",
+            "} else {",
+            "    Remove-Item $runtimeCache -Force -Recurse -ErrorAction SilentlyContinue",
+            "    Remove-Item $runtimeutForpcCache -Force -Recurse -ErrorAction SilentlyContinue",
+            "}"
+        ]
+    },
+    "shortcuts": [["aDrive.exe", "阿里云盘"]],
     "checkver": {
         "script": "return (iwr -useb \"$($(iwr -useb 'https://www.aliyundrive.com/desktop/version/update.json' | ConvertFrom-Json).url)/win32/ia32/latest.yml\")",
-        "re": "version: ([\\d.]+)"
+        "regex": "version: ([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://cdn.aliyundrive.net/downloads/apps/desktop/update/$version/win32/ia32/aDrive-$version.exe#/aDrive-$version.7z",

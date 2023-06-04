@@ -1,33 +1,41 @@
 {
- "autoupdate": {
-  "url": "https://github.com/xiaoyifang/goldendict/releases/download/v$match1-$match2/$match3-GoldenDict-v$majorVersion-Install.exe#/dl.7z"
- },
- "bin": [
-  [
-   "GoldenDict.exe",
-   "goldendict-webengine.exe"
-  ]
- ],
- "checkver": {
-  "github": "https://github.com/xiaoyifang/goldendict",
-  "regex": "/download/v([\\d+.]+)-(.*)/([\\d+.]+)-GoldenDict-v",
-  "reverse": true
- },
- "description": "A feature-rich dictionary lookup program",
- "hash": "7563e10d024d9cacb69e2fbf94bf1c9a4a12e19f61364143352bc9cd1754ebba",
- "homepage": "https://github.com/xiaoyifang/goldendict",
- "license": "GPL-3.0-only",
- "persist": [
-  "portable",
-  "content"
- ],
- "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\[LICENSE].txt\", \"$dir\\*.nsi\", \"$dir\\uninstall.exe\" -Recurse",
- "shortcuts": [
-  [
-   "GoldenDict.exe",
-   "GoldenDict (Webengine)"
-  ]
- ],
- "url": "https://github.com/xiaoyifang/goldendict/releases/download/v22.8.23-EndOfHeat.220822.aa12e5a2/6.3.1-GoldenDict-v22-Install.exe#/dl.7z",
- "version": "22.8.23"
+    "version": "23.04.02",
+    "homepage": "https://github.com/xiaoyifang/goldendict",
+    "license": "GPL-3.0-only",
+    "url": "https://github.com/xiaoyifang/goldendict/releases/download/v23.04.02-QingmingFestival.230402.ce9436f9/5.15.2-GoldenDict-v23.04.02-QingmingFestival-Installer.exe",
+    "hash": "47a1243ba65f1651752b7c71631cd3a118f55ed30c2c2404e327839fd692ab88",
+    "bin": [
+        "GoldenDict.exe",
+        [
+            "GoldenDict.exe",
+            "goldendict-webengine"
+        ],
+        [
+            "GoldenDict.exe",
+            "gd"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "GoldenDict.exe",
+            "GoldenDict (Webengine)"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/xiaoyifang/goldendict",
+        "regex": "/releases/tag/v([\\d.]+)(.*?)\\.(.*?)\""
+    },
+    "autoupdate": {
+        "url": "https://github.com/xiaoyifang/goldendict/releases/download/v$version$match2.$match3/5.15.2-GoldenDict-v$version$match2-Installer.exe"
+    },
+    "persist": [
+        "portable",
+        "content"
+    ],
+    "post_install": [
+        "$IndexSyncTarget = $Env:OneDrive + '\\language\\dictionary\\goldendict-config\\index'",
+        "New-Item -ItemType Junction -Target $IndexSyncTarget -Path $persist_dir\\portable\\index -Force",
+        "$ContentTarget = $Env:OneDrive + '\\language\\dictionary\\mdx'",
+        "New-Item -ItemType Junction -Target $ContentTarget -Path $persist_dir\\content\\mdx -Force"
+    ]
 }

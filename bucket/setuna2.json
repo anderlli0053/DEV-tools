@@ -1,7 +1,7 @@
 {
-    "version": "3.0.0.6",
-    "description": "Paste screenshots as floating windows",
     "homepage": "https://github.com/tylearymf/SETUNA2",
+    "version": "3.0.0.6",
+    "description": "A best screenshot small tool (support high dpi screenshots)",
     "license": "MIT",
     "architecture": {
         "64bit": {
@@ -13,19 +13,20 @@
             "hash": "b16a2345b17d3d5a9df55c9c0f55f3ff9ec490ce27d8043d2bbd6d8b7c223c9c"
         }
     },
-    "pre_install": "if(Test-Path \"$persist_dir\\SetunaConfig.xml\") { Copy-Item \"$persist_dir\\SetunaConfig.xml\" \"$dir\\SetunaConfig.xml\" | Out-Null }",
-    "uninstaller": {
-        "script": [
-            "if(!(Test-Path \"$persist_dir\\\")) { New-Item -Path \"$persist_dir\\\" -ItemType Directory | Out-Null }",
-            "if(Test-Path \"$dir\\SetunaConfig.xml\") { Copy-Item \"$dir\\SetunaConfig.xml\" \"$persist_dir\\SetunaConfig.xml\" | Out-Null }"
+    "bin": [
+        [
+            "SETUNA.exe",
+            "setuna2"
         ]
-    },
+    ],
     "shortcuts": [
         [
             "SETUNA.exe",
             "SETUNA2"
         ]
     ],
+    "pre_install": "if (!(Test-Path \"$persist_dir\\SetunaConfig.xml\")) { New-Item \"$dir\\SetunaConfig.xml\" | Out-Null }",
+    "persist": "SetunaConfig.xml",
     "checkver": "github",
     "autoupdate": {
         "architecture": {

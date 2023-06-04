@@ -1,38 +1,37 @@
 {
-  "version": "5.1.0",
-  "description": "Registry Workshop is an advanced registry editor. It is a perfect replacement for RegEdit and RegEdt32 which shipped with Windows.",
-  "homepage": "http://www.torchsoft.com",
-  "url": "http://www.torchsoft.com/download/RegistryWorkshop_chs.exe#/dl.zip",
-  "hash": "13ebf41340bab067e407e06b5de4931bb80b79cc08fb8543b2913d9f3b5f81bb",
-  "pre_install": [
-    "$hash = @{ '64bit' = 'RegWorkshopX64'; '32bit' = 'RegWorkshop' }",
-    "$bin = $hash[$architecture]",
-    "if ($architecture -eq '64bit') {",
-    "   Remove-Item \"$dir\\RegWorkshop.exe\"",
-    "   Rename-Item \"$dir\\$bin.exe\" 'RegWorkshop.exe'",
-    "} else {",
-    "   Remove-Item $dir\\RegWorkshop.exe",
-    "}",
-    "New-Item \"$persist_dir\\RegWorkshop.ini\" -ErrorAction Ignore | Out-Null",
-    "New-Item \"$persist_dir\\rwreg.txt\" -ErrorAction Ignore | Out-Null"
-  ],
-  "bin": "RegWorkshop.exe",
-  "shortcuts": [
-    [
-      "RegWorkshop.exe",
-      "Registry Workshop"
-    ]
-  ],
-  "persist": [
-    "RegWorkshop.ini",
-    "rwreg.txt"
-  ],
-  "checkver": {
-    "url": "http://www.torchsoft.com/en/download.html",
-    "regex": ">([\\d.]+)</td>"
-  },
-  "autoupdate": {
-    "url": "http://www.torchsoft.com/download/RegistryWorkshop_chs.exe#/dl.zip"
-  },
-  "_from": "okibcn/ScoopMaster"
+    "version": "5.1.0",
+    "description": "Registry Workshop is an advanced registry editor. It is a perfect replacement for RegEdit and RegEdt32 which shipped with Windows.",
+    "homepage": "http://www.torchsoft.com",
+    "url": "http://www.torchsoft.com/download/RegistryWorkshop_chs.exe#/dl.zip",
+    "hash": "13ebf41340bab067e407e06b5de4931bb80b79cc08fb8543b2913d9f3b5f81bb",
+    "pre_install": [
+        "$hash = @{ '64bit' = 'RegWorkshopX64'; '32bit' = 'RegWorkshop' }",
+        "$bin = $hash[$architecture]",
+        "if ($architecture -eq '64bit') {",
+        "   Remove-Item \"$dir\\RegWorkshop.exe\"",
+        "   Rename-Item \"$dir\\$bin.exe\" 'RegWorkshop.exe'",
+        "} else {",
+        "   Remove-Item $dir\\RegWorkshop.exe",
+        "}",
+        "New-Item \"$persist_dir\\RegWorkshop.ini\" -ErrorAction Ignore | Out-Null",
+        "New-Item \"$persist_dir\\rwreg.txt\" -ErrorAction Ignore | Out-Null"
+    ],
+    "bin": "RegWorkshop.exe",
+    "shortcuts": [
+        [
+            "RegWorkshop.exe",
+            "Registry Workshop"
+        ]
+    ],
+    "persist": [
+        "RegWorkshop.ini",
+        "rwreg.txt"
+    ],
+    "checkver": {
+        "url": "http://www.torchsoft.com/en/download.html",
+        "regex": ">([\\d.]+)</td>"
+    },
+    "autoupdate": {
+        "url": "http://www.torchsoft.com/download/RegistryWorkshop_chs.exe#/dl.zip"
+    }
 }

@@ -1,5 +1,5 @@
 {
-    "version": "1.0.5",
+    "version": "1.1.1",
     "homepage": "https://github.com/srwi/EverythingToolbar",
     "description": "Everything integration for the Windows taskbar.",
     "license": "MIT",
@@ -12,11 +12,11 @@
         "everything": "extras/everything"
     },
     "url": [
-        "https://github.com/srwi/EverythingToolbar/releases/download/1.0.5/EverythingToolbar-1.0.5.msi",
+        "https://github.com/srwi/EverythingToolbar/releases/download/1.1.1/EverythingToolbar-1.1.1.msi",
         "https://github.com/srwi/EverythingToolbar/files/8919288/EverythingToolbar_install_uninstall.zip"
     ],
     "hash": [
-        "d1bbf650adf1ea2786bdd6944b746f762db134ef6aa02225a746e35731141e8a",
+        "971366bf8455eff46befae2c2042675c04c7f257a68c7120f2df015c77ced92c",
         "f78117a74a924cfed75a304962b251add651f4e87f9b4a552b216e2c9bcba37a"
     ],
     "pre_install": [
@@ -43,11 +43,9 @@
     "extract_dir": "EverythingToolbar",
     "checkver": {
         "script": [
-            "$ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'",
-            "$url = 'https://github.com/srwi/EverythingToolbar/wiki/Installation-per-user-(experimental)'",
-            "(Invoke-RestMethod $url -UserAgent $ua) -match 'files/(?<scriptVer>[\\w]+)' | Out-Null",
+            "(Invoke-RestMethod 'https://github.com/srwi/EverythingToolbar/wiki/Installation-per-user-(experimental)') -match 'files/(?<scriptVer>[\\w]+)' | Out-Null",
             "$scriptVersion = $Matches['scriptVer']",
-            "(Invoke-RestMethod 'https://github.com/srwi/EverythingToolbar/releases/latest' -UserAgent $ua) -match 'tag/(?<mainVer>[\\d.]+)' | Out-Null",
+            "(Invoke-RestMethod 'https://github.com/srwi/EverythingToolbar/releases/latest') -match 'tag/(?<mainVer>[\\d.]+)' | Out-Null",
             "$mainVersion = $Matches['mainVer']",
             "Write-Output \"$scriptVersion $mainVersion\""
         ],

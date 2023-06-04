@@ -1,35 +1,35 @@
 {
-  "homepage": "https://github.com/stascorp/rdpwrap",
-  "version": "1.6.2",
-  "description": "RDP Wrapper Library",
-  "url": [
-    "https://ghproxy.com/https://github.com/stascorp/rdpwrap/releases/download/v1.6.2/RDPWrap-v1.6.2.zip",
-    "https://github.com/stascorp/rdpwrap/files/3588288/autoupdate-v07.09.2019.zip#/autoupdate.zip"
-  ],
-  "hash": [
-    "35a9481ddbed5177431a9ea4bd09468fe987797d7b1231d64942d17eb54ec269",
-    "8fc586fdb2475768f23a3b6f4b5e8e9a493e042d7a3ffea6fbc7b2de65053887"
-  ],
-  "installer": {
-    "script": [
-      "if(!(is_admin)) { error \"Admin rights are required, please run 'sudo scoop install $app'\"; exit 1 }",
-      "if (Test-Path $Env:ProgramFiles\\'RDP Wrapper') {",
-      "    Remove-Item $Env:ProgramFiles\\'RDP Wrapper' -Force",
-      "}",
-      "mkdir $Env:ProgramFiles\\'RDP Wrapper'",
-      "Copy-Item -Path $dir\\* -Destination $Env:ProgramFiles\\'RDP Wrapper' -Recurse",
-      "cmd /c $Env:ProgramFiles\\'RDP Wrapper'\\install.bat",
-      "cmd /c $Env:ProgramFiles\\'RDP Wrapper'\\autoupdate.bat"
-    ]
-  },
-  "uninstaller": {
-    "script": [
-      "if(!(is_admin)) { error \"Admin rights are required, please run 'sudo scoop uninstall $app'\"; exit 1 }",
-      "if (Test-Path $Env:ProgramFiles\\'RDP Wrapper') {",
-      "    cmd /c $Env:ProgramFiles\\'RDP Wrapper'\\uninstall.bat",
-      "    Remove-Item $Env:ProgramFiles\\'RDP Wrapper' -Force",
-      "}"
-    ]
-  },
-  "_from": "okibcn/ScoopMaster"
+    "homepage": "https://github.com/sebaxakerhtc/rdpwrap",
+    "description": "sebaxakerhtc 维护的 RDP Wrapper，可以自动下载最新的 rdpwrap.ini，开箱即用。安装需要管理员权限。",
+    "license": "Apache-2.0",
+    "version": "1.8.8.8",
+    "url": [
+        "https://github.com/sebaxakerhtc/rdpwrap/releases/download/v1.8.8.8/RDPW_Uninstaller.exe",
+        "https://github.com/sebaxakerhtc/rdpwrap/releases/download/v1.8.8.8/RDPW_installer.exe"
+    ],
+    "hash": [
+        "ab66ac087a6f0c825cd4c49b282de4ae77c362c73d7664611c995de8fea8f0f6",
+        "a1471cec0639c41895b65ea5260219d30a664824cee5855fbe194078c9d9c05f"
+    ],
+    "pre_install": [
+        "if (!(is_admin)) {",
+        "    error \"Administrator rights are required to install $app.\"",
+        "    exit 1",
+        "}",
+        "SCHTASKS /DELETE /TN RDPWUpdater /F"
+    ],
+    "installer": {
+        "file": "RDPW_installer.exe",
+        "keep": true
+    },
+    "uninstaller": {
+        "file": "RDPW_Uninstaller.exe"
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "url": [
+            "https://github.com/sebaxakerhtc/rdpwrap/releases/download/v$version/RDPW_Uninstaller.exe",
+            "https://github.com/sebaxakerhtc/rdpwrap/releases/download/v$version/RDPW_installer.exe"
+        ]
+    }
 }

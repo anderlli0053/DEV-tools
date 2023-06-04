@@ -1,32 +1,38 @@
 {
+    "version": "2.8.1",
+    "description": "Fast website link checker in Go",
+    "homepage": "https://github.com/raviqqe/muffet",
+    "license": "MIT",
     "architecture": {
-        "32bit": {
-            "hash": "039b17674d5dbb4edf5d006a92b366746eb2fa608d3ba07be3fecbf3d9a77b2e",
-            "url": "https://github.com/raviqqe/muffet/releases/download/v2.7.0/muffet_2.7.0_Windows_i386.tar.gz"
-        },
         "64bit": {
-            "hash": "ff8647a8a981de8a0306face29cab3a051b63ed37655c3d63c4c52fabfb864b8",
-            "url": "https://github.com/raviqqe/muffet/releases/download/v2.7.0/muffet_2.7.0_Windows_x86_64.tar.gz"
-        }
-    },
-    "autoupdate": {
-        "architecture": {
-            "32bit": {
-                "url": "https://github.com/raviqqe/muffet/releases/download/v$version/muffet_$version_Windows_i386.tar.gz"
-            },
-            "64bit": {
-                "url": "https://github.com/raviqqe/muffet/releases/download/v$version/muffet_$version_Windows_x86_64.tar.gz"
-            }
+            "url": "https://github.com/raviqqe/muffet/releases/download/v2.8.1/muffet_2.8.1_Windows_x86_64.tar.gz",
+            "hash": "67815de35f6f730d64a87e844ffecf27a69c6039457ae69ccf80cd4498009885"
         },
-        "hash": {
-            "mode": "extract",
-            "url": "https://github.com/raviqqe/muffet/releases/download/v$version/muffet_$version_checksums.txt"
+        "32bit": {
+            "url": "https://github.com/raviqqe/muffet/releases/download/v2.8.1/muffet_2.8.1_Windows_i386.tar.gz",
+            "hash": "218ba3e39e53345e6e9303199807c1af9bcd741ac8cab5633a8eb55b33e6db68"
+        },
+        "arm64": {
+            "url": "https://github.com/raviqqe/muffet/releases/download/v2.8.1/muffet_2.8.1_Windows_ARM64.tar.gz",
+            "hash": "3894d9beeb8d629f4a144f789407d6c12c0806730a896684f4aacc31ce78de6c"
         }
     },
     "bin": "muffet.exe",
     "checkver": "github",
-    "description": "Fast website link checker in Go",
-    "homepage": "https://github.com/raviqqe/muffet",
-    "license": "MIT",
-    "version": "2.7.0"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/raviqqe/muffet/releases/download/v$version/muffet_$version_Windows_x86_64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/raviqqe/muffet/releases/download/v$version/muffet_$version_Windows_i386.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/raviqqe/muffet/releases/download/v$version/muffet_$version_Windows_ARM64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/muffet_$version_checksums.txt"
+        }
+    }
 }

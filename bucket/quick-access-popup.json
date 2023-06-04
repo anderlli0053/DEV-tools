@@ -1,39 +1,38 @@
 {
-    "version": "11.6.1.5",
-    "description": "A multi-purpose launcher and folder switcher that creates a customizable popup with favorites folders/documents paths and various actions to speed up your work.",
     "homepage": "https://www.quickaccesspopup.com/",
-    "license": "Freeware",
-    "architecture": {
-        "64bit": {
-            "installer": {
-                "script": [
-                    "Remove-Item -Force \"$dir\\QuickAccessPopup-32-bit.exe\"",
-                    "Rename-Item -Path \"$dir\\QuickAccessPopup-64-bit.exe\" -NewName 'QuickAccessPopup.exe'"
-                ]
-            }
-        },
-        "32bit": {
-            "installer": {
-                "script": [
-                    "Remove-Item -Force \"$dir\\QuickAccessPopup-64-bit.exe\"",
-                    "Rename-Item -Path \"$dir\\QuickAccessPopup-32-bit.exe\" -NewName 'QuickAccessPopup.exe'"
-                ]
-            }
-        }
-    },
+    "description": "The ideal productivity booster to access and manage your documents and control your digital work environment",
+    "version": "11.6.1.5",
+    "license": "Free",
     "url": "https://www.quickaccesspopup.com/download/quickaccesspopup.zip",
     "hash": "8cfc2f6fa5ae883cae1d0e0f80dbd5fa67ac9b8886cd179a5cba31e764ddafe5",
-    "bin": "QAPmessenger.exe",
-    "shortcuts": [
-        [
-            "QuickAccessPopup.exe",
-            "Quick Access Popup",
-            "/Working:\"$dir\\settings\""
-        ]
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\QuickAccessPopup.ini\")) { New-Item \"$dir\\QuickAccessPopup.ini\" | Out-Null }",
+        "if (!(Test-Path \"$persist_dir\\QAPconnect.ini\")) { New-Item \"$dir\\QAPconnect.ini\" | Out-Null }"
     ],
-    "persist": "settings",
+    "architecture": {
+        "64bit": {
+            "shortcuts": [
+                [
+                    "QuickAccessPopup-64-bit.exe",
+                    "QuickAccessPopup"
+                ]
+            ]
+        },
+        "32bit": {
+            "shortcuts": [
+                [
+                    "QuickAccessPopup-32-bit.exe",
+                    "QuickAccessPopup"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "QuickAccessPopup.ini",
+        "QAPconnect.ini"
+    ],
     "checkver": {
-        "url": "https://www.quickaccesspopup.com/change-log/",
+        "url": "https://www.quickaccesspopup.com/download-quick-access-popup/",
         "regex": "Version: ([\\d.]+)"
     },
     "autoupdate": {

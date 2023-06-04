@@ -1,13 +1,30 @@
 {
- "autoupdate": {
-  "url": "https://github.com/ausaki/subfinder/releases/download/v$version/SubFinder.exe"
- },
- "bin": "SubFinder.exe",
- "checkver": "github",
- "description": "\u5b57\u5e55\u67e5\u627e\u5668",
- "hash": "dd3abaad0ad1b66dc1d2b01f163a961f33745d21f65493cf2d76149fb0dcd012",
- "homepage": "https://github.com/ausaki/subfinder",
- "license": "MIT",
- "url": "https://github.com/ausaki/subfinder/releases/download/v2.2.1/SubFinder.exe",
- "version": "2.2.1"
+    "version": "2.5.9",
+    "description": "Subfinder is a subdomain discovery tool that discovers valid subdomains for websites. Designed as a passive framework to be useful for bug bounties and safe for penetration testing",
+    "homepage": "https://projectdiscovery.io",
+    "license": "MIT",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/projectdiscovery/subfinder/releases/download/v2.5.9/subfinder_2.5.9_windows_386.zip",
+            "hash": "76b11d8c494f3c11df618f726b08292eb6c07545fbbcf96a2edf9c0382567e15"
+        },
+        "64bit": {
+            "url": "https://github.com/projectdiscovery/subfinder/releases/download/v2.5.9/subfinder_2.5.9_windows_amd64.zip",
+            "hash": "7cd66a01dbd95e02ef446b4a2f42b5ed660d32a25ae270a9307fa96afc7063b4"
+        }
+    },
+    "bin": "subfinder.exe",
+    "checkver": {
+        "github": "https://github.com/projectdiscovery/subfinder"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/projectdiscovery/subfinder/releases/download/v$version/subfinder_$version_windows_386.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/projectdiscovery/subfinder/releases/download/v$version/subfinder_$version_windows_amd64.zip"
+            }
+        }
+    }
 }

@@ -1,55 +1,48 @@
 {
-    "version": "1164",
-    "description": "Nintendo DS emulator",
     "homepage": "https://desmume.org",
-    "license": {
-        "url": "https://github.com/TASEmulators/desmume/blob/master/license.txt",
-        "identifier": "GPL-2.0"
-    },
+    "version": "nightly-2023-05-28",
+    "description": "Nintendo DS Emulator",
+    "pre_install": [
+        "$ini = \"$dir\\desmume.ini\"",
+        "Rename-Item \"$dir\\DeSmuME-VS2019-x64-Release.exe\" \"$dir\\desmume.exe\" | Out-Null",
+        "if (-not (Test-Path \"$ini\")) {",
+        "  New-Item \"$ini\" | Out-Null",
+        "}"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://nightly.link/TASEmulators/desmume/actions/runs/4790260718/desmume-win-x64.zip",
-            "hash": "2c305db914bc9f01ae66b1e98af9aa9aeccc717bff0f37c3a381065baee99555",
-            "bin": [
+            "url": "https://nightly.link/TASEmulators/desmume/workflows/build_win/master/desmume-win-x64.zip#/desmume-x64-0.9.13-nightly-2023-05-28.zip",
+            "hash": "0b1d1dbb68396e2ccd425f81c486b4b986ab28ed406a7ff9903d307f0d662477",
+            "bin": "desmume.exe",
+            "shortcuts": [
                 [
-                    "DeSmuME-VS2019-x64-Release.exe",
-                    "DeSmuME"
+                    "desmume.exe",
+                    "NDS"
                 ]
             ]
         }
     },
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\desmume.ini\")) {",
-        "    New-Item \"$dir\\desmume.ini\" -Type File | Out-Null",
-        "}"
-    ],
-    "shortcuts": [
-        [
-            "DeSmuME-VS2019-x64-Release.exe",
-            "DeSmuME"
-        ]
-    ],
     "persist": [
-        "AviFiles",
         "Battery",
         "Cheats",
-        "Firmware",
-        "Lua",
-        "Roms",
-        "Screenshots",
-        "SramImportExport",
         "States",
         "StateSlots",
+        "Lua",
+        "AviFiles",
         "desmume.ini"
     ],
     "checkver": {
-        "url": "https://nightly.link/TASEmulators/desmume/workflows/build_win/master/desmume-win-x64",
-        "regex": "(?smi)runs/(?<run>\\d+)/desmume-win-x64\\.zip.*pipelines/[\\d]+/runs/([\\d]+)/"
+        "url": "https://api.github.com/repos/TASEmulators/desmume/commits/master",
+        "jsonpath": {
+            "version": "$.commit.author.date"
+        },
+        "regex": "(\\d+)\\/(\\d+)\\/(\\d+)",
+        "replace": "nightly-${3}-${2}-${1}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://nightly.link/TASEmulators/desmume/actions/runs/$matchRun/desmume-win-x64.zip"
+                "url": "https://nightly.link/TASEmulators/desmume/workflows/build_win/master/desmume-win-x64.zip#/desmume-x64-0.9.13-$version.zip"
             }
         }
     }

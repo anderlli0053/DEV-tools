@@ -1,28 +1,33 @@
 {
- "autoupdate": {
-  "url": "$matchUrl#/dl.7z"
- },
- "bin": "YoudaoDict.exe",
- "checkver": {
-  "jsonpath": "$[?(@.name == 'youdao-dict')].version_redirect",
-  "regex": "([\\d.]+)#(?<url>.*)",
-  "url": "https://github.com/Ryanjiena/MetaVersion/raw/main/header.json"
- },
- "description": "Youdao Dictionary has typical acoustic translation, smart screen word identification, real-time synchronization with network up-to-date vocabulary, and other word look-up features.",
- "hash": "5027f16777728d404baea9fffd825d28b008084670209978b387399abbcbf549",
- "homepage": "https://cidian.youdao.com",
- "license": {
-  "identifier": "Proprietary",
-  "url": "http://xue.youdao.com/sw/m/1191866"
- },
- "post_install": "@('$PLUGINSDIR', '[NSIS].nsi', 'uninst.exe', '$_67_') | ForEach-Object { Remove-Item \"$dir\\$_\" -ErrorAction 'SilentlyContinue' -Force -Recurse }",
- "pre_install": "Expand-7ZipArchive \"$dir\\`$PLUGINSDIR\\dict.7z\" \"$dir\"",
- "shortcuts": [
-  [
-   "YoudaoDict.exe",
-   "Youdao\\Youdao Dict"
-  ]
- ],
- "url": "https://codown.youdao.com/cidian/static/9.1/20221027/YoudaoDictSetup.exe#/dl.7z",
- "version": "9.1.2.0"
+    "version": "10.0.0.0",
+    "description": "网易有道词典",
+    "homepage": "https://cidian.youdao.com/",
+    "license": "freeware",
+    "architecture": {
+        "64bit": {
+            "url": "http://cidian.youdao.com/download/YoudaoDict.exe#/dl.7z",
+            "hash": "eb4e17a7e4e515ad643e4b8e431228e630e6817b71715c1db691a86815c27b12"
+        }
+    },
+    "pre_install": [
+        "Expand-7ZipArchive \"$dir\\`$PLUGINSDIR\\dict.7z\" \"$dir\"",
+        "Remove-Item -Recurse -Force \"$dir\\`$PLUGINSDIR\""
+    ],
+    "bin": "YoudaoDict.exe",
+    "shortcuts": [
+        [
+            "YoudaoDict.exe",
+            "网易有道词典"
+        ]
+    ],
+    "checkver": {
+        "url": "https://cidian.youdao.com/history.html",
+        "regex": "<h4>v(\\d+.+)版<span>"
+    },
+    "autoupdate": {
+        "url": "http://cidian.youdao.com/download/YoudaoDict.exe#/dl.7z",
+        "hash": {
+            "mode": "download"
+        }
+    }
 }

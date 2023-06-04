@@ -1,42 +1,41 @@
 {
-  "version": "20230404.7125539",
-  "description": "A command line tool that supports bilibili video downloads, maintained by nilaoda.",
-  "homepage": "https://github.com/nilaoda/BBDown",
-  "license": {
-    "identifier": "MIT",
-    "url": "https://github.com/nilaoda/BBDown/raw/master/LICENSE"
-  },
-  "notes": [
-    "This software requires external programs for mixing:",
-    "- Normal video: ffmpeg, or mp4box",
-    "- Dolby Vision: ffmpeg5.0 or higher or the new mp4box."
-  ],
-  "depends": "aria2",
-  "suggest": {
-    "ffmpeg": [
-      "ffmpeg",
-      "ffmpeg-shared"
+    "version": "20230603.ecd6258",
+    "description": "A command line tool that supports bilibili video downloads, maintained by nilaoda.",
+    "homepage": "https://github.com/nilaoda/BBDown",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/nilaoda/BBDown/raw/master/LICENSE"
+    },
+    "notes": [
+        "This software requires external programs for mixing:",
+        "- Normal video: ffmpeg, or mp4box",
+        "- Dolby Vision: ffmpeg5.0 or higher or the new mp4box."
     ],
-    "mp4box": "gpac"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://nightly.link/nilaoda/BBDown/actions/runs/4603081293/BBDown_win-x64.zip",
-      "hash": "4fee40c5c7dd60c825356c6ce3e5dfec4370fd7baa7815f82f009410dc33a242"
-    }
-  },
-  "bin": "BBDown.exe",
-  "checkver": {
-    "url": "https://scoop-apps.vercel.app/nilaoda/BBDown",
-    "regex": "(?sm)/nilaoda/BBDown/actions/runs/(?<runid>\\d+).+datetime=\"(?<year>\\d+).(?<month>\\d+).(?<day>\\d+).*?commit/(?<sha>[0-9a-f]{7})",
-    "replace": "${year}${month}${day}.${sha}"
-  },
-  "autoupdate": {
+    "depends": "aria2",
+    "suggest": {
+        "ffmpeg": [
+            "ffmpeg",
+            "ffmpeg-shared"
+        ],
+        "mp4box": "gpac"
+    },
     "architecture": {
-      "64bit": {
-        "url": "https://nightly.link/nilaoda/BBDown/actions/runs/$matchRunid/BBDown_win-x64.zip"
-      }
+        "64bit": {
+            "url": "https://nightly.link/nilaoda/BBDown/actions/runs/5162725260/BBDown_win-x64.zip",
+            "hash": "e61b6f089bbca12580c352480f1d6e80ce8b3a6dacfd0fe38fe0a45f4ca5d9e6"
+        }
+    },
+    "bin": "BBDown.exe",
+    "checkver": {
+        "url": "https://scoop-apps.vercel.app/nilaoda/BBDown",
+        "regex": "(?sm)/nilaoda/BBDown/actions/runs/(?<runid>\\d+).+datetime=\"(?<year>\\d+).(?<month>\\d+).(?<day>\\d+).*?commit/(?<sha>[0-9a-f]{7})",
+        "replace": "${year}${month}${day}.${sha}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nightly.link/nilaoda/BBDown/actions/runs/$matchRunid/BBDown_win-x64.zip"
+            }
+        }
     }
-  },
-  "_from": "okibcn/ScoopMaster"
 }

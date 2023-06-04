@@ -1,43 +1,21 @@
 {
-    "version": "ccfdfb1670",
-    "description": "Globally set File Explorer folder views (*nightly* build)",
+    "version": "2.74",
+    "description": "WinSetView is a tool that will let you easily set File Explorer default folder views.",
     "homepage": "https://github.com/LesFerch/WinSetView",
-    "license": "MIT",
-    "url": "https://ghproxy.com/https://github.com/LesFerch/WinSetView/archive/ccfdfb167075ee55fa618d5889c992506178f3a8.zip",
-    "hash": "fa607e40ef31b887cd2eb3c54b397c38ecd69f7245b59b4f2a2b099d6d283695",
-    "extract_dir": "WinSetView-ccfdfb167075ee55fa618d5889c992506178f3a8",
-    "pre_install": "$manifest.persist | ForEach-Object { if (-not (Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" -Force -ItemType \"Directory\" | Out-Null } }",
-    "post_install": [
-        "$mshta = \"C:\\Windows\\System32\\mshta.exe\"",
-        "$winsetviewhta = \"\"\"$dir\\WinSetView.hta\"\"\"",
-        "# Shim creation",
-        "shim $mshta $global \"WinSetView\" $winsetviewhta",
-        "# Shortcut creation",
-        "$scoop_startmenu_folder = shortcut_folder $global",
-        "$wsShell = (New-Object -ComObject WScript.Shell).CreateShortcut(\"$scoop_startmenu_folder\\WinSetView.lnk\")",
-        "$wsShell.TargetPath = \"$mshta\"",
-        "$wsShell.WorkingDirectory = \"\"\"$dir\"\"\"",
-        "$wsShell.Arguments = $winsetviewhta",
-        "$wsShell.IconLocation = \"$dir\\AppParts\\WinSetView.ico\"",
-        "$wsShell.Save()"
-    ],
-    "post_uninstall": [
-        "rm_shim WinSetView (shimdir $global) $app",
-        "$scoop_startmenu_folder = shortcut_folder $global",
-        "Remove-Item \"$scoop_startmenu_folder\\WinSetView.lnk\" -Force"
-    ],
-    "persist": [
-        "AppData\\Backup",
-        "Tools\\WinViewBak"
+    "url": "https://github.com/LesFerch/WinSetView/archive/refs/tags/2.74.zip",
+    "hash": "c16916b75fe34cba96d0e0d9ab2b1954f54378733e2e9a91b3b6a04e65c134eb",
+    "extract_dir": "WinSetView-2.74",
+    "shortcuts": [
+        [
+            "WinSetView.exe",
+            "WinSetView"
+        ]
     ],
     "checkver": {
-        "url": "https://github.com/LesFerch/WinSetView/commits/main.atom",
-        "regex": "(?ms)<id[^>]*>\\s*\\S+/(?<sha>(?<shortSha>[0-9a-f]{10})[0-9a-f]*)\\s*</id>",
-        "replace": "${shortSha}"
+        "github": "https://github.com/LesFerch/WinSetView"
     },
     "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/LesFerch/WinSetView/archive/$matchSha.zip",
-        "extract_dir": "WinSetView-$matchSha"
-    },
-    "_from": "okibcn/ScoopMaster"
+        "url": "https://github.com/LesFerch/WinSetView/archive/refs/tags/$version.zip",
+        "extract_dir": "WinSetView-$version"
+    }
 }

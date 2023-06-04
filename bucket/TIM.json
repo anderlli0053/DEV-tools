@@ -1,26 +1,42 @@
 {
- "autoupdate": {
-  "hash": {
-   "regex": "$sha256",
-   "url": "$url.sha256"
-  },
-  "url": "https://scoop-zapps.ziiyc.com/d/TIM/TIM-$version.7z"
- },
- "checkver": {
-  "regex": "([\\d.]+)",
-  "url": "https://raw.githubusercontent.com/kkzzhizhou/scoop-zapps/master/versions/TIM.latest"
- },
- "description": "\u7eff\u8272\u7cbe\u7b80\u7248",
- "extract_dir": "TIM",
- "hash": "10e033cf7e55d8ba13480b5cb3f53156b1374569fda4572489f49e84255e9f17",
- "homepage": "https://www.ghpym.com/pctim.html",
- "license": "MIT",
- "shortcuts": [
-  [
-   "Bin/TIM.exe",
-   "TIM"
-  ]
- ],
- "url": "https://scoop-zapps.ziiyc.com/d/TIM/TIM-3.3.9.22051.7z",
- "version": "3.3.9.22051"
+    "version": "3.4.7.22084",
+    "description": "An lightweight instant messaging software service developed by Tencent",
+    "homepage": "https://tim.qq.com/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://ti.qq.com/tim/serverinfo.html"
+    },
+    "notes": [
+        "Scoop doesn't persist your TIM data, by default they are stored in: ",
+        "'%UserProfile%\\Documents\\Tencent Files'.",
+        "Files produced at runtime leaves in '%AppData%\\Tencent'."
+    ],
+    "url": "https://webcdn.m.qq.com/spcmgr/download/TIM3.4.7.22084.exe#/dl.exe",
+    "hash": "5a2ae169a16d309ff79e0584abc87cc2d396c8e205ab1f977d398b8e5f38d3de",
+    "shortcuts": [
+        [
+            "Bin\\QQScLauncher.exe",
+            "TIM"
+        ]
+    ],
+    "installer": {
+        "script": [
+            "Expand-7zipArchive \"$dir\\$fname\" -Switches '-t*' -Removal",
+            "Get-Item \"$dir\\*\" -Exclude .rsrc | Remove-Item",
+            "Expand-7zipArchive \"$dir\\.rsrc\\2052\\MSI\\101\" \"$dir\" -ExtractDir 'Files'",
+            "Expand-7zipArchive \"$dir\\.rsrc\\2052\\MSI\\102\" \"$dir\\temp\"",
+            "'vcruntime140.dll', 'msvcp140.dll', 'msvcr100.dll', 'vcomp140.dll', 'msvcp100.dll' | ForEach-Object {",
+            "  Move-Item \"$dir\\temp\\$_\" \"$dir\\Bin\\\"",
+            "}",
+            "Expand-7zipArchive \"$dir\\temp\\TXSSO\\TXSSOSetup.exe\" \"$dir\\Bin\\TXSSO\" -ExtractDir 'TXSSO'",
+            "Remove-Item \"$dir\\.rsrc\", \"$dir\\temp\" -Recurse"
+        ]
+    },
+    "checkver": {
+        "url": "https://pc.qq.com/detail/18/detail_23258.html",
+        "regex": "TIM([\\d.]+).exe"
+    },
+    "autoupdate": {
+        "url": "https://webcdn.m.qq.com/spcmgr/download/TIM$version.exe#/dl.exe"
+    }
 }

@@ -1,23 +1,31 @@
 {
- "autoupdate": {
-  "hash": {
-   "regex": "$sha256",
-   "url": "$url.sha256"
-  },
-  "url": "https://scoop-zapps.ziiyc.com/d/FileMenuTools/FileMenuTools-$version.7z"
- },
- "checkver": {
-  "regex": "([\\d.]+)",
-  "url": "https://raw.githubusercontent.com/kkzzhizhou/scoop-zapps/master/versions/FileMenuTools.latest"
- },
- "hash": "67d5da7d9cf469ab77126c10773919fb8cdceacf4a1acf06f3d2c3892c39fa65",
- "pesiset": "Data",
- "shortcuts": [
-  [
-   "FileMenuTools.exe",
-   "FileMenuTools Portable"
-  ]
- ],
- "url": "https://scoop-zapps.ziiyc.com/d/FileMenuTools/FileMenuTools-7.7.0.0.7z",
- "version": "7.7.0.0"
+    "version": "8.1",
+    "description": "Customize the context menu of Windows File Explorer",
+    "homepage": "https://lopesoft.com/index.php/en/filemenutools",
+    "license": "Proprietary",
+    "url": "https://lopesoft.com/fmtools/FileMenuTools-portable.exe#/dl.7z",
+    "hash": "c9e5aa71670e3a81aa22c355daf3053eff7b74d8c3947badc4aa1f2b959de798",
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
+    "architecture": {
+        "32bit": {
+            "bin": "App\\FileMenu Tools\\cmdfmt.exe"
+        },
+        "64bit": {
+            "bin": "App\\FileMenu Tools\\cmdfmt64.exe"
+        }
+    },
+    "shortcuts": [
+        [
+            "FileMenuTools.exe",
+            "FileMenuTools"
+        ]
+    ],
+    "persist": "Data",
+    "checkver": {
+        "url": "https://www.lopesoft.com/fmtools/version.txt/",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://lopesoft.com/fmtools/FileMenuTools-portable.exe#/dl.7z"
+    }
 }

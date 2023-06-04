@@ -1,6 +1,6 @@
 {
     "version": "0.19.1",
-    "description": "A self-hosted toolkit for archiving webpages to the Internet Archive, archive.today, IPFS, and local file systems",
+    "description": "A toolkit for snapshot webpage to Internet Archive, archive.today, IPFS and beyond",
     "homepage": "https://github.com/wabarc/wayback",
     "license": "GPL-3.0-only",
     "architecture": {
@@ -11,15 +11,15 @@
         "32bit": {
             "url": "https://github.com/wabarc/wayback/releases/download/v0.19.1/wayback-windows-386-0.19.1.zip",
             "hash": "de3a120a90e9b5fad8eab7dc06f3e24f01038e9bde837df9871c687888583fde"
-        },
-        "arm64": {
-            "url": "https://github.com/wabarc/wayback/releases/download/v0.19.1/wayback-windows-arm64-0.19.1.zip",
-            "hash": "4f086a9244aad50680180a5952200698f05ec440c043d258138cc21df225dafe"
         }
     },
-    "pre_install": "Rename-Item \"$dir\\wayback*.exe\" \"$dir\\wayback.exe\"",
+    "pre_install": [
+        "Get-ChildItem \"$dir\\wayback-windows*.exe\" | Rename-Item -NewName 'wayback.exe'",
+        "if(!(Test-Path \"$persist_dir\\wayback.conf\")) { New-Item \"$dir\\wayback.conf\" | Out-Null }"
+    ],
     "bin": "wayback.exe",
     "checkver": "github",
+    "persist": "wayback.conf",
     "autoupdate": {
         "architecture": {
             "64bit": {
@@ -27,13 +27,7 @@
             },
             "32bit": {
                 "url": "https://github.com/wabarc/wayback/releases/download/v$version/wayback-windows-386-$version.zip"
-            },
-            "arm64": {
-                "url": "https://github.com/wabarc/wayback/releases/download/v$version/wayback-windows-arm64-$version.zip"
             }
-        },
-        "hash": {
-            "url": "https://github.com/wabarc/wayback/releases/download/v$version/wayback-$version-checksums.txt"
         }
     }
 }
