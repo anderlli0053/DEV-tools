@@ -1,5 +1,5 @@
 {
-    "version": "4.5.3",
+    "version": "4.3.9",
     "description": "Free and reliable P2P Bittorent client.",
     "homepage": "https://www.qbittorrent.org/",
     "license": {
@@ -8,12 +8,16 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-4.5.3/qbittorrent_4.5.3_x64_setup.exe#/dl.7z",
-            "hash": "sha1:1ca7caf1192d0a4be0eb9cf8be44b79f2d08958d"
+            "url": "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-4.3.9/qbittorrent_4.3.9_x64_setup.exe#/dl.7z",
+            "hash": "e1c63b0b1b1ea646bad7bb844426fab55c7178de167268ac8d76190ccfebf1c8"
+        },
+        "32bit": {
+            "url": "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-4.3.9/qbittorrent_4.3.9_setup.exe#/dl.7z",
+            "hash": "01487a0e2594a5065e4d780eb012dcd0dafadc218d1b6aba69528bd6ede6afb5"
         }
     },
     "pre_install": [
-        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst.exe\" -Force -Recurse",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
         "if ((!(Test-Path \"$persist_dir\\profile\")) -and ((Test-Path \"$persist_dir\\..\\qbittorrent-portable\\profile\") -or (Test-Path \"$env:APPDATA\\qBittorrent\"))) {",
         "    Write-Host \"Scoop is migrating qbittorrent to use portable mode by default.\" -ForegroundColor Yellow",
         "    Write-Host \"For details, see: https://github.com/ScoopInstaller/Extras/issues/5845\" -ForegroundColor Yellow",
@@ -44,12 +48,24 @@
     ],
     "persist": "profile",
     "checkver": {
-        "sourceforge": "qbittorrent/qbittorrent-win32"
+        "url": "https://www.qbittorrent.org/download.php",
+        "regex": "Latest:\\s+v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-$version/qbittorrent_$version_x64_setup.exe#/dl.7z"
+                "url": "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-$version/qbittorrent_$version_x64_setup.exe#/dl.7z",
+                "hash": {
+                    "url": "https://www.qbittorrent.org/download.php",
+                    "regex": "64-bit.*\\s+.*<code>$checksum</code>"
+                }
+            },
+            "32bit": {
+                "url": "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent-win32/qbittorrent-$version/qbittorrent_$version_setup.exe#/dl.7z",
+                "hash": {
+                    "url": "https://www.qbittorrent.org/download.php",
+                    "regex": "32-bit.*\\s+.*<code>$checksum</code>"
+                }
             }
         }
     }

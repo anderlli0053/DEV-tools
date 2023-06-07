@@ -1,40 +1,40 @@
 {
     "version": "6.2.0",
-    "description": "NatTypeTester is a tool that tests out what your NAT type is.",
+    "description": "NAT type tester (STUN).",
     "homepage": "https://github.com/HMBSbige/NatTypeTester",
     "license": "MIT",
     "url": "https://github.com/HMBSbige/NatTypeTester/releases/download/6.2.0/NatTypeTester-6.2.0.7z",
     "hash": "7bd1e7ed40ea7e6e194c23b6f5249498a6745d9dcab6285ba060050dc592bed0",
+    "pre_install": [
+        "Move-Item -Path $dir\\NatTypeTester\\* -Destination $dir\\",
+        "Remove-Item -Recurse $dir\\NatTypeTester"
+    ],
     "architecture": {
-        "64bit": {
-            "installer": {
-                "script": [
-                    "Rename-Item -Path \"$dir\\NatTypeTester-x64.exe\" -NewName 'NatTypeTester.exe'",
-                    "Remove-Item -Force \"$dir\\NatTypeTester-*.exe\""
-                ]
-            }
-        },
         "32bit": {
-            "installer": {
-                "script": [
-                    "Rename-Item -Path \"$dir\\NatTypeTester-x86.exe\" -NewName 'NatTypeTester.exe'",
-                    "Remove-Item -Force \"$dir\\NatTypeTester-*.exe\""
+            "shortcuts": [
+                [
+                    "NatTypeTester-x86.exe",
+                    "NAT Type Tester"
                 ]
-            }
+            ]
+        },
+        "64bit": {
+            "shortcuts": [
+                [
+                    "NatTypeTester-x64.exe",
+                    "NAT Type Tester"
+                ]
+            ]
         }
     },
-    "suggest": {
-        "dotnet-runtime": "windowsdesktop-runtime"
+    "checkver": {
+        "github": "https://github.com/HMBSbige/NatTypeTester"
     },
-    "extract_dir": "NatTypeTester",
-    "shortcuts": [
-        [
-            "NatTypeTester.exe",
-            "NatTypeTester"
-        ]
-    ],
-    "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/HMBSbige/NatTypeTester/releases/download/$version/NatTypeTester-$version.7z"
+        "url": "https://github.com/HMBSbige/NatTypeTester/releases/download/$version/NatTypeTester-$version.7z",
+        "hash": {
+            "url": "https://github.com/HMBSbige/NatTypeTester/releases/tag/$version",
+            "find": "7z\\s([A-Fa-f0-9]{64})"
+        }
     }
 }

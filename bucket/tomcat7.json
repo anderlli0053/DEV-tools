@@ -1,10 +1,32 @@
 {
+    "homepage": "https://tomcat.apache.org",
     "version": "7.0.109",
-    "description": "Tomcat, an open source implementation of the Java Servlet, JavaServer Pages, Java Expression Language and Java WebSocket technologies. (version 7)",
-    "homepage": "https://tomcat.apache.org/",
-    "license": "Apache-2.0",
+    "checkver": {
+        "url": "https://archive.apache.org/dist/tomcat/tomcat-7/?C=M;O=D",
+        "re": "v(?<version>[\\d.]+)"
+    },
+    "autoupdate": {
+        "extract_dir": "apache-tomcat-$version",
+        "architecture": {
+            "32bit": {
+                "url": "https://archive.apache.org/dist/tomcat/tomcat-7/v$version/bin/apache-tomcat-$version-windows-x86.zip"
+            },
+            "64bit": {
+                "url": "https://archive.apache.org/dist/tomcat/tomcat-7/v$version/bin/apache-tomcat-$version-windows-x64.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha512"
+        }
+    },
+    "extract_dir": "apache-tomcat-7.0.109",
+    "bin": "bin\\catalina.bat",
+    "env_set": {
+        "CATALINA_HOME": "$dir",
+        "CATALINA_BASE": "$dir"
+    },
     "suggest": {
-        "JDK": "java/openjdk"
+        "JRE": "java/openjdk"
     },
     "architecture": {
         "64bit": {
@@ -15,15 +37,5 @@
             "url": "https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.109/bin/apache-tomcat-7.0.109-windows-x86.zip",
             "hash": "sha512:e3ad4fb5c736092f4783a1285b8589eb610c21077883445a0e769b110a1f4e6da653ba671c3d55f25e4033beff683b4858dfa9f1e319819ebe6f0cb6aef2395a"
         }
-    },
-    "extract_dir": "apache-tomcat-7.0.109",
-    "env_set": {
-        "CATALINA_BASE": "$dir",
-        "CATALINA_HOME": "$dir"
-    },
-    "bin": "bin\\catalina.bat",
-    "persist": [
-        "conf",
-        "webapps"
-    ]
+    }
 }

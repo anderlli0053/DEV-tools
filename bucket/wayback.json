@@ -13,20 +13,24 @@
             "hash": "de3a120a90e9b5fad8eab7dc06f3e24f01038e9bde837df9871c687888583fde"
         }
     },
-    "pre_install": [
-        "Get-ChildItem \"$dir\\wayback-windows*.exe\" | Rename-Item -NewName 'wayback.exe'",
-        "if(!(Test-Path \"$persist_dir\\wayback.conf\")) { New-Item \"$dir\\wayback.conf\" | Out-Null }"
-    ],
+    "pre_install": "Rename-Item \"$dir\\wayback*.exe\" \"$dir\\wayback.exe\"",
     "bin": "wayback.exe",
     "checkver": "github",
-    "persist": "wayback.conf",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/wabarc/wayback/releases/download/v$version/wayback-windows-amd64-$version.zip"
+                "url": "https://github.com/wabarc/wayback/releases/download/v$version/wayback-windows-amd64-$version.zip",
+                "hash": {
+                    "url": "https://github.com/wabarc/wayback/releases/tag/v$version",
+                    "regex": "$sha256.*?wayback-windows-amd64"
+                }
             },
             "32bit": {
-                "url": "https://github.com/wabarc/wayback/releases/download/v$version/wayback-windows-386-$version.zip"
+                "url": "https://github.com/wabarc/wayback/releases/download/v$version/wayback-windows-386-$version.zip",
+                "hash": {
+                    "url": "https://github.com/wabarc/wayback/releases/tag/v$version",
+                    "regex": "$sha256.*?wayback-windows-386"
+                }
             }
         }
     }

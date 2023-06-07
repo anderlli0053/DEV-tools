@@ -1,5 +1,5 @@
 {
-    "version": "5.14.8.16213",
+    "version": "5.8.0.1324",
     "description": "Video and audio conferencing, chat, and webinars",
     "homepage": "https://zoom.us",
     "license": {
@@ -8,24 +8,19 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://cdn.zoom.us/prod/5.14.8.16213/x64/ZoomInstallerFull.exe#/dl.7z",
-            "hash": "69044dbd6f0828d77395943c6638ec29018c1bf62914ef058ab58f51fc9448ce",
-            "pre_install": "Expand-7zipArchive \"$dir\\ZoomFull_Sip.cab\" -Removal"
+            "url": "https://zoom.us/client/5.8.0.1324/ZoomInstaller.exe?archType=x64#/dl.7z",
+            "hash": "8bcf98adba87a1ea241bf507b0b9f03672ace64cc9425006dda6057a4591c621"
         },
         "32bit": {
-            "url": "https://cdn.zoom.us/prod/5.14.8.16213/ZoomInstaller.exe#/dl.7z",
-            "hash": "f816bed71da931036e5912ac15ef09d897e9128cea35aa2a6bcc3d632f573eb2",
-            "pre_install": "Expand-7zipArchive \"$dir\\Zoom.msi\" -Removal"
-        },
-        "arm64": {
-            "url": "https://cdn.zoom.us/prod/5.14.8.16213/arm64/ZoomInstallerFull.exe#/dl.7z",
-            "hash": "dbc64464df6a64c0b5e29a89debd731c4197d730f2cb4ab4df2cdb9f123d9626",
-            "pre_install": "Expand-7zipArchive \"$dir\\ZoomFull_Sip.cab\" -Removal"
+            "url": "https://zoom.us/client/5.8.0.1324/ZoomInstaller.exe?archType=x86#/dl.7z",
+            "hash": "747d7ae29f972db3967fe93de4140711ad761631692502bdb085eff1d987cfa9"
         }
     },
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\Zoom.msi\" -Removal",
+        "Remove-Item \"$dir\\Install*\""
+    ],
     "post_install": [
-        "Expand-7zipArchive \"$dir\\win10rt.7z\" -Removal",
-        "Remove-Item \"$dir\\Install*\"",
         "Write-Host \"Registering zoommtg:// protocol handler\"",
         "$regpath = \"HKCU:\\SOFTWARE\\Classes\\zoommtg\"",
         "New-Item -Path $regpath -Value \"Zoom (Application Name)\" -Force | Out-Null",
@@ -46,19 +41,17 @@
         ]
     ],
     "checkver": {
-        "url": "https://www.zoom.us/rest/download?os=win",
-        "jsonpath": "$.result.downloadVO.zoom.version"
+        "url": "https://support.zoom.us/hc/en-us/articles/201361953-New-Updates-for-Windows",
+        "regex": "version\\s*([\\d.]+)\\s+\\((\\d+)\\)",
+        "replace": "$1.$2"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cdn.zoom.us/prod/$version/x64/ZoomInstallerFull.exe#/dl.7z"
+                "url": "https://zoom.us/client/$version/ZoomInstaller.exe?archType=x64#/dl.7z"
             },
             "32bit": {
-                "url": "https://cdn.zoom.us/prod/$version/ZoomInstaller.exe#/dl.7z"
-            },
-            "arm64": {
-                "url": "https://cdn.zoom.us/prod/$version/arm64/ZoomInstallerFull.exe#/dl.7z"
+                "url": "https://zoom.us/client/$version/ZoomInstaller.exe?archType=x86#/dl.7z"
             }
         }
     }

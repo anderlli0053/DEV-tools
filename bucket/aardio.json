@@ -1,30 +1,26 @@
 {
     "version": "35.69.2",
-    "description": "aardio | flexible and powerful dynamic language\n aardio | 灵活而强大的动态语言",
+    "description": "aardio 编程语言，专注于桌面软件快速开发",
     "homepage": "https://www.aardio.com/",
-    "license": "Unknown",
-    "notes": [
-
-    ],
+    "license": "Freeware",
     "url": "https://ide.update.aardio.com/releases/aardio.7z",
     "hash": "a3c99fa58f63340b1e1c39ab94dff9745b7a6399ecda098317f63425587d2de1",
-    "persist": [
-        "config",
-        "project"
-    ],
+    "bin": "aardio.exe",
     "shortcuts": [
         [
             "aardio.exe",
             "aardio"
         ]
     ],
-    "pre_uninstall": [
-        "sudo taskKill /f /im aardio.exe",
-        "Start-Sleep -Seconds 1"
+    "persist": [
+        "config",
+        "download",
+        "project",
+        "codes\\我的代码段"
     ],
     "checkver": {
-        "url": "https://ide.update.aardio.com/log/",
-        "regex": "aardio v([\\d.]+)"
+        "url": "http://ide.update.aardio.com/check/",
+        "jsonpath": "$.version"
     },
     "autoupdate": {
         "url": "https://ide.update.aardio.com/releases/aardio.7z"

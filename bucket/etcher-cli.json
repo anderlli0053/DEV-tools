@@ -1,23 +1,29 @@
 {
-    "version": "1.4.9",
-    "description": "CLI for balena Etcher (no longer updated)",
-    "homepage": "https://www.balena.io/etcher/",
-    "license": "Apache-2.0",
-    "notes": "'etcher-cli' is outdated and removed from newer 'etcher' releases, please use 'etcher' GUI edition instead.",
+    "homepage": "https://etcher.io/cli",
+    "license": "https://github.com/resin-io/etcher/blob/master/LICENSE",
+    "version": "1.2.1",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/balena-io/etcher/releases/download/v1.4.9/balena-etcher-cli-1.4.9-windows-x64.zip",
-            "hash": "a3efeab1ee775dab6d07405e0c7f6f0fdd36a544fd5cba80cd387ffc1e305afc"
+            "url": "https://resin-production-downloads.s3.amazonaws.com/etcher/1.2.1/Etcher-cli-1.2.1-win32-x64.zip",
+            "hash": "9c01c4b42d50a3254057ede7c15822169d5faf015b0e1d51e1276fd8d5c4bd15"
         },
         "32bit": {
-            "url": "https://github.com/balena-io/etcher/releases/download/v1.4.9/balena-etcher-cli-1.4.9-windows-x86.zip",
-            "hash": "76812251fb621b0f0ff536a1527deeffb17f13377f892c58800fcdf1cf8bbcc5"
+            "url": "https://resin-production-downloads.s3.amazonaws.com/etcher/1.2.1/Etcher-cli-1.2.1-win32-x86.zip",
+            "hash": "6437734b197b3cc1d2c96c108fc3ae2d8a48652ca3ba43b62a50f72d006041f3"
         }
     },
-    "bin": [
-        [
-            "balena-etcher.exe",
-            "etcher"
-        ]
-    ]
+    "bin": "etcher.exe",
+    "checkver": {
+        "github": "https://github.com/resin-io/etcher"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://resin-production-downloads.s3.amazonaws.com/etcher/$version/Etcher-cli-$version-win32-x64.zip"
+            },
+            "32bit": {
+                "url": "https://resin-production-downloads.s3.amazonaws.com/etcher/$version/Etcher-cli-$version-win32-x86.zip"
+            }
+        }
+    }
 }

@@ -1,39 +1,26 @@
 {
-    "version": "2.0",
-    "description": "A cleaning tool for Wechat files.",
+    "version": "2.1",
+    "description": "自动删除 PC 端微信缓存数据，包括从所有聊天中自动下载的大量文件、视频、图片等数据内容，解放你的空间。",
     "homepage": "https://github.com/blackboxo/CleanMyWechat",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/blackboxo/CleanMyWechat/releases/download/v2.0/CleanMyWechat.zip",
-            "hash": "422698F788A8E4C886F09939AE6E3BCA9CD20681A7B9982CA659EFC46C6E0C48"
-        }
-    },
+    "license": "Freeware",
+    "url": "https://github.com/blackboxo/CleanMyWechat/releases/download/v2.1/CleanMyWechat.zip",
+    "hash": "3af7b5c1a33997785c7c452a9e75872582f5a523a4edc3c089c92d88f4ce33e0",
     "extract_dir": "CleanMyWechat",
-    "installer": {
-        "script": [
-            "ensure $persist_dir",
-            "Get-ChildItem -Path \"$persist_dir\" -Filter \"config.json\" -File | Move-Item -Destination \"$dir\" -Force"
+    "notes": "We don't persist 'config.json'. Please backup it if needed",
+    "bin": [
+        [
+            "start.exe",
+            "CleanMyWechat"
         ]
-    },
+    ],
     "shortcuts": [
         [
             "start.exe",
             "CleanMyWechat"
         ]
     ],
-    "uninstaller": {
-        "script": [
-            "Get-ChildItem -Path \"$persist_dir\" -Filter \"config.json\" | Remove-Item -Force",
-            "Get-ChildItem -Path \"$dir\" -Filter \"config.json\" -File | Move-Item -Destination \"$persist_dir\" -Force"
-        ]
-    },
-    "checkver":"github",
+    "checkver": "github",
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/blackboxo/CleanMyWechat/releases/download/v$version/CleanMyWechat.zip"
-            }
-        }
+        "url": "https://github.com/blackboxo/CleanMyWechat/releases/download/v$version/CleanMyWechat.zip"
     }
 }

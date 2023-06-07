@@ -1,5 +1,5 @@
 {
-    "version": "0.9.1",
+    "version": "nightly",
     "description": "Vim-fork focused on extensibility and usability",
     "homepage": "https://neovim.io/",
     "license": {
@@ -11,31 +11,20 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/neovim/neovim/releases/download/v0.9.1/nvim-win64.zip",
-            "hash": "af41890b8c14d4ed214a2ef6c1ab8e0be004eac7094d5df1cc4bc17ccf0a13ef"
+            "url": "https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip"
         }
     },
     "extract_dir": "nvim-win64",
-    "bin": [
-        "bin\\nvim.exe",
-        "bin\\nvim-qt.exe"
-    ],
-    "shortcuts": [
-        [
-            "bin\\nvim-qt.exe",
-            "Neovim"
-        ]
-    ],
+    "bin": ["bin\\nvim.exe", "bin\\nvim-qt.exe"],
+    "shortcuts": [["bin\\nvim-qt.exe", "Neovim"]],
     "checkver": {
-        "url": "https://api.github.com/repos/neovim/neovim/releases/latest",
-        "jsonpath": "$.body",
-        "regex": "NVIM v(?<majorVersion>[\\w.-]+)\\.(?<minorVersion>[\\w.-]+)\\.(?<patchVersion>[\\w.-]+)",
-        "replace": "${majorVersion}.${minorVersion}.${patchVersion}"
+        "github": "https://github.com/neovim/neovim",
+        "regex": "NVIM v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/neovim/neovim/releases/download/v$version/nvim-win64.zip"
+                "url": "https://github.com/neovim/neovim/releases/download/nightly/nvim-win64.zip"
             }
         },
         "hash": {

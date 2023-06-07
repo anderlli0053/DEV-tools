@@ -1,29 +1,26 @@
 {
     "version": "4.0.2",
+    "description": "Utilities for interacting with PyPI",
     "homepage": "https://github.com/pypa/twine",
-    "description": "Utilities for interacting with PyPI.",
     "license": "Apache-2.0",
-    "depends": "python-bucket-utils",
-    "url": "https://raw.githubusercontent.com/TheRandomLabs/Scoop-Python/master/placeholder.txt",
-    "hash": "8f5572e508c2cb95197e550f54c6bc03cfd4668ef3c9f1011ec3950037cb4b11",
-    "installer": {
-        "script": [
-            "if ($global) { install-python-package --global --quiet --dir $dir --repo https://github.com/pypa/twine.git --branch $version --clone-dir $app }",
-            "else { install-python-package --quiet --dir $dir --repo https://github.com/pypa/twine.git --branch $version --clone-dir $app }",
-            "if ($LASTEXITCODE) { exit 1 }"
-        ]
-    },
-    "uninstaller": {
-        "script": [
-            "if ($global) { uninstall-python-package $app --global --dir $dir }",
-            "else { uninstall-python-package $app --dir $dir }"
-        ]
-    },
+    "url": "https://files.pythonhosted.org/packages/b7/1a/a7884359429d801cd63c2c5512ad0a337a509994b0e42d9696d4778d71f6/twine-4.0.2.tar.gz",
+    "hash": "9e102ef5fdd5a20661eb88fad46338806c3bd32cf1db729603fe3697b1bc83c8",
+    "extract_dir": "twine-4.0.2",
+    "bin": "venv\\scripts\\twine.exe",
+    "pre_install": [
+        "$bpath = if ($app.LocalPath) { $app.LocalPath.Directory.Parent.FullName } else { \"$bucketsdir\\$bucket\" }",
+        "& (Join-Path \"$bpath\" \"scripts\\Install-WithVirtualEnv.ps1\")"
+    ],
     "checkver": {
-        "url": "https://api.github.com/repos/pypa/twine/tags",
-        "jsonpath": "$[0].name"
+        "url": "https://pypi.org/project/twine/",
+        "regex": "(?sm)https:\\/\\/files\\.pythonhosted\\.org\\/(?<path>[\\w\\-\\/\\.]+\\.tar\\.gz).+?(?<version>[\\d\\.]+)\\.tar\\.gz"
     },
     "autoupdate": {
-        "url": "https://raw.githubusercontent.com/TheRandomLabs/Scoop-Python/master/placeholder.txt"
+        "url": "https://files.pythonhosted.org/$matchPath",
+        "hash": {
+            "url": "https://pypi.org/project/twine/",
+            "regex": "(?sm)Hashes for $basename.*?$sha256"
+        },
+        "extract_dir": "twine-$version"
     }
 }

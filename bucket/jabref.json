@@ -1,16 +1,15 @@
 {
-    "version": "5.9",
-    "description": "Citation and reference management software that uses BibTeX and BibLaTeX as its native formats",
-    "homepage": "https://www.jabref.org",
+    "homepage": "https://github.com/JabRef/jabref",
+    "version": "2023-06-07.13-39",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/JabRef/jabref/releases/download/v5.9/JabRef-5.9-portable_windows.zip",
-            "hash": "06dba4ff11a0fc18d84a2216227b6946c31024f00fb09efb019d150b2a353843"
+            "url": "https://builds.jabref.org/main/JabRef-5.10-portable_windows.zip",
+            "hash": "2afadfb7c378a386de69b8741163020bd7ecd5056d92ae3272ae3ebfa11a6042",
+            "extract_dir": "Jabref"
         }
     },
-    "extract_dir": "JabRef",
-    "bin": "runtime\\bin\\JabRef.bat",
+    "bin": "",
     "shortcuts": [
         [
             "JabRef.exe",
@@ -18,12 +17,15 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/JabRef/jabref"
+        "url": "https://builds.jabref.org/main/",
+        "regex": "(?<file>JabRef-5.10-portable_windows.zip)</a></td><td class=\"fb-d\">(?<date>[\\d-]+) (?<hour>[\\d]+):(?<minu>[\\d]+)</td>",
+        "replace": "${date}.${hour}-${minu}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/JabRef/jabref/releases/download/v$version/JabRef-$version-portable_windows.zip"
+                "url": "https://builds.jabref.org/main/$matchFile",
+                "extract_dir": "Jabref"
             }
         }
     }

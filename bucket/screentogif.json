@@ -1,31 +1,13 @@
 {
-    "version": "2.38",
+    "version": "2.34.1",
     "description": "Screen, webcam and sketchboard recorder with an integrated editor.",
     "homepage": "https://www.screentogif.com/",
     "license": "MS-PL",
     "suggest": {
-        "ffmpeg": "ffmpeg"
+        "FFmpeg": "ffmpeg"
     },
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/NickeManarin/ScreenToGif/releases/download/2.38/ScreenToGif.2.38.Portable.x64.zip",
-            "hash": "534ec25e1f34ae7acf1f69e4124e1edaf668b8cc62c540a7c02b7daa7f645804"
-        },
-        "32bit": {
-            "url": "https://github.com/NickeManarin/ScreenToGif/releases/download/2.38/ScreenToGif.2.38.Portable.x86.zip",
-            "hash": "98a38e45d56527dc434929ca60b202d3e183943db382f2312895c4770a0af3b8"
-        }
-    },
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\Settings.xaml\")) {",
-        "    if (Test-Path \"$env:AppData\\ScreenToGif\\Settings.xaml\") {",
-        "        info \"[Portable Mode]: Copying existing settings file %AppData%\\ScreenToGif\\Settings.xaml...\"",
-        "        Copy-Item \"$env:AppData\\ScreenToGif\\Settings.xaml\" \"$dir\"",
-        "    } else {",
-        "        Set-Content \"$dir\\Settings.xaml\" '<ResourceDictionary></ResourceDictionary>' -Encoding ascii | Out-Null",
-        "    }",
-        "}"
-    ],
+    "url": "https://github.com/NickeManarin/ScreenToGif/releases/download/2.34.1/ScreenToGif.2.34.1.Portable.zip",
+    "hash": "67f821bed7f34ebbb7ba8a91cce1fdc1429279aa1489fcaaa5127687c86b8fce",
     "bin": "ScreenToGif.exe",
     "shortcuts": [
         [
@@ -33,18 +15,10 @@
             "ScreenToGif"
         ]
     ],
-    "persist": "Settings.xaml",
     "checkver": {
         "github": "https://github.com/NickeManarin/ScreenToGif"
     },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/NickeManarin/ScreenToGif/releases/download/$version/ScreenToGif.$version.Portable.x64.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/NickeManarin/ScreenToGif/releases/download/$version/ScreenToGif.$version.Portable.x86.zip"
-            }
-        }
+        "url": "https://github.com/NickeManarin/ScreenToGif/releases/download/$version/ScreenToGif.$version.Portable.zip"
     }
 }

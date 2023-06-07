@@ -1,36 +1,46 @@
 {
-    "version": "23.05.1740",
-    "description": "A full-featured mind mapping and brainstorming tool",
-    "homepage": "https://xmind.app/",
-    "license": {
-        "identifier": "Shareware",
-        "url": "https://xmind.app/terms/"
-    },
+    "version": "2023",
+    "homepage": "https://www.xmind.net/",
+    "license": "shareware",
     "architecture": {
         "64bit": {
-            "url": "https://dl3.xmind.net/Xmind-for-Windows-x64bit-23.05.1740.exe#/dl.7z",
-            "hash": "72182bc8c81d95d02af9f171b9f8b9e8a88e00fab61381dff9263f2821806735",
+            "url": "https://www.xmind.net/zen/download/win64/#/dl.7z",
+            "hash": "effb35fd70d6f0051169b7c95ca9dd566862245c7fc2c3fd7e7ac54c926b5042",
             "installer": {
-                "script": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+                "script": [
+                    "Expand-7ZipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal",
+                    "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
+                ]
+            }
+        },
+        "32bit": {
+            "url": "https://www.xmind.net/zen/download/win32/#/dl.7z",
+            "hash": "7099f476850e2a3a3d1a71dac1635af914412556dc3b1b3048fc68cec239d2cd",
+            "installer": {
+                "script": [
+                    "Expand-7ZipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\" -Removal",
+                    "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
+                ]
             }
         }
     },
-    "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse",
     "shortcuts": [
         [
             "XMind.exe",
-            "XMind"
+            "XMind 2020"
         ]
     ],
     "checkver": {
-        "url": "https://xmind.app/desktop/release-notes/",
-        "regex": ">([\\d.]+) \\((\\d+)\\)</h3>",
-        "replace": "${1}.${2}"
+        "url": "https://www.xmind.net/xmind2020/release-notes/",
+        "regex": "<h5 class=\"text-muted\">([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl3.xmind.net/Xmind-for-Windows-x64bit-$version.exe#/dl.7z"
+                "url": "https://www.xmind.net/zen/download/win64/#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://www.xmind.net/zen/download/win32/#/dl.7z"
             }
         }
     }

@@ -1,21 +1,13 @@
 {
-    "version": "3.3.2",
+    "version": "3.1.3",
     "description": "An easy-to-use, multi-track audio editor and recorder",
     "homepage": "https://www.audacityteam.org",
-    "license": {
-        "identifier": "GPL-2.0-or-later|GPL-3.0-only|CC-BY-3.0",
-        "url": "https://github.com/audacity/audacity/blob/master/LICENSE.txt"
-    },
+    "license": "GPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/audacity/audacity/releases/download/Audacity-3.3.2/audacity-win-3.3.2-x64.zip",
-            "hash": "1675dd2b5fc290051e158eb8a802dbb185d9fe2d23707158856e5b8d06003052",
-            "extract_dir": "audacity-win-3.3.2-x64"
-        },
-        "32bit": {
-            "url": "https://github.com/audacity/audacity/releases/download/Audacity-3.3.2/audacity-win-3.3.2-x32.zip",
-            "hash": "3898cd1ea5996277d93c4fad4b43a0986d73f5707ea408e9eb62728e491c40de",
-            "extract_dir": "audacity-win-3.3.2-x32"
+            "url": "https://fossies.org/windows/misc/audacity-win-3.1.3-64bit.zip",
+            "hash": "df0c57f262c160d768f36d4a942ee893479bfdbc52676fb49dc49b129fb808a3",
+            "extract_dir": "audacity-win-3.1.3-64bit"
         }
     },
     "pre_install": [
@@ -33,23 +25,18 @@
     ],
     "persist": "Portable Settings",
     "checkver": {
-        "github": "https://github.com/audacity/audacity",
-        "regex": "Audacity-([\\d.]+)"
+        "url": "https://fossies.org/windows/misc/",
+        "regex": "[Aa]udacity-win-([\\d.]+)-64bit\\.zip\""
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/audacity/audacity/releases/download/Audacity-$version/audacity-win-$version-x64.zip",
-                "extract_dir": "audacity-win-$version-x64"
-            },
-            "32bit": {
-                "url": "https://github.com/audacity/audacity/releases/download/Audacity-$version/audacity-win-$version-x32.zip",
-                "extract_dir": "audacity-win-$version-x32"
+                "url": "https://fossies.org/windows/misc/audacity-win-$version-64bit.zip",
+                "extract_dir": "audacity-win-$version-64bit"
             }
         },
         "hash": {
-            "url": "$baseurl/CHECKSUMS.txt",
-            "regex": "$basename.*?$sha256"
+            "url": "$url_fossies.sha256"
         }
     }
 }

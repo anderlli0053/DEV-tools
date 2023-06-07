@@ -1,31 +1,33 @@
 {
-    "version": "2.82",
+    "homepage": "https://docs.microsoft.com/en-us/sysinternals/",
     "description": "Dump event log records.",
-    "homepage": "https://learn.microsoft.com/sysinternals/downloads/psloglist",
     "license": {
         "identifier": "Freeware",
-        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+        "url": "https://docs.microsoft.com/en-us/sysinternals/license-terms"
     },
-    "url": "https://download.sysinternals.com/files/psloglist.zip",
-    "hash": "8d29dbd68aa03a9a6adf2e71c78d98999eec46ef13106309fd7cf3c9708e083c",
+    "version": "2.82",
+    "url": "https://download.sysinternals.com/files/PSTools.zip",
+    "hash": "e77aca05e8a6a4d2d92c99e77ca04b883edc32a1726b3eb6c73d0d56f66935d6",
+    "pre_install": "Get-ChildItem \"$dir\" | Where-Object {($_.Name -notlike 'psloglist*') -and ($_.Name -notlike 'Eula.txt') -and $_.Name -notlike '*.chm'} | Remove-Item",
+    "checkver": {
+        "url": "https://docs.microsoft.com/en-us/sysinternals/downloads/psloglist",
+        "re": "PsLogList\\s(?:v|V)?([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/PSTools.zip"
+    },
     "architecture": {
+        "32bit": {
+            "bin": "psloglist.exe"
+        },
         "64bit": {
             "bin": [
                 [
                     "psloglist64.exe",
                     "psloglist"
-                ]
+                ],
+                "psloglist64.exe"
             ]
-        },
-        "32bit": {
-            "bin": "psloglist.exe"
         }
-    },
-    "checkver": {
-        "url": "https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/psloglist.md",
-        "regex": "#.*?v([\\d.]+)"
-    },
-    "autoupdate": {
-        "url": "https://download.sysinternals.com/files/psloglist.zip"
     }
 }

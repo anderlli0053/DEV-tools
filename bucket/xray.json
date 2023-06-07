@@ -1,33 +1,48 @@
 {
-    "version": "1.7.5",
-    "description": "A platform for building proxies to bypass network restrictions",
-    "homepage": "https://github.com/XTLS/Xray-core",
-    "license": "MPL-2.0",
+    "version": "1.9.11",
+    "description": " 一款完善的安全评估工具，支持常见 web 安全问题扫描和自定义 poc ",
+    "homepage": "https://github.com/chaitin/xray",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://github.com/chaitin/xray/blob/master/Disclaimer.md"
+    },
     "architecture": {
-        "64bit": {
-            "url": "https://github.com/XTLS/Xray-core/releases/download/v1.7.5/Xray-windows-64.zip",
-            "hash": "3ec029d8db25bae76e30027ad796a08ca830a8dce71d0a02b16b18d0f5002cdb"
-        },
         "32bit": {
-            "url": "https://github.com/XTLS/Xray-core/releases/download/v1.7.5/Xray-windows-32.zip",
-            "hash": "d09c8d34c175e54576520df8d3617ccfd2fbc97da199e18b9cacae6f5287b97d"
+            "url": "https://github.com/chaitin/xray/releases/download/1.9.11/xray_windows_386.exe.zip",
+            "hash": "b2abf75877307d64d9d4ac2bf081ecb841fb44380e3dcd12c6334bc06eb979cd",
+            "pre_install": [
+                "Rename-Item \"$dir\\xray_windows_386.exe\" 'xray.exe'",
+                "if (!(Test-Path \"$dir\\ca.crt\")) {",
+                "    warn 'GenerateToFile CA certificate and key ...'",
+                "    Start-Process -NoNewWindow -FilePath \"$dir\\xray.exe\" -WorkingDirectory \"$dir\" -ArgumentList @('genca') -Wait | Out-Null ",
+                "}"
+            ]
+        },
+        "64bit": {
+            "url": "https://github.com/chaitin/xray/releases/download/1.9.11/xray_windows_amd64.exe.zip",
+            "hash": "c43fa39b31d3cf4972859bbfb6af02cd08a8b40f981525da56a4bc4d27534b9f",
+            "pre_install": [
+                "Rename-Item \"$dir\\xray_windows_amd64.exe\" 'xray.exe'",
+                "if (!(Test-Path \"$dir\\ca.crt\")) {",
+                "    warn 'GenerateToFile CA certificate and key ...'",
+                "    Start-Process -NoNewWindow -FilePath \"$dir\\xray.exe\" -WorkingDirectory \"$dir\" -ArgumentList @('genca') -Wait | Out-Null ",
+                "}"
+            ]
         }
     },
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\config.json\")) {",
-        "    Set-Content \"$dir\\config.json\" '{}' -Encoding 'Ascii'",
-        "}"
-    ],
     "bin": "xray.exe",
-    "persist": "config.json",
+    "persist": [
+        "ca.crt",
+        "ca.key"
+    ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
-            "64bit": {
-                "url": "https://github.com/XTLS/Xray-core/releases/download/v$version/Xray-windows-64.zip"
-            },
             "32bit": {
-                "url": "https://github.com/XTLS/Xray-core/releases/download/v$version/Xray-windows-32.zip"
+                "url": "https://github.com/chaitin/xray/releases/download/$version/xray_windows_386.exe.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/chaitin/xray/releases/download/$version/xray_windows_amd64.exe.zip"
             }
         }
     }

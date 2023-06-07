@@ -1,49 +1,39 @@
 {
-    "version": "62",
-    "description": "A video processing framework with simplicity in mind",
-    "homepage": "https://www.vapoursynth.com",
-    "suggest": {
-        "vcredist": "extras/vcredist2022"
-    },
-    "license": "LGPL-2.1-or-later",
+    "##": "Persists 64-bit release only",
+    "homepage": "http://www.vapoursynth.com/",
+    "license": "OFL-1.1",
+    "version": "R57",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R62/VapourSynth64-Portable-R62.7z",
-            "hash": "7f2e8a21c6ae161828d9fb4b6c6a3f0837f76dc5132507ed159d2ba80b2b337c"
+            "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R57/VapourSynth64-Portable-R57.7z",
+            "hash": "04a42f2ee604eb7370df98c9c9a85d4f7854e96250ab0356be85d81489710d20",
+            "pre_install": "Remove-Item -LiteralPath \"$dir\\vapoursynth64\\plugins\" -Force -Recurse -ErrorAction SilentlyContinue"
         },
         "32bit": {
-            "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R62/VapourSynth64-Portable-R62.7z",
-            "hash": "7f2e8a21c6ae161828d9fb4b6c6a3f0837f76dc5132507ed159d2ba80b2b337c"
+            "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R57/VapourSynth32-Portable-R57.7z",
+            "hash": "f686a5517d648f99efac44f225e2c7922cbfb7e0593ac8a557b5a012d6f57e9a",
+            "pre_install": "Remove-Item -LiteralPath \"$dir\\vapoursynth32\\plugins\" -Force -Recurse -ErrorAction SilentlyContinue"
         }
     },
-    "pre_install": [
-        "$arch = $architecture.SubString(0,2)",
-        "if(Test-Path \"$persist_dir\\vapoursynth$arch\") {Copy-Item \"$persist_dir\\*\" \"$dir\\\" -Force -Recurse}"
-    ],
-    "uninstaller": {
-        "script": [
-            "$arch = $architecture.SubString(0,2)",
-            "ensure \"$persist_dir\" | Out-Null",
-            "Copy-Item \"$dir\\vapoursynth$arch\" \"$persist_dir\\\" -Force -Recurse"
-        ]
-    },
     "bin": [
-        "AVFS.exe",
         "VSPipe.exe",
-        "pfm-192-vapoursynth-win.exe",
-        "vsrepo.py"
+        "AVFS.exe"
     ],
+    "persist": "vapoursynth64\\plugins",
+    "suggest": {
+        "Python3": "python"
+    },
     "checkver": {
-        "github": "https://github.com/vapoursynth/vapoursynth",
-        "regex": "tag/R(\\d+)"
+        "url": "https://github.com/vapoursynth/vapoursynth/releases/latest",
+        "re": "/releases/tag/(R([\\d]+))"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R$version/VapourSynth64-Portable-R$version.7z"
+                "url": "https://github.com/vapoursynth/vapoursynth/releases/download/$version/VapourSynth64-Portable-$version.7z"
             },
             "32bit": {
-                "url": "https://github.com/vapoursynth/vapoursynth/releases/download/R$version/VapourSynth64-Portable-R$version.7z"
+                "url": "https://github.com/vapoursynth/vapoursynth/releases/download/$version/VapourSynth32-Portable-$version.7z"
             }
         }
     }
