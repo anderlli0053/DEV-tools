@@ -2,35 +2,14 @@
   "version": "6.6.0.0",
   "description": "The free recycle bin for your system tray area.",
   "homepage": "https://e-sushi.net/minibin/",
-  "bin": "Minibin\\MiniBin.exe",
+  "bin": "MiniBin.exe",
   "shortcuts": [
     [
-      "Minibin\\MiniBin.exe",
+      "MiniBin.exe",
       "Minibin"
     ]
   ],
   "license": "Freeware",
-  "url": "https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/appearance/minibin.zip",
-  "hash": "b3fa1760267e93fdfd95db0573912898d95c08ed777458ac06060696d00e2c49",
-  "extract_to": "Minibin",
-  "post_install": [
-    "## Background start",
-    "Invoke-Expression -command \"& $dir\\MiniBin.exe\""
-  ],
-  "pre_install": [
-    "@('minibin.ini', 'minibin-language.ini') | ForEach-Object {",
-    "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
-    "}"
-  ],
-  "persist": [
-    "minibin.ini",
-    "minibin-language.ini"
-  ],
-  "checkver": {
-    "url": "https://www.majorgeeks.com/files/details/minibin.html",
-    "regex": "<strong>MiniBin ([\\d.]+)</strong>"
-  },
-  "autoupdate": {
-    "url": "https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/appearance/minibin.zip"
-  }
+  "url": "https://www.dropbox.com/s/hq5ah8uaf0lux1q/minibin.7z?dl=1",
+  "hash": "91a17a1b4fa648202bcf9bc01fe25bf840f2449eb835ac6dd0bc2b994e0c2ec3"
 }
