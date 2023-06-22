@@ -1,0 +1,32 @@
+{
+    "version": "35.69.2",
+    "description": "aardio | flexible and powerful dynamic language\n aardio | 灵活而强大的动态语言",
+    "homepage": "https://www.aardio.com/",
+    "license": "Unknown",
+    "notes": [
+
+    ],
+    "url": "https://ide.update.aardio.com/releases/aardio.7z",
+    "hash": "a3c99fa58f63340b1e1c39ab94dff9745b7a6399ecda098317f63425587d2de1",
+    "persist": [
+        "config",
+        "project"
+    ],
+    "shortcuts": [
+        [
+            "aardio.exe",
+            "aardio"
+        ]
+    ],
+    "pre_uninstall": [
+        "sudo taskKill /f /im aardio.exe",
+        "Start-Sleep -Seconds 1"
+    ],
+    "checkver": {
+        "url": "https://ide.update.aardio.com/log/",
+        "regex": "aardio v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://ide.update.aardio.com/releases/aardio.7z"
+    }
+}

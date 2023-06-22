@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0.1109",
+  "description": "全新设计的电子书阅读学习笔记软件，以不同的思维方式重塑我们的学习过程",
+  "homepage": "http://www.bookxnote.com/",
+  "license": "Unknown",
+  "architecture": {
+    "64bit": {
+      "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x64-2.0.0.1109-20230525.zip",
+      "hash": "256d6e45d27eccc0180e7b365f32a077568086c0bd2ed9491d68194307faa7fc"
+    }
+  },
+  "pre_install": [
+    "Expand-7zipArchive \"$dir\\bookxnotepro-windows-*.exe\" \"$dir\"",
+    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst*\", \"$dir\\bookxnotepro-windows-*.exe\" -Force -Recurse"
+  ],
+  "bin": "BookxNotePro.exe",
+  "shortcuts": [
+    [
+      "BookxNotePro.exe",
+      "BookxNote Pro"
+    ]
+  ],
+  "checkver": {
+    "regex": "bookxnotepro-windows-x64-([\\d.]+)-(?<date>\\d+).zip"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "http://www.bookxnote.com/setup/bookxnotepro-windows-x64-$version-$matchDate.zip"
+      }
+    }
+  }
+}

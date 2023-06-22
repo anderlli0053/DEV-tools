@@ -1,0 +1,73 @@
+{
+  "version": "2023-06-21",
+  "description": "Frontend for emulators, game engines and media players",
+  "homepage": "https://www.retroarch.com/",
+  "license": {
+    "url": "https://github.com/libretro/RetroArch/blob/master/COPYING",
+    "identifier": "GPL-3.0"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://buildbot.libretro.com/nightly/windows/x86_64/2023-06-21_RetroArch.7z",
+      "hash": "a0202a152c6c1c8097d07434d192967bf90a74caa54f5b0d525714c13f9af03e",
+      "extract_dir": "RetroArch-Win64"
+    },
+    "32bit": {
+      "url": "https://buildbot.libretro.com/nightly/windows/x86/2023-06-21_RetroArch.7z",
+      "hash": "e0bde3a8d852fc9a56e2fc6fe1e48bc602b922ba7ebc3b4d68fa3f3710ac190b",
+      "extract_dir": "RetroArch-Win32"
+    }
+  },
+  "pre_install": [
+    "if (!(Test-Path \"$persist_dir\\retroarch.cfg\")) {",
+    "    New-Item \"$persist_dir\\retroarch.cfg\" -Type File | Out-Null",
+    "}"
+  ],
+  "bin": [
+    [
+      "retroarch.exe",
+      "retroarch-nightly"
+    ]
+  ],
+  "shortcuts": [
+    [
+      "retroarch.exe",
+      "RetroArch (nightly)"
+    ]
+  ],
+  "persist": [
+    "assets\\wallpapers",
+    "cores",
+    "cheats",
+    "overlays",
+    "playlists",
+    "records",
+    "recordings",
+    "saves",
+    "screenshots",
+    "states",
+    "system",
+    "thumbnails",
+    "retroarch.cfg"
+  ],
+  "checkver": {
+    "url": "https://buildbot.libretro.com/nightly/windows/x86_64/",
+    "regex": "(?smi)(\\d{4}-\\d{2}-\\d{2})_RetroArch\\.7z",
+    "reverse": true
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://buildbot.libretro.com/nightly/windows/x86_64/$version_RetroArch.7z"
+      },
+      "32bit": {
+        "url": "https://buildbot.libretro.com/nightly/windows/x86/$version_RetroArch.7z"
+      }
+    }
+  },
+  "notes": [
+    "ATTENTION: Retroarch requires BIOS/firmware files for some emulation.",
+    "It is recommended to read the libretro docs for each core you plan to use.",
+    "See https://docs.libretro.com/library/bios/ for more information."
+  ]
+}

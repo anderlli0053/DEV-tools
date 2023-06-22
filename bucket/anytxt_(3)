@@ -1,0 +1,29 @@
+{
+    "homepage": "https://anytxt.net/",
+    "description": "A local document search application",
+    "version": "1.2.270",
+    "license": "GPL-3.0-or-later",
+    "url": "https://sourceforge.net/projects/anytxt/files/AnyTXT.Searcher.1.2.270.exe",
+    "hash": "251a85b3bac687974f360d3796048c20ded3bf0bd69e0d1cfd1db23d013f89ed",
+    "installer": {
+        "args": [
+            "/silent",
+            "/dir=\"$dir\""
+        ]
+    },
+    "uninstaller": {
+        "file": "unins000.exe",
+        "args": "/silent"
+    },
+    "bin": "ATGUI.exe",
+    "checkver": {
+        "url": "https://anytxt.net/download/",
+        "regex": "AnyTXT Searcher ([\\d.]+) Installer.exe"
+    },
+    "autoupdate": {
+        "url": "https://sourceforge.net/projects/anytxt/files/AnyTXT.Searcher.$version.exe",
+        "hash": {
+            "mode": "sourceforge"
+        }
+    }
+}

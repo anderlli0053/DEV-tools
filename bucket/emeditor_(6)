@@ -1,0 +1,52 @@
+{
+    "homepage": "https://www.emeditor.com/",
+    "version": "21.8.1",
+    "description": "EmEditor is a fast, lightweight, yet extensible, easy-to-use text editor for Windows.",
+    "license": "https://www.emeditor.com/#toggle-id-4",
+    "architecture": {
+        "64bit": {
+            "url": "https://emeditor.blob.core.windows.net/emed64_21.8.1_portable.zip",
+            "hash": "8e7661ff19ad458de53b8dfb9790c224063734d9b92f33fd7814f605c40f5fa1"
+        },
+        "32bit": {
+            "url": "https://emeditor.blob.core.windows.net/emed32_21.8.1_portable.zip",
+            "hash": "a25adcd384c5011fc293bcc48dffa65ba074fa8f83728b8b42923a76d57a9cca"
+        }
+    },
+    "bin": "EmEditor.exe",
+    "shortcuts": [
+        [
+            "EmEditor.exe",
+            "EmEditor"
+        ]
+    ],
+    "persist": [
+        "AppData",
+        "Help",
+        "User",
+        "eeCommon.ini",
+        "eeConfig.ini",
+        "eePlugins.ini",
+        "eeLM.ini"
+    ],
+    "pre_install": [
+        "if(!(Test-Path \"$persist_dir\\eeCommon.ini\")) { Add-Content \"$dir\\eeCommon.ini\" $null }",
+        "if(!(Test-Path \"$persist_dir\\eeConfig.ini\")) { Add-Content \"$dir\\eeConfig.ini\" $null }",
+        "if(!(Test-Path \"$persist_dir\\eeLM.ini\")) { Add-Content \"$dir\\eeLM.ini\" $null }",
+        "if(!(Test-Path \"$persist_dir\\eePlugins.ini\")) { Add-Content \"$dir\\eePlugins.ini\" $null }"
+    ],
+    "checkver": {
+        "url": "https://www.emeditor.com/download/",
+        "re": "<h3>Download latest version: v([\\d.]+)</h3>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://emeditor.blob.core.windows.net/emed64_$version_portable.zip"
+            },
+            "32bit": {
+                "url": "https://emeditor.blob.core.windows.net/emed32_$version_portable.zip"
+            }
+        }
+    }
+}

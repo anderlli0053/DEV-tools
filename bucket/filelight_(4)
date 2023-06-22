@@ -1,0 +1,34 @@
+{
+  "version": "23.04.2-1385",
+  "description": "Disk usage visualizer",
+  "homepage": "https://apps.kde.org/filelight",
+  "license": "GPL-2.0-or-later",
+  "notes": "If you want to get the latest development branch-based installer, please install `filelight-nightly` from Versions bucket.",
+  "architecture": {
+    "64bit": {
+      "url": "https://binary-factory.kde.org/job/Filelight_Release_win64/1385/artifact/filelight-23.04.2-1385-windows-cl-msvc2019-x86_64.7z",
+      "hash": "d2333da33479d907f0d7863f050d397dff968b5afb8c360ea7365b94e4b5abb8"
+    }
+  },
+  "bin": "bin\\filelight.exe",
+  "shortcuts": [
+    [
+      "bin\\filelight.exe",
+      "Filelight"
+    ]
+  ],
+  "checkver": {
+    "url": "https://binary-factory.kde.org/job/Filelight_Release_win64/",
+    "regex": "filelight-([\\d.-]+)-windows-cl-(?<lib>\\w+)-x86_64\\.7z"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://binary-factory.kde.org/job/Filelight_Release_win64/$preReleaseVersion/artifact/filelight-$version-windows-cl-$matchLib-x86_64.7z",
+        "hash": {
+          "url": "$url.sha256"
+        }
+      }
+    }
+  }
+}

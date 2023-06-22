@@ -1,0 +1,29 @@
+{
+    "homepage": "http://www.internetdownloadmanager.com",
+    "description": "IDM多线程下载工具 好用好用好用",
+    "version": "639build2",
+    "license": "© ToneC",
+    "url": "https://mirror2.internetdownloadmanager.com/idman641build3.exe#/idman-install.exe",
+    "hash": "19a2d658a2fa7286c039fc84bcdd68dec0b00fa5eea4203cad9901b83604edf8",
+    "installer": {
+        "script": [
+            "Start-Process -Wait $dir\\idman-install.exe /i",
+            "Remove-Item \"$dir\\idman-install.exe\" -Recurse -Force"
+        ],
+        "keep": true
+    },
+    "shortcuts": [
+        [ 
+            "Internet Download Manager\\IDMan.exe",
+            "Internet Download Manager"
+        ]
+    ],
+    "checkver": {
+        "url": "http://www.internetdownloadmanager.com/download.html",
+        "regex": "<a class=\"cta-btn\"\\shref=\"https:\/\/mirror2.internetdownloadmanager.com\/idman(\\S+).exe?"
+    },
+    "autoupdate": {
+        "url": "https://mirror2.internetdownloadmanager.com/idman$version.exe#/idman-install.exe"
+    }
+}
+

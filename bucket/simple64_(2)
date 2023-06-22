@@ -1,0 +1,51 @@
+{
+    "version": "2023.06.3",
+    "description": "simple64 is an emulator based on a heavily modified version of mupen64plus-core, and ParaLLEl RSP/RDP. It includes a GUI, netplay, automatic updater, controller configuration, and much more! It should give you the best out-of-the-box experience available for N64 gaming. There are no plugins to download.",
+    "homepage": "https://simple64.github.io/",
+    "license": "GPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/simple64/simple64/releases/download/v2023.06.3/simple64-win64-0511a07.zip",
+            "hash": "d32d90c1110fcab430d1046043bda8355af291fc63e05baed407e6f7066c57f8"
+        }
+    },
+    "extract_dir": "simple64",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\simple64-gui.ini\")) {",
+        "   New-Item    \"$dir\\simple64-gui.ini\" -Type File | Out-Null",
+        "   Set-Content \"$dir\\simple64-gui.ini\" '[General]'",
+        "   Add-Content \"$dir\\simple64-gui.ini\" 'version=2'",
+        "   Add-Content \"$dir\\simple64-gui.ini\" 'configDirPath=$APP_PATH$/config'",
+        "}"
+    ],
+    "bin": [
+        [
+            "simple64-gui.exe",
+            "simple64"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "simple64-gui.exe",
+            "simple64"
+        ]
+    ],
+    "persist": "config",
+    "checkver": {
+        "url": "https://api.github.com/repos/simple64/simple64/releases/latest",
+        "script": [
+            "$version = json_path $page $.tag_name",
+            "$file = json_path $page $.assets[0].name",
+            "Write-Output \"$version $file\""
+        ],
+        "regex": "v(?<version>[^ ]+) (?<file>.*)",
+        "replace": "${version}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/simple64/simple64/releases/download/v$matchVersion/$matchFile"
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+  "homepage": "https://sourceforge.net/projects/controlremote/",
+  "description": "",
+  "version": "3.0.0",
+  "license": "Fair License",
+  "url": "https://downloads.sourceforge.net/project/controlremote/RemoteMaster/v3.0.0/RMIR.v3.0.0-bin.zip",
+  "hash": "07f960d402a38ce657a74e4b7acef6f952d63c0f808307798d6cd5339e62dd64",
+  "persist": "RemoteMaster.properties",
+  "pre_install": [
+    "if (!(Test-Path $persist_dir\\RemoteMaster.properties)) {",
+    "   New-Item $dir\\RemoteMaster.properties | Out-Null",
+    "}"
+  ],
+  "checkver": {
+    "url": "https://sourceforge.net/projects/controlremote/rss?path=/",
+    "regex": "/RemoteMaster/v([\\d.]+)/RMIR.v([\\d.]+)-bin.zip"
+  },
+  "autoupdate": {
+    "url": "https://downloads.sourceforge.net/project/controlremote/RemoteMaster/v$version/RMIR.v$version-bin.zip"
+  },
+  "suggest": {
+    "JDK": [
+      "java/oraclejdk",
+      "java/openjdk"
+    ]
+  }
+}

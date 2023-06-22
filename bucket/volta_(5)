@@ -1,0 +1,19 @@
+{
+	"homepage": "https://volta.sh",
+	"version": "0.9.2",
+	"license": "BSD-2-Clause",
+	"url": "https://github.com/volta-cli/volta/releases/download/v0.9.2/volta-0.9.2-windows.zip",
+	"hash": "sha256:a6392e5be0b5b42fd3228320f8f992914c9f2130c02c994750d6dc3fa67fbd16",
+	"bin": ["volta.exe", "volta-migrate.exe", "volta-shim.exe"],
+	"env_add_path": ["volta\\bin"],
+	"env_set": { "VOLTA_HOME": "$dir\\volta" },
+	"post_install": "
+        # initial setup
+        & $dir\\volta.exe setup
+        & $dir\\volta.exe install node npm yarn
+        # workaround for bug not shimming `node`, `npm`, or `yarn` when installed
+        Copy-Item \"$dir\\volta-shim.exe\" \"$dir\\volta\\bin\\node.exe\" -force
+        Copy-Item \"$dir\\volta-shim.exe\" \"$dir\\volta\\bin\\npm.exe\" -force
+        Copy-Item \"$dir\\volta-shim.exe\" \"$dir\\volta\\bin\\yarn.exe\" -force
+        "
+}

@@ -1,0 +1,110 @@
+{
+    "version": "1.17.11461.0",
+    "description": "The new Windows Terminal, and the original Windows console host - all in the same place!",
+    "homepage": "https://github.com/microsoft/terminal",
+    "license": "MIT",
+    "notes": [
+        "This version may contain breaking changes. You can use app `windows-terminal-1-16` instead",
+        "For prior to Windows 10 20H1 (build 19041), use `windows-terminal-1-16` instead"
+    ],
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/microsoft/terminal/releases/download/v1.17.11461.0/Microsoft.WindowsTerminal_1.17.11461.0_x64.zip",
+                "https://raw.githubusercontent.com/brave-simpletons/scoop-the-business/main/assets/windows-terminal/install-context.reg",
+                "https://raw.githubusercontent.com/brave-simpletons/scoop-the-business/main/assets/windows-terminal/uninstall-context.reg"
+            ],
+            "hash": [
+                "f2b1539649d17752888d7944f97d6372f8d48eb1ceb024501df8d8e9d3352f25",
+                "baf11f7fb4e99fbd80e931dcdbb860b4e598182830ac7b310d7cd9efcb2a66d8",
+                "5e1429c0750845a2bd09b47029c3ae47ce8fa4dbc0effb92740d91ea7076dd4b"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://github.com/microsoft/terminal/releases/download/v1.17.11461.0/Microsoft.WindowsTerminal_1.17.11461.0_x86.zip",
+                "https://raw.githubusercontent.com/brave-simpletons/scoop-the-business/main/assets/windows-terminal/install-context.reg",
+                "https://raw.githubusercontent.com/brave-simpletons/scoop-the-business/main/assets/windows-terminal/uninstall-context.reg"
+            ],
+            "hash": [
+                "6a052d0501680eeadf7971b72734ac0084ecbd65b0a420e3c49014be1860e070",
+                "baf11f7fb4e99fbd80e931dcdbb860b4e598182830ac7b310d7cd9efcb2a66d8",
+                "5e1429c0750845a2bd09b47029c3ae47ce8fa4dbc0effb92740d91ea7076dd4b"
+            ]
+        },
+        "arm64": {
+            "url": [
+                "https://github.com/microsoft/terminal/releases/download/v1.17.11461.0/Microsoft.WindowsTerminal_1.17.11461.0_arm64.zip",
+                "https://raw.githubusercontent.com/brave-simpletons/scoop-the-business/main/assets/windows-terminal/install-context.reg",
+                "https://raw.githubusercontent.com/brave-simpletons/scoop-the-business/main/assets/windows-terminal/uninstall-context.reg"
+            ],
+            "hash": [
+                "2cb999cc7af12245e08d57d5472571c126a411c38e20f8d66e2110650fd0d757",
+                "baf11f7fb4e99fbd80e931dcdbb860b4e598182830ac7b310d7cd9efcb2a66d8",
+                "5e1429c0750845a2bd09b47029c3ae47ce8fa4dbc0effb92740d91ea7076dd4b"
+            ]
+        }
+    },
+    "extract_dir": "terminal-1.17.11461.0",
+    "installer": {
+        "script": [
+            "$winVer = [Environment]::OSVersion.Version",
+            "if (($winver.Major -lt '10') -or ($winVer.Build -lt 19041)) { error 'At least Windows 10 20H1 (build 19041) is required.'; break }",
+            "if (!(Test-Path \"$persist_dir\\.portable\")) { Add-Content \"$dir\\.portable\" '' -Encoding Ascii }"
+        ]
+    },
+    "post_install": [
+        "'install-context', 'uninstall-context' | ForEach-Object {",
+        "    if (Test-Path \"$dir\\$_.reg\") {",
+        "        $wtPath = \"$dir\\wt.exe\".Replace('\\', '\\\\')",
+        "        $content = (Get-Content \"$dir\\$_.reg\").Replace('$wt', $wtPath)",
+        "        if ($global) {",
+        "            $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "        }",
+        "        $content | Set-Content -Path \"$dir\\$_.reg\" -Encoding unicode -Force",
+        "    }",
+        "}",
+        "Write-Host Registering Windows Terminal as a context menu option with \"$dir\\install-context.reg\"",
+        "reg import \"$dir\\install-context.reg\""
+    ],
+    "pre_uninstall": [
+        "Write-Host UnRegistering Windows Terminal as a context menu option with \"$dir\\uninstall-context.reg\"",
+        "reg import \"$dir\\uninstall-context.reg\""
+    ],
+    "bin": [
+        "WindowsTerminal.exe",
+        "wt.exe"
+    ],
+    "shortcuts": [
+        [
+            "WindowsTerminal.exe",
+            "Windows Terminal"
+        ]
+    ],
+    "persist": [
+        ".portable",
+        "settings"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminal_$version_x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminal_$version_x86.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminal_$version_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/microsoft/terminal/releases/tag/v$version",
+            "regex": "(?s)$basename.*?$sha256"
+        },
+        "extract_dir": "terminal-$version"
+    }
+}

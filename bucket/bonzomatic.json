@@ -1,83 +1,36 @@
 {
-  "homepage": "https://github.com/Gargaj/Bonzomatic",
-  "description": "Live shader coding tool and Shader Showdown workhorse.",
-  "version": "2022-08-20",
-  "license": {
-    "url": "https://github.com/Gargaj/Bonzomatic/blob/master/LICENSE"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/Gargaj/Bonzomatic/releases/download/2022-08-20/Bonzomatic_W64_2022-08-20.zip#/dl.7z",
-      "hash": "4b1be7177dc97b38dc662610727acb5c3288e8cc798b9dfb2c15a8d255dbadc1",
-      "bin": [
-        "Bonzomatic_W64_DX9.exe",
-        "Bonzomatic_W64_DX11.exe",
-        "Bonzomatic_W64_GLFW.exe"
+    "version": "2022-07-08",
+    "description": "Live shader coding tool and Shader Showdown workhorse",
+    "homepage": "https://github.com/Gargaj/Bonzomatic",
+    "license": "Unlicense",
+    "url":  "https://github.com/Gargaj/Bonzomatic/releases/download/2022-07-08/Bonzomatic_W64_2022-07-08.zip",
+    "persist": [
+        "textures",
+        "config.json"
+    ],
+    "bin": [
+      "bonzomatic-glfw.exe",
+      "bonzomatic-dx11.exe",
+      "bonzomatic-dx9.exe"
+    ],
+    "shortcuts": [
+      [
+        "bonzomatic-glfw.exe",
+        "Bonzomatic GLFW"
       ],
-      "shortcuts": [
-        [
-          "Bonzomatic_W64_DX9.exe",
-          "Bonzomatic_W64_DX9"
-        ],
-        [
-          "Bonzomatic_W64_DX11.exe",
-          "Bonzomatic_W64_DX11"
-        ],
-        [
-          "Bonzomatic_W64_GLFW.exe",
-          "Bonzomatic_W64_GLFW"
-        ],
-        [
-          "config.json",
-          "Bonzomatic Config"
-        ]
-      ]
-    },
-    "32bit": {
-      "url": "https://ghproxy.com/https://github.com/Gargaj/Bonzomatic/releases/download/2022-08-20/Bonzomatic_W32_2022-08-20.zip#/dl.7z",
-      "hash": "0b52976a63a074f9679e59b0d4db230f5ad03566dad21e27d6397777fc018b6f",
-      "bin": [
-        "Bonzomatic_W32_DX9.exe",
-        "Bonzomatic_W32_DX11.exe",
-        "Bonzomatic_W32_GLFW.exe"
+      [
+        "bonzomatic-dx11.exe",
+        "Bonzomatic DX11"
       ],
-      "shortcuts": [
-        [
-          "Bonzomatic_W32_DX9.exe",
-          "Bonzomatic_W32_DX9"
-        ],
-        [
-          "Bonzomatic_W32_DX11.exe",
-          "Bonzomatic_W32_DX11"
-        ],
-        [
-          "Bonzomatic_W32_GLFW.exe",
-          "Bonzomatic_W32_GLFW"
-        ],
-        [
-          "config.json",
-          "Bonzomatic Config"
-        ]
+      [
+        "bonzomatic-dx9.exe",
+        "Bonzomatic DX9"
       ]
-    }
-  },
-  "persist": [
-    "config.json",
-    "User"
-  ],
-  "checkver": {
-    "github": "https://github.com/Gargaj/Bonzomatic",
-    "regex": "Bonzomatic_W64_([\\d|-]+).zip"
-  },
-  "autoupdate": {
-    "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.com/https://github.com/Gargaj/Bonzomatic/releases/download/$version/Bonzomatic_W64_$version.zip#/dl.7z"
-      },
-      "32bit": {
-        "url": "https://ghproxy.com/https://github.com/Gargaj/Bonzomatic/releases/download/$version/Bonzomatic_W32_$version.zip#/dl.7z"
-      }
-    }
-  },
-  "_from": "okibcn/ScoopMaster"
+    ],
+    "pre_install": [
+      "Rename-Item \"$dir\\Bonzomatic_W64_GLFW.exe\" bonzomatic-glfw.exe",
+      "Rename-Item \"$dir\\Bonzomatic_W64_DX11.exe\" bonzomatic-dx11.exe",
+      "Rename-Item \"$dir\\Bonzomatic_W64_DX9.exe\" bonzomatic-dx9.exe"
+    ],
+    "hash": "0c8eab147b2795e27dab3ee8c994d2732da1cc445193363210718c6da5cb279e"
 }

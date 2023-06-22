@@ -1,0 +1,56 @@
+{
+  "version": "115.0b8",
+  "description": "Developer builds of Firefox: the popular open source web browser.",
+  "homepage": "https://www.mozilla.org/ja/firefox/developer/",
+  "license": "MPL-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://archive.mozilla.org/pub/devedition/releases/115.0b8/win64/ja/Firefox%20Setup%20115.0b8.exe#/dl.7z",
+      "hash": "sha512:f8e037f3622fea352195a3cc736ac2879ec0644be7ce52393813e67231300ecf3d7d69f73977f85d20fc5d6e29e00ddedad10ace7e9d8aaa8dd643ff0211b6d8"
+    },
+    "32bit": {
+      "url": "https://archive.mozilla.org/pub/devedition/releases/115.0b8/win32/ja/Firefox%20Setup%20115.0b8.exe#/dl.7z",
+      "hash": "sha512:88657127be144a08b5dd4187d88628b45636dc29651c191773fdf911a4f3914bc0304640782a53b3627567d1feaabc390dac96af466b40dd4c97442a7e689593"
+    }
+  },
+  "extract_dir": "core",
+  "bin": [
+    [
+      "firefox.exe",
+      "firefox-dev"
+    ],
+    [
+      "firefox.exe",
+      "firefox-developer"
+    ]
+  ],
+  "shortcuts": [
+    [
+      "firefox.exe",
+      "Firefox Developer Edition"
+    ]
+  ],
+  "checkver": {
+    "url": "https://aus5.mozilla.org/update/6/Firefox/78.0/_/WINNT_x86_64-msvc-x64/ja/aurora/_/_/_/_/update.xml",
+    "xpath": "/updates/update/patch/@URL",
+    "regex": "devedition-([\\db.]+)-"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://archive.mozilla.org/pub/devedition/releases/$version/win64/ja/Firefox%20Setup%20$version.exe#/dl.7z",
+        "hash": {
+          "url": "https://archive.mozilla.org/pub/devedition/releases/$version/SHA512SUMS",
+          "regex": "$sha512\\s+win64/ja/$basename"
+        }
+      },
+      "32bit": {
+        "url": "https://archive.mozilla.org/pub/devedition/releases/$version/win32/ja/Firefox%20Setup%20$version.exe#/dl.7z",
+        "hash": {
+          "url": "https://archive.mozilla.org/pub/devedition/releases/$version/SHA512SUMS",
+          "regex": "$sha512\\s+win32/ja/$basename"
+        }
+      }
+    }
+  }
+}

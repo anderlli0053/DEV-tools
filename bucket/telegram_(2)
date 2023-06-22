@@ -1,0 +1,24 @@
+{
+    "version": "3.4.8",
+    "description": "A messaging app with a focus on speed and security",
+    "homepage": "https://telegram.org",
+    "license": "GPL-3.0-only",
+    "url": "https://updates.tdesktop.com/tsetup/tportable.3.4.8.zip",
+    "hash": "2a506773e87ece63932a2a0571de131b9fdc00f3f47b88b66b63698985ea877a",
+    "extract_dir": "Telegram",
+    "pre_install": "Set-Content \"$dir\\telegram.cmd\" '@start \"Telegram\" /D \"%~dp0\" \"%~dp0Telegram.exe\" %*' -Encoding Ascii",
+    "bin": "telegram.cmd",
+    "shortcuts": [
+        [
+            "Telegram.exe",
+            "Telegram"
+        ]
+    ],
+    "persist": "tdata",
+    "checkver": {
+        "github": "https://github.com/telegramdesktop/tdesktop"
+    },
+    "autoupdate": {
+        "url": "https://updates.tdesktop.com/tsetup/tportable.$version.zip"
+    }
+}

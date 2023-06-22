@@ -1,5 +1,5 @@
 {
-    "version": "114.0.1823.37",
+    "version": "115.0.1901.14",
     "description": "Microsoft Edge Beta. The chromium based Microsoft Edge browser (Beta Channel)",
     "homepage": "https://www.microsoftedgeinsider.com/en-us/welcome?channel=beta",
     "license": "Freeware",
@@ -7,21 +7,21 @@
     "architecture": {
         "64bit": {
             "url": [
-                "https://dorado-api.deno.dev/edge?arch=64&channel=beta&version=114.0.1823.37&dl#/dl.7z",
+                "https://dorado-api.deno.dev/edge?arch=64&channel=beta&version=115.0.1901.14&dl#/dl.7z",
                 "https://raw.githubusercontent.com/ACooper81/SharedFiles/master/icons/msedgebeta.ico"
             ],
             "hash": [
-                "1635e888d1ce89c978074e01f3f6393ca282870e3cc22e3cdc668986bab2d071",
+                "947a8d662e9f92f7236529ba8263149e1b1468476a1733e826baaaae0efbd66e",
                 "a8a1df8f03c70b7af22d859347bd7270a4073f2c3dcbd3cb841aa2ff0797f5d8"
             ]
         },
         "32bit": {
             "url": [
-                "https://dorado-api.deno.dev/edge?arch=86&channel=beta&version=114.0.1823.37&dl#/dl.7z",
+                "https://dorado-api.deno.dev/edge?arch=86&channel=beta&version=115.0.1901.14&dl#/dl.7z",
                 "https://raw.githubusercontent.com/ACooper81/SharedFiles/master/icons/msedgebeta.ico"
             ],
             "hash": [
-                "79ca155fd615e5e863ef7559d3150d064ed83c4e69346bce46e13f17c6eaf494",
+                "175101159b5d767e7b3eba63292c381a9203b7f131813eb691d056111c2bd2c2",
                 "a8a1df8f03c70b7af22d859347bd7270a4073f2c3dcbd3cb841aa2ff0797f5d8"
             ]
         }
@@ -39,8 +39,8 @@
     ],
     "persist": "User Data",
     "checkver": {
-        "url": "https://dorado-api.deno.dev/edge?arch=64&channel=beta",
-        "regex": "\"Version\":\"([\\d.]+)\""
+        "script": "Write-Output $([System.Text.Encoding]::Unicode.GetString((Invoke-WebRequest -URI https://msedgedriver.azureedge.net/LATEST_BETA).Content))",
+        "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {

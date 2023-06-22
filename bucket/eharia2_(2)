@@ -1,0 +1,48 @@
+{
+  "version": "0.0.7",
+  "description": "Ehanced Aria2.",
+  "homepage": "https://github.com/Jvcon/EhAria2",
+  "license": "GPL-2.0 license",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/Jvcon/EhAria2/releases/download/v0.0.7/EhAria2_v0.0.7.zip",
+      "hash": "8c0c7b49445740b2757a136953738b919cf46fc7f68bdc605d5803a0147e8669"
+    }
+  },
+  "installer": {
+    "script": [
+      "if (!(Test-Path \"$persist_dir\\aria2.conf\")) {",
+      "   New-Item -Force -Path \"$persist_dir\\aria2.conf\" -ItemType file -Value $null ",
+      "}",
+      "if (!(Test-Path \"$persist_dir\\aria2.session\")) {",
+      "   New-Item -Force -Path \"$persist_dir\\aria2.session\" -ItemType file -Value $null ",
+      "}",
+      "if (!(Test-Path \"$persist_dir\\EhAria2.ini\")) {",
+      "   New-Item -Force -Path \"$persist_dir\\EhAria2.ini\" -ItemType file -Value $null ",
+      "}"
+    ]
+  },
+  "bin": "EhAria2Torrent.exe",
+  "shortcuts": [
+    [
+      "EhAria2.exe",
+      "EhAria2"
+    ]
+  ],
+  "persist": [
+    "EhAria2.ini",
+    "aria2.conf",
+    "aria2.session"
+  ],
+  "checkver": {
+    "url": "https://api.github.com/repos/Jvcon/EhAria2/releases",
+    "regex": "/releases/tag/(?:v|V)?([\\w.-]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/Jvcon/EhAria2/releases/download/v$version/EhAria2_v$version.zip"
+      }
+    }
+  }
+}

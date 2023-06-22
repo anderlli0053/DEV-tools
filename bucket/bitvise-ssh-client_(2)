@@ -1,0 +1,46 @@
+// help wanted
+// installer, post_install & uninstaller
+{
+    "version": "8.43",
+    "description": "friendly and flexible SSH Client for Windows.",
+    "homepage": "https://www.bitvise.com/ssh-client",
+    "license":  {
+        "identifier": "EULA",
+        "url": "https://www.bitvise.com/ssh-client-license"
+    },
+    "architecture": {
+            "url": "https://dl.bitvise.com/BvSshClient-Inst.exe",
+            "hash": "1337ddef7497854eafee5365626d05daa70bdfa9677acdb12690e41c913ba510"
+    },
+    "installer": {
+        "args": [
+            "/VERYSILENT",
+            "/DIR=\"$dir\"",
+            "/NORESTART"
+        ]
+    },
+    "post_install": "Remove-Item -Recurse \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\Ditto\"",
+    "uninstaller": {
+        "file": "unins000.exe",
+        "args": [
+            "/VERYSILENT",
+            "/NORESTART"
+        ]
+    },
+    "bin": "BvSsh.exe",
+    "shortcuts": [
+        [
+            "BvSsh.exe",
+            "Bitvise SSH Client"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.bitvise.com/ssh-client-download",
+        "re": "Current version: ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "url": "https://dl.bitvise.com/BvSshClient-Inst.exe"
+        }
+    }
+}

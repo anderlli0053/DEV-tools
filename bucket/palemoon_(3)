@@ -1,0 +1,58 @@
+{
+  "version": "32.2.1",
+  "description": "Mozilla-derived web browser focusing on efficiency and customization",
+  "homepage": "https://www.palemoon.org",
+  "license": "MPL-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://rm-eu.palemoon.org/release/Palemoon-Portable-32.2.1.win64.exe#/palemoon.7z",
+      "hash": "2b0f1da7fdea41dbf63b002b5fd879c28ead8172aca253c413ab1dea939211fa"
+    },
+    "32bit": {
+      "url": "https://rm-eu.palemoon.org/release/Palemoon-Portable-32.2.1.win32.exe#/palemoon.7z",
+      "hash": "a24e84b6ea4cada92475ac3ce2f03f93b76447e9d6ea1682520afe500f1153f9"
+    }
+  },
+  "post_install": [
+    "(Get-Content \"$dir\\Palemoon-Portable.ini\") -replace 'ShowSplash=true','ShowSplash=false' | Set-Content \"$dir\\Palemoon-Portable.ini\"",
+    "if (!(Test-Path \"$dir\\User\\Palemoon\\Profiles\") -and (Test-Path \"$env:AppData\\Moonchild Productions\\Pale Moon\\Profiles\")) {",
+    "    mkdir \"$dir\\User\\Palemoon\" -ErrorAction SilentlyContinue",
+    "    Copy-Item \"$env:AppData\\Moonchild Productions\\Pale Moon\\Profiles\" \"$dir\\User\\Palemoon\" -Recurse",
+    "}"
+  ],
+  "bin": [
+    [
+      "Palemoon-Portable.exe",
+      "palemoon"
+    ]
+  ],
+  "shortcuts": [
+    [
+      "Palemoon-Portable.exe",
+      "Pale Moon"
+    ]
+  ],
+  "persist": [
+    "Backups",
+    "Downloads",
+    "User"
+  ],
+  "checkver": {
+    "url": "https://www.palemoon.org/download.shtml",
+    "regex": "Hashes for release ([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://rm-eu.palemoon.org/release/Palemoon-Portable-$version.win64.exe#/palemoon.7z"
+      },
+      "32bit": {
+        "url": "https://rm-eu.palemoon.org/release/Palemoon-Portable-$version.win32.exe#/palemoon.7z"
+      }
+    },
+    "hash": {
+      "url": "https://www.palemoon.org/download.shtml",
+      "regex": "$basename\\s+$sha256"
+    }
+  }
+}

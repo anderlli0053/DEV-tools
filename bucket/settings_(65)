@@ -1,0 +1,87 @@
+{
+    "editor.bracketPairColorization.enabled": true,
+    "json.schemas": [
+        {
+            "url": "https://raw.githubusercontent.com/Ash258/Scoop-Core/main/schema.json",
+            "fileMatch": [
+                ".vscode/Template.jsonc",
+                "bucket/*.json*",
+                "bucket/old/**/*.json*",
+                "deprecated/*.json*",
+                "TODO/*.json*",
+            ],
+        },
+    ],
+    "powershell.codeFormatting.preset": "OTBS",
+    "terminal.integrated.automationShell.linux": "/usr/bin/zsh",
+    "terminal.integrated.automationShell.osx": "/bin/zsh",
+    "terminal.integrated.automationShell.windows": "pwsh.exe",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.defaultProfile.windows": "PowerShell Core (Preview)",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "path": "powershell.exe",
+            "args": [
+                "-NoLogo",
+                "-NoExit",
+            ],
+        },
+        "PowerShell Core": {
+            "path": [
+                "${env:SCOOP_GLOBAL}\\apps\\pwsh\\current\\pwsh.exe",
+                "${env:SCOOP}\\apps\\pwsh\\current\\pwsh.exe",
+                "pwsh.exe",
+            ],
+            "args": [
+                "-NoLogo",
+                "-NoExit",
+            ],
+        },
+        "PowerShell Core (Preview)": {
+            "path": [
+                "${env:SCOOP_GLOBAL}\\apps\\pwsh-preview\\current\\pwsh.exe",
+                "${env:SCOOP}\\apps\\pwsh-preview\\current\\pwsh.exe",
+                "pwsh-preview.exe",
+                "pwsh.exe",
+            ],
+            "args": [
+                "-NoLogo",
+                "-NoExit",
+            ],
+        },
+        "PowerShell x86": {
+            "path": "C:\\Windows\\syswow64\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "args": [
+                "-NoLogo",
+                "-NoExit",
+            ],
+        },
+        "Git Bash": {
+            "path": [
+                "${env:SCOOP_GLOBAL}\\apps\\git\\current\\bin\\bash.exe",
+                "${env:SCOOP_GLOBAL}\\apps\\mingit\\current\\bin\\bash.exe",
+                "${env:SCOOP}\\apps\\git\\current\\bin\\bash.exe",
+                "${env:SCOOP}\\apps\\mingit\\current\\bin\\bash.exe",
+            ],
+        },
+    },
+    "terminal.integrated.windowsEnableConpty": true,
+    "yaml.format.bracketSpacing": true,
+    "yaml.format.enable": true,
+    "yaml.format.singleQuote": true,
+    "yaml.validate": true,
+    "yaml.schemas": {
+        "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/appveyor.json": [
+            "*appveyor.y*ml",
+        ],
+        "https://raw.githubusercontent.com/Ash258/Scoop-Core/main/schema.json": [
+            "bucket/*.y*ml",
+            "bucket/old/**/*.y*ml",
+            "deprecated/*.y*ml",
+            "TODO/*.y*ml",
+        ],
+        "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/github-workflow.json": [
+            ".github/workflows/*.y*ml",
+        ],
+    },
+}

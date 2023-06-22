@@ -1,0 +1,42 @@
+{
+  "version": "5299877133",
+  "description": "Chat client for https://twitch.tv",
+  "homepage": "https://github.com/SevenTV/chatterino7",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/SevenTV/chatterino7/releases/download/nightly-build/chatterino-windows-x86-64-Qt-5.15.2.zip",
+      "hash": "72e3847278a42d3a1262e4baf7f9f592f00721c426721f0195b9bcc00a56bf64",
+      "extract_dir": "Chatterino2",
+      "pre_install": [
+        "Get-ChildItem \"$dir\\chatterino.exe\" | Rename-Item -NewName { $_.name.Replace('o', 'o7-portable') }",
+        "$modes = \"$dir\\modes\"",
+        "$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'",
+        "Invoke-Expression \"'portable' >$(if (Test-Path $modes) { '>' }) `$modes\""
+      ]
+    }
+  },
+  "persist": [
+    "Logs",
+    "Misc",
+    "Settings"
+  ],
+  "shortcuts": [
+    [
+      "chatterino7-portable.exe",
+      "Chatterino7-portable"
+    ]
+  ],
+  "bin": "chatterino7-portable.exe",
+  "checkver": {
+    "url": "https://api.github.com/repositories/342454835/actions/workflows/build.yml/runs?branch=chatterino7&status=success",
+    "jsonpath": "$.workflow_runs[0].id"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/SevenTV/chatterino7/releases/download/nightly-build/chatterino-windows-x86-64-Qt-5.15.2.zip"
+      }
+    }
+  }
+}

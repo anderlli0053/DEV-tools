@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "license": {
+    "identifier": "Proprietary",
+    "url": "https://play.date/dev/sdk-license"
+  },
+  "url": "https://download.panic.com/playdate_sdk/Windows/PlaydateSDK-2.0.0.exe",
+  "homepage": "https://play.date/dev/",
+  "hash": [
+    "sha1:04198b5786fbfdfbd3545f7a2876bec0fd28105a",
+    "sha256:c253262ec7f9aa7f7b5474a741f2f7289fcdd0fa1eea0e958b3b1d150354bc0b",
+    "sha512:7bbc7bb2e0ed531ca88f4a5538825e86024b69abcecdf915064e400baf0a1fa9055709da8a4985a0fff0322f7fcc25ebc9b81378dc58e7160c4f6cf0c4b3f42f"
+  ],
+  "checkver": {
+    "url": "https://play.date/dev/",
+    "re": "Download Playdate SDK ([\\d.]+)"
+  },
+  "bin": [
+    "bin/pdc.exe",
+    "bin/pdutil.exe"
+  ],
+  "env_set": {
+    "PLAYDATE_SDK_PATH": "$dir"
+  },
+  "installer": {
+    "args": [
+      "/S",
+      "/D=$dir"
+    ]
+  },
+  "uninstaller": {
+    "file": "Uninstall_Playdate_SDK.exe",
+    "args": "/S"
+  }
+}

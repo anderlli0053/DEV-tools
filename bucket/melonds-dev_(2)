@@ -1,0 +1,50 @@
+{
+    "version": "1675-20230612-391ad8c",
+    "description": "Nintendo DS emulator",
+    "homepage": "http://melonds.kuribo64.net/",
+    "license": "GPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://nightly.link/melonDS-emu/melonDS/workflows/build-windows/master/melonDS-windows-x86_64.zip",
+            "hash": "4fdc2ec80f2e8bd8f10bd3a11f2b8d49a92b91645078e89f5f7fb2fff9781dc5"
+        }
+    },
+    "installer": {
+        "script": [
+            "$FILE = 'melonDS.ini'",
+            "if (!(Test-Path \"$persist_dir\\$FILE\")) {",
+            "    New-Item \"$dir\\$FILE\" -Type File | Out-Null",
+            "}"
+        ]
+    },
+    "bin": "melonDS.exe",
+    "shortcuts": [
+        [
+            "melonDS.exe",
+            "melonDS (dev)"
+        ]
+    ],
+    "persist": "melonDS.ini",
+    "checkver": {
+        "url": "https://api.github.com/repos/melonDS-emu/melonDS/actions/workflows/build-windows.yml/runs?event=push&branch=master&status=success",
+        "script": [
+            "$sha = json_path $page $.workflow_runs[0].head_sha",
+            "$runId = json_path $page $.workflow_runs[0].run_number",
+            "$suiteId = json_path $page $.workflow_runs[0].check_suite_id",
+            "$artUrl = json_path $page $.workflow_runs[0].artifacts_url",
+            "$date = json_path $page $.workflow_runs[0].created_at",
+            "$cont = (Invoke-WebRequest $artUrl).Content | ConvertFrom-Json",
+            "$artId = $cont.artifacts[0].id",
+            "Write-Output \"$runId $date $suiteId $artId $sha\""
+        ],
+        "regex": "^(?<run>[^ ]+) (?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})[^ ]+ (?<suite>\\d+) (?<artifact>\\d+) (?<commit>[\\da-f]{7})(?<sha>[\\da-f]+)$",
+        "replace": "${run}-${year}${month}${day}-${commit}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nightly.link/melonDS-emu/melonDS/workflows/build-windows/master/melonDS-windows-x86_64.zip"
+            }
+        }
+    }
+}

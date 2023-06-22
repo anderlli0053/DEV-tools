@@ -1,0 +1,41 @@
+{
+  "version": "8.06.1",
+  "description": "SSH client and terminal emulator for Windows and macOS.",
+  "homepage": "https://www.emtec.com/zoc/",
+  "license": "Proprietary",
+  "architecture": {
+    "64bit": {
+      "url": "https://www.emtec.com/downloads/zoc/zoc8061_x64.exe#/dl.7z",
+      "hash": "0430ee928b98f4be40079176e81dcf245795d7cf15c8c4b6e4f89fcbf11c86c8"
+    },
+    "32bit": {
+      "url": "https://www.emtec.com/downloads/zoc/zoc8061.exe#/dl.7z",
+      "hash": "647d36c0f621388c34e482b872653609cb6a32616a1e19cef06efac865c73404"
+    }
+  },
+  "installer": {
+    "script": "Expand-7zipArchive \"$dir\\setup.fil\" -Removal"
+  },
+  "bin": "zoc.exe",
+  "shortcuts": [
+    [
+      "zoc.exe",
+      "ZOC Terminal"
+    ]
+  ],
+  "checkver": {
+    "url": "https://www.emtec.com/downloads/zoc/zoc_changes.txt",
+    "regex": "\\* VERSION ([\\d.]+) \\([\\dx-]+\\)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://www.emtec.com/downloads/zoc/zoc$cleanVersion_x64.exe#/dl.7z"
+      },
+      "32bit": {
+        "url": "https://www.emtec.com/downloads/zoc/zoc$cleanVersion.exe#/dl.7z"
+      }
+    },
+    "hash": "$url.sha256"
+  }
+}

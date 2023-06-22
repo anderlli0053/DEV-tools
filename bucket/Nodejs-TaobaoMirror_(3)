@@ -1,0 +1,30 @@
+{
+  "version": "20.3.0",
+  "description": "As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.",
+  "homepage": "https://registry.npmmirror.com/binary.html?path=node/",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://registry.npmmirror.com/-/binary/node/v20.3.0/node-v20.3.0-win-x64.7z",
+      "hash": "sha256:b8bda54d0936e2295dd3267dba7d61903af92a0427dac56251047fed2e8ff05f",
+      "extract_dir": "node-v20.3.0-win-x64"
+    },
+    "32bit": {
+      "url": "https://registry.npmmirror.com/-/binary/node/v20.3.0/node-v20.3.0-win-x86.7z",
+      "hash": "sha256:32f63af144aa64c5fbe83a26dced8305934063393e34886aec7abf4e1d6637d8",
+      "extract_dir": "node-v20.3.0-win-x86"
+    }
+  },
+  "persist": [
+    "bin",
+    "cache"
+  ],
+  "env_add_path": [
+    "bin",
+    "."
+  ],
+  "post_install": [
+    "# Set npm prefix to install modules inside bin and npm cache so they persist",
+    "Set-Content -Value \"prefix=$persist_dir\\bin`ncache=$persist_dir\\cache\" -Path \"$dir\\node_modules\\npm\\npmrc\""
+  ]
+}

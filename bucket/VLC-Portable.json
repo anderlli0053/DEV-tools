@@ -1,34 +1,52 @@
 {
-    "homepage": "https://www.videolan.org/",
     "version": "3.0.18",
+    "description": "A free and open source cross-platform multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols.",
+    "homepage": "https://www.videolan.org/",
     "license": "GPL-2.0-only",
-    "url": "https://sourceforge.net/projects/portableapps/files/VLC%20Media%20Player%20Portable/VLCPortable_3.0.18.paf.exe#/dl.7z",
-    "hash": "sha1:9a3497eb8de599be610eac9a50539d406a6018e9",
-    "bin": [
-        [
-            "VLCPortable.exe",
-            "vlc"
-        ]
+    "changelog": "https://www.videolan.org/vlc/releases/",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.videolan.org/pub/vlc/3.0.18/win64/vlc-3.0.18-win64.7z",
+            "hash": "6f896c35e48c6efb28ed65d717c66b50ded1c316580cc7a90cab0aaccd2a6a9f"
+        },
+        "32bit": {
+            "url": "https://download.videolan.org/pub/vlc/3.0.18/win32/vlc-3.0.18-win32.7z",
+            "hash": "b949aa20c292c4e36014be97551000b9ebe113ad401b823101c48043c507d664"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\portable\") -and (Test-Path \"$Env:AppData\\vlc\")) {",
+        "    Write-Host -F yellow \"Copying old '$Env:AppData\\vlc' to '$persist_dir\\portable'\"",
+        "    New-Item \"$dir\\portable\\vlc\" -ItemType 'Directory' -Force | Out-Null",
+        "    Copy-Item \"$Env:AppData\\vlc\\*\" \"$dir\\portable\" -Recurse -Force",
+        "    Move-Item \"$dir\\portable\\vlc-qt-interface.ini\" \"$dir\\portable\\vlc\"",
+        "}"
     ],
+    "extract_dir": "vlc-3.0.18",
+    "bin": "vlc.exe",
     "shortcuts": [
         [
-            "VLCPortable.exe",
+            "vlc.exe",
             "VLC media player"
         ]
     ],
-    "persist": "Data",
-    "post_install": [
-        "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
-        "if(!(test-path \"$dir\\VLCPortable.ini\")) {",
-        "   Copy-Item \"$dir\\Other\\Source\\AppNamePortable.ini\" \"$dir\\VLCPortable.ini\"",
-        "   (Get-Content \"$dir\\VLCPortable.ini\").replace('DisableSplashScreen=false', 'DisableSplashScreen=true') | Set-Content \"$dir\\VLCPortable.ini\"",
-        "}"
-    ],
+    "persist": "portable",
     "checkver": {
-        "url": "https://sourceforge.net/projects/portableapps/rss?path=/VLC%20Media%20Player%20Portable",
-        "re": "/VLC Media Player Portable/VLCPortable_([\\d.]+(?:_Rev_[\\d.])?).paf.exe]]>"
+        "url": "https://www.videolan.org/vlc/download-windows.html",
+        "regex": "downloadVersion'>\\s*([\\d.]+)</span>"
     },
     "autoupdate": {
-        "url": "https://sourceforge.net/projects/portableapps/files/VLC%20Media%20Player%20Portable/VLCPortable_$version.paf.exe#/dl.7z"
+        "architecture": {
+            "64bit": {
+                "url": "https://download.videolan.org/pub/vlc/$version/win64/vlc-$version-win64.7z"
+            },
+            "32bit": {
+                "url": "https://download.videolan.org/pub/vlc/$version/win32/vlc-$version-win32.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        },
+        "extract_dir": "vlc-$version"
     }
 }

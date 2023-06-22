@@ -1,0 +1,49 @@
+{
+    "version": "20230622-4f14f5ca",
+    "description": "A newer experimental ps2 emulator.",
+    "homepage": "https://purei.org",
+    "license": "BSD-2-Clause",
+    "architecture": {
+        "32bit": {
+            "url": "https://s3.us-east-2.amazonaws.com/playbuilds/4f14f5ca/Play-x86-32.exe#/dl.7z",
+            "hash": "dc5356907c04d7d5b6c31850df17b1d0540c8bb5029e8c9cedadb44cf8f2360c"
+        },
+        "64bit": {
+            "url": "https://s3.us-east-2.amazonaws.com/playbuilds/4f14f5ca/Play-x86-64.exe#/dl.7z",
+            "hash": "52d1fce1547076176ca1afc2c52b55ad4a7bfa31cbc8bfb7b9eb0cf74fc08e13"
+        }
+    },
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninstall.exe\" -Recurse -Force",
+    "bin": [
+        [
+            "Play.exe",
+            "Play (dev)"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "Play.exe",
+            "Play (dev)"
+        ]
+    ],
+    "checkver": {
+        "url": "https://services.purei.org/api/builds",
+        "script": [
+            "$commit = json_path $page $.commitHash",
+            "$time = json_path $page $.timestamp",
+            "Write-Output \"$time $commit\""
+        ],
+        "regex": "^(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})[^ ]+ (?<commit>.*)$",
+        "replace": "${year}${month}${day}-${commit}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://s3.us-east-2.amazonaws.com/playbuilds/$matchCommit/Play-x86-32.exe#/dl.7z"
+            },
+            "64bit": {
+                "url": "https://s3.us-east-2.amazonaws.com/playbuilds/$matchCommit/Play-x86-64.exe#/dl.7z"
+            }
+        }
+    }
+}

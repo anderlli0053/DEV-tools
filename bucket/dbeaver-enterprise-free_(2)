@@ -1,0 +1,40 @@
+{
+  "version": "23.1",
+  "description": "Database tool for developers, SQL programmers, database administrators and analysts",
+  "homepage": "https://dbeaver.com/",
+  "license": "Apache-2.0",
+  "suggest": {
+    "java": "java/oraclejdk"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://dbeaver.com/files/dbeaver-ee-latest-win32.win32.x86_64.zip",
+      "hash": "8fdcb90ae743aebebeb6e94038d2019cfb582da5123e3bc8642cc2c28abbd572"
+    }
+  },
+  "extract_dir": "dbeaver",
+  "installer": {
+    "script": "& \"$bucketsdir\\$bucket\\scripts\\dbeaver-enterprise-portable.ps1\" $dir $bucketsdir"
+  },
+  "bin": [
+    "dbeaver.exe",
+    "dbeaver-cli.exe"
+  ],
+  "shortcuts": [
+    [
+      "dbeaver.exe",
+      "DBeaver Enterprise"
+    ]
+  ],
+  "checkver": {
+    "url": "https://dbeaver.com/download/enterprise/",
+    "regex": "DBeaver Enterprise Edition ([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://dbeaver.com/files/dbeaver-ee-latest-win32.win32.x86_64.zip"
+      }
+    }
+  }
+}

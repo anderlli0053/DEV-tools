@@ -1,0 +1,40 @@
+{
+    "version": "3.11.3.0",
+    "description": "Free, open-source and portable Python distribution for Windows",
+    "homepage": "https://winpython.github.io/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/winpython/winpython/releases/download/6.1.20230518final/Winpython64-3.11.3.0.exe#/dl.7z",
+            "hash": "4579950067238e0510449da6bd40452a9a9c75a5ee5d48cd405528b6b3b8904e",
+            "extract_dir": "WPy64-31130\\python-3.11.3.amd64"
+        }
+    },
+    "bin": [
+        "python.exe",
+        "pythonw.exe",
+        [
+            "python.exe",
+            "python3"
+        ]
+    ],
+    "env_add_path": "scripts",
+    "persist": "settings",
+    "checkver": {
+        "github": "https://github.com/winpython/winpython",
+        "regex": "/download/(?<gitv>[\\d.]+)final/Winpython64-(?<version>[\\d.]+)\\.exe",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/winpython/winpython/releases/download/$matchGitvfinal/Winpython64-$matchVersion.exe#/dl.7z",
+                "extract_dir": "WPy64-$cleanVersion\\python-$majorVersion.$minorVersion.$patchVersion.amd64"
+            }
+        },
+        "hash": {
+            "url": "https://winpython.github.io/md5_sha1.txt",
+            "regex": "$sha256\\s+\\|\\s+$basename"
+        }
+    }
+}

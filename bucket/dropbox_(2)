@@ -1,0 +1,29 @@
+{
+  "version": "176.4.5108",
+  "homepage": "https://www.dropbox.com",
+  "url": "https://edge.dropboxstatic.com/dbx-releng/client/Dropbox%20176.4.5108%20Offline%20Installer.x86.exe#/dl.7z",
+  "hash": "47ec97baf91aec2bd7e85bf99ae2550592ecf4b34298677cf8a6bec00d9b911a",
+  "installer": {
+    "script": [
+      "Expand-7zipArchive $dir\\DropboxClientInstaller.exe* $dir",
+      "Get-ChildItem $dir -Exclude `$0 | Remove-Item -Recurse -Force",
+      "Get-ChildItem $dir\\`$0\\* -Recurse | Move-Item -Destination $dir",
+      "Remove-Item $dir\\`$0"
+    ]
+  },
+  "bin": "dropbox.exe",
+  "shortcuts": [
+    [
+      "dropbox.exe",
+      "Dropbox"
+    ]
+  ],
+  "checkver": {
+    "url": "https://www.dropboxforum.com/t5/user/viewprofilepage/user-id/308787",
+    "regex": "(?sm)Dropbox-desktop-client-builds/Stable-Build-(\\d+)-(\\d+)-(\\d+)",
+    "replace": "${1}.${2}.${3}"
+  },
+  "autoupdate": {
+    "url": "https://edge.dropboxstatic.com/dbx-releng/client/Dropbox%20$version%20Offline%20Installer.x86.exe#/dl.7z"
+  }
+}

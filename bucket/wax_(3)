@@ -1,0 +1,31 @@
+{
+  "version": "1.2.1",
+  "description": "“绅士漫画”的客户端",
+  "homepage": "https://github.com/niuhuan/wax",
+  "license": {
+    "identifier": "MIT"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/niuhuan/wax/releases/download/v1.2.1/z-old_flutter-wax-v1.2.1-windows-x86_64.zip",
+      "hash": "95389d416e2df90aea4c6994cb55d203c7e2161b0ab7792eb11616c5d8424090"
+    }
+  },
+  "shortcuts": [
+    [
+      "wax.exe",
+      "wax"
+    ]
+  ],
+  "checkver": {
+    "url": "https://api.github.com/repos/niuhuan/wax/releases",
+    "regex": "(?<prefix>z-)?old_flutter-wax-[vV]?([\\w.-]+)-windows-x86_64.zip"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/niuhuan/wax/releases/download/v$version/$matchPrefixold_flutter-wax-v$version-windows-x86_64.zip"
+      }
+    }
+  }
+}

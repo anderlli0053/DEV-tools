@@ -1,0 +1,25 @@
+{
+    "version": "1.8.0",
+    "description": "The Atlas CLI lets you manage your MongoDB Atlas deployments from the command line.",
+    "homepage": "https://dochub.mongodb.org/core/atlas-cli",
+    "license": "Proprietary",
+    "architecture": {
+        "64bit": {
+            "url": "https://fastdl.mongodb.org/mongocli/mongodb-atlas-cli_1.8.0_windows_x86_64.zip",
+            "hash": "92b233d70f3ac4226d5ea99d20c18f557b34cfd9a3b414564d5653611aeb054c"
+        }
+    },
+    "extract_dir": "bin",
+    "bin": "atlas.exe",
+    "checkver": {
+        "url": "https://www.mongodb.com/try/download/atlascli",
+        "regex": "mongodb-atlas-cli_([\\d.]+)_windows_x86_64"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://fastdl.mongodb.org/mongocli/mongodb-atlas-cli_$version_windows_x86_64.zip"
+            }
+        }
+    }
+}

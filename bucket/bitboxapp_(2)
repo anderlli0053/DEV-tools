@@ -1,0 +1,30 @@
+{
+  "version": "4.37.1",
+  "description": "The BitBoxApp for desktop.",
+  "homepage": "https://shiftcrypto.ch/",
+  "license": "opensource",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v4.37.1/BitBox-4.37.1-win64-installer.exe",
+      "hash": "6500012a7324ef5d2bd9d5f36f57548d1e5c1c84dc4e060c3a4972aa07818f50"
+    }
+  },
+  "installer": {
+    "script": "Start-Process -FilePath \"$dir\\BitBox-${version}-win64-installer.exe\" -ArgumentList \"/S /D=$dir\" -Wait"
+  },
+  "uninstaller": {
+    "script": "Start-Process -FilePath \"$dir\\uninstall.exe\" -ArgumentList \"/S\" -Wait"
+  },
+  "bin": "BitBox.exe",
+  "checkver": {
+    "url": "https://github.com/digitalbitbox/bitbox-wallet-app/releases",
+    "regex": "\"/digitalbitbox/bitbox-wallet-app/tree/v([0-9]*.[0-9]*.[0-9]*)\""
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/digitalbitbox/bitbox-wallet-app/releases/download/v$match1/BitBox-$match1-win64-installer.exe"
+      }
+    }
+  }
+}

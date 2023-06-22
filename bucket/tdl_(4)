@@ -1,0 +1,24 @@
+{
+    "version": "0.9.2",
+    "description": "📥 Telegram Downloader, but more than a downloader 🚀",
+    "homepage": "https://github.com/iyear/tdl",
+    "license": "AGPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/iyear/tdl/releases/download/v0.9.2/tdl_Windows_64bit.zip",
+            "hash": "72aba6320a497938f9eabe85500b97ce5b3b4920b6726d7f072cd1eafd657eea"
+        }
+    },
+    "bin": "tdl.exe",
+    "checkver": {
+        "github": "https://github.com/iyear/tdl"
+    },
+    "autoupdate": {
+        "url": "https://github.com/iyear/tdl/releases/download/v$version/tdl_Windows_64bit.zip",
+        "hash": {
+            "mode": "extract",
+            "url": "https://github.com/iyear/tdl/releases/download/v$version/tdl_checksums.txt",
+            "regex": "$sha256  tdl_Windows_64bit.zip"
+        }
+    }
+}

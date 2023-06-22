@@ -1,0 +1,36 @@
+{
+  "version": "v0.1.9-beta",
+  "description": "跨平台的DASH/HLS/MSS下载工具。支持点播、直播(DASH/HLS)。",
+  "homepage": "https://github.com/nilaoda/N_m3u8DL-RE",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/nilaoda/N_m3u8DL-RE/releases/download/v0.1.9-beta/N_m3u8DL-RE_Beta_win-x64_20230618.zip",
+      "hash": "238861ba46dd51bdcdd501934d3baeadf2e3ff2441f9ecedc1c692c844acdae9",
+      "extract_dir": "N_m3u8DL-RE_Beta_win-x64"
+    }
+  },
+  "shortcuts": [
+    [
+      "N_m3u8DL-RE.exe",
+      "N_m3u8DL-RE"
+    ]
+  ],
+  "bin": "N_m3u8DL-RE.exe",
+  "checkver": {
+    "github": "https://github.com/nilaoda/N_m3u8DL-RE",
+    "regex": "/releases/tag/(?<version>.*?)\".*?ver\\. (?<date>\\d+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/nilaoda/N_m3u8DL-RE/releases/download/$version/N_m3u8DL-RE_Beta_win-x64_$matchDate.zip",
+        "extract_dir": "N_m3u8DL-RE_Beta_win-x64"
+      },
+      "arm64": {
+        "url": "https://ghproxy.net/https://github.com/nilaoda/N_m3u8DL-RE/releases/download/$version/N_m3u8DL-RE_Beta_win-arm64_$date.zip",
+        "extract_dir": "N_m3u8DL-RE_Beta_win-arm64"
+      }
+    }
+  }
+}

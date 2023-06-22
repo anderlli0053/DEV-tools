@@ -1,0 +1,47 @@
+{
+    "version": "1571-20230621-0070f9a",
+    "description": "Sega Dreamcast, Naomi, Naomi 2, and Atomiswave emulator derived from reicast.",
+    "homepage": "https://github.com/flyinghead/flycast",
+    "license": "GPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://flycast-builds.s3.amazonaws.com/win/heads/master-0070f9abad69c67ea47603c516f4e33490aeae2f/flycast.zip",
+            "hash": "e4e8e07d6d853f610bceab6851912b2b0d3d6d19f7555f0cef29b7915c923cf3"
+        }
+    },
+    "pre_install": "if (!(Test-Path \"$persist_dir\\emu.cfg\")) { New-Item -ItemType File \"$dir\\emu.cfg\" | Out-Null }",
+    "bin": "flycast.exe",
+    "shortcuts": [
+        [
+            "flycast.exe",
+            "Flycast (dev)"
+        ]
+    ],
+    "persist": [
+        "emu.cfg",
+        "data",
+        "mappings"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/flyinghead/flycast/actions/workflows/c-cpp.yml/runs?branch=master&status=success",
+        "script": [
+            "$sha = json_path $page $.workflow_runs[0].head_sha",
+            "$runId = json_path $page $.workflow_runs[0].run_number",
+            "$suiteId = json_path $page $.workflow_runs[0].check_suite_id",
+            "$artUrl = json_path $page $.workflow_runs[0].artifacts_url",
+            "$date = json_path $page $.workflow_runs[0].created_at",
+            "$cont = (Invoke-WebRequest $artUrl).Content | ConvertFrom-Json",
+            "$artId = $cont.artifacts[6].id",
+            "Write-Output \"$runId $date $sha\""
+        ],
+        "regex": "^(?<version>[^ ]+) (?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})[^ ]+ (?<hash>.{7})(?<rest>.*)$",
+        "replace": "${version}-${year}${month}${day}-${hash}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://flycast-builds.s3.amazonaws.com/win/heads/master-$matchHash$matchRest/flycast.zip"
+            }
+        }
+    }
+}

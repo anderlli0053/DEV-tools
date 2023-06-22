@@ -1,0 +1,35 @@
+{
+  "homepage": "https://yuzu-emu.org/",
+  "version": "1469",
+  "description": "Nintendo Switch Emulator",
+  "license": {
+    "identifier": "GPL-2.0",
+    "url": "https://github.com/yuzu-emu/yuzu-mainline/blob/master/license.txt"
+  },
+  "suggest": {
+    "Microsoft Visual C++ Runtime 2022": "extras/vcredist2022"
+  },
+  "url": "https://ghproxy.net/https://github.com/yuzu-emu/yuzu-mainline/releases/download/mainline-0-1469/yuzu-windows-msvc-20230613-698a3eda5.7z",
+  "hash": "6100f81e25c6ee6ba66811529567bb05a43e120f8218ae42c22b034bdcc9adc0",
+  "extract_dir": "yuzu-windows-msvc",
+  "pre_install": "mkdir $dir/user | Out-Null",
+  "bin": "yuzu.exe",
+  "shortcuts": [
+    [
+      "yuzu.exe",
+      "Nintendo Switch"
+    ]
+  ],
+  "persist": "user",
+  "checkver": {
+    "url": "https://api.github.com/repos/yuzu-emu/yuzu-mainline/releases",
+    "jsonpath": {
+      "version": "$.[0].name",
+      "download": "$.[0].assets[?(@.content_type == 'application/x-7z-compressed')].browser_download_url"
+    },
+    "regex": "yuzu (\\d+)"
+  },
+  "autoupdate": {
+    "url": "$matchDownload"
+  }
+}

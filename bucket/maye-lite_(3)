@@ -1,0 +1,46 @@
+{
+  "version": "11.8.0.230619",
+  "description": "更轻更简洁的快速启动工具，功能单一化，专注于文件的快速启动",
+  "homepage": "https://t.arae.cc/p/25804.html",
+  "license": "Freeware",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/25H/MayeLite/releases/download/11.8.0.230619/MayeLite-11.8.0.230619.zip",
+      "extract_dir": "MayeLite-11.8.0.230619",
+      "hash": "4eecb970681d7a2b162aa35bb2e155eb7646a275201fd83db7787872df340045"
+    }
+  },
+  "bin": [
+    [
+      "Maye Lite.exe",
+      "maye-lite"
+    ]
+  ],
+  "shortcuts": [
+    [
+      "Maye Lite.exe",
+      "Maye Lite"
+    ]
+  ],
+  "pre_install": [
+    "if (!(Test-Path \"$persist_dir\\cfg.json\")) { Set-Content -Encoding ASCII -Path \"$dir\\cfg.json\" -Value '{}' }",
+    "if (!(Test-Path \"$persist_dir\\JDB.json\")) { Set-Content -Encoding ASCII -Path \"$dir\\JDB.json\" -Value '{}' }"
+  ],
+  "persist": [
+    "cache",
+    "cfg.json",
+    "JDB.json"
+  ],
+  "notes": "The configuration file: $dir\\cfg.json",
+  "checkver": {
+    "github": "https://github.com/25H/MayeLite/"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/25H/MayeLite/releases/download/$version/MayeLite-$version.zip",
+        "extract_dir": "MayeLite-$version"
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "homepage": "https://www.videohelp.com/software/chapterEditor",
+  "description": "Chapter editor and menu editor for OGG, XML, TTXT, m.AVCHD, m.editions-mkv, Matroska Menu",
+  "version": "1.38",
+  "license": "Freeware",
+  "url": "https://www.videohelp.com/download/chapterEditor%281.38%29.7z",
+  "hash": "8fd6c9ce23016f382870f8e744d3f9779971ada2a66ec7cf6b9efb83d9169ad8",
+  "installer": {
+    "script": "New-Item $dir\\chapterEditor.ini, $dir\\Favorites.cef, $dir\\Hotkeys.ceh -Force -ErrorAction SilentlyContinue | Out-Null"
+  },
+  "shortcuts": [
+    [
+      "chapterEditor.exe",
+      "chapterEditor"
+    ]
+  ],
+  "bin": "chapterEditor.exe",
+  "persist": [
+    "chapterEditor.ini",
+    "Favorites.cef",
+    "Hotkeys.ceh"
+  ],
+  "post_install": "Get-ChildItem -Path $dir -Include *.original | Remove-Item -Force",
+  "checkver": {
+    "url": "https://www.videohelp.com/software/chapterEditor",
+    "regex": "chapterEditor ([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "https://www.videohelp.com/download/chapterEditor%28$version%29.7z"
+  }
+}

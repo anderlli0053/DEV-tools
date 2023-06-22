@@ -1,0 +1,46 @@
+{
+    "homepage": "https://rime.im/",
+    "description": "【小狼毫】Rime for Windows",
+    "version": "0.15.0",
+    "license": "GPL-3.0-only",
+    "url": "https://github.com/rime/weasel/releases/download/0.15.0/weasel-0.15.0.0-installer.exe#/dl.7z",
+    "hash": "21b2b3ba19f11b308db3c50ce343a14a42ce10331e3c0b7021850ec6726dcd10",
+    "post_install": [
+        "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+        "Add-Content -Path \"$dir\\rime-install-config.bat\" -Value \"
+
+set rime_dir=$persist_dir\""
+    ],
+    "installer": {
+        "script": [
+            "New-Item -Path \"HKCU:\\Software\\Rime\" | Out-Null",
+            "New-Item -Path \"HKCU:\\Software\\Rime\\Weasel\" | Out-Null",
+            "New-ItemProperty -Path \"HKCU:\\Software\\Rime\\Weasel\" -Name RimeUserDir -Value \"$persist_dir\" | Out-Null",
+            "New-Item -Path \"HKCU:\\Software\\Rime\\Weasel\\Updates\" | Out-Null",
+            "New-ItemProperty -Path \"HKCU:\\Software\\Rime\\Weasel\\Updates\" -Name CheckForUpdates -Value \"0\" | Out-Null",
+            "Start-Process -Wait \"$dir\\WeaselSetup.exe\" \"/s\"",
+            "New-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" -Name WeaselServer -Value \"$dir\\WeaselServer.exe\" | Out-Null",
+            "Start-Process \"$dir\\WeaselServer.exe\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Start-Process -Wait \"$dir\\WeaselServer.exe\"  \"/quit\"",
+            "Start-Process -Wait \"$dir\\WeaselSetup.exe\" \"/u\"",
+            "Remove-ItemProperty -Path \"HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" -Name WeaselServer",
+            "Remove-Item -Path \"HKCU:\\Software\\Rime\" -Recurse"
+        ]
+    },
+    "shortcuts": [
+        [
+            "WeaselServer.exe",
+            "小狼毫算法服務"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/rime/weasel"
+    },
+    "autoupdate": {
+        "url": "https://github.com/rime/weasel/releases/download/$version/weasel-$version.0-installer.exe#/dl.7z"
+    }
+}

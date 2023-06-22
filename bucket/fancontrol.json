@@ -1,17 +1,24 @@
 {
-    "version": "159",
-    "description": "A highly customizable fan controlling software for Windows",
+    "version": "160",
     "homepage": "https://getfancontrol.com/",
+    "description": "A highly customizable fan controlling software for the Windows OS.",
     "license": "Freeware",
     "suggest": {
-        ".NET Desktop Runtime": "extras/windowsdesktop-runtime"
+        ".NET Runtime": "extras/windowsdesktop-runtime"
     },
+    "notes": "Make sure to install both the 64bit & 32bit versions of Microsoft .NET Desktop Runtime before running the application.",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Rem0o/FanControl.Releases/releases/download/V159/FanControl_net_7_0.zip",
-            "hash": "a8db2811b18c5b0d673b99ba55b2ba37f39c1f10b54104dbb30bad0cb63983fb"
+            "url": "https://raw.githubusercontent.com/Rem0o/FanControl.Releases/master/FanControl.zip",
+            "hash": "6b7e0f348ff9303ca205e80b5fd1062e20a957f10294d9cc1bbdedd56638575a"
         }
     },
+    "pre_install": [
+        "'userConfig.json', 'CACHE', 'Plugins' | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
+        "}"
+    ],
+    "bin": "FanControl.exe",
     "shortcuts": [
         [
             "FanControl.exe",
@@ -23,14 +30,13 @@
         "Plugins"
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/Rem0o/FanControl.Releases/releases/latest",
-        "jsonpath": "$.assets..browser_download_url",
-        "regex": "/V([\\d.]+)/FanControl_net_(?<netver>(?!4_8)[\\d_]+).zip"
+        "url": "https://raw.githubusercontent.com/Rem0o/FanControl.Releases/master/version.json",
+        "jsonpath": "$.Number"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Rem0o/FanControl.Releases/releases/download/V$version/FanControl_net_$matchNetver.zip"
+                "url": "https://raw.githubusercontent.com/Rem0o/FanControl.Releases/master/FanControl.zip"
             }
         }
     }

@@ -1,54 +1,18 @@
 {
-    "version": "23.00",
-    "description": "A multi-format file archiver with high compression ratios",
-    "homepage": "https://www.7-zip.org/",
-    "license": "LGPL-2.1-or-later",
-    "notes": "Add 7-Zip as a context menu option by running: \"$dir\\install-context.reg\"",
+    "homepage": "http://www.7-zip.org/",
+    "license": "http://www.7-zip.org/license.txt",
+    "version": "16.04",
     "architecture": {
         "64bit": {
-            "url": "https://7-zip.org/a/7z2300-x64.msi",
-            "hash": "4dc4f14ffef0691108dd93bd032248ac47dc5cc7f444699d6bb8721c1a77cd0b"
+            "url": "http://7-zip.org/a/7z1604-x64.msi",
+            "hash": "b3885b2f090f1e9b5cf2b9f802b07fe88e472d70d60732db9f830209ac296067"
         },
         "32bit": {
-            "url": "https://7-zip.org/a/7z2300.msi",
-            "hash": "98d68c5a30f06b2181a876d5a5800b35976f604f2d6f6f1fcaf243011d987163"
+            "url": "http://7-zip.org/a/7z1604.msi",
+            "hash": "d9b62c0ed0eb48d2df86d8b83394048414a2a4e1d64a50adb9abcff643471d20"
         }
     },
-    "extract_dir": "Files\\7-Zip",
-    "post_install": [
-        "$7zip_root = \"$dir\".Replace('\\', '\\\\')",
-        "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
-        "    $content = Get-Content \"$bucketsdir\\main\\scripts\\7-zip\\$_\"",
-        "    $content = $content.Replace('$7zip_root', $7zip_root)",
-        "    if ($global) {",
-        "       $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
-        "    }",
-        "    Set-Content \"$dir\\$_\" $content -Encoding Ascii",
-        "}"
-    ],
+    "extract_dir": "Files/7-Zip",
     "bin": "7z.exe",
-    "shortcuts": [
-        [
-            "7zFM.exe",
-            "7-Zip"
-        ]
-    ],
-    "persist": [
-        "Codecs",
-        "Formats"
-    ],
-    "checkver": {
-        "url": "https://www.7-zip.org/download.html",
-        "regex": "Download 7-Zip ([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://7-zip.org/a/7z$cleanVersion-x64.msi"
-            },
-            "32bit": {
-                "url": "https://7-zip.org/a/7z$cleanVersion.msi"
-            }
-        }
-    }
+    "checkver": "Download 7-zip ([^\\ ]+)"
 }

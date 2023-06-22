@@ -1,0 +1,57 @@
+{
+  "version": "5.3.15",
+  "description": "NordPass. A password management solution for a secure digital life.",
+  "homepage": "https://nordpass.com/",
+  "license": "Shareware",
+  "changelog": "https://nordpass.com/blog/desktop-app-update-notes/",
+  "architecture": {
+    "64bit": {
+      "url": "https://downloads.npass.app/windows/NordPassSetup.exe#/dl.7z",
+      "hash": "sha512:bc2eb2c8a033a25c902095e8ae7d0288471253292a00e6e44d130a6ca5661a06b7573044bafc6b0fd849ce8c84139ab1f297a3e56767392a73a14a3dd270c962",
+      "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+    },
+    "32bit": {
+      "url": "https://downloads.npass.app/windows_x86/NordPassSetup_x86.exe#/dl.7z",
+      "hash": "sha512:4f3bb7e477e0ed071c00d2c94cfca12b2dcd420b2f749105e76819864029b54f3a7beac50dc157d5a224def15627b58bf41511a1e7446fdc6cbbbb0ffb83c438",
+      "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
+    }
+  },
+  "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\", \"$dir\\resources\\app-update.yml\"  -Force -Recurse",
+  "bin": [
+    [
+      "NordPass.exe",
+      "NordPass",
+      "--user-data-dir=\"$dir\\User Data\""
+    ]
+  ],
+  "shortcuts": [
+    [
+      "NordPass.exe",
+      "NordPass",
+      "--user-data-dir=\"$dir\\User Data\""
+    ]
+  ],
+  "persist": "User Data",
+  "checkver": {
+    "url": "https://downloads.npass.app/windows/latest.yml",
+    "regex": "version: ([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://downloads.npass.app/windows/NordPassSetup.exe#/dl.7z",
+        "hash": {
+          "url": "https://downloads.npass.app/windows/latest.yml",
+          "regex": "sha512:\\s*$base64"
+        }
+      },
+      "32bit": {
+        "url": "https://downloads.npass.app/windows_x86/NordPassSetup_x86.exe#/dl.7z",
+        "hash": {
+          "url": "https://downloads.npass.app/windows_x86/latest.yml",
+          "regex": "sha512:\\s*$base64"
+        }
+      }
+    }
+  }
+}

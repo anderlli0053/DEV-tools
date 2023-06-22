@@ -1,0 +1,67 @@
+// Configure PSScriptAnalyzer settings
+{
+    "[powershell]": {
+        "editor.formatOnSave": true
+    },
+    "powershell.scriptAnalysis.settingsPath": "PSScriptAnalyzerSettings.psd1",
+    "powershell.codeFormatting.preset": "OTBS",
+    "powershell.codeFormatting.alignPropertyValuePairs": true,
+    "powershell.codeFormatting.ignoreOneLineBlock": true,
+    "json.schemas": [
+        {
+            "url": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
+            "fileMatch": [
+                "bucket/*.json"
+            ]
+        }
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/tmp": true
+    },
+    "sortJSON.orderOverride": [
+        "##",
+        "version",
+        "description",
+        "homepage",
+        "license",
+        "depends",
+        "suggest",
+        "architecture",
+        "64bit",
+        "32bit",
+        "arm64",
+        "url",
+        "hash",
+        "extract_dir",
+        "extract_to",
+        "pre_install",
+        "installer",
+        "post_install",
+        "script",
+        "env_add_path",
+        "env_set",
+        "bin",
+        "shortcuts",
+        "persist",
+        "uninstaller",
+        "checkver",
+        "github",
+        "jsonpath",
+        "sourceforge",
+        "xpath",
+        "regex",
+        "reverse",
+        "replace",
+        "autoupdate",
+        "notes",
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+        "source.fixAll.sortJSON": true
+    },
+}

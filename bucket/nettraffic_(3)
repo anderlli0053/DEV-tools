@@ -1,0 +1,33 @@
+{
+    "version": "1.67.0",
+    "description": "Essential network bandwidth usage monitor",
+    "homepage": "https://www.venea.net/web/nettraffic",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.venea.net/web/nettraffic#license"
+    },
+    "url": "https://files02.tchspt.com/storage2/temp/NetTraffic1.67.0.zip",
+    "hash": "md5:4fd3b1babd85cfe2e53a463e49c0154c",
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\NetTraffic $version.exe\" -Removal",
+        "Remove-Item \"$dir\\`$*\", \"$dir\\uninstall.exe\" -Recurse"
+    ],
+    "shortcuts": [
+        [
+            "NetTraffic.exe",
+            "NetTraffic"
+        ]
+    ],
+    "persist": "Data",
+    "checkver": {
+        "url": "https://www.venea.net/web/downloads_start/nettraffic",
+        "regex": "Version: ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://files02.tchspt.com/storage2/temp/NetTraffic$version.zip",
+        "hash": {
+            "url": "https://www.venea.net/web/downloads_start/nettraffic",
+            "regex": "\\(md5\\):\\s*$md5"
+        }
+    }
+}

@@ -1,0 +1,236 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Checkver Actual",
+            "detail": "Check version of currently opened manifest.",
+            "type": "shell",
+            "command": "shovel",
+            "args": [
+                "utils",
+                "checkver",
+                "'${file}'",
+                "--additional-options",
+                "-Force",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "SCOOP_DEBUG": "true",
+                },
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+            },
+            "problemMatcher": [],
+            "runOptions": {
+                "instanceLimit": 99,
+            },
+        },
+        {
+            "label": "Missing Checkver",
+            "detail": "Check if manifests have checkver and autoupdate properties.",
+            "type": "shell",
+            "command": "shovel",
+            "args": [
+                "utils",
+                "missing-checkver",
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+            },
+            "group": "test",
+            "problemMatcher": [],
+        },
+        {
+            "label": "Push Auto-PR",
+            "detail": "Execute checkver and push updated manifests.",
+            "type": "shell",
+            "command": "shovel",
+            "args": [
+                "utils",
+                "auto-pr",
+                "--additional-options",
+                "-Push",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "SCOOP_DEBUG": "true",
+                },
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false,
+            },
+            "problemMatcher": [],
+        },
+        {
+            "label": "Checkhashes Actual",
+            "type": "shell",
+            "command": "shovel",
+            "args": [
+                "utils",
+                "checkhashes",
+                "'${file}'",
+                "--additional-options",
+                "-Force",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "SCOOP_DEBUG": "true",
+                },
+            },
+            "problemMatcher": [],
+            "runOptions": {
+                "instanceLimit": 99,
+            },
+        },
+        {
+            "label": "Purge Uninstall Actual",
+            "detail": "Uninstall currently opened manifest and remove persisted data.",
+            "type": "shell",
+            "command": "shovel",
+            "args": [
+                "uninstall",
+                "--purge",
+                "'${fileBasenameNoExtension}'",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "SCOOP_DEBUG": "true",
+                },
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+            },
+            "problemMatcher": [],
+            "runOptions": {
+                "instanceLimit": 99,
+            },
+        },
+        {
+            "label": "Install Actual",
+            "type": "shell",
+            "command": "shovel",
+            "args": [
+                "install",
+                "--arch",
+                "${input:pickArchitectureType}",
+                "'${file}'",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "SCOOP_DEBUG": "true",
+                },
+            },
+            "problemMatcher": [],
+            "runOptions": {
+                "reevaluateOnRerun": false,
+                "instanceLimit": 99,
+            },
+        },
+        {
+            "label": "ReInstall Actual",
+            "detail": "Uninstall (--purge) and install currently opened manifest.",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "SCOOP_DEBUG": "true",
+                },
+            },
+            "dependsOn": [
+                "Purge Uninstall Actual",
+                "Install Actual",
+            ],
+            "dependsOrder": "sequence",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+            },
+            "problemMatcher": [],
+            "runOptions": {
+                "instanceLimit": 99,
+            },
+        },
+        {
+            "label": "Force Update Actual",
+            "detail": "Update currently opened manifest.",
+            "type": "shell",
+            "command": "shovel",
+            "args": [
+                "update",
+                "--force",
+                "'${fileBasenameNoExtension}'",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "SCOOP_DEBUG": "true",
+                },
+            },
+            "problemMatcher": [],
+            "runOptions": {
+                "instanceLimit": 99,
+                "reevaluateOnRerun": false,
+            },
+        },
+        {
+            "label": "Download",
+            "type": "shell",
+            "command": "shovel",
+            "args": [
+                "download",
+                "--all-architectures",
+                "--skip",
+                "'${file}'",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "SCOOP_DEBUG": "true",
+                },
+            },
+            "problemMatcher": [],
+            "runOptions": {
+                "instanceLimit": 99,
+            },
+        },
+    ],
+    "inputs": [
+        {
+            "id": "pickArchitectureType",
+            "description": "Select architecture",
+            "type": "pickString",
+            "options": [
+                "64bit",
+                "32bit",
+                "arm64",
+            ],
+            "default": "64bit",
+        },
+    ],
+}

@@ -1,0 +1,42 @@
+{
+    "version": "2023.08.0+52.pro5-daily",
+    "homepage": "https://www.rstudio.com/",
+    "description": "An IDE for R, which includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.",
+    "license": "https://rstudio.com/about/eula/",
+    "architecture": {
+        "64bit": {
+            "url": "https://s3.amazonaws.com/rstudio-ide-build/electron/windows/RStudio-pro-2023.08.0-daily-52.pro5.zip",
+            "hash": "dec7bb1ba6fe56812e60bac276304054cc7cd76ce4aee5717a777d932f6341cf"
+        }
+    },
+    "bin": [
+        [
+            "bin\\rstudio.exe",
+            "rstudio-pro-daily"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "bin\\rstudio.exe",
+            "RStudio Pro Daily"
+        ]
+    ],
+    "checkver": {
+        "url": "https://dailies.rstudio.com/rstudio/latest/index.json",
+        "jsonpath": ".products['electron-pro'].platforms['windows-xcopy'].version",
+        "regex": "(?<date>[\\d.]+)(?<type>-(daily|preview))?\\+(?<build>\\d+)(?<pro>\\.pro\\d+)",
+        "replace": "${date}+${build}${pro}${type}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://s3.amazonaws.com/rstudio-ide-build/electron/windows/RStudio-pro-$matchDate$matchType-$matchBuild$matchPro.zip",
+                "hash": {
+                    "mode": "json",
+                    "jsonpath": ".products['electron-pro'].platforms['windows-xcopy'].sha256",
+                    "url": "https://dailies.rstudio.com/rstudio/latest/index.json"
+                }
+            }
+        }
+    }
+}

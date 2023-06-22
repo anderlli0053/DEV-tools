@@ -1,0 +1,64 @@
+{
+  "version": "116.0.5829.0",
+  "description": "Fast, secure, and free web browser, built for the modern web.",
+  "homepage": "https://www.google.com/chrome/dev",
+  "license": {
+    "identifier": "Freeware",
+    "url": "https://www.google.com/chrome/privacy/eula_text.html"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://dl.google.com/release2/chrome/gg37z44cusgbkzllsy7r7wahsu_116.0.5829.0/116.0.5829.0_chrome_installer.exe#/dl.7z",
+      "hash": "2b589f928edf5a908b9c1ba12e31d325cd4443cab48ac2cc40b5f340c9d27a41"
+    },
+    "32bit": {
+      "url": "https://dl.google.com/release2/chrome/nkeqoejvmyxqamziwta43hv22q_116.0.5829.0/116.0.5829.0_chrome_installer.exe#/dl.7z",
+      "hash": "f0a6b097a74df4bc7c399f5b4090b66cd7771d5bef5282ccf9534d15f83978e8"
+    }
+  },
+  "installer": {
+    "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
+  },
+  "bin": [
+    [
+      "chrome.exe",
+      "chrome-dev",
+      "--user-data-dir=\"$dir\\User Data\""
+    ],
+    [
+      "chrome.exe",
+      "google-chrome-dev",
+      "--user-data-dir=\"$dir\\User Data\""
+    ]
+  ],
+  "shortcuts": [
+    [
+      "chrome.exe",
+      "Google Chrome (Dev)",
+      "--user-data-dir=\"$dir\\User Data\""
+    ]
+  ],
+  "persist": "User Data",
+  "checkver": {
+    "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
+    "regex": "(?sm)<dev32><version>(?<version>[\\d.]+)</version>.+release2/chrome/(?<32>[\\w-]+)_.+<dev64>.+release2/chrome/(?<64>[\\w-]+)_.+</dev64>"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://dl.google.com/release2/chrome/$match64_$version/$version_chrome_installer.exe#/dl.7z",
+        "hash": {
+          "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
+          "xpath": "/chromechecker/dev64[version='$version']/sha256"
+        }
+      },
+      "32bit": {
+        "url": "https://dl.google.com/release2/chrome/$match32_$version/$version_chrome_installer.exe#/dl.7z",
+        "hash": {
+          "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
+          "xpath": "/chromechecker/dev32[version='$version']/sha256"
+        }
+      }
+    }
+  }
+}

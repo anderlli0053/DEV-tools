@@ -1,24 +1,24 @@
 {
-    "version": "7.5.4.2",
+    "version": "7.5.0",
     "description": "Powerful and free office suite, a successor to OpenOffice(.org).",
     "homepage": "https://libreoffice.org/",
     "license": "MPL-2.0",
     "suggest": {
-        "vcredist": "extras/vcredist2022"
+        "Visual C++ Redistributable 2015-2022": "extras/vcredist2022"
     },
     "notes": "If you are upgrading from portable version, you can migrate settings by copying \"$persist_dir\\Data\" to \"%AppData%\\LibreOffice\"",
     "architecture": {
         "64bit": {
-            "url": "https://downloadarchive.documentfoundation.org/libreoffice/old/7.5.4.2/win/x86_64/LibreOffice_7.5.4.2_Win_x86-64.msi#/dl.msi_",
-            "hash": "efca7b819427f709960437dc4f0c603d1a4f928493836781929f5472b376b864"
+            "url": "https://southfront.mm.fcix.net/tdf/libreoffice/stable/7.5.0/win/x86_64/LibreOffice_7.5.0_Win_x86-64.msi#/dl.msi_",
+            "hash": "55f03c6be88287a787f58c7cc772bf4386839f95edf28828aabf5f12052c718c"
         },
         "32bit": {
-            "url": "https://downloadarchive.documentfoundation.org/libreoffice/old/7.5.4.2/win/x86/LibreOffice_7.5.4.2_Win_x86.msi#/dl.msi_",
-            "hash": "387cc65df7c177eef3b67e979d2d9c38aedef7832c2d793cb9d3fcc92e8ffcbc"
+            "url": "https://southfront.mm.fcix.net/tdf/libreoffice/stable/7.5.0/win/x86/LibreOffice_7.5.0_Win_x86.msi#/dl.msi_",
+            "hash": "a4df606eb053c027d76a98f6935af6a5843a0814d8352f5b5e89f9f308308a09"
         },
         "arm64": {
-            "url": "https://downloadarchive.documentfoundation.org/libreoffice/old/7.5.4.2/win/aarch64/LibreOffice_7.5.4.2_Win_aarch64.msi#/dl.msi_",
-            "hash": "b38b4d6eb38dba9784e858c8918772c2adec8a9c33683d7a7ea1a00f5f058363"
+            "url": "https://southfront.mm.fcix.net/tdf/libreoffice/stable/7.5.0/win/aarch64/LibreOffice_7.5.0_Win_aarch64.msi#/dl.msi_",
+            "hash": "d72a5de4d6548a7f862e35b8cc5f07dde6632ce3a536387a469c4b90317b666e"
         }
     },
     "pre_install": [
@@ -69,23 +69,21 @@
         ]
     ],
     "checkver": {
-        "url": "https://downloadarchive.documentfoundation.org/libreoffice/old/latest/win/x86_64/",
-        "regex": "LibreOffice_([\\d.]+)_Win_x86-64.msi"
+        "url": "https://southfront.mm.fcix.net/tdf/libreoffice/stable/",
+        "regex": "a href=\"([\\d.]+)\"",
+        "reverse": true
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloadarchive.documentfoundation.org/libreoffice/old/$version/win/x86_64/LibreOffice_$version_Win_x86-64.msi#/dl.msi_"
+                "url": "https://southfront.mm.fcix.net/tdf/libreoffice/stable/$version/win/x86_64/LibreOffice_$version_Win_x86-64.msi#/dl.msi_"
             },
             "32bit": {
-                "url": "https://downloadarchive.documentfoundation.org/libreoffice/old/$version/win/x86/LibreOffice_$version_Win_x86.msi#/dl.msi_"
+                "url": "https://southfront.mm.fcix.net/tdf/libreoffice/stable/$version/win/x86/LibreOffice_$version_Win_x86.msi#/dl.msi_"
             },
             "arm64": {
-                "url": "https://downloadarchive.documentfoundation.org/libreoffice/old/$version/win/aarch64/LibreOffice_$version_Win_aarch64.msi#/dl.msi_"
+                "url": "https://southfront.mm.fcix.net/tdf/libreoffice/stable/$version/win/aarch64/LibreOffice_$version_Win_aarch64.msi#/dl.msi_"
             }
-        },
-        "hash": {
-            "url": "$url.sha256"
         }
     }
 }

@@ -1,0 +1,86 @@
+{
+    "version": "0.95.5e",
+    "description": "RAINE is an emulator for arcade games",
+    "homepage": "https://raine.1emulation.com/",
+    "license": "Artistic-2.0",
+    "architecture": {
+        "32bit": {
+            "url": [
+                "https://raine.1emulation.com/archive/raine32-0.95.5e.7z",
+                "https://raine.1emulation.com/archive/dlls32-0.92x.7z"
+            ],
+            "hash": [
+                "361c0edcb063b4590df4e0fe7f79c553ef686f723a37b2dc09de5c48e49fac21",
+                "17adc7c3b2001f4353ef35d059fbd2721f152a6a05056c5ca120c3740afb19af"
+            ],
+            "extract_dir": "raine32",
+            "bin": [
+                [
+                    "raine32.exe",
+                    "RAINE"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "raine32.exe",
+                    "RAINE"
+                ]
+            ]
+        },
+        "64bit": {
+            "url": [
+                "https://raine.1emulation.com/archive/raine64-0.95.5e.7z",
+                "https://raine.1emulation.com/archive/dlls64-0.92x.7z"
+            ],
+            "hash": [
+                "e886a9233a65aa01f615ab5e63fba265b65b2337baf63186e624666cd10d3eb2",
+                "0b312986da5acd806a0a247f5f8a6ba601cbfbb1e3671518b53d4fd5eb6754a4"
+            ],
+            "extract_dir": "raine64",
+            "bin": [
+                [
+                    "raine.exe",
+                    "RAINE"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "raine.exe",
+                    "RAINE"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "artwork",
+        "blend",
+        "config",
+        "debug",
+        "demos",
+        "emudx",
+        "roms",
+        "savedata",
+        "savegame",
+        "screens"
+    ],
+    "checkver": {
+        "url": "https://raine.1emulation.com/download/latest.html",
+        "regex": "Available files for version ([\\d.]+[a-zA-Z]?)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://raine.1emulation.com/archive/raine64-$version.7z",
+                    "https://raine.1emulation.com/archive/dlls64-0.92x.7z"
+                ]
+            },
+            "32bit": {
+                "url": [
+                    "https://raine.1emulation.com/archive/raine32-$version.7z",
+                    "https://raine.1emulation.com/archive/dlls32-0.92x.7z"
+                ]
+            }
+        }
+    }
+}
