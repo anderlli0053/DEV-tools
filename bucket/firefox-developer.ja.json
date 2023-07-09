@@ -1,56 +1,56 @@
 {
-    "version": "115.0b2",
-    "description": "Developer builds of Firefox: the popular open source web browser.",
-    "homepage": "https://www.mozilla.org/ja/firefox/developer/",
-    "license": "MPL-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://archive.mozilla.org/pub/devedition/releases/115.0b2/win64/ja/Firefox%20Setup%20115.0b2.exe#/dl.7z",
-            "hash": "sha512:be79f26d794b1aba44864fda27d400cbd6dc652d2e7bf62695d2bc3c132c378c506407050b4676e7583e3e4bd54e48ece58ff1b56b8b9fa5bf2bb859b79d4f5a"
-        },
-        "32bit": {
-            "url": "https://archive.mozilla.org/pub/devedition/releases/115.0b2/win32/ja/Firefox%20Setup%20115.0b2.exe#/dl.7z",
-            "hash": "sha512:aa22aa94fa07b57babc6ba1f81e1d9fcb33e4b2b4c0e61712002d5da992b2f18761fe686a5c45f2ca36205eaeec83059783d0eb2e9ad343a8e01d03f377ee449"
-        }
+  "version": "116.0b2",
+  "description": "Developer builds of Firefox: the popular open source web browser.",
+  "homepage": "https://www.mozilla.org/ja/firefox/developer/",
+  "license": "MPL-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://archive.mozilla.org/pub/devedition/releases/116.0b2/win64/ja/Firefox%20Setup%20116.0b2.exe#/dl.7z",
+      "hash": "sha512:c04665fb2736465fdcd1b7c4c91fb434622341f1fefa89a41d6acb7c678fbdd42d2083ee964762d1dabba4be478342d76e9050760bebbcbdd9c69b79eb319b71"
     },
-    "extract_dir": "core",
-    "bin": [
-        [
-            "firefox.exe",
-            "firefox-dev"
-        ],
-        [
-            "firefox.exe",
-            "firefox-developer"
-        ]
-    ],
-    "shortcuts": [
-        [
-            "firefox.exe",
-            "Firefox Developer Edition"
-        ]
-    ],
-    "checkver": {
-        "url": "https://aus5.mozilla.org/update/6/Firefox/78.0/_/WINNT_x86_64-msvc-x64/ja/aurora/_/_/_/_/update.xml",
-        "xpath": "/updates/update/patch/@URL",
-        "regex": "devedition-([\\db.]+)-"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://archive.mozilla.org/pub/devedition/releases/$version/win64/ja/Firefox%20Setup%20$version.exe#/dl.7z",
-                "hash": {
-                    "url": "https://archive.mozilla.org/pub/devedition/releases/$version/SHA512SUMS",
-                    "regex": "$sha512\\s+win64/ja/$basename"
-                }
-            },
-            "32bit": {
-                "url": "https://archive.mozilla.org/pub/devedition/releases/$version/win32/ja/Firefox%20Setup%20$version.exe#/dl.7z",
-                "hash": {
-                    "url": "https://archive.mozilla.org/pub/devedition/releases/$version/SHA512SUMS",
-                    "regex": "$sha512\\s+win32/ja/$basename"
-                }
-            }
-        }
+    "32bit": {
+      "url": "https://archive.mozilla.org/pub/devedition/releases/116.0b2/win32/ja/Firefox%20Setup%20116.0b2.exe#/dl.7z",
+      "hash": "sha512:494e8c46c51c46398b8cfa035db0adb2689c8f098b562f26da90f376eeb0782b277be9e0087784de8cfa569121d10ed42dfdb1bc7614caad337e2d0853e35fa5"
     }
+  },
+  "extract_dir": "core",
+  "bin": [
+    [
+      "firefox.exe",
+      "firefox-dev"
+    ],
+    [
+      "firefox.exe",
+      "firefox-developer"
+    ]
+  ],
+  "shortcuts": [
+    [
+      "firefox.exe",
+      "Firefox Developer Edition"
+    ]
+  ],
+  "checkver": {
+    "url": "https://aus5.mozilla.org/update/6/Firefox/78.0/_/WINNT_x86_64-msvc-x64/ja/aurora/_/_/_/_/update.xml",
+    "xpath": "/updates/update/patch/@URL",
+    "regex": "devedition-([\\db.]+)-"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://archive.mozilla.org/pub/devedition/releases/$version/win64/ja/Firefox%20Setup%20$version.exe#/dl.7z",
+        "hash": {
+          "url": "https://archive.mozilla.org/pub/devedition/releases/$version/SHA512SUMS",
+          "regex": "$sha512\\s+win64/ja/$basename"
+        }
+      },
+      "32bit": {
+        "url": "https://archive.mozilla.org/pub/devedition/releases/$version/win32/ja/Firefox%20Setup%20$version.exe#/dl.7z",
+        "hash": {
+          "url": "https://archive.mozilla.org/pub/devedition/releases/$version/SHA512SUMS",
+          "regex": "$sha512\\s+win32/ja/$basename"
+        }
+      }
+    }
+  }
 }

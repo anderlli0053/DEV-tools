@@ -1,34 +1,34 @@
 {
-    "version": "0.49.0",
-    "description": "frp 客户端.",
-    "homepage": "https://github.com/fatedier/frp",
-    "license": "Apache-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/fatedier/frp/releases/download/v0.49.0/frp_0.49.0_windows_amd64.zip",
-            "hash": "fc5c5c5ff93300cea3141ff55fbccccb07cd0017d4e9cd4bcd324563f88f53fd",
-            "extract_dir": "frp_0.49.0_windows_amd64"
-        }
-    },
-    "bin": "frpc.exe",
-    "persist": [
-        "frpc.ini",
-        "frpc_full.ini"
-    ],
-    "post_install": [
-        "if (Test-Path \"$dir\\frps.exe\") {",
-        "  Remove-Item \"$dir\\frps.exe\" -Force",
-        "  Remove-Item \"$dir\\frps.ini\" -Force",
-        "  Remove-Item \"$dir\\frps_full.ini\" -Force",
-        "}"
-    ],
-    "checkver": "github",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/fatedier/frp/releases/download/v$version/frp_$version_windows_amd64.zip",
-                "extract_dir": "frp_$version_windows_amd64"
-            }
-        }
+  "version": "0.51.0",
+  "description": "frp 客户端.",
+  "homepage": "https://github.com/fatedier/frp",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/fatedier/frp/releases/download/v0.51.0/frp_0.51.0_windows_amd64.zip",
+      "hash": "025bf967e37ce095f31bc45d886156d365a0e9dc7aa0e7f3bbc91bd1c9717145",
+      "extract_dir": "frp_0.51.0_windows_amd64"
     }
+  },
+  "bin": "frpc.exe",
+  "persist": [
+    "frpc.ini",
+    "frpc_full.ini"
+  ],
+  "post_install": [
+    "if (Test-Path \"$dir\\frps.exe\") {",
+    "  Remove-Item \"$dir\\frps.exe\" -Force",
+    "  Remove-Item \"$dir\\frps.ini\" -Force",
+    "  Remove-Item \"$dir\\frps_full.ini\" -Force",
+    "}"
+  ],
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/fatedier/frp/releases/download/v$version/frp_$version_windows_amd64.zip",
+        "extract_dir": "frp_$version_windows_amd64"
+      }
+    }
+  }
 }

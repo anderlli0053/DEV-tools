@@ -1,21 +1,33 @@
 {
-	"homepage": "https://www.rabbitmq.com/",
-	"version" : "3.6.2",
-	"license" : "https://github.com/rabbitmq/rabbitmq-server/blob/master/LICENSE-MPL-RabbitMQ",
-	"url": "https://rabbitmq.com/releases/rabbitmq-server/v3.6.2/rabbitmq-server-windows-3.6.2.zip",
-	"hash": "417E933AEC3F57B66A67FE50ECE191696D3C491120ACA63ABA9B67FC53AE7606",
-	"depends" : "erlang",
-	"extract_dir":"rabbitmq_server-3.6.2",
-	"bin": [
-		"sbin\\rabbitmq-server.bat",
-		"sbin\\rabbitmq-service.bat",
-		"sbin\\rabbitmqctl.bat",
-		"sbin\\rabbitmq-plugins.bat",
-		"sbin\\rabbitmq-env.bat",
-		"sbin\\rabbitmq-echopid.bat",
-		"sbin\\rabbitmq-defaults.bat"
-	],
-	"env_set": {
-        "RABBITMQ_SERVER":"$dir"
-    }
+  "version": "3.12.1",
+  "description": "Message-broker",
+  "homepage": "https://www.rabbitmq.com",
+  "license": "MPL-2.0",
+  "depends": "erlang",
+  "url": "https://ghproxy.net/https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.12.1/rabbitmq-server-windows-3.12.1.zip",
+  "hash": "8b40a4bfbf25faf532e66a156cb407834a2a71d49c6f6f19ddd25c02b52247e0",
+  "extract_dir": "rabbitmq_server-3.12.1",
+  "bin": [
+    "sbin\\rabbitmqctl.bat",
+    "sbin\\rabbitmq-defaults.bat",
+    "sbin\\rabbitmq-diagnostics.bat",
+    "sbin\\rabbitmq-echopid.bat",
+    "sbin\\rabbitmq-env.bat",
+    "sbin\\rabbitmq-plugins.bat",
+    "sbin\\rabbitmq-queues.bat",
+    "sbin\\rabbitmq-server.bat",
+    "sbin\\rabbitmq-service.bat",
+    "sbin\\rabbitmq-upgrade.bat"
+  ],
+  "env_set": {
+    "RABBITMQ_SERVER": "$dir"
+  },
+  "checkver": {
+    "url": "https://www.rabbitmq.com/download.html",
+    "regex": "> of RabbitMQ is <strong>([\\d.]+)</"
+  },
+  "autoupdate": {
+    "url": "https://ghproxy.net/https://github.com/rabbitmq/rabbitmq-server/releases/download/v$version/rabbitmq-server-windows-$version.zip",
+    "extract_dir": "rabbitmq_server-$version"
+  }
 }

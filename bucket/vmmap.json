@@ -1,71 +1,60 @@
 {
-    "version": "3.32",
-    "description": "VMMap. Utility for processing virtual and physical memory of process.",
-    "homepage": "https://docs.microsoft.com/en-us/sysinternals/downloads/vmmap",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://docs.microsoft.com/en-us/sysinternals/license-terms"
-    },
-    "url": "https://download.sysinternals.com/files/VMMap.zip",
-    "hash": "c985c951bd0e78602c64feb831248bedc03e46acea9927ef8d611d81b83f615a",
-    "pre_install": [
-        "$sysint = 'HKCU:\\SOFTWARE\\Sysinternals'",
-        "$fin = \"$sysint\\VMMap\"",
-        "New-Item $sysint, $fin -ErrorAction 'SilentlyContinue' | Out-Null",
-        "Set-ItemProperty -Path $fin -Name 'EulaAccepted' -Value 1 -Type 'DWord' -Force | Out-Null"
-    ],
-    "uninstaller": {
-        "script": [
-            "if ($purge) {",
-            "    $sysInt = 'HKCU:\\SOFTWARE\\Sysinternals'",
-            "    Remove-Item \"$sysInt\\VMMap\" -ErrorAction 'SilentlyContinue' -Force -Recurse",
-            "    if ((Get-ChildItem $sysInt).Count -eq 0) { Remove-Item $sysInt -ErrorAction 'SilentlyContinue' -Force -Recurse }",
-            "}"
+  "version": "3.32",
+  "description": "A process virtual and physical memory analysis utility.",
+  "homepage": "https://learn.microsoft.com/sysinternals/downloads/vmmap",
+  "license": {
+    "identifier": "Freeware",
+    "url": "https://learn.microsoft.com/sysinternals/license-terms"
+  },
+  "url": "https://download.sysinternals.com/files/VMMap.zip",
+  "hash": "c985c951bd0e78602c64feb831248bedc03e46acea9927ef8d611d81b83f615a",
+  "architecture": {
+    "64bit": {
+      "bin": [
+        [
+          "vmmap64.exe",
+          "vmmap"
         ]
+      ],
+      "shortcuts": [
+        [
+          "vmmap64.exe",
+          "SysInternals/VMMap",
+          "/accepteula"
+        ]
+      ]
     },
-    "architecture": {
-        "64bit": {
-            "bin": [
-                "vmmap64.exe",
-                [
-                    "vmmap64.exe",
-                    "vmmap"
-                ]
-            ],
-            "shortcuts": [
-                [
-                    "vmmap64.exe",
-                    "SysInternals\\VMMap"
-                ]
-            ]
-        },
-        "32bit": {
-            "bin": "VMMap.exe",
-            "shortcuts": [
-                [
-                    "vmmap.exe",
-                    "SysInternals\\VMMap"
-                ]
-            ]
-        },
-        "arm64": {
-            "bin": [
-                "vmmap64a.exe",
-                [
-                    "vmmap64a.exe",
-                    "vmmap"
-                ]
-            ],
-            "shortcuts": [
-                [
-                    "vmmap64a.exe",
-                    "SysInternals\\VMMap"
-                ]
-            ]
-        }
+    "32bit": {
+      "bin": "vmmap.exe",
+      "shortcuts": [
+        [
+          "vmmap.exe",
+          "SysInternals/VMMap",
+          "/accepteula"
+        ]
+      ]
     },
-    "checkver": "VMMap\\s+v([\\d.]+)</h1",
-    "autoupdate": {
-        "url": "https://download.sysinternals.com/files/VMMap.zip"
+    "arm64": {
+      "bin": [
+        [
+          "vmmap64a.exe",
+          "vmmap"
+        ]
+      ],
+      "shortcuts": [
+        [
+          "vmmap64a.exe",
+          "SysInternals/VMMap",
+          "/accepteula"
+        ]
+      ]
     }
+  },
+  "checkver": {
+    "url": "https://ghproxy.net/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/vmmap.md",
+    "regex": "#.*?v([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "https://download.sysinternals.com/files/VMMap.zip"
+  }
 }

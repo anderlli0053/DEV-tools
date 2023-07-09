@@ -1,25 +1,26 @@
 {
-    "version": "weekly.2022.18",
-    "description": "The V programming language",
-    "homepage": "https://vlang.io",
-    "license": "MIT",
-    "notes": "Windows SDK is required, you either install it by Visual Studios Installer, or download from: https://developer.microsoft.com/en-us/windows/downloads/sdk-archive/",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/vlang/v/releases/download/weekly.2022.18/v_windows.zip",
-            "hash": "73a599e44ab25cbfce533973016c9b3e76f9a91c1df395fc3e743226f95e56cc"
-        }
-    },
-    "extract_dir": "v",
-    "bin": "v.exe",
-    "checkver": {
-        "url": "https://github.com/vlang/v/releases"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/vlang/v/releases/download/$version/v_windows.zip"
-            }
-        }
+  "version": "0.4",
+  "description": "The V programming language",
+  "homepage": "https://vlang.io",
+  "license": "MIT",
+  "notes": "Windows SDK is required, you either install it by Visual Studios Installer, or download from: https://developer.microsoft.com/en-us/windows/downloads/sdk-archive/",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/vlang/v/releases/download/0.4/v_windows.zip",
+      "hash": "9e40660be3031d835368559961a9afa5c695499eed6398c9ae28a257c7755ae7"
     }
+  },
+  "extract_dir": "v",
+  "bin": "v.exe",
+  "checkver": {
+    "url": "https://api.github.com/repos/vlang/v/releases?per_page=100",
+    "regex": "releases/tag/([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/vlang/v/releases/download/$version/v_windows.zip"
+      }
+    }
+  }
 }

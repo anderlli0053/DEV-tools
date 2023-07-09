@@ -1,24 +1,27 @@
 {
-    "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
-    "homepage": "https://github.com/dnote/dnote",
-    "license": "GPLv3",
-    "version": "v0.12.0",
-    "url": "https://github.com/dnote/dnote/releases/download/cli-v0.12.0/dnote_0.12.0_windows_amd64.tar.gz",
-    "hash": "a42f84cd4477dea6b7ba81dda087cd6c0e4774b849a1bb7e319d5f50f6165b4d",
-    "bin": [
-        "dnote.exe"
-    ],
-    "checkver": {
-        "url": "https://api.github.com/repos/dnote/dnote/releases/latest",
-        "re": "tag/cli-v([\\d\\w.-]+)"
-    },
-    "autoupdate": {
-        "url": "https://github.com/kiennq/emacs-build/releases/download/cli-v$version/dnote_$version_windows_amd64.tar.gz"
-    },
-    "shortcuts": [
-        [
-            "dnote.exe",
-            "dnote-cli"
-        ]
-    ]
+  "version": "0.15.0",
+  "description": "A simple command line notebook for programmers.",
+  "homepage": "https://www.getdnote.com/",
+  "license": "GPL-3.0-only",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/dnote/dnote/releases/download/cli-v0.15.0/dnote_0.15.0_windows_amd64.tar.gz",
+      "hash": "011cf95c4150b6da3ef966739fea86ff3e8e4d96fd1288ae7cdce1893f8d5bc9"
+    }
+  },
+  "bin": "dnote.exe",
+  "checkver": {
+    "url": "https://github.com/dnote/dnote/releases",
+    "regex": "cli-v([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/dnote/dnote/releases/download/cli-v$version/dnote_$version_windows_amd64.tar.gz",
+        "hash": {
+          "url": "$baseurl/dnote_$version_checksums.txt"
+        }
+      }
+    }
+  }
 }

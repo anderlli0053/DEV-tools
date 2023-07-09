@@ -1,48 +1,46 @@
 {
-    "version": "3.5.3",
-    "description": "Text editor",
-    "homepage": "https://www.haijin-boys.com/software/mery",
-    "license": "Freeware",
-    "architecture": {
-        "64bit": {
-            "url": "https://www.haijin-boys.com/download/MeryPortable-x64-3.5.3.zip",
-            "hash": "1055c68da8f1358859ca5d3d797c1738d7be7f035fecab1f7150d34c9d2994f4"
-        },
-        "32bit": {
-            "url": "https://www.haijin-boys.com/download/MeryPortable-3.5.3.zip",
-            "hash": "f63918037e88395e40d14ac667944d234cd0b22f73646442958fc2f35f6270b0"
-        }
+  "version": "3.5.5",
+  "description": "Text editor",
+  "homepage": "https://www.haijin-boys.com/software/mery",
+  "license": "Freeware",
+  "architecture": {
+    "64bit": {
+      "url": "https://www.haijin-boys.com/download/MeryPortable-x64-3.5.5.zip",
+      "hash": "bf8b67a2597ea43b36757cae0149cadd1c9e4f927a61e48f333f9e95dbf7b8be"
     },
-    "extract_dir": "Mery",
-    "bin": "Mery.exe",
-    "shortcuts": [
-        [
-            "Mery.exe",
-            "Mery (beta)"
-        ]
-    ],
-    "pre_install": [
-        "if (Test-Path (Join-Path $persist_dir 'Mery.ini')) {",
-        "    Remove-Item (Join-Path $dir 'MeryPortable.ini')",
-        "} else {",
-        "    Move-Item (Join-Path $dir 'MeryPortable.ini') (Join-Path $dir 'Mery.ini') | Out-Null",
-        "}"
-    ],
-    "persist": [
-        "Mery.ini"
-    ],
-    "checkver": {
-        "url": "https://www.haijin-boys.com/software/mery",
-        "regex": "ベータ版 Ver ([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://www.haijin-boys.com/download/MeryPortable-x64-$version.zip"
-            },
-            "32bit": {
-                "url": "https://www.haijin-boys.com/download/MeryPortable-$version.zip"
-            }
-        }
+    "32bit": {
+      "url": "https://www.haijin-boys.com/download/MeryPortable-3.5.5.zip",
+      "hash": "4a2633650ee0f027f2169b6b48007374674862ccb1984730082224350bdbbaac"
     }
+  },
+  "extract_dir": "Mery",
+  "bin": "Mery.exe",
+  "shortcuts": [
+    [
+      "Mery.exe",
+      "Mery (beta)"
+    ]
+  ],
+  "pre_install": [
+    "if (Test-Path (Join-Path $persist_dir 'Mery.ini')) {",
+    "    Remove-Item (Join-Path $dir 'MeryPortable.ini')",
+    "} else {",
+    "    Move-Item (Join-Path $dir 'MeryPortable.ini') (Join-Path $dir 'Mery.ini') | Out-Null",
+    "}"
+  ],
+  "persist": "Mery.ini",
+  "checkver": {
+    "url": "https://www.haijin-boys.com/software/mery",
+    "regex": "ベータ版 Ver ([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://www.haijin-boys.com/download/MeryPortable-x64-$version.zip"
+      },
+      "32bit": {
+        "url": "https://www.haijin-boys.com/download/MeryPortable-$version.zip"
+      }
+    }
+  }
 }

@@ -1,74 +1,34 @@
 {
-    "homepage": "https://www.vim.org",
-    "description": "A highly configurable text editor for efficiently creating and changing any kind of text.",
-    "license": "Vim",
-    "version": "9.0",
     "url": [
-        "https://ftp.nluug.nl/pub/vim/pc/gvim90.zip",
-        "https://ftp.nluug.nl/pub/vim/pc/vim82rt.zip"
+        "http://ftp.vim.org/pub/vim/pc/gvim80.zip",
+        "http://ftp.vim.org/pub/vim/pc/vim80rt.zip"
+    ],
+    "license": "http://vimdoc.sourceforge.net/htmldoc/uganda.html#license",
+    "version": "8.0",
+    "hash": [
+        "ec07d1a2439f8c9a65141f2da97195ca7047f988cce8f186bb8dfc13bb7552db",
+        "d3a3ed596e78f2efe6996f9d3df646447621686f7185c0db1991f3198c1c38c2"
     ],
     "extract_dir": [
-        "vim",
-        "vim"
+        "vim\\vim80",
+        "vim\\vim80"
     ],
-    "hash": [
-        "c121ecd195b80cb08090f712ef014a93db0d3e34265ea3684fb7c8b3e5d3fa1e",
-        "sha256:1B9824470A813BA0D0FAC26E59879BA8976C219334616212FB83A945EDFDC2E4"
-    ],
-    "pre_install": "if (!(Test-Path \"$persist_dir\\vimrc\")) {New-Item \"$dir\\vimrc\" -ItemType File | Out-Null}",
-    "bin": [
-        "vim82\\gvim.exe",
-        [
-            "vim82\\gvim.exe",
-            "gview",
-            "-R"
-        ],
-        [
-            "vim82\\gvim.exe",
-            "evim",
-            "-y"
-        ],
-        [
-            "vim82\\gvim.exe",
-            "eview",
-            "-Ry"
-        ],
-        [
-            "vim82\\gvim.exe",
-            "rgvim",
-            "-Z"
-        ],
-        [
-            "vim82\\gvim.exe",
-            "rgview",
-            "-RZ"
-        ],
-        [
-            "vim82\\gvim.exe",
-            "gvimdiff",
-            "-d"
-        ],
-        "vim82\\xxd.exe"
-    ],
+    "bin": "gvim.exe",
     "shortcuts": [
         [
-            "vim82\\gvim.exe",
+            "gvim.exe",
             "gVim"
         ]
     ],
-    "persist": [
-        "vimfiles",
-        "vimrc"
-    ],
+    "post_install": "
+        if(!(test-path ~\\.vimrc)) {
+        cp \"$dir\\vimrc_example.vim\" ~\\.vimrc
+        \"set shell=$((gcm powershell).path)\" | out-file  ~\\.vimrc -append -encoding ascii
+        echo '~/.vimrc was created with your shell set to Powershell.'
+    } else { echo '~/.vimrc exists, skipping' }
+    ",
     "checkver": {
-        "url": "https://ftp.nluug.nl/pub/vim/pc",
-        "regex": "gvim(?<ver>[\\d-]+)\\.zip\\s+V([\\d.]+)"
-    },
-    "autoupdate": {
-        "url": "https://ftp.nluug.nl/pub/vim/pc/gvim$matchVer.zip",
-        "hash": {
-            "url": "$baseurl/MD5SUMS"
-        }
-    },
-    "_from": "okibcn/ScoopMaster"
+        "url": "http://www.vim.org/download.php",
+        "re": "Vim ([0-9\\.]+) is the latest stable version"
+    }
 }

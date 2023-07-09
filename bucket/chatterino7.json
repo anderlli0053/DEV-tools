@@ -1,32 +1,43 @@
 {
-    "version": "5039696773",
-    "description": "Chat client for https://twitch.tv",
-    "homepage": "https://github.com/SevenTV/chatterino7",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/SevenTV/chatterino7/releases/download/nightly-build/chatterino-windows-x86-64-Qt-5.15.2.zip",
-            "hash": "526fbd4c9a12a606d8f47c66de013c6b198f7831944e72d6db4c1c5b7505535f",
-            "extract_dir": "Chatterino2",
-            "pre_install": "Get-ChildItem \"$dir\\chatterino.exe\" | Rename-Item -NewName { $_.name.Replace('o', 'o7') }"
-        }
-    },
-    "shortcuts": [
-        [
-            "chatterino7.exe",
-            "Chatterino7"
-        ]
-    ],
-    "bin": "chatterino7.exe",
-    "checkver": {
-        "url": "https://api.github.com/repositories/342454835/actions/workflows/build.yml/runs?branch=chatterino7&status=success",
-        "jsonpath": "$.workflow_runs[0].id"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/SevenTV/chatterino7/releases/download/nightly-build/chatterino-windows-x86-64-Qt-5.15.2.zip"
-            }
-        }
+  "version": "7.4.4",
+  "homepage": "https://github.com/SevenTV/chatterino7",
+  "description": "A fork of Chatterino 2 with 7TV subscriber features.",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/SevenTV/chatterino7/releases/download/v7.4.4/Chatterino7.Portable.zip",
+      "hash": "6e3d275344a5766e28f32589d10188af4a36f2cf90c43ea5f5fbfd3bb927ee9a"
     }
+  },
+  "extract_dir": "Chatterino2",
+  "bin": [
+    [
+      "chatterino.exe",
+      "chatterino7"
+    ]
+  ],
+  "shortcuts": [
+    [
+      "chatterino.exe",
+      "Chatterino7"
+    ]
+  ],
+  "persist": [
+    "Settings",
+    "Cache",
+    "Logs",
+    "Misc",
+    "ProfileAvatars"
+  ],
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/SevenTV/chatterino7/releases/download/v$version/Chatterino7.Portable.zip"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/sha256-checksums.txt"
+    }
+  }
 }

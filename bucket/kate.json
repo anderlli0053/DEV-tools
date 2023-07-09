@@ -1,34 +1,34 @@
 {
-    "version": "23.04.2-2071",
-    "description": "Multi-document editor",
-    "homepage": "https://kate-editor.org",
-    "license": "LGPL-2.0-only",
-    "architecture": {
-        "64bit": {
-            "url": "https://binary-factory.kde.org/view/Windows%2064-bit/job/Kate_Release_win64/2071/artifact/kate-23.04.2-2071-windows-cl-msvc2019-x86_64.7z",
-            "hash": "dee0306708c20b587601a0cb8d835c9994e50e0ed9d57536b4364c7d89fb7597"
-        }
-    },
-    "bin": "bin\\kate.exe",
-    "shortcuts": [
-        [
-            "bin\\kate.exe",
-            "Kate"
-        ]
-    ],
-    "checkver": {
-        "url": "https://binary-factory.kde.org/view/Windows%2064-bit/job/Kate_Release_win64/lastSuccessfulBuild/artifact/",
-        "regex": "kate-([\\d.-]+)-windows-cl-(?<lib>\\w+)-x86_64\\.7z"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://binary-factory.kde.org/view/Windows%2064-bit/job/Kate_Release_win64/$preReleaseVersion/artifact/kate-$version-windows-cl-$matchLib-x86_64.7z"
-            }
-        },
-        "hash": {
-            "url": "$url.sha256",
-            "regex": "$sha256"
-        }
+  "version": "23.04.2-2087",
+  "description": "Multi-document editor",
+  "homepage": "https://kate-editor.org",
+  "license": "LGPL-2.0-only",
+  "notes": "If you want to get the latest development branch-based installer, please install `kate-nightly` from Versions bucket.",
+  "architecture": {
+    "64bit": {
+      "url": "https://binary-factory.kde.org/job/Kate_Release_win64/2087/artifact/kate-23.04.2-2087-windows-cl-msvc2019-x86_64.7z",
+      "hash": "4da48307282e008508d684146e373885a0c60f46aaa5db01401dd0382374c70e"
     }
+  },
+  "bin": "bin\\kate.exe",
+  "shortcuts": [
+    [
+      "bin\\kate.exe",
+      "Kate"
+    ]
+  ],
+  "checkver": {
+    "url": "https://binary-factory.kde.org/job/Kate_Release_win64/",
+    "regex": "kate-([\\d.-]+)-windows-cl-(?<lib>\\w+)-x86_64\\.7z"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://binary-factory.kde.org/job/Kate_Release_win64/$preReleaseVersion/artifact/kate-$version-windows-cl-$matchLib-x86_64.7z",
+        "hash": {
+          "url": "$url.sha256"
+        }
+      }
+    }
+  }
 }

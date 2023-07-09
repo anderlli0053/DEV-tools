@@ -1,21 +1,18 @@
 {
     "version": "nightly",
-    "description": "Steam is the ultimate destination for playing, discussing, and creating games.",
-    "license" : "Proprietary",
-    "homepage": "https://steampowered.com/",
-    "url": "https://cdn.akamai.steamstatic.com/client/installer/SteamSetup.exe#/dl.7z",
-    "hash": "sha1:1e5598f2de49fed2e81f3dd8630c7346a2b89487",
+    "description": "The ultimate entertainment platform.",
+    "homepage": "https://store.steampowered.com/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://store.steampowered.com/legal/"
+    },
     "notes": "Changing Steam library folder is HIGHLY recommended.",
-    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+    "url": "https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe#/dl.7z",
+    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
     "uninstaller": {
         "file": "uninstall.exe",
         "args": "/S"
     },
-    "persist": [
-        "skins",
-        "steamapps",
-        "userdata"
-    ],
     "bin": "Steam.exe",
     "shortcuts": [
         [
@@ -24,7 +21,9 @@
             "-dev"
         ]
     ],
-    "autoupdate": {
-        "url": "https://cdn.akamai.steamstatic.com/client/installer/SteamSetup.exe#/dl.7z"
-    }
+    "persist": [
+        "skins",
+        "steamapps",
+        "userdata"
+    ]
 }

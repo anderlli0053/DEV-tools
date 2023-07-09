@@ -1,36 +1,39 @@
 {
-    "version": "0.0.170+7b380f2.5134053217",
-    "description": "A command line tool for editing and distributing Minecraft modpacks, using a git-friendly TOML format. Supports CurseForge and Modrinth mods with automated updates!",
-    "homepage": "https://github.com/comp500/packwiz/",
-    "license": {
-        "identifier": "MIT",
-        "url": "https://github.com/comp500/packwiz/blob/master/LICENSE"
+  "version": "0.0.179+d5b84f2.5480863568",
+  "description": "A command line tool for editing and distributing Minecraft modpacks, using a git-friendly TOML format. Supports CurseForge and Modrinth mods with automated updates!",
+  "homepage": "https://github.com/comp500/packwiz/",
+  "license": {
+    "identifier": "MIT",
+    "url": "https://github.com/comp500/packwiz/blob/master/LICENSE"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://nightly.link/packwiz/packwiz/actions/runs/5480863568/Windows%2064-bit.zip",
+      "hash": "333476ea0490833eb134b1e25e7a1d8baa55de15952f030a426afcd7943319dc"
     },
+    "arm64": {
+      "url": "https://nightly.link/packwiz/packwiz/actions/runs/5480863568/Windows%2064-bit%20ARM.zip",
+      "hash": "9b12682d6d831215d89abec1351239df9c6d0f551504c312214bae5739ac6f18"
+    }
+  },
+  "checkver": {
+    "script": [
+      "$actions = Invoke-RestMethod -Uri 'https://api.github.com/repos/packwiz/packwiz/actions/workflows/go.yml/runs'",
+      "$latest_develop = $actions.workflow_runs.PSObject.Properties.Value | Where-Object { $_.head_branch -eq 'main' } | Where-Object { $_.conclusion -eq 'success' } | Select-Object -first 1",
+      "$version = '0.0.' + $latest_develop.run_number + '+' + $latest_develop.head_sha.substring(0,7) + '.' + $latest_develop.id",
+      "Write-Output $version $latest_develop.id"
+    ],
+    "regex": "(?<version>[^\\s]+)\\s(?<id>\\d+)"
+  },
+  "autoupdate": {
     "architecture": {
-        "64bit": {
-            "url": "https://nightly.link/packwiz/packwiz/actions/runs/5134053217/Windows%2064-bit.zip",
-            "hash": "c0a4213c5e8ec1b5e82a8448741e4c9beaf7bcfbbca12f6be7bacb4550991547"
-        },
-        "arm64": {
-            "url": "https://nightly.link/packwiz/packwiz/actions/runs/5134053217/Windows%2064-bit%20ARM.zip",
-            "hash": "a7cab98f35731ad5c143741ce7902111ec3b83fec7094d72a950a0f9ffdf1532"
-        }
-    },
-    "checkver": {
-        "url": "https://api.github.com/repos/packwiz/packwiz/actions/workflows/go.yml/runs",
-        "jsonpath": "$.workflow_runs",
-        "regex": "\"id\": ?(?<id>\\d+),\\s+(\"[\\w_]+\": ?[\"\\w\\d_\\/\\.-]+,\\s+)*\"head_branch\": ?\"main\",\\s+\"head_sha\": ?\"(?<commit>[\\w\\d]{7})[\\w\\d]+\",\\s+(\"[\\w_]+\": ?[\"\\w\\d_\\/\\.\\-\\s]+,\\s+)*\"run_number\": ?(?<run>\\d+),\\s+(\"[\\w_]+\": ?[\"\\w\\d_\\/\\.\\-\\s]+,\\s+)*\"conclusion\": ?\"success\"",
-        "replace": "0.0.${run}+${commit}.${id}"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://nightly.link/packwiz/packwiz/actions/runs/$matchId/Windows%2064-bit.zip"
-            },
-            "arm64": {
-                "url": "https://nightly.link/packwiz/packwiz/actions/runs/$matchId/Windows%2064-bit%20ARM.zip"
-            }
-        }
-    },
-    "bin": "packwiz.exe"
+      "64bit": {
+        "url": "https://nightly.link/packwiz/packwiz/actions/runs/$matchId/Windows%2064-bit.zip"
+      },
+      "arm64": {
+        "url": "https://nightly.link/packwiz/packwiz/actions/runs/$matchId/Windows%2064-bit%20ARM.zip"
+      }
+    }
+  },
+  "bin": "packwiz.exe"
 }

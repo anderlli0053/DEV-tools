@@ -1,6 +1,6 @@
 {
     "homepage": "http://iscute.cn/chfs",
-    "description": "CuteHttpFileServer(chfs) is a free file sharing http server tool.",
+    "description": "CuteHttpFileServer/chfs is a free file sharing http server tool.",
     "license": "Freeware",
     "version": "2.0",
     "architecture": {
@@ -14,15 +14,6 @@
         }
     },
     "bin": "chfs.exe",
-    "pre_install": [
-        "function CreateFile ($name, $value = $null) {",
-        "    if (!(Test-Path \"$persist_dir\\$name\")) {",
-        "        Set-Content \"$dir\\$name\" $value -Encoding Ascii",
-        "    }",
-        "}",
-        "CreateFile 'chfs.ini' "
-    ],
-    "persist": "chfs.ini",
     "checkver": {
         "regex": "chfs-windows-x64-([\\d.]+).zip"
     },

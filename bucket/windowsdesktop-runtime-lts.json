@@ -1,57 +1,45 @@
 {
-    "version": "6.0.19",
-    "description": "Microsoft .NET Desktop Runtime LTS (Long-term support)",
-    "homepage": "https://dotnet.microsoft.com/download/dotnet",
-    "license": {
-        "identifier": "Proprietary",
-        "url": "https://www.microsoft.com/legal/intellectualproperty/copyright"
+  "version": "6.0.19",
+  "description": "Microsoft .NET Desktop Runtime LTS (Long-term support)",
+  "homepage": "https://dotnet.microsoft.com/download/dotnet",
+  "license": "MIT",
+  "notes": "You can now remove this installer with 'scoop uninstall windowsdesktop-runtime-lts'",
+  "architecture": {
+    "64bit": {
+      "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.19/windowsdesktop-runtime-6.0.19-win-x64.exe",
+      "hash": "sha512:ee214705a57e0da2f31dfb4a4ce2368898eef10bbe024f2e0b05889a85d472d3acba9cd935fba5391b84463c1245f641bcc3cbeb9a48334fb6d41e7b3a2a9d61"
     },
-    "notes": "You can now remove this installer with 'scoop uninstall windowsdesktop-runtime-lts'",
-    "architecture": {
-        "64bit": {
-            "url": "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/6.0.19/windowsdesktop-runtime-6.0.19-win-x64.exe",
-            "hash": "sha512:ee214705a57e0da2f31dfb4a4ce2368898eef10bbe024f2e0b05889a85d472d3acba9cd935fba5391b84463c1245f641bcc3cbeb9a48334fb6d41e7b3a2a9d61"
-        },
-        "32bit": {
-            "url": "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/6.0.19/windowsdesktop-runtime-6.0.19-win-x86.exe",
-            "hash": "9e0399dabe100ebe271b76615629891a10dc9b14aaedb3ec14d0e22e99925ddf"
-        },
-        "arm64": {
-            "url": "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/6.0.19/windowsdesktop-runtime-6.0.19-win-arm64.exe",
-            "hash": "sha512:ecdc0bcb63d9f4047110dffd3a7c9f60e1cb4bfc41e493f7e1d0c6eff74bd81d4cc246a2b4c60a97328c927dd4f5ed311aa75f57f60f1845d7b7de66da32eddb"
-        }
+    "32bit": {
+      "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.19/windowsdesktop-runtime-6.0.19-win-x86.exe",
+      "hash": "sha512:993422cec9e7aabf884c6030c855e62c674d85f9ec81eeaa63e9d0f8c395a75d142e8c59eeba57916e2a95650fadbe9e01d7dbbc989b784979dec442171243bc"
     },
-    "pre_install": "if (!(is_admin)) { error 'Admin privileges are required.'; break }",
-    "installer": {
-        "script": "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList '/install', '/quiet', '/norestart' -RunAs | Out-Null"
-    },
-    "checkver": {
-        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
-        "jsonpath": "$.releases-index[?(@.release-type == 'lts' && @.support-phase == 'active')].latest-runtime"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe",
-                "hash": {
-                    "url": "https://dotnet.microsoft.com/download/dotnet-core/thank-you/runtime-desktop-$version-windows-x64-installer",
-                    "regex": "value=\"$sha512\""
-                }
-            },
-            "32bit": {
-                "url": "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe",
-                "hash": {
-                    "url": "https://dotnet.microsoft.com/download/dotnet-core/thank-you/runtime-desktop-$version-windows-x86-installer",
-                    "regex": "value=\"$sha512\""
-                }
-            },
-            "arm64": {
-                "url": "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-arm64.exe",
-                "hash": {
-                    "url": "https://dotnet.microsoft.com/download/dotnet-core/thank-you/runtime-desktop-$version-windows-arm64-installer",
-                    "regex": "value=\"$sha512\""
-                }
-            }
-        }
+    "arm64": {
+      "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.19/windowsdesktop-runtime-6.0.19-win-arm64.exe",
+      "hash": "sha512:ecdc0bcb63d9f4047110dffd3a7c9f60e1cb4bfc41e493f7e1d0c6eff74bd81d4cc246a2b4c60a97328c927dd4f5ed311aa75f57f60f1845d7b7de66da32eddb"
     }
+  },
+  "pre_install": "if (!(is_admin)) { error 'Admin privileges are required.'; break }",
+  "installer": {
+    "script": "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList '/install', '/quiet', '/norestart' -RunAs | Out-Null"
+  },
+  "checkver": {
+    "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/LTS/latest.version",
+    "regex": "([\\d.]+)$"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe"
+      },
+      "32bit": {
+        "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe"
+      },
+      "arm64": {
+        "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-arm64.exe"
+      }
+    },
+    "hash": {
+      "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$version-sha.txt"
+    }
+  }
 }

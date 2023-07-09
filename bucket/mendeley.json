@@ -1,36 +1,36 @@
 {
-    "version": "2.92.0",
-    "description": "Manage and share research papers, and generate bibliographies for scholarly articles.",
-    "homepage": "https://www.mendeley.com/",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.mendeley.com/terms/"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://static.mendeley.com/bin/desktop/mendeley-reference-manager-2.92.0.exe#/dl.7z",
-            "hash": "5f75a386ec8ef5e42fd4437a5a06d0741837648cc456e7912707c0bdf980dcb3"
-        }
-    },
-    "pre_install": [
-        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal | Out-Null",
-        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninstall*.exe\" -Force -Recurse"
-    ],
-    "shortcuts": [
-        [
-            "Mendeley Reference Manager.exe",
-            "Mendeley Reference Manager"
-        ]
-    ],
-    "checkver": {
-        "url": "https://www.mendeley.com/download-reference-manager/windows",
-        "regex": "desktop/mendeley-reference-manager-([\\d.]+)\\.exe"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://static.mendeley.com/bin/desktop/mendeley-reference-manager-$version.exe#/dl.7z"
-            }
-        }
+  "version": "2.93.0",
+  "description": "Manage and share research papers, and generate bibliographies for scholarly articles.",
+  "homepage": "https://www.mendeley.com/",
+  "license": {
+    "identifier": "Freeware",
+    "url": "https://www.mendeley.com/terms/"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://static.mendeley.com/bin/desktop/mendeley-reference-manager-2.93.0.exe#/dl.7z",
+      "hash": "0f094f5245a95cd3b0656f8ce3d6b543009f34ba9729d7b99193ee62a74fb7e3"
     }
+  },
+  "pre_install": [
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal | Out-Null",
+    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninstall*.exe\" -Force -Recurse"
+  ],
+  "shortcuts": [
+    [
+      "Mendeley Reference Manager.exe",
+      "Mendeley Reference Manager"
+    ]
+  ],
+  "checkver": {
+    "url": "https://www.mendeley.com/download-reference-manager/windows",
+    "regex": "desktop/mendeley-reference-manager-([\\d.]+)\\.exe"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://static.mendeley.com/bin/desktop/mendeley-reference-manager-$version.exe#/dl.7z"
+      }
+    }
+  }
 }

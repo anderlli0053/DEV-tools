@@ -1,21 +1,17 @@
 {
-    "homepage": "https://github.com/stnkl/EverythingToolbar",
-    "version": "1.1.1",
-    "url": "https://github.com/stnkl/EverythingToolbar/archive/refs/tags/1.1.1.zip",
-    "notes": "Enable EverythingToolbar via the context menu of the taskbar.",
-    "hash": "91104a7d286862d20078165cf03cfeb87c41349fa6f513a2cf34e8d082ad522a",
-    "depends": "extras/everything",
-    "checkver": "github",
-    "pre_install": "if (-not (is_admin)) { error 'Administrator privileges are needed for installation'; break }",
-    "installer": {
-        "file": "install.cmd",
-        "keep": "true"
-    },
-    "uninstaller": {
-        "file": "uninstall.cmd",
-        "keep": "true"
-    },
-    "autoupdate": {
-        "url": "https://github.com/stnkl/EverythingToolbar/archive/refs/tags/$version.zip"
-    }
+  "homepage": "https://github.com/stnkl/EverythingToolbar",
+  "description": "Everything integration for the Windows taskbar",
+  "version": "1.1.1",
+  "url": "https://ghproxy.net/https://github.com/stnkl/EverythingToolbar/releases/download/1.1.1/EverythingToolbar-1.1.1.msi#/setup.msi_",
+  "hash": "971366bf8455eff46befae2c2042675c04c7f257a68c7120f2df015c77ced92c",
+  "checkver": "github",
+  "autoupdate": {
+    "url": "https://ghproxy.net/https://github.com/stnkl/EverythingToolbar/releases/download/$version/EverythingToolbar-$version.msi#/setup.msi_"
+  },
+  "installer": {
+    "script": "Start-Process -Wait msiexec \"/i `\"$dir\\setup.msi_`\"/norestart /qn INSTALLFOLDER=`\"$dir`\"\" -Verb RunAs"
+  },
+  "uninstaller": {
+    "script": "Start-Process -Wait msiexec \"/x `\"$dir\\setup.msi_`\" /qn /norestart\" -Verb RunAs"
+  }
 }

@@ -1,8 +1,30 @@
 {
-	"homepage": "http://keepass.info/",
-	"version": "2.34",
-	"url": "http://netcologne.dl.sourceforge.net/project/keepass/KeePass%202.x/2.34/KeePass-2.34.zip",
-	"hash": "52DD5A8526CC935B0E240D5AB6402B0B4A3F5F09AD1A6919875878D7F36C697F",
-	"bin": "KeePass.exe",
-	"checkver": "KeePass ([\\d.]+) released"
+  "version": "2.54",
+  "description": "Light-weight and easy-to-use password manager",
+  "homepage": "https://keepass.info",
+  "license": "GPL-2.0-or-later",
+  "url": "https://downloads.sourceforge.net/project/keepass/KeePass%202.x/2.54/KeePass-2.54.zip",
+  "hash": "sha1:ccb7c723ba6fdc8ba098d7d436dc1558fee4f5d3",
+  "pre_install": "if (Test-Path \"$persist_dir\\KeePass.config.xml\") { Copy-Item \"$persist_dir\\KeePass.config.xml\" \"$dir\" }",
+  "uninstaller": {
+    "script": "if (Test-Path \"$dir\\KeePass.config.xml\") { Copy-Item \"$dir\\KeePass.config.xml\" \"$persist_dir\" -Force }"
+  },
+  "bin": "KeePass.exe",
+  "shortcuts": [
+    [
+      "KeePass.exe",
+      "KeePass"
+    ]
+  ],
+  "persist": [
+    "Plugins",
+    "Languages"
+  ],
+  "checkver": {
+    "url": "https://keepass.info/update/version2x.txt",
+    "regex": "KeePass:([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "https://downloads.sourceforge.net/project/keepass/KeePass%20$majorVersion.x/$version/KeePass-$version.zip"
+  }
 }

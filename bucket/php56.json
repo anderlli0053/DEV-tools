@@ -1,20 +1,38 @@
 {
-    "homepage": "http://windows.php.net",
-    "version": "5.6.32",
-    "license": "https://php.net/license/",
+    "version": "5.6.40",
+    "description": "A popular general-purpose scripting language that is especially suited to web development. (version 5.6)",
+    "homepage": "https://windows.php.net",
+    "license": {
+        "identifier": "PHP-3.01",
+        "url": "https://secure.php.net/license/"
+    },
+    "suggest": {
+        "vcredist": "extras/vcredist2012"
+    },
     "architecture": {
         "64bit": {
-            "url": "http://windows.php.net/downloads/releases/php-5.6.32-Win32-VC11-x64.zip",
-            "hash": "dbbec8581f9222e5db266aa3f239e858e2314744d866964a09c7f4dcc3a021c5"
+            "url": "https://windows.php.net/downloads/releases/archives/php-5.6.40-Win32-VC11-x64.zip",
+            "hash": "b312df0b16ec645adfd7ad39ce6f9dd294a4dfeb8130ee8041f8af0f89f62904"
         },
         "32bit": {
-            "url": "http://windows.php.net/downloads/releases/php-5.6.32-Win32-VC11-x86.zip",
-            "hash": "2a5937b88c66d0588d8cd286e312b98fcddc88f542d2169383761c6125a78544"
+            "url": "https://windows.php.net/downloads/releases/archives/php-5.6.40-Win32-VC11-x86.zip",
+            "hash": "7285219b84fbe4fe17f6aab555524aba6775fb45c4122449bb53cfff423a6847"
         }
     },
+    "pre_install": [
+        "# Create directory for custom PHP configuration",
+        "if (!(Test-Path \"$dir\\cli\\conf.d\")) {",
+        "    (New-Item -Type directory \"$dir\\cli\\conf.d\") | Out-Null",
+        "}"
+    ],
+    "post_install": [
+        "# Enable extensions to be found in installation-relative folder (the default is to search C:/php)",
+        "(Get-Content \"$dir\\cli\\php.ini\") | % { $_ -replace ';\\s?(extension_dir = \"ext\")', '$1' } | Set-Content \"$dir\\cli\\php.ini\""
+    ],
     "bin": [
-        ["php.exe", "php56"],
-        ["php-cgi.exe", "php56-cgi"]
+        "php.exe",
+        "php-cgi.exe",
+        "phpdbg.exe"
     ],
     "persist": [
         "cli",
@@ -25,40 +43,5 @@
     ],
     "env_set": {
         "PHP_INI_SCAN_DIR": "$dir\\cli;$dir\\cli\\conf.d;"
-    },
-    "post_install": "
-# Copy ini scan dir from old location before persistent update
-if ((Test-Path \"$dir\\..\\conf\") -and !(Test-Path \"$dir\\cli\\conf.d\")) {
-    Write-Host -ForegroundColor Cyan \"We are moving your php configuration to $dir\\cli\\conf.d\"
-    Move-Item \"$dir\\..\\conf\" \"$dir\\cli\\conf.d\"
-}
-# Create directory for custom PHP configuration
-if (!(Test-Path \"$dir\\cli\\conf.d\")) {
-    (New-Item -Type directory \"$dir\\cli\\conf.d\") | Out-Null
-}
-# Enable extensions to be found in installation-relative folder (the default is to search C:/php)
-(gc \"$dir\\cli\\php.ini\") | % { $_ -replace '; extension_dir = \"ext\"', 'extension_dir = \"ext\"' } | sc \"$dir\\cli\\php.ini\"
-",
-    "checkver": {
-        "url": "http://windows.php.net/download/",
-        "re": "<h3 id=\"php-7.1\".*?>.*?\\(([\\d.]+)\\)</h3>"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "http://windows.php.net/downloads/releases/php-$version-Win32-VC14-x64.zip"
-            },
-            "32bit": {
-                "url": "http://windows.php.net/downloads/releases/php-$version-Win32-VC14-x86.zip"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/sha256sum.txt"
-        }
-    },
-    "suggest": {
-        "vcredist": [
-            "extras/vcredist2017"
-        ]
     }
 }

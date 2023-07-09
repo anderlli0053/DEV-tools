@@ -1,49 +1,49 @@
 {
-    "version": "1.0.5.0",
-    "description": "HTTP Downloader is a high-performance, multi-part download manager, which maximizes your download throughput by utilizing high performance input/output completion ports (IOCP).",
-    "homepage": "https://erickutcher.github.io/#HTTP_Downloader",
-    "license": "GPL-3.0-or-later",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/erickutcher/httpdownloader/releases/download/v1.0.5.0/HTTP_Downloader_64.zip",
-            "hash": "2c73333d01cf79c1a643e0e152dbfe90cfddadac7d0dcb41beaf0db455968adf"
-        },
-        "32bit": {
-            "url": "https://github.com/erickutcher/httpdownloader/releases/download/v1.0.5.0/HTTP_Downloader_32.zip",
-            "hash": "bae39c8ba3b553525d889f2d9bfa867d10a0f0a6f46dc216b22eab5a7e0bb00f"
-        }
+  "version": "1.0.5.1",
+  "description": "HTTP Downloader is a high-performance, multi-part download manager, which maximizes your download throughput by utilizing high performance input/output completion ports (IOCP).",
+  "homepage": "https://erickutcher.github.io/#HTTP_Downloader",
+  "license": "GPL-3.0-or-later",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/erickutcher/httpdownloader/releases/download/v1.0.5.1/HTTP_Downloader_64.zip",
+      "hash": "6d1a01503cad174d39aa419abc8571e9c22187f85309aa0922f4b88c2bea509b"
     },
-    "shortcuts": [
-        [
-            "HTTP_Downloader.exe",
-            "HTTP Downloader"
-        ]
-    ],
-    "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\portable\")) { Set-Content -Encoding ASCII -Path \"$dir\\portable\" -Value $null }",
-        "if (!(Test-Path \"$persist_dir\\http_downloader_settings\")) { Set-Content -Encoding ASCII -Path \"$dir\\http_downloader_settings\" -Value $null }",
-        "if (!(Test-Path \"$persist_dir\\site_settings\")) { Set-Content -Encoding ASCII -Path \"$dir\\site_settings\" -Value $null }",
-        "if (!(Test-Path \"$persist_dir\\download_history\")) { Set-Content -Encoding ASCII -Path \"$dir\\download_history\" -Value $null }"
-    ],
-    "persist": [
-        "http_downloader_settings",
-        "site_settings",
-        "download_history",
-        "incomplete"
-    ],
-    "notes": "Download browser extensions at https://erickutcher.github.io/#HTTP_Downloader",
-    "checkver": {
-        "url": "https://github.com/erickutcher/httpdownloader/releases",
-        "regex": "/releases/tag/v([\\d.]+)\""
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/erickutcher/httpdownloader/releases/download/v$version/HTTP_Downloader_64.zip"
-            },
-            "32bit": {
-                "url": "https://github.com/erickutcher/httpdownloader/releases/download/v$version/HTTP_Downloader_32.zip"
-            }
-        }
+    "32bit": {
+      "url": "https://ghproxy.net/https://github.com/erickutcher/httpdownloader/releases/download/v1.0.5.1/HTTP_Downloader_32.zip",
+      "hash": "17399c25c009730c4803375aee24c8f5df7cad4ab82b6dfe3bb49d96a54b8b3e"
     }
+  },
+  "shortcuts": [
+    [
+      "HTTP_Downloader.exe",
+      "HTTP Downloader"
+    ]
+  ],
+  "pre_install": [
+    "if (!(Test-Path \"$persist_dir\\portable\")) { Set-Content -Encoding ASCII -Path \"$dir\\portable\" -Value $null }",
+    "if (!(Test-Path \"$persist_dir\\http_downloader_settings\")) { Set-Content -Encoding ASCII -Path \"$dir\\http_downloader_settings\" -Value $null }",
+    "if (!(Test-Path \"$persist_dir\\site_settings\")) { Set-Content -Encoding ASCII -Path \"$dir\\site_settings\" -Value $null }",
+    "if (!(Test-Path \"$persist_dir\\download_history\")) { Set-Content -Encoding ASCII -Path \"$dir\\download_history\" -Value $null }"
+  ],
+  "persist": [
+    "http_downloader_settings",
+    "site_settings",
+    "download_history",
+    "incomplete"
+  ],
+  "notes": "Download browser extensions at https://erickutcher.github.io/#HTTP_Downloader",
+  "checkver": {
+    "url": "https://github.com/erickutcher/httpdownloader/releases",
+    "regex": "/releases/tag/v([\\d.]+)\""
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/erickutcher/httpdownloader/releases/download/v$version/HTTP_Downloader_64.zip"
+      },
+      "32bit": {
+        "url": "https://ghproxy.net/https://github.com/erickutcher/httpdownloader/releases/download/v$version/HTTP_Downloader_32.zip"
+      }
+    }
+  }
 }

@@ -1,25 +1,24 @@
 {
-    "version": "0.37.1",
-    "description": "An npm scripts runner written in Rust.",
-    "homepage": "https://dprint.dev/",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/dprint/dprint/releases/download/0.37.1/dprint-x86_64-pc-windows-msvc-installer.exe",
-            "hash": "6a24a109aed3d763ac004d8caf5fed4b1fbff13ecda73bd7b827f00cd75feadb",
-            "extract_dir": "dprint_0_37_1_windows\\dprint-0.37.1"
-        }
-    },
-    "bin": "dprint.exe",
-    "checkver": {
-        "github": "https://github.com/dprint/dprint"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/dprint/dprint/releases/download/$version/dprint-x86_64-pc-windows-msvc-installer.exe",
-                "extract_dir": "dprint_$underscoreVersion_windows\\dprint-$version"
-            }
-        }
+  "version": "0.1.19",
+  "description": "An npm scripts runner written in Rust.",
+  "homepage": "https://github.com/egoist/dum",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/egoist/dum/releases/download/v0.1.19/dum-x86_64-pc-windows-msvc.zip",
+      "hash": "ed82ebf238d4812ac2753f9b970617b0a1c0945fd0f6d59bc22d71f81522468f"
     }
+  },
+  "bin": "dum.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/egoist/dum/releases/download/v$version/dum-x86_64-pc-windows-msvc.zip",
+        "hash": {
+          "url": "$baseurl/dum-x86_64-pc-windows-msvc-sha256sum.txt"
+        }
+      }
+    }
+  }
 }

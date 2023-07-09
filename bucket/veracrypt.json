@@ -1,38 +1,29 @@
 {
-    "version": "1.25.9",
-    "description": "Free, open source disk encryption software based on TrueCrypt",
-    "homepage": "https://www.veracrypt.fr",
-    "license": {
-        "identifier": "Apache-2.0,TrueCrypt-3.0",
-        "url": "https://www.veracrypt.fr/code/VeraCrypt/plain/License.txt"
-    },
-    "url": "https://launchpad.net/veracrypt/trunk/1.25.9/+download/VeraCrypt_Setup_x64_1.25.9.msi",
-    "hash": "sha512:29e816b2ed928ceb79f000002b36d4f114670795a482ad4e3a15a0bcd889089a83a701b83709a6ca3a8a92df20e2ec1f2a9a729251ff6fc20e2dd091f9b6ad90",
-    "extract_dir": "VeraCrypt",
-    "post_install": "Move-Item \"$dir\\veracrypt.sys\" \"$dir\\veracrypt-x64.sys\"",
-    "shortcuts": [
-        [
-            "VeraCrypt.exe",
-            "VeraCrypt"
-        ],
-        [
-            "VeraCrypt Format.exe",
-            "VeraCrypt Format"
-        ],
-        [
-            "VeraCryptExpander.exe",
-            "VeraCryptExpander"
-        ]
-    ],
-    "persist": "Configuration.xml",
-    "checkver": {
-        "url": "https://www.veracrypt.fr/en/Downloads.html",
-        "regex": "Latest Stable Release\\s*-\\s*(\\d+(\\.\\d+)*)"
-    },
-    "autoupdate": {
-        "url": "https://launchpad.net/veracrypt/trunk/$version/+download/VeraCrypt_Setup_x64_$version.msi",
-        "hash": {
-            "url": "https://launchpad.net/veracrypt/trunk/$version/+download/veracrypt-$version-sha512sum.txt"
-        }
+  "version": "1.25.9",
+  "description": "A free open source disk encryption software for Windows, Mac OSX and Linux based on TrueCrypt.",
+  "homepage": "https://veracrypt.fr",
+  "license": "Apache-2.0",
+  "url": "https://launchpad.net/veracrypt/trunk/1.25.9/+download/VeraCrypt%20Portable%201.25.9.exe#/setup.exe",
+  "hash": "sha256:785E2953547EA8232AA3C45B9CFE564118809EB84B474DF6488F7519C4E954CC",
+  "installer": {
+    "script": [
+      "Start-Process -Wait \"$dir\\setup.exe\"",
+      "Remove-Item -Recurse \"$dir\\setup.exe\"",
+      "Move-Item \"$dir\\VeraCrypt\\*\" -Destination \"$dir\"",
+      "Remove-Item -Recurse \"$dir\\VeraCrypt\""
+    ]
+  },
+  "persist": "Configuration.xml",
+  "pre_install": "If (!(Test-Path \"$persist_dir\\Configuration.xml\")) { New-Item \"$dir\\Configuration.xml\" -ItemType File | Out-Null }",
+  "checkver": {
+    "url": "https://www.veracrypt.fr/en/Downloads.html",
+    "regex": "Latest Stable Release - ([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "https://launchpad.net/veracrypt/trunk/$version/+download/VeraCrypt%20Portable%20$version.exe#/setup.exe",
+    "hash": {
+      "url": "https://launchpad.net/veracrypt/trunk/$version/+download/veracrypt-$version-sha256sum.txt",
+      "regex": "$sha256\\s+$basename"
     }
+  }
 }

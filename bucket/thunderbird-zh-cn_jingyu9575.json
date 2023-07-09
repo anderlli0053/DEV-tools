@@ -1,0 +1,45 @@
+{
+  "homepage": "https://www.thunderbird.net/",
+  "version": "102.13.0",
+  "license": "MPL-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://download.mozilla.org/?product=thunderbird-102.13.0-SSL&os=win64&lang=zh-CN#/thunderbird-setup_x64.7z",
+      "hash": "sha512:77ad656e5be6a9f39c84247625eb5dd1c6f10fbe9c7bff7f02bd9b9c7014ff2758c186acb0e40d33915be5431dcb007998727723c56a85f747aaddd73701a8c3"
+    },
+    "32bit": {
+      "url": "https://download.mozilla.org/?product=thunderbird-102.13.0-SSL&os=win&lang=zh-CN#/thunderbird-setup.7z",
+      "hash": "sha512:b034ba4b138a546b4e390e90443a026b6c2cdc66f38bcbaa6d8ef94ffa0ef77078bd3b09ab8cd8ad919869fa0827a7258939c2247ed03fc7f6a25cb1b5dbefca"
+    }
+  },
+  "extract_dir": "core",
+  "bin": "thunderbird.exe",
+  "shortcuts": [
+    [
+      "thunderbird.exe",
+      "Mozilla Thunderbird"
+    ]
+  ],
+  "checkver": {
+    "url": "https://www.thunderbird.net/zh-CN/thunderbird/all/",
+    "re": "thunderbird-([\\d.]+)-SSL&os=win&lang=zh-CN"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://download.mozilla.org/?product=thunderbird-$version-SSL&os=win64&lang=zh-CN#/thunderbird-setup_x64.7z",
+        "hash": {
+          "find": "([a-fA-F0-9]{128})\\s+(?:win64/zh-CN/Thunderbird Setup ([\\d.]+).exe)",
+          "url": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/$version/SHA512SUMS"
+        }
+      },
+      "32bit": {
+        "url": "https://download.mozilla.org/?product=thunderbird-$version-SSL&os=win&lang=zh-CN#/thunderbird-setup.7z",
+        "hash": {
+          "find": "([a-fA-F0-9]{128})\\s+(?:win32/zh-CN/Thunderbird Setup ([\\d.]+).exe)",
+          "url": "https://download-installer.cdn.mozilla.net/pub/thunderbird/releases/$version/SHA512SUMS"
+        }
+      }
+    }
+  }
+}

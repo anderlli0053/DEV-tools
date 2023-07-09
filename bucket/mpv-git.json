@@ -1,39 +1,46 @@
 {
-    "version": "20230607",
-    "description": "Video player based on MPlayer(2) (qwerty12's *modified* nightly builds - AVX2 required)",
-    "homepage": "https://mpv.io",
-    "license": "LGPL-2.1-or-later,GPL-2.0-or-later",
-    "notes": [
-        "To set and unset file type associations and AutoPlay handlers, run '$dir\\installer\\mpv-install.bat' and '$dir\\installer\\mpv-uninstall.bat' as administrator, respectively.",
-        "You can use Icaros ('nonportable/icaros-np') to enable thumbnails for all media types."
-    ],
-    "suggest": {
-        "yt-dlp": "yt-dlp"
+  "version": "20230702",
+  "description": "Video player based on MPlayer/mplayer2 (builds by shinchiro)",
+  "homepage": "https://mpv.io",
+  "license": "LGPL-2.1-or-later,GPL-2.0-or-later",
+  "notes": [
+    "To set and unset file type associations and AutoPlay handlers, run '$dir\\installer\\mpv-install.bat' and '$dir\\installer\\mpv-uninstall.bat' as administrator, respectively.",
+    "You can use Icaros ('nonportable/icaros-np') to enable thumbnails for all media types."
+  ],
+  "suggest": {
+    "yt-dlp": "yt-dlp"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://downloads.sourceforge.net/project/mpv-player-windows/64bit/mpv-x86_64-20230702-git-f76c441.7z",
+      "hash": "sha1:c8cba4f7f071b6b69e43140de58d5c88ca8b2867"
     },
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/qwerty12/mpv-winbuild/releases/download/2023-06-07/mpv-x86_64-v3-20230607-git-46ee31b.7z",
-            "hash": "55960de5b69165adc46000727173946adc8e492b1795815d3e0453692b724384"
-        }
-    },
-    "env_add_path": ".",
-    "shortcuts": [
-        [
-            "mpv.exe",
-            "mpv"
-        ]
-    ],
-    "persist": "portable_config",
-    "checkver": {
-        "url": "https://api.github.com/repos/qwerty12/mpv-winbuild/releases/latest",
-        "jsonpath": "$.assets",
-        "regex": "/(?<date>[\\d-]+)/mpv-x86_64-v3-(\\d+)-git-(?<commit>[\\da-f]+)\\.7z"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/qwerty12/mpv-winbuild/releases/download/$matchDate/mpv-x86_64-v3-$version-git-$matchCommit.7z"
-            }
-        }
+    "32bit": {
+      "url": "https://downloads.sourceforge.net/project/mpv-player-windows/32bit/mpv-i686-20230702-git-f76c441.7z",
+      "hash": "sha1:1bbfc3e70e516af88e1f720b08deda4bf5ee3a9a"
     }
+  },
+  "pre_install": "Remove-Item \"$dir\\updater.bat\"",
+  "env_add_path": ".",
+  "shortcuts": [
+    [
+      "mpv.exe",
+      "mpv"
+    ]
+  ],
+  "persist": "portable_config",
+  "checkver": {
+    "sourceforge": "mpv-player-windows/64bit",
+    "regex": "mpv-x86_64-(\\d+)-git-(?<commit>[\\da-f]+)\\.7z"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://downloads.sourceforge.net/project/mpv-player-windows/64bit/mpv-x86_64-$version-git-$matchCommit.7z"
+      },
+      "32bit": {
+        "url": "https://downloads.sourceforge.net/project/mpv-player-windows/32bit/mpv-i686-$version-git-$matchCommit.7z"
+      }
+    }
+  }
 }

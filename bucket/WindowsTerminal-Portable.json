@@ -1,43 +1,43 @@
 {
-    "version": "1.16.10261.0",
-    "description": "Windows Terminal. The new Windows Terminal, and the original Windows console host - all in the same place!",
-    "homepage": "https://github.com/microsoft/terminal",
-    "license": "MIT",
-    "changelog": "https://github.com/microsoft/terminal/releases",
-    "suggest": {
-        "vcredist": "extras/vcredist2022"
+  "version": "1.16.10261.0",
+  "description": "Windows Terminal. The new Windows Terminal, and the original Windows console host - all in the same place!",
+  "homepage": "https://github.com/microsoft/terminal",
+  "license": "MIT",
+  "changelog": "https://github.com/microsoft/terminal/releases",
+  "suggest": {
+    "vcredist": "extras/vcredist2022"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/LizardByte/Sunshine/releases/download/v0/sunshine-windows-portable.zip",
+      "extract_dir": "terminal-$version"
     },
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/LizardByte/Sunshine/releases/download/v0/sunshine-windows-portable.zip",
-            "extract_dir": "terminal-$version"
-        },
-        "32bit": {
-            "url": "https://github.com/LizardByte/Sunshine/releases/download/v0/sunshine-windows-portable.zip",
-            "extract_dir": "terminal-$version"
-        }
-    },
-    "bin": [
-        "WindowsTerminal.exe",
-        "wt.exe"
-    ],
-    "shortcuts": [
-        [
-            "WindowsTerminal.exe",
-            "Windows Terminal"
-        ]
-    ],
-    "checkver": "github",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminal_$version_x64.zip",
-                "extract_dir": "terminal-$version"
-            },
-            "32bit": {
-                "url": "https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminal_$version_x32.zip",
-                "extract_dir": "terminal-$version"
-            }
-        }
+    "32bit": {
+      "url": "https://ghproxy.net/https://github.com/LizardByte/Sunshine/releases/download/v0/sunshine-windows-portable.zip",
+      "extract_dir": "terminal-$version"
     }
+  },
+  "bin": [
+    "WindowsTerminal.exe",
+    "wt.exe"
+  ],
+  "shortcuts": [
+    [
+      "WindowsTerminal.exe",
+      "Windows Terminal"
+    ]
+  ],
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminal_$version_x64.zip",
+        "extract_dir": "terminal-$version"
+      },
+      "32bit": {
+        "url": "https://ghproxy.net/https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminal_$version_x32.zip",
+        "extract_dir": "terminal-$version"
+      }
+    }
+  }
 }

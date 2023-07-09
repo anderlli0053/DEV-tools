@@ -1,39 +1,39 @@
 {
-    "version": "5.1.164",
-    "description": "A full-featured, no-code, open-source game development software.",
-    "homepage": "https://gdevelop.io",
-    "license": {
-        "identifier": "MIT",
-        "url": "https://github.com/4ian/GDevelop/blob/master/license.txt"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/4ian/GDevelop/releases/download/v5.1.164/GDevelop-5-Setup-5.1.164.exe#/dl.7z",
-            "hash": "sha512:5bd19d8c4eca9dfab81e27f6f00275353550b27c63e204b1f0efd055ce58f2abcbfdd94df5a8240acb3bc3497d6b1b57f43660c06f5f9e9259b1fdf694427765"
-        }
-    },
-    "pre_install": [
-        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal",
-        "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse -Force"
-    ],
-    "shortcuts": [
-        [
-            "GDevelop.exe",
-            "GDevelop"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/4ian/GDevelop"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/4ian/GDevelop/releases/download/v$version/GDevelop-$majorVersion-Setup-$version.exe#/dl.7z",
-                "hash": {
-                    "url": "$baseurl/latest.yml",
-                    "regex": "sha512:\\s$base64"
-                }
-            }
-        }
+  "version": "5.2.166",
+  "description": "A full-featured, no-code, open-source game development software.",
+  "homepage": "https://gdevelop.io",
+  "license": {
+    "identifier": "MIT",
+    "url": "https://github.com/4ian/GDevelop/blob/master/license.txt"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/4ian/GDevelop/releases/download/v5.2.166/GDevelop-5-Setup-5.2.166.exe#/dl.7z",
+      "hash": "sha512:69b53337dd36f1f8efe5eeba45357777a11c714a66e5ab26d68a4f5ad3af23d6a8f0fb16d3fc034b89bcf87b1b3ee0934bc82ebf76676cbea8564c39b40ad85b"
     }
+  },
+  "pre_install": [
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal",
+    "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse -Force"
+  ],
+  "shortcuts": [
+    [
+      "GDevelop.exe",
+      "GDevelop"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/4ian/GDevelop"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/4ian/GDevelop/releases/download/v$version/GDevelop-$majorVersion-Setup-$version.exe#/dl.7z",
+        "hash": {
+          "url": "$baseurl/latest.yml",
+          "regex": "sha512:\\s$base64"
+        }
+      }
+    }
+  }
 }

@@ -1,21 +1,40 @@
 {
     "homepage": "https://github.com/mamba-org/mamba",
-    "version": "2023.05.16",
+    "description": "Micromamba is a tiny version of mamba, the fast conda package installer.",
+    "version": "1.4.7-0",
     "license": "BSD-3-Clause",
-    "description": "The Fast Cross-Platform Package Manager",
-    "url": "https://micro.mamba.pm/api/micromamba/win-64/latest#/dl.tar.bz2",
-    "hash": "173d2a8dd8e324611fa7331992896ebf7ea2f953c61559c10772ee377af27d05",
-    "bin": "Library\\bin\\micromamba.exe",
-    "persist": [
-        "envs",
-        "condabin",
-        "pkgs",
-        "Scripts"
+    "architecture": {
+        "64bit": {
+            "url": "https://anaconda.org/conda-forge/micromamba/1.4.7/download/win-64/micromamba-1.4.7-0.tar.bz2",
+            "hash": "md5:8923e5bfce76809fb182b7f4c172367c"
+        }
+    },
+    "extract_dir": "Library\\bin",
+    "bin": [
+        "micromamba.exe",
+        [
+            "micromamba.exe",
+            "umamba"
+        ]
     ],
+    "env_set": {
+        "MAMBA_ROOT_PREFIX": "$dir\\mamba"
+    },
+    "post_install": "Remove-Item \"$dir\\Library\" -Force",
+    "persist": "mamba",
     "checkver": {
-        "github": "https://github.com/mamba-org/mamba"
+        "url": "https://api.anaconda.org/release/conda-forge/micromamba/latest",
+        "regex": "win-64/micromamba-([\\d.-]+).tar.bz2"
     },
     "autoupdate": {
-        "url": "https://micro.mamba.pm/api/micromamba/win-64/latest#/dl.tar.bz2"
+        "architecture": {
+            "64bit": {
+                "url": "https://anaconda.org/conda-forge/micromamba/$matchHead/download/win-64/micromamba-$version.tar.bz2",
+                "hash": {
+                    "url": "https://api.anaconda.org/release/conda-forge/micromamba/latest",
+                    "regex": "(?sm)win-64/micromamba-$version.tar.bz2.*?$md5"
+                }
+            }
+        }
     }
 }

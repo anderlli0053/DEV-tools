@@ -1,0 +1,42 @@
+{
+  "version": "0.2023.07.08.b81a7c0",
+  "description": "Revive unavailable songs for Netease Cloud Music (Refactored & Enhanced version)",
+  "homepage": "https://github.com/UnblockNeteaseMusic/server",
+  "license": {
+    "identifier": "LGPL-3.0-only",
+    "url": "https://github.com/UnblockNeteaseMusic/server/blob/enhanced/COPYING"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://nightly.link/UnblockNeteaseMusic/server/workflows/build-binaries/enhanced/unblockneteasemusic-win-x64.exe.zip",
+      "hash": "34a04a9fe8b80caca0ab303e4ae93aa30ac365b749b9934cbe2349df0ac62277"
+    },
+    "arm64": {
+      "url": "https://nightly.link/UnblockNeteaseMusic/server/workflows/build-binaries/enhanced/unblockneteasemusic-win-arm64.exe.zip",
+      "hash": "8e797d4ab2648bbfaf03a3a183fd2867e3537f56fd3a3d1077f02ba78d1f676c"
+    }
+  },
+  "pre_install": "Get-ChildItem \"$dir\\unblockneteasemusic*.exe\" | Rename-Item -NewName 'unblockneteasemusic.exe'",
+  "bin": "unblockneteasemusic.exe",
+  "shortcuts": [
+    [
+      "unblockneteasemusic.exe",
+      "UnblockNeteaseMusic"
+    ]
+  ],
+  "checkver": {
+    "url": "https://github.com/UnblockNeteaseMusic/server/commits/enhanced.atom",
+    "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>(?<short>[0-9a-f]{7})[0-9a-f]{33})",
+    "replace": "0.${1}.${2}.${3}.${short}"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://nightly.link/UnblockNeteaseMusic/server/workflows/build-binaries/enhanced/unblockneteasemusic-win-x64.exe.zip"
+      },
+      "arm64": {
+        "url": "https://nightly.link/UnblockNeteaseMusic/server/workflows/build-binaries/enhanced/unblockneteasemusic-win-arm64.exe.zip"
+      }
+    }
+  }
+}

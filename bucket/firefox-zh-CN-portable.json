@@ -1,54 +1,54 @@
 {
-    "version": "114.0",
-    "description": "Firefox 浏览器中文版本",
-    "homepage": "https://www.mozilla.org/firefox/",
-    "license": "MPL-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://archive.mozilla.org/pub/firefox/releases/114.0/win64/zh-CN/Firefox%20Setup%20114.0.exe#/dl.7z",
-            "hash": "sha512:1b5e9874395725856e578842aa9627c32e91cd0ad50ad78cb11532305f62d0acdc32870cb23dcdd2b990ca1c2100acc193892f2701ba4901e2b4fede4d52b6bc"
-        },
-        "32bit": {
-            "url": "https://archive.mozilla.org/pub/firefox/releases/114.0/win32/zh-CN/Firefox%20Setup%20114.0.exe#/dl.7z",
-            "hash": "sha512:dfabd684708687a1d3144cb3ad050941feb8429132e328f37e07cfdca6ec9e4da039b057d57ad3f9de90a193f92019b54eb9d0be7d995d5d6f6c4a3cc6f3225c"
-        }
+  "version": "115.0.1",
+  "description": "Firefox 浏览器中文版本",
+  "homepage": "https://www.mozilla.org/firefox/",
+  "license": "MPL-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://archive.mozilla.org/pub/firefox/releases/115.0.1/win64/zh-CN/Firefox%20Setup%20115.0.1.exe#/dl.7z",
+      "hash": "sha512:9eb2bb04d9da3a1aed119e0c5cb8c62d3a190590dacb9bba8bb16e294594ef6cb880c64e631fde241b51d85f8f172f0e18fdd6b6ffa54115478800f621b14318"
     },
-    "extract_dir": "core",
-    "bin": [
-        [
-            "firefox.exe",
-            "firefox",
-            "-profile \"$dir\\profile\""
-        ]
-    ],
-    "shortcuts": [
-        [
-            "firefox.exe",
-            "Firefox",
-            "-profile \"$dir\\profile\""
-        ]
-    ],
-    "persist": "profile",
-    "checkver": {
-        "url": "https://www.mozilla.org/en-US/firefox/notes/",
-        "regex": "<div class=\"c-release-version\">([\\d.]+)</div>"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/zh-CN/Firefox%20Setup%20$version.exe#/dl.7z",
-                "hash": {
-                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
-                    "regex": "$sha512\\s+win64/zh-CN/$basename"
-                }
-            },
-            "32bit": {
-                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/zh-CN/Firefox%20Setup%20$version.exe#/dl.7z",
-                "hash": {
-                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
-                    "regex": "$sha512\\s+win32/zh-CN/$basename"
-                }
-            }
-        }
+    "32bit": {
+      "url": "https://archive.mozilla.org/pub/firefox/releases/115.0.1/win32/zh-CN/Firefox%20Setup%20115.0.1.exe#/dl.7z",
+      "hash": "sha512:d9902862fdc6e72fec4643906d0f07a9fb638df1680bac5d217b1e7501148455117adff35a85cabf7dc143361772ca87f2421d89cc15413d98eda66abb9ec230"
     }
+  },
+  "extract_dir": "core",
+  "bin": [
+    [
+      "firefox.exe",
+      "firefox",
+      "-profile \"$dir\\profile\""
+    ]
+  ],
+  "shortcuts": [
+    [
+      "firefox.exe",
+      "Firefox",
+      "-profile \"$dir\\profile\""
+    ]
+  ],
+  "persist": "profile",
+  "checkver": {
+    "url": "https://www.mozilla.org/en-US/firefox/notes/",
+    "regex": "<div class=\"c-release-version\">([\\d.]+)</div>"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/zh-CN/Firefox%20Setup%20$version.exe#/dl.7z",
+        "hash": {
+          "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
+          "regex": "$sha512\\s+win64/zh-CN/$basename"
+        }
+      },
+      "32bit": {
+        "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/zh-CN/Firefox%20Setup%20$version.exe#/dl.7z",
+        "hash": {
+          "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
+          "regex": "$sha512\\s+win32/zh-CN/$basename"
+        }
+      }
+    }
+  }
 }

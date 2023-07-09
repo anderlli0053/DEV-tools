@@ -1,55 +1,55 @@
 {
-    "version": "115.0.1901.14",
-    "description": "Microsoft Edge Beta. The chromium based Microsoft Edge browser (Beta Channel)",
-    "homepage": "https://www.microsoftedgeinsider.com/en-us/welcome?channel=beta",
-    "license": "Freeware",
-    "changelog": "https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnote-beta-channel",
-    "architecture": {
-        "64bit": {
-            "url": [
-                "https://dorado-api.deno.dev/edge?arch=64&channel=beta&version=115.0.1901.14&dl#/dl.7z",
-                "https://raw.githubusercontent.com/ACooper81/SharedFiles/master/icons/msedgebeta.ico"
-            ],
-            "hash": [
-                "947a8d662e9f92f7236529ba8263149e1b1468476a1733e826baaaae0efbd66e",
-                "a8a1df8f03c70b7af22d859347bd7270a4073f2c3dcbd3cb841aa2ff0797f5d8"
-            ]
-        },
-        "32bit": {
-            "url": [
-                "https://dorado-api.deno.dev/edge?arch=86&channel=beta&version=115.0.1901.14&dl#/dl.7z",
-                "https://raw.githubusercontent.com/ACooper81/SharedFiles/master/icons/msedgebeta.ico"
-            ],
-            "hash": [
-                "175101159b5d767e7b3eba63292c381a9203b7f131813eb691d056111c2bd2c2",
-                "a8a1df8f03c70b7af22d859347bd7270a4073f2c3dcbd3cb841aa2ff0797f5d8"
-            ]
-        }
+  "version": "115.0.1901.165",
+  "description": "Microsoft Edge Beta. The chromium based Microsoft Edge browser (Beta Channel)",
+  "homepage": "https://www.microsoftedgeinsider.com/en-us/welcome?channel=beta",
+  "license": "Freeware",
+  "changelog": "https://docs.microsoft.com/en-us/deployedge/microsoft-edge-relnote-beta-channel",
+  "architecture": {
+    "64bit": {
+      "url": [
+        "https://dorado-api.deno.dev/edge?arch=64&channel=beta&version=115.0.1901.165&dl#/dl.7z",
+        "https://ghproxy.net/https://raw.githubusercontent.com/ACooper81/SharedFiles/master/icons/msedgebeta.ico"
+      ],
+      "hash": [
+        "0c4acc46e2b36a0c1d314d720b271457420cb68c1422aeeda7b9888df65fe4d6",
+        "a8a1df8f03c70b7af22d859347bd7270a4073f2c3dcbd3cb841aa2ff0797f5d8"
+      ]
     },
-    "installer": {
-        "script": "Expand-7zipArchive -Path \"$dir\\MSEDGE.7z\" -ExtractDir \"Chrome-bin\\$version\" -Removal"
-    },
-    "shortcuts": [
-        [
-            "msedge.exe",
-            "Microsoft Edge Beta",
-            "--user-data-dir=\"$dir\\User Data\"",
-            "msedgebeta.ico"
-        ]
-    ],
-    "persist": "User Data",
-    "checkver": {
-        "script": "Write-Output $([System.Text.Encoding]::Unicode.GetString((Invoke-WebRequest -URI https://msedgedriver.azureedge.net/LATEST_BETA).Content))",
-        "regex": "([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://dorado-api.deno.dev/edge?arch=64&channel=beta&version=$version&dl#/dl.7z"
-            },
-            "32bit": {
-                "url": "https://dorado-api.deno.dev/edge?arch=86&channel=beta&version=$version&dl#/dl.7z"
-            }
-        }
+    "32bit": {
+      "url": [
+        "https://dorado-api.deno.dev/edge?arch=86&channel=beta&version=115.0.1901.165&dl#/dl.7z",
+        "https://ghproxy.net/https://raw.githubusercontent.com/ACooper81/SharedFiles/master/icons/msedgebeta.ico"
+      ],
+      "hash": [
+        "ac14b23a37e104050278049e1c6aa1983867a9e366405dca8dafb470dc9cf177",
+        "a8a1df8f03c70b7af22d859347bd7270a4073f2c3dcbd3cb841aa2ff0797f5d8"
+      ]
     }
+  },
+  "installer": {
+    "script": "Expand-7zipArchive -Path \"$dir\\MSEDGE.7z\" -ExtractDir \"Chrome-bin\\$version\" -Removal"
+  },
+  "shortcuts": [
+    [
+      "msedge.exe",
+      "Microsoft Edge Beta",
+      "--user-data-dir=\"$dir\\User Data\"",
+      "msedgebeta.ico"
+    ]
+  ],
+  "persist": "User Data",
+  "checkver": {
+    "script": "Write-Output $([System.Text.Encoding]::Unicode.GetString((Invoke-WebRequest -URI https://msedgedriver.azureedge.net/LATEST_BETA).Content))",
+    "regex": "([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://dorado-api.deno.dev/edge?arch=64&channel=beta&version=$version&dl#/dl.7z"
+      },
+      "32bit": {
+        "url": "https://dorado-api.deno.dev/edge?arch=86&channel=beta&version=$version&dl#/dl.7z"
+      }
+    }
+  }
 }

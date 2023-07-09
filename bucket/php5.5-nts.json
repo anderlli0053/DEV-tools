@@ -1,46 +1,30 @@
 {
-  "homepage": "http://windows.php.net/downloads/releases/",
-  "version": "5.5.38",
-  "license": "http://www.php.net/license/3_01.txt",
-  "architecture": {
-    "64bit": {
-      "url": "http://windows.php.net/downloads/releases/php-5.5.38-nts-Win32-VC11-x64.zip",
-      "hash": "abdf2fefcd7d1daf75d689e309e8571879b15d4b61726546e4e064f96167387a"
+    "homepage": "https://windows.php.net/downloads/releases/archives/",
+    "version": "5.5.38",
+    "license": {
+        "identifier": "PHP-3.01",
+        "url": "https://secure.php.net/license/"
     },
-    "32bit": {
-      "url": "http://windows.php.net/downloads/releases/php-5.5.38-nts-Win32-VC11-x86.zip",
-      "hash": "443fba0410873b9d7083c2b815b0d53bbcec8b2f5e8a69469e06e8d8cb2d343e"
-    }
-  },
-  "bin": [
-    "php.exe",
-    "php-cgi.exe"
-  ],
-  "persist": [
-    "conf.d"
-  ],
-  "env_set": {
-    "PHP_INI_SCAN_DIR": "$persist_dir;$dir\\conf.d;"
-  },
-  "post_install": "iex(gc $bucketsdir\\$bucket\\bin\\postinstall.ps1 -Raw)",
-  "checkver": "/php-5.5.*?>php-([\\d.]+)-Win",
-  "autoupdate": {
     "architecture": {
-      "64bit": {
-        "url": "http://windows.php.net/downloads/releases/php-$version-nts-Win32-VC11-x64.zip"
-      },
-      "32bit": {
-        "url": "http://windows.php.net/downloads/releases/php-$version-nts-Win32-VC11-x86.zip"
-      }
+        "64bit": {
+            "url": "https://windows.php.net/downloads/releases/archives/php-5.5.38-nts-Win32-VC11-x64.zip",
+            "hash": "abdf2fefcd7d1daf75d689e309e8571879b15d4b61726546e4e064f96167387a"
+        },
+        "32bit": {
+            "url": "https://windows.php.net/downloads/releases/archives/php-5.5.38-nts-Win32-VC11-x86.zip",
+            "hash": "443fba0410873b9d7083c2b815b0d53bbcec8b2f5e8a69469e06e8d8cb2d343e"
+        }
     },
-    "hash": {
-      "url": "$baseurl/sha256sum.txt"
+    "bin": [
+        "php.exe",
+        "php-cgi.exe"
+    ],
+    "persist": "conf.d",
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$persist_dir;$dir\\conf.d;"
+    },
+    "post_install": "if($bucket) { . \"$(Find-BucketDirectory $bucket\\bin\\postinstall.ps1)\" -dir \"$dir\" }",
+    "suggest": {
+        "vcredist": "extras/vcredist2012"
     }
-  },
-  "suggest": {
-    "vcredist": [
-      "extras/vcredist2012",
-      "extras/vcredist2017"
-    ]
-  }
 }

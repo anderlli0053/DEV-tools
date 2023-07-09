@@ -1,39 +1,39 @@
 {
-    "version": "2023.06.22.192521",
-    "description": "A youtube-dl fork with additional features and fixes.",
-    "homepage": "https://github.com/yt-dlp/yt-dlp-nightly-builds",
-    "license": "Unlicense",
-    "suggest": {
-        "ffmpeg": "versions/ffmpeg-nightly"
+  "version": "2023.07.06.194006",
+  "description": "A youtube-dl fork with additional features and fixes.",
+  "homepage": "https://github.com/yt-dlp/yt-dlp-nightly-builds",
+  "license": "Unlicense",
+  "suggest": {
+    "ffmpeg": "versions/ffmpeg-nightly"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/2023.07.06.194006/yt-dlp.exe",
+      "hash": "sha512:432fa6fa006def74068453595f1dc7c1748af386fd02176dddf2f85836a0b0fc71028f84bc4ad043c4f336b66705c2d15b3a15ec7e0720e842d7e389c53e8b52"
     },
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/2023.06.22.192521/yt-dlp.exe",
-            "hash": "sha512:c694a9fbede112e389285162d7f1e9167732d4edb17ed26f5b4cdf04a2a11c4e761e43ccf3ef373b4956aea1472ef4b36623bcb3dd35420a9e78beee64149a46"
-        },
-        "32bit": {
-            "url": "https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/2023.06.22.192521/yt-dlp_x86.exe#/yt-dlp.exe",
-            "hash": "sha512:13814bef8c6d57ff7c0403671687341a3b2f65dc22ee3a53ef52155fb905eaa7d67eae07132d8c929c19efd9172e300e5da93c125751cee9784dac2020013cc3"
-        }
-    },
-    "bin": "yt-dlp.exe",
-    "pre_install": "if (-not (Test-Path \"$persist_dir\\yt-dlp.conf\")) { New-Item \"$dir\\yt-dlp.conf\" -ItemType file | Out-Null }",
-    "persist": [
-        "yt-dlp.conf",
-        "ytdlp_plugins"
-    ],
-    "checkver": "github",
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/$version/yt-dlp.exe"
-            },
-            "32bit": {
-                "url": "https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/$version/yt-dlp_x86.exe#/yt-dlp.exe"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/SHA2-512SUMS"
-        }
+    "32bit": {
+      "url": "https://ghproxy.net/https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/2023.07.06.194006/yt-dlp_x86.exe#/yt-dlp.exe",
+      "hash": "sha512:db1e1a3ef8dbd236b34f20ab32467907c2c384d1619f808c9d887f772ce55be3ccec88a04028508b54277f6d3d0741a58681ff7326f49da67f1ef689b315fcb9"
     }
+  },
+  "bin": "yt-dlp.exe",
+  "pre_install": "if (-not (Test-Path \"$persist_dir\\yt-dlp.conf\")) { New-Item \"$dir\\yt-dlp.conf\" -ItemType file | Out-Null }",
+  "persist": [
+    "yt-dlp.conf",
+    "ytdlp_plugins"
+  ],
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/$version/yt-dlp.exe"
+      },
+      "32bit": {
+        "url": "https://ghproxy.net/https://github.com/yt-dlp/yt-dlp-nightly-builds/releases/download/$version/yt-dlp_x86.exe#/yt-dlp.exe"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/SHA2-512SUMS"
+    }
+  }
 }

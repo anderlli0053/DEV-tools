@@ -1,26 +1,43 @@
 {
-    "version": "4.120",
-    "description": "Makes the color of your computer's display adapt to the time of day, warm at night and like sunlight during the day.",
-    "homepage": "https://justgetflux.com",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://justgetflux.com/news/pages/eula/"
+  "version": "2.0.0",
+  "description": "Open and extensible continuous delivery solution for Kubernetes.",
+  "homepage": "https://fluxcd.io",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/fluxcd/flux2/releases/download/v2.0.0/flux_2.0.0_windows_amd64.zip",
+      "hash": "7634f77d8b7768c2463f638c8449f32a0f720b0acc4b036796f6818b26bfe89f"
     },
-    "url": "http://justgetflux.com/flux-setup4-120.exe#/dl.7z",
-    "hash": "0b3f19bd4910a27ed4566ad1fe72735869e9e84b943a026fa224a344926670ff",
-    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
-    "bin": "flux.exe",
-    "shortcuts": [
-        [
-            "flux.exe",
-            "f.lux"
-        ]
-    ],
-    "checkver": {
-        "url": "https://justgetflux.com/update/v4/windows-download.json",
-        "regex": "([\\d.]+)"
+    "arm64": {
+      "url": "https://ghproxy.net/https://github.com/fluxcd/flux2/releases/download/v2.0.0/flux_2.0.0_windows_arm64.zip",
+      "hash": "08935a12268d09989984ea533cbb1c030045d43295e134fe27d2be4c5eea66e8"
     },
-    "autoupdate": {
-        "url": "http://justgetflux.com/flux-setup$dashVersion.exe#/dl.7z"
+    "32bit": {
+      "url": "https://ghproxy.net/https://github.com/fluxcd/flux2/releases/download/v2.0.0/flux_2.0.0_windows_386.zip",
+      "hash": "eea955af681f9ff53fcc9ea924fc8f2bbad10e8d4502a4bc75a2ee4b9033d3c2"
     }
+  },
+  "bin": "flux.exe",
+  "checkver": {
+    "url": "https://api.github.com/repos/fluxcd/flux2/releases",
+    "jsonpath": "$..browser_download_url",
+    "regex": "flux_([\\d.]+)_windows_amd64.zip"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/fluxcd/flux2/releases/download/v$version/flux_$version_windows_amd64.zip"
+      },
+      "arm64": {
+        "url": "https://ghproxy.net/https://github.com/fluxcd/flux2/releases/download/v$version/flux_$version_windows_arm64.zip"
+      },
+      "32bit": {
+        "url": "https://ghproxy.net/https://github.com/fluxcd/flux2/releases/download/v$version/flux_$version_windows_386.zip"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/flux_$version_checksums.txt"
+    }
+  },
+  "notes": "For Flux v1, please install 'versions/fluxctl' instead."
 }

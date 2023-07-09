@@ -1,37 +1,44 @@
 {
-    "version": "4.5.1.0",
-    "description": "让你的 Windows 电脑成为高效办公平台",
-    "license": "Unknown",
-    "architecture": {
-        "64bit": {
-            "url": "https://www.dida365.com/down/getApp/download?type=win64",
-            "hash": "625ab23b01d195876cde58ae4d274f5d7ad6c8446ac304c9d37b6ce3804dee74"
-        },
-        "32bit": {
-            "url": "https://www.dida365.com/down/getApp/download?type=win",
-            "hash": "ecbc68132341466623ad343517af96cf8e5323f60d4150c49a2ca5cb57bfb253"
-        }
+  "version": "4.5.5.1",
+  "description": "让你的 Windows 电脑成为高效办公平台",
+  "license": "Unknown",
+  "architecture": {
+    "64bit": {
+      "url": "https://www.dida365.com/down/getApp/download?type=win64",
+      "hash": "7fb65060db3823e9d298aa427d9cf351352e572107b499c491a1dd2f6974c97f"
     },
-    "innosetup": true,
-    "homepage": "https://www.dida365.com/",
-    "shortcuts": [
-        [
-            "TickTick.exe",
-            "滴答清单"
-        ]
-    ],
-    "checkver": {
-        "url": "https://pull.dida365.com/windows/release_note.json",
-        "regex": "\"version\"\\s*:\\s*\"([\\d.]+)\""
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://www.dida365.com/down/getApp/download?type=win64"
-            },
-            "32bit": {
-                "url": "https://www.dida365.com/down/getApp/download?type=win"
-            }
-        }
+    "32bit": {
+      "url": "https://www.dida365.com/down/getApp/download?type=win",
+      "hash": "7b79e6cee87fb6468590d57235f8137a6fffa08ede6b7e5dcbf5425440e8ce75"
     }
+  },
+  "innosetup": true,
+  "homepage": "https://www.dida365.com/",
+  "shortcuts": [
+    [
+      "TickTick.exe",
+      "滴答清单"
+    ]
+  ],
+  "checkver": {
+    "script": [
+      "$dl_url = 'https://www.dida365.com/down/getApp/download?type=win64'",
+      "$dl = cache_path 'dida365' '64bit' $dl_url",
+      "Invoke-WebRequest $dl_url -OutFile $dl",
+      "$ver = (Get-Item $dl).VersionInfo.ProductVersion",
+      "Move-Item -Force $dl (cache_path 'dida365' $ver $dl_url)",
+      "$ver"
+    ],
+    "regex": "(\\S+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://www.dida365.com/down/getApp/download?type=win64"
+      },
+      "32bit": {
+        "url": "https://www.dida365.com/down/getApp/download?type=win"
+      }
+    }
+  }
 }

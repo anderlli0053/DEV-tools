@@ -1,29 +1,25 @@
 {
-    "version": "5.3.0",
-    "license": "BSD",
+    "version": "5.3.1",
     "homepage": "https://www.anaconda.com/",
-    "checkver": {
-        "url": "https://repo.continuum.io/archive",
-        "re": "Anaconda2-([\\d.]+)-Windows"
+    "description": "The most popular Python distribution for data science",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://repo.anaconda.com/archive/Anaconda2-5.3.1-Windows-x86_64.exe",
+            "hash": "md5:ff29ffcd1f767cde91bab71110c00294"
+        },
+        "32bit": {
+            "url": "https://repo.anaconda.com/archive/Anaconda2-5.3.1-Windows-x86.exe",
+            "hash": "md5:7286587bcfb6a5a164d70fe02c1968d5"
+        }
     },
-    "bin": [
-        [
-            "python.exe",
-            "python"
-        ]
-    ],
-    "pre_install": [
-        "",
-        "Write-Host 'Installing Anaconda 2. This can take up to 30 minutes on an HDD.' -ForegroundColor Magenta",
-        ""
-    ],
     "installer": {
-        "file": "anaconda2-installer.exe",
         "args": [
             "/S",
             "/InstallationType=JustMe",
-            "/RegisterPython=1",
+            "/RegisterPython=0",
             "/AddToPath=0",
+            "/NoRegistry=1",
             "/D=$dir"
         ]
     },
@@ -31,29 +27,36 @@
         "file": "Uninstall-Anaconda2.exe",
         "args": "/S"
     },
-    "env_add_path": "Scripts",
-    "architecture": {
-        "64bit": {
-            "url": "http://repo.continuum.io/archive/Anaconda2-5.3.0-Windows-x86_64.exe#/anaconda2-installer.exe",
-            "hash": "md5:19fb5f9eedf834b4329dcdeac9824516"
-        },
-        "32bit": {
-            "url": "http://repo.continuum.io/archive/Anaconda2-5.3.0-Windows-x86.exe#/anaconda2-installer.exe",
-            "hash": "md5:45a5880d1a56aa8e444b43edcc5e6aa2"
-        }
+    "bin": "scripts\\conda.exe",
+    "post_install": [
+        "# PREVENT CREATING SHORTCUTS",
+        "Invoke-ExternalCommand -Path \"$dir\\_conda.exe\" -ArgumentList \"constructor --prefix $dir --rm-menus\" | Out-Null",
+        "conda config --system --set auto_activate_base false"
+    ],
+    "checkver": {
+        "url": "https://repo.anaconda.com/archive",
+        "re": "Anaconda2-([\\d.]+)-Windows",
+        "reverse": true
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "http://repo.continuum.io/archive/Anaconda2-$version-Windows-x86_64.exe#/anaconda2-installer.exe"
+                "url": "https://repo.anaconda.com/archive/Anaconda2-$version-Windows-x86_64.exe"
             },
             "32bit": {
-                "url": "http://repo.continuum.io/archive/Anaconda2-$version-Windows-x86.exe#/anaconda2-installer.exe"
+                "url": "https://repo.anaconda.com/archive/Anaconda2-$version-Windows-x86.exe"
             }
         },
         "hash": {
             "url": "$baseurl",
             "find": "$basename<.*\\s+<.*\\s+<.*\\s+<td>([a-fA-F0-9]{32})</td>"
         }
-    }
+    },
+    "notes": [
+        "Conda envs and pkgs are not persisted by Scoop, we advice to setup `envs_dirs` to use '~/.conda/envs'.",
+        "  https://conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html#specify-environment-directories-envs-dirs",
+        "",
+        "To enable conda tab-completion autoload, run code below to add the shell hook:",
+        "Add-Content -Path $PROFILE -Value \"`n(& conda 'shell.powershell' 'hook') | Out-String | Invoke-Expression\""
+    ]
 }

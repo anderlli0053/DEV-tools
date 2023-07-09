@@ -50,7 +50,7 @@
   },
   "post_install": [
     "'install-context', 'uninstall-context', 'install-file-associations', 'uninstall-file-associations' | ForEach-Object {",
-    "    $reg_file_in  = \"$bucketsdir\\main\\scripts\\git\\$_.reg\"",
+    "    $reg_file_in  = \"$bucketsdir\\$bucket\\scripts\\git\\$_.reg\"",
     "    $reg_file_out = \"$dir\\$_.reg\"",
     "    $git_root     = \"$dir\".Replace('\\', '\\\\')",
     "    if (Test-Path $reg_file_in) {",

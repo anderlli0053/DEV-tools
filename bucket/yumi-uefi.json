@@ -1,15 +1,19 @@
 {
     "version": "0.0.4.6",
-    "description": "Multisystem Bootable USB Creator",
+    "description": "Multiboot USB Creator. Supports FAT32 only. BIOS and UEFI USB booting (Distro dependent).",
     "homepage": "https://www.pendrivelinux.com/yumi-multiboot-usb-creator/",
     "license": "GPL-2.0-or-later",
+    "notes": [
+        "You are installing the 'UEFI' version of YUMI",
+        "The new YUMI-exFAT supports exFAT format with 4GB+ files, BIOS and UEFI USB boot.",
+        "To install YUMI-exFAT, Run: scoop install yumi-exfat"
+    ],
     "url": "https://www.pendrivelinux.com/downloads/YUMI/YUMI-UEFI-0.0.4.6.exe#/YUMI-UEFI.exe",
     "hash": "f2f5d2b4f86fd281b2b9a730d883c7bb5dbc7aef98bb46db8956ffc0ff33c013",
-    "bin": "YUMI-UEFI.exe",
     "shortcuts": [
         [
             "YUMI-UEFI.exe",
-            "YUMI (UEFI+BIOS)"
+            "YUMI-UEFI"
         ]
     ],
     "checkver": "YUMI-UEFI-([\\d.]+)\\.exe",
@@ -17,7 +21,7 @@
         "url": "https://www.pendrivelinux.com/downloads/YUMI/YUMI-UEFI-$version.exe#/YUMI-UEFI.exe",
         "hash": {
             "url": "https://www.pendrivelinux.com/yumi-multiboot-usb-creator/",
-            "regex": "(?i)$basename.*?$sha256"
+            "regex": "(?s)$basename.*?$sha256"
         }
     }
 }
