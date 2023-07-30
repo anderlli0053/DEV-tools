@@ -1,34 +1,73 @@
 {
-    "url": [
-        "http://ftp.vim.org/pub/vim/pc/gvim80.zip",
-        "http://ftp.vim.org/pub/vim/pc/vim80rt.zip"
+  "homepage": "https://www.vim.org",
+  "description": "A highly configurable text editor for efficiently creating and changing any kind of text.",
+  "license": "Vim",
+  "version": "8.2",
+  "url": [
+    "https://ftp.nluug.nl/pub/vim/pc/gvim82ole.zip",
+    "https://ftp.nluug.nl/pub/vim/pc/vim82rt.zip"
+  ],
+  "extract_dir": [
+    "vim",
+    "vim"
+  ],
+  "hash": [
+    "sha256:85924160C18F7683A839EE80A4112B601A4A72BEA4A2918D59CAC911A0C2C6E8",
+    "sha256:1B9824470A813BA0D0FAC26E59879BA8976C219334616212FB83A945EDFDC2E4"
+  ],
+  "pre_install": "if (!(Test-Path \"$persist_dir\\vimrc\")) {New-Item \"$dir\\vimrc\" -ItemType File | Out-Null}",
+  "bin": [
+    "vim82\\gvim.exe",
+    [
+      "vim82\\gvim.exe",
+      "gview",
+      "-R"
     ],
-    "license": "http://vimdoc.sourceforge.net/htmldoc/uganda.html#license",
-    "version": "8.0",
-    "hash": [
-        "ec07d1a2439f8c9a65141f2da97195ca7047f988cce8f186bb8dfc13bb7552db",
-        "d3a3ed596e78f2efe6996f9d3df646447621686f7185c0db1991f3198c1c38c2"
+    [
+      "vim82\\gvim.exe",
+      "evim",
+      "-y"
     ],
-    "extract_dir": [
-        "vim\\vim80",
-        "vim\\vim80"
+    [
+      "vim82\\gvim.exe",
+      "eview",
+      "-Ry"
     ],
-    "bin": "gvim.exe",
-    "shortcuts": [
-        [
-            "gvim.exe",
-            "gVim"
-        ]
+    [
+      "vim82\\gvim.exe",
+      "rgvim",
+      "-Z"
     ],
-    "post_install": "
-        if(!(test-path ~\\.vimrc)) {
-        cp \"$dir\\vimrc_example.vim\" ~\\.vimrc
-        \"set shell=$((gcm powershell).path)\" | out-file  ~\\.vimrc -append -encoding ascii
-        echo '~/.vimrc was created with your shell set to Powershell.'
-    } else { echo '~/.vimrc exists, skipping' }
-    ",
-    "checkver": {
-        "url": "http://www.vim.org/download.php",
-        "re": "Vim ([0-9\\.]+) is the latest stable version"
+    [
+      "vim82\\gvim.exe",
+      "rgview",
+      "-RZ"
+    ],
+    [
+      "vim82\\gvim.exe",
+      "gvimdiff",
+      "-d"
+    ],
+    "vim82\\xxd.exe"
+  ],
+  "shortcuts": [
+    [
+      "vim82\\gvim.exe",
+      "gVim"
+    ]
+  ],
+  "persist": [
+    "vimfiles",
+    "vimrc"
+  ],
+  "checkver": {
+    "url": "https://ftp.nluug.nl/pub/vim/pc",
+    "regex": "gvim(?<ver>[\\d-]+)\\.zip\\s+V([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "https://ftp.nluug.nl/pub/vim/pc/gvim$matchVer.zip",
+    "hash": {
+      "url": "$baseurl/MD5SUMS"
     }
+  }
 }

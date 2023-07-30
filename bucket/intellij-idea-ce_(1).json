@@ -1,0 +1,37 @@
+{
+  "homepage": "https://www.jetbrains.com/idea/",
+  "description": "The Java IDE for Professional Developers by JetBrains",
+  "version": "2023.2",
+  "license": "Apache-2.0",
+  "url": "https://download.jetbrains.com/idea/ideaIC-2023.2.win.zip",
+  "hash": "df305229cde8742c7f018b0f284af400a4408ae8066748e4d72f5ef1b50eed00",
+  "bin": "bin\\idea.bat",
+  "architecture": {
+    "64bit": {
+      "shortcuts": [
+        [
+          "bin\\idea64.exe",
+          "IntelliJ IDEA Community Edition"
+        ]
+      ]
+    },
+    "32bit": {
+      "shortcuts": [
+        [
+          "bin\\idea.exe",
+          "IntelliJ IDEA Community Edition"
+        ]
+      ]
+    }
+  },
+  "checkver": {
+    "url": "https://data.services.jetbrains.com/products/releases?code=IIC&latest=true&type=release",
+    "jp": "$..version"
+  },
+  "autoupdate": {
+    "url": "https://download.jetbrains.com/idea/ideaIC-$version.win.zip",
+    "hash": {
+      "url": "$url.sha256"
+    }
+  }
+}

@@ -31,13 +31,58 @@
     ],
     [
       "mingw64\\bin\\busybox.exe",
+      "bzip2",
+      "bzip2"
+    ],
+    [
+      "mingw64\\bin\\busybox.exe",
+      "bunzip2",
+      "bunzip2"
+    ],
+    [
+      "mingw64\\bin\\busybox.exe",
+      "cp",
+      "cp"
+    ],
+    [
+      "mingw64\\bin\\busybox.exe",
+      "du",
+      "du"
+    ],
+    [
+      "mingw64\\bin\\busybox.exe",
+      "grep",
+      "grep"
+    ],
+    [
+      "mingw64\\bin\\busybox.exe",
+      "gzip",
+      "gzip"
+    ],
+    [
+      "mingw64\\bin\\busybox.exe",
+      "mv",
+      "mv"
+    ],
+    [
+      "mingw64\\bin\\busybox.exe",
       "sed",
       "sed"
     ],
     [
       "mingw64\\bin\\busybox.exe",
+      "tr",
+      "tr"
+    ],
+    [
+      "mingw64\\bin\\busybox.exe",
       "uname",
       "uname"
+    ],
+    [
+      "mingw64\\bin\\busybox.exe",
+      "uncompress",
+      "uncompress"
     ]
   ],
   "env_set": {
@@ -45,7 +90,7 @@
   },
   "checkver": {
     "github": "https://github.com/git-for-windows/git",
-    "regex": "v([\\w.]+)/MinGit-(?<full>[\\w.]+)-64-bit"
+    "regex": "tag/v([\\d.]+\\.windows\\.\\d)"
   },
   "autoupdate": {
     "architecture": {
@@ -58,7 +103,7 @@
     },
     "hash": {
       "url": "https://github.com/git-for-windows/git/releases/tag/v$version",
-      "regex": "<td>$basename</td>\\s*<td>$sha256</td>"
+      "regex": "(?s)$basename.*?$sha256"
     }
   }
 }

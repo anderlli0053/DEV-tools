@@ -1,46 +1,54 @@
 {
-  "version": "2023-07-06-run428-id5479789263",
-  "description": "Revival of the well known .NET debugger and assembly editor, dnSpy",
+  "version": "2023.07.27.202010+260f8d9",
+  "description": "Unofficial revival of dnSpy, a .NET debugger and assembly editor",
   "homepage": "https://github.com/dnSpyEx/dnSpy",
   "license": "GPL-3.0-only",
   "architecture": {
     "64bit": {
-      "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win64.zip#/dl.7z",
-      "hash": "433e30a4b0d39f648f83970fc9a3999ef9f2cde7fc9fcd72605ca510bb9de773"
+      "url": "https://nightly.link/dnSpyEx/dnSpy/actions/runs/5685099672/dnSpy-net-win64.zip",
+      "hash": "2a9267e2e3a18ad6e1bf51f66ac730beb1b4d88507558b5660a451b252bffbdb"
     },
     "32bit": {
-      "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win32.zip#/dl.7z",
-      "hash": "245a5b4b11f84924953d01f2d68d61619e3d3bbcc9798ed720ceeebe2151e558"
+      "url": "https://nightly.link/dnSpyEx/dnSpy/actions/runs/5685099672/dnSpy-net-win32.zip",
+      "hash": "96b9c1f4059add3a4e140935a63cda0aba2d64bde03799c79a77c5cb103f77f5"
     }
   },
-  "bin": [
-    [
-      "dnSpy.Console.exe",
-      "dnSpyEx.Console-nightly"
-    ],
-    [
-      "dnSpy.exe",
-      "dnSpyEx-nightly"
-    ]
-  ],
+  "bin": "dnSpy.Console.exe",
   "shortcuts": [
     [
       "dnSpy.exe",
-      "dnSpyEx Nightly"
+      "dnSpy"
     ]
   ],
+  "persist": "bin\\Extensions",
+  "pre_install": [
+    "$manifest.persist | ForEach-Object {",
+    "    $dest = \"$dir\\$_\"",
+    "    if (-not (Test-Path $dest -PathType Container)) {",
+    "       New-Item $dest -Force -ItemType Directory | Out-Null",
+    "    }",
+    "}"
+  ],
   "checkver": {
-    "url": "https://github.com/dnSpyEx/dnSpy/actions/workflows/build.yml?query=branch%3Amaster+is%3Asuccess",
-    "regex": "<a class=\"Link--primary css-truncate css-truncate-target\" .*? aria-label=\"Run (?<runCount>[\\d]+) of.*? href=\".*?/runs/(?<runId>[\\d]+?)\">[\\S\\s]+? datetime=\"(?<buildDate>\\d{4}-\\d{2}-\\d{2})T",
-    "replace": "${buildDate}-run${runCount}-id${runId}"
+    "script": [
+      "$url = 'https://api.github.com/repositories/371358850/actions/workflows/build.yml/runs?branch=master&status=success&per_page=1&exclude_pull_requests=true'",
+      "$cont = Invoke-RestMethod -UseBasicParsing -Method Get -Headers @{'Accept'='application/vnd.github+json';'Accept-Encoding'='gzip'} -MaximumRedirection 0 -Uri $url",
+      "$workflow_run = $cont.workflow_runs[0]",
+      "$commit = $workflow_run.head_sha.Trim().SubString(0,7)",
+      "$created_date = ([DateTime]$workflow_run.created_at).ToUniversalTime().ToString('yyyy.MM.dd.HHmmss')",
+      "$id = $workflow_run.id",
+      "Write-Output ('commit:\"' + $commit + '\"') ('date:\"' + $created_date + '\"') ('id:\"' + $id + '\"')"
+    ],
+    "regex": "commit:\"(?<commit>[\\w\\d]+)\"\\sdate:\"(?<date>[0-9\\.]+)\"\\sid:\"(?<id>\\d+)\"",
+    "replace": "${date}+${commit}"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win64.zip#/dl.7z"
+        "url": "https://nightly.link/dnSpyEx/dnSpy/actions/runs/$matchId/dnSpy-net-win64.zip"
       },
       "32bit": {
-        "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win32.zip#/dl.7z"
+        "url": "https://nightly.link/dnSpyEx/dnSpy/actions/runs/$matchId/dnSpy-net-win32.zip"
       }
     }
   }

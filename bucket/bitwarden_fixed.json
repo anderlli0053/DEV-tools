@@ -1,20 +1,20 @@
 {
-  "version": "2023.5.1",
+  "version": "2023.7.1",
   "description": "Password management solutions for individuals, teams, and business organizations",
   "homepage": "https://bitwarden.com",
   "license": "GPL-3.0-or-later",
   "architecture": {
     "32bit": {
-      "url": "https://ghproxy.net/https://github.com/bitwarden/clients/releases/download/desktop-v2023.5.1/bitwarden-2023.5.1-ia32.nsis.7z",
-      "hash": "9cb1f56058255e07ee7f3c7763f47b716a4aa63d4c0b65d0cb788f3d74d9a282"
+      "url": "https://ghproxy.net/https://github.com/bitwarden/clients/releases/download/desktop-v2023.7.1/bitwarden-2023.7.1-ia32.nsis.7z",
+      "hash": "52fe8d653334b32a835346c3b4dc6a32f46b52f57d2514132085047ceecf2e30"
     },
     "64bit": {
-      "url": "https://ghproxy.net/https://github.com/bitwarden/clients/releases/download/desktop-v2023.5.1/bitwarden-2023.5.1-x64.nsis.7z",
-      "hash": "92bb0ea045cf7960500a6902020ce6766b2ddbc69ff01f9dd66ad1bb9764f8b6"
+      "url": "https://ghproxy.net/https://github.com/bitwarden/clients/releases/download/desktop-v2023.7.1/bitwarden-2023.7.1-x64.nsis.7z",
+      "hash": "337e04894e7bb0bf80f3994dd9a699823b1d14cd602e14357a49af9456dabe93"
     },
     "arm64": {
-      "url": "https://ghproxy.net/https://github.com/bitwarden/clients/releases/download/desktop-v2023.5.1/bitwarden-2023.5.1-arm64.nsis.7z",
-      "hash": "67ec34901862803a44cf719bd26af6b7d45fc9d505ae2044105bd6b314c4d935"
+      "url": "https://ghproxy.net/https://github.com/bitwarden/clients/releases/download/desktop-v2023.7.1/bitwarden-2023.7.1-arm64.nsis.7z",
+      "hash": "4d80c74fa60a4c200a6140818c688445c8bc65e86796a431323f0198245622f2"
     }
   },
   "pre_install": [
@@ -33,7 +33,8 @@
   ],
   "checkver": {
     "url": "https://api.github.com/repos/bitwarden/clients/releases",
-    "regex": "tag/desktop-v([\\d.]+)"
+    "jsonpath": "$[*].tag_name",
+    "regex": "desktop-v([\\d.]+)"
   },
   "autoupdate": {
     "architecture": {
