@@ -1,42 +1,42 @@
 {
-  "version": "23.003.20215",
-  "description": "Adobe Reader. Global standard for reliably viewing, printing, and commenting on PDF documents.",
-  "homepage": "https://get.adobe.com/reader/",
-  "license": {
-    "identifier": "Proprietary",
-    "url": "https://wwwimages2.adobe.com/www.adobe.com/content/dam/acom/en/legal/licenses-terms/pdf/PlatformClients_PC_WWEULA-en_US-20150407_1357.pdf"
-  },
-  "suggest": {
-    "Microsoft Visual C++ Redistributable": [
-      "extras/vcredist2012",
-      "extras/vcredist2013"
-    ]
-  },
-  "url": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2300320215/AcroRdrDC2300320215_en_US.exe#/cosi.7z",
-  "hash": "0878bd1e585572b2f5a7c7a203e22b31eedae9d9ad3964e8a280ead9ae788e2c",
-  "installer": {
-    "script": [
-      "Expand-MsiArchive \"$dir\\AcroRead.msi\" -DestinationPath \"$dir\\cosi\"",
-      "Get-ChildItem $dir -Exclude 'cosi' | Remove-Item -Force -Recurse",
-      "Move-Item \"$dir\\cosi\\program files\\Adobe\\Acrobat Reader DC\\*\" $dir -Force",
-      "Move-Item \"$dir\\cosi\\Common\\*\" $env:CommonProgramFiles -Force",
-      "#Remove-Item \"$dir\\cosi\" -Force -Recurse"
-    ]
-  },
-  "uninstaller": {
-    "script": "Remove-Item \"${env:CommonProgramFiles}\\Adobe\" -Force -Recurse"
-  },
-  "shortcuts": [
-    [
-      "Reader\\AcroRd32.exe",
-      "Adobe Acrobat DC"
-    ]
-  ],
-  "checkver": {
-    "url": "https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html",
-    "regex": "<link rel=\"next\" title=\"([\\d.]+)"
-  },
-  "autoupdate": {
-    "url": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/$cleanVersion/AcroRdrDC$cleanVersion_en_US.exe#/cosi.7z"
-  }
+    "version": "23.003.20244",
+    "description": "Adobe Reader. Global standard for reliably viewing, printing, and commenting on PDF documents.",
+    "homepage": "https://get.adobe.com/reader/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://wwwimages2.adobe.com/www.adobe.com/content/dam/acom/en/legal/licenses-terms/pdf/PlatformClients_PC_WWEULA-en_US-20150407_1357.pdf"
+    },
+    "suggest": {
+        "Microsoft Visual C++ Redistributable": [
+            "extras/vcredist2012",
+            "extras/vcredist2013"
+        ]
+    },
+    "url": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/2300320244/AcroRdrDC2300320244_en_US.exe#/cosi.7z",
+    "hash": "b1181d8f877a719721bcfe5aec998e1f3e6f6ab6a359ed2bb9465164b433a4b1",
+    "installer": {
+        "script": [
+            "Expand-MsiArchive \"$dir\\AcroRead.msi\" -DestinationPath \"$dir\\cosi\"",
+            "Get-ChildItem $dir -Exclude 'cosi' | Remove-Item -Force -Recurse",
+            "Move-Item \"$dir\\cosi\\program files\\Adobe\\Acrobat Reader DC\\*\" $dir -Force",
+            "Move-Item \"$dir\\cosi\\Common\\*\" $env:CommonProgramFiles -Force",
+            "#Remove-Item \"$dir\\cosi\" -Force -Recurse"
+        ]
+    },
+    "uninstaller": {
+        "script": "Remove-Item \"${env:CommonProgramFiles}\\Adobe\" -Force -Recurse"
+    },
+    "shortcuts": [
+        [
+            "Reader\\AcroRd32.exe",
+            "Adobe Acrobat DC"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html",
+        "regex": "<link rel=\"next\" title=\"([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "http://ardownload.adobe.com/pub/adobe/reader/win/AcrobatDC/$cleanVersion/AcroRdrDC$cleanVersion_en_US.exe#/cosi.7z"
+    }
 }
