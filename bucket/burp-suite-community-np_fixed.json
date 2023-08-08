@@ -1,39 +1,39 @@
 {
-  "version": "2023.8",
-  "homepage": "https://portswigger.net/burp",
-  "description": "An application that comes with set of tools used for penetration and security testing of web applications.",
-  "license": {
-    "identifier": "Freeware",
-    "url": "https://portswigger.net/legal"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://portswigger-cdn.net/burp/releases/download?product=community&version=2023.8&type=WindowsX64#/setup.exe",
-      "hash": "cc0ca1ee1bde7f372f13be24b4205fb8d6050063cdd3e109d08c8f750284c5d5"
-    }
-  },
-  "post_install": [
-    "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-    "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList @('-q', '-dir', \"$dir\"); Remove-Item \"$dir\\setup.exe\""
-  ],
-  "pre_uninstall": [
-    "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-    "Start-Process \"$dir\\uninstall.exe\" -Wait -Verb 'RunAs' -ArgumentList '-q'; Start-Sleep -Seconds 4"
-  ],
-  "checkver": {
-    "url": "https://portswigger.net/burp/releases/data",
-    "jsonpath": "$.ResultSet.Results..version",
-    "regex": "([\\d.]+)"
-  },
-  "autoupdate": {
-    "architecture": {
-      "64bit": {
-        "url": "https://portswigger-cdn.net/burp/releases/download?product=community&version=$version&type=WindowsX64#/setup.exe"
-      }
+    "version": "2023.8.1",
+    "homepage": "https://portswigger.net/burp",
+    "description": "An application that comes with set of tools used for penetration and security testing of web applications.",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://portswigger.net/legal"
     },
-    "hash": {
-      "url": "https://portswigger.net/burp/releases/data",
-      "regex": "\"ProductId\":\"community\",\"ProductPlatform\":\"WindowsX64\",\"ProductPlatformLabel\":\"Windows\\s\\(64-bit\\)\",\"Sha256Checksum\":\"$sha256\",\"Version\":\"$version"
+    "architecture": {
+        "64bit": {
+            "url": "https://portswigger-cdn.net/burp/releases/download?product=community&version=2023.8.1&type=WindowsX64#/setup.exe",
+            "hash": "982209d87b29f87085cf22874bb9305af72cbe46580ac34ae7e1c8b546aa0ee4"
+        }
+    },
+    "post_install": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList @('-q', '-dir', \"$dir\"); Remove-Item \"$dir\\setup.exe\""
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process \"$dir\\uninstall.exe\" -Wait -Verb 'RunAs' -ArgumentList '-q'; Start-Sleep -Seconds 4"
+    ],
+    "checkver": {
+        "url": "https://portswigger.net/burp/releases/data",
+        "jsonpath": "$.ResultSet.Results..version",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://portswigger-cdn.net/burp/releases/download?product=community&version=$version&type=WindowsX64#/setup.exe"
+            }
+        },
+        "hash": {
+            "url": "https://portswigger.net/burp/releases/data",
+            "regex": "\"ProductId\":\"community\",\"ProductPlatform\":\"WindowsX64\",\"ProductPlatformLabel\":\"Windows\\s\\(64-bit\\)\",\"Sha256Checksum\":\"$sha256\",\"Version\":\"$version"
+        }
     }
-  }
 }
