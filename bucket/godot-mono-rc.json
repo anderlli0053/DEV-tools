@@ -1,49 +1,49 @@
 {
-  "version": "4.0.4-rc1",
-  "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
-  "homepage": "https://godotengine.org/",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://downloads.tuxfamily.org/godotengine/4.0.4/rc1/mono/Godot_v4.0.4-rc1_mono_win64.zip",
-      "hash": "sha512:2cef94249ec4a7cb07759b1a19ef53c13f9e6c1bf29d80ab69ffea32b01a2396cdc3e6cd26abf2d02dada44ec6a967cc2a80e37d09e27bdc78eb4fbf9786d7a1",
-      "extract_dir": "Godot_v4.0.4-rc1_mono_win64"
-    },
-    "32bit": {
-      "url": "https://downloads.tuxfamily.org/godotengine/4.0.4/rc1/mono/Godot_v4.0.4-rc1_mono_win32.zip",
-      "hash": "sha512:7c6e258d4cf884d48385744064afd1a79b7aaa56b60051a808ea1ad2db11694e2c9b5f3a5d5c1694637ba2e3a63cb916bbd16855a58115414cb9aeb4f7912551",
-      "extract_dir": "Godot_v4.0.4-rc1_mono_win32"
-    }
-  },
-  "pre_install": [
-    "Remove-Item \"$dir\\Godot_*_console.*\"",
-    "Get-Item \"$dir\\Godot_*.exe\" | Rename-Item -NewName 'godot-mono.exe'"
-  ],
-  "bin": "godot-mono.exe",
-  "shortcuts": [
-    [
-      "godot-mono.exe",
-      "Godot Engine (Mono)"
-    ]
-  ],
-  "checkver": {
-    "url": "https://godotengine.org/blog/pre-release/",
-    "regex": "Release candidate: Godot (?<ver>[\\d.]+) RC (?<rc>[\\d.]+)",
-    "replace": "${1}-rc${2}"
-  },
-  "autoupdate": {
+    "version": "4.0.4-rc1",
+    "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
+    "homepage": "https://godotengine.org/",
+    "license": "MIT",
     "architecture": {
-      "64bit": {
-        "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/$preReleaseVersion/mono/Godot_v$version_mono_win64.zip",
-        "extract_dir": "Godot_v$version_mono_win64"
-      },
-      "32bit": {
-        "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/$preReleaseVersion/mono/Godot_v$version_mono_win32.zip",
-        "extract_dir": "Godot_v$version_mono_win32"
-      }
+        "64bit": {
+            "url": "https://downloads.tuxfamily.org/godotengine/4.0.4/rc1/mono/Godot_v4.0.4-rc1_mono_win64.zip",
+            "hash": "sha512:2cef94249ec4a7cb07759b1a19ef53c13f9e6c1bf29d80ab69ffea32b01a2396cdc3e6cd26abf2d02dada44ec6a967cc2a80e37d09e27bdc78eb4fbf9786d7a1",
+            "extract_dir": "Godot_v4.0.4-rc1_mono_win64"
+        },
+        "32bit": {
+            "url": "https://downloads.tuxfamily.org/godotengine/4.0.4/rc1/mono/Godot_v4.0.4-rc1_mono_win32.zip",
+            "hash": "sha512:7c6e258d4cf884d48385744064afd1a79b7aaa56b60051a808ea1ad2db11694e2c9b5f3a5d5c1694637ba2e3a63cb916bbd16855a58115414cb9aeb4f7912551",
+            "extract_dir": "Godot_v4.0.4-rc1_mono_win32"
+        }
     },
-    "hash": {
-      "url": "$baseurl/SHA512-SUMS.txt"
+    "pre_install": [
+        "Remove-Item \"$dir\\Godot_*_console.*\"",
+        "Get-Item \"$dir\\Godot_*.exe\" | Rename-Item -NewName 'godot-mono.exe'"
+    ],
+    "bin": "godot-mono.exe",
+    "shortcuts": [
+        [
+            "godot-mono.exe",
+            "Godot Engine (Mono)"
+        ]
+    ],
+    "checkver": {
+        "url": "https://godotengine.org/blog/pre-release/",
+        "regex": "Release candidate: Godot (?<ver>[\\d.]+) RC (?<rc>[\\d.]+)",
+        "replace": "${1}-rc${2}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/$preReleaseVersion/mono/Godot_v$version_mono_win64.zip",
+                "extract_dir": "Godot_v$version_mono_win64"
+            },
+            "32bit": {
+                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/$preReleaseVersion/mono/Godot_v$version_mono_win32.zip",
+                "extract_dir": "Godot_v$version_mono_win32"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA512-SUMS.txt"
+        }
     }
-  }
 }

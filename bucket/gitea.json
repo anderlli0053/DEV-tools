@@ -1,59 +1,59 @@
 {
-  "version": "1.20.1",
-  "description": "A painless self-hosted Git service",
-  "homepage": "https://gitea.io/",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://dl.gitea.com/gitea/1.20.1/gitea-1.20.1-windows-4.0-amd64.exe.xz",
-      "hash": "df31e0c672dffee88f3443319c0e597a2ff55ced80c12c589bd7c253421fb6bf"
-    },
-    "32bit": {
-      "url": "https://dl.gitea.com/gitea/1.20.1/gitea-1.20.1-windows-4.0-386.exe.xz",
-      "hash": "e7a6ad2506cc53f36de7cbcad620ec7ee2b7fd64c822a76a94849625b0731d6c"
-    }
-  },
-  "installer": {
-    "script": [
-      "Get-Item \"$dir\\gitea*.exe\" | Rename-Item -NewName 'gitea.exe'",
-      "if (!(Test-Path \"$persist_dir\\custom\\conf\")) {",
-      "   New-Item \"$persist_dir\\custom\\conf\" -ItemType Directory | Out-Null",
-      "}",
-      "if (!(Test-Path \"$persist_dir\\custom\\conf\\app.ini\")) {",
-      "   @(",
-      "       '[database]'",
-      "       'DB_TYPE = sqlite3'",
-      "       \"PATH = $persist_dir/data/gitea.db\"",
-      "       '[repository]'",
-      "       \"ROOT = $persist_dir/repositories\"",
-      "       '[log]'",
-      "       \"ROOT_PATH = $persist_dir/log\"",
-      "   ) -replace '\\\\', '/' | Set-Content \"$persist_dir\\custom\\conf\\app.ini\" -Encoding ASCII",
-      "}"
-    ]
-  },
-  "bin": "gitea.exe",
-  "persist": [
-    "custom",
-    "repositories",
-    "log",
-    "data"
-  ],
-  "checkver": {
-    "url": "https://dl.gitea.com/gitea/version.json",
-    "jsonpath": "$.latest.version"
-  },
-  "autoupdate": {
+    "version": "1.20.3",
+    "description": "A painless self-hosted Git service",
+    "homepage": "https://gitea.io/",
+    "license": "MIT",
     "architecture": {
-      "64bit": {
-        "url": "https://dl.gitea.com/gitea/$version/gitea-$version-windows-4.0-amd64.exe.xz"
-      },
-      "32bit": {
-        "url": "https://dl.gitea.com/gitea/$version/gitea-$version-windows-4.0-386.exe.xz"
-      }
+        "64bit": {
+            "url": "https://dl.gitea.com/gitea/1.20.3/gitea-1.20.3-windows-4.0-amd64.exe.xz",
+            "hash": "7f39aeaa9985b79b2540d06862f040f44ede8874d062654b1c6e52ba6bd3caa3"
+        },
+        "32bit": {
+            "url": "https://dl.gitea.com/gitea/1.20.3/gitea-1.20.3-windows-4.0-386.exe.xz",
+            "hash": "606d698b09d7f03f91cfdff857bf67dded0f6e5cfe162445d6796b49b1b236e3"
+        }
     },
-    "hash": {
-      "url": "$url.sha256"
+    "installer": {
+        "script": [
+            "Get-Item \"$dir\\gitea*.exe\" | Rename-Item -NewName 'gitea.exe'",
+            "if (!(Test-Path \"$persist_dir\\custom\\conf\")) {",
+            "   New-Item \"$persist_dir\\custom\\conf\" -ItemType Directory | Out-Null",
+            "}",
+            "if (!(Test-Path \"$persist_dir\\custom\\conf\\app.ini\")) {",
+            "   @(",
+            "       '[database]'",
+            "       'DB_TYPE = sqlite3'",
+            "       \"PATH = $persist_dir/data/gitea.db\"",
+            "       '[repository]'",
+            "       \"ROOT = $persist_dir/repositories\"",
+            "       '[log]'",
+            "       \"ROOT_PATH = $persist_dir/log\"",
+            "   ) -replace '\\\\', '/' | Set-Content \"$persist_dir\\custom\\conf\\app.ini\" -Encoding ASCII",
+            "}"
+        ]
+    },
+    "bin": "gitea.exe",
+    "persist": [
+        "custom",
+        "repositories",
+        "log",
+        "data"
+    ],
+    "checkver": {
+        "url": "https://dl.gitea.com/gitea/version.json",
+        "jsonpath": "$.latest.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.gitea.com/gitea/$version/gitea-$version-windows-4.0-amd64.exe.xz"
+            },
+            "32bit": {
+                "url": "https://dl.gitea.com/gitea/$version/gitea-$version-windows-4.0-386.exe.xz"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
     }
-  }
 }

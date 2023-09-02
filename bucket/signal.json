@@ -1,37 +1,37 @@
 {
-  "version": "6.26.0",
-  "description": "A cross-platform encrypted messaging service.",
-  "homepage": "https://signal.org",
-  "license": "GPL-3.0-only",
-  "architecture": {
-    "64bit": {
-      "url": "https://updates.signal.org/desktop/signal-desktop-win-6.26.0.exe#/dl.7z",
-      "hash": "sha512:ce473fae65e35898890bdc901bb02eb0ccf1141ff6c386aaa6771e71244cc305a0ebd14c9d3057c56a4e7b250173ebd9fedc5bf0d8ea1eff18ab2daec24953e9",
-      "pre_install": [
-        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-        "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*.exe\" -Recurse -Force"
-      ]
-    }
-  },
-  "shortcuts": [
-    [
-      "Signal.exe",
-      "Signal"
-    ]
-  ],
-  "checkver": {
-    "url": "https://updates.signal.org/desktop/latest.yml",
-    "regex": "version:\\s([\\d.]+)"
-  },
-  "autoupdate": {
+    "version": "6.29.1",
+    "description": "A cross-platform encrypted messaging service.",
+    "homepage": "https://signal.org",
+    "license": "GPL-3.0-only",
     "architecture": {
-      "64bit": {
-        "url": "https://updates.signal.org/desktop/signal-desktop-win-$version.exe#/dl.7z"
-      }
+        "64bit": {
+            "url": "https://updates.signal.org/desktop/signal-desktop-win-6.29.1.exe#/dl.7z",
+            "hash": "sha512:1e1c1fa24e63a086a1ade551fd8b80105ce14c7ec6fd28ae64a99e901f669f4a5d2dd012687fbb43aa7b60f676693547d71128eddf67863f8a438aa15994aff6",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*.exe\" -Recurse -Force"
+            ]
+        }
     },
-    "hash": {
-      "url": "$baseurl/latest.yml",
-      "regex": "sha512:\\s$base64"
+    "shortcuts": [
+        [
+            "Signal.exe",
+            "Signal"
+        ]
+    ],
+    "checkver": {
+        "url": "https://updates.signal.org/desktop/latest.yml",
+        "regex": "version:\\s([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://updates.signal.org/desktop/signal-desktop-win-$version.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/latest.yml",
+            "regex": "sha512:\\s$base64"
+        }
     }
-  }
 }

@@ -1,65 +1,63 @@
 {
-    "version": "4.12.0",
+    "version": "23.5.2-0",
+    "description": "A cross-platform, Python-agnostic binary package manager",
     "homepage": "https://conda.io/miniconda.html",
-    "description": "Miniconda is a free minimal installer for conda.",
     "license": "BSD-3-Clause",
+    "notes": [
+        "From 4.6.0, conda has built the support for Cmd, Powershell or other shells.",
+        "Use \"conda init powershell\" or \"conda init __your_favorite_shell__\"",
+        "",
+        "Miniconda3 drops support for 32-bit CPUs from v22.9.0. If you are running a 32-bit system, please install miniconda3-4.12.0 from the Versions bucket."
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://repo.anaconda.com/miniconda/Miniconda3-py39_4.12.0-Windows-x86_64.exe",
-            "hash": "1acbc2e8277ddd54a5f724896c7edee112d068529588d944702966c867e7e9cc"
-        },
-        "32bit": {
-            "url": "https://repo.anaconda.com/miniconda/Miniconda3-py39_4.12.0-Windows-x86.exe",
-            "hash": "4fb64e6c9c28b88beab16994bfba4829110ea3145baa60bda5344174ab65d462"
+            "url": "https://repo.anaconda.com/miniconda/Miniconda3-py310_23.5.2-0-Windows-x86_64.exe#/setup.exe",
+            "hash": "e15638645b34921098a3f760fd8af07e53a427f59b99a0f049420a7751cbbc05"
         }
     },
+    "pre_install": "if ($dir -match ' ') { error 'The installation directory cannot include a space'; break}",
     "installer": {
-        "args": [
-            "/S",
-            "/InstallationType=JustMe",
-            "/RegisterPython=0",
-            "/AddToPath=0",
-            "/NoRegistry=1",
-            "/NoShortcuts=1",
-            "/D=$dir"
+        "script": [
+            "# Using Start-Process as a workaround because the installer will not work properly when args are quoted (e.g. \"`\"/S`\"\")",
+            "# Move the installer to the upper directory to avoid the error \"The installatiom directory is not empty.\"",
+            "Move-Item \"$dir\\setup.exe\" \"$dir\\..\\setup.exe\" | Out-Null",
+            "Start-Process \"$dir\\..\\setup.exe\" -ArgumentList @('/S', '/InstallationType=JustMe', '/RegisterPython=0', '/AddToPath=0', '/NoRegistry=1', \"/D=$dir\") -Wait | Out-Null"
         ]
     },
-    "bin": "scripts\\conda.exe",
-    "post_install": [
-        "# Prevent creating shortcuts (/NoShortcuts is not supported currently: https://github.com/conda/constructor/pull/466#issuecomment-1132732254=)",
-        "(& $dir\\_conda.exe constructor --prefix $dir --rm-menus) | Out-Null",
-        "# Set auto_activate_base to false",
-        "(& $dir\\scripts\\conda.exe config --system --set auto_activate_base false) | Out-Null",
-        "# Invoke hook for current shell session",
-        "(& $dir\\scripts\\conda.exe shell.powershell hook) | Out-String | Invoke-Expression"
+    "post_install": "Remove-Item \"$dir\\..\\setup.exe\" -Force | Out-Null",
+    "uninstaller": {
+        "script": [
+            "Start-Process \"$dir\\Uninstall-Miniconda3.exe\" -ArgumentList '/S' -Wait | Out-Null",
+            "# Create a 'dummy' to avoid error because the uninstaller removes the symlink. The does not affect persist.",
+            "if (!(Test-Path \"$dir\\envs\")) { New-Item \"$dir\\envs\" -ItemType Directory | Out-Null }"
+        ]
+    },
+    "bin": [
+        "python.exe",
+        "pythonw.exe",
+        [
+            "python.exe",
+            "python3"
+        ]
     ],
+    "env_add_path": [
+        "scripts",
+        "Library\\bin"
+    ],
+    "persist": "envs",
     "checkver": {
         "url": "https://docs.conda.io/en/latest/miniconda.html",
-        "re": "Miniconda3-py(?<pyversion>[\\d]+)_([\\d.]+)-Windows"
+        "regex": "Miniconda3-py310_([\\d.-]+)-Windows"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://repo.anaconda.com/miniconda/Miniconda3-py$matchPyversion_$version-Windows-x86_64.exe"
-            },
-            "32bit": {
-                "url": "https://repo.anaconda.com/miniconda/Miniconda3-py$matchPyversion_$version-Windows-x86.exe"
+                "url": "https://repo.anaconda.com/miniconda/Miniconda3-py310_$version-Windows-x86_64.exe#/setup.exe"
             }
         },
         "hash": {
-            "url": "$baseurl",
-            "regex": "(?sm)$basename.*?<td>$sha256</td>"
+            "url": "https://docs.conda.io/en/latest/miniconda.html",
+            "regex": "(?sm)$basename.*?>$sha256<"
         }
-    },
-    "notes": [
-        "This variant does not add the default venv into your PATH unless you activate it with 'conda activate base'.",
-        "You may choose to install the one from the official bucket if you do not care about python PATH pollution.",
-        "",
-        "Conda base env is not persisted by Scoop, packages installed to the base env will be removed when upgrading the app.",
-        "We advice to setup 'envs_dirs' to use a seperated path like '~/.conda/envs' and avoid using the base env.",
-        "https://conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html#specify-environment-directories-envs-dirs",
-        "",
-        "To enable conda tab-completion autoload, you can add the following code to your PowerShell $PROFILE:",
-        "(& conda 'shell.powershell' 'hook') | Out-String | Invoke-Expression"
-    ]
+    }
 }

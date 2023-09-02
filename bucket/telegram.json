@@ -1,39 +1,39 @@
 {
-  "version": "4.8.10",
-  "description": "A messaging app with a focus on speed and security",
-  "homepage": "https://telegram.org",
-  "license": "GPL-3.0-only",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.net/https://github.com/telegramdesktop/tdesktop/releases/download/v4.8.10/tportable-x64.4.8.10.zip",
-      "hash": "7f62ba8687def2b7cd339dc66558e9f40a7839df7d4056e779e367fc89b7b881"
-    },
-    "32bit": {
-      "url": "https://ghproxy.net/https://github.com/telegramdesktop/tdesktop/releases/download/v4.8.10/tportable.4.8.10.zip",
-      "hash": "c0ae62e9d85d12138dbf4bd569c61dbcefc6b558b7875b920d59263da9b41672"
-    }
-  },
-  "extract_dir": "Telegram",
-  "pre_install": "Set-Content \"$dir\\telegram.cmd\" '@start \"Telegram\" /D \"%~dp0\" \"%~dp0Telegram.exe\" %*' -Encoding Ascii",
-  "bin": "telegram.cmd",
-  "shortcuts": [
-    [
-      "Telegram.exe",
-      "Telegram"
-    ]
-  ],
-  "persist": "tdata",
-  "checkver": {
-    "github": "https://github.com/telegramdesktop/tdesktop"
-  },
-  "autoupdate": {
+    "version": "4.9.4",
+    "description": "A messaging app with a focus on speed and security",
+    "homepage": "https://telegram.org",
+    "license": "GPL-3.0-only",
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.net/https://github.com/telegramdesktop/tdesktop/releases/download/v$version/tportable-x64.$version.zip"
-      },
-      "32bit": {
-        "url": "https://ghproxy.net/https://github.com/telegramdesktop/tdesktop/releases/download/v$version/tportable.$version.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/telegramdesktop/tdesktop/releases/download/v4.9.4/tportable-x64.4.9.4.zip",
+            "hash": "7981afc0f747f195684bc0568ac1261958c99912aaca2a73d34f16e9772713d2"
+        },
+        "32bit": {
+            "url": "https://github.com/telegramdesktop/tdesktop/releases/download/v4.9.4/tportable.4.9.4.zip",
+            "hash": "fc63b1660d8b5e39d2556ecaf627f36177ff587b00f666bc8d4191e585c83073"
+        }
+    },
+    "extract_dir": "Telegram",
+    "pre_install": "Set-Content \"$dir\\telegram.cmd\" '@start \"Telegram\" /D \"%~dp0\" \"%~dp0Telegram.exe\" %*' -Encoding Ascii",
+    "bin": "telegram.cmd",
+    "shortcuts": [
+        [
+            "Telegram.exe",
+            "Telegram"
+        ]
+    ],
+    "persist": "tdata",
+    "checkver": {
+        "github": "https://github.com/telegramdesktop/tdesktop"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/telegramdesktop/tdesktop/releases/download/v$version/tportable-x64.$version.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/telegramdesktop/tdesktop/releases/download/v$version/tportable.$version.zip"
+            }
+        }
     }
-  }
 }

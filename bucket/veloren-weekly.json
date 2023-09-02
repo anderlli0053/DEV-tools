@@ -1,48 +1,48 @@
 {
-  "version": "2023-07-26T21_23",
-  "description": "A multiplayer voxel RPG inspired by games such as Cube World, Legend of Zelda: Breath of the Wild, Dwarf Fortress and Minecraft",
-  "homepage": "https://veloren.net/",
-  "license": {
-    "identifier": "GPL-3.0-or-later",
-    "url": "https://gitlab.com/veloren/veloren/-/blob/master/LICENSE"
-  },
-  "notes": [
-    "Veloren has a number of game servers available to join, a list of which can be found here:",
-    "https://gitlab.com/veloren/serverbrowser/-/blob/master/server/servers.ron",
-    "(replace the address shown on Veloren's login page with an address from the link above).",
-    "For help regarding the game, see Veloren's Owner's Manual: https://book.veloren.net/"
-  ],
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.net/https://github.com/veloren/veloren/releases/download/weekly/weekly-windows-x86_64-2023-07-26T21_23.zip",
-      "hash": "01a7d5f2f07e47bf9812cd4e5cd71f08f224e16e51982bbd1b9099dae2389445"
-    }
-  },
-  "bin": [
-    "veloren-server-cli.exe",
-    "veloren-voxygen.exe"
-  ],
-  "shortcuts": [
-    [
-      "veloren-server-cli.exe",
-      "Veloren Server CLI"
+    "version": "2023-08-23T10_01",
+    "description": "A multiplayer voxel RPG inspired by games such as Cube World, Legend of Zelda: Breath of the Wild, Dwarf Fortress and Minecraft",
+    "homepage": "https://veloren.net/",
+    "license": {
+        "identifier": "GPL-3.0-or-later",
+        "url": "https://gitlab.com/veloren/veloren/-/blob/master/LICENSE"
+    },
+    "notes": [
+        "Veloren has a number of game servers available to join, a list of which can be found here:",
+        "https://gitlab.com/veloren/serverbrowser/-/blob/master/server/servers.ron",
+        "(replace the address shown on Veloren's login page with an address from the link above).",
+        "For help regarding the game, see Veloren's Owner's Manual: https://book.veloren.net/"
     ],
-    [
-      "veloren-voxygen.exe",
-      "Veloren"
-    ]
-  ],
-  "persist": "userdata",
-  "checkver": {
-    "url": "https://github.com/veloren/veloren/releases/expanded_assets/weekly",
-    "regex": "/download/weekly/weekly-windows-x86_64-(?<version>[\\w-]+).zip",
-    "reverse": true
-  },
-  "autoupdate": {
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.net/https://github.com/veloren/veloren/releases/download/weekly/weekly-windows-x86_64-$version.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/veloren/veloren/releases/download/weekly/weekly-windows-x86_64-2023-08-23T10_01.zip",
+            "hash": "998c9244f990fdb9ce78d28b911ddf4aa7940e657ac9e30ffdcbb9d3141cb3ff"
+        }
+    },
+    "bin": [
+        "veloren-server-cli.exe",
+        "veloren-voxygen.exe"
+    ],
+    "shortcuts": [
+        [
+            "veloren-server-cli.exe",
+            "Veloren Server CLI"
+        ],
+        [
+            "veloren-voxygen.exe",
+            "Veloren"
+        ]
+    ],
+    "persist": "userdata",
+    "checkver": {
+        "url": "https://github.com/veloren/veloren/releases/expanded_assets/weekly",
+        "regex": "/download/weekly/weekly-windows-x86_64-(?<version>[\\w-]+).zip",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/veloren/veloren/releases/download/weekly/weekly-windows-x86_64-$version.zip"
+            }
+        }
     }
-  }
 }

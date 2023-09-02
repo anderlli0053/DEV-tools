@@ -1,61 +1,61 @@
 {
-  "version": "1.56.14",
-  "description": "Secure, Fast & Private Web Browser with Adblocker",
-  "homepage": "https://brave.com",
-  "license": {
-    "identifier": "Freeware,BSD-3-Clause,GPL-3.0-only,...",
-    "url": "https://github.com/brave/brave-browser/blob/master/LICENSE"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.net/https://github.com/brave/brave-browser/releases/download/v1.56.14/brave-v1.56.14-win32-x64.zip",
-      "hash": "d348805a28644f062f8cbfd64f8af9eb6f8d70fad7832a1e2d88c408132539a5"
+    "version": "1.57.57",
+    "description": "Secure, Fast & Private Web Browser with Adblocker",
+    "homepage": "https://brave.com",
+    "license": {
+        "identifier": "Freeware,BSD-3-Clause,GPL-3.0-only,...",
+        "url": "https://github.com/brave/brave-browser/blob/master/LICENSE"
     },
-    "32bit": {
-      "url": "https://ghproxy.net/https://github.com/brave/brave-browser/releases/download/v1.56.14/brave-v1.56.14-win32-ia32.zip",
-      "hash": "3c95317342a2c40bf3225825d9de485c15bbda9aea16f7d66a31db73fee17e91"
-    }
-  },
-  "bin": [
-    [
-      "brave.exe",
-      "brave",
-      "--user-data-dir=\"$dir\\User Data\""
-    ]
-  ],
-  "shortcuts": [
-    [
-      "brave.exe",
-      "Brave",
-      "--user-data-dir=\"$dir\\User Data\""
-    ]
-  ],
-  "post_install": [
-    "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$persist_dir\\data\")) {",
-    "    info '[Portable Mode]: Copying user data from portapps data directory . . .'",
-    "    Copy-Item \"$persist_dir\\data\\*\" \"$dir\\User Data\" -Recurse",
-    "}",
-    "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\BraveSoftware\\Brave-Browser\\User Data\")) {",
-    "    info '[Portable Mode]: Copying user data from local application data directory . . .'",
-    "    Copy-Item \"$env:LocalAppData\\BraveSoftware\\Brave-Browser\\User Data\\*\" \"$dir\\User Data\" -Recurse",
-    "}"
-  ],
-  "persist": "User Data",
-  "checkver": {
-    "url": "https://brave-browser-downloads.s3.brave.com/latest/release.version",
-    "regex": "([\\d.]+)"
-  },
-  "autoupdate": {
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.net/https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-x64.zip"
-      },
-      "32bit": {
-        "url": "https://ghproxy.net/https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-ia32.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.57.57/brave-v1.57.57-win32-x64.zip",
+            "hash": "6430b541831d758ad68ac0f2722f169ac6fbaff455c19225b34d304cbe3505fe"
+        },
+        "32bit": {
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.57.57/brave-v1.57.57-win32-ia32.zip",
+            "hash": "17667deea19f5140166516fc92c9d750b2a9093e4332fabb2ef3f188146f17da"
+        }
     },
-    "hash": {
-      "url": "$url.sha256"
+    "bin": [
+        [
+            "brave.exe",
+            "brave",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "brave.exe",
+            "Brave",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "post_install": [
+        "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$persist_dir\\data\")) {",
+        "    info '[Portable Mode]: Copying user data from portapps data directory . . .'",
+        "    Copy-Item \"$persist_dir\\data\\*\" \"$dir\\User Data\" -Recurse",
+        "}",
+        "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\BraveSoftware\\Brave-Browser\\User Data\")) {",
+        "    info '[Portable Mode]: Copying user data from local application data directory . . .'",
+        "    Copy-Item \"$env:LocalAppData\\BraveSoftware\\Brave-Browser\\User Data\\*\" \"$dir\\User Data\" -Recurse",
+        "}"
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://brave-browser-downloads.s3.brave.com/latest/release-windows-x64.version",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-ia32.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
     }
-  }
 }

@@ -1,52 +1,52 @@
 {
-  "version": "2.11.0",
-  "description": "A Tumblr Backup Application",
-  "homepage": "https://github.com/TumblThreeApp/TumblThree",
-  "license": "MIT",
-  "suggest": {
-    "vcredist": "extras/vcredist2022"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.net/https://github.com/TumblThreeApp/TumblThree/releases/download/v2.11.0/TumblThree-v2.11.0-x64-Application.zip",
-      "hash": "aa366422873524adca8457b1921b4737347bc678156fca8b5dc53c304c8a0ec4"
+    "version": "2.11.2",
+    "description": "A Tumblr Backup Application",
+    "homepage": "https://github.com/TumblThreeApp/TumblThree",
+    "license": "MIT",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
     },
-    "32bit": {
-      "url": "https://ghproxy.net/https://github.com/TumblThreeApp/TumblThree/releases/download/v2.11.0/TumblThree-v2.11.0-x86-Application.zip",
-      "hash": "578b0be50bb86c458fd65f2f1ee875ae62e3de894314cc1876e759d79f648f73"
-    }
-  },
-  "pre_install": [
-    "foreach ($name in @('Cookies.json', 'Manager.json', 'Queuelist.json')) {",
-    "    if (!(Test-Path \"$persist_dir\\$name\")) { New-Item \"$dir\\$name\" | Out-Null }",
-    "}",
-    "if (!(Test-Path \"$persist_dir\\Settings.json\")) { Set-Content \"$dir\\Settings.json\" '{\"PortableMode\": true}' -Encoding ASCII }"
-  ],
-  "bin": "TumblThree.exe",
-  "shortcuts": [
-    [
-      "TumblThree.exe",
-      "TumblThree"
-    ]
-  ],
-  "persist": [
-    "Cookies.json",
-    "Manager.json",
-    "Queuelist.json",
-    "Settings.json"
-  ],
-  "checkver": {
-    "github": "https://github.com/TumblThreeApp/TumblThree",
-    "regex": "/TumblThree-v([\\d.]+)-x\\d+"
-  },
-  "autoupdate": {
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.net/https://github.com/TumblThreeApp/TumblThree/releases/download/v$matchHead/TumblThree-v$version-x64-Application.zip"
-      },
-      "32bit": {
-        "url": "https://ghproxy.net/https://github.com/TumblThreeApp/TumblThree/releases/download/v$matchHead/TumblThree-v$version-x86-Application.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/TumblThreeApp/TumblThree/releases/download/v2.11.2/TumblThree-v2.11.2-x64-Application.zip",
+            "hash": "e41dd146bd241cb4d3cca43a896a67ad60b302607b56260d4ba8fa700ba4f5a4"
+        },
+        "32bit": {
+            "url": "https://github.com/TumblThreeApp/TumblThree/releases/download/v2.11.2/TumblThree-v2.11.2-x86-Application.zip",
+            "hash": "f4a3bb4c5a59fcdb0dd63dc0b913c5b3d0d6222fd221a5ed36c3ed0c588ecad8"
+        }
+    },
+    "pre_install": [
+        "foreach ($name in @('Cookies.json', 'Manager.json', 'Queuelist.json')) {",
+        "    if (!(Test-Path \"$persist_dir\\$name\")) { New-Item \"$dir\\$name\" | Out-Null }",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\Settings.json\")) { Set-Content \"$dir\\Settings.json\" '{\"PortableMode\": true}' -Encoding ASCII }"
+    ],
+    "bin": "TumblThree.exe",
+    "shortcuts": [
+        [
+            "TumblThree.exe",
+            "TumblThree"
+        ]
+    ],
+    "persist": [
+        "Cookies.json",
+        "Manager.json",
+        "Queuelist.json",
+        "Settings.json"
+    ],
+    "checkver": {
+        "github": "https://github.com/TumblThreeApp/TumblThree",
+        "regex": "/TumblThree-v([\\d.]+)-x\\d+"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/TumblThreeApp/TumblThree/releases/download/v$matchHead/TumblThree-v$version-x64-Application.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/TumblThreeApp/TumblThree/releases/download/v$matchHead/TumblThree-v$version-x86-Application.zip"
+            }
+        }
     }
-  }
 }

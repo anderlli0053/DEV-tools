@@ -1,47 +1,47 @@
 {
-  "version": "10.1.11",
-  "description": "Implementation of the Java Servlet, JavaServer Pages, Java Expression Language and Java WebSocket technologies",
-  "homepage": "https://tomcat.apache.org",
-  "license": "Apache-2.0",
-  "suggest": {
-    "JRE": "java/openjdk"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://downloads.apache.org/tomcat/tomcat-10/v10.1.11/bin/apache-tomcat-10.1.11-windows-x64.zip",
-      "hash": "sha512:ed0cb41750d5aad53a7c485e7709dab6bc15d2655f8e7992832781d4608fc83bb814822f1e784bc3e235adb421b4c53881a07a4d1101ac7ea8d9ff3eb3d8ebb9"
+    "version": "10.1.13",
+    "description": "Implementation of the Java Servlet, JavaServer Pages, Java Expression Language and Java WebSocket technologies",
+    "homepage": "https://tomcat.apache.org",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JRE": "java/openjdk"
     },
-    "32bit": {
-      "url": "https://downloads.apache.org/tomcat/tomcat-10/v10.1.11/bin/apache-tomcat-10.1.11-windows-x86.zip",
-      "hash": "sha512:9578960d609e2b46a1c1c52eda098c039ed58e2e668656a83754e3a55f8d7f0e32a1e964e33404a1a80fb948be7926ae100f60aa003cbee1bd9aa3b866c98901"
-    }
-  },
-  "extract_dir": "apache-tomcat-10.1.11",
-  "bin": "bin\\catalina.bat",
-  "env_set": {
-    "CATALINA_HOME": "$dir",
-    "CATALINA_BASE": "$dir"
-  },
-  "persist": [
-    "conf",
-    "webapps"
-  ],
-  "checkver": {
-    "url": "https://downloads.apache.org/tomcat/tomcat-10/?C=M;O=D",
-    "regex": "v([\\d.]+)/"
-  },
-  "autoupdate": {
     "architecture": {
-      "64bit": {
-        "url": "https://downloads.apache.org/tomcat/tomcat-$majorVersion/v$version/bin/apache-tomcat-$version-windows-x64.zip"
-      },
-      "32bit": {
-        "url": "https://downloads.apache.org/tomcat/tomcat-$majorVersion/v$version/bin/apache-tomcat-$version-windows-x86.zip"
-      }
+        "64bit": {
+            "url": "https://downloads.apache.org/tomcat/tomcat-10/v10.1.13/bin/apache-tomcat-10.1.13-windows-x64.zip",
+            "hash": "sha512:69ef118f23d4f8d4177177fbf9ae33eb8de67976c547cec8680f058e1e82fdf6923492b0420935796066bf244e0141873307d0a5c1d09c78310d3c4e993c48c2"
+        },
+        "32bit": {
+            "url": "https://downloads.apache.org/tomcat/tomcat-10/v10.1.13/bin/apache-tomcat-10.1.13-windows-x86.zip",
+            "hash": "sha512:1b8bb915bc0ed1b71c8bb047961433660c72ccb9ebc55c826af5743a0af0d70c0b0c73c4bf40d2c01235547ac0ece13c98ed27d4b428cd63ef5f7b1dea319206"
+        }
     },
-    "hash": {
-      "url": "$url.sha512"
+    "extract_dir": "apache-tomcat-10.1.13",
+    "bin": "bin\\catalina.bat",
+    "env_set": {
+        "CATALINA_HOME": "$dir",
+        "CATALINA_BASE": "$dir"
     },
-    "extract_dir": "apache-tomcat-$version"
-  }
+    "persist": [
+        "conf",
+        "webapps"
+    ],
+    "checkver": {
+        "url": "https://downloads.apache.org/tomcat/tomcat-10/?C=M;O=D",
+        "regex": "v([\\d.]+)/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.apache.org/tomcat/tomcat-$majorVersion/v$version/bin/apache-tomcat-$version-windows-x64.zip"
+            },
+            "32bit": {
+                "url": "https://downloads.apache.org/tomcat/tomcat-$majorVersion/v$version/bin/apache-tomcat-$version-windows-x86.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha512"
+        },
+        "extract_dir": "apache-tomcat-$version"
+    }
 }

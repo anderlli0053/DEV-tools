@@ -1,47 +1,47 @@
 {
-  "description": "Eclipse Temurin is a runtime provided by Eclipse Adoptium for general use across the Java ecosystem",
-  "homepage": "https://adoptium.net",
-  "version": "11.0.20-8",
-  "license": "GPL-2.0-only WITH Classpath-exception-2.0",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.net/https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20+8/OpenJDK11U-jdk_x64_windows_hotspot_11.0.20_8.zip",
-      "hash": "3125b30276f4edfd6271d870d41061300adc33d7558b4151a35a11c84dd89d75"
-    },
-    "32bit": {
-      "url": "https://ghproxy.net/https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20+8/OpenJDK11U-jdk_x86-32_windows_hotspot_11.0.20_8.zip",
-      "hash": "2746ba40ac31de815a38f2197f0f27d8ec029c905ea7248e34f5d978ae6617f8"
-    }
-  },
-  "extract_dir": "jdk-11.0.20+8",
-  "env_add_path": "bin",
-  "env_set": {
-    "JAVA_HOME": "$dir"
-  },
-  "checkver": {
-    "url": "https://api.adoptium.net/v3/assets/feature_releases/11/ga?jvm_impl=hotspot&heap_size=normal&os=windows&architecture=x64&image_type=jdk&project=jdk&vendor=eclipse&page_size=1&sort_order=DESC",
-    "script": [
-      "$ver = (json_path $page $..version_data.semver).replace('+', '-')",
-      "$link = (json_path $page $..release_link).replace('%2B', '+')",
-      "$name = json_path $page $..binaries[0].package.name",
-      "Write-Output \"$ver $link $name\""
-    ],
-    "regex": "(?<ver>.*?) https://github.com/(?<link>.*?)/tag/(?<tag>.*?) (?<name>(?<prefix>OpenJDK[\\dU]*-[dejkr]{3})_x64_(?<suffix>.*))",
-    "replace": "${ver}"
-  },
-  "autoupdate": {
+    "description": "Eclipse Temurin is a runtime provided by Eclipse Adoptium for general use across the Java ecosystem",
+    "homepage": "https://adoptium.net",
+    "version": "11.0.20-101",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/$matchLink/download/$matchTag/$matchName"
-      },
-      "32bit": {
-        "url": "https://github.com/$matchLink/download/$matchTag/$matchPrefix_x86-32_$matchSuffix"
-      }
+        "64bit": {
+            "url": "https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1+1/OpenJDK11U-jdk_x64_windows_hotspot_11.0.20.1_1.zip",
+            "hash": "5042f5ed28f84faf545eba6bb9ce59288fb9c85c0de8d30803e9fc1a88d533c4"
+        },
+        "32bit": {
+            "url": "https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.20.1+1/OpenJDK11U-jdk_x86-32_windows_hotspot_11.0.20.1_1.zip",
+            "hash": "abd0201b9169bb28b803f3de07fe106155de408aa3e04c4be8982d6befe912b2"
+        }
     },
-    "hash": {
-      "url": "$url.sha256.txt",
-      "find": "^([a-fA-F0-9]+)\\s"
+    "extract_dir": "jdk-11.0.20.1+1",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
     },
-    "extract_dir": "$matchTag"
-  }
+    "checkver": {
+        "url": "https://api.adoptium.net/v3/assets/feature_releases/11/ga?jvm_impl=hotspot&heap_size=normal&os=windows&architecture=x64&image_type=jdk&project=jdk&vendor=eclipse&page_size=1&sort_order=DESC",
+        "script": [
+            "$ver = (json_path $page $..version_data.semver).replace('+', '-')",
+            "$link = (json_path $page $..release_link).replace('%2B', '+')",
+            "$name = json_path $page $..binaries[0].package.name",
+            "Write-Output \"$ver $link $name\""
+        ],
+        "regex": "(?<ver>.*?) https://github.com/(?<link>.*?)/tag/(?<tag>.*?) (?<name>(?<prefix>OpenJDK[\\dU]*-[dejkr]{3})_x64_(?<suffix>.*))",
+        "replace": "${ver}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/$matchLink/download/$matchTag/$matchName"
+            },
+            "32bit": {
+                "url": "https://github.com/$matchLink/download/$matchTag/$matchPrefix_x86-32_$matchSuffix"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256.txt",
+            "find": "^([a-fA-F0-9]+)\\s"
+        },
+        "extract_dir": "$matchTag"
+    }
 }

@@ -1,34 +1,34 @@
 {
-  "homepage": "https://apps.kde.org/dolphin/",
-  "version": "1064",
-  "description": "A file manager developed by KDE that lets you navigate and browse the contents of your hard drives, USB sticks, SD cards, and more.",
-  "license": "GPL-2.0-or-later",
-  "architecture": {
-    "64bit": {
-      "url": "https://binary-factory.kde.org/job/Dolphin_Nightly_win64/lastSuccessfulBuild/artifact/dolphin-master-1064-windows-cl-msvc2019-x86_64.7z",
-      "hash": "f9b538286036fa248172a46fad010445cb51f7d2c03ff92fa1c5f7e7b58b9ff8"
-    }
-  },
-  "bin": "bin\\dolphin.exe",
-  "shortcuts": [
-    [
-      "bin\\dolphin.exe",
-      "KDE Dolphin Nightly"
-    ]
-  ],
-  "pre_install": "Stop-Process -Name 'dbus-daemon' -Force -ErrorAction 'SilentlyContinue'",
-  "checkver": {
-    "url": "https://binary-factory.kde.org/job/Dolphin_Nightly_win64/",
-    "regex": "dolphin-master-([\\d]+)-windows-cl-msvc(?<Year>[\\d]+)-x86_64"
-  },
-  "autoupdate": {
+    "homepage": "https://apps.kde.org/dolphin/",
+    "version": "1099",
+    "description": "A file manager developed by KDE that lets you navigate and browse the contents of your hard drives, USB sticks, SD cards, and more.",
+    "license": "GPL-2.0-or-later",
     "architecture": {
-      "64bit": {
-        "url": "https://binary-factory.kde.org/job/Dolphin_Nightly_win64/lastSuccessfulBuild/artifact/dolphin-master-$version-windows-cl-msvc$matchYear-x86_64.7z",
-        "hash": {
-          "url": "$url.sha256"
+        "64bit": {
+            "url": "https://binary-factory.kde.org/job/Dolphin_Nightly_win64/lastSuccessfulBuild/artifact/dolphin-master-1099-windows-cl-msvc2019-x86_64.7z",
+            "hash": "9091656c6bbe94a7560678c5f669cd590b3da34baba26e9e74a95035736b925d"
         }
-      }
+    },
+    "bin": "bin\\dolphin.exe",
+    "shortcuts": [
+        [
+            "bin\\dolphin.exe",
+            "KDE Dolphin Nightly"
+        ]
+    ],
+    "pre_install": "Stop-Process -Name 'dbus-daemon' -Force -ErrorAction 'SilentlyContinue'",
+    "checkver": {
+        "url": "https://binary-factory.kde.org/job/Dolphin_Nightly_win64/",
+        "regex": "dolphin-master-([\\d]+)-windows-cl-msvc(?<Year>[\\d]+)-x86_64"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://binary-factory.kde.org/job/Dolphin_Nightly_win64/lastSuccessfulBuild/artifact/dolphin-master-$version-windows-cl-msvc$matchYear-x86_64.7z",
+                "hash": {
+                    "url": "$url.sha256"
+                }
+            }
+        }
     }
-  }
 }

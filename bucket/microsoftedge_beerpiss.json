@@ -1,0 +1,58 @@
+{
+  "homepage": "https://www.microsoft.com/en-us/edge",
+  "description": "The chromium based Microsoft Edge browser",
+  "version": "116.0.1938.62",
+  "license": "Freeware",
+  "architecture": {
+    "64bit": {
+      "url": "https://beerpsi-scoop.deno.dev/edge?arch=x64&channel=stable&version=116.0.1938.62&dl#/MicrosoftEdge-116.0.1938.62-x64.7z",
+      "hash": "769ad0c37c4fa4940be3656df38fdd059e8bec5eb7c57d2f45cad8a360605a17"
+    },
+    "32bit": {
+      "url": "https://beerpsi-scoop.deno.dev/edge?arch=x86&channel=stable&version=116.0.1938.62&dl#/MicrosoftEdge-116.0.1938.62-x86.7z",
+      "hash": "9b0a2869c23e9197a5914fe943ab2693b7d996bacb7a02f0137565f8288128e4"
+    },
+    "arm64": {
+      "url": "https://beerpsi-scoop.deno.dev/edge?arch=arm64&channel=stable&version=116.0.1938.62&dl#/MicrosoftEdge-116.0.1938.62-arm64.7z",
+      "hash": "41c9cc8d29245b6f7213331b52c1b1cf12965bead90630689a2a98521ffb4fbd"
+    }
+  },
+  "installer": {
+    "script": "Expand-7zipArchive -Path \"$dir\\MSEDGE.7z\" -ExtractDir \"Chrome-bin\\$version\" -Removal"
+  },
+  "shortcuts": [
+    [
+      "msedge.exe",
+      "Microsoft Edge"
+    ]
+  ],
+  "checkver": {
+    "url": "https://beerpsi-scoop.deno.dev/edge?arch=x64&channel=stable",
+    "jsonpath": "$.Version"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://beerpsi-scoop.deno.dev/edge?arch=x64&channel=stable&version=$version&dl#/MicrosoftEdge-$version-x64.7z",
+        "hash": {
+          "url": "https://beerpsi-scoop.deno.dev/edge?arch=x64&channel=stable&version=$version",
+          "jsonpath": "$.Hashes.Sha256"
+        }
+      },
+      "32bit": {
+        "url": "https://beerpsi-scoop.deno.dev/edge?arch=x86&channel=stable&version=$version&dl#/MicrosoftEdge-$version-x86.7z",
+        "hash": {
+          "url": "https://beerpsi-scoop.deno.dev/edge?arch=x86&channel=stable&version=$version",
+          "jsonpath": "$.Hashes.Sha256"
+        }
+      },
+      "arm64": {
+        "url": "https://beerpsi-scoop.deno.dev/edge?arch=arm64&channel=stable&version=$version&dl#/MicrosoftEdge-$version-arm64.7z",
+        "hash": {
+          "url": "https://beerpsi-scoop.deno.dev/edge?arch=arm64&channel=stable&version=$version",
+          "jsonpath": "$.Hashes.Sha256"
+        }
+      }
+    }
+  }
+}

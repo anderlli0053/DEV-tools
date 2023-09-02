@@ -1,0 +1,71 @@
+{
+  "$schema": "https://ghproxy.net/https://raw.githubusercontent.com/lukesampson/scoop/master/schema.json",
+  "version": "1.6.00.22378",
+  "description": "Proprietary business communication platform developed by Microsoft",
+  "homepage": "https://teams.com/",
+  "license": {
+    "identifier": "Proprietary"
+  },
+  "notes": [
+    "Apps in `current` won't work, use the version folder instead.",
+    "Start Microsoft Teams (work or school) with Windows by running:",
+    ".\"$dir\\add-startup.ps1\""
+  ],
+  "architecture": {
+    "32bit": {
+      "url": "https://statics.teams.cdn.office.net/production-windows/1.6.00.22378/Teams_windows.exe#/dl.exe",
+      "hash": "458bfc1c8e7b93e4740de32ae3145229c4f6044ebbf309cbdb19443b3a46e693"
+    },
+    "64bit": {
+      "url": "https://statics.teams.cdn.office.net/production-windows-x64/1.6.00.22378/Teams_windows_x64.exe#/dl.exe",
+      "hash": "79a21e58d09a18a66fb450f4135735d02e48eddaba368108974ccd90fa255828"
+    },
+    "arm64": {
+      "url": "https://statics.teams.cdn.office.net/production-windows-arm64/1.6.00.22378/Teams_windows_arm64.exe#/dl.exe",
+      "hash": "f560d7337e6a6b4a591d0f0eb50fd9ee08db94496d516a9b49ce6ec89b434c33"
+    }
+  },
+  "installer": {
+    "script": [
+      "Expand-7zipArchive -Path \"$dir\\dl.exe\" -DestinationPath \"$dir\\_tmp\" -Removal",
+      "Expand-7zipArchive -Path \"$dir\\_tmp\\Teams-$version-full.nupkg\" -ExtractDir 'lib/net45' -DestinationPath \"$dir\"",
+      "Remove-Item -Path \"$dir\\_tmp\" -Recurse -Force",
+      "$exepath = \"$dir\\Teams.exe\"",
+      "startmenu_shortcut $exepath 'Microsoft Teams (work or school)' '' $null $global",
+      "$registryPath = 'Registry::HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run'",
+      "if ($global) {",
+      "   $registryPath = $registryPath.Replace('HKCU', 'HKLM')",
+      "}",
+      "@(",
+      "   \"New-Item -Path '$registryPath' > `$null 2>&1\"",
+      "   \"New-ItemProperty -Force -Path '$registryPath' -Name 'Microsoft Teams (work or school)' -PropertyType String -Value '$exepath' > `$null\"",
+      ") | Set-Content -Path \"$dir\\add-startup.ps1\"",
+      "@(",
+      "   \"Remove-ItemProperty -Force -Path '$registryPath' -Name 'Microsoft Teams (work or school)' > `$null\"",
+      ") | Set-Content -Path \"$dir\\remove-startup.ps1\""
+    ]
+  },
+  "uninstaller": {
+    "script": [
+      "Remove-Item \"$(shortcut_folder $global)\\Microsoft Teams (work or school).lnk\" -Force",
+      ".\"$dir\\remove-startup.ps1\""
+    ]
+  },
+  "checkver": {
+    "url": "https://config.teams.microsoft.com/config/v1/MicrosoftTeams/1415_1.0.0.0?environment=prod&audienceGroup=general&teamsRing=general&agent=TeamsBuilds",
+    "jsonpath": "$.BuildSettings.Desktop.windows64.latestVersion"
+  },
+  "autoupdate": {
+    "architecture": {
+      "32bit": {
+        "url": "https://statics.teams.cdn.office.net/production-windows/$version/Teams_windows.exe#/dl.exe"
+      },
+      "64bit": {
+        "url": "https://statics.teams.cdn.office.net/production-windows-x64/$version/Teams_windows_x64.exe#/dl.exe"
+      },
+      "arm64": {
+        "url": "https://statics.teams.cdn.office.net/production-windows-arm64/$version/Teams_windows_arm64.exe#/dl.exe"
+      }
+    }
+  }
+}

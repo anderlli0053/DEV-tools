@@ -1,75 +1,75 @@
 {
-  "version": "3.6.15",
-  "description": "A network protocol analyzer that lets you see what’s happening on your network at a microscopic level.",
-  "homepage": "https://www.wireshark.org/",
-  "license": "GPL-2.0-or-later",
-  "notes": [
-    "Wireshark requires the installation of Npcap. Do it manually from the 'wireshark' directory.",
-    "$dir\\npcap-installer.exe",
-    "",
-    "You can also install USBPcap from the 'wireshark' directory if you need the USB packets capture funcionality.",
-    "$dir\\USBPcapSetup-installer.exe"
-  ],
-  "architecture": {
-    "64bit": {
-      "url": "https://1.eu.dl.wireshark.org/win64/all-versions/Wireshark-win64-3.6.15.exe#/dl.7z",
-      "hash": "693788b12060dd35d76cc21639170573b6fefe017c3a721b461a9285b21f58d2"
-    },
-    "32bit": {
-      "url": "https://1.eu.dl.wireshark.org/win32/all-versions/Wireshark-win32-3.6.15.exe#/dl.7z",
-      "hash": "51b5d8a45bcf2fbe9fd6b3beb3fa0f4f982d328606546238f20074ade56d33f1"
-    }
-  },
-  "installer": {
-    "script": [
-      "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\vc_redist.x*\", \"$dir\\uninstall.exe\" -Recurse",
-      "Get-ChildItem \"$dir\\npcap-*.exe\" | Rename-Item -NewName 'npcap-installer.exe'",
-      "Get-ChildItem \"$dir\\USBPcapSetup-*.exe\" | Rename-Item -NewName 'USBPcapSetup-installer.exe'"
-    ]
-  },
-  "bin": [
-    "capinfos.exe",
-    "dumpcap.exe",
-    "editcap.exe",
-    "mergecap.exe",
-    "randpkt.exe",
-    "rawshark.exe",
-    "reordercap.exe",
-    "text2pcap.exe",
-    "tshark.exe",
-    "Wireshark.exe"
-  ],
-  "shortcuts": [
-    [
-      "Wireshark.exe",
-      "Wireshark"
-    ]
-  ],
-  "env_set": {
-    "WIRESHARK_CONFIG_DIR": "$dir\\Data",
-    "WIRESHARK_DATA_DIR": "$dir\\Data"
-  },
-  "persist": "Data",
-  "checkver": {
-    "url": "https://www.wireshark.org/update/0/Wireshark/0.0.0/Windows/x86/en-US/stable.xml",
-    "regex": "Version ([\\d.]+)"
-  },
-  "autoupdate": {
+    "version": "3.6.16",
+    "description": "A network protocol analyzer that lets you see what’s happening on your network at a microscopic level.",
+    "homepage": "https://www.wireshark.org/",
+    "license": "GPL-2.0-or-later",
+    "notes": [
+        "Wireshark requires the installation of Npcap. Do it manually from the 'wireshark' directory.",
+        "$dir\\npcap-installer.exe",
+        "",
+        "You can also install USBPcap from the 'wireshark' directory if you need the USB packets capture funcionality.",
+        "$dir\\USBPcapSetup-installer.exe"
+    ],
     "architecture": {
-      "64bit": {
-        "url": "https://1.eu.dl.wireshark.org/win64/all-versions/Wireshark-win64-$version.exe#/dl.7z",
-        "hash": {
-          "url": "https://www.wireshark.org/download/SIGNATURES-$version.txt",
-          "regex": "SHA256\\($basename\\)=$sha256"
+        "64bit": {
+            "url": "https://1.eu.dl.wireshark.org/win64/all-versions/Wireshark-win64-3.6.16.exe#/dl.7z",
+            "hash": "a4477860d973e50e9b11f0bb753691862e2a8843f82c32144657bb27aa99819c"
+        },
+        "32bit": {
+            "url": "https://1.eu.dl.wireshark.org/win32/all-versions/Wireshark-win32-3.6.16.exe#/dl.7z",
+            "hash": "4f30d190d0193b21a31f697d407e6e9e7d1e601ef78db68132d0a9e5fbebf5a6"
         }
-      },
-      "32bit": {
-        "url": "https://1.eu.dl.wireshark.org/win32/all-versions/Wireshark-win32-$version.exe#/dl.7z",
-        "hash": {
-          "url": "https://www.wireshark.org/download/SIGNATURES-$version.txt",
-          "regex": "SHA256\\($basename\\)=$sha256"
+    },
+    "installer": {
+        "script": [
+            "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\vc_redist.x*\", \"$dir\\uninstall.exe\" -Recurse",
+            "Get-ChildItem \"$dir\\npcap-*.exe\" | Rename-Item -NewName 'npcap-installer.exe'",
+            "Get-ChildItem \"$dir\\USBPcapSetup-*.exe\" | Rename-Item -NewName 'USBPcapSetup-installer.exe'"
+        ]
+    },
+    "bin": [
+        "capinfos.exe",
+        "dumpcap.exe",
+        "editcap.exe",
+        "mergecap.exe",
+        "randpkt.exe",
+        "rawshark.exe",
+        "reordercap.exe",
+        "text2pcap.exe",
+        "tshark.exe",
+        "Wireshark.exe"
+    ],
+    "shortcuts": [
+        [
+            "Wireshark.exe",
+            "Wireshark"
+        ]
+    ],
+    "env_set": {
+        "WIRESHARK_CONFIG_DIR": "$dir\\Data",
+        "WIRESHARK_DATA_DIR": "$dir\\Data"
+    },
+    "persist": "Data",
+    "checkver": {
+        "url": "https://www.wireshark.org/update/0/Wireshark/0.0.0/Windows/x86/en-US/stable.xml",
+        "regex": "Version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://1.eu.dl.wireshark.org/win64/all-versions/Wireshark-win64-$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://www.wireshark.org/download/SIGNATURES-$version.txt",
+                    "regex": "SHA256\\($basename\\)=$sha256"
+                }
+            },
+            "32bit": {
+                "url": "https://1.eu.dl.wireshark.org/win32/all-versions/Wireshark-win32-$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://www.wireshark.org/download/SIGNATURES-$version.txt",
+                    "regex": "SHA256\\($basename\\)=$sha256"
+                }
+            }
         }
-      }
     }
-  }
 }

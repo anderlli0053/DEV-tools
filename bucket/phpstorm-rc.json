@@ -1,58 +1,58 @@
 {
-  "version": "2023.2-232.8660.153",
-  "description": "Cross-Platform IDE for PHP by JetBrains. (Release Candidate)",
-  "homepage": "https://www.jetbrains.com/phpstorm/",
-  "license": {
-    "identifier": "Proprietary",
-    "url": "https://www.jetbrains.com/store/license.html"
-  },
-  "url": "https://download.jetbrains.com/webide/PhpStorm-232.8660.153.exe#/dl.7z",
-  "hash": "e27ec945f68a576ec47291aee3476e9250127b433cb01c8a1b9f2d9a6c0ca24e",
-  "extract_to": "IDE",
-  "installer": {
-    "script": [
-      "& \"$bucketsdir\\$bucket\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
-      "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
-    ]
-  },
-  "architecture": {
-    "64bit": {
-      "bin": [
-        [
-          "IDE\\bin\\phpstorm64.exe",
-          "phpstorm"
-        ]
-      ],
-      "shortcuts": [
-        [
-          "IDE\\bin\\phpstorm64.exe",
-          "JetBrains\\PhpStorm"
-        ]
-      ]
+    "version": "2023.2.1-232.9559.43",
+    "description": "Cross-Platform IDE for PHP by JetBrains. (Release Candidate)",
+    "homepage": "https://www.jetbrains.com/phpstorm/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/store/license.html"
     },
-    "32bit": {
-      "bin": "IDE\\bin\\phpstorm.exe",
-      "shortcuts": [
-        [
-          "IDE\\bin\\phpstorm.exe",
-          "JetBrains\\PhpStorm"
+    "url": "https://download.jetbrains.com/webide/PhpStorm-232.9559.43.exe#/dl.7z",
+    "hash": "f6ae72902a5a88cb89e061de2fdc8428ed5dd1f922666e486a90f95a624d78dc",
+    "extract_to": "IDE",
+    "installer": {
+        "script": [
+            "& \"$bucketsdir\\versions\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
+            "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
         ]
-      ]
+    },
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "IDE\\bin\\phpstorm64.exe",
+                    "phpstorm"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "IDE\\bin\\phpstorm64.exe",
+                    "JetBrains\\PhpStorm"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "IDE\\bin\\phpstorm.exe",
+            "shortcuts": [
+                [
+                    "IDE\\bin\\phpstorm.exe",
+                    "JetBrains\\PhpStorm"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "profile"
+    ],
+    "checkver": {
+        "url": "https://data.services.jetbrains.com/products/releases?code=PS&latest=true&platform=zip&type=rc",
+        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
+        "replace": "${ver}-${build}"
+    },
+    "autoupdate": {
+        "url": "https://download.jetbrains.com/webide/PhpStorm-$preReleaseVersion.exe#/dl.7z",
+        "hash": {
+            "url": "$url.sha256"
+        }
     }
-  },
-  "persist": [
-    "IDE\\bin\\idea.properties",
-    "profile"
-  ],
-  "checkver": {
-    "url": "https://data.services.jetbrains.com/products/releases?code=PS&latest=true&platform=zip&type=rc",
-    "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
-    "replace": "${ver}-${build}"
-  },
-  "autoupdate": {
-    "url": "https://download.jetbrains.com/webide/PhpStorm-$preReleaseVersion.exe#/dl.7z",
-    "hash": {
-      "url": "$url.sha256"
-    }
-  }
 }

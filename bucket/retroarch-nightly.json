@@ -1,73 +1,69 @@
 {
-  "version": "2023-07-29",
-  "description": "Frontend for emulators, game engines and media players",
-  "homepage": "https://www.retroarch.com/",
-  "license": {
-    "url": "https://github.com/libretro/RetroArch/blob/master/COPYING",
-    "identifier": "GPL-3.0"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://buildbot.libretro.com/nightly/windows/x86_64/2023-07-29_RetroArch.7z",
-      "hash": "9fb623926d7a475a917c1f66682f38e4d5a1eaba9dc6c3a8a68d364c8f8c6c7d",
-      "extract_dir": "RetroArch-Win64"
+    "version": "nightly",
+    "description": "Frontend for emulators, game engines and media players (nightly)",
+    "homepage": "https://www.retroarch.com/",
+    "license": {
+        "identifier": "GPL-3.0",
+        "url": "https://github.com/libretro/RetroArch/blob/master/COPYING"
     },
-    "32bit": {
-      "url": "https://buildbot.libretro.com/nightly/windows/x86/2023-07-29_RetroArch.7z",
-      "hash": "8d07ad420c5a9326cca4deda64f7cebf62b5b181e4f229f11493d7fbbd3228c6",
-      "extract_dir": "RetroArch-Win32"
-    }
-  },
-  "pre_install": [
-    "if (!(Test-Path \"$persist_dir\\retroarch.cfg\")) {",
-    "    New-Item \"$persist_dir\\retroarch.cfg\" -Type File | Out-Null",
-    "}"
-  ],
-  "bin": [
-    [
-      "retroarch.exe",
-      "retroarch-nightly"
-    ]
-  ],
-  "shortcuts": [
-    [
-      "retroarch.exe",
-      "RetroArch (nightly)"
-    ]
-  ],
-  "persist": [
-    "assets\\wallpapers",
-    "cores",
-    "cheats",
-    "overlays",
-    "playlists",
-    "records",
-    "recordings",
-    "saves",
-    "screenshots",
-    "states",
-    "system",
-    "thumbnails",
-    "retroarch.cfg"
-  ],
-  "checkver": {
-    "url": "https://buildbot.libretro.com/nightly/windows/x86_64/",
-    "regex": "(?smi)(\\d{4}-\\d{2}-\\d{2})_RetroArch\\.7z",
-    "reverse": true
-  },
-  "autoupdate": {
+    "notes": [
+        "ATTENTION: Retroarch requires BIOS/firmware files for some emulation.",
+        "It is recommended to read the libretro docs for each core you plan to use.",
+        "See https://docs.libretro.com/library/bios/ for more information."
+    ],
     "architecture": {
-      "64bit": {
-        "url": "https://buildbot.libretro.com/nightly/windows/x86_64/$version_RetroArch.7z"
-      },
-      "32bit": {
-        "url": "https://buildbot.libretro.com/nightly/windows/x86/$version_RetroArch.7z"
-      }
+        "32bit": {
+            "url": "https://buildbot.libretro.com/nightly/windows/x86/RetroArch.7z",
+            "extract_dir": "RetroArch-Win32"
+        },
+        "64bit": {
+            "url": "https://buildbot.libretro.com/nightly/windows/x86_64/RetroArch.7z",
+            "extract_dir": "RetroArch-Win64"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\retroarch.cfg\")) {",
+        "    New-Item \"$persist_dir\\retroarch.cfg\" -Type File | Out-Null",
+        "}"
+    ],
+    "bin": [
+        [
+            "retroarch.exe",
+            "retroarch-nightly"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "retroarch.exe",
+            "RetroArch (nightly)"
+        ]
+    ],
+    "persist": [
+        "assets\\wallpapers",
+        "cores",
+        "cheats",
+        "overlays",
+        "playlists",
+        "records",
+        "recordings",
+        "saves",
+        "screenshots",
+        "shaders\\presets",
+        "states",
+        "system",
+        "thumbnails",
+        "content_favorites.lpl",
+        "content_history.lpl",
+        "retroarch.cfg"
+    ],
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://buildbot.libretro.com/nightly/windows/x86/RetroArch.7z"
+            },
+            "64bit": {
+                "url": "https://buildbot.libretro.com/nightly/windows/x86_64/RetroArch.7z"
+            }
+        }
     }
-  },
-  "notes": [
-    "ATTENTION: Retroarch requires BIOS/firmware files for some emulation.",
-    "It is recommended to read the libretro docs for each core you plan to use.",
-    "See https://docs.libretro.com/library/bios/ for more information."
-  ]
 }

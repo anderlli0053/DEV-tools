@@ -1,29 +1,29 @@
 {
-  "version": "4.13.0-0.okd-2023-07-23-051208",
-  "description": "OKD is the community distribution of Kubernetes optimized for continuous application development and multi-tenant deployment. OKD adds developer and operations-centric tools on top of Kubernetes to enable rapid application development, easy deployment and scaling, and long-term lifecycle maintenance for small and large teams.",
-  "homepage": "https://okd.io",
-  "license": "Apache-2.0",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.net/https://github.com/openshift/okd/releases/download/4.13.0-0.okd-2023-07-23-051208/openshift-client-windows-4.13.0-0.okd-2023-07-23-051208.zip",
-      "hash": "9a835c1c406b5fa748d9d51c420ca3e482907cbc17920ea1cf5c6470e1a2ddda"
-    }
-  },
-  "bin": "oc.exe",
-  "checkver": {
-    "url": "https://api.github.com/repos/openshift/okd/tags",
-    "jsonpath": "$[0].name"
-  },
-  "autoupdate": {
+    "version": "4.13.0-0.okd-2023-08-18-135805",
+    "description": "OKD is the community distribution of Kubernetes optimized for continuous application development and multi-tenant deployment. OKD adds developer and operations-centric tools on top of Kubernetes to enable rapid application development, easy deployment and scaling, and long-term lifecycle maintenance for small and large teams.",
+    "homepage": "https://okd.io",
+    "license": "Apache-2.0",
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.net/https://github.com/openshift/okd/releases/download/$version/openshift-client-windows-$version.zip",
-        "hash": {
-          "mode": "extract",
-          "url": "https://ghproxy.net/https://github.com/openshift/okd/releases/download/$version/sha256sum.txt",
-          "find": "([a-fA-F0-9]{64})\\s+\\./openshift-client-windows-$version.zip"
+        "64bit": {
+            "url": "https://github.com/openshift/okd/releases/download/4.13.0-0.okd-2023-08-18-135805/openshift-client-windows-4.13.0-0.okd-2023-08-18-135805.zip",
+            "hash": "8ec7338a7c2cce96f175aa54918ea8f622c2982501387206548d10aea7dda272"
         }
-      }
+    },
+    "bin": "oc.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/openshift/okd/tags",
+        "jsonpath": "$[0].name"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/openshift/okd/releases/download/$version/openshift-client-windows-$version.zip",
+                "hash": {
+                    "mode": "extract",
+                    "url": "https://github.com/openshift/okd/releases/download/$version/sha256sum.txt",
+                    "find": "([a-fA-F0-9]{64})\\s+\\./openshift-client-windows-$version.zip"
+                }
+            }
+        }
     }
-  }
 }

@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "description": "A quic-based proxy protocol implementation.",
+  "homepage": "https://github.com/juicity/juicity",
+  "license": "AGPL-3.0-only",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.net/https://github.com/juicity/juicity/releases/download/v0.2.0/juicity-windows-x86_64.zip",
+      "hash": "ccc2a63194116b355740695b72a843089ff64047ccdaf936b6ba07a89cd4de54"
+    },
+    "arm64": {
+      "url": "https://ghproxy.net/https://github.com/juicity/juicity/releases/download/v0.2.0/juicity-windows-arm64.zip",
+      "hash": "e4b64b3873205ef6b6cb8e18bd0c9bec8e044613ad8836b1bbbae2d6ad5112ff"
+    }
+  },
+  "bin": [
+    "juicity-client.exe",
+    "juicity-server.exe"
+  ],
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.net/https://github.com/juicity/juicity/releases/download/v$version/juicity-windows-x86_64.zip"
+      },
+      "arm64": {
+        "url": "https://ghproxy.net/https://github.com/juicity/juicity/releases/download/v$version/juicity-windows-arm64.zip"
+      }
+    }
+  }
+}

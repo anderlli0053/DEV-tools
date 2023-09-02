@@ -1,34 +1,34 @@
 {
-  "version": "4.2.9",
-  "description": "Stream anime torrents, real-time with no waiting for downloads",
-  "homepage": "https://github.com/ThaUnknown/miru",
-  "license": "GPL-3.0-or-later",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.net/https://github.com/ThaUnknown/miru/releases/download/v4.2.9/win-Miru-4.2.9.exe#/dl.7z",
-      "hash": "sha512:512886f8070b167ca231064e9c8fc04cc04c2c3bba7a0e2f2a08b3339b8839ca29768569a0b67e5920679d9a7c6ac2c2b43841f5c48b4611b0342234fbe2e911"
-    }
-  },
-  "pre_install": [
-    "Expand-7zipArchive -Path \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Recurse -Force"
-  ],
-  "checkver": "github",
-  "shortcuts": [
-    [
-      "Miru.exe",
-      "Miru"
-    ]
-  ],
-  "autoupdate": {
+    "version": "4.3.12",
+    "description": "Stream anime torrents, real-time with no waiting for downloads",
+    "homepage": "https://github.com/ThaUnknown/miru",
+    "license": "GPL-3.0-or-later",
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.net/https://github.com/ThaUnknown/miru/releases/download/v$version/win-Miru-$version.exe#/dl.7z",
-        "hash": {
-          "url": "$baseurl/latest.yml",
-          "regex": "sha512:\\s+$base64"
+        "64bit": {
+            "url": "https://github.com/ThaUnknown/miru/releases/download/v4.3.12/win-Miru-4.3.12.exe#/dl.7z",
+            "hash": "sha512:ed3ebeb5a6704605701cbd93040e40aa133b46f252e0095fedb64b0bc33903ab37707489bebba77149568aa6aa6be716ca2c05f753779c3352435c16d1d871a6"
         }
-      }
+    },
+    "pre_install": [
+        "Expand-7zipArchive -Path \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Recurse -Force"
+    ],
+    "checkver": "github",
+    "shortcuts": [
+        [
+            "Miru.exe",
+            "Miru"
+        ]
+    ],
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ThaUnknown/miru/releases/download/v$version/win-Miru-$version.exe#/dl.7z",
+                "hash": {
+                    "url": "$baseurl/latest.yml",
+                    "regex": "sha512:\\s+$base64"
+                }
+            }
+        }
     }
-  }
 }

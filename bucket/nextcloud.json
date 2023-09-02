@@ -1,40 +1,40 @@
 {
-  "version": "3.9.1",
-  "description": "Desktop sync client for Nextcloud, a self-hosted productivity platform",
-  "homepage": "https://nextcloud.com/",
-  "license": "GPL-2.0-or-later",
-  "suggest": {
-    "vcredist": "extras/vcredist2022"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.net/https://github.com/nextcloud-releases/desktop/releases/download/v3.9.1/Nextcloud-3.9.1-x64.msi",
-      "hash": "28cbab97c7568a782244b34a5a8220cc90b0f7ec72a77cf5001c80f5452106ed"
-    }
-  },
-  "extract_dir": "PFiles\\Nextcloud",
-  "bin": [
-    "nextcloudcmd.exe",
-    [
-      "nextcloudcmd.exe",
-      "nextcloud"
-    ]
-  ],
-  "shortcuts": [
-    [
-      "nextcloud.exe",
-      "Nextcloud"
-    ]
-  ],
-  "checkver": {
-    "url": "https://nextcloud.com/install/",
-    "regex": "Nextcloud-([\\d.]+)-x64.msi"
-  },
-  "autoupdate": {
+    "version": "3.9.3",
+    "description": "Desktop sync client for Nextcloud, a self-hosted productivity platform",
+    "homepage": "https://nextcloud.com/",
+    "license": "GPL-2.0-or-later",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.net/https://github.com/nextcloud-releases/desktop/releases/download/v$version/Nextcloud-$version-x64.msi"
-      }
+        "64bit": {
+            "url": "https://github.com/nextcloud-releases/desktop/releases/download/v3.9.3/Nextcloud-3.9.3-x64.msi",
+            "hash": "06d730db210f3652c6640738a8a425d99a418279478e655e3bdb1f23de27db66"
+        }
+    },
+    "extract_dir": "PFiles\\Nextcloud",
+    "bin": [
+        "nextcloudcmd.exe",
+        [
+            "nextcloudcmd.exe",
+            "nextcloud"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "nextcloud.exe",
+            "Nextcloud"
+        ]
+    ],
+    "checkver": {
+        "url": "https://nextcloud.com/install/",
+        "regex": "Nextcloud-([\\d.]+)-x64.msi"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/nextcloud-releases/desktop/releases/download/v$version/Nextcloud-$version-x64.msi"
+            }
+        }
     }
-  }
 }

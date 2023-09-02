@@ -1,58 +1,58 @@
 {
-  "version": "3782",
-  "description": "Nintendo Switch emulator",
-  "homepage": "https://github.com/pineappleEA/pineapple-src",
-  "license": {
-    "url": "https://github.com/pineappleEA/pineapple-src/blob/main/LICENSE",
-    "identifier": "GPL-2.0"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.net/https://github.com/pineappleEA/pineapple-src/releases/download/EA-3782/Windows-Yuzu-EA-3782.zip",
-      "hash": "f1d2a5473d861b6734c2380dfa205dceb3c8745601d2289f0b43f4e34180fed4"
-    }
-  },
-  "extract_dir": "yuzu-windows-msvc-early-access",
-  "pre_install": [
-    "if (!(Test-Path \"$persist_dir\")) {",
-    "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
-    "   New-item \"$persist_dir\\user\" -ItemType Directory | Out-Null",
-    "   if (Test-Path \"$env:APPDATA\\yuzu\") {",
-    "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
-    "       Copy-Item -Path \"$env:APPDATA\\yuzu\\*\" -Destination \"$persist_dir\\user\" -Recurse",
-    "       Remove-Item -Path \"$env:APPDATA\\yuzu\" -Recurse",
-    "   }",
-    "}"
-  ],
-  "bin": [
-    [
-      "yuzu.exe",
-      "yuzu-dev"
-    ],
-    [
-      "yuzu-cmd.exe",
-      "yuzu-cmd-dev"
-    ]
-  ],
-  "shortcuts": [
-    [
-      "yuzu.exe",
-      "Yuzu (dev)"
-    ]
-  ],
-  "persist": [
-    "user",
-    "plugins"
-  ],
-  "checkver": {
-    "github": "https://github.com/pineappleEA/pineapple-src",
-    "regex": "EA-(\\d+)"
-  },
-  "autoupdate": {
+    "version": "EA-3853",
+    "description": "A Yuzu Early Access fork with Linux-specific patches",
+    "homepage": "https://github.com/pineappleEA/pineapple-src",
+    "license": {
+        "identifier": "GPL-2.0",
+        "url": "https://github.com/pineappleEA/pineapple-src/blob/main/LICENSE"
+    },
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.net/https://github.com/pineappleEA/pineapple-src/releases/download/EA-$version/Windows-Yuzu-EA-$version.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/pineappleEA/pineapple-src/releases/download/EA-3853/Windows-Yuzu-EA-3853.zip",
+            "hash": "fac2c2df0582b21ab7545bba42dced2380753f69c23fcae50f717a740a11d22e"
+        }
+    },
+    "extract_dir": "yuzu-windows-msvc-early-access",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   New-item \"$persist_dir\\user\" -ItemType Directory | Out-Null",
+        "   if (Test-Path \"$env:APPDATA\\yuzu\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:APPDATA\\yuzu\\*\" -Destination \"$persist_dir\\user\" -Recurse",
+        "       Remove-Item -Path \"$env:APPDATA\\yuzu\" -Recurse",
+        "   }",
+        "}"
+    ],
+    "bin": [
+        [
+            "yuzu.exe",
+            "yuzu-dev"
+        ],
+        [
+            "yuzu-cmd.exe",
+            "yuzu-cmd-dev"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "yuzu.exe",
+            "Yuzu (Development)"
+        ]
+    ],
+    "persist": [
+        "user",
+        "plugins"
+    ],
+    "checkver": {
+        "github": "https://github.com/pineappleEA/pineapple-src",
+        "regex": "(EA-\\d+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pineappleEA/pineapple-src/releases/download/$version/Windows-Yuzu-$version.zip"
+            }
+        }
     }
-  }
 }

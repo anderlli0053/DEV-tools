@@ -1,29 +1,29 @@
 {
-  "version": "1690638458",
-  "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
-  "homepage": "https://ffmpeg.org",
-  "license": "GPL-3.0-or-later",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.net/https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip",
-      "hash": "778b7de555c51faa3a9beadec683c4e682a171afaecdcea1169f51fa0595dfa1",
-      "extract_dir": "ffmpeg-master-latest-win64-gpl"
-    }
-  },
-  "bin": [
-    "bin\\ffmpeg.exe",
-    "bin\\ffplay.exe",
-    "bin\\ffprobe.exe"
-  ],
-  "checkver": {
-    "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repositories/292087234/releases/latest).published_at -UFormat %s } catch { '' }",
-    "regex": "\\A(\\d+)\\Z"
-  },
-  "autoupdate": {
+    "version": "1693680140",
+    "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
+    "homepage": "https://ffmpeg.org",
+    "license": "GPL-3.0-or-later",
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.net/https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip",
+            "hash": "f9e558d0943f531f01db457e8a2721cf3c538ffe3310d50f70c6c62e49b4326b",
+            "extract_dir": "ffmpeg-master-latest-win64-gpl"
+        }
+    },
+    "bin": [
+        "bin\\ffmpeg.exe",
+        "bin\\ffplay.exe",
+        "bin\\ffprobe.exe"
+    ],
+    "checkver": {
+        "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repositories/292087234/releases/latest).published_at -UFormat %s } catch { '' }",
+        "regex": "\\A(\\d+)\\Z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl.zip"
+            }
+        }
     }
-  }
 }

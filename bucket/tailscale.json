@@ -1,80 +1,80 @@
 {
-  "version": "1.46.1",
-  "description": "Tailscale a WireGuard based mesh VPN, used to connect your computers and other devices together securely without proxies.",
-  "homepage": "https://tailscale.com",
-  "license": "BSD-3-Clause",
-  "notes": [
-    "Start Tailscale with Windows by running:",
-    "reg import \"$dir\\add-startup.reg\""
-  ],
-  "architecture": {
-    "64bit": {
-      "url": "https://pkgs.tailscale.com/stable/tailscale-setup-1.46.1-amd64.msi",
-      "hash": "6fd93bdf3007cfcf4a23aac726bfae437d7ed5fd4db4d99d7e678ce4bde575ef"
-    },
-    "32bit": {
-      "url": "https://pkgs.tailscale.com/stable/tailscale-setup-1.46.1-x86.msi",
-      "hash": "95e045af1c106837c7c34601677a05422322e3a4bd0e971c1937081b9d1824bf"
-    },
-    "arm64": {
-      "url": "https://pkgs.tailscale.com/stable/tailscale-setup-1.46.1-arm64.msi",
-      "hash": "9c95de1e4fd13d7ffe89f606685020698a6059d2924efd0097f10b80d4d46181"
-    }
-  },
-  "pre_install": "if (!(is_admin)) {error 'This package requires admin rights to install'; break}",
-  "post_install": [
-    "tailscale-ipn.exe /install",
-    "$dirpath = $dir.Replace('\\', '\\\\')",
-    "'add-startup.reg', 'remove-startup.reg' | ForEach-Object {",
-    "    if (Test-Path \"$bucketsdir\\$bucket\\scripts\\$app\\$_\") {",
-    "        $content = Get-Content \"$bucketsdir\\$bucket\\scripts\\$app\\$_\"",
-    "        $content = $content.Replace('$dir', $dirpath)",
-    "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
-    "        $content | Set-Content -Path \"$dir\\$_\"",
-    "    }",
-    "}"
-  ],
-  "pre_uninstall": [
-    "if (!(is_admin)) { error 'Admin rights are required to uninstall'; break }",
-    "Stop-Process -Name 'tailscale-ipn' -Force -ErrorAction SilentlyContinue | Out-Null",
-    "Stop-Service -Name 'Tailscale' -Force -ErrorAction SilentlyContinue | Out-Null"
-  ],
-  "uninstaller": {
-    "script": [
-      "tailscale-ipn.exe /uninstall",
-      "if ($cmd -eq 'uninstall') { reg import \"$dir\\remove-startup.reg\" }"
-    ]
-  },
-  "extract_dir": "Tailscale",
-  "bin": [
-    "tailscale.exe",
-    "tailscale-ipn.exe",
-    "tailscaled.exe"
-  ],
-  "shortcuts": [
-    [
-      "tailscale-ipn.exe",
-      "Tailscale"
-    ]
-  ],
-  "checkver": {
-    "url": "https://pkgs.tailscale.com/stable/",
-    "regex": "tailscale-setup-([\\d.]+)-amd64\\.msi"
-  },
-  "autoupdate": {
+    "version": "1.48.1",
+    "description": "Tailscale a WireGuard based mesh VPN, used to connect your computers and other devices together securely without proxies.",
+    "homepage": "https://tailscale.com",
+    "license": "BSD-3-Clause",
+    "notes": [
+        "Start Tailscale with Windows by running:",
+        "reg import \"$dir\\add-startup.reg\""
+    ],
     "architecture": {
-      "64bit": {
-        "url": "https://pkgs.tailscale.com/stable/tailscale-setup-$version-amd64.msi"
-      },
-      "32bit": {
-        "url": "https://pkgs.tailscale.com/stable/tailscale-setup-$version-x86.msi"
-      },
-      "arm64": {
-        "url": "https://pkgs.tailscale.com/stable/tailscale-setup-$version-arm64.msi"
-      }
+        "64bit": {
+            "url": "https://pkgs.tailscale.com/stable/tailscale-setup-1.48.1-amd64.msi",
+            "hash": "cf10ec1f07b54bd3b456e750e13f24313f8b27186f651d35546844e383104b54"
+        },
+        "32bit": {
+            "url": "https://pkgs.tailscale.com/stable/tailscale-setup-1.48.1-x86.msi",
+            "hash": "c542e95eff1079afc2df31db14b2954a07acfe0c62abebebd5e8648c50e437c7"
+        },
+        "arm64": {
+            "url": "https://pkgs.tailscale.com/stable/tailscale-setup-1.48.1-arm64.msi",
+            "hash": "b67010fee1c92839023ca633886ddda23d5e66762571c270723a38ff911dbf07"
+        }
     },
-    "hash": {
-      "url": "$url.sha256"
+    "pre_install": "if (!(is_admin)) {error 'This package requires admin rights to install'; break}",
+    "post_install": [
+        "tailscale-ipn.exe /install",
+        "$dirpath = $dir.Replace('\\', '\\\\')",
+        "'add-startup.reg', 'remove-startup.reg' | ForEach-Object {",
+        "    if (Test-Path \"$bucketsdir\\extras\\scripts\\$app\\$_\") {",
+        "        $content = Get-Content \"$bucketsdir\\extras\\scripts\\$app\\$_\"",
+        "        $content = $content.Replace('$dir', $dirpath)",
+        "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
+        "        $content | Set-Content -Path \"$dir\\$_\"",
+        "    }",
+        "}"
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) { error 'Admin rights are required to uninstall'; break }",
+        "Stop-Process -Name 'tailscale-ipn' -Force -ErrorAction SilentlyContinue | Out-Null",
+        "Stop-Service -Name 'Tailscale' -Force -ErrorAction SilentlyContinue | Out-Null"
+    ],
+    "uninstaller": {
+        "script": [
+            "tailscale-ipn.exe /uninstall",
+            "if ($cmd -eq 'uninstall') { reg import \"$dir\\remove-startup.reg\" }"
+        ]
+    },
+    "extract_dir": "Tailscale",
+    "bin": [
+        "tailscale.exe",
+        "tailscale-ipn.exe",
+        "tailscaled.exe"
+    ],
+    "shortcuts": [
+        [
+            "tailscale-ipn.exe",
+            "Tailscale"
+        ]
+    ],
+    "checkver": {
+        "url": "https://pkgs.tailscale.com/stable/",
+        "regex": "tailscale-setup-([\\d.]+)-amd64\\.msi"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://pkgs.tailscale.com/stable/tailscale-setup-$version-amd64.msi"
+            },
+            "32bit": {
+                "url": "https://pkgs.tailscale.com/stable/tailscale-setup-$version-x86.msi"
+            },
+            "arm64": {
+                "url": "https://pkgs.tailscale.com/stable/tailscale-setup-$version-arm64.msi"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
     }
-  }
 }

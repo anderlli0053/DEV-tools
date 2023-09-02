@@ -1,39 +1,39 @@
 {
-  "version": "23.0.0.7",
-  "description": "Server runtime available to JavaTM developers",
-  "homepage": "https://openliberty.io/",
-  "license": "EPL-1.0",
-  "notes": "server.bat is aliased to wlp, client.bat is aliased to wlp-client",
-  "suggest": {
-    "JDK": "java/openjdk"
-  },
-  "url": "https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/release/23.0.0.7/openliberty-23.0.0.7.zip",
-  "hash": "a4fd7dfdee39b73bc4212e7353e4adfc09afc80a87c166427e0bb2877abef287",
-  "extract_dir": "wlp",
-  "bin": [
-    "bin\\binaryLog.bat",
-    [
-      "bin\\client.bat",
-      "wlp-client"
+    "version": "23.0.0.8",
+    "description": "Server runtime available to JavaTM developers",
+    "homepage": "https://openliberty.io/",
+    "license": "EPL-1.0",
+    "notes": "server.bat is aliased to wlp, client.bat is aliased to wlp-client",
+    "suggest": {
+        "JDK": "java/openjdk"
+    },
+    "url": "https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/release/23.0.0.8/openliberty-23.0.0.8.zip",
+    "hash": "21a112139f9df393f0a336ab4f7a0040d2acfc7895342fbd939f8e05ed7dde73",
+    "extract_dir": "wlp",
+    "bin": [
+        "bin\\binaryLog.bat",
+        [
+            "bin\\client.bat",
+            "wlp-client"
+        ],
+        "bin\\ddlGen.bat",
+        "bin\\pluginUtility.bat",
+        "bin\\productInfo.bat",
+        "bin\\securityUtility.bat",
+        [
+            "bin\\server.bat",
+            "wlp"
+        ],
+        "bin\\serverSchemaGen.bat",
+        "bin\\springBootUtility.bat"
     ],
-    "bin\\ddlGen.bat",
-    "bin\\pluginUtility.bat",
-    "bin\\productInfo.bat",
-    "bin\\securityUtility.bat",
-    [
-      "bin\\server.bat",
-      "wlp"
-    ],
-    "bin\\serverSchemaGen.bat",
-    "bin\\springBootUtility.bat"
-  ],
-  "persist": "usr",
-  "checkver": {
-    "url": "https://openliberty.io/api/builds/data",
-    "jsonpath": "$.latest_releases.runtime.driver_location",
-    "regex": "openliberty-([\\d.]+)\\.zip"
-  },
-  "autoupdate": {
-    "url": "https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/release/$version/openliberty-$version.zip"
-  }
+    "persist": "usr",
+    "checkver": {
+        "url": "https://openliberty.io/api/builds/data",
+        "jsonpath": "$.latest_releases.runtime.driver_location",
+        "regex": "openliberty-([\\d.]+)\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/release/$version/openliberty-$version.zip"
+    }
 }

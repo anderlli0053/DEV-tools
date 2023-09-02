@@ -1,34 +1,34 @@
 {
-  "version": "2.9.1",
-  "description": "Unofficial native GUI reimplementation for GOG and Epic Games Launcher",
-  "homepage": "https://heroicgameslauncher.com/",
-  "license": "GPL-3.0",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.net/https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.9.1/Heroic-2.9.1-Setup-x64.exe#/dl.7z",
-      "hash": "sha512:35cb35c89fc934aebfa4d10a0ee34d4c82c5e5a9e52a7022f521a5aa391d797398035fb14e671c35ebe5c1c4f607e2479376b20b99fb7952390ffa869621dda5",
-      "pre_install": "Remove-Item \"$dir\\*.dll\"; Expand-7ZipArchive \"$dir\\app-64.7z\" \"$dir\" -Removal"
-    }
-  },
-  "extract_dir": "$PLUGINSDIR",
-  "shortcuts": [
-    [
-      "Heroic.exe",
-      "Heroic"
-    ]
-  ],
-  "checkver": {
-    "github": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
-  },
-  "autoupdate": {
+    "version": "2.9.1",
+    "description": "Unofficial native GUI reimplementation for GOG and Epic Games Launcher",
+    "homepage": "https://heroicgameslauncher.com/",
+    "license": "GPL-3.0",
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.net/https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v$version/Heroic-$version-Setup-x64.exe#/dl.7z"
-      }
+        "64bit": {
+            "url": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.9.1/Heroic-2.9.1-Setup-x64.exe#/dl.7z",
+            "hash": "sha512:35cb35c89fc934aebfa4d10a0ee34d4c82c5e5a9e52a7022f521a5aa391d797398035fb14e671c35ebe5c1c4f607e2479376b20b99fb7952390ffa869621dda5",
+            "pre_install": "Remove-Item \"$dir\\*.dll\"; Expand-7ZipArchive \"$dir\\app-64.7z\" \"$dir\" -Removal"
+        }
     },
-    "hash": {
-      "url": "$baseurl/latest.yml",
-      "regex": "url:\\s(?<fname>[\\w.-]+)\\n\\s+sha512:\\s$sha512"
+    "extract_dir": "$PLUGINSDIR",
+    "shortcuts": [
+        [
+            "Heroic.exe",
+            "Heroic"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v$version/Heroic-$version-Setup-x64.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/latest.yml",
+            "regex": "url:\\s(?<fname>[\\w.-]+)\\n\\s+sha512:\\s$sha512"
+        }
     }
-  }
 }
