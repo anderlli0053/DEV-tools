@@ -1,34 +1,37 @@
 {
-    "version": "1.2",
-    "description": "The 7-Zip derivative intended for the modern Windows experience.",
+    "version": "2.0.450",
+    "description": "The 7-Zip derivative intended for the modern Windows experience",
     "homepage": "https://github.com/M2Team/NanaZip",
     "license": "MIT",
-    "url": "https://github.com/M2Team/NanaZip/releases/download/1.2/40174MouriNaruto.NanaZip_1.2.252.0_gnj4mf6z9tkrc.msixbundle#/dl.7z",
-    "hash": "2fb1d5a28bcf181e814ac1d99a586abfaa3a3a152e693b59614ad2be450477f5",
-    "architecture": {
-        "64bit": {
-            "pre_install": "Expand-7zipArchive \"$dir\\NanaZipPackage_*_x64.msix\" \"$dir\""
-        },
-        "32bit": {
-            "pre_install": "Expand-7zipArchive \"$dir\\NanaZipPackage_*_x86.msix\" \"$dir\""
-        },
-        "arm64": {
-            "pre_install": "Expand-7zipArchive \"$dir\\NanaZipPackage_*_ARM64.msix\" \"$dir\""
-        }
-    },
-    "bin": "NanaZipC.exe",
+    "url": "https://github.com/M2Team/NanaZip/releases/download/2.0.450/40174MouriNaruto.NanaZip_2.0.450.0_gnj4mf6z9tkrc.msixbundle#/dl.7z",
+    "hash": "2bee289d9e026255073ddcee8082e8d0ad8496b9fe9fe8f8a29080a81a95872e",
+    "pre_install": [
+        "Remove-Item -Path \"$dir\\*\" -Exclude *.msix -Recurse -Force",
+        "Expand-7zipArchive -Path \"$dir\\*$(switch ($architecture) { '64bit' { 'x64' } '32bit' { 'x86' } 'arm64' { 'ARM64' } }).msix\"",
+        "Remove-Item -Path \"$dir\\*\" -Include '*.msix', 'Appx*', '?Content*', 'Code*' -Recurse -Force"
+    ],
+    "bin": [
+        [
+            "NanaZipC.exe",
+            "7z"
+        ],
+        [
+            "NanaZipG.exe",
+            "7zG"
+        ]
+    ],
     "shortcuts": [
         [
             "NanaZip.exe",
             "NanaZip"
         ]
     ],
-    "post_install": "Remove-Item \"$dir\\*.msix\" -Force -Recurse",
-    "checkver": {
-        "url": "https://github.com/M2Team/NanaZip/releases",
-        "regex": "NanaZip ([\\d.]+) \\(([\\d.]+)\\)"
-    },
+    "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/M2Team/NanaZip/releases/download/$match1/40174MouriNaruto.NanaZip_$match2_gnj4mf6z9tkrc.msixbundle#/dl.7z"
+        "url": "https://github.com/M2Team/NanaZip/releases/download/$version/40174MouriNaruto.NanaZip_$version.0_gnj4mf6z9tkrc.msixbundle#/dl.7z",
+        "hash": {
+            "url": "https://github.com/M2Team/NanaZip/releases/tag/$version",
+            "regex": "(?s)$basename.*?$sha256"
+        }
     }
 }

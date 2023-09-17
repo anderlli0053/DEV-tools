@@ -1,6 +1,18 @@
+# by Andrew Poženel #
+
+
 import os
 
 def remove_duplicates_in_filename(path):
+    """
+    Remove files with duplicate names in the specified directory.
+    
+    Args:
+        path (str): The directory path where duplicates should be removed.
+        
+    Raises:
+        OSError: If an error occurs during file removal.
+    """
     try:
         for filename in os.listdir(path):
             full_path = os.path.join(path, filename)
