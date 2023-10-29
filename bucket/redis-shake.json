@@ -1,29 +1,32 @@
 {
-  "version": "2.1.2",
-  "description": "A tool for synchronizing data between two redis databases.",
-  "homepage": "https://github.com/alibaba/RedisShake",
+  "version": "4.0.2",
+  "description": "RedisShake is a Redis data processing and migration tool.",
+  "homepage": "https://github.com/tair-opensource/RedisShake",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.net/https://github.com/alibaba/RedisShake/releases/download/release-v2.1.2-20220329/release-v2.1.2-20220329.tar.gz",
-      "hash": "396ef5a09f98786126486d1cd863eef233d01a89a69b9e17ef16684fc4eaff13"
+      "url": "https://ghproxy.com/https://github.com/tair-opensource/RedisShake/releases/download/v4.0.2/redis-shake-windows-amd64.tar.gz",
+      "hash": "8d9afb137803660322900568bbbcb6cb6d8fec7effaaef341743bb98fd53c5e4"
+    },
+    "arm64": {
+      "url": "https://ghproxy.com/https://github.com/tair-opensource/RedisShake/releases/download/v4.0.2/redis-shake-windows-arm64.tar.gz",
+      "hash": "5bc4d60e1ead782fa5d77b8898bdf76813edb9eff65f9f76ae5c3ec2038d634b"
     }
   },
-  "extract_dir": "bin",
-  "pre_install": [
-    "Rename-Item -Path \"$dir\\redis-shake.windows\" -NewName 'redis-shake.exe'",
-    "Remove-Item \"$dir\\*.linux\", \"$dir\\*.darwin\" -Force"
-  ],
+  "pre_install": "Rename-Item -Path \"$dir\\redis-shake\" -NewName 'redis-shake.exe'",
   "bin": "redis-shake.exe",
-  "persist": "redis-shake.conf",
+  "persist": "shake.toml",
   "checkver": {
-    "url": "https://github.com/alibaba/RedisShake/releases/latest",
-    "regex": "/tag/release-v(?<version>[\\d.]+)-(?<date>\\d+)"
+    "url": "https://github.com/tair-opensource/RedisShake/releases/latest",
+    "regex": "/RedisShake/tree/v([^/]+?)\""
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.net/https://github.com/alibaba/RedisShake/releases/download/release-v$matchVersion-$matchDate/release-v$matchVersion-$matchDate.tar.gz"
+        "url": "https://ghproxy.com/https://github.com/tair-opensource/RedisShake/releases/download/v$version/redis-shake-windows-amd64.tar.gz"
+      },
+      "arm64": {
+        "url": "https://ghproxy.com/https://github.com/tair-opensource/RedisShake/releases/download/v$version/redis-shake-windows-arm64.tar.gz"
       }
     }
   }

@@ -1,23 +1,24 @@
 {
-  "version": "3.18.0",
+  "version": "8.3.0",
   "description": "API client for GraphQL, REST, and gRPC (CLI)",
   "homepage": "https://insomnia.rest/products/inso",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.net/https://github.com/Kong/insomnia/releases/download/lib%403.18.0/inso-windows-3.18.0.zip",
-      "hash": "6b76240659f64456620ce2ea58933d434533169e5786862057cbfc72abfcc4be"
+      "url": "https://ghproxy.com/https://github.com/Kong/insomnia/releases/download/lib%408.3.0/inso-windows-8.3.0.zip",
+      "hash": "0466c57c4a5b416f507ea9904768d84234721b0af7285b1308db6a2b7abdde05"
     }
   },
   "bin": "inso.exe",
   "checkver": {
     "url": "https://api.github.com/repos/Kong/insomnia/releases",
-    "regex": "lib@([\\d.]+)\""
+    "jsonpath": "$..tag_name",
+    "regex": "lib@([\\d.]+)"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.net/https://github.com/Kong/insomnia/releases/download/lib%40$version/inso-windows-$version.zip"
+        "url": "https://ghproxy.com/https://github.com/Kong/insomnia/releases/download/lib%40$version/inso-windows-$version.zip"
       }
     }
   }

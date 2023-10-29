@@ -1,54 +1,54 @@
 {
-    "version": "116.0b8",
-    "description": "Developer builds of Firefox: the popular open source web browser.",
-    "homepage": "https://www.mozilla.org/zh-CN/firefox/developer/",
-    "license": "MPL-2.0",
+  "version": "120.0b3",
+  "description": "Developer builds of Firefox: the popular open source web browser.",
+  "homepage": "https://www.mozilla.org/zh-CN/firefox/developer/",
+  "license": "MPL-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/120.0b3/win64/zh-CN/Firefox%20Setup%20120.0b3.exe#/firefox-developer.7z",
+      "hash": "sha512:10582507b614acf44fa1d41780e3d20d6a658810dd682f0c3df08e1ac3e8259ba45bc733546a3d99442eb2e4fa1131690be2ea3ed1d17efbf1c015d8906ca9d1"
+    },
+    "32bit": {
+      "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/120.0b3/win32/zh-CN/Firefox%20Setup%20120.0b3.exe#/firefox-developer.7z",
+      "hash": "sha512:9a420c813effc84ce4ca9eb713511622c926bb0aa93cdcdec2f5ea6f29a57a890762a8458694dae5b9d5474395a0dd240eb2a718d953b21b857e1567ca2a6627"
+    }
+  },
+  "extract_dir": "core",
+  "bin": [
+    [
+      "firefox.exe",
+      "firefox-developer"
+    ]
+  ],
+  "shortcuts": [
+    [
+      "firefox.exe",
+      "Firefox Developer Edition"
+    ]
+  ],
+  "persist": "profile-portable",
+  "checkver": {
+    "url": "https://aus5.mozilla.org/update/6/Firefox/93.0/_/WINNT_x86_64-msvc-x64/zh-CN/aurora/_/_/_/_/update.xml",
+    "xpath": "/updates/update/patch/@URL",
+    "regex": "devedition-([\\db.]+)-"
+  },
+  "autoupdate": {
     "architecture": {
-        "64bit": {
-            "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/116.0b8/win64/zh-CN/Firefox%20Setup%20116.0b8.exe#/firefox-developer.7z",
-            "hash": "sha512:a26912ad003c28b6a0cd73f273f12d1249552b055211862c0a94f0a218100de2363b4fe96d5dca584a74177a2ff52418012c1c55df736c240e76380ff9d08bd3"
-        },
-        "32bit": {
-            "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/116.0b8/win32/zh-CN/Firefox%20Setup%20116.0b8.exe#/firefox-developer.7z",
-            "hash": "sha512:b6fcfecaa14a365bf95db7cefbfdcc0471e05399a9f36269372f355ceb0cb41a5e398a3a17b2277bbf9c1b946882a82ad0203d7903a670ee84a48d8bd2ba4577"
+      "64bit": {
+        "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/$version/win64/zh-CN/Firefox%20Setup%20$version.exe#/firefox-developer.7z",
+        "hash": {
+          "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/$version/SHA512SUMS",
+          "regex": "$sha512\\s+win64/zh-CN/$basename"
         }
-    },
-    "extract_dir": "core",
-    "bin": [
-        [
-            "firefox.exe",
-            "firefox-developer"
-        ]
-    ],
-    "shortcuts": [
-        [
-            "firefox.exe",
-            "Firefox Developer Edition"
-        ]
-    ],
-    "persist": "profile-portable",
-    "checkver": {
-        "url": "https://aus5.mozilla.org/update/6/Firefox/93.0/_/WINNT_x86_64-msvc-x64/zh-CN/aurora/_/_/_/_/update.xml",
-        "xpath": "/updates/update/patch/@URL",
-        "regex": "devedition-([\\db.]+)-"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/$version/win64/zh-CN/Firefox%20Setup%20$version.exe#/firefox-developer.7z",
-                "hash": {
-                    "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/$version/SHA512SUMS",
-                    "regex": "$sha512\\s+win64/zh-CN/$basename"
-                }
-            },
-            "32bit": {
-                "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/$version/win32/zh-CN/Firefox%20Setup%20$version.exe#/firefox-developer.7z",
-                "hash": {
-                    "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/$version/SHA512SUMS",
-                    "regex": "$sha512\\s+win32/zh-CN/$basename"
-                }
-            }
+      },
+      "32bit": {
+        "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/$version/win32/zh-CN/Firefox%20Setup%20$version.exe#/firefox-developer.7z",
+        "hash": {
+          "url": "https://download-installer.cdn.mozilla.net/pub/devedition/releases/$version/SHA512SUMS",
+          "regex": "$sha512\\s+win32/zh-CN/$basename"
         }
-    },
-    "notes": "To recover persisted profile, you need to open the Profile Manager with `firefox-developer -P` and create by selecting the portable profile directory."
+      }
+    }
+  },
+  "notes": "To recover persisted profile, you need to open the Profile Manager with `firefox-developer -P` and create by selecting the portable profile directory."
 }

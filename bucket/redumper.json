@@ -1,0 +1,35 @@
+{
+  "version": "241",
+  "description": "A low level CD dumper utility.",
+  "homepage": "https://github.com/superg/redumper",
+  "license": "GPL-3.0-only",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.com/https://github.com/superg/redumper/releases/download/build_241/redumper-2023.10.28_build241-win64.zip",
+      "extract_dir": "redumper-2023.10.28_build241-win64\\bin",
+      "hash": "105288a70015c3b8670f3406eb8cff3258bf90ae67382a063c5f4d0b09a91dfb"
+    },
+    "32bit": {
+      "url": "https://ghproxy.com/https://github.com/superg/redumper/releases/download/build_241/redumper-2023.10.28_build241-win32.zip",
+      "extract_dir": "redumper-2023.10.28_build241-win32\\bin",
+      "hash": "70719c06275a4e34df3ff9e265c75e0003c930f138ba696438519f14850a8633"
+    }
+  },
+  "bin": "redumper.exe",
+  "checkver": {
+    "url": "https://api.github.com/repos/superg/redumper/releases/latest",
+    "regex": "redumper-(?<date>\\d{4}.\\d{2}.\\d{2})_build(\\d+)-win64.zip"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.com/https://github.com/superg/redumper/releases/download/build_$version/redumper-$matchDate_build$version-win64.zip",
+        "extract_dir": "redumper-$matchDate_build$version-win64\\bin"
+      },
+      "32bit": {
+        "url": "https://ghproxy.com/https://github.com/superg/redumper/releases/download/build_$version/redumper-$matchDate_build$version-win32.zip",
+        "extract_dir": "redumper-$matchDate_build$version-win32\\bin"
+      }
+    }
+  }
+}

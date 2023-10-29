@@ -1,22 +1,20 @@
 {
-    "homepage": "http://www.feiq18.com/",
-    "license": "Instant messenger in LAN",
-    "version": "2013",
-    "url": "http://feiq18.com/down/feiq.zip",
-    "hash": "0611d7963d25e47ee87d8859c225d1d9b087b2f5fe27152906f04e94fe9e5c72",
-    "bin": "FeiQ.exe",
-    "shortcuts": [
-        [
-            "FeiQ.exe",
-            "FeiQ"
-        ]
-    ],
-    "persist": "feiq",
-    "checkver": {
-        "url": "http://www.feiq18.com/config_nav.php?id=19",
-        "regex": "<strong>����(\\d+)</strong>"
-    },
-    "autoupdate": {
-        "url": "http://feiq18.com/down/feiq.zip"
-    }
+  "version": "3.0.0.2",
+  "description": "飞秋(FeiQ)是一款绿色免费的局域网聊天软件，兼容飞鸽传书(IPMSG)协议",
+  "homepage": "http://www.feiq18.com/",
+  "license": "Freeware",
+  "url": "http://feiq18.com/down/feiq.zip",
+  "hash": "0611d7963d25e47ee87d8859c225d1d9b087b2f5fe27152906f04e94fe9e5c72",
+  "bin": "FeiQ.exe",
+  "shortcuts": [
+    [
+      "FeiQ.exe",
+      "飞秋"
+    ]
+  ],
+  "pre_install": "if (!(Test-Path \"$persist_dir\\feiq.ini\")) { Set-Content -Encoding ASCII -Path \"$dir\\feiq.ini\" -Value $null }",
+  "persist": [
+    "feiq.ini",
+    "feiq"
+  ]
 }

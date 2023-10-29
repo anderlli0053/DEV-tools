@@ -1,12 +1,12 @@
 {
-    "version": "8.7.5",
+    "version": "8.10.0",
     "description": "A fast and disk space efficient Node package manager.",
     "homepage": "https://pnpm.io/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/pnpm/pnpm/releases/download/v8.7.5/pnpm-win-x64.exe#/pnpm.exe",
-            "hash": "a5af3ce3fa3a2373f0306dfcadb6e979ae72e5301739f9f6fa3e1e1d49d4ec78"
+            "url": "https://github.com/pnpm/pnpm/releases/download/v8.10.0/pnpm-win-x64.exe#/pnpm.exe",
+            "hash": "f341791674606aa5a02fd318b25ae1d34e44138dc0f7b037ff4e47ee550021ba"
         }
     },
     "bin": "pnpm.exe",
@@ -16,7 +16,7 @@
             "$auth = Get-GitHubToken",
             "$head = @{}",
             "if($auth) { $head.add('authorization', \"Bearer $auth\") }",
-            "$url = 'https://api.github.com/repos/pnpm/pnpm/releases'",
+            "$url = 'https://api.github.com/repositories/50565430/releases'",
             "$latest_ver = [Version]::new(0,0,0,0) # note: Powershell 5 does not support casting 'int' or 'float' to 'System.Version'",
             "$releases = $(Invoke-WebRequest -Headers $head $url).Content | ConvertFrom-Json",
             "$releases | ForEach-Object {",

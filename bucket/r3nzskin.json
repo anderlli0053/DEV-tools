@@ -1,0 +1,41 @@
+{
+  "version": "3.2.1",
+  "description": "Skin changer for League of Legends (LOL)",
+  "homepage": "https://github.com/R3nzTheCodeGOD/R3nzSkin",
+  "license": {
+    "identifier": "MIT license",
+    "url": "https://github.com/R3nzTheCodeGOD/R3nzSkin/blob/main/LICENSE"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.com/https://github.com/R3nzTheCodeGOD/R3nzSkin/releases/download/v3.2.1/R3nzSkin.zip",
+      "hash": "62aeadfd90e83b943077ec295f6d61b41b86b074cc735c58dd043a264aaea5fb"
+    }
+  },
+  "installer": {
+    "script": [
+      "ensure \"$persist_dir\" | Out-Null",
+      "New-Item \"$env:USERPROFILE\\Documents\\R3nzSkin\" -ItemType Junction -Target \"$persist_dir\" | Out-Null"
+    ]
+  },
+  "uninstaller": {
+    "script": "Remove-Item \"$env:USERPROFILE\\Documents\\R3nzSkin\" -Recurse -Force -ErrorAction 'SilentlyContinue'"
+  },
+  "shortcuts": [
+    [
+      "R3nzSkin_Injector.exe",
+      "R3nzSkin_Injector"
+    ]
+  ],
+  "checkver": {
+    "url": "https://api.github.com/repos/R3nzTheCodeGOD/R3nzSkin/releases",
+    "regex": "/releases/tag/v([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.com/https://github.com/R3nzTheCodeGOD/R3nzSkin/releases/download/v$version/R3nzSkin.zip"
+      }
+    }
+  }
+}

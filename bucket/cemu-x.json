@@ -1,51 +1,51 @@
 {
-    "$schema": "https://ghproxy.net/https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
-    "homepage": "https://cemu.info/",
-    "version": "2.0-46",
-    "license": "Freeware",
-    "architecture": {
-        "64bit": {
-            "url": "https://ghproxy.net/https://github.com/cemu-project/Cemu/releases/download/v2.0-46/cemu-2.0-46-windows-x64.zip",
-            "hash": "12b5e2c3b12d11ca3799056ed6b4e511a19ea3f0ea764fa0b16452a595b31f67"
-        }
-    },
-    "extract_dir": "cemu_2.0-46",
-    "shortcuts": [
-        [
-            "cemu.exe",
-            "Cemu"
-        ]
-    ],
-    "installer": {
-        "script": [
-            "if (!(Test-Path \"$persist_dir\\settings.xml\")) {",
-            "    New-Item \"$dir\\settings.xml\" -Type File | Out-Null",
-            "}"
-        ]
-    },
-    "persist": [
-        "settings.xml",
-        "controllerProfiles",
-        "gameProfiles",
-        "graphicPacks",
-        "mlc01",
-        "shaderCache\\transferable",
-        "sharedFonts"
-    ],
-    "suggest": {
-        "vcredist": "extras/vcredist2015",
-        "cemuhook": "cemuhook"
-    },
-    "checkver": {
-        "url": "https://github.com/cemu-project/Cemu/releases",
-        "re": "/tag/v([\\d\\w.-]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://ghproxy.net/https://github.com/cemu-project/Cemu/releases/download/v$version/cemu-$version-windows-x64.zip"
-            }
-        },
-        "extract_dir": "cemu_$version"
+  "$schema": "https://ghproxy.com/https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
+  "homepage": "https://cemu.info/",
+  "version": "2.0-59",
+  "license": "Freeware",
+  "architecture": {
+    "64bit": {
+      "url": "https://ghproxy.com/https://github.com/cemu-project/Cemu/releases/download/v2.0-59/cemu-2.0-59-windows-x64.zip",
+      "hash": "09bc813a4ae27620461a72d7c2c37893a48129d9470acad4d87bd0f0c35a0def"
     }
+  },
+  "extract_dir": "cemu_2.0-59",
+  "shortcuts": [
+    [
+      "cemu.exe",
+      "Cemu"
+    ]
+  ],
+  "installer": {
+    "script": [
+      "if (!(Test-Path \"$persist_dir\\settings.xml\")) {",
+      "    New-Item \"$dir\\settings.xml\" -Type File | Out-Null",
+      "}"
+    ]
+  },
+  "persist": [
+    "settings.xml",
+    "controllerProfiles",
+    "gameProfiles",
+    "graphicPacks",
+    "mlc01",
+    "shaderCache\\transferable",
+    "sharedFonts"
+  ],
+  "suggest": {
+    "vcredist": "extras/vcredist2015",
+    "cemuhook": "cemuhook"
+  },
+  "checkver": {
+    "url": "https://github.com/cemu-project/Cemu/releases",
+    "re": "/tag/v([\\d\\w.-]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://ghproxy.com/https://github.com/cemu-project/Cemu/releases/download/v$version/cemu-$version-windows-x64.zip"
+      }
+    },
+    "extract_dir": "cemu_$version"
+  }
 }

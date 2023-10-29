@@ -1,5 +1,5 @@
 {
-  "version": "0.20.30",
+  "version": "0.20.39",
   "description": "A cross-platform GUI based on Clash and Electron.",
   "homepage": "https://github.com/Fndroid/clash_for_windows_pkg",
   "license": "MIT",
@@ -11,24 +11,24 @@
   "depends": "main/gsudo",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.net/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.30/Clash.for.Windows.Setup.0.20.30.exe#/dl.7z",
-      "hash": "89dcdb713fbb070eb137c41d2839ea82f425f3f3a1f6a0aa12481d54b3188375",
+      "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.39/Clash.for.Windows.Setup.0.20.39.exe#/dl.7z",
+      "hash": "477274ce22d30559ae5df8d41b0adb0a8461be0501d26a0500452ab68c650608",
       "pre_install": [
         "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
         "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
       ]
     },
     "32bit": {
-      "url": "https://ghproxy.net/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.30/Clash.for.Windows.Setup.0.20.30.ia32.exe#/dl.7z",
-      "hash": "115d7c1ec4c1d3073a7ef154f899642e71aab72f9e118c2a199b0e029f3aeb3e",
+      "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.39/Clash.for.Windows.Setup.0.20.39.ia32.exe#/dl.7z",
+      "hash": "951e79041d6eb815efcc2f9171883f67a635e04274ce69a5d202f7fee3872f63",
       "pre_install": [
         "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
         "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
       ]
     },
     "arm64": {
-      "url": "https://ghproxy.net/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.30/Clash.for.Windows.Setup.0.20.30.arm64.exe#/dl.7z",
-      "hash": "ff37a1177816a2464e7418225085bda79fbcc27beda9de6b25e779c822f8ceb3",
+      "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/0.20.39/Clash.for.Windows.Setup.0.20.39.arm64.exe#/dl.7z",
+      "hash": "bfc3e984f88c35e9f77ed89559ac5374b7d387ec8d980ce600aeeabfac6074f1",
       "pre_install": [
         "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\"",
         "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
@@ -50,7 +50,7 @@
       "    Mount-ExternalRuntimeData -Source \"$persist_dir\\clash_win\" -AppData",
       "    Remove-Module -Name S4Utils -ErrorAction SilentlyContinue",
       "} else {",
-      "    Write-Host 'Missing files, please readd Scoop4kariiin bucket and reinstall this app.' -ForegroundColor Red",
+      "    Write-Host \"Missing files, please re-add Scoop4kariiin bucket and re-install this app.\" -ForegroundColor Red",
       "}"
     ]
   },
@@ -68,12 +68,12 @@
     "    Start-Sleep -Seconds 1",
     "    sudo \"$dir\\update-firewall-rules.ps1\"",
     "    if ($?) {",
-    "        Write-Host 'Successfully updated Windows firewall rules!' -ForegroundColor Green",
+    "        Write-Host \"Successfully updated Windows firewall rules!\" -ForegroundColor Green",
     "    } else {",
-    "        Write-Host '[ERROR] Failed updating Windows firewall rules!' -ForegroundColor Red",
+    "        Write-Host \"[ERROR] Failed updating Windows firewall rules!\" -ForegroundColor Red",
     "    }",
     "} else {",
-    "    Write-Host 'Missing files, please readd Scoop4kariiin bucket and reinstall this app' -ForegroundColor Red",
+    "    Write-Host \"Missing files, please re-add Scoop4kariiin bucket and re-install this app.\" -ForegroundColor Red",
     "}"
   ],
   "shortcuts": [
@@ -98,25 +98,25 @@
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.net/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.exe#/dl.7z",
+        "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.exe#/dl.7z",
         "hash": {
-          "url": "https://ghproxy.net/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum",
+          "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum",
           "mode": "extract",
           "regex": "(?m)^exe: $sha256"
         }
       },
       "32bit": {
-        "url": "https://ghproxy.net/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.ia32.exe#/dl.7z",
+        "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.ia32.exe#/dl.7z",
         "hash": {
-          "url": "https://ghproxy.net/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum",
+          "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum",
           "mode": "extract",
           "regex": "(?m)^ia32-exe: $sha256"
         }
       },
       "arm64": {
-        "url": "https://ghproxy.net/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.arm64.exe#/dl.7z",
+        "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/Clash.for.Windows.Setup.$version.arm64.exe#/dl.7z",
         "hash": {
-          "url": "https://ghproxy.net/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum",
+          "url": "https://ghproxy.com/https://github.com/Fndroid/clash_for_windows_pkg/releases/download/$version/sha256sum",
           "mode": "extract",
           "regex": "(?m)^arm64-exe: $sha256"
         }

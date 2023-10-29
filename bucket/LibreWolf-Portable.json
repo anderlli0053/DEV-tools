@@ -1,51 +1,66 @@
 {
-  "version": "109.0.1-2",
+  "version": "119.0-5",
   "description": "LibreWolf. A fork of Firefox, focused on privacy, security and freedom.",
   "homepage": "https://librewolf.net/",
   "license": "MPL-2.0",
   "changelog": "https://gitlab.com/librewolf-community/browser/windows/-/releases",
   "architecture": {
     "64bit": {
-      "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/57d8047683deafd009c94df4d7dabda3/librewolf-109.0.1-2.en-US.win64-portable.zip",
-      "hash": "80d69ececab07139c91c22d0a1202032c15719f99c4a3e2000a2f0ff8384ab6a"
+      "url": "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/119.0-5/librewolf-119.0-5-windows-x86_64-portable.zip",
+      "hash": "6559875cb4c8f3487de8d7bffe27d410585d1499d44cc67f7b5671e3bb636e72"
+    },
+    "32bit": {
+      "url": "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/119.0-5/librewolf-119.0-5-windows-i686-portable.zip",
+      "hash": "134d7e6c29c077b0332877bd1bc28a29ea89f90b0f53d100d5bf3175b806126b"
     }
   },
+  "extract_dir": "librewolf-119.0-5",
   "pre_install": [
-    "$lw_name = (Get-Item \"$dir\\librewolf-*\").FullName",
-    "Move-Item \"$lw_name\\*\" \"$dir\"",
-    "Remove-Item \"$lw_name\"",
-    "if (Test-Path \"$persist_dir\\Librewolf\\*.js\") { Copy-Item \"$persist_dir\\Librewolf\\*.js\" \"$dir\\Librewolf\\\" }"
+    "Remove-Item \"$dir\\LibreWolf-WinUpdater.exe\"",
+    "# Customizing LibreWolf Using AutoConfig",
+    "# https://support.mozilla.org/en-US/kb/customizing-firefox-using-autoconfig",
+    "ensure \"$persist_dir\\LibreWolf\\defaults\\pref\" | Out-Null",
+    "Copy-Item \"$persist_dir\\LibreWolf\\defaults\\pref\\*\" \"$dir\\LibreWolf\\defaults\\pref\" -Exclude 'channel-prefs.js'",
+    "Copy-Item \"$persist_dir\\LibreWolf\\*.js\", \"$persist_dir\\LibreWolf\\*.cfg\" \"$dir\\LibreWolf\"",
+    "# Customizing LibreWolf Using policies.json",
+    "# https://support.mozilla.org/en-US/kb/customizing-firefox-using-policiesjson",
+    "# Used to override the default policies.json of LibreWolf, if you want",
+    "ensure \"$persist_dir\\LibreWolf\\distribution\" | Out-Null",
+    "Copy-Item \"$persist_dir\\LibreWolf\\distribution\\policies.json\" \"$dir\\LibreWolf\\distribution\" -ErrorAction SilentlyContinue"
   ],
-  "pre_uninstall": "if (Test-Path \"$dir\\Librewolf\\*.js\") { Copy-Item \"$dir\\Librewolf\\*.js\" \"$persist_dir\\Librewolf\\\" }",
   "bin": [
     [
-      "librewolf-portable.exe",
+      "LibreWolf-Portable.exe",
       "librewolf"
     ]
   ],
   "shortcuts": [
     [
-      "librewolf-portable.exe",
+      "LibreWolf-Portable.exe",
       "LibreWolf"
     ]
   ],
-  "persist": [
-    "Profiles",
-    "LibreWolf\\defaults\\prefs"
+  "persist": "Profiles",
+  "pre_uninstall": [
+    "Copy-Item \"$dir\\LibreWolf\\defaults\\pref\\*\" \"$persist_dir\\LibreWolf\\defaults\\pref\" -Exclude 'channel-prefs.js'",
+    "Copy-Item \"$dir\\LibreWolf\\*.js\", \"$dir\\LibreWolf\\*.cfg\" \"$persist_dir\\LibreWolf\" -Exclude 'librewolf.cfg'"
   ],
   "checkver": {
-    "url": "https://gitlab.com/api/v4/projects/13852981/releases",
-    "regex": "/uploads/(?<randidzip>[a-z0-9]+)/librewolf-([\\d.-]+)\\.en-US\\.win64-portable\\.zip\".*?/uploads/(?<randidsha>[a-z0-9]+)/sha256sums\\.txt\""
+    "url": "https://gitlab.com/api/v4/projects/44042130/releases/permalink/latest",
+    "jsonpath": "$.tag_name"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/$matchZipid/librewolf-$version.en-US.win64-portable.zip",
-        "hash": {
-          "url": "https://gitlab.com/librewolf-community/browser/windows/uploads/$matchChecksumid/sha256sums.txt",
-          "regex": "$sha256\\s+$basename"
-        }
+        "url": "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/$version/librewolf-$version-windows-x86_64-portable.zip"
+      },
+      "32bit": {
+        "url": "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/$version/librewolf-$version-windows-i686-portable.zip"
       }
-    }
+    },
+    "hash": {
+      "url": "$url.sha256sum"
+    },
+    "extract_dir": "librewolf-$version"
   }
 }

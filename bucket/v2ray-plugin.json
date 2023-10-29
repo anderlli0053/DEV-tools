@@ -1,31 +1,26 @@
 {
-  "version": "1.3.2",
-  "description": "A SIP003 plugin based on v2ray",
-  "homepage": "https://github.com/shadowsocks/v2ray-plugin",
+  "version": "5.10.0",
+  "description": "A SIP003 plugin based on v2ray.",
+  "homepage": "https://github.com/teddysun/v2ray-plugin",
   "license": "MIT",
+  "notes": "",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.net/https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.2/v2ray-plugin-windows-amd64-v1.3.2.tar.gz",
-      "hash": "7ca6c0955fcbce54bc9fef520e2c0f2d97057212b2a64ba53325b66d4cc1003b"
-    },
-    "32bit": {
-      "url": "https://ghproxy.net/https://github.com/shadowsocks/v2ray-plugin/releases/download/v1.3.2/v2ray-plugin-windows-386-v1.3.2.tar.gz",
-      "hash": "fa64e130816c36b65f992f0aed2ec9099c35081afb59c08d76117bc0b421f871"
+      "url": "https://ghproxy.com/https://github.com/teddysun/v2ray-plugin/releases/download/v5.10.0/v2ray-plugin-windows-amd64-v5.10.0.tar.gz",
+      "hash": "fcfa15e303121aa6377a6e593c12091f6b22dfc1fc7fd68c66d121e6bd19f58f"
     }
   },
-  "installer": {
-    "script": "Move-Item \"$dir\\v2ray-plugin_windows_*\" -Destination \"$dir\\v2ray-plugin.exe\""
+  "checkver": {
+    "url": "https://api.github.com/repos/teddysun/v2ray-plugin/releases",
+    "jsonpath": "$.[0].tag_name",
+    "regex": "([\\d.]+)"
   },
-  "bin": "v2ray-plugin.exe",
-  "checkver": "github",
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.net/https://github.com/shadowsocks/v2ray-plugin/releases/download/v$version/v2ray-plugin-windows-amd64-v$version.tar.gz"
-      },
-      "32bit": {
-        "url": "https://ghproxy.net/https://github.com/shadowsocks/v2ray-plugin/releases/download/v$version/v2ray-plugin-windows-386-v$version.tar.gz"
+        "url": "https://ghproxy.com/https://github.com/teddysun/v2ray-plugin/releases/download/v$version/v2ray-plugin-windows-amd64-v$version.tar.gz"
       }
     }
-  }
+  },
+  "bin": "v2ray-plugin_windows_amd64.exe"
 }

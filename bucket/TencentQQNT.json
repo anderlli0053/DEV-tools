@@ -1,5 +1,5 @@
 {
-  "version": "9.9.1",
+  "version": "9.9.3.17816",
   "description": "A new version of Tencent QQ based on Electron.",
   "homepage": "https://im.qq.com/pcqq/index.shtml",
   "license": "Unknown",
@@ -9,12 +9,12 @@
   ],
   "architecture": {
     "64bit": {
-      "url": "https://dldir1.qq.com/qqfile/qq/QQNT/56cb863a/QQ9.9.1.15293_x64.exe#/dl.7z",
-      "hash": "f3547a05abd792b0568ddc9851ef90320db9cdc68984133946a5f1393f5a548f"
+      "url": "https://dldir1.qq.com/qqfile/qq/QQNT/1e2b98d8/QQ9.9.3.17816_x64.exe#/dl.7z",
+      "hash": "9e6d6c0d5fde5bb3e893184fc6a825349c45f2ccd2eda052594bedd476c09f4f"
     },
     "32bit": {
-      "url": "https://dldir1.qq.com/qqfile/qq/QQNT/4ebc66b2/QQ9.9.1.15293_x86.exe#/dl.7z",
-      "hash": "ccd3313b8b5e5ebb5ca9f7338a249231f1931815b24bf962584a156956af4655"
+      "url": "https://dldir1.qq.com/qqfile/qq/QQNT/ed03841d/QQ9.9.3.17816_x86.exe#/dl.7z",
+      "hash": "d714ac2d3fb1e2ddde75e795ac2820d13a24b7a550ec908e33c9e16966839ff1"
     }
   },
   "extract_dir": "Files",
@@ -27,7 +27,7 @@
       "    Mount-ExternalRuntimeData -Source \"$persist_dir\\QQ\" -AppData",
       "    Remove-Module -Name S4Utils -ErrorAction SilentlyContinue",
       "} else {",
-      "    Write-Host 'Missing files, please readd Scoop4kariiin bucket and reinstall this app.' -ForegroundColor Red",
+      "    Write-Host \"Missing files, please re-add Scoop4kariiin bucket and re-install this app.\" -ForegroundColor Red",
       "}"
     ]
   },
@@ -50,15 +50,15 @@
   },
   "checkver": {
     "url": "https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/windowsDownloadUrl.js",
-    "regex": "ntVersion\":\"(?<version>[\\d\\.]+)\".+QQNT\\/(?<filemd532>\\w+)\\/QQ(?<fullver32>[\\d\\.]+)_x86\\.exe.+QQNT\\/(?<filemd564>\\w+)\\/QQ(?<fullver64>[\\d\\.]+)_x64\\.exe"
+    "regex": "ntVersion\":\"(?<version>[\\d\\.]+)\".+QQNT\\/(?<filemd532>\\w+)\\/QQ[\\d\\.]+_x86\\.exe.+QQNT\\/(?<filemd564>\\w+)\\/QQ([\\d\\.]+)_x64\\.exe"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://dldir1.qq.com/qqfile/qq/QQNT/$matchFilemd564/QQ$matchFullver64_x64.exe#/dl.7z"
+        "url": "https://dldir1.qq.com/qqfile/qq/QQNT/$matchFilemd564/QQ$version_x64.exe#/dl.7z"
       },
       "32bit": {
-        "url": "https://dldir1.qq.com/qqfile/qq/QQNT/$matchFilemd532/QQ$matchFullver32_x86.exe#/dl.7z"
+        "url": "https://dldir1.qq.com/qqfile/qq/QQNT/$matchFilemd532/QQ$version_x86.exe#/dl.7z"
       }
     }
   }

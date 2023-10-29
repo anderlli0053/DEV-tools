@@ -1,30 +1,31 @@
 {
-  "version": "2.9.13",
-  "description": "Fast and customizable vulnerability scanner based on simple YAML based DSL",
-  "homepage": "https://nuclei.projectdiscovery.io",
+  "version": "3.0.2",
+  "description": "Fast and customizable vulnerability scanner based on simple YAML based DSL.",
+  "homepage": "https://github.com/projectdiscovery/nuclei",
   "license": "MIT",
   "architecture": {
-    "32bit": {
-      "url": "https://ghproxy.net/https://github.com/projectdiscovery/nuclei/releases/download/v2.9.13/nuclei_2.9.13_windows_386.zip",
-      "hash": "f5e702d773d2f6ba184959ac68af08048ea75ce196d8aa315f29c7f9173fd09f"
-    },
     "64bit": {
-      "url": "https://ghproxy.net/https://github.com/projectdiscovery/nuclei/releases/download/v2.9.13/nuclei_2.9.13_windows_amd64.zip",
-      "hash": "26d9911f3d0d9745bb2bedc6a2e84ecd565790c29782c045961efa2eae345322"
+      "url": "https://ghproxy.com/https://github.com/projectdiscovery/nuclei/releases/download/v3.0.2/nuclei_3.0.2_windows_amd64.zip",
+      "hash": "d2f9c4a6b3e37769b2e00879332f5d39c5fbd82133296d6eddcfaaa346b0d393"
+    },
+    "32bit": {
+      "url": "https://ghproxy.com/https://github.com/projectdiscovery/nuclei/releases/download/v3.0.2/nuclei_3.0.2_windows_386.zip",
+      "hash": "f992f1f4fa58590be3cf54508775b507424ab427f8827088fbf16ea5da2ccb15"
     }
   },
   "bin": "nuclei.exe",
-  "checkver": {
-    "github": "https://github.com/projectdiscovery/nuclei"
-  },
+  "checkver": "github",
   "autoupdate": {
     "architecture": {
-      "32bit": {
-        "url": "https://ghproxy.net/https://github.com/projectdiscovery/nuclei/releases/download/v$version/nuclei_$version_windows_386.zip"
-      },
       "64bit": {
-        "url": "https://ghproxy.net/https://github.com/projectdiscovery/nuclei/releases/download/v$version/nuclei_$version_windows_amd64.zip"
+        "url": "https://ghproxy.com/https://github.com/projectdiscovery/nuclei/releases/download/v$version/nuclei_$version_windows_amd64.zip"
+      },
+      "32bit": {
+        "url": "https://ghproxy.com/https://github.com/projectdiscovery/nuclei/releases/download/v$version/nuclei_$version_windows_386.zip"
       }
+    },
+    "hash": {
+      "url": "$baseurl/nuclei_$version_checksums.txt"
     }
   }
 }

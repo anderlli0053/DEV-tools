@@ -1,13 +1,22 @@
 {
-  "version": "v1.08",
-  "description": "pingo is an experimental lossless and lossy image optimizer (PNG, JPEG, WebP, APNG) designed to be used for web context",
+  "$schema": "https://ghproxy.com/https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
+  "version": "1.14",
+  "description": "An experimental lossless and lossy image optimizer (PNG, JPEG, WebP, APNG) designed to be used for web context",
   "homepage": "https://css-ig.net/pingo",
   "license": "Freeware",
-  "url": "https://css-ig.net/bin/pingo-win64.zip",
-  "hash": "6d7d45ed9db0febdfb947edaf965ec150e53b76b94e37767d6f1b8f6fa9739b5",
+  "architecture": {
+    "64bit": {
+      "url": "https://css-ig.net/bin/pingo-win64.zip",
+      "hash": "704563ff22ba54752c1fd2e09ae92ec25a24e4e6dbe813d0a769aa5cf67092b1"
+    }
+  },
   "bin": "pingo.exe",
-  "checkver": ".+>(.+?)(?:\\W)+<.+download \\(64-bit, win\\)",
+  "checkver": "<span class=\"bold\">v?(.+) — <a id=\"download\"",
   "autoupdate": {
-    "url": "https://css-ig.net/bin/pingo-win64.zip"
+    "architecture": {
+      "64bit": {
+        "url": "https://css-ig.net/bin/pingo-win64.zip"
+      }
+    }
   }
 }

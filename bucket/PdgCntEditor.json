@@ -1,16 +1,10 @@
 {
   "version": "3.17",
-  "description": "To edit PDF, DjVu and PDG contents in text or tree mode.(Chinese version)",
-  "homepage": "https://www.cnblogs.com/stronghorse",
-  "license": "Freeware",
-  "url": "https://ghproxy.net/https://raw.githubusercontent.com/sqliuchang/strnghrs_packages/main/PdgCntEditor_chn.zip",
+  "description": "PdgCntEditor是一款支持PDF、DjVu、PDG文件的目录（书签）编辑器",
+  "homepage": "https://www.cnblogs.com/stronghorse/",
+  "license": "Friendware",
+  "url": "https://scoop-lemon.4everland.store/pdgcnteditor/PdgCntEditor_chn_3.17.zip",
   "hash": "ca0426c5b3e1eba97426d78b51e82f83aee834dd3112b0a9d63d2896a722b735",
-  "pre_install": [
-    "# Create initial config files",
-    "if (!(Test-Path -Path \"$dir\\PdgCntEditor.ini\")) {",
-    "    (New-Item -ItemType \"file\" -Path \"$dir\" -Name \"PdgCntEditor.ini\") | Out-Null",
-    "}"
-  ],
   "bin": "PdgCntEditor.exe",
   "shortcuts": [
     [
@@ -18,5 +12,14 @@
       "PdgCntEditor"
     ]
   ],
-  "persist": "PdgCntEditor.ini"
+  "pre_install": [
+    "if (!(Test-Path \"$persist_dir\\PdgCntEditor.ini\")) { Set-Content -Encoding ASCII -Path \"$dir\\PdgCntEditor.ini\" -Value $null }",
+    "if (!(Test-Path \"$persist_dir\\PdgCntEditor.pwd\")) { Set-Content -Encoding ASCII -Path \"$dir\\PdgCntEditor.pwd\" -Value $null }",
+    "if (!(Test-Path \"$persist_dir\\PdgCntEditor.rpx\")) { Set-Content -Encoding ASCII -Path \"$dir\\PdgCntEditor.rpx\" -Value $null }"
+  ],
+  "persist": [
+    "PdgCntEditor.ini",
+    "PdgCntEditor.pwd",
+    "PdgCntEditor.rpx"
+  ]
 }

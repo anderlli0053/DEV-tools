@@ -1,25 +1,30 @@
 {
-    "homepage": "https://home.clipber.com/",
-    "description": "Clipboard tool",
-    "license": "Shareware",
-    "version": "3.3.1",
-    "url": "https://dl.clipber.com/windows/copies_3_3_1.zip",
-    "hash": "sha1:7b2b6c8dbcace4ad1addbc1d3f8c2be3bbed52ca",
-    "shortcuts": [
-        [
-            "clipManager.exe",
-            "快贴"
-        ]
-    ],
-    "checkver": {
-        "url": "https://home.clipber.com/windows/",
-        "regex": "([\\d.]+)\\s*绿色版"
-    },
-    "autoupdate": {
-        "url": "https://dl.clipber.com/windows/copies_$underscoreVersion.zip",
-        "hash": {
-            "url": "https://home.clipber.com/windows/",
-            "regex": "(?sm)绿色版.*sha1:\\s*$sha1</p>"
-        }
+  "homepage": "https://home.clipber.com/",
+  "description": "Clipboard tool",
+  "license": "Shareware",
+  "version": "3.5.1",
+  "architecture": {
+    "64bit": {
+      "url": "https://dl.clipber.com/windows/copies_3_5_1.zip",
+      "hash": "0db9ae39391509a396b630cd77977b005c233eb36a47f2f398ad509d26865e0d"
     }
+  },
+  "shortcuts": [
+    [
+      "clipManager.exe",
+      "快贴"
+    ]
+  ],
+  "checkver": {
+    "url": "https://home.clipber.com/download/windows/",
+    "useragent": "Scoop/1.0 (+http://scoop.sh/)",
+    "regex": "download-hint\">([\\d.]+)<"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://dl.clipber.com/windows/copies_$underscoreVersion.zip"
+      }
+    }
+  }
 }

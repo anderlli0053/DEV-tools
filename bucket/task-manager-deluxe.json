@@ -1,44 +1,45 @@
 {
-  "version": "4.8.0",
-  "description": "MiTeC Task Manager DeLuxe. Full-featured task manager replacement",
-  "homepage": "https://www.mitec.cz/tmx.html",
+  "version": "4.8.1",
+  "description": "Task Manager DeLuxe (TMX) is a full-featured task manager replacement that offers powerful features with many more enhancements.",
+  "homepage": "https://mitec.cz/tmx.html",
   "license": "Proprietary",
-  "url": "https://www.mitec.cz/Downloads/TMX.zip",
-  "hash": "d8ae1cd061dcb364aacfd36dfa382015bf831d1238d9ca50c24c4377ef82f3b7",
-  "uninstaller": {
-    "script": "shortcut_folder $global | Split-Path | Get-ChildItem -Filter 'TMX*' | Remove-Item -Force"
-  },
+  "url": "https://mitec.cz/Downloads/TMX.zip",
+  "hash": "7b1e9628db4a6edca3ce4e829485657af855916cd4b63c7e1cf9e467b175689a",
   "architecture": {
     "64bit": {
       "bin": [
-        "TMX64.exe",
         [
           "TMX64.exe",
-          "TMX"
+          "tmx"
         ]
       ],
       "shortcuts": [
         [
           "TMX64.exe",
-          "MiTeC\\Task Manager DeLuxe"
+          "Task Manager DeLuxe"
         ]
       ]
     },
     "32bit": {
-      "bin": "TMX.exe",
+      "bin": [
+        [
+          "TMX.exe",
+          "tmx"
+        ]
+      ],
       "shortcuts": [
         [
           "TMX.exe",
-          "MiTeC\\Task Manager DeLuxe"
+          "Task Manager DeLuxe"
         ]
       ]
     }
   },
   "checkver": {
-    "url": "https://www.mitec.cz/Data/XML/data_tmxvh.xml",
-    "regex": "VERSION>([\\d.]+)"
+    "url": "https://mitec.cz/Data/XML/data_tmxvh.xml",
+    "regex": "(?sm)<VERSION>([\\d.]+)</VERSION>\\s+<DATE>\\d+.\\d+.\\d+</DATE>"
   },
   "autoupdate": {
-    "url": "https://www.mitec.cz/Downloads/TMX.zip"
+    "url": "https://mitec.cz/Downloads/TMX.zip"
   }
 }

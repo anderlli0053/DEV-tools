@@ -1,0 +1,90 @@
+{
+  "version": "6.29.0",
+  "description": "Powerful and easy to use e-book manager",
+  "homepage": "https://calibre-ebook.com",
+  "license": "GPL-3.0-only",
+  "architecture": {
+    "64bit": {
+      "url": [
+        "https://download.calibre-ebook.com/6.29.0/calibre-64bit-6.29.0.msi",
+        "https://ghproxy.com/https://github.com/Cirn09/calibre-do-not-translate-my-path/releases/download/v6.29.0/patch-win-6.29.0.zip"
+      ],
+      "hash": [
+        "sha512:f6974d7fc040735dca999167096874ab1f59ad2dc21f2733b2001b98bb6971ef6d07c93c7aa98f86aa1aa8a2e176afac446e1a974d667e61616534c9334e473e",
+        "cd3b9e00b09a4df24267ca5e614840e4807aa3f51494039cd737a071caec3817"
+      ],
+      "extract_dir": [
+        "PFiles\\Calibre2",
+        "Calibre2\\app\\bin"
+      ]
+    }
+  },
+  "pre_install": "Remove-Item \"$dir\\Calibre2\" -Force -Recurse",
+  "installer": {
+    "script": [
+      " if (Test-Path \"$dir\\app\\bin\\python-lib.bypy.frozen\") {",
+      "   Rename-Item -Path \"$dir\\app\\bin\\python-lib.bypy.frozen\" -NewName \"python-lib.bypy.frozen.orig\" | Out-Null",
+      "   Move-Item -Path \"$dir\\python-lib.bypy.frozen\" -Destination \"$dir\\app\\bin\\python-lib.bypy.frozen\" | Out-Null",
+      " }"
+    ]
+  },
+  "bin": [
+    "calibre-complete.exe",
+    "calibre-customize.exe",
+    "calibre-debug.exe",
+    "calibre-parallel.exe",
+    "calibre-server.exe",
+    "calibre-smtp.exe",
+    "calibre.exe",
+    "calibredb.exe",
+    "ebook-convert.exe",
+    "ebook-device.exe",
+    "ebook-edit.exe",
+    "ebook-meta.exe",
+    "ebook-polish.exe",
+    "ebook-viewer.exe",
+    "fetch-ebook-metadata.exe",
+    "lrf2lrs.exe",
+    "lrfviewer.exe",
+    "lrs2lrf.exe",
+    "markdown-calibre.exe",
+    "web2disk.exe"
+  ],
+  "shortcuts": [
+    [
+      "calibre.exe",
+      "Calibre"
+    ],
+    [
+      "ebook-edit.exe",
+      "Calibre E-Book Editor"
+    ],
+    [
+      "ebook-viewer.exe",
+      "Calibre E-Book Viewer"
+    ],
+    [
+      "lrfviewer.exe",
+      "Calibre LRF Viewer"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/Cirn09/calibre-do-not-translate-my-path"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": [
+          "https://download.calibre-ebook.com/$version/calibre-64bit-$version.msi",
+          "https://ghproxy.com/https://github.com/Cirn09/calibre-do-not-translate-my-path/releases/download/v$version/patch-win-$version.zip"
+        ],
+        "hash": [
+          {
+            "url": "https://calibre-ebook.com/signatures/calibre-64bit-$version.msi.sha512"
+          },
+          {}
+        ]
+      }
+    }
+  }
+}

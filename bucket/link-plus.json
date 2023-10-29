@@ -1,5 +1,5 @@
 {
-  "version": "3.0.0",
+  "version": "3.0.4",
   "description": "Multifunctional integrated, cross platform, highly compatible assistant for your keyboard.",
   "homepage": "https://github.com/lnelab/link-plus",
   "license": "Unknown",
@@ -9,8 +9,8 @@
   ],
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.net/https://github.com/lnelab/link-plus/releases/download/3.0.0/LINK+-Setup-3.0.0.exe#/dl.7z",
-      "hash": "sha512:da3c709fae81056cae057a985f4db2a52bcc93f82e7a533ea93b82f168b5396948ce35dbcc923d160f6d73f383036c28bccf00766caae7f2d6ff74ff22f95fd8",
+      "url": "https://ghproxy.com/https://github.com/lnelab/link-plus/releases/download/3.0.4/link-plus-win-3.0.4.exe#/dl.7z",
+      "hash": "sha512:2cc7ef2709781ed84af08056a3c7121e39c2459465e541617be62719ee6ce615c40f5934945657917a390cee7c66ad1be52bcc81147fda93e43e793bd74547f0",
       "pre_install": [
         "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
         "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
@@ -26,7 +26,7 @@
       "    Mount-ExternalRuntimeData -Source \"$persist_dir\\link-plus\" -AppData",
       "    Remove-Module -Name S4Utils -ErrorAction SilentlyContinue",
       "} else {",
-      "    Write-Host 'Missing files, please readd Scoop4kariiin bucket and reinstall this app.' -ForegroundColor Red",
+      "    Write-Host \"Missing files, please re-add Scoop4kariiin bucket and re-install this app.\" -ForegroundColor Red",
       "}"
     ]
   },
@@ -51,7 +51,7 @@
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.net/https://github.com/lnelab/link-plus/releases/download/$version/LINK+-Setup-$version.exe#/dl.7z",
+        "url": "https://ghproxy.com/https://github.com/lnelab/link-plus/releases/download/$version/link-plus-win-$version.exe#/dl.7z",
         "hash": {
           "url": "$baseurl/latest.yml",
           "regex": "sha512:\\s+$base64"

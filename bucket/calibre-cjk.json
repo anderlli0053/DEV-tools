@@ -1,0 +1,96 @@
+{
+  "version": "6.29.0",
+  "description": "Powerful and easy to use e-book manager",
+  "homepage": "https://calibre-ebook.com",
+  "license": "GPL-3.0-only",
+  "notes": "Due to https://github.com/ScoopInstaller/Extras/issues/1765, the portable installer is only available for 59 characters in length only.",
+  "architecture": {
+    "64bit": {
+      "url": [
+        "https://download.calibre-ebook.com/6.29.0/calibre-portable-installer-6.29.0.exe",
+        "https://ghproxy.com/https://github.com/Cirn09/calibre-do-not-translate-my-path/releases/download/v6.29.0/patch-win-6.29.0.zip"
+      ],
+      "hash": [
+        "sha512:bfb208736b93831e99576272dc6a13f5824bf0e588c79e17eecd88ad0c2becc7567f0b496b878fb45d73b58271a1072be2db6c42f2073fb25594d174a35cba0f",
+        "cd3b9e00b09a4df24267ca5e614840e4807aa3f51494039cd737a071caec3817"
+      ]
+    }
+  },
+  "installer": {
+    "script": [
+      "Start-Process \"$dir\\calibre-portable-installer-$version.exe\" @(\"$dir\") -Wait",
+      "Move-Item \"$dir\\Calibre Portable\\**\" \"$dir\"",
+      "Remove-Item \"$dir\\Calibre Portable\"",
+      "Rename-Item \"$dir\\Calibre\\app\\bin\\python-lib.bypy.frozen\" 'python-lib.bypy.frozen.orig'",
+      "Move-Item -Path \"$dir\\Calibre2\\app\\bin\\python-lib.bypy.frozen\" -Destination \"$dir\\Calibre\\app\\bin\\python-lib.bypy.frozen\"",
+      "Remove-Item \"$dir\\Calibre2\" -Force -Recurse"
+    ]
+  },
+  "bin": [
+    [
+      "calibre-portable.exe",
+      "calibre"
+    ],
+    "calibre-portable.exe",
+    "Calibre\\calibre-complete.exe",
+    "Calibre\\calibre-customize.exe",
+    "Calibre\\calibredb.exe",
+    "Calibre\\calibre-debug.exe",
+    "Calibre\\calibre-parallel.exe",
+    "Calibre\\calibre-server.exe",
+    "Calibre\\calibre-smtp.exe",
+    "Calibre\\ebook-convert.exe",
+    "Calibre\\ebook-device.exe",
+    "Calibre\\ebook-edit.exe",
+    "Calibre\\ebook-meta.exe",
+    "Calibre\\ebook-polish.exe",
+    "Calibre\\ebook-viewer.exe",
+    "Calibre\\fetch-ebook-metadata.exe",
+    "Calibre\\lrf2lrs.exe",
+    "Calibre\\lrs2lrf.exe",
+    "Calibre\\lrfviewer.exe",
+    "Calibre\\markdown-calibre.exe",
+    "Calibre\\web2disk.exe"
+  ],
+  "shortcuts": [
+    [
+      "calibre-portable.exe",
+      "Calibre"
+    ],
+    [
+      "Calibre\\ebook-edit.exe",
+      "Calibre E-Book Editor"
+    ],
+    [
+      "Calibre\\ebook-viewer.exe",
+      "Calibre E-Book Viewer"
+    ],
+    [
+      "Calibre\\lrfviewer.exe",
+      "Calibre LRF Viewer"
+    ]
+  ],
+  "persist": [
+    "Calibre Library",
+    "Calibre Settings"
+  ],
+  "checkver": {
+    "github": "https://github.com/Cirn09/calibre-do-not-translate-my-path"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": [
+          "https://download.calibre-ebook.com/$version/calibre-portable-installer-$version.exe",
+          "https://ghproxy.com/https://github.com/Cirn09/calibre-do-not-translate-my-path/releases/download/v$version/patch-win-$version.zip"
+        ],
+        "hash": [
+          {
+            "url": "https://calibre-ebook.com/signatures/calibre-portable-installer-$version.exe.sha512"
+          },
+          {}
+        ]
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "version": "nightly",
+  "version": "126437",
   "description": "Docker Desktop. Open platform for developers and sysadmins to build, ship, and run distributed applications, whether on laptops, data center VMs, or the cloud.",
   "homepage": "https://www.docker.com",
   "license": {
@@ -9,11 +9,13 @@
   "notes": [
     "Conditions refer to the:",
     "https://learn.microsoft.com/en-us/windows/wsl/install",
-    "--backend= wsl-2 / windows / hyper-v"
+    "https://docs.docker.com/desktop/install/windows-install",
+    "强烈建议选择 wsl-2 backend, windows/hyper-v 都是 win/amd64 架构的, 大部分镜像拉不到合适的, 就是装了个花瓶"
   ],
   "architecture": {
     "64bit": {
-      "url": "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe"
+      "url": "https://desktop.docker.com/win/main/amd64/126437/Docker%20Desktop%20Installer.exe",
+      "hash": "4c11952fbe7915908a2b0925c46b4e19f0826f75bb0b2f4a83d24cbbe40c53ce"
     }
   },
   "installer": {
@@ -21,9 +23,8 @@
       "install",
       "--quiet",
       "--accept-license",
-      "--backend=hyper-v",
-      "--installation-dir=$dir",
-      "--admin-settings"
+      "--backend=wsl-2",
+      "--installation-dir=$dir\\docker"
     ]
   },
   "post_install": [
@@ -46,19 +47,30 @@
   ],
   "shortcuts": [
     [
-      "Docker Desktop.exe",
+      "docker\\Docker Desktop.exe",
       "Docker Desktop"
     ]
   ],
   "bin": [
-    "resources\\bin\\docker.exe",
-    "resources\\cli-plugins\\docker-compose.exe"
+    "docker\\resources\\bin\\docker.exe",
+    "docker\\resources\\cli-plugins\\docker-compose.exe"
   ],
   "uninstaller": {
-    "file": "Docker%20Desktop%20Installer.exe",
+    "file": "docker\\Docker%20Desktop%20Installer.exe",
     "args": [
       "uninstall",
       "--quiet"
     ]
+  },
+  "checkver": {
+    "url": "https://docs.docker.com/desktop/release-notes/",
+    "regex": "https://desktop.docker.com/win/main/amd64/([\\d.]+)/Docker%20Desktop%20Installer.exe"
+  },
+  "autoupdate": {
+    "url": "https://desktop.docker.com/win/main/amd64/$version/Docker%20Desktop%20Installer.exe",
+    "hash": {
+      "url": "https://desktop.docker.com/win/main/amd64/$version/checksums.txt",
+      "regex": "$.sha256"
+    }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "version": "5689465787",
+  "version": "6675633079",
   "description": "Free and reliable P2P Bittorent client.",
   "homepage": "https://github.com/qbittorrent/qBittorrent",
   "license": {
@@ -9,11 +9,12 @@
   "architecture": {
     "64bit": {
       "url": "https://nightly.link/qbittorrent/qBittorrent/workflows/ci_windows.yaml/master/qBittorrent-CI_Windows-x64_libtorrent-1.2.19.zip",
-      "hash": "cee8a10e2ab803ad6052b554755aaaa4769703b61e51115198b49ff834a781bf"
+      "hash": "c2051b9e3641250a99729f0206e7fbcc631e9ddfdbc9937e1243401796ea463e",
+      "extract_dir": "qBittorrent"
     }
   },
   "pre_install": [
-    "'cmake', 'qbittorrent.pdb' | ForEach-Object { Remove-Item -Recurse \"$dir\\$_\" }",
+    "Remove-Item \"$dir\\qbittorrent.pdb\"",
     "if ((!(Test-Path \"$persist_dir\\profile\")) -and ((Test-Path \"$persist_dir\\..\\qbittorrent-portable\\profile\") -or (Test-Path \"$env:APPDATA\\qBittorrent\"))) {",
     "    Write-Host \"Scoop is migrating qbittorrent to use portable mode by default.\" -ForegroundColor Yellow",
     "    Write-Host \"For details, see: https://github.com/ScoopInstaller/Extras/issues/5845\" -ForegroundColor Yellow",
@@ -47,7 +48,7 @@
     "script": [
       "try {",
       "    (Invoke-RestMethod 'https://api.github.com/repositories/3351871/actions/workflows/ci_windows.yaml/runs?branch=master&status=success').workflow_runs[0].id,",
-      "    (Invoke-RestMethod https://ghproxy.net/https://raw.githubusercontent.com/qbittorrent/qBittorrent/master/.github/workflows/ci_windows.yaml | Select-String 'libt_version: \\[\"[\\d.]+\", \"([\\d.]+)\"\\]').matches.groups[1].value -join ' '",
+      "    (Invoke-RestMethod https://ghproxy.com/https://raw.githubusercontent.com/qbittorrent/qBittorrent/master/.github/workflows/ci_windows.yaml | Select-String 'libt_version: \\[\"[\\d.]+\", \"([\\d.]+)\"\\]').matches.groups[1].value -join ' '",
       "}",
       "catch { '' }"
     ],

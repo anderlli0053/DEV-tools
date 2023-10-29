@@ -1,5 +1,5 @@
 {
-  "version": "6.0.0-2-g80ca8cc",
+  "version": "6.3.1-0-g2974176",
   "description": "A command-line utility that pipes video streams from various services into a video player.",
   "homepage": "https://streamlink.github.io/",
   "license": "BSD-2-Clause",
@@ -16,17 +16,17 @@
   },
   "architecture": {
     "64bit": {
-      "url": "https://nightly.link/streamlink/windows-builds/workflows/nightly/master/streamlink-6.0.0-2-g80ca8cc-py311-x86_64.zip.zip",
-      "hash": "3561de63030bead31388302123c70962fea5f245055991acb98e1b5bd85dce1b"
+      "url": "https://nightly.link/streamlink/windows-builds/workflows/nightly/master/streamlink-6.3.1-0-g2974176-py311-x86_64.zip.zip",
+      "hash": "da69bea37ff0762e7601f85b0ccdfd3a5cfb4c0dba5bd6fee90edbd80dffa184"
     },
     "32bit": {
-      "url": "https://nightly.link/streamlink/windows-builds/workflows/nightly/master/streamlink-6.0.0-2-g80ca8cc-py311-x86.zip.zip",
-      "hash": "c40ffa8be30980144eb431178e98f62a6e819b38a7084339a91267edf77f164a"
+      "url": "https://nightly.link/streamlink/windows-builds/workflows/nightly/master/streamlink-6.3.1-0-g2974176-py311-x86.zip.zip",
+      "hash": "7731537645992bbb485a1115f88dd55750b200d8eba7f0428cc9ce2cbeb5446a"
     }
   },
   "pre_install": [
     "Expand-7zipArchive \"$dir\\streamlink-$version-py311-x86*.zip\" \"$dir\" -Removal",
-    "$python = try { ((py.exe -0p)[0] | Select-String \\S+\\Z).Matches.Value } catch { $null }",
+    "$python = try { (py.exe -0p | Select-Object -First 1 | Select-String \\S+\\Z).Matches.Value } catch {}",
     "$paths = 'bin', 'pkgs'",
     "if ($python -and ($ver = [System.Version]((py.exe -V) -Replace '[^\\d.]')) -lt [System.Version]'3.12.0' -and $ver -ge [System.Version]'3.11.0') {",
     "New-Item -ItemType SymbolicLink -Path \"$dir\\Python\" -Target ($python | Split-Path) | Out-Null",
