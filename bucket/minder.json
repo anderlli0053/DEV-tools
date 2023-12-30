@@ -1,0 +1,33 @@
+{
+  "version": "0.0.23",
+  "description": "An open source platform that helps development teams and open source communities build more secure software, and prove to others that what they’ve built is secure.",
+  "homepage": "https://minder-docs.stacklok.dev/",
+  "license": "Apache-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://mirror.ghproxy.com/https://github.com/stacklok/minder/releases/download/v0.0.23/minder_0.0.23_windows_amd64.zip",
+      "hash": "7832287fc231f5d8bb9f15b1e37f97d93963a0f82a0ff652bf5956b1190f6365"
+    },
+    "arm64": {
+      "url": "https://mirror.ghproxy.com/https://github.com/stacklok/minder/releases/download/v0.0.23/minder_0.0.23_windows_arm64.zip",
+      "hash": "78c194efe35c9305fabf5ee86ea0d247540ecc92abf14d649268144876cb7dce"
+    }
+  },
+  "bin": "minder.exe",
+  "checkver": {
+    "github": "https://github.com/stacklok/minder"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://mirror.ghproxy.com/https://github.com/stacklok/minder/releases/download/v$version/minder_$version_windows_amd64.zip"
+      },
+      "arm64": {
+        "url": "https://mirror.ghproxy.com/https://github.com/stacklok/minder/releases/download/v$version/minder_$version_windows_arm64.zip"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/minder_$version_checksums.txt"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "version": "5.2.1",
+  "description": "UCheck. Update your software in 2 clicks. Stay away from malware.",
+  "homepage": "https://www.adlice.com/ucheck/",
+  "license": "Freemium",
+  "changelog": "https://www.adlice.com/docs/ucheck/release-notes/changelog/",
+  "architecture": {
+    "64bit": {
+      "url": "https://cloud.adlice.com/owncloud/index.php/s/zhvgtK8oXyJ6Gru/download?path=5.2.1&files=UCheck_portable64.exe#/UCheck_portable64.exe",
+      "hash": "1964031d9afddfaeb0c93a079b8e34794f1382a88454480a52b9dbe5cedbea0f",
+      "shortcuts": [
+        [
+          "UCheck_portable64.exe",
+          "UCheck"
+        ]
+      ],
+      "bin": "UCheck_portable64.exe"
+    },
+    "32bit": {
+      "url": "https://cloud.adlice.com/owncloud/index.php/s/zhvgtK8oXyJ6Gru/download?path=5.2.1&files=UCheck_portable32.exe#/UCheck_portable32.exe",
+      "hash": "d1f456dc44534c97436b3b534034bb893903e0590ed61632674126ebce81de67",
+      "shortcuts": [
+        [
+          "UCheck_portable32.exe",
+          "UCheck"
+        ]
+      ],
+      "bin": "UCheck_portable32.exe"
+    }
+  },
+  "checkver": {
+    "url": "https://download.adlice.com/UCheck/Changelog.txt",
+    "regex": "V([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://cloud.adlice.com/owncloud/index.php/s/zhvgtK8oXyJ6Gru/download?path=$version&files=UCheck_portable64.exe#/UCheck_portable64.exe"
+      },
+      "32bit": {
+        "url": "https://cloud.adlice.com/owncloud/index.php/s/zhvgtK8oXyJ6Gru/download?path=$version&files=UCheck_portable32.exe#/UCheck_portable32.exe"
+      }
+    }
+  }
+}
