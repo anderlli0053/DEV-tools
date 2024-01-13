@@ -1,64 +1,64 @@
 {
-  "version": "120.0.6089.3",
-  "description": "Fast, secure, and free web browser, built for the modern web.",
-  "homepage": "https://www.google.com/chrome/canary",
-  "license": {
-    "identifier": "Freeware",
-    "url": "https://www.google.com/chrome/privacy/eula_text.html"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://dl.google.com/release2/chrome/ad2o3xetbzm3m3qlg264uu535lma_120.0.6089.3/120.0.6089.3_chrome_installer.exe#/dl.7z",
-      "hash": "a436b226b3afa11a6b7c0c0ea62a7333b74f5c9cb9946eca2298b27701cecbf7"
+    "version": "122.0.6241.4",
+    "description": "Fast, secure, and free web browser, built for the modern web.",
+    "homepage": "https://www.google.com/chrome/canary",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.google.com/chrome/privacy/eula_text.html"
     },
-    "32bit": {
-      "url": "https://dl.google.com/release2/chrome/adl2dcdxvgctrpth7plofxqjf6oa_120.0.6089.3/120.0.6089.3_chrome_installer.exe#/dl.7z",
-      "hash": "029b2bf7fc8b3115662a24247e9e35cc64540194ff9781efa78d37bf3a3da903"
-    }
-  },
-  "installer": {
-    "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
-  },
-  "bin": [
-    [
-      "chrome.exe",
-      "chrome-canary",
-      "--user-data-dir=\"$dir\\User Data\""
-    ],
-    [
-      "chrome.exe",
-      "google-chrome-canary",
-      "--user-data-dir=\"$dir\\User Data\""
-    ]
-  ],
-  "shortcuts": [
-    [
-      "chrome.exe",
-      "Google Chrome (Canary)",
-      "--user-data-dir=\"$dir\\User Data\""
-    ]
-  ],
-  "persist": "User Data",
-  "checkver": {
-    "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
-    "regex": "(?sm)<canary32><version>(?<ver32>[\\d.]+)</version>.+release2/chrome/(?<32>[\\w-]+)_.+<canary64><version>(?<version>[\\d.]+)</version>.+release2/chrome/(?<64>[\\w-]+)_.+</canary64>"
-  },
-  "autoupdate": {
     "architecture": {
-      "64bit": {
-        "url": "https://dl.google.com/release2/chrome/$match64_$version/$version_chrome_installer.exe#/dl.7z",
-        "hash": {
-          "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
-          "xpath": "/chromechecker/canary64[version='$version']/sha256"
+        "64bit": {
+            "url": "https://dl.google.com/release2/chrome/ad2nkpymdvjozdoi7tfpm3hy5nya_122.0.6241.4/122.0.6241.4_chrome_installer.exe#/dl.7z",
+            "hash": "7870a560d21b7315e977b6ff084de778fa72fd43e0f1392ebf7959e8fef80aba"
+        },
+        "32bit": {
+            "url": "https://dl.google.com/release2/chrome/adt22vu6yinnhltukytgnuox5p3q_122.0.6241.4/122.0.6241.4_chrome_installer.exe#/dl.7z",
+            "hash": "58401de931cd87c75abd1467321f517a702f545d328b1ec0d08a7591998ade06"
         }
-      },
-      "32bit": {
-        "url": "https://dl.google.com/release2/chrome/$match32_$matchVer32/$matchVer32_chrome_installer.exe#/dl.7z",
-        "hash": {
-          "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
-          "xpath": "/chromechecker/canary32[version='$matchVer32']/sha256"
+    },
+    "installer": {
+        "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
+    },
+    "bin": [
+        [
+            "chrome.exe",
+            "chrome-canary",
+            "--user-data-dir=\"$dir\\User Data\""
+        ],
+        [
+            "chrome.exe",
+            "google-chrome-canary",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "chrome.exe",
+            "Google Chrome (Canary)",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
+        "regex": "(?sm)<canary32><version>(?<ver32>[\\d.]+)</version>.+release2/chrome/(?<32>[\\w-]+)_.+<canary64><version>(?<version>[\\d.]+)</version>.+release2/chrome/(?<64>[\\w-]+)_.+</canary64>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.google.com/release2/chrome/$match64_$version/$version_chrome_installer.exe#/dl.7z",
+                "hash": {
+                    "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
+                    "xpath": "/chromechecker/canary64[version='$version']/sha256"
+                }
+            },
+            "32bit": {
+                "url": "https://dl.google.com/release2/chrome/$match32_$matchVer32/$matchVer32_chrome_installer.exe#/dl.7z",
+                "hash": {
+                    "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
+                    "xpath": "/chromechecker/canary32[version='$matchVer32']/sha256"
+                }
+            }
         }
-      }
     }
-  }
 }
