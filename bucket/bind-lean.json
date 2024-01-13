@@ -1,36 +1,36 @@
 {
-  "version": "9.16.44",
-  "description": "Versatile, classic, complete name server software.",
-  "homepage": "https://www.isc.org/bind/",
-  "license": "MPL-2.0",
-  "notes": "The 9.16 branch is the last stable Windows release of BIND. It is recommended to use the latest stable version through WSL instead. Please read the following for more info: https://www.isc.org/blogs/bind-update-summer2021/",
-  "suggest": {
-    "vcredist": "extras/vcredist2022"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://downloads.isc.org/isc/bind9/9.16.44/BIND9.16.44.x64.zip",
-      "hash": "47137277c97c98f287804e0fdfbfd98a312d43a5d714702f6af5abd3ef8ed794"
-    }
-  },
-  "installer": {
-    "script": [
-      "Remove-Item \"$dir\\BINDInstall.exe\", \"$dir\\vcredist_x*.exe\"",
-      "New-Item \"$dir\\bin\" -ItemType 'Directory' -Force | Out-Null",
-      "Move-Item \"$dir\\*.exe\", \"$dir\\*.dll\" \"$dir\\bin\" -Force",
-      "Remove-Item \"$dir\\*\" -Exclude 'bin'"
-    ]
-  },
-  "persist": "etc",
-  "checkver": {
-    "url": "https://www.isc.org/download/",
-    "regex": "BIND([\\d.]+).x64.zip"
-  },
-  "autoupdate": {
+    "version": "9.16.45",
+    "description": "Versatile, classic, complete name server software.",
+    "homepage": "https://www.isc.org/bind/",
+    "license": "MPL-2.0",
+    "notes": "The 9.16 branch is the last stable Windows release of BIND. It is recommended to use the latest stable version through WSL instead. Please read the following for more info: https://www.isc.org/blogs/bind-update-summer2021/",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
     "architecture": {
-      "64bit": {
-        "url": "https://downloads.isc.org/isc/bind$majorVersion/$version/BIND$version.x64.zip"
-      }
+        "64bit": {
+            "url": "https://downloads.isc.org/isc/bind9/9.16.45/BIND9.16.45.x64.zip",
+            "hash": "db60e64110875cdceeb33a4d7d55b0bf5f21f16b11867c8951867ea6da42552e"
+        }
+    },
+    "installer": {
+        "script": [
+            "Remove-Item \"$dir\\BINDInstall.exe\", \"$dir\\vcredist_x*.exe\"",
+            "New-Item \"$dir\\bin\" -ItemType 'Directory' -Force | Out-Null",
+            "Move-Item \"$dir\\*.exe\", \"$dir\\*.dll\" \"$dir\\bin\" -Force",
+            "Remove-Item \"$dir\\*\" -Exclude 'bin'"
+        ]
+    },
+    "persist": "etc",
+    "checkver": {
+        "url": "https://www.isc.org/download/",
+        "regex": "BIND([\\d.]+).x64.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.isc.org/isc/bind$majorVersion/$version/BIND$version.x64.zip"
+            }
+        }
     }
-  }
 }
