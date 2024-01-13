@@ -1,39 +1,39 @@
 {
-  "homepage": "https://www.binance.com/",
-  "description": "Binance's cryptocurrency exchange. Trade. Anywhere.",
-  "version": "1.48.2",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://ftp.binance.com/electron-desktop/windows/production/binance-setup-1.48.2.exe#/binance-setup.7z",
-      "hash": "sha512:de4aa7d2766e748ede9cc67a5f065a537aa585854ffffd421431b1f14390cb551a0b0356a6e8af60f59bb1f532fa2ea69cb1b76301bc9a08f9e6f3a9b0823895",
-      "installer": {
-        "script": [
-          "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-          "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninst*\" -Force -Recurse"
-        ]
-      }
-    }
-  },
-  "shortcuts": [
-    [
-      "Binance.exe",
-      "Binance"
-    ]
-  ],
-  "checkver": {
-    "url": "https://ftp.binance.com/electron-desktop/windows/production/latest.yml",
-    "regex": "binance-setup-([\\d.]+).exe"
-  },
-  "autoupdate": {
+    "homepage": "https://www.binance.com/",
+    "description": "Binance's cryptocurrency exchange. Trade. Anywhere.",
+    "version": "1.48.7",
+    "license": "MIT",
     "architecture": {
-      "64bit": {
-        "url": "https://ftp.binance.com/electron-desktop/windows/production/binance-setup-$version.exe#/binance-setup.7z"
-      }
+        "64bit": {
+            "url": "https://ftp.binance.com/electron-desktop/windows/production/binance-setup-1.48.7.exe#/binance-setup.7z",
+            "hash": "sha512:50f66f7c5f1480babe793e0f17104b0fa233c9097006557012560e40026304fd4c61f0624931bf30b095db84363207fc8ff295dffe12e14739019e6e593976ad",
+            "installer": {
+                "script": [
+                    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninst*\" -Force -Recurse"
+                ]
+            }
+        }
     },
-    "hash": {
-      "url": "https://ftp.binance.com/electron-desktop/windows/production/latest.yml",
-      "regex": "(?sm)$version.exe.*?sha512: $base64"
+    "shortcuts": [
+        [
+            "Binance.exe",
+            "Binance"
+        ]
+    ],
+    "checkver": {
+        "url": "https://ftp.binance.com/electron-desktop/windows/production/latest.yml",
+        "regex": "binance-setup-([\\d.]+).exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ftp.binance.com/electron-desktop/windows/production/binance-setup-$version.exe#/binance-setup.7z"
+            }
+        },
+        "hash": {
+            "url": "https://ftp.binance.com/electron-desktop/windows/production/latest.yml",
+            "regex": "(?sm)$version.exe.*?sha512: $base64"
+        }
     }
-  }
 }
