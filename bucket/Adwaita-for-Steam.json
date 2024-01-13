@@ -1,27 +1,27 @@
 {
-  "version": "1.14",
-  "description": "A skin to make Steam look more like a native GNOME app",
-  "homepage": "https://github.com/tkashkin/Adwaita-for-Steam",
-  "license": "MIT",
-  "depends": "steam",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/tkashkin/Adwaita-for-Steam/archive/master.zip",
-      "hash": "a17e06b3222458efc2939cc81ad13dc68695b5750b702243622429a23d93ddfb",
-      "extract_dir": "Adwaita-for-Steam-master"
+    "version": "1.15",
+    "description": "A skin to make Steam look more like a native GNOME app",
+    "homepage": "https://github.com/tkashkin/Adwaita-for-Steam",
+    "license": "MIT",
+    "depends": "steam",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/tkashkin/Adwaita-for-Steam/archive/master.zip",
+            "hash": "e3190ad7c2b94c4b2bbe0a51d88ae3cc4d4e90110d2dad6913a090a0051cb3d0",
+            "extract_dir": "Adwaita-for-Steam-master"
+        }
+    },
+    "pre_install": [
+        "Remove-Item -Recurse -Force $env:SCOOP\\persist\\steam\\skins\\Adwaita -ErrorAction SilentlyContinue",
+        "New-Item -Type Junction -Path $env:SCOOP\\persist\\steam\\skins\\Adwaita -Target $dir\\Adwaita | Out-Null"
+    ],
+    "checkver": {
+        "github": "https://github.com/tkashkin/Adwaita-for-Steam"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/tkashkin/Adwaita-for-Steam/archive/master.zip",
+        "hash": {
+            "mode": "download"
+        }
     }
-  },
-  "pre_install": [
-    "Remove-Item -Recurse -Force $env:SCOOP\\persist\\steam\\skins\\Adwaita -ErrorAction SilentlyContinue",
-    "New-Item -Type Junction -Path $env:SCOOP\\persist\\steam\\skins\\Adwaita -Target $dir\\Adwaita | Out-Null"
-  ],
-  "checkver": {
-    "github": "https://github.com/tkashkin/Adwaita-for-Steam"
-  },
-  "autoupdate": {
-    "url": "https://ghproxy.com/https://github.com/tkashkin/Adwaita-for-Steam/archive/master.zip",
-    "hash": {
-      "mode": "download"
-    }
-  }
 }
