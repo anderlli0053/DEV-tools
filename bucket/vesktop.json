@@ -1,34 +1,27 @@
 {
-    "version": "0.2.7",
+    "version": "1.5.0",
     "description": "A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed",
-    "homepage": "https://vencord.dev/",
+    "homepage": "https://github.com/Vencord/Vesktop",
     "license": "GPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Vencord/Vesktop/releases/download/v0.2.7/Vesktop-Setup-0.2.7.exe#/dl.7z",
-            "hash": "7DAA2C2D000AA773600CE860FF1E9E4CEA2F08EA7D51EF21D5D8D206A4C76FCC"
+            "url": "https://github.com/Vencord/Vesktop/releases/download/v1.5.0/Vesktop-1.5.0-win.zip",
+            "hash": "305bba02fa13afc1bee9d617d3a4651268416edab14ae45d6d1e136fa8d55264"
         }
     },
-    "installer": {
-        "script": [
-                    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
-                ]
-    },
-    "bin": "vesktop.exe",
+    "bin": "Vesktop.exe",
     "shortcuts": [
-      [
-          "vesktop.exe",
-          "Vencord Desktop"
-      ]
+        [
+            "Vesktop.exe",
+            "Vesktop",
+            "Vencord Desktop"
+        ]
     ],
-    "checkver": {
-        "github": "https://github.com/Vencord/Vesktop"
-    },
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Vencord/Vesktop/releases/download/v$version/Vesktop-Setup-$version.exe#/dl."
+                "url": "https://github.com/Vencord/Vesktop/releases/download/v$version/Vesktop-$version-win.zip"
             }
         }
     }

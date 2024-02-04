@@ -1,48 +1,42 @@
 {
-  "version": "114.0.5735.134",
-  "description": "Google Chromium with additional performance optimization patches and new features.",
-  "homepage": "https://thorium.rocks/",
-  "license": "GPL-3.0-only",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.net/https://github.com/Alex313031/Thorium-Win/releases/download/M114.0.5735.134/Thorium_114.0.5735.134.zip",
-      "hash": "62a0445a30f201ace5ef45989e37abebcb670594fbe5ef7aedf123911478ef7e"
-    }
-  },
-  "extract_dir": "Thorium_114.0.5735.134\\BIN",
-  "bin": [
-    [
-      "thorium.exe",
-      "thorium",
-      "--user-data-dir=\"$dir\\User Data\" --allow-outdated-plugins --disable-logging --disable-breakpad --enable-experimental-web-platform-features --new-canvas-2d-api"
-    ]
-  ],
-  "shortcuts": [
-    [
-      "thorium.exe",
-      "Thorium",
-      "--user-data-dir=\"$dir\\User Data\" --allow-outdated-plugins --disable-logging --disable-breakpad --enable-experimental-web-platform-features --new-canvas-2d-api"
-    ]
-  ],
-  "post_install": [
-    "Remove-Item \"$dir\\`Thorium_$version\" -Recurse",
-    "if (!(Test-Path \"$dir\\UserData\\*\") -and (Test-Path \"$env:LocalAppData\\Thorium\\User Data\")) {",
-    "    info '[Portable Mode]: Copying user data...'",
-    "    Copy-Item \"$env:LocalAppData\\Thorium\\User Data\\*\" \"$dir\\User Data\" -Recurse",
-    "}"
-  ],
-  "persist": "User Data",
-  "checkver": {
-    "url": "https://api.github.com/repos/Alex313031/Thorium-Win/tags",
-    "jsonpath": "$..name",
-    "regex": "M([\\d.\\-r]+)"
-  },
-  "autoupdate": {
-    "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.net/https://github.com/Alex313031/Thorium-Win/releases/download/M$version/Thorium_$version.zip"
-      }
+    "version": "119.0.6045.214",
+    "description": "Chromium fork for Linux, Windows, MacOS, Android, and Raspberry Pi named after radioactive element No. 90.",
+    "homepage": "https://thorium.rocks/",
+    "license": {
+        "identifier": "BSD 3-Clause",
+        "url": "https://github.com/Alex313031/Thorium-Win/blob/main/LICENSE"
     },
-    "extract_dir": "Thorium_$version\\BIN"
-  }
+    "url": "https://github.com/Alex313031/Thorium-Win/releases/download/M119.0.6045.214/Thorium_119.0.6045.214.zip",
+    "hash": "0af9e4391dd67948732ffc1d8b8e194003163b757d7c84ae7191d814548dddac",
+    "bin": [
+        [
+            "bin\\thorium.exe",
+            "thorium",
+            "--user-data-dir=\"$dir\\USER_DATA\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "bin\\thorium.exe",
+            "Thorium",
+            "--user-data-dir=\"$dir\\USER_DATA\""
+        ]
+    ],
+    "post_install": [
+        "if (!(Test-Path \"$dir\\USER_DATA\\*\") -and (Test-Path \"$env:LocalAppData\\Thorium\\User Data\")) {",
+        "    info '[Portable Mode]: Copying user data...'",
+        "    Copy-Item \"$env:LocalAppData\\Thorium\\User Data\\*\" \"$dir\\USER_DATA\" -Recurse",
+        "}"
+    ],
+    "env_set": {
+        "CHROME_EXECUTABLE": "$dir\\thorium.exe"
+    },
+    "persist": "USER_DATA",
+    "checkver": {
+        "github": "https://github.com/Alex313031/Thorium-Win",
+        "regex": "/releases/tag/M(?:v|V)?([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/Alex313031/Thorium-Win/releases/download/M$version/Thorium_$version.zip"
+    }
 }

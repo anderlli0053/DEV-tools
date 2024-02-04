@@ -1,36 +1,33 @@
 {
-  "version": "1.1.0.0",
-  "description": "EXIF metadata viewing tool",
-  "homepage": "https://github.com/d2phap/ExifGlass",
-  "license": "GPL-3.0-only",
-  "suggest": {
-    ".NET Desktop Runtime": "extras/windowsdesktop-runtime",
-    "exiftool": [
-      "main/exiftool",
-      "kazzarin/exiftool-obetz"
-    ]
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.net/https://github.com/d2phap/ExifGlass/releases/download/1.1.0.0/ExifGlass_1.1.0.0_net7_x64.zip",
-      "hash": "8f0bd9ae212d2e297c1ed8d43ee422e46d1490047490d9a76495ce59cc756f43",
-      "extract_dir": "ExifGlass_1.1.0.0_net7_x64"
-    }
-  },
-  "bin": "ExifGlass.exe",
-  "shortcuts": [
-    [
-      "ExifGlass.exe",
-      "ExifGlass"
-    ]
-  ],
-  "checkver": "github",
-  "autoupdate": {
+    "version": "1.4.1.0",
+    "description": "EXIF metadata viewing tool",
+    "homepage": "https://github.com/d2phap/ExifGlass",
+    "license": "GPL-3.0-or-later",
+    "depends": "main/exiftool",
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.net/https://github.com/d2phap/ExifGlass/releases/download/$version/ExifGlass_$version_net7_x64.zip",
-        "extract_dir": "ExifGlass_$version_net7_x64"
-      }
+        "64bit": {
+            "url": "https://github.com/d2phap/ExifGlass/releases/download/1.4.1.0/ExifGlass_1.4.1.0_net8_x64.zip",
+            "hash": "068e9c136862efe74664d4d2a56e0fa8e70a6860faa4e0ff52a8ce0e27200570",
+            "extract_dir": "ExifGlass_1.4.1.0_net8_x64"
+        }
+    },
+    "shortcuts": [
+        [
+            "ExifGlass.exe",
+            "ExifGlass"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repositories/610811824/releases/latest",
+        "jsonpath": "$.assets..browser_download_url",
+        "regex": "ExifGlass_([\\d.]+)_net(?<dotnetver>\\d+)_x64\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/d2phap/ExifGlass/releases/download/$version/ExifGlass_$version_net$matchDotnetver_x64.zip",
+                "extract_dir": "ExifGlass_$version_net$matchDotnetver_x64"
+            }
+        }
     }
-  }
 }

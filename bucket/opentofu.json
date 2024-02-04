@@ -1,34 +1,33 @@
 {
-  "version": "1.6.0-alpha3",
-  "description": "An open-source infrastructure as code tool.",
-  "homepage": "https://opentofu.org",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/opentofu/opentofu/releases/download/v1.6.0-alpha3/tofu_1.6.0-alpha3_windows_amd64.zip",
-      "hash": "395e7278136c06fe87ad4115ad5781332f37790adc5e5e64160b01d2a3acd53b"
-    },
-    "32bit": {
-      "url": "https://ghproxy.com/https://github.com/opentofu/opentofu/releases/download/v1.6.0-alpha3/tofu_1.6.0-alpha3_windows_386.zip",
-      "hash": "d0f4a5ff9dca2804a5c6d947cf234bc2604b8e4b5a798a710d964a019b44b1e9"
-    }
-  },
-  "bin": "tofu.exe",
-  "checkver": {
-    "url": "https://github.com/opentofu/opentofu/releases/latest",
-    "regex": "/opentofu/tree/v([^/]+?)\""
-  },
-  "autoupdate": {
+    "version": "1.6.1",
+    "description": "An OSS tool for building, changing, and versioning infrastructure safely and efficiently. OpenTofu can manage existing and popular service providers as well as custom in-house solutions.",
+    "homepage": "https://opentofu.org/",
+    "license": "MPL-2.0",
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.com/https://github.com/opentofu/opentofu/releases/download/v$version/tofu_$version_windows_amd64.zip"
-      },
-      "32bit": {
-        "url": "https://ghproxy.com/https://github.com/opentofu/opentofu/releases/download/v$version/tofu_$version_windows_386.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/opentofu/opentofu/releases/download/v1.6.1/tofu_1.6.1_windows_amd64.zip",
+            "hash": "4c77f22ec92bfd03e22beab6e8aeffe6957ee5797588f0b23d55391b7ebf90e0"
+        },
+        "32bit": {
+            "url": "https://github.com/opentofu/opentofu/releases/download/v1.6.1/tofu_1.6.1_windows_386.zip",
+            "hash": "5e9d4c20962b00454b5b5b4266a2ca1e9e757fba62535ae475c18efe54b4bb79"
+        }
     },
-    "hash": {
-      "url": "$baseurl/tofu_$version_SHA256SUMS"
+    "bin": "tofu.exe",
+    "checkver": {
+        "github": "https://github.com/opentofu/opentofu"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/opentofu/opentofu/releases/download/v$version/tofu_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/opentofu/opentofu/releases/download/v$version/tofu_$version_windows_386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/tofu_1.6.0_SHA256SUMS"
+        }
     }
-  }
 }
