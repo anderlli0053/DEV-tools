@@ -1,41 +1,41 @@
 {
-  "notes": "Check https://chromium.woolyss.com for different versions of Chromium releases.",
-  "version": "118.0.5993.118",
-  "description": "Browser aiming for safer, faster, and more stable way for all users to experience the web.",
-  "homepage": "https://www.chromium.org",
-  "license": "BSD-3-Clause",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/Hibbiki/chromium-win64/releases/download/v118.0.5993.118-r1192594/mini_installer.sync.exe",
-      "hash": "sha1:a9db7000d39aa1c0d1e822b19a9cc453ee774241"
-    }
-  },
-  "installer": {
-    "args": "--do-not-launch-chrome"
-  },
-  "uninstaller": {
-    "##": "Using 'script' instead of 'file' because it exits with error code 19.",
-    "script": [
-      "if (Test-Path \"${env:LOCALAPPDATA}\\Chromium\\Application\\$version\\Installer\\setup.exe\") {",
-      "   Start-Process -FilePath \"${env:LOCALAPPDATA}\\Chromium\\Application\\$version\\Installer\\setup.exe\" -ArgumentList \"--uninstall --force-uninstall\"",
-      "}"
-    ]
-  },
-  "checkver": {
-    "url": "https://api.github.com/repos/Hibbiki/chromium-win64/tags",
-    "jsonpath": "$..name",
-    "regex": "v(?<version>[\\d.]+)(?<subver>\\-r\\w+)",
-    "replace": "${version}"
-  },
-  "autoupdate": {
+    "notes": "Check https://chromium.woolyss.com for different versions of Chromium releases.",
+    "version": "121.0.6167.140",
+    "description": "Browser aiming for safer, faster, and more stable way for all users to experience the web.",
+    "homepage": "https://www.chromium.org",
+    "license": "BSD-3-Clause",
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.com/https://github.com/Hibbiki/chromium-win64/releases/download/v$version$matchSubver/mini_installer.sync.exe",
-        "hash": {
-          "url": "https://github.com/Hibbiki/chromium-win64/releases/latest",
-          "regex": "$sha1 \\.\\./out/x64/mini_installer.sync.exe"
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/Hibbiki/chromium-win64/releases/download/v121.0.6167.140-r1233107/mini_installer.sync.exe",
+            "hash": "sha1:502b6357408aba50444dddfbc34c54c1dcd4011f"
         }
-      }
+    },
+    "installer": {
+        "args": "--do-not-launch-chrome"
+    },
+    "uninstaller": {
+        "##": "Using 'script' instead of 'file' because it exits with error code 19.",
+        "script": [
+            "if (Test-Path \"${env:LOCALAPPDATA}\\Chromium\\Application\\$version\\Installer\\setup.exe\") {",
+            "   Start-Process -FilePath \"${env:LOCALAPPDATA}\\Chromium\\Application\\$version\\Installer\\setup.exe\" -ArgumentList \"--uninstall --force-uninstall\"",
+            "}"
+        ]
+    },
+    "checkver": {
+        "url": "https://api.github.com/repos/Hibbiki/chromium-win64/tags",
+        "jsonpath": "$..name",
+        "regex": "v(?<version>[\\d.]+)(?<subver>\\-r\\w+)",
+        "replace": "${version}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/Hibbiki/chromium-win64/releases/download/v$version$matchSubver/mini_installer.sync.exe",
+                "hash": {
+                    "url": "https://github.com/Hibbiki/chromium-win64/releases/latest",
+                    "regex": "$sha1 \\.\\./out/x64/mini_installer.sync.exe"
+                }
+            }
+        }
     }
-  }
 }
