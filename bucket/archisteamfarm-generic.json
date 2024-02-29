@@ -1,39 +1,39 @@
 {
-  "version": "5.4.12.5",
-  "description": "Farm Steam cards from multiple accounts simultaneously.",
-  "homepage": "https://github.com/JustArchiNET/ArchiSteamFarm",
-  "license": "Apache-2.0",
-  "suggest": {
-    ".NET Runtime/SDK": "main/dotnet"
-  },
-  "url": "https://ghproxy.com/https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/5.4.12.5/ASF-generic.zip#/dl",
-  "hash": "81281b2aa3938095dcb1a2fb61ae6efd9763ca3f9d647145c8beded85ce8c07b",
-  "pre_install": [
-    "if (Test-Path \"$persist_dir\\plugins\") {",
-    "  Expand-7zipArchive \"$dir\\$fname\" \"$dir\\_temp\" -ExtractDir plugins",
-    "  Get-ChildItem \"$persist_dir\\plugins\" *OfficialPlugins* | Remove-Item -Recurse",
-    "  Get-ChildItem \"$dir\\_temp\" -Exclude .gitkeep | % { Move-Item \"$dir\\_temp\\$($_.Name)\" \"$persist_dir\\plugins\\$($_.Name)\" }",
-    "  Remove-Item \"$dir\\_temp\" -Recurse -Force",
-    "}"
-  ],
-  "installer": {
-    "script": "Expand-7zipArchive \"$dir\\$fname\" \"$dir\" -Removal"
-  },
-  "bin": "ArchiSteamFarm.cmd",
-  "shortcuts": [
-    [
-      "ArchiSteamFarm.cmd",
-      "ArchiSteamFarm",
-      "",
-      "ArchiSteamFarm.ico"
-    ]
-  ],
-  "persist": [
-    "config",
-    "plugins"
-  ],
-  "checkver": "github",
-  "autoupdate": {
-    "url": "https://ghproxy.com/https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/$version/ASF-generic.zip#/dl"
-  }
+    "version": "5.5.3.4",
+    "description": "Farm Steam cards from multiple accounts simultaneously.",
+    "homepage": "https://github.com/JustArchiNET/ArchiSteamFarm",
+    "license": "Apache-2.0",
+    "suggest": {
+        ".NET Runtime/SDK": "main/dotnet"
+    },
+    "url": "https://ghproxy.com/https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/5.5.3.4/ASF-generic.zip#/dl",
+    "hash": "75bf2d633a2fb7309a13bc615a092a23543ee01a3ff008afdc43aa8d03752b2e",
+    "pre_install": [
+        "if (Test-Path \"$persist_dir\\plugins\") {",
+        "  Expand-7zipArchive \"$dir\\$fname\" \"$dir\\_temp\" -ExtractDir plugins",
+        "  Get-ChildItem \"$persist_dir\\plugins\" *OfficialPlugins* | Remove-Item -Recurse",
+        "  Get-ChildItem \"$dir\\_temp\" -Exclude .gitkeep | % { Move-Item \"$dir\\_temp\\$($_.Name)\" \"$persist_dir\\plugins\\$($_.Name)\" }",
+        "  Remove-Item \"$dir\\_temp\" -Recurse -Force",
+        "}"
+    ],
+    "installer": {
+        "script": "Expand-7zipArchive \"$dir\\$fname\" \"$dir\" -Removal"
+    },
+    "bin": "ArchiSteamFarm.cmd",
+    "shortcuts": [
+        [
+            "ArchiSteamFarm.cmd",
+            "ArchiSteamFarm",
+            "",
+            "ArchiSteamFarm.ico"
+        ]
+    ],
+    "persist": [
+        "config",
+        "plugins"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/$version/ASF-generic.zip#/dl"
+    }
 }
