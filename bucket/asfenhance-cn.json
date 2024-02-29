@@ -1,27 +1,27 @@
 {
-  "version": "2.0.0.0",
-  "description": "扩展ASF的功能, 增加几条实用命令",
-  "homepage": "https://github.com/chr233/ASFEnhance",
-  "license": "AGPL-3.0-only",
-  "depends": "lemon/archisteamfarm",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/chr233/ASFEnhance/releases/download/2.0.0.0/ASFEnhance-zh-Hans.zip",
-      "hash": "284e33c7b831d1f45e2bdbf376e6ca6ae50cc5d25bf43f51e0d78565608ac121"
-    }
-  },
-  "installer": {
-    "script": "if (installed 'archisteamfarm' $global) {Copy-Item \"$dir\\ASFEnhance.dll\" \"$(appdir archisteamfarm $global)\\current\\plugins\"} else { error 'Please install `archisteamfarm` first, then reinstall `asfenhance-cn`.'}"
-  },
-  "uninstaller": {
-    "script": "if (installed 'archisteamfarm' $global) {Remove-Item \"$(appdir archisteamfarm $global)\\current\\plugins\\ASFEnhance.dll\"}"
-  },
-  "checkver": "github",
-  "autoupdate": {
+    "version": "2.0.13.3",
+    "description": "扩展ASF的功能, 增加几条实用命令",
+    "homepage": "https://github.com/chr233/ASFEnhance",
+    "license": "AGPL-3.0-only",
+    "depends": "lemon/archisteamfarm",
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.com/https://github.com/chr233/ASFEnhance/releases/download/$version/ASFEnhance-zh-Hans.zip"
-      }
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/chr233/ASFEnhance/releases/download/2.0.13.3/ASFEnhance-zh-Hans.zip",
+            "hash": "2e9ab989461f913deaeceb9f83318f24c88b35d54cf3239f18b96a1a3e65f473"
+        }
+    },
+    "installer": {
+        "script": "if (installed 'archisteamfarm' $global) {Copy-Item \"$dir\\ASFEnhance.dll\" \"$(appdir archisteamfarm $global)\\current\\plugins\"} else { error 'Please install `archisteamfarm` first, then reinstall `asfenhance-cn`.'}"
+    },
+    "uninstaller": {
+        "script": "if (installed 'archisteamfarm' $global) {Remove-Item \"$(appdir archisteamfarm $global)\\current\\plugins\\ASFEnhance.dll\"}"
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/chr233/ASFEnhance/releases/download/$version/ASFEnhance-zh-Hans.zip"
+            }
+        }
     }
-  }
 }
