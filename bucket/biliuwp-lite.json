@@ -1,57 +1,57 @@
 {
-  "##": "The shortcut will be created when adding the Appx package",
-  "version": "4.6.17",
-  "description": "第三方哔哩哔哩UWP客户端",
-  "homepage": "https://github.com/ywmoyue/biliuwp-lite",
-  "license": "Freeware",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/ywmoyue/biliuwp-lite/releases/download/v4.6.17/BiliLite.Packages_4.6.17.0_x64.zip",
-      "hash": "b9bac14db43f5fbac4d0e7b716488d2e52a94a96cb1600c77cfc60c1b027fe5c",
-      "extract_dir": "BiliLite.Packages_4.6.17.0_x64_Test"
-    },
-    "32bit": {
-      "url": "https://ghproxy.com/https://github.com/ywmoyue/biliuwp-lite/releases/download/v4.6.17/BiliLite.Packages_4.6.17.0_x86.zip",
-      "hash": "1cf55268675407c86811a372dc86b87c91e2b118fa953abeb88357fc89af9734",
-      "extract_dir": "BiliLite.Packages_4.6.17.0_x86_Test"
-    },
-    "arm64": {
-      "url": "https://ghproxy.com/https://github.com/ywmoyue/biliuwp-lite/releases/download/v4.6.17/BiliLite.Packages_4.6.17.0_ARM64.zip",
-      "hash": "d686c6712448135ff3db50b168f57fcbb0273859f485dd4ef8a3f36790004716",
-      "extract_dir": "BiliLite.Packages_4.6.17.0_ARM64_Test"
-    }
-  },
-  "pre_install": [
-    "if ($env:CI -eq \"true\") { Exit }",
-    "if ($PSVersionTable.PSVersion.Major -ge 6) { Import-Module Appx -UseWindowsPowershell 3>$null }",
-    "Get-ChildItem \"$dir\\*.msix\" | Add-AppxPackage -ForceTargetApplicationShutdown -AllowUnsigned"
-  ],
-  "pre_uninstall": [
-    "if ($env:CI -eq \"true\") { Exit }",
-    "if ($PSVersionTable.PSVersion.Major -ge 6) { Import-Module Appx -UseWindowsPowershell 3>$null }",
-    "$package = Get-AppxPackage '5422.502643927C6AD'",
-    "if (!$package) { warn \"$app is already uninstalled out of scoop.\" ; return }",
-    "if ($purge) {",
-    "    Remove-AppxPackage $package",
-    "} else {",
-    "    Remove-AppxPackage $package -PreserveRoamableApplicationData",
-    "}"
-  ],
-  "checkver": "github",
-  "autoupdate": {
+    "##": "The shortcut will be created when adding the Appx package",
+    "version": "4.6.27",
+    "description": "第三方哔哩哔哩UWP客户端",
+    "homepage": "https://github.com/ywmoyue/biliuwp-lite",
+    "license": "Freeware",
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.com/https://github.com/ywmoyue/biliuwp-lite/releases/download/v$version/BiliLite.Packages_$version.0_x64.zip",
-        "extract_dir": "BiliLite.Packages_$version.0_x64_Test"
-      },
-      "32bit": {
-        "url": "https://ghproxy.com/https://github.com/ywmoyue/biliuwp-lite/releases/download/v$version/BiliLite.Packages_$version.0_x86.zip",
-        "extract_dir": "BiliLite.Packages_$version.0_x86_Test"
-      },
-      "arm64": {
-        "url": "https://ghproxy.com/https://github.com/ywmoyue/biliuwp-lite/releases/download/v$version/BiliLite.Packages_$version.0_ARM64.zip",
-        "extract_dir": "BiliLite.Packages_$version.0_ARM64_Test"
-      }
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/ywmoyue/biliuwp-lite/releases/download/v4.6.27/BiliLite.Packages_4.6.27.0_x64.zip",
+            "hash": "79df5fcd90c6ab923491fddfd5c388221ff40c10b1e04f2e5700f4d94067f971",
+            "extract_dir": "BiliLite.Packages_4.6.27.0_x64_Test"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/ywmoyue/biliuwp-lite/releases/download/v4.6.27/BiliLite.Packages_4.6.27.0_x86.zip",
+            "hash": "a1e3f817e82fce9dee69a9d726c91c53256caf113c041e1a993907f4a47da454",
+            "extract_dir": "BiliLite.Packages_4.6.27.0_x86_Test"
+        },
+        "arm64": {
+            "url": "https://ghproxy.com/https://github.com/ywmoyue/biliuwp-lite/releases/download/v4.6.27/BiliLite.Packages_4.6.27.0_ARM64.zip",
+            "hash": "25e188f2997c1bdf16a80376b71ee11c4a130c0d07f5e8499fbbe81d2275fccb",
+            "extract_dir": "BiliLite.Packages_4.6.27.0_ARM64_Test"
+        }
+    },
+    "pre_install": [
+        "if ($env:CI -eq \"true\") { Exit }",
+        "if ($PSVersionTable.PSVersion.Major -ge 6) { Import-Module Appx -UseWindowsPowershell 3>$null }",
+        "Get-ChildItem \"$dir\\*.msix\" | Add-AppxPackage -ForceTargetApplicationShutdown -AllowUnsigned"
+    ],
+    "pre_uninstall": [
+        "if ($env:CI -eq \"true\") { Exit }",
+        "if ($PSVersionTable.PSVersion.Major -ge 6) { Import-Module Appx -UseWindowsPowershell 3>$null }",
+        "$package = Get-AppxPackage '5422.502643927C6AD'",
+        "if (!$package) { warn \"$app is already uninstalled out of scoop.\" ; return }",
+        "if ($purge) {",
+        "    Remove-AppxPackage $package",
+        "} else {",
+        "    Remove-AppxPackage $package -PreserveRoamableApplicationData",
+        "}"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/ywmoyue/biliuwp-lite/releases/download/v$version/BiliLite.Packages_$version.0_x64.zip",
+                "extract_dir": "BiliLite.Packages_$version.0_x64_Test"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/ywmoyue/biliuwp-lite/releases/download/v$version/BiliLite.Packages_$version.0_x86.zip",
+                "extract_dir": "BiliLite.Packages_$version.0_x86_Test"
+            },
+            "arm64": {
+                "url": "https://ghproxy.com/https://github.com/ywmoyue/biliuwp-lite/releases/download/v$version/BiliLite.Packages_$version.0_ARM64.zip",
+                "extract_dir": "BiliLite.Packages_$version.0_ARM64_Test"
+            }
+        }
     }
-  }
 }
