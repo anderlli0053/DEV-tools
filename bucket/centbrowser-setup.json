@@ -1,44 +1,44 @@
 {
-  "homepage": "https://www.centbrowser.com/",
-  "description": "The Most Feature Rich Chromium",
-  "version": "5.0.1002.354",
-  "license": "Freeware",
-  "architecture": {
-    "64bit": {
-      "url": "http://static.centbrowser.com/win_stable/5.0.1002.354/centbrowser_5.0.1002.354_x64.exe#/dl.7z",
-      "hash": "b8eefd006853fc7b415ccbe4987d9b03f83c92cfee55182a59e4217afd2a0aba"
-    },
-    "32bit": {
-      "url": "http://static.centbrowser.com/win_stable/5.0.1002.354/centbrowser_5.0.1002.354.exe#/dl.7z",
-      "hash": "9a7b92ef28f9ee0dce5c414b6fc1a060ccbed12f624c8c1f456c468aef3bef8f"
-    }
-  },
-  "installer": {
-    "script": [
-      "Expand-7zipArchive \"$dir\\chrome.7z\" \"$dir\"",
-      "Move-Item \"$dir\\Chrome-bin\\*\" \"$dir\""
-    ]
-  },
-  "post_install": "Remove-Item \"$dir\\chrome.7z\",\"$dir\\Chrome-bin\" -Recurse -Force",
-  "shortcuts": [
-    [
-      "chrome.exe",
-      "Cent Browser"
-    ]
-  ],
-  "persist": "User Data",
-  "checkver": {
-    "url": "https://www.centbrowser.com/history.html",
-    "re": "<p id=\"[\\d.]+\">v([\\d.]+)"
-  },
-  "autoupdate": {
+    "homepage": "https://www.centbrowser.com/",
+    "description": "The Most Feature Rich Chromium",
+    "version": "5.1.1130.82",
+    "license": "Freeware",
     "architecture": {
-      "64bit": {
-        "url": "http://static.centbrowser.com/win_stable/$version/centbrowser_$version_x64.exe#/dl.7z"
-      },
-      "32bit": {
-        "url": "http://static.centbrowser.com/win_stable/$version/centbrowser_$version.exe#/dl.7z"
-      }
+        "64bit": {
+            "url": "http://static.centbrowser.com/win_stable/5.1.1130.82/centbrowser_5.1.1130.82_x64.exe#/dl.7z",
+            "hash": "627df2399d2bceb3016efccb2b747775ab9b10063ca810f655bcf882f07ae8d0"
+        },
+        "32bit": {
+            "url": "http://static.centbrowser.com/win_stable/5.1.1130.82/centbrowser_5.1.1130.82.exe#/dl.7z",
+            "hash": "eba0badfb41d557cfcd2e9438a469aa01aedcd7c4ec14546526b7190c02f6930"
+        }
+    },
+    "installer": {
+        "script": [
+            "Expand-7zipArchive \"$dir\\chrome.7z\" \"$dir\"",
+            "Move-Item \"$dir\\Chrome-bin\\*\" \"$dir\""
+        ]
+    },
+    "post_install": "Remove-Item \"$dir\\chrome.7z\",\"$dir\\Chrome-bin\" -Recurse -Force",
+    "shortcuts": [
+        [
+            "chrome.exe",
+            "Cent Browser"
+        ]
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://www.centbrowser.com/history.html",
+        "re": "<p id=\"[\\d.]+\">v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://static.centbrowser.com/win_stable/$version/centbrowser_$version_x64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "http://static.centbrowser.com/win_stable/$version/centbrowser_$version.exe#/dl.7z"
+            }
+        }
     }
-  }
 }
