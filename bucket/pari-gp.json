@@ -1,43 +1,36 @@
 {
-  "##": ":PARI/GP",
-  "version": "2-15-4",
-  "description": "PARI/GP is a widely used computer algebra system designed for fast computations in number theory",
-  "homepage": "https://pari.math.u-bordeaux.fr/",
-  "license": "GPL",
-  "architecture": {
-    "64bit": {
-      "url": "https://pari.math.u-bordeaux.fr/pub/pari/windows/Pari64-2-15-4.exe#/dl.7z",
-      "hash": "md5:1be71402d6bbdd90c2138565cea85f1a"
-    },
-    "32bit": {
-      "url": "https://pari.math.u-bordeaux.fr/pub/pari/windows/Pari32-2-15-4.exe#/dl.7z",
-      "hash": "md5:aa3aea4d3c3a35d184d1a9634da38947"
-    }
-  },
-  "bin": [
-    "gp.exe",
-    [
-      "gp.exe",
-      "pari-gp"
-    ]
-  ],
-  "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe\", \"$dir\\perl\", \"$dir\\lib\", \"$dir\\include\" -Recurse -ErrorAction \"Ignore\"",
-  "checkver": {
-    "url": "https://pari.math.u-bordeaux.fr/download.html",
-    "regex": "windows\\/Pari64-([\\d-]+)\\.exe"
-  },
-  "autoupdate": {
+    "version": "2.17.0",
+    "description": "PARI/GP is a widely used computer algebra system designed for fast computations in number theory.",
+    "homepage": "https://pari.math.u-bordeaux.fr/",
+    "license": "GPL-3.0-only",
     "architecture": {
-      "64bit": {
-        "url": "https://pari.math.u-bordeaux.fr/pub/pari/windows/Pari64-$version.exe#/dl.7z"
-      },
-      "32bit": {
-        "url": "https://pari.math.u-bordeaux.fr/pub/pari/windows/Pari32-$version.exe#/dl.7z"
-      }
+        "64bit": {
+            "url": "https://pari.math.u-bordeaux.fr/pub/pari/windows/Pari64-2-17-0.exe#/dl.7z",
+            "hash": "3340d72f1fd66b658deec64a9be5a94b7d333dc1a15514fe5aef54887ae13386"
+        },
+        "32bit": {
+            "url": "https://pari.math.u-bordeaux.fr/pub/pari/windows/Pari32-2-17-0.exe#/dl.7z",
+            "hash": "64fd73581b0a947167ba8af7209059a1a216cceb7827aec6f05b00e3c9d6b3ec"
+        }
     },
-    "hash": {
-      "url": "https://pari.math.u-bordeaux.fr/download.html",
-      "regex": "$basename[\\S\\s]*?md5sum: $md5"
+    "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall.exe\" -Recurse",
+    "bin": "gp.exe",
+    "checkver": {
+        "url": "https://pari.math.u-bordeaux.fr/download.html",
+        "regex": "pari-([\\d.]+).tar.gz"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://pari.math.u-bordeaux.fr/pub/pari/windows/Pari64-$dashVersion.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://pari.math.u-bordeaux.fr/pub/pari/windows/Pari32-$dashVersion.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "https://pari.math.u-bordeaux.fr/download.html",
+            "find": "$basename[\\S\\s]+?$sha256"
+        }
     }
-  }
 }

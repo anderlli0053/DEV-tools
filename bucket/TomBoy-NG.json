@@ -1,44 +1,34 @@
 {
-  "homepage": "https://github.com/tomboy-notes/tomboy-ng",
-  "license": "GPL-3.0-or-later",
-  "version": "0.34c",
-  "url": "https://ghproxy.com/https://github.com/tomboy-notes/tomboy-ng/releases/download/v0.34/tomboy-ng-setup-0.34c.exe",
-  "hash": "cdce85403e6d0254a620b3ae84d54ff46db6856013d4e2b7fbd802571badbd7b",
-  "innosetup": true,
-  "architecture": {
-    "64bit": {
-      "installer": {
-        "script": [
-          "Rename-Item \"$dir\\tomboy-ng,1.exe\" \"tomboy-ng.exe\"",
-          "Rename-Item \"$dir\\libeay32,1.dll\" \"libeay32.dll\"",
-          "Rename-Item \"$dir\\ssleay32,1.dll\" \"ssleay32.dll\"",
-          "Remove-Item \"$dir\\tomboy-ng,2.exe\",\"$dir\\libeay32,2.dll\",\"$dir\\ssleay32,2.dll\""
-        ]
-      }
+    "version": "0.40",
+    "description": "Tomboy-ng is a desktop simple note-taking application for Windows and other platforms",
+    "homepage": "https://github.com/tomboy-notes/tomboy-ng",
+    "license": "BSD-3-Clause-Clear",
+    "url": "https://github.com/tomboy-notes/tomboy-ng/releases/download/v0.40/tomboy-ng-setup-0.40.exe",
+    "hash": "6ee6cf5272341ae586f3fa0542af600581fb41d6ee7508d44118853ceef09971",
+    "innosetup": true,
+    "architecture": {
+        "64bit": {
+            "pre_install": [
+                "Get-ChildItem \"$dir\" '*,2.*' | Rename-Item -NewName { $_.FullName -replace ',2\\.', '.' }",
+                "Remove-Item \"$dir\\*,1.*\""
+            ]
+        },
+        "32bit": {
+            "pre_install": [
+                "Get-ChildItem \"$dir\" '*,1.*' | Rename-Item -NewName { $_.FullName -replace ',1\\.', '.' }",
+                "Remove-Item \"$dir\\*,2.*\""
+            ]
+        }
     },
-    "32bit": {
-      "installer": {
-        "script": [
-          "Rename-Item \"$dir\\tomboy-ng,2.exe\" \"tomboy-ng.exe\"",
-          "Rename-Item \"$dir\\libeay32,2.dll\" \"libeay32.dll\"",
-          "Rename-Item \"$dir\\ssleay32,2.dll\" \"ssleay32.dll\"",
-          "Remove-Item \"$dir\\tomboy-ng,1.exe\",\"$dir\\libeay32,1.dll\",\"$dir\\ssleay32,1.dll\""
+    "bin": "tomboy-ng.exe",
+    "shortcuts": [
+        [
+            "tomboy-ng.exe",
+            "TomBoy NG"
         ]
-      }
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/tomboy-notes/tomboy-ng/releases/download/v$version/tomboy-ng-setup-$version.exe"
     }
-  },
-  "bin": "tomboy-ng.exe",
-  "shortcuts": [
-    [
-      "tomboy-ng.exe",
-      "TomBoy NG"
-    ]
-  ],
-  "checkver": {
-    "url": "https://github.com/tomboy-notes/tomboy-ng/releases/latest",
-    "regex": "[\\w\\W]*/tomboy-notes/tomboy-ng/releases/download/v(?<main>[\\d.]+\\w?)/tomboy-ng-setup-([\\d.\\w]+).exe"
-  },
-  "autoupdate": {
-    "url": "https://ghproxy.com/https://github.com/tomboy-notes/tomboy-ng/releases/download/v$matchMain/tomboy-ng-setup-$version.exe"
-  }
 }

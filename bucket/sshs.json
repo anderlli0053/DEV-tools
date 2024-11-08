@@ -1,29 +1,31 @@
 {
-  "version": "3.4.0",
-  "architecture": {
-    "32bit": {
-      "url": "https://ghproxy.com/https://github.com/quantumsheep/sshs/releases/download/3.4.0/sshs-windows-386.exe",
-      "bin": [
-        [
-          "sshs-windows-386.exe",
-          "sshs"
-        ]
-      ],
-      "hash": "b7888dd52ee005f069552bb88656be0a6a1cb189f88ff86e359850c4d9c19d24"
+    "version": "4.5.1",
+    "description": "Terminal user interface for SSH",
+    "homepage": "https://github.com/quantumsheep/sshs",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/quantumsheep/sshs/releases/download/4.5.1/sshs-windows-amd64.exe#/sshs.exe",
+            "hash": "3a4feeeb944962021281b05ecf0226a046ecd6f12bc1fe36d4d74b77b202c6b8"
+        },
+        "arm64": {
+            "url": "https://github.com/quantumsheep/sshs/releases/download/4.5.1/sshs-windows-arm64.exe#/sshs.exe",
+            "hash": "9afdde6b3b0c84a0d22729ceef7cce9e8d9c4360a8755fdf9d0bfb1b4067e1c6"
+        }
     },
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/quantumsheep/sshs/releases/download/3.4.0/sshs-windows-amd64.exe",
-      "bin": [
-        [
-          "sshs-windows-amd64.exe",
-          "sshs"
-        ]
-      ],
-      "hash": "9a8e6aa7ce8032b0f836b171f4ee67b33053936b6016b907b46f92206eee5f87"
+    "bin": "sshs.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/quantumsheep/sshs/releases/download/$version/sshs-windows-amd64.exe#/sshs.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/quantumsheep/sshs/releases/download/$version/sshs-windows-arm64.exe#/sshs.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
     }
-  },
-  "homepage": "https://github.com/quantumsheep/sshs",
-  "checkver": "github",
-  "license": "MIT",
-  "description": "Terminal user interface for SSH"
 }

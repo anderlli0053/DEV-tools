@@ -1,27 +1,24 @@
 {
-  "version": "2.0.0.1",
-  "description": "Official haskell ide support via language server (LSP). Successor of ghcide & haskell-ide-engine.",
-  "homepage": "https://haskell-language-server.readthedocs.io/en/latest/index.html",
-  "license": "Apache-2.0",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/haskell/haskell-language-server/releases/download/2.0.0.1/haskell-language-server-2.0.0.1-x86_64-mingw64.zip",
-      "hash": "d45413cb987419ff25c01d3ce10df72aeeebc741c14e749e4af912a3c7268e4a",
-      "extract_dir": ""
+    "version": "2.9.0.1",
+    "description": "The official language server for Haskell.",
+    "homepage": "https://github.com/haskell/haskell-language-server",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/haskell/haskell-language-server/releases/download/2.9.0.1/haskell-language-server-2.9.0.1-x86_64-mingw64.zip",
+            "hash": "e364878c7c01906deb47be50de1e56e00a3bab715819c99a5ddb96911234e0af"
+        }
+    },
+    "env_add_path": ".",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/haskell/haskell-language-server/releases/download/$version/haskell-language-server-$version-x86_64-mingw64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
     }
-  },
-  "bin": [
-    "haskell-language-server-8.10.7.exe",
-    "haskell-language-server-9.0.2.exe",
-    "haskell-language-server-9.2.7.exe",
-    "haskell-language-server-9.4.5.exe",
-    "haskell-language-server-9.6.2.exe",
-    "haskell-language-server-wrapper.exe"
-  ],
-  "checkver": {
-    "github": "https://github.com/haskell/haskell-language-server"
-  },
-  "depends": [
-    "ghc"
-  ]
 }

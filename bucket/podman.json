@@ -1,19 +1,19 @@
 {
-    "version": "4.9.2",
+    "version": "5.2.5",
     "description": "A tool for managing OCI containers and pods.",
     "homepage": "https://podman.io/",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/containers/podman/releases/download/v4.9.2/podman-4.9.2-setup.exe",
-            "hash": "d74c46564ca76210ae6e8e306fb4e4732057eeb4a998596daef3847fbfbd5ce1"
+            "url": "https://github.com/containers/podman/releases/download/v5.2.5/podman-5.2.5-setup.exe",
+            "hash": "2d78019400e38461c612280534d9901cf837af9b6a72481607dbec4dbae88ae8"
         }
     },
     "bin": "podman.exe",
     "installer": {
         "script": [
             "Expand-DarkArchive \"$dir\\podman-$version-setup.exe\" \"$dir\\_tmp\" -Removal",
-            "Expand-MsiArchive \"$dir\\_tmp\\AttachedContainer\\podman.msi\" \"$dir\" -ExtractDir 'PFiles\\RedHat\\Podman'"
+            "Expand-MsiArchive \"$dir\\_tmp\\AttachedContainer\\podman.msi\" \"$dir\" -ExtractDir 'PFiles64\\RedHat\\Podman'"
         ]
     },
     "checkver": {

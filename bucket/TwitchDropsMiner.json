@@ -1,10 +1,10 @@
 {
-    "version": "2023-07-05-run46-id5468311426",
-    "description": "An app that allows you to AFK mine timed Twitch drops, with automatic drop claiming and channel switching.",
+    "version": "15",
+    "description": "App that allows you to AFK mine timed Twitch drops, with automatic drop claiming and channel switching",
     "homepage": "https://github.com/DevilXD/TwitchDropsMiner",
     "license": "MIT",
-    "url": "https://ghproxy.com/https://github.com/DevilXD/TwitchDropsMiner/releases/download/dev-build/Twitch.Drops.Miner.Windows.zip",
-    "hash": "e108b11d70bdad7984aa2f4cc0b9047e107c113fcd9006230d1e02f6518f6e25",
+    "url": "https://github.com/DevilXD/TwitchDropsMiner/releases/download/v15/Twitch.Drops.Miner.zip",
+    "hash": "b337d8accefd133d90aa19d606b442314a49875b369852fb895fa56fd96fe23c",
     "extract_dir": "Twitch Drops Miner",
     "pre_install": [
         "'settings.json', 'cookies.jar' | ForEach-Object {",
@@ -23,11 +23,9 @@
         "cookies.jar"
     ],
     "checkver": {
-        "url": "https://github.com/DevilXD/TwitchDropsMiner/actions/workflows/ci.yml?query=branch%3Amaster+is%3Asuccess",
-        "regex": "<a class=\"Link--primary css-truncate css-truncate-target\" .*? aria-label=\"Run (?<runCount>[\\d]+) of.*? href=\".*?/runs/(?<runId>[\\d]+?)\">[\\S\\s]+? datetime=\"(?<buildDate>\\d{4}-\\d{2}-\\d{2})T",
-        "replace": "${buildDate}-run${runCount}-id${runId}"
+        "github": "https://github.com/DevilXD/TwitchDropsMiner"
     },
     "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/DevilXD/TwitchDropsMiner/releases/download/dev-build/Twitch.Drops.Miner.Windows.zip"
+        "url": "https://github.com/DevilXD/TwitchDropsMiner/releases/download/v$version/Twitch.Drops.Miner.zip"
     }
 }

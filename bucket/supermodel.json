@@ -1,18 +1,29 @@
 {
-  "##": [
-    "name:Supermodel",
-    "author:Bart Trzynadlowski",
-    "cmd:%BIN% %ROM%",
-    "logo:https://consolo.is.cc/images/emuDownloadCenter/hooks/supermodel/emulator_logo.png",
-    "screenshot:https://consolo.is.cc/images/emuDownloadCenter/hooks/supermodel/emulator_screen_01.jpg"
-  ],
-  "bin": [
-    "Supermodel.exe"
-  ],
-  "description": "Supermodel is a Sega Model 3 emulator. There are a few games that are playable, but most have some sort of graphics issues.",
-  "hash": "c4f442235371d14290ef4484e35c98f965cfe42003b1685baab48ed0ae1d6127",
-  "homepage": "http://supermodel3.com",
-  "license": "GNU GPLv3",
-  "url": "https://consolo.is.cc/emu/supermodel/0.2a-r494-win64.7z",
-  "version": "0.2a-r494-win64"
+    "version": "0.3a-git-4e7356a",
+    "description": "Sega Model 3 Arcade Emulator",
+    "homepage": "https://supermodel3.com/index.html",
+    "license": "GPL-3.0-only",
+    "url": "https://supermodel3.com/Files/Git_Snapshots/Supermodel_0.3a-git-4e7356a_Win64.zip",
+    "hash": "82d570c1311ef0f99dabab4b4fd4f0abfa55485dfde4f2a325eca956888697fb",
+    "bin": [
+        [
+            "Launch-Supermodel.ps1",
+            "supermodel"
+        ]
+    ],
+    "persist": [
+        "Assets",
+        "Config",
+        "NVRAM",
+        "ROMs",
+        "Saves"
+    ],
+    "pre_install": "\"Push-Location $dir; & ./Supermodel.exe `$args; Pop-Location \" | Out-File (Join-Path $dir 'Launch-Supermodel.ps1')",
+    "checkver": {
+        "url": "https://supermodel3.com/Download.html",
+        "regex": "Supermodel_([0-9a-zA-Z.-]+)_Win64.zip"
+    },
+    "autoupdate": {
+        "url": "https://supermodel3.com/Files/Git_Snapshots/Supermodel_$version_Win64.zip"
+    }
 }

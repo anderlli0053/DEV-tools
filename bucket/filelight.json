@@ -1,13 +1,13 @@
 {
-    "version": "23.08.4-1613",
+    "version": "24.08-1550",
     "description": "Disk usage visualizer",
     "homepage": "https://apps.kde.org/filelight",
     "license": "GPL-2.0-or-later",
     "notes": "If you want to get the latest development branch-based installer, please install `filelight-nightly` from Versions bucket.",
     "architecture": {
         "64bit": {
-            "url": "https://binary-factory.kde.org/job/Filelight_Release_win64/1613/artifact/filelight-23.08.4-1613-windows-cl-msvc2019-x86_64.7z",
-            "hash": "2429e5bc75f2471b49094a45a6281fbdb446e71f55adc80e874bb2e4e5bfe823"
+            "url": "https://cdn.kde.org/ci-builds/utilities/filelight/release-24.08/windows/filelight-release_24.08-1550-windows-cl-msvc2022-x86_64.7z",
+            "hash": "a37fb0bd7f34047485aec3db6432450089cb6dd4a9399737e4b6b7ebf4b65b2c"
         }
     },
     "bin": "bin\\filelight.exe",
@@ -18,13 +18,13 @@
         ]
     ],
     "checkver": {
-        "url": "https://binary-factory.kde.org/job/Filelight_Release_win64/",
-        "regex": "filelight-([\\d.-]+)-windows-cl-(?<lib>\\w+)-x86_64\\.7z"
+        "url": "https://cdn.kde.org/ci-builds/utilities/filelight/release-24.08/windows/",
+        "regex": "filelight-release_([\\d.-]+)-windows-cl-(?<lib>\\w+)-x86_64\\.7z"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://binary-factory.kde.org/job/Filelight_Release_win64/$preReleaseVersion/artifact/filelight-$version-windows-cl-$matchLib-x86_64.7z",
+                "url": "https://cdn.kde.org/ci-builds/utilities/filelight/release-$matchHead/windows/filelight-release_$version-windows-cl-$matchLib-x86_64.7z",
                 "hash": {
                     "url": "$url.sha256"
                 }

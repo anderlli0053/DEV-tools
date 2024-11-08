@@ -1,26 +1,19 @@
 {
-  "version": "7.8.5",
-  "checkver": {
-    "url": "https://www.powershellgallery.com/api/v2/Packages()?$filter=Id%20eq%20'ImportExcel'%20and%20IsLatestVersion%20eq%20true",
-    "regex": "(?i)<d:Version>(?<ver>[^<]+)<.d:Version>",
-    "replace": "${ver}"
-  },
-  "autoupdate": {
-    "hash": {
-      "url": "https://www.powershellgallery.com/api/v2/Packages()?$filter=Id eq 'ImportExcel' and Version eq '$version'",
-      "regex": "<d:PackageHash>$base64<.d:PackageHash>"
+    "version": "7.8.10",
+    "description": "PowerShell module to import/export Excel spreadsheets, without Excel",
+    "homepage": "https://github.com/dfinke/ImportExcel",
+    "license": "Apache-2.0",
+    "url": "https://psg-prod-eastus.azureedge.net/packages/importexcel.7.8.10.nupkg",
+    "hash": "d8a1d79dc8cf10c0eea30b68b70459b3fb4cac0042fb756fcb23890671857e4c",
+    "pre_install": "Remove-Item \"$dir\\_rels\", \"$dir\\package\", \"$dir\\*Content*.xml\" -Recurse",
+    "psmodule": {
+        "name": "ImportExcel"
     },
-    "url": "https://www.powershellgallery.com/api/v2/Package/ImportExcel/$version#/mod.nupkg"
-  },
-  "url": "https://www.powershellgallery.com/api/v2/Package/ImportExcel/7.8.5#/mod.nupkg",
-  "license": {
-    "identifier": "Refer to Webpage",
-    "url": "https://github.com/dfinke/ImportExcel/blob/master/LICENSE.txt"
-  },
-  "description": "PowerShell module to import/export Excel spreadsheets, without Excel. Check out the How To Videos https://www.youtube.com/watch?v=U3Ne_yX4tYo&list=PL5uoqS92stXioZw-u-ze_NtvSo0k0K0kq",
-  "hash": "sha512:324cbb511f48033fa494fc918e2ba9b3f685181471b145d42f0638b895bf305f009760dc834ddefd4a36292ccae2c0303f36cc98b35429869907f410ee3b9f96",
-  "homepage": "https://www.powershellgallery.com/packages/ImportExcel",
-  "psmodule": {
-    "name": "ImportExcel"
-  }
+    "checkver": {
+        "url": "https://www.powershellgallery.com/packages/ImportExcel",
+        "regex": "<h2>([\\d.]+)</h2>"
+    },
+    "autoupdate": {
+        "url": "https://psg-prod-eastus.azureedge.net/packages/importexcel.$version.nupkg"
+    }
 }

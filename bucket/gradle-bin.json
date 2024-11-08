@@ -1,19 +1,19 @@
 {
-    "version": "8.6",
+    "version": "8.10.2",
     "description": "An open-source build automation tool focused on flexibility and performance. (Binaries only without documentation)",
     "homepage": "https://gradle.org",
     "license": "Apache-2.0",
     "suggest": {
         "JDK": "java/openjdk"
     },
-    "url": "https://services.gradle.org/distributions/gradle-8.6-bin.zip",
-    "hash": "9631d53cf3e74bfa726893aee1f8994fee4e060c401335946dba2156f440f24c",
-    "extract_dir": "gradle-8.6",
+    "url": "https://services.gradle.org/distributions/gradle-8.10.2-bin.zip",
+    "hash": "31c55713e40233a8303827ceb42ca48a47267a0ad4bab9177123121e71524c26",
+    "extract_dir": "gradle-8.10.2",
     "post_install": [
-        "$current_env = env GRADLE_USER_HOME $global",
+        "$current_env = Get-EnvVar -Name GRADLE_USER_HOME -Global:$global",
         "If ($null -eq $current_env) {",
         "    $path = \"$dir\\.gradle\"",
-        "    env GRADLE_USER_HOME $global $path",
+        "    Set-EnvVar -Name GRADLE_USER_HOME -Value $path -Global:$global",
         "    $Env:GRADLE_USER_HOME = $path",
         "    Write-Host \"Environment variable 'GRADLE_USER_HOME' set to '$path'\"",
         "}"

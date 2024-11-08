@@ -1,35 +1,25 @@
 {
-  "version": "2.34.5",
-  "description": "TIDAL is the first global music streaming service with high fidelity sound, hi-def video quality, along with expertly curated playlists and original content",
-  "homepage": "https://block.xyz",
-  "license": "Proprietary",
-  "url": "https://download.tidal.com/desktop/TIDALSetup.exe",
-  "hash": "e09eecd68c3e292248bad6ec3ed23613085cc332a347a7a2491eb21027359612",
-  "installer": {
-    "script": [
-      "Expand-7zipArchive \"$dir\\TIDALSetup.exe\" -Removal",
-      "Expand-7zipArchive \"$dir\\TIDAL-$version-full.nupkg\" -ExtractDir 'lib\\net45' -Removal"
-    ]
-  },
-  "shortcuts": [
-    [
-      "TIDAL.exe",
-      "TIDAL"
-    ]
-  ],
-  "bin": "TIDAL.exe",
-  "checkver": {
-    "script": [
-      "$dl_url = 'https://download.tidal.com/desktop/TIDALSetup.exe'",
-      "$dl = cache_path 'tidal' 'unknown' $dl_url",
-      "Invoke-WebRequest $dl_url -OutFile $dl",
-      "$ver = (Get-Item $dl).VersionInfo.ProductVersion.split('.')[0..2] -join '.'",
-      "Move-Item -Force $dl (cache_path 'tidal' $ver $dl_url)",
-      "$ver"
+    "version": "2.38.5",
+    "description": "A music streaming service that offers music with high fidelity sound quality",
+    "homepage": "https://tidal.com/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://tidal.com/terms"
+    },
+    "url": "https://download.tidal.com/desktop/TIDALSetup.exe#/dl.7z",
+    "hash": "1454c91055acf4c72d84909665a83f6f2135d27620f84d9f06d5b8f5d9906935",
+    "pre_install": "Expand-7zipArchive \"$dir\\TIDAL-$version-full.nupkg\" -ExtractDir 'lib\\net45' -Removal",
+    "shortcuts": [
+        [
+            "TIDAL.exe",
+            "TIDAL"
+        ]
     ],
-    "regex": "([\\d.]+)"
-  },
-  "autoupdate": {
-    "url": "https://download.tidal.com/desktop/TIDALSetup.exe"
-  }
+    "checkver": {
+        "url": "https://download.tidal.com/desktop/mac/update-x64.json",
+        "jsonpath": "$.currentRelease"
+    },
+    "autoupdate": {
+        "url": "https://download.tidal.com/desktop/TIDALSetup.exe#/dl.7z"
+    }
 }

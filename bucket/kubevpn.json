@@ -1,35 +1,44 @@
 {
-  "version": "2.0.1",
-  "description": "A cloud native development tool that can connect to the Kubernetes network locally",
-  "homepage": "https://github.com/wencaiwulue/kubevpn",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/wencaiwulue/kubevpn/releases/download/v2.0.1/kubevpn_v2.0.1_windows_386.zip",
-      "hash": "d096d55418ec75731dedba1794c9ab7a4a559e0e02ffaa1c7153bca80577d703"
-    },
-    "32bit": {
-      "url": "https://ghproxy.com/https://github.com/wencaiwulue/kubevpn/releases/download/v2.0.1/kubevpn_v2.0.1_windows_amd64.zip",
-      "hash": "676996e7d92bf813ab53ca8ae188f9100083eb652dcd117074d49de698215587"
-    },
-    "arm64": {
-      "url": "https://ghproxy.com/https://github.com/wencaiwulue/kubevpn/releases/download/v2.0.1/kubevpn_v2.0.1_windows_arm64.zip",
-      "hash": "285e19aea0184ecee00d88393f09bc40e1f5e7f6b0c382d9b9822d49728d57e4"
-    }
-  },
-  "bin": "bin\\kubevpn.exe",
-  "checkver": "github",
-  "autoupdate": {
+    "version": "2.2.22",
+    "description": "KubeVPN offers a Cloud Native Dev Environment that connects to kubernetes cluster network.",
+    "homepage": "https://www.kubevpn.cn/",
+    "license": "MIT",
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.com/https://github.com/wencaiwulue/kubevpn/releases/download/v$version/kubevpn_v$version_windows_386.zip"
-      },
-      "32bit": {
-        "url": "https://ghproxy.com/https://github.com/wencaiwulue/kubevpn/releases/download/v$version/kubevpn_v$version_windows_amd64.zip"
-      },
-      "arm64": {
-        "url": "https://ghproxy.com/https://github.com/wencaiwulue/kubevpn/releases/download/v$version/kubevpn_v$version_windows_arm64.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/kubenetworks/kubevpn/releases/download/v2.2.22/kubevpn_v2.2.22_windows_amd64.zip",
+            "hash": "cda73f7314c58c58f8cadd62a04160bb2b32cfed38e5be7485af21a27b0028f4"
+        },
+        "32bit": {
+            "url": "https://github.com/kubenetworks/kubevpn/releases/download/v2.2.22/kubevpn_v2.2.22_windows_386.zip",
+            "hash": "71cdc1aed5bc84652ab70e28d900c94fa70059c4728616907092db07e3dfaf6a"
+        },
+        "arm64": {
+            "url": "https://github.com/kubenetworks/kubevpn/releases/download/v2.2.22/kubevpn_v2.2.22_windows_arm64.zip",
+            "hash": "7b2dc7ad0b225d6b763433ea24c737f597cfe99cc9c2f03bd8c56092fcba227b"
+        }
+    },
+    "extract_dir": "bin",
+    "bin": "kubevpn.exe",
+    "shortcuts": [
+        [
+            "kubevpn.exe",
+            "kubevpn"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/kubenetworks/kubevpn"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/kubenetworks/kubevpn/releases/download/v$version/kubevpn_v$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/kubenetworks/kubevpn/releases/download/v$version/kubevpn_v$version_windows_386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/kubenetworks/kubevpn/releases/download/v$version/kubevpn_v$version_windows_arm64.zip"
+            }
+        }
     }
-  }
 }
