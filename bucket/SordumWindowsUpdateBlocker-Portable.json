@@ -1,14 +1,18 @@
 {
   "version": "1.8",
-  "description": "Sordum's Windows Update Blocker. A freeware that helps you to completely disable or enable Automatic Updates on your Windows system",
+  "description": "Sordum's Windows Update Blocker. A freeware that helps you to completely disable or enable Automatic Updates on your Windows system.",
   "homepage": "https://www.sordum.org/9470",
   "license": {
     "identifier": "Freeware",
     "url": "https://www.sordum.org/eula/"
   },
-  "url": "https://www.sordum.org/files/download/windows-update-blocker/Wub.zip",
-  "hash": "b9bae3d2cd5163313fa42d99b367f63e6d5ab5393bd645e7f71fe8cd5a2f74e4",
-  "extract_dir": "Wub",
+  "url": "https://drive.usercontent.google.com/download?id=1N_XtcQHA6iSMC8YvL0_WIJ6n2AH0wePf&export=download&authuser=0",
+  "hash": "ba2563e06801d3c7360c5ba2459cc24456f301e546489393d86b97ab82d7c0c2",
+  "pre_install": [
+    "Expand-7ZipArchive \"$dir\\download\" \"$dir\" -Removal",
+    "Move-Item -Path \"$dir\\Wub\\*\" -Destination \"$dir\"",
+    "Remove-Item -Path \"$dir\\Wub\" -Recurse -Force"
+  ],
   "bin": "Wub.exe",
   "shortcuts": [
     [
@@ -19,6 +23,6 @@
   "persist": "Wub.ini",
   "checkver": "Blocker v([\\d.]+)",
   "autoupdate": {
-    "url": "https://www.sordum.org/files/download/windows-update-blocker/Wub.zip"
+    "url": "https://drive.usercontent.google.com/download?id=1N_XtcQHA6iSMC8YvL0_WIJ6n2AH0wePf&export=download&authuser=0"
   }
 }
