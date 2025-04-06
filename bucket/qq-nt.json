@@ -1,52 +1,55 @@
 {
-  "version": "9.9.3.17816",
-  "description": "An instant messaging tool that gives you the best way to keep in touch with your friends and family, Build with Electron",
-  "homepage": "https://im.qq.com",
-  "license": {
-    "identifier": "Proprietary",
-    "url": "https://ti.qq.com/agreement/index.html"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://dldir1.qq.com/qqfile/qq/QQNT/1e2b98d8/QQ9.9.3.17816_x64.exe#/dl.7z",
-      "hash": "9e6d6c0d5fde5bb3e893184fc6a825349c45f2ccd2eda052594bedd476c09f4f"
+    "version": "9.9.18.250401",
+    "description": "An instant messaging software service developed by Tencent",
+    "homepage": "https://im.qq.com/pcqq/index.shtml",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://ti.qq.com/agreement/index.html"
     },
-    "32bit": {
-      "url": "https://dldir1.qq.com/qqfile/qq/QQNT/ed03841d/QQ9.9.3.17816_x86.exe#/dl.7z",
-      "hash": "d714ac2d3fb1e2ddde75e795ac2820d13a24b7a550ec908e33c9e16966839ff1"
-    }
-  },
-  "installer": {
-    "script": [
-      "$configpath = \"$env:PUBLIC\\Documents\\Tencent\\QQ\"",
-      "if (!(Test-Path \"$configpath\")) {",
-      "    New-Item -Path \"$configpath\" -Type Directory -Force | Out-Null",
-      "}",
-      "Set-Content -NoNewline -Path \"$configpath\\UserDataInfo.ini\" -Value \"[UserDataSet]`nUserDataSavePathType=2`nUserDataSavePath=$persist_dir\\QQ Files\""
-    ]
-  },
-  "shortcuts": [
-    [
-      "Files\\QQ.exe",
-      "QQ-NT"
-    ]
-  ],
-  "persist": "QQ Files",
-  "uninstaller": {
-    "script": "Remove-Item -Path \"$env:PUBLIC\\Documents\\Tencent\" -Recurse -Force | Out-Null"
-  },
-  "checkver": {
-    "url": "https://cdn-go.cn/qq-web/im.qq.com_new/latest/rainbow/windowsDownloadUrl.js",
-    "regex": "QQNT/(?<Commitidx64>[0-9a-f]+)/QQ(?<Version>[\\d.]+)_x64.exe.*QQNT/(?<Commitidx86>[0-9a-f]+)/QQ(?<Version>[\\d.]+)_x86.exe|QQNT/(?<Commitidx86>[0-9a-f]+)/QQ(?<Version>[\\d.]+)_x86.exe.*QQNT/(?<Commitidx64>[0-9a-f]+)/QQ(?<Version>[\\d.]+)_x64.exe"
-  },
-  "autoupdate": {
     "architecture": {
-      "64bit": {
-        "url": "https://dldir1.qq.com/qqfile/qq/QQNT/$matchCommitidx64/QQ$matchVersion_x64.exe#/dl.7z"
-      },
-      "32bit": {
-        "url": "https://dldir1.qq.com/qqfile/qq/QQNT/$matchCommitidx86/QQ$matchVersion_x86.exe#/dl.7z"
-      }
+        "64bit": {
+            "url": "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.18_250401_x64_01.exe#/dl.7z",
+            "hash": "6175896725f4f36b9d3017998b3c606161d96059cbc989f952d77af97bd6d0a4"
+        },
+        "32bit": {
+            "url": "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.18_250401_x86_01.exe#/dl.7z",
+            "hash": "f6ddc87d645533ab71c18e1241908b84e34a8ade2a7bf2e3d3bf5601ea76dbb7"
+        },
+        "arm64": {
+            "url": "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.18_250401_arm64_01.exe#/dl.7z",
+            "hash": "7f88f6677a10a897f9e90910ba0c7580247dcce71ec6f4d0bc434a6786dc92ae"
+        }
+    },
+    "extract_dir": "Files",
+    "shortcuts": [
+        [
+            "QQ.exe",
+            "QQ"
+        ]
+    ],
+    "checkver": {
+        "script": [
+            "$url = 'https://im.qq.com/pcqq/index.shtml'",
+            "$resp = Invoke-WebRequest -Uri $url",
+            "$cont = $resp.Content",
+            "$pattern = 'https://qq-web.cdn-go.cn.*windowsDownloadUrl.js'",
+            "$jsUrl = [regex]::Match($cont, $pattern).Value",
+            "Invoke-WebRequest -Uri $jsUrl"
+        ],
+        "regex": "QQNT/Windows/QQ_([\\d\\.]+)_([\\d]+)_x86_01.exe",
+        "replace": "${1}.${2}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_$match1_$match2_x64_01.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_$match1_$match2_x86_01.exe#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://dldir1.qq.com/qqfile/qq/QQNT/Windows/QQ_$match1_$match2_arm64_01.exe#/dl.7z"
+            }
+        }
     }
-  }
 }

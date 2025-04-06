@@ -1,10 +1,10 @@
 {
-    "version": "3.1.1",
+    "version": "3.3.0",
     "description": "Nerd Fonts patched 'ShareTechMono' Font family. (Normal version, Nerd Fonts Symbol/Icon could be 1 or 2 cell wide)",
     "homepage": "https://github.com/ryanoasis/nerd-fonts",
     "license": "MIT",
-    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/ShareTechMono.zip",
-    "hash": "3a149876f9682f10c689ea3099e7d2e4a01d35b570ede595e4812dd308cbab8f",
+    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/ShareTechMono.zip",
+    "hash": "128fa7c0a7dcb711591862279beb5ab113ee84dd3b078da75d93bc8a1edacb26",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -40,7 +40,7 @@
             "Get-ChildItem $dir -Filter '*NerdFont-*' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },

@@ -1,10 +1,10 @@
 {
-    "version": "3.1.1",
+    "version": "3.3.0",
     "description": "Nerd Fonts patched 'Tinos' Font family. (Proportional version, for GUI usecases)",
     "homepage": "https://github.com/ryanoasis/nerd-fonts",
     "license": "MIT",
-    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Tinos.zip",
-    "hash": "be3072b0af54b699a99385a74572a2f4b6769d6960cbcdfc691db2b22b257bfd",
+    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Tinos.zip",
+    "hash": "2039a92bde32b7614e82f9c6cff8b8ad579fc971ccaa6008865106d54cbc93d3",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -40,7 +40,7 @@
             "Get-ChildItem $dir -Filter '*NerdFontPropo-*' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },

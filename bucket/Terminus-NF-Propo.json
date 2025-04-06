@@ -1,10 +1,10 @@
 {
-    "version": "3.1.1",
+    "version": "3.3.0",
     "description": "Nerd Fonts patched 'Terminus' Font family. (Proportional version, for GUI usecases)",
     "homepage": "https://github.com/ryanoasis/nerd-fonts",
     "license": "MIT",
-    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Terminus.zip",
-    "hash": "98780383ad77ae59e86269fa121134267066697c88ae50e628bcb0f6327d4802",
+    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Terminus.zip",
+    "hash": "d40b0b46b64718b462341500255dbd6a7c0cc9285d0bed2aaf3f176673aa5857",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -40,7 +40,7 @@
             "Get-ChildItem $dir -Filter '*NerdFontPropo-*' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },

@@ -1,17 +1,17 @@
 {
-    "version": "1.315",
+    "version": "1.511",
     "description": "An open-source Chinese font derived from Fontworks' Klee One. 一款基于 FONTWORKS 出品字体 Klee One 改造的开源中文字体。",
     "homepage": "https://github.com/lxgw/LxgwWenKai",
     "license": "OFL-1.1",
     "url": [
-        "https://github.com/lxgw/LxgwWenKai/releases/download/v1.315/LXGWWenKaiMono-Bold.ttf",
-        "https://github.com/lxgw/LxgwWenKai/releases/download/v1.315/LXGWWenKaiMono-Light.ttf",
-        "https://github.com/lxgw/LxgwWenKai/releases/download/v1.315/LXGWWenKaiMono-Regular.ttf"
+        "https://github.com/lxgw/LxgwWenKai/releases/download/v1.511/LXGWWenKaiMono-Light.ttf",
+        "https://github.com/lxgw/LxgwWenKai/releases/download/v1.511/LXGWWenKaiMono-Regular.ttf",
+        "https://github.com/lxgw/LxgwWenKai/releases/download/v1.511/LXGWWenKaiMono-Medium.ttf"
     ],
     "hash": [
-        "fef8a19732dce0558c7cd53006f5ab44fc2a718e1ae31c00f20cbfd4ca9a3189",
-        "b2e886c4afabe2345667f2b38270a4b7b889031367cecce6028e33de0a9a8c70",
-        "6514234dd0b61455ff863bdae55927e919ea7a085975100996787a2bfb0afabd"
+        "d9b45b615a24c5ab47540203820e2e20d761c9f20b3d00ae68f2063defabcaed",
+        "b7cc26d2cab1d177857bb868f30017c4fa2a29a2fc4ef518c68ed25f85dd9d49",
+        "296f411aabd1339b37c5f4f91f9087193330a7276b2606b3be6d2dd73c87f7c3"
     ],
     "installer": {
         "script": [
@@ -48,7 +48,7 @@
             "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },
@@ -96,9 +96,9 @@
     "checkver": "github",
     "autoupdate": {
         "url": [
-            "https://github.com/lxgw/LxgwWenKai/releases/download/v$version/LXGWWenKaiMono-Bold.ttf",
             "https://github.com/lxgw/LxgwWenKai/releases/download/v$version/LXGWWenKaiMono-Light.ttf",
-            "https://github.com/lxgw/LxgwWenKai/releases/download/v$version/LXGWWenKaiMono-Regular.ttf"
+            "https://github.com/lxgw/LxgwWenKai/releases/download/v$version/LXGWWenKaiMono-Regular.ttf",
+            "https://github.com/lxgw/LxgwWenKai/releases/download/v$version/LXGWWenKaiMono-Medium.ttf"
         ]
     }
 }

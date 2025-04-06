@@ -1,10 +1,10 @@
 {
-    "version": "3.1.1",
+    "version": "3.3.0",
     "description": "Nerd Fonts patched 'LiberationMono' Font family. (Proportional version, for GUI usecases)",
     "homepage": "https://github.com/ryanoasis/nerd-fonts",
     "license": "MIT",
-    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/LiberationMono.zip",
-    "hash": "15db9bfd43c2a7d865e60ba7b07ce4ae68d2365739060510c524f7902dafa2cf",
+    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/LiberationMono.zip",
+    "hash": "3736516ede5c93c787379f56fc2d0b621acaef140d57de935b2ecbc749e4e9d7",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -40,7 +40,7 @@
             "Get-ChildItem $dir -Filter '*NerdFontPropo-*' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },

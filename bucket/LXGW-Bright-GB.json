@@ -1,23 +1,23 @@
 {
-    "version": "5.311",
+    "version": "5.321",
     "description": "An open-source Simplified Chinese font. Combination of LXGW WenKai Lite (霞鹜文楷 Lite) and Ysabeau Office. (GB variant--Strokes adjusted according to China's GuoBiao national standard)",
     "homepage": "https://github.com/lxgw/LxgwBright",
     "license": "OFL-1.1",
     "url": [
-        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.311/LXGWBrightGB/LXGWBrightGB-Italic.otf",
-        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.311/LXGWBrightGB/LXGWBrightGB-Medium.otf",
-        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.311/LXGWBrightGB/LXGWBrightGB-MediumItalic.otf",
-        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.311/LXGWBrightGB/LXGWBrightGB-Regular.otf",
-        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.311/LXGWBrightGB/LXGWBrightGB-SemiLight.otf",
-        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.311/LXGWBrightGB/LXGWBrightGB-SemiLightItalic.otf"
+        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.321/LXGWBrightGB/LXGWBrightGB-Italic.otf",
+        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.321/LXGWBrightGB/LXGWBrightGB-Medium.otf",
+        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.321/LXGWBrightGB/LXGWBrightGB-MediumItalic.otf",
+        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.321/LXGWBrightGB/LXGWBrightGB-Regular.otf",
+        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.321/LXGWBrightGB/LXGWBrightGB-SemiLight.otf",
+        "https://raw.githubusercontent.com/lxgw/LxgwBright/v5.321/LXGWBrightGB/LXGWBrightGB-SemiLightItalic.otf"
     ],
     "hash": [
-        "bf3ab04deb596f61660d08109192f2990402b9649cdec2caaad6d88c74002d19",
-        "0688ab4df7ad81b7f210d26410200908d49566d6d31573e104101f37b7b2e62d",
-        "320df7a40554387638d3c228cd192008952465a4bc8cd7c761c0010e2a8b0ccd",
-        "165f25d15b238f949636017ac7d6be7fb812990dfa924e9625c23ec52f980d94",
-        "4f24bd499eb96cb9e99f7a936cfabcaf4641ee1eb21894cf988e94760b36979e",
-        "3c5640031b65a67cc207fae83396b70d340bf1be8f0ad6d7efb7d3f881592353"
+        "286f7c78f8c69b75e92ae2a003394b1b2d3c4579e6522e84f90cd9b136224c14",
+        "bcebbe3c08e3d5418898bc18fa528c962ac93312ef1254861397dcd187a1e447",
+        "90b1b6a81966a501245385d6c74cf03d27d31e4c53c1b91dc276e87368f5a5ea",
+        "5e1edff17c11b2045a66bc7d88f58abd678b58d6dbb31bdca4ffba5aca421651",
+        "6d43a6c45a260ce79f9c581528b6d4a2479b4b0a43a09bf2b0a4bcf286e238b1",
+        "179adc36bc4a33c1ea176b710d2aa6593ee4f84a8a1264f6fc90c20edc5383e7"
     ],
     "installer": {
         "script": [
@@ -54,7 +54,7 @@
             "Get-ChildItem $dir -Filter '*.otf' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },

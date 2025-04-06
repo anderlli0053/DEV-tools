@@ -1,16 +1,16 @@
 {
-    "version": "2024-02-04",
+    "version": "20250308",
     "description": "DB Browser for SQLite (DB4S) project (nightly build)",
     "homepage": "https://github.com/sqlitebrowser/sqlitebrowser",
     "license": "MPL-2.0|GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://nightlies.sqlitebrowser.org/win64/DB.Browser.for.SQLite-2024-02-04-win64.zip",
-            "hash": "81f5eec20da5a2792f42c30e3aa41bafb7518d84a104b88df5018e62323304d4"
+            "url": "https://github.com/sqlitebrowser/sqlitebrowser/releases/download/nightly/DB.Browser.for.SQLite-20250308-x64.zip",
+            "hash": "e9189c70796e468e9fb90299e6ad5b4fc4a413e55dc5f95f6c6c2de36257abf6"
         },
         "32bit": {
-            "url": "https://nightlies.sqlitebrowser.org/win32/DB.Browser.for.SQLite-2024-02-04-win32.zip",
-            "hash": "689d625e43712515af68f0d16aeb699119add235e432019e6ca3b16ae4a61d1c"
+            "url": "https://github.com/sqlitebrowser/sqlitebrowser/releases/download/nightly/DB.Browser.for.SQLite-20250308-x86.zip",
+            "hash": "fa97589b7215f5ef81784e3479656ca11707eff08b348d121885e90d6e11914b"
         }
     },
     "bin": [
@@ -29,17 +29,18 @@
     ],
     "persist": "Data",
     "checkver": {
-        "url": "https://nightlies.sqlitebrowser.org/win64/",
-        "regex": "SQLite-(\\d{4}-\\d{2}-\\d{2})-win64\\.",
+        "url": "https://api.github.com/repos/sqlitebrowser/sqlitebrowser/releases/tags/nightly",
+        "jsonpath": "$.assets..browser_download_url",
+        "regex": "SQLite-(?<version>\\d{8})-x64\\.",
         "reverse": true
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://nightlies.sqlitebrowser.org/win64/DB.Browser.for.SQLite-$version-win64.zip"
+                "url": "https://github.com/sqlitebrowser/sqlitebrowser/releases/download/nightly/DB.Browser.for.SQLite-$matchVersion-x64.zip"
             },
             "32bit": {
-                "url": "https://nightlies.sqlitebrowser.org/win32/DB.Browser.for.SQLite-$version-win32.zip"
+                "url": "https://github.com/sqlitebrowser/sqlitebrowser/releases/download/nightly/DB.Browser.for.SQLite-$matchVersion-x86.zip"
             }
         }
     }

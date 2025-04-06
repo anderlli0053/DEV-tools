@@ -1,12 +1,12 @@
 {
-    "version": "14.0.2",
+    "version": "15.1.0",
     "description": "Twitter Unicode emoji color OpenType-SVG font.",
     "homepage": "https://github.com/13rac1/twemoji-color-font",
     "license": "MIT",
     "depends": "python",
-    "url": "https://github.com/13rac1/twemoji-color-font/releases/download/v14.0.2/TwitterColorEmoji-SVGinOT-Win-14.0.2.zip",
-    "hash": "e95eef4f8b0bc8140c70c2b4fcc1ac9f8f86fe7470030e1836be5aa6b344fabd",
-    "extract_dir": "TwitterColorEmoji-SVGinOT-Win-14.0.2",
+    "url": "https://github.com/13rac1/twemoji-color-font/releases/download/v15.1.0/TwitterColorEmoji-SVGinOT-Win-15.1.0.zip",
+    "hash": "c2155138f64dd8ce05f0267b50306d487dd0c85c1a25cd0d98d8d6b2ea40e039",
+    "extract_dir": "TwitterColorEmoji-SVGinOT-Win-15.1.0",
     "pre_install": [
         "$cmdContent = (Get-Content \"$dir\\install.cmd\") -Replace ('(CHOICE\\s/\\w\\s\"\\w\\w(\\w+\\s)+\\w+(\\s\\w+)+\\w\\w(\\w+\\s)+\\w+\\s\\w+\\?\"$)', 'EXIT /b')",
         "$cmdContent | Set-Content \"$dir\\install.cmd\"",
@@ -47,7 +47,7 @@
             "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },

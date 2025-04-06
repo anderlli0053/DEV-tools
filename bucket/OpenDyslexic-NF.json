@@ -1,10 +1,10 @@
 {
-    "version": "3.1.1",
+    "version": "3.3.0",
     "description": "Nerd Fonts patched 'OpenDyslexic' Font family. (Normal version, Nerd Fonts Symbol/Icon could be 1 or 2 cell wide)",
     "homepage": "https://github.com/ryanoasis/nerd-fonts",
     "license": "MIT",
-    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/OpenDyslexic.zip",
-    "hash": "6d4aa8ef8a3a4b1ebae9d37052d779a17b18caebd55a4e710b99f2e5d1550408",
+    "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/OpenDyslexic.zip",
+    "hash": "eb9de2921be72ef03f11a533a61faa2d14dac8ca636f64e496d448f97f8c641b",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -40,7 +40,7 @@
             "Get-ChildItem $dir -Filter '*NerdFont-*' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },

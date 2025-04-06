@@ -1,16 +1,16 @@
 {
-    "version": "11.3.12",
+    "version": "11.7.26",
     "description": "A system and performance monitoring utility",
     "homepage": "https://www.sysgauge.com",
     "license": "Shareware",
     "architecture": {
         "64bit": {
-            "url": "http://www.sysgauge.com/setups_x64/sysgauge_setup_v11.3.12_x64.exe#/dl.7z",
-            "hash": "bdcc236993c562c1d5124db07fc0b1508778c1dd6e8fa78c68fe98e09ecf02dc"
+            "url": "https://www.sysgauge.com/setups_x64/sysgauge_setup_v11.7.26_x64.exe#/dl.7z",
+            "hash": "32cccb3df34d47736896732ae044dd589b9687e5166d36a17861fb2bcd9b1632"
         },
         "32bit": {
-            "url": "http://www.sysgauge.com/setups/sysgauge_setup_v11.3.12.exe#/dl.7z",
-            "hash": "74b1d0c767b44c09e9de646521485018c47607aaaa9f21315c6e00ab45012154"
+            "url": "https://www.sysgauge.com/setups/sysgauge_setup_v11.7.26.exe#/dl.7z",
+            "hash": "7818afcbee4d71a09022de3b002339908197e90118f132e6febfc1fb7caa1337"
         }
     },
     "installer": {
@@ -28,23 +28,15 @@
     ],
     "checkver": {
         "url": "https://www.sysgauge.com/downloads.html",
-        "regex": "<b>SysGauge</b><br>v([\\d.]+)"
+        "regex": "(?sm)>SysGauge.*?>([\\d.]+)<"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "http://www.sysgauge.com/setups_x64/sysgauge_setup_v$version_x64.exe#/dl.7z",
-                "hash": {
-                    "url": "https://www.sysgauge.com/downloads.html",
-                    "regex": "<b>64-Bit SHA256:</b> $sha256"
-                }
+                "url": "https://www.sysgauge.com/setups_x64/sysgauge_setup_v$version_x64.exe#/dl.7z"
             },
             "32bit": {
-                "url": "http://www.sysgauge.com/setups/sysgauge_setup_v$version.exe#/dl.7z",
-                "hash": {
-                    "url": "https://www.sysgauge.com/downloads.html",
-                    "regex": "<b>32-Bit SHA256:</b> $sha256"
-                }
+                "url": "https://www.sysgauge.com/setups/sysgauge_setup_v$version.exe#/dl.7z"
             }
         }
     }

@@ -1,35 +1,39 @@
 {
-  "version": "1.7.2",
-  "description": "A minimal Markdown editor and reader",
-  "homepage": "https://typora.io",
-  "license": {
-    "identifier": "Proprietary",
-    "url": "https://support.typora.io/License-Agreement/"
-  },
-  "notes": "For old beta version, install: versions/typora0.11.18",
-  "architecture": {
-    "64bit": {
-      "url": "https://download.typora.io/windows/typora-setup-x64-1.7.2-dev.exe",
-      "hash": "ef7b5b5efbe30af167066fcc5cd9cb08c0d3463fb3e539e75d6d858d4b68310d"
-    }
-  },
-  "innosetup": true,
-  "bin": "Typora.exe",
-  "shortcuts": [
-    [
-      "Typora.exe",
-      "Typora"
-    ]
-  ],
-  "checkver": {
-    "url": "https://typora.io/releases/dev",
-    "regex": "typora-setup-x64-([\\d.]+)-dev\\.exe"
-  },
-  "autoupdate": {
+    "version": "1.10.5-dev",
+    "description": "A minimal Markdown editor and reader",
+    "homepage": "https://typora.io",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://support.typora.io/License-Agreement/"
+    },
     "architecture": {
-      "64bit": {
-        "url": "https://download.typora.io/windows/typora-setup-x64-$version-dev.exe"
-      }
+        "64bit": {
+            "url": "https://download.typora.io/windows/typora-setup-x64-1.10.5-dev.exe",
+            "hash": "eb289de43f0a4c6e3ea4a873d11f5f9cd5059e56101f9972ca7c9dc18c3c1ff6"
+        }
+    },
+    "innosetup": true,
+    "bin": [
+        [
+            "Typora.exe",
+            "typora-dev"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "Typora.exe",
+            "Typora (dev)"
+        ]
+    ],
+    "checkver": {
+        "url": "https://typora.io/releases/dev",
+        "regex": "<h2>([\\d.]+-dev)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.typora.io/windows/typora-setup-x64-$version.exe"
+            }
+        }
     }
-  }
 }

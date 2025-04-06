@@ -3,8 +3,8 @@
     "description": "Programming font with optional semi-connected cursive italics, symbol ligatures and Latin, Cyrillic and Greek characters",
     "homepage": "https://rubjo.github.io/victor-mono",
     "license": "MIT",
-    "url": "https://rubjo.github.io/victor-mono/VictorMonoAll.zip",
-    "hash": "16f327aa8f98137e1ff619c231c283e4cdc6a6f50027ca123cb58e8a79a8a095",
+    "url": "https://raw.githubusercontent.com/rubjo/victor-mono/v1.5.6/public/VictorMonoAll.zip",
+    "hash": "eab377ad3bcc7a202697c024ebb8c8728f99789c4f093d358f3d202052cc9496",
     "extract_dir": "OTF",
     "installer": {
         "script": [
@@ -41,7 +41,7 @@
             "Get-ChildItem $dir -Filter '*.otf' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },
@@ -90,6 +90,6 @@
         "github": "https://github.com/rubjo/victor-mono"
     },
     "autoupdate": {
-        "url": "https://rubjo.github.io/victor-mono/VictorMonoAll.zip"
+        "url": "https://raw.githubusercontent.com/rubjo/victor-mono/v$version/public/VictorMonoAll.zip"
     }
 }

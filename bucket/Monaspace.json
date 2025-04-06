@@ -1,11 +1,11 @@
 {
-    "version": "1.000",
+    "version": "1.200",
     "description": "An innovative superfamily of fonts for code.",
     "homepage": "https://monaspace.githubnext.com",
     "license": "OFL-1.1",
-    "url": "https://github.com/githubnext/monaspace/releases/download/v1.000/monaspace-v1.000.zip",
-    "hash": "3e08376fd0aeca1f851fde0c08e18ca2d797f6a4c7a449670bf4d1270303c8f6",
-    "extract_dir": "monaspace-v1.000/fonts/otf",
+    "url": "https://github.com/githubnext/monaspace/releases/download/v1.200/monaspace-v1.200.zip",
+    "hash": "544b94719be76dd2d7e69f8464c5f8c0d612e59e9bde8d9ecc8867c9aa4940af",
+    "extract_dir": "monaspace-v1.200/fonts/otf",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -41,7 +41,7 @@
             "Get-ChildItem $dir -Filter '*.otf' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },

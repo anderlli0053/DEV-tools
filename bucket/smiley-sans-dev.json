@@ -1,13 +1,13 @@
 {
-    "version": "20240203.c9a011d",
+    "version": "20240219.b31b81a",
     "description": "Smiley Sans (得意黑, Dev version from Github Actions). A condensed and oblique Chinese typeface seeking a visual balance between the humanist and the geometric.",
     "homepage": "https://atelier-anchor.com/typefaces/smiley-sans/",
     "license": {
         "identifier": "OFL-1.1",
         "url": "https://github.com/atelier-anchor/smiley-sans/raw/main/LICENSE"
     },
-    "url": "https://nightly.link/atelier-anchor/smiley-sans/actions/runs/7767848272/smiley-sans.zip",
-    "hash": "7277cca7c29598fead41fea25470c2e48977a200cacabfc6cff159925cecb154",
+    "url": "https://nightly.link/atelier-anchor/smiley-sans/actions/runs/7961502428/smiley-sans.zip",
+    "hash": "226b003c406632a9b4d769ab515fccb88d02f2ac80490cd0718991c02ec05ac4",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -43,7 +43,7 @@
             "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },

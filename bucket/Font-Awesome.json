@@ -1,11 +1,11 @@
 {
-    "version": "6.5.1",
+    "version": "6.7.2",
     "description": "The most popular icon set",
     "homepage": "https://fontawesome.com",
     "license": "OFL-1.1",
-    "url": "https://github.com/FortAwesome/Font-Awesome/releases/download/6.5.1/fontawesome-free-6.5.1-desktop.zip",
-    "hash": "88d13abdade8b24b5fbdf6fe7d3ee55507d2827be91990a066ed96b8a2a58003",
-    "extract_dir": "fontawesome-free-6.5.1-desktop/otfs",
+    "url": "https://github.com/FortAwesome/Font-Awesome/releases/download/6.7.2/fontawesome-free-6.7.2-desktop.zip",
+    "hash": "22ff7898b429b997a45e1cf89bb869ed3abcc65333d90289181ba5363c8fd19b",
+    "extract_dir": "fontawesome-free-6.7.2-desktop/otfs",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -41,7 +41,7 @@
             "Get-ChildItem $dir -Filter '*.otf' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },

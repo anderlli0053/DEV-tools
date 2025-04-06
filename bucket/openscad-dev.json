@@ -1,18 +1,13 @@
 {
-    "version": "2024.02",
+    "version": "2025.04.04",
     "description": "The Programmers Solid 3D CAD Modeller",
     "homepage": "https://www.openscad.org/",
     "license": "GPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://files.openscad.org/snapshots/OpenSCAD-2024.02.04-x86-64.zip",
-            "hash": "sha512:33be007c36b50ee454033904e7a0fe0318ceda6c99e13c6fadb145679188b18f9393b99ef58926c2bbf96098a130ee3fc18f16f34dffeb3781fd1f840ad098ff",
-            "extract_dir": "OpenSCAD-2024.02.04-x86-64"
-        },
-        "32bit": {
-            "url": "https://files.openscad.org/snapshots/OpenSCAD-2024.02.04-x86-32.zip",
-            "hash": "sha512:001dd8900ec5531adea9cb0b6d55618fb6f42cbd85f34bd35f304db925d996e9d9b7a8c21577aae03e95475fe2f3195bd3466e359703e8883e91f28f980ed4c5",
-            "extract_dir": "OpenSCAD-2024.02.04-x86-64"
+            "url": "https://files.openscad.org/snapshots/OpenSCAD-2025.04.04-x86-64.zip",
+            "hash": "sha512:50ecb2bdd7fea20325fff83129d62eb94a1b5d33f41756096242073432aab712a21f590ed22044b0d680870aa2d84365b4a81bc5f1f2bedb0d318cab55781473",
+            "extract_dir": "OpenSCAD-2025.04.04-x86-64"
         }
     },
     "shortcuts": [
@@ -22,29 +17,14 @@
         ]
     ],
     "checkver": {
-        "script": [
-            "$builds = 'x86-32', 'x86-64'",
-            "$script_ver = ''",
-            "$build_ids =  @()",
-            "foreach ($build in $builds) {",
-            "    $page = Invoke-WebRequest 'https://files.openscad.org/snapshots/' -UseBasicParsing",
-            "    $dl_file = $page.links | Where-Object href -match \"OpenSCAD-[\\w.]+-$build.zip$\" | Select-Object -last 1 -expand href",
-            "    $script_ver = ($dl_file | Select-String -Pattern 'OpenSCAD-([\\d.]+)\\.').Matches.Groups[1].Value",
-            "    $build_ids += ($dl_file | Select-String -Pattern 'OpenSCAD-([\\w.]+)-').Matches.Groups[1].Value",
-            "}",
-            "Write-Output ('version:\"' + $script_ver + '\"') ('build_ids:\"' + $build_ids + '\"')"
-        ],
-        "regex": "version:\"(?<version>[\\d.]+)\"\\sbuild_ids:\"(?<win32bit>.+)\\s(?<win64bit>.+)\""
+        "url": "https://files.openscad.org/snapshots/.snapshot_win64.js",
+        "regex": "OpenSCAD-([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://files.openscad.org/snapshots/OpenSCAD-$matchWin64bit-x86-64.zip",
-                "extract_dir": "OpenSCAD-$matchWin64bit-x86-64"
-            },
-            "32bit": {
-                "url": "https://files.openscad.org/snapshots/OpenSCAD-$matchWin32bit-x86-32.zip",
-                "extract_dir": "OpenSCAD-$matchWin32bit-x86-64"
+                "url": "https://files.openscad.org/snapshots/OpenSCAD-$version-x86-64.zip",
+                "extract_dir": "OpenSCAD-$version-x86-64"
             }
         },
         "hash": {

@@ -1,22 +1,38 @@
 {
-  "homepage": "http://www.rejetto.com/hfs/",
-  "description": "HFS is a free, one single executable file Http File Server software.",
-  "license": "GPL-2.0-only",
-  "version": "2.3m",
-  "url": "https://downloads.sourceforge.net/project/hfs/HFS/2.3m/hfs2.3m.zip",
-  "hash": "sha1:adec3861661cba9d04c214223aaa078b4f4d35dd",
-  "bin": "hfs.exe",
-  "shortcuts": [
-    [
-      "hfs.exe",
-      "HFS"
-    ]
-  ],
-  "checkver": {
-    "url": "http://www.rejetto.com/hfs/?f=dl",
-    "regex": "(?sm)Latest version: <b>([\\w\\d.]+)"
-  },
-  "autoupdate": {
-    "url": "https://downloads.sourceforge.net/project/hfs/HFS/$version/hfs$version.zip"
-  }
+    "version": "0.56.0",
+    "description": "A web file server to run on your computer",
+    "homepage": "https://rejetto.com/hfs",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rejetto/hfs/releases/download/v0.56.0/hfs-windows-x64-0.56.0.zip",
+            "hash": "9da09e29fbffa1be1a97990e3a30ee583a25270d03a38b81d1ab8968c9e0b7f5"
+        }
+    },
+    "pre_install": "if (!(Test-Path \"$persist_dir\\config.yaml\")) { New-Item \"$dir\\config.yaml\" | Out-Null }",
+    "bin": [
+        [
+            "hfs.exe",
+            "hfs",
+            "--cwd $dir"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "hfs.exe",
+            "HFS",
+            "--cwd $dir"
+        ]
+    ],
+    "persist": [
+        "config.yaml",
+        "logs",
+        "plugins"
+    ],
+    "checkver": {
+        "github": "https://github.com/rejetto/hfs"
+    },
+    "autoupdate": {
+        "url": "https://github.com/rejetto/hfs/releases/download/v$version/hfs-windows-x64-$version.zip"
+    }
 }

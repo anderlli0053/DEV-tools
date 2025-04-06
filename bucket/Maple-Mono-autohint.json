@@ -1,10 +1,10 @@
 {
-    "version": "6.4",
-    "description": "An open source monospace font with round corner and ligatures for IDE and command line. (ttf autohint version)",
+    "version": "7.0",
+    "description": "An open source monospace font with round corner and ligatures for IDE and command line. (Minimal version, ttf format, autohint version)",
     "homepage": "https://github.com/subframe7536/Maple-font",
     "license": "OFL-1.1",
-    "url": "https://github.com/subframe7536/Maple-font/releases/download/v6.4/MapleMono-ttf-autohint.zip",
-    "hash": "ad26080b8d81b7e2858318704615d2e2c6e1e1eb4a62408ea399cfd89d811ede",
+    "url": "https://github.com/subframe7536/Maple-font/releases/download/v7.0/MapleMono-TTF-AutoHint.zip",
+    "hash": "5daedc4835ca6f2d1420b9b18fdeb16c3e998430f005e7bd97298ec7b14f9a81",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -40,7 +40,7 @@
             "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },
@@ -87,6 +87,9 @@
     },
     "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/subframe7536/Maple-font/releases/download/v$version/MapleMono-ttf-autohint.zip"
+        "url": "https://github.com/subframe7536/Maple-font/releases/download/v$version/MapleMono-TTF-AutoHint.zip",
+        "hash": {
+            "url": "$baseurl/MapleMono-TTF-AutoHint.sha256"
+        }
     }
 }

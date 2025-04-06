@@ -1,5 +1,5 @@
 {
-    "version": "2024.01.24",
+    "version": "2025.02.13",
     "description": "A set of utilities to manage, diagnose, troubleshoot, and monitor a Windows environment.",
     "homepage": "https://learn.microsoft.com/sysinternals",
     "license": {
@@ -9,7 +9,7 @@
     "architecture": {
         "64bit": {
             "url": "https://download.sysinternals.com/files/SysinternalsSuite.zip",
-            "hash": "f5ce59b70dfed1846a1fa145dd34acc9f6635e6d80a24cae39b911ebe9b33140",
+            "hash": "1c471a212790bb20d973550ab39342dbbe71658648d04317759ee39a5ea9547a",
             "bin": [
                 [
                     "accesschk64.exe",
@@ -64,7 +64,6 @@
                     "CPUSTRES64.exe",
                     "CPUSTRES"
                 ],
-                "ctrl2cap.exe",
                 [
                     "dbgview64.exe",
                     "Dbgview"
@@ -429,7 +428,7 @@
         },
         "32bit": {
             "url": "https://download.sysinternals.com/files/SysinternalsSuite.zip",
-            "hash": "f5ce59b70dfed1846a1fa145dd34acc9f6635e6d80a24cae39b911ebe9b33140",
+            "hash": "1c471a212790bb20d973550ab39342dbbe71658648d04317759ee39a5ea9547a",
             "bin": [
                 "accesschk.exe",
                 "AccessEnum.exe",
@@ -445,7 +444,6 @@
                 "Contig.exe",
                 "Coreinfo.exe",
                 "CPUSTRES.EXE",
-                "ctrl2cap.exe",
                 "Dbgview.exe",
                 "Desktops.exe",
                 "disk2vhd.exe",
@@ -642,7 +640,7 @@
         },
         "arm64": {
             "url": "https://download.sysinternals.com/files/SysinternalsSuite-ARM64.zip",
-            "hash": "18b6c1c316a6018191e52a0e033721a4a24a638c13b4355820314a3e0de34efe",
+            "hash": "0c1148c56780daa15a65aacf8455736595aa3687f879971138fbe89ecd185074",
             "bin": [
                 [
                     "accesschk64a.exe",
@@ -953,9 +951,9 @@
         }
     },
     "checkver": {
-        "url": "https://learn.microsoft.com/en-us/sysinternals/",
-        "regex": "<meta name=\"updated_at\" content=\"(\\d{4})-(\\d{2})-(\\d{2})",
-        "replace": "${1}.${2}.${3}"
+        "url": "https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/live/sysinternals/downloads/sysinternals-suite.md",
+        "regex": "ms.date: (\\d{2})/(\\d{2})/(\\d{4})",
+        "replace": "${3}.${1}.${2}"
     },
     "autoupdate": {
         "architecture": {
