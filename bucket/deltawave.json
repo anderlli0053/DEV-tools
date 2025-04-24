@@ -1,0 +1,21 @@
+{
+    "version": "latest",
+    "description": "DeltaWave is an experimental software built to allow detailed comparison of two different captures of the same audio signal.",
+    "homepage": "https://deltaw.org/",
+    "license": "Unknown",
+    "url": "https://deltaw.org/DeltaWaveSetup.zip",
+    "hash": "0",
+    "installer": {
+        "script": [
+            "Expand-Archive \"$dir\\DeltaWaveSetup.zip\" -DestinationPath \"$dir\\installer\"",
+            "Start-Process -FilePath \"$dir\\installer\\DeltaWaveSetup.exe\" -ArgumentList \"/S\" -Wait"
+        ]
+    },
+    "checkver": {
+        "url": "https://deltaw.org/",
+        "regex": "DeltaWave ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://deltaw.org/DeltaWaveSetup.zip"
+    }
+}
