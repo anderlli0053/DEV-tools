@@ -1,34 +1,32 @@
 {
-  "version": "7.51",
-  "description": "Investigate performance and image quality of HW encoder (QSV) of Intel",
-  "homepage": "https://github.com/rigaya/QSVEnc",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "bin": [
-        [
-          "QSVEncC64.exe",
-          "QSVEnc"
-        ]
-      ],
-      "url": "https://ghproxy.com/https://github.com/rigaya/QSVEnc/releases/download/7.51/QSVEncC_7.51_x64.7z",
-      "hash": "219406bc281f1dc4ef66d5f7d99358f783f040ac52eef4fd9a7a696e60dff699"
+    "version": "7.89",
+    "description": "Investigate performance and image quality of HW encoder (QSV) of Intel.",
+    "homepage": "https://github.com/rigaya/QSVEnc",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/rigaya/QSVEnc/raw/refs/heads/master/license.txt"
     },
-    "32bit": {
-      "bin": "QSVEncC.exe",
-      "url": "https://ghproxy.com/https://github.com/rigaya/QSVEnc/releases/download/7.51/QSVEncC_7.51_Win32.7z",
-      "hash": "c678554ca0546d3a8293c0796204fb3cd6e733c36c5431b0e4abbaee76d6115b"
-    }
-  },
-  "checkver": "github",
-  "autoupdate": {
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.com/https://github.com/rigaya/QSVEnc/releases/download/$version/QSVEncC_$version_x64.7z"
-      },
-      "32bit": {
-        "url": "https://ghproxy.com/https://github.com/rigaya/QSVEnc/releases/download/$version/QSVEncC_$version_Win32.7z"
-      }
+        "64bit": {
+            "pre_install": "Get-ChildItem \"$dir\" 'QSVEncC64.exe' | Select-Object -First 1 | Rename-Item -NewName 'QSVEncC.exe'",
+            "url": "https://github.com/rigaya/QSVEnc/releases/download/7.89/QSVEncC_7.89_x64.7z",
+            "hash": "5f41893d194c34a81acd4bfe9eec3db3f0228df2a6d8c0e5f3aea39760e29b58"
+        },
+        "32bit": {
+            "url": "https://github.com/rigaya/QSVEnc/releases/download/7.89/QSVEncC_7.89_Win32.7z",
+            "hash": "1524d66b15f34a63965c881fa5ad925dbd3e71f7f4086c2f28dd4e3ea4326733"
+        }
+    },
+    "bin": "QSVEncC.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rigaya/QSVEnc/releases/download/$version/QSVEncC_$version_x64.7z"
+            },
+            "32bit": {
+                "url": "https://github.com/rigaya/QSVEnc/releases/download/$version/QSVEncC_$version_Win32.7z"
+            }
+        }
     }
-  }
 }
