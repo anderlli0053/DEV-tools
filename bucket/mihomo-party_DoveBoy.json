@@ -1,0 +1,73 @@
+{
+  "version": "1.7.3",
+  "description": "Another Mihomo GUI.",
+  "homepage": "https://mihomo.party/",
+  "license": {
+    "identifier": "GPL-3.0 license",
+    "url": "https://github.com/pompurin404/mihomo-party#GPL-3.0-1-ov-file"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/pompurin404/mihomo-party/releases/download/v1.7.3/mihomo-party-windows-1.7.3-x64-setup.exe#/dl.7z",
+      "hash": "e0b8adeef4540eacfc7abf40f8ecaa05d0ab2be28eddc1e009e9ca1ecf16e6a1",
+      "pre_install": [
+        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\`$*\" -Force -Recurse"
+      ]
+    },
+    "32bit": {
+      "url": "https://github.com/pompurin404/mihomo-party/releases/download/v1.7.3/mihomo-party-windows-1.7.3-ia32-setup.exe#/dl.7z",
+      "hash": "a113c690b4327c89bbaf480345f4d07b91abdda9046e298dc0992243228bc2d6",
+      "pre_install": [
+        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\`$*\" -Force -Recurse"
+      ]
+    },
+    "arm64": {
+      "url": "https://github.com/pompurin404/mihomo-party/releases/download/v1.7.3/mihomo-party-windows-1.7.3-arm64-setup.exe#/dl.7z",
+      "hash": "619439aea9c2f8875ef8da98d5537ce9c996e0ea406cf11144da19774d9af077",
+      "pre_install": [
+        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\`$*\" -Force -Recurse"
+      ]
+    }
+  },
+  "installer": {
+    "script": [
+      "# handle runtime cache",
+      "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
+      "Mount-ExternalRuntimeData -Source \"$persist_dir\" -Target \"$env:APPDATA\\mihomo-party\"",
+      "Remove-Module -Name AppsUtils"
+    ]
+  },
+  "uninstaller": {
+    "script": [
+      "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
+      "Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\mihomo-party\"",
+      "Remove-Module -Name AppsUtils"
+    ]
+  },
+  "shortcuts": [
+    [
+      "mihomo-party.exe",
+      "mihomo-party"
+    ]
+  ],
+  "checkver": {
+    "url": "https://api.github.com/repos/pompurin404/mihomo-party/releases",
+    "regex": "/releases/tag/v([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/pompurin404/mihomo-party/releases/download/v$version/mihomo-party-windows-$version-x64-setup.exe#/dl.7z"
+      },
+      "32bit": {
+        "url": "https://github.com/pompurin404/mihomo-party/releases/download/v$version/mihomo-party-windows-$version-ia32-setup.exe#/dl.7z"
+      },
+      "arm64": {
+        "url": "https://github.com/pompurin404/mihomo-party/releases/download/v$version/mihomo-party-windows-$version-arm64-setup.exe#/dl.7z"
+      }
+    }
+  }
+}

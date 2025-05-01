@@ -1,44 +1,41 @@
 {
   "version": "1.9.15",
-  "description": "微软语音合成工具，使用 Electron + Vue + ElementPlus + Vite 构建",
-  "homepage": "https://tts-doc.loker.vip/home.html",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/LokerL/tts-vue/releases/download/1.9.15/tts-vue-windows-latest.zip",
-      "extract_dir": "1.9.15",
-      "hash": "e8cd45a3f1ca1335723554e41ab06fd1f289bacad666ff8adbe9af74a07800de",
-      "pre_install": [
-        "Expand-7zipArchive -Path (Get-ChildItem \"$dir\" 'tts-vue*.exe' | Select-Object -First 1).FullName -DestinationPath \"$dir\" -Removal",
-        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\", \"$dir\\Uninstall*\", \"$dir\\resources\\app-update.yml\"  -Force -Recurse"
-      ]
-    }
+  "description": "🎤 微软语音合成工具，使用 Electron + Vue + ElementPlus + Vite 构建。🎤 Microsoft speech synthesis tool, built using Electron + Vue + ElementPlus + Vite.",
+  "homepage": "https://github.com/LokerL/tts-vue",
+  "license": {
+    "identifier": "MIT",
+    "url": "https://github.com/LokerL/tts-vue/blob/main/LICENSE"
   },
-  "bin": [
-    [
-      "tts-vue.exe",
-      "tts-vue",
-      "--user-data-dir=\"$dir\\User Data\""
-    ]
-  ],
+  "url": "https://github.com/LokerL/tts-vue/releases/download/1.9.15/tts-vue-windows-latest.zip",
+  "hash": "e8cd45a3f1ca1335723554e41ab06fd1f289bacad666ff8adbe9af74a07800de",
   "shortcuts": [
     [
       "tts-vue.exe",
-      "TTS-Vue",
-      "--user-data-dir=\"$dir\\User Data\""
+      "tts-vue"
     ]
   ],
-  "persist": "User Data",
-  "checkver": {
-    "github": "https://github.com/LokerL/tts-vue"
-  },
+  "pre_install": [
+    ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
+    "$path_installer=\"$dir\\$($version)\\tts-vue-$($version).exe\"",
+    "& $path_installer /S /D=$dir",
+    "$core_exe=\"$dir\\tts-vue.exe\"",
+    "sleep_install $core_exe",
+    "persist_file -dir @(\"$user_AppData\\tts-vue\") @(\"$persist_dir\\tts-vue\")",
+    "handle_app_lnk",
+    "do_some_things"
+  ],
+  "pre_uninstall": [
+    "$bucket = (Get-Content \"$dir\\install.json\" | ConvertFrom-Json).bucket",
+    ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
+    "stop_process $false",
+    "remove_files @(\"$user_AppData\\tts-vue\")",
+    "$ui_exe=\"$dir\\Uninstall tts-vue.exe\"",
+    "try{ & $ui_exe /S }catch{}",
+    "sleep_uninstall $ui_exe",
+    "remove_files @(\"$user_LocalAppData\\tts-vue-updater\")"
+  ],
+  "checkver": "github",
   "autoupdate": {
-    "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.com/https://github.com/LokerL/tts-vue/releases/download/$version/tts-vue-windows-latest.zip",
-        "extract_dir": "$version"
-      }
-    }
+    "url": "https://github.com/LokerL/tts-vue/releases/download/$version/tts-vue-windows-latest.zip"
   }
 }

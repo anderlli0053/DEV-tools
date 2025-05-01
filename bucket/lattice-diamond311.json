@@ -20,12 +20,12 @@
     ""
   ],
   "url": [
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.0/lattice-diamond311-win64-p00.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.0/lattice-diamond311-win64-p01.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.0/lattice-diamond311-win64-p02.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.0/lattice-diamond311-win64-p03.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.0/lattice-diamond311-win64-p04.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.0/lattice-diamond311-win64-p05.7z"
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.0/lattice-diamond311-win64-p00.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.0/lattice-diamond311-win64-p01.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.0/lattice-diamond311-win64-p02.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.0/lattice-diamond311-win64-p03.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.0/lattice-diamond311-win64-p04.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.0/lattice-diamond311-win64-p05.7z"
   ],
   "hash": [
     "b85de17b81f99cecf2ba5252dd493255d89dd1dd243cd2747687e34d9672e081",
@@ -56,7 +56,17 @@
     "$cont = $cont -replace '@SCRIPT_LNKNAME@', \"Lattice Diamond 3.11 CVP\"",
     "Set-Content \"$ofile\" ($cont -join \"`r`n\") -Encoding ASCII",
     "",
-    "$TOOL_INST_PATH = \"$(current_dir $dir)\".Replace('/', '\\\\')",
+    "$ifile = \"$bucketdir\\..\\scripts\\lattice-diamond311\\scripts_lattice_diamond_console.cmd.templ\"",
+    "$ofile = \"$dir\\scripts\\lattice_diamond_console.cmd\"",
+    "$cont = (Get-Content \"$ifile\") -replace '@SCRIPT_NAME@', \"lattice_diamond\"",
+    "$cont = $cont -replace '@SCRIPT_RUNNER_RELDIR@', \"Programs/bin/nt64\"",
+    "$cont = $cont -replace '@SCRIPT_RUNNER_ICON@', \"pnwrap.ico\"",
+    "$cont = $cont -replace '@SCRIPT_RUNNER@', \"pnmainc\"",
+    "$cont = $cont -replace '%SCRIPT_RUNNER_ARG%', \"\"",
+    "$cont = $cont -replace '@SCRIPT_LNKNAME@', \"Lattice Diamond 3.11 CVP\"",
+    "Set-Content \"$ofile\" ($cont -join \"`r`n\") -Encoding ASCII",
+    "",
+    "$TOOL_INST_PATH = \"$dir\".Replace('/', '\\\\')",
     "$escdir = $TOOL_INST_PATH -replace \"\\\\\",\"\\\\\"",
     "(gc \"$bucketdir\\..\\scripts\\lattice-diamond311\\install-context.reg.templ\") | % {$_ -replace \"%TOOL_INST_PATH%\",\"$escdir\"} | out-file -enc oem \"$dir\\install-context.reg\"",
     "cp \"$bucketdir\\..\\scripts\\lattice-diamond311\\uninstall-context.reg\" \"$dir\"",
@@ -71,6 +81,7 @@
     "",
     ""
   ],
+  "bin": "scripts\\lattice_diamond_console.cmd",
   "shortcuts": [
     [
       "scripts\\lattice_diamond.cmd",
@@ -88,6 +99,6 @@
     "regex": "lattice-diamond311-win64-([\\d.]+).7z<"
   },
   "autoupdate": {
-    "url": "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.0/lattice-diamond311-$version.7z"
+    "url": "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.0/lattice-diamond311-$version.7z"
   }
 }

@@ -1,33 +1,33 @@
 {
-    "version": "5.1.5",
-    "homepage": "https://github.com/beekeeper-studio/beekeeper-studio",
-    "description": "Beekeeper Studio is a cross-platform SQL editor and database manager available for Linux, Mac, and Windows.",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://ghproxy.com/https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v5.1.5/Beekeeper-Studio-5.1.5-portable.exe#/dl.7z",
-            "hash": "1bf09a1fff643c5741af21f8160b2e70caad62d0584ed2b271b49bd3c2efd57f",
-            "pre_install": [
-                "Expand-7ZipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal",
-                "Remove-Item \"$dir\\`$*\" -Force -Recurse"
-            ]
-        }
-    },
-    "shortcuts": [
-        [
-            "Beekeeper Studio.exe",
-            "Beekeeper Studio"
-        ]
-    ],
-    "persist": "beekeeper_studio_data",
-    "checkver": {
-        "github": "https://github.com/beekeeper-studio/beekeeper-studio"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://ghproxy.com/https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v$version/Beekeeper-Studio-$version-portable.exe#/dl.7z"
-            }
-        }
+  "version": "5.1.5",
+  "homepage": "https://github.com/beekeeper-studio/beekeeper-studio",
+  "description": "Beekeeper Studio is a cross-platform SQL editor and database manager available for Linux, Mac, and Windows.",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v5.1.5/Beekeeper-Studio-5.1.5-portable.exe#/dl.7z",
+      "hash": "ae926278ba0e27df73f5ea9c47261645a038d8426e92d28130314f32c80026ad",
+      "pre_install": [
+        "Expand-7ZipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal",
+        "Remove-Item \"$dir\\`$*\" -Force -Recurse"
+      ]
     }
+  },
+  "shortcuts": [
+    [
+      "Beekeeper Studio.exe",
+      "Beekeeper Studio"
+    ]
+  ],
+  "persist": "beekeeper_studio_data",
+  "checkver": {
+    "github": "https://github.com/beekeeper-studio/beekeeper-studio"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v$version/Beekeeper-Studio-$version-portable.exe#/dl.7z"
+      }
+    }
+  }
 }

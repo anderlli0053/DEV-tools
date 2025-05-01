@@ -1,20 +1,21 @@
 {
-  "version": "1.200.0.1",
+  "version": "1.223.5.2",
   "description": "Cross-platform text and code editor",
   "homepage": "https://sourceforge.net/projects/cudatext",
   "license": "Mozilla Public License 2.0 (MPL 2.0)",
   "architecture": {
     "64bit": {
       "url": [
-        "https://udomain.dl.sourceforge.net/project/cudatext/release/1.200.0.1/cudatext-windows-amd64-1.200.0.1.zip",
+        "https://downloads.sourceforge.net/project/cudatext/release/1.223.5.2/cudatext-windows-amd64-1.223.5.2.zip",
         "https://downloads.sourceforge.net/project/cudatext/addons/translations/translation.zh_CN.zip"
       ],
       "hash": [
-        "sha1:0aafe1b989e5ed4846e92549c5d3565a934def4a",
+        "sha1:5c3ab6ccaae34c2bd759810ad397d23f129ad4b5",
         "b2a78ad04ae5b6e762be51399c53e89ab88efe8021e98b774e66c7227152630a"
       ]
     }
   },
+  "extract_dir": "cudatext",
   "post_install": [
     "Move-Item \"$dir\\install.inf\" \"$persist_dir\\data\\lang\\install.inf\" -Force",
     "Move-Item \"$dir\\zh_CN.ini\" \"$persist_dir\\data\\lang\\zh_CN.ini\" -Force",
@@ -49,7 +50,7 @@
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://udomain.dl.sourceforge.net/project/cudatext/release/$version/cudatext-windows-amd64-$version.zip"
+        "url": "https://downloads.sourceforge.net/project/cudatext/release/$version/cudatext-windows-amd64-$version.zip"
       }
     }
   }

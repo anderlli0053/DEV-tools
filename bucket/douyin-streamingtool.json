@@ -1,0 +1,49 @@
+{
+  "version": "9.6.3",
+  "description": "抖音直播伴侣",
+  "homepage": "https://streamingtool.douyin.com/",
+  "license": "Proprietary",
+  "architecture": {
+    "64bit": {
+      "url": "https://lf6-cdn-tos.douyinstatic.com/obj/venus/StreamingTool-9.6.3-x64.exe#/dl.7z",
+      "hash": "196b525f5536c1a0ff180a4758cd33e8a7c2c302311597915ce128707e35f96f",
+      "installer": {
+        "script": [
+          "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+          "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninst*\" -Force -Recurse"
+        ]
+      }
+    },
+    "32bit": {
+      "url": "https://lf6-cdn-tos.douyinstatic.com/obj/venus/StreamingTool-9.6.3-x86.exe#/dl.7z",
+      "hash": "8b399b69d598db0cf26d47e5f1276b50131f1ec30737ee1928f99c0bf9f212e9",
+      "installer": {
+        "script": [
+          "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-86.7z\" \"$dir\"",
+          "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninst*\" -Force -Recurse"
+        ]
+      }
+    }
+  },
+  "bin": "直播伴侣.exe",
+  "shortcuts": [
+    [
+      "直播伴侣.exe",
+      "抖音直播伴侣"
+    ]
+  ],
+  "checkver": {
+    "script": "return (iwr -useb 'https://streamingtool.douyin.com/api/invoke/download' -Method HEAD -MaximumRedirection 0 -SkipHttpErrorCheck -ErrorAction:SilentlyContinue).Headers['Location']",
+    "regex": "https://lf6-cdn-tos.douyinstatic.com/(?<path>.*?)/StreamingTool-([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://lf6-cdn-tos.douyinstatic.com/$matchPath/StreamingTool-$version-x64.exe#/dl.7z"
+      },
+      "32bit": {
+        "url": "https://lf6-cdn-tos.douyinstatic.com/$matchPath/StreamingTool-$version-x86.exe#/dl.7z"
+      }
+    }
+  }
+}

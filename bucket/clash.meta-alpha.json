@@ -1,5 +1,5 @@
 {
-  "version": "0b1aff5",
+  "version": "0.2023.10.11.1292830",
   "description": "A rule-based tunnel in Go.",
   "homepage": "https://github.com/MetaCubeX/Clash.Meta",
   "license": {
@@ -7,16 +7,16 @@
   },
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/MetaCubeX/Clash.Meta/releases/download/Prerelease-Alpha/clash.meta-windows-amd64-alpha-0b1aff5.zip",
-      "hash": "d902358a69ca082ecaf5a26b792d8bf1c6610fd63c42c71111db76ba55090922"
+      "url": "https://github.com/MetaCubeX/Clash.Meta/releases/download/Prerelease-Alpha/clash.meta-windows-amd64-alpha-1292830.zip",
+      "hash": "63eddba5735072a77e62d02879f59a070c85b1b64aefa16e25ec94038d291e26"
     },
     "32bit": {
-      "url": "https://ghproxy.com/https://github.com/MetaCubeX/Clash.Meta/releases/download/Prerelease-Alpha/clash.meta-windows-386-alpha-0b1aff5.zip",
-      "hash": "ede7e849450453769317fb903d63947e8b9da1d4ecf314736701d23a43a76500"
+      "url": "https://github.com/MetaCubeX/Clash.Meta/releases/download/Prerelease-Alpha/clash.meta-windows-386-alpha-1292830.zip",
+      "hash": "0110ec6c03fc3f40a3400f0f32d3b6e2e8466ac9c36ff65c043de26634388ea9"
     },
     "arm64": {
-      "url": "https://ghproxy.com/https://github.com/MetaCubeX/Clash.Meta/releases/download/Prerelease-Alpha/clash.meta-windows-arm64-alpha-0b1aff5.zip",
-      "hash": "25f31732b2836541049648374c833543290067268c23b2abd3c231d06d3ee450"
+      "url": "https://github.com/MetaCubeX/Clash.Meta/releases/download/Prerelease-Alpha/clash.meta-windows-arm64-alpha-1292830.zip",
+      "hash": "f2cc1160ffdb24f01a772cf8c9222bc79a6966f3e57bba03578a44c2b4dbc362"
     }
   },
   "pre_install": "Get-ChildItem \"$dir\\Clash.Meta*.exe\" | Rename-Item -NewName 'Clash.Meta.exe'",
@@ -27,20 +27,20 @@
     ]
   ],
   "checkver": {
-    "url": "https://api.github.com/repos/MetaCubeX/Clash.Meta/releases",
-    "regex": "(?sm)releases/download/Prerelease-Alpha/(?<x86>clash.meta-windows-386-alpha-(?<commit>[0-9a-f]{7})\\.zip).*?(?<x64>clash.meta-windows-amd64-alpha-(?<commit>[0-9a-f]{7})\\.zip).*?(?<xarm64>clash.meta-windows-arm64-alpha-(?<commit>[0-9a-f]{7})\\.zip)",
-    "replace": "${commit}"
+    "url": "https://api.github.com/repos/MetaCubeX/Clash.Meta/releases/tags/Prerelease-Alpha",
+    "regex": "(?sm)clash.meta-windows.*?updated_at.*?(\\d+)-(\\d+)-(\\d+)T.*?releases/download/Prerelease-Alpha/clash.meta-windows-amd64-alpha-(?<commit>[0-9a-f]{7})\\.zip",
+    "replace": "0.${1}.${2}.${3}.${commit}"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/MetaCubeX/Clash.Meta/releases/download/Prerelease-Alpha/$matchX64"
+        "url": "https://github.com/MetaCubeX/Clash.Meta/releases/download/Prerelease-Alpha/clash.meta-windows-amd64-alpha-$matchCommit.zip"
       },
       "32bit": {
-        "url": "https://ghproxy.com/https://github.com/MetaCubeX/Clash.Meta/releases/download/Prerelease-Alpha/$matchX86"
+        "url": "https://github.com/MetaCubeX/Clash.Meta/releases/download/Prerelease-Alpha/clash.meta-windows-386-alpha-$matchCommit.zip"
       },
       "arm64": {
-        "url": "https://ghproxy.com/https://github.com/MetaCubeX/Clash.Meta/releases/download/Prerelease-Alpha/$matchXarm64"
+        "url": "https://github.com/MetaCubeX/Clash.Meta/releases/download/Prerelease-Alpha/clash.meta-windows-arm64-alpha-$matchCommit.zip"
       }
     }
   }

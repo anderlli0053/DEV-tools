@@ -1,5 +1,5 @@
 {
-  "version": "4.62",
+  "version": "4.70",
   "description": "IrfanView Plugins. PlugIns will be installed into IrfanView \"PlugIns\" directory",
   "homepage": "https://www.irfanview.com/plugins.htm",
   "license": {
@@ -9,12 +9,12 @@
   "depends": "scoop-apps/irfanview-install",
   "architecture": {
     "64bit": {
-      "url": "https://www.irfanview.info/files/iview462_plugins_x64_setup.exe#/setup.exe",
-      "hash": "29542a9229a36e4e7be5a9b2a3a433632ddc06e40fe2324ad7317b0679b389dc"
+      "url": "https://www.irfanview.info/files/iview470_plugins_x64_setup.exe#/setup.exe",
+      "hash": "73f9fff501473831c53cda6332177533efbc385741f9459153c33b4dde6d54fb"
     },
     "32bit": {
-      "url": "https://www.irfanview.info/files/iview462_plugins_setup.exe#/setup.exe",
-      "hash": "3677e25004ed6d1a9a1b4540f03796e59e0cdb07d1e47fa58b530ffb2f492f66"
+      "url": "https://www.irfanview.info/files/iview470_plugins_setup.exe#/setup.exe",
+      "hash": "fbaa225688d45217a809ac2695ebea2024214b3443bc4d2af90aa1a06c4cf1c2"
     }
   },
   "pre_download": "Assert-Administrator",
@@ -22,7 +22,7 @@
     "script": [
       "$programname = \"IrfanView*\"",
       "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
-      "$filepath = \"$ProgramFiles\\IrfanView\\Plugins\\Formats.dll\"",
+      "$filepath = \"$ProgramFiles\\IrfanView\\Plugins\\CADImage.dll\"",
       "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
       "{",
       "   &\"$dir\\setup.exe\" /silent /desktop=0 /thumbs=0 /group=1 /allusers=1 /assoc=0 | Out-Null",

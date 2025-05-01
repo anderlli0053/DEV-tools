@@ -1,14 +1,11 @@
 {
-  "version": "0.42.3",
-  "description": "CJK programming font based on Iosevka and Source Han Sans",
-  "license": "OFL-1.1",
   "homepage": "https://github.com/be5invis/Sarasa-Gothic",
-  "url": "https://ghproxy.com/https://github.com/be5invis/Sarasa-Gothic/releases/download/v0.42.3/sarasa-gothic-ttc-0.42.3.7z",
-  "hash": "e6dcbbd772695c3599a9e5e760bd45e718af898b675b6c3d664179a650c382e7",
+  "version": "1.0.30",
+  "description": "This is SARASA GOTHIC, a CJK programming font based on Iosevka and Source Han Sans.",
+  "license": "OFL-1.1",
+  "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/be5invis/Sarasa-Gothic/LatestRelease/Sarasa-SuperTTC-1.0.30.7z",
+  "hash": "86fc179943165a16bf0dcc4926dcb1895efcc72d0e44b8c67e52d0283523ddda",
   "checkver": "github",
-  "autoupdate": {
-    "url": "https://ghproxy.com/https://github.com/be5invis/Sarasa-Gothic/releases/download/v$version/sarasa-gothic-ttc-$version.7z"
-  },
   "installer": {
     "script": [
       "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -44,7 +41,7 @@
       "Get-ChildItem $dir -Filter '*.ttc' | ForEach-Object {",
       "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
       "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-      "    Copy-Item $_.FullName -Destination $fontInstallDir",
+      "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
       "}"
     ]
   },
@@ -85,8 +82,11 @@
       "    Remove-Item \"$fontInstallDir\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
       "}",
       "if ($cmd -eq \"uninstall\") {",
-      "    Write-Host \"The '$app' Font family has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta",
+      "    Write-Host \"The 'Sarasa-Gothic' Font family has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta",
       "}"
     ]
+  },
+  "autoupdate": {
+    "url": "https://mirrors.tuna.tsinghua.edu.cn/github-release/be5invis/Sarasa-Gothic/LatestRelease/Sarasa-SuperTTC-$version.7z"
   }
 }

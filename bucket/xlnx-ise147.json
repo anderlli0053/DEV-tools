@@ -16,18 +16,18 @@
     ""
   ],
   "url": [
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p01.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p02.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p01.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p02.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p03.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p04.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p05.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p06.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p07.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p08.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p09.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p04.7z"
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p01.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p02.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p01.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p02.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p03.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p04.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p05.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p06.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p07.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p08.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p03-p09.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-p04.7z"
   ],
   "hash": [
     "8ec093588a3c38b6dec8753a5dda80ac6837207477b29688ff9584c404982019",
@@ -77,7 +77,9 @@
     "",
     "'data', 'home', 'scripts' | ForEach-Object { ensure \"$dir\\$_\" | Out-Null }",
     "",
-    "$TOOL_INST_PATH = \"$(current_dir $dir)\".Replace('/', '\\\\')",
+    "$current_dir = if (get_config NO_JUNCTIONS) { $dir } else { \"$(appdir $app $global)\\current\".Replace('/', '\\') }",
+    "",
+    "$TOOL_INST_PATH = \"$current_dir\"",
     "$escdir = $TOOL_INST_PATH -replace \"\\\\\",\"\\\\\"",
     "(gc \"$bucketdir\\..\\scripts\\xlnx-vivado20183\\install-context.reg.templ\") | % {$_ -replace \"%TOOL_INST_PATH%\",\"$escdir\"} | out-file -enc oem \"$dir\\install-context.reg\"",
     "cp \"$bucketdir\\..\\scripts\\xlnx-vivado20183\\uninstall-context.reg\" \"$dir\"",
@@ -88,8 +90,23 @@
     "",
     "$bucketdir = Find-BucketDirectory -Name $bucket",
     "",
-    "$TOOL_INST_PATH = \"$(current_dir $dir)\".Replace('/', '\\\\')",
-    "$escdir = \"$(current_dir $dir)\"",
+    "$current_dir = if (get_config NO_JUNCTIONS) { $dir } else { \"$(appdir $app $global)\\current\".Replace('/', '\\') }",
+    "",
+    "$XLNX_ISE_INSTALL_ROOT = \"$current_dir\"",
+    "$escdir = $XLNX_ISE_INSTALL_ROOT -replace \"\\\\\",\"\\\\\"",
+    "cp \"$bucketdir\\..\\scripts\\xlnx-ise147\\xilinx-ise-win10-hang-hotfix.zip\" \"$dir\"",
+    "Expand-7zipArchive \"$dir\\xilinx-ise-win10-hang-hotfix.zip\" \"$dir\\data\"",
+    "cp \"$dir\\data\\nt64\\libPortability.dll\" \"$XLNX_ISE_INSTALL_ROOT\\ISEROOT\\ISE\\sysgen\\bin\\nt64\\libPortability.dll\"",
+    "cp \"$dir\\data\\nt\\libPortability.dll\"   \"$XLNX_ISE_INSTALL_ROOT\\ISEROOT\\ISE\\sysgen\\bin\\nt\\libPortability.dll\"",
+    "cp \"$dir\\data\\nt64\\libPortability.dll\" \"$XLNX_ISE_INSTALL_ROOT\\ISEROOT\\ISE\\lib\\nt64\\libPortability.dll\"",
+    "cp \"$dir\\data\\nt\\libPortability.dll\"   \"$XLNX_ISE_INSTALL_ROOT\\ISEROOT\\ISE\\lib\\nt\\libPortability.dll\"",
+    "cp \"$dir\\data\\nt64\\libPortability.dll\" \"$XLNX_ISE_INSTALL_ROOT\\ISEROOT\\EDK\\lib\\nt64\\sdk\\libPortability.dll\"",
+    "cp \"$dir\\data\\nt64\\libPortability.dll\" \"$XLNX_ISE_INSTALL_ROOT\\ISEROOT\\EDK\\lib\\nt64\\libPortability.dll\"",
+    "cp \"$dir\\data\\nt\\libPortability.dll\"   \"$XLNX_ISE_INSTALL_ROOT\\ISEROOT\\EDK\\lib\\nt\\libPortability.dll\"",
+    "cp \"$dir\\data\\nt64\\libPortability.dll\" \"$XLNX_ISE_INSTALL_ROOT\\ISEROOT\\common\\lib\\nt64\\libPortability.dll\"",
+    "cp \"$dir\\data\\nt\\libPortability.dll\"   \"$XLNX_ISE_INSTALL_ROOT\\ISEROOT\\common\\lib\\nt\\libPortability.dll\"",
+    "cp \"$dir\\data\\nt64\\libPortability.dll\" \"$XLNX_ISE_INSTALL_ROOT\\ISEROOT\\.xinstall\\bin\\nt64\\libPortability.dll\"",
+    "cp \"$dir\\data\\nt\\libPortability.dll\"   \"$XLNX_ISE_INSTALL_ROOT\\ISEROOT\\.xinstall\\bin\\nt\\libPortability.dll\"",
     "",
     "$icon = \"$env:systemroot\\system32\\cmd.exe\"",
     "$arguments = \"/k %XLNX_ISE_INSTALL_ROOT%\\ISEROOT\\settings32.bat\"",
@@ -164,7 +181,8 @@
     ]
   ],
   "env_set": {
-    "XLNX_ISE_INSTALL_ROOT": "$dir"
+    "XLNX_ISE_INSTALL_ROOT": "$dir",
+    "XILINXD_LICENSE_FILE": "$dir/data/license.lic"
   },
   "persist": [
     "AppData",
@@ -175,6 +193,6 @@
     "regex": "xlnx-ise147-([\\d.]+).7z<"
   },
   "autoupdate": {
-    "url": "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-$version.7z"
+    "url": "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-ise147-$version.7z"
   }
 }

@@ -1,26 +1,27 @@
 {
-  "version": "5.1.2.1",
+  "version": "6.0.3.4",
   "description": "YSYY, The Official PC Client of CCTV",
   "homepage": "https://app.cctv.com/",
   "license": "Freeware",
-  "url": "https://download.cntv.cn/cbox/v5/ysyy_v5.1.2.1_1001_setup.exe#/ysyy_v5.1.2.1_1001_setup.7z",
-  "hash": "8192ab0744cf803ec07c6d8c1dde9a07d08dd4b2c97dd1401d681504a181bc80",
+  "url": "https://download.cntv.cn/cbox/v6/ysyy_v6.0.3.4_1001_setup_x64.exe#/ysyy_v6.0.3.4_1001_setup.7z",
+  "hash": "9aaeda4f5a7fde51270cd2766e7599b17f1cee7b51db89b7d3578c9e89405833",
   "installer": {
     "script": [
-      "Expand-7zipArchive -Path \"$dir\\CBox.7z\" -ExtractDir 'bin' -Removal",
+      "Expand-7zipArchive -Path \"$dir\\CBox.7z\" \"$dir\"",
+      "Remove-Item \"$dir\\CBox.7z\"",
       "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse"
     ]
   },
   "shortcuts": [
     [
-      "CBox.exe",
+      "cbox.exe",
       "央视影音"
     ]
   ],
   "checkver": {
-    "regex": "v5/ysyy_v([\\d.]+)"
+    "regex": "v6/ysyy_v([\\d.]+)"
   },
   "autoupdate": {
-    "url": "https://download.cntv.cn/cbox/v5/ysyy_v$version_1001_setup.exe#/ysyy_v$version_1001_setup.7z"
+    "url": "https://download.cntv.cn/cbox/v6/ysyy_v$version_1001_setup_x64.exe#/ysyy_v$version_1001_setup.7z"
   }
 }

@@ -1,15 +1,24 @@
 {
-  "version": "0.8.20",
+  "version": "0.8.40",
+  "description": "Making local Kubernetes clusters easy to set up and tear down",
+  "homepage": "https://github.com/tilt-dev/ctlptl",
+  "license": "Apache-2.0",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/tilt-dev/ctlptl/releases/download/v0.8.20/ctlptl.0.8.20.windows.x86_64.zip",
-      "bin": [
-        "ctlptl.exe"
-      ],
-      "hash": "2aa9310c504b624e33e5bc02e71c1c689afa5fbaaf0b3b4c8c5c96425f0270fb"
+      "url": "https://github.com/tilt-dev/ctlptl/releases/download/v0.8.40/ctlptl.0.8.40.windows.x86_64.zip",
+      "hash": "7dc0de3aa9d8997039829a680ee9bda56ddc193699f5c96a4e0bf229e66ccab2"
     }
   },
-  "homepage": "https://ctlptl.dev/",
-  "license": "Apache-2.0",
-  "description": "Making local Kubernetes clusters easy to set up and tear down"
+  "bin": "ctlptl.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/tilt-dev/ctlptl/releases/download/v$version/ctlptl.$version.windows.x86_64.zip"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/checksums.txt"
+    }
+  }
 }

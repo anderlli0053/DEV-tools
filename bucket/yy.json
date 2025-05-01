@@ -1,13 +1,13 @@
 {
   "homepage": "https://www.yy.com/",
   "description": "The official client of YY, a Chinese video-based social network.",
-  "version": "9.28.0.1",
+  "version": "9.36.0.0",
   "license": {
     "identifier": "EULA",
     "url": "https://zc.yy.com/license.html"
   },
-  "url": "https://yydl.yy.com/4/setup/YYSetup-9.28.0.1-zh-CN.exe#/dl.7z",
-  "hash": "8466effa32cfe39e253a0c55eb5be33d03cfc4eefcd31e68a2ff2059bbf129dc",
+  "url": "https://yydl.yy.com/4/setup/YYSetup-9.36.0.0-zh-CN.exe#/dl.7z",
+  "hash": "79fd016cb863d9adedac0ae2e719948325b3cebc67655c12659eb106a3e7a987",
   "extract_dir": "InstallDir",
   "shortcuts": [
     [
@@ -19,7 +19,7 @@
     "script": [
       "$content = irm 'https://www.yy.com/web/pcyy_download/'",
       "$jsPathname = 'https://web.yystatic.com/project/pcyy_download/pc/assets/'",
-      "$jsChunk = (Select-String -InputObject $content -Pattern 'js/index.*chunk.js').Matches.Value",
+      "$jsChunk = (Select-String -InputObject $content -Pattern 'js/index.*.js').Matches.Value",
       "$content = irm \"$jsPathname$jsChunk\"",
       "return (Select-String -InputObject $content -Pattern 'YYSetup-([\\d.]+)-zh-CN.exe').Matches.Value"
     ],

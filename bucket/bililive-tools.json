@@ -1,0 +1,38 @@
+{
+  "version": "1.10.1",
+  "description": "B 站录播一站式工具，支持录播姬&blrec的webhook自动上传",
+  "homepage": "https://github.com/renmu123/biliLive-tools",
+  "license": {
+    "identifier": "GPL-3.0 license",
+    "url": "https://github.com/renmu123/biliLive-tools#GPL-3.0-1-ov-file"
+  },
+  "url": "https://github.com/renmu123/biliLive-tools/releases/download/1.10.1/biliLive-tools-1.10.1-win-x64.exe#/dl.7z",
+  "hash": "c20b4fe259b3f2465c9847af14c1b7d46f834e7f6de7428f7087fce54919038b",
+  "pre_install": [
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+    "Remove-Item \"$dir\\`$*\" -Force -Recurse"
+  ],
+  "installer": {
+    "script": [
+      "ensure \"$persist_dir\" | Out-Null",
+      "New-Item \"$env:APPDATA\\biliLive-tools\" -ItemType Junction -Target \"$persist_dir\" | Out-Null"
+    ]
+  },
+  "uninstaller": {
+    "script": "Remove-Item \"$env:APPDATA\\biliLive-tools\" -Recurse -Force -ErrorAction 'SilentlyContinue'"
+  },
+  "bin": "biliLive-tools.exe",
+  "shortcuts": [
+    [
+      "biliLive-tools.exe",
+      "biliLive-tools"
+    ]
+  ],
+  "checkver": {
+    "url": "https://api.github.com/repos/renmu123/biliLive-tools/releases/latest",
+    "regex": "/releases/tag/([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "https://github.com/renmu123/biliLive-tools/releases/download/$version/biliLive-tools-$version-win-x64.exe#/dl.7z"
+  }
+}

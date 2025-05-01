@@ -1,18 +1,23 @@
 {
-  "homepage": "https://github.com/beeradmoore/dlss-swapper/",
-  "description": "A tool to swap DLSS dlls",
-  "version": "1.0.2.0",
-  "license": "GPL-3.0-only",
-  "url": "https://ghproxy.com/https://github.com/beeradmoore/dlss-swapper/releases/download/v1.0.2.0/DLSS.Swapper-1.0.2.0-portable.zip",
-  "hash": "e74a9b02753a71c7eb0f6c9664706b4a9a1b72bf3bac540365a12201ea202f92",
+  "version": "1.1.6.3",
+  "description": "A tool that allows you to conveniently manage and swap DLSS dlls",
+  "homepage": "https://github.com/beeradmoore/dlss-swapper",
+  "license": "GPL-3.0",
+  "url": "https://github.com/beeradmoore/dlss-swapper/releases/download/v1.1.6.3/DLSS.Swapper-1.1.6.3-portable.zip",
+  "hash": "cba8e45013078c2ab060529b146b16d4104e4f72df8ffbcab8e07f186f087ca3",
+  "bin": "DLSS Swapper.exe",
   "shortcuts": [
     [
       "DLSS Swapper.exe",
       "DLSS Swapper"
     ]
   ],
-  "checkver": "github",
+  "persist": "StoredData",
+  "checkver": {
+    "url": "https://api.github.com/repos/beeradmoore/dlss-swapper/releases",
+    "regex": "/releases/tag/v([\\d.]+(-alpha|-beta|-rc)?(\\.\\d+)?)"
+  },
   "autoupdate": {
-    "url": "https://ghproxy.com/https://github.com/beeradmoore/dlss-swapper/releases/download/v$version/DLSS.Swapper-$version-portable.zip"
+    "url": "https://github.com/beeradmoore/dlss-swapper/releases/download/v$version/DLSS.Swapper-$version-portable.zip"
   }
 }

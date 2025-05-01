@@ -2,22 +2,22 @@
   "homepage": "http://www.doxygen.nl/",
   "description": "The GUI frontend of Doxygen.",
   "license": "GPL-2.0-only",
-  "version": "1.9.7",
-  "url": "http://doxygen.nl/files/doxygen-1.9.7-setup.exe",
-  "hash": "c5496a5067f88a522e12770a016573cc9bdfbcd32b7ca48b26ca0fa61b165ced",
-  "innosetup": true,
-  "bin": "bin\\doxywizard.exe",
+  "version": "1.13.2",
+  "url": "https://www.doxygen.nl/files/doxygen-1.13.2.windows.x64.bin.zip",
+  "hash": "dedbcf1d05911afc003989d33194ab95539e2ef4535cc00143b5917c22614406",
+  "bin": [
+    "doxygen.exe",
+    "doxyindexer.exe",
+    "doxysearch.cgi.exe"
+  ],
   "shortcuts": [
     [
       "bin\\doxywizard.exe",
-      "Doxy Wizard"
+      "Doxygen"
     ]
   ],
-  "checkver": {
-    "url": "http://www.doxygen.nl/download.html",
-    "re": "The latest version of doxygen is ([\\d.]+)"
-  },
+  "checkver": "Version ([\\d.]+)",
   "autoupdate": {
-    "url": "http://doxygen.nl/files/doxygen-$version-setup.exe"
+    "url": "https://www.doxygen.nl/files/doxygen-$version.windows.x64.bin.zip"
   }
 }

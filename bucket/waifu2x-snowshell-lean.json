@@ -14,14 +14,14 @@
   },
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/YukihoAA/waifu2x_snowshell/releases/download/v2.6.1/waifu2x-snowshell_v2.6.1.zip",
+      "url": "https://github.com/YukihoAA/waifu2x_snowshell/releases/download/v2.6.1/waifu2x-snowshell_v2.6.1.zip",
       "hash": "b2a33d542cbd9ac49ed7445a51043ab959bd935a78106294bff45595ea5ba346"
     }
   },
   "pre_install": [
-    "if (!(Test-Path \"$persist_dir\\Lang\")) { New-Item \"$dir\\Lang\" -ItemType Directory | Out-Null }",
-    "if (!(Test-Path \"$persist_dir\\config.ini\")) { New-Item \"$dir\\config.ini\" -ItemType File | Out-Null }",
-    "Get-ChildItem \"$dir\" -Directory -Exclude Lang | ForEach-Object { Remove-Item -Recurse \"$_\\*\" }"
+    "$null = if (!(Test-Path \"$persist_dir/Lang\")) { New-Item \"$dir/Lang\" -ItemType Directory }",
+    "$null = if (!(Test-Path \"$persist_dir/config.ini\")) { New-Item \"$dir/config.ini\" -ItemType File }",
+    "Get-ChildItem \"$dir\" -Directory -Exclude Lang | ForEach-Object { Remove-Item -Recurse \"$_/*\" }"
   ],
   "persist": [
     "Lang",
@@ -37,7 +37,7 @@
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/YukihoAA/waifu2x_snowshell/releases/download/v$version/waifu2x-snowshell_v$version.zip"
+        "url": "https://github.com/YukihoAA/waifu2x_snowshell/releases/download/v$version/waifu2x-snowshell_v$version.zip"
       }
     }
   }

@@ -1,0 +1,28 @@
+{
+  "version": "1.21.2",
+  "description": "Deskflow lets you share one mouse and keyboard between multiple computers on Windows, macOS and Linux. It's like a software KVM (but without video).",
+  "homepage": "https://github.com/deskflow/deskflow",
+  "license": "GPL-2.0-only",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/deskflow/deskflow/releases/download/v1.21.2/deskflow-1.21.2-win-x64.msi",
+      "hash": "e6c52120d780e5fadb037b9d38029c8714b5088a1dd92e658ae70dc98dac6962"
+    }
+  },
+  "innosetup": true,
+  "shortcuts": [
+    [
+      "PFiles64\\Deskflow\\deskflow.exe",
+      "deskflow"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/deskflow/deskflow"
+  },
+  "autoupdate": {
+    "url": "https://github.com/deskflow/deskflow/releases/download/v$version/deskflow-$version-win-x64.msi",
+    "hash": {
+      "mode": "download"
+    }
+  }
+}

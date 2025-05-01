@@ -1,15 +1,15 @@
 {
-  "version": "3.2.3",
+  "version": "3.2.5",
   "description": "Investment Research for Everyone, Everywhere.",
   "homepage": "https://my.openbb.co/app/terminal",
   "license": {
     "identifier": "MIT license",
-    "url": "https://github.com/OpenBB-finance/OpenBBTerminal/blob/develop/LICENSE"
+    "url": "https://github.com/OpenBB-finance/OpenBB/blob/develop/LICENSE"
   },
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/OpenBB-finance/OpenBBTerminal/releases/download/v3.2.3/Windows.OpenBB.Terminal.v3.2.3.exe#/dl.7z",
-      "hash": "0c2835217ab11e986ef3efeca5922f43e237d39441c430028ac3c35be655f044"
+      "url": "https://github.com/OpenBB-finance/OpenBB/releases/download/v3.2.5/Windows.OpenBB.Terminal.v3.2.5.exe#/dl.7z",
+      "hash": "0df9d4aac1eb4d878bd6f7ce31468715b9b48f301a3db32fc0d7ae93b3d5d8ee"
     }
   },
   "pre_install": [
@@ -23,13 +23,13 @@
     ]
   ],
   "checkver": {
-    "url": "https://api.github.com/repos/OpenBB-finance/OpenBBTerminal/releases/latest",
-    "regex": "/releases/tag/v([\\d.]+)"
+    "url": "https://api.github.com/repos/OpenBB-finance/OpenBB/releases",
+    "regex": "(?sm)browser_download_url.*?releases/download/v([\\d.]+)/Windows.OpenBB.Terminal.v([\\d.]+)\\.exe"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/OpenBB-finance/OpenBBTerminal/releases/download/v$version/Windows.OpenBB.Terminal.v$version.exe#/dl.7z"
+        "url": "https://github.com/OpenBB-finance/OpenBB/releases/download/v$version/Windows.OpenBB.Terminal.v$version.exe#/dl.7z"
       }
     }
   }

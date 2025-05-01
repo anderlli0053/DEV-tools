@@ -1,76 +1,44 @@
 {
   "homepage": "https://u.tools/",
   "description": "新一代效率工具平台",
-  "license": "Unknown",
-  "version": "4.0.1",
+  "license": "Freeware",
+  "version": "7.1.1",
   "architecture": {
     "64bit": {
-      "url": "https://publish.u-tools.cn/version2/uTools-4.0.1.exe#/dl.7z",
-      "hash": "sha512:05af1d664c39ee7ce8a689d4c02fb156bdbe04c3200734f16364dd78a3f947ad4977e8b00ffe558cda0017c68215af2d2f01bdf9061bcedf595bfb5f4b6557f2",
-      "installer": {
-        "script": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
-      }
-    },
-    "32bit": {
-      "url": "https://publish.u-tools.cn/version2/uTools-4.0.1-ia32.exe#/dl.7z",
-      "hash": "sha512:ea0f138f1f0ec350e30b0be0da7a962fb6ef16e1ba5ef3da29fc21b46fb2aacc804f8d0cfdea32acf7b32e7300b5a6536c5e8895d9c9f2907f6b5be092eb5a7b",
-      "installer": {
-        "script": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
-      }
+      "url": "https://open.u-tools.cn/download/uTools-7.1.1.exe#/setup.exe",
+      "hash": "9b135fb53d6dd5403be8174aec17440814600e19a095f9af68c4b8df68b41c37"
     }
   },
+  "installer": {
+    "file": "setup.exe"
+  },
   "post_install": [
-    "Remove-Item -Recurse -Force \"$dir\\`$PLUGINSDIR\"",
-    "$runtimeCache = \"$env:APPDATA\\uTools\"",
-    "$runtimeCachePersist = \"$persist_dir\\data\"",
-    "if (Test-Path $runtimeCachePersist) {",
+    "function Create-Junction { param ([string]$runtimeCache, [string]$runtimeCachePersist)",
+    "  if (-not (Test-Path $runtimeCache)) { return }",
+    "  if (Test-Path $runtimeCachePersist) {",
     "    Remove-Item $runtimeCache -Force -Recurse -ErrorAction SilentlyContinue",
     "    New-Item -Type Junction -Path $runtimeCache -Target $runtimeCachePersist | Out-Null",
-    "} else {",
-    "    if (Test-Path $runtimeCache) {",
-    "        Move-Item $runtimeCache $runtimeCachePersist -Force",
-    "        New-Item -Type Junction -Path $runtimeCache -Target $runtimeCachePersist | Out-Null",
-    "    }",
+    "  } else {",
+    "    mkdir $runtimeCache -ErrorAction SilentlyContinue",
+    "    Move-Item $runtimeCache $runtimeCachePersist -Force",
+    "    New-Item -Type Junction -Path $runtimeCache -Target $runtimeCachePersist | Out-Null",
+    "  }",
+    "}",
+    "foreach ($folder in @('uTools')) {",
+    "  Create-Junction -runtimeCache \"$env:USERPROFILE\\$folder\" -runtimeCachePersist \"$persist_dir\\USERPROFILE\\$folder\"",
+    "  Create-Junction -runtimeCache \"$env:LOCALAPPDATA\\$folder\" -runtimeCachePersist \"$persist_dir\\LOCALAPPDATA\\$folder\"",
+    "  Create-Junction -runtimeCache \"$env:APPDATA\\$folder\" -runtimeCachePersist \"$persist_dir\\APPDATA\\$folder\"",
     "}"
   ],
-  "uninstaller": {
-    "script": [
-      "$runtimeCache = \"$env:APPDATA\\uTools\"",
-      "$runtimeCachePersist = \"$persist_dir\\data\"",
-      "if (!(Test-Path $runtimeCachePersist)) {",
-      "    Move-Item $runtimeCache $runtimeCachePersist -Force",
-      "} else {",
-      "    Remove-Item $runtimeCache -Force -Recurse -ErrorAction SilentlyContinue",
-      "}"
-    ]
-  },
-  "shortcuts": [
-    [
-      "uTools.exe",
-      "uTools"
-    ]
-  ],
-  "persist": "data",
+  "post_uninstall": "Remove-Item \"$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\Scoop Apps\\uTools.lnk\" -ErrorAction SilentlyContinue",
   "checkver": {
-    "url": "https://publish.u-tools.cn/version2/latest.yml",
-    "regex": "version: (.+)"
+    "url": "https://www.u-tools.cn/docs/guide/changelog.html",
+    "regex": "uTools ([\\d\\.]+)"
   },
   "autoupdate": {
-    "architecture": {
-      "64bit": {
-        "url": "https://publish.u-tools.cn/version2/uTools-$version.exe#/dl.7z",
-        "hash": {
-          "url": "https://publish.u-tools.cn/version2/latest.yml",
-          "regex": "sha512: $base64"
-        }
-      },
-      "32bit": {
-        "url": "https://publish.u-tools.cn/version2/uTools-$version-ia32.exe#/dl.7z",
-        "hash": {
-          "url": "https://publish.u-tools.cn/version2/latest-ia32.yml",
-          "regex": "sha512: $base64"
-        }
-      }
+    "url": "https://open.u-tools.cn/download/uTools-$version.exe#/setup.exe",
+    "hash": {
+      "mode": "download"
     }
   }
 }

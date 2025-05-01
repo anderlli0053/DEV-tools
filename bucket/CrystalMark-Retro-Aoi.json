@@ -1,0 +1,56 @@
+{
+  "version": "2.0.2",
+  "description": "A comprehensive benchmarking software that supports 64-bit (x64/ARM64), many-core, and multilingual (48+ languages).",
+  "homepage": "https://crystalmark.info/en/software/crystalmarkretro/",
+  "license": "MIT",
+  "depends": "Scoop4kariiin/Scoop4kariiinUtils",
+  "url": "https://zenlayer.dl.sourceforge.net/project/crystalmarkretro/2.0.2/CrystalMarkRetro2_0_2Aoi.zip",
+  "hash": "sha1:f85b4c929b33da073923ef31381b41ae2ad0f6d2",
+  "architecture": {
+    "64bit": {
+      "shortcuts": [
+        [
+          "CrystalMarkRetro64A.exe",
+          "CrystalMark Retro Aoi Edition"
+        ]
+      ]
+    },
+    "32bit": {
+      "shortcuts": [
+        [
+          "CrystalMarkRetro32A.exe",
+          "CrystalMark Retro Aoi Edition"
+        ]
+      ]
+    },
+    "arm64": {
+      "shortcuts": [
+        [
+          "CrystalMarkRetroA64A.exe",
+          "CrystalMark Retro Aoi Edition"
+        ]
+      ]
+    }
+  },
+  "installer": {
+    "script": [
+      "Import-Module -Name Scoop4kariiinUtils -ErrorAction Stop",
+      "Mount-ExternalRuntimeData -Source \"$persist_dir\\CrystalMarkRetro\" -AppData",
+      "Remove-Module -Name Scoop4kariiinUtils -ErrorAction SilentlyContinue"
+    ]
+  },
+  "uninstaller": {
+    "script": [
+      "Import-Module -Name Scoop4kariiinUtils -ErrorAction Stop",
+      "Dismount-ExternalRuntimeData -Target \"CrystalMarkRetro\" -AppData",
+      "Remove-Module -Name Scoop4kariiinUtils -ErrorAction SilentlyContinue"
+    ]
+  },
+  "checkver": {
+    "url": "https://crystalmark.info/en/download/",
+    "regex": "CrystalMark Retro ([\\w\\.]+) &#8211;"
+  },
+  "autoupdate": {
+    "url": "https://zenlayer.dl.sourceforge.net/project/crystalmarkretro/$version/CrystalMarkRetro$underscoreVersionAoi.zip"
+  }
+}

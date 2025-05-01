@@ -1,28 +1,26 @@
 {
-  "version": "0.25.0",
-  "description": "A toolkit for working with your public key infrastructure (PKI).",
-  "homepage": "https://smallstep.com/cli",
+  "version": "0.28.2",
+  "homepage": "https://github.com/smallstep/cli",
   "license": "Apache-2.0",
+  "description": "Crypto toolkit for working with X.509, OAuth, JWT, OATH OTP, etc.",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/smallstep/cli/releases/download/v0.25.0/step_windows_0.25.0_amd64.zip",
-      "hash": "837e2d0c09909daa3fa49c8d33fc7dec6cd58e3433ecb1743d8f92c5cdbaece2"
+      "url": "https://github.com/smallstep/cli/releases/download/v0.28.2/step_windows_0.28.2_amd64.zip",
+      "bin": "step_0.28.2/bin/step.exe",
+      "hash": "a367cc168aa41d9a4b07fbf5a3cb22e282aa862d2b20e241f9352a3e99bbb7e6"
     }
   },
-  "extract_dir": "step_0.25.0\\bin",
-  "bin": "step.exe",
-  "checkver": {
-    "github": "https://github.com/smallstep/cli"
-  },
+  "checkver": "github",
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/smallstep/cli/releases/download/v$version/step_windows_$version_amd64.zip"
+        "url": "https://github.com/smallstep/cli/releases/download/v$version/step_windows_$version_amd64.zip",
+        "bin": "step_$version/bin/step.exe"
       }
     },
-    "extract_dir": "step_$version\\bin",
     "hash": {
-      "url": "$baseurl/checksums.txt"
+      "url": "$baseurl/checksums.txt",
+      "find": "^$sha256 $basename$"
     }
   }
 }

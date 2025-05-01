@@ -1,0 +1,41 @@
+{
+  "version": "0.3.3",
+  "description": "订阅转换合并，节点可用性，测速，重命名，合并工具",
+  "homepage": "https://github.com/bestruirui/BestSub",
+  "license": "Unknown",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/bestruirui/BestSub/releases/download/v0.3.3/BestSub_Windows_x86_64.zip",
+      "hash": "edf1500e14bc4b0ba4984d365d8147a0650a52cd709adf873bd27061df3bf55c"
+    },
+    "32bit": {
+      "url": "https://github.com/bestruirui/BestSub/releases/download/v0.3.3/BestSub_Windows_i386.zip",
+      "hash": "fd58bdd58a53098049e14aa18ce9dbf34f925e31d4eac42635163889ecf77b87"
+    },
+    "arm64": {
+      "url": "https://github.com/bestruirui/BestSub/releases/download/v0.3.3/BestSub_Windows_aarch64.zip",
+      "hash": "620567d27aaf9d84d157fb732dabaf40830e77d7897a4de0916e55855331aeca"
+    }
+  },
+  "bin": "BestSub.exe",
+  "checkver": {
+    "url": "https://api.github.com/repos/bestruirui/BestSub/releases",
+    "regex": "/releases/tag/v([\\d.]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/bestruirui/BestSub/releases/download/v$version/BestSub_Windows_x86_64.zip"
+      },
+      "32bit": {
+        "url": "https://github.com/bestruirui/BestSub/releases/download/v$version/BestSub_Windows_i386.zip"
+      },
+      "arm64": {
+        "url": "https://github.com/bestruirui/BestSub/releases/download/v$version/BestSub_Windows_aarch64.zip"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/BestSub_$version_checksums.txt"
+    }
+  }
+}

@@ -1,14 +1,13 @@
 {
-  "version": "5.22.5",
-  "description": "Set current window on top, make it dark, apply transpareny, shrink it, and more!",
-  "homepage": "https://windowtop.info/",
-  "license": "Shareware",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/gileli121/WindowTop/releases/download/v5.22.5/WindowTop.v5.22.5.Portable.zip",
-      "hash": "bdd19f2100b0175e16bdbd40a044aa42d8cf9a2dabde8ae75cd264a07c8b329f"
-    }
+  "version": "5.27.3",
+  "description": "Set window on top, make it dark, transparent and more",
+  "homepage": "https://github.com/WindowTop/WindowTop-App",
+  "license": {
+    "identifier": "Unknown",
+    "url": "https://github.com/WindowTop/WindowTop-App/blob/master/LICENSE"
   },
+  "url": "https://github.com/WindowTop/WindowTop-App/releases/download/5.27/WindowTop.v5.27.3.Portable.zip",
+  "hash": "b71da2cddc9e43c605ba66b3041fc40b40e12f1368e20fd41986ad3fd910bba5",
   "shortcuts": [
     [
       "WindowTop.exe",
@@ -16,14 +15,10 @@
     ]
   ],
   "checkver": {
-    "url": "https://github.com/BiGilSoft/WindowTop/releases",
-    "regex": "/releases/download/v(?<tag>[^/]+)/WindowTop.v([\\d.]+).Portable.zip"
+    "url": "https://github.com/WindowTop/WindowTop-App/releases",
+    "regex": "href=\"https://(?<url>.*?)\">WindowTop v(?<version>[\\d.]+) Portable"
   },
   "autoupdate": {
-    "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.com/https://github.com/gileli121/WindowTop/releases/download/v$matchTag/WindowTop.v$version.Portable.zip"
-      }
-    }
+    "url": "https://$matchUrl"
   }
 }

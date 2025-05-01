@@ -1,5 +1,5 @@
 {
-  "version": "3.2.10",
+  "version": "3.3.10",
   "description": "跨平台桌面端视频资源播放器,免费高颜值.",
   "homepage": "https://github.com/Hiram-Wong/ZyPlayer",
   "license": {
@@ -8,24 +8,24 @@
   },
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.2.10/zyplayer-win-3.2.10-x64.exe#/dl.7z",
-      "hash": "a161e3962c7ab2fb146c87a51cc7f3b5f1bf73ed1d57af51265ec5118fc55d4e",
+      "url": "https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.3.10/zyfun-win-3.3.10-x64.exe#/dl.7z",
+      "hash": "sha512:ea9bdf6759a5b2a7a468dcfa7c013c3c9efa3a53676e3438bf23b510bd03b6aab85ec05e31ea3c948ccfc48b5db326ededdde095b80102d005b9b9894cd00a00",
       "pre_install": [
         "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
         "Remove-Item \"$dir\\`$*\" -Recurse"
       ]
     },
     "32bit": {
-      "url": "https://ghproxy.com/https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.2.10/zyplayer-win-3.2.10-ia32.exe#/dl.7z",
-      "hash": "d4e1b230dfd446bb012719aaa13fe3c7e79501242144ded716dbe990d4ac6ae9",
+      "url": "https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.3.10/zyfun-win-3.3.10.exe#/dl.7z",
+      "hash": "sha512:ea9bdf6759a5b2a7a468dcfa7c013c3c9efa3a53676e3438bf23b510bd03b6aab85ec05e31ea3c948ccfc48b5db326ededdde095b80102d005b9b9894cd00a00",
       "pre_install": [
         "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
         "Remove-Item \"$dir\\`$*\" -Recurse"
       ]
     },
     "arm64": {
-      "url": "https://ghproxy.com/https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.2.10/zyplayer-win-3.2.10-arm64.exe#/dl.7z",
-      "hash": "1dd2115e164de15663967b3266adbda046589789768c38f7e7d4b9e409551152",
+      "url": "https://github.com/Hiram-Wong/ZyPlayer/releases/download/v3.3.10/zyfun-win-3.3.10-arm64.exe#/dl.7z",
+      "hash": "sha512:ea9bdf6759a5b2a7a468dcfa7c013c3c9efa3a53676e3438bf23b510bd03b6aab85ec05e31ea3c948ccfc48b5db326ededdde095b80102d005b9b9894cd00a00",
       "pre_install": [
         "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\"",
         "Remove-Item \"$dir\\`$*\" -Recurse"
@@ -43,8 +43,8 @@
   },
   "shortcuts": [
     [
-      "zyplayer.exe",
-      "ZYPlayer"
+      "zyfun.exe",
+      "ZYFun"
     ]
   ],
   "checkver": {
@@ -54,14 +54,18 @@
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/Hiram-Wong/ZyPlayer/releases/download/v$version/zyplayer-win-$version-x64.exe#/dl.7z"
+        "url": "https://github.com/Hiram-Wong/ZyPlayer/releases/download/v$version/zyfun-win-$version-x64.exe#/dl.7z"
       },
       "32bit": {
-        "url": "https://ghproxy.com/https://github.com/Hiram-Wong/ZyPlayer/releases/download/v$version/zyplayer-win-$version-ia32.exe#/dl.7z"
+        "url": "https://github.com/Hiram-Wong/ZyPlayer/releases/download/v$version/zyfun-win-$version.exe#/dl.7z"
       },
       "arm64": {
-        "url": "https://ghproxy.com/https://github.com/Hiram-Wong/ZyPlayer/releases/download/v$version/zyplayer-win-$version-arm64.exe#/dl.7z"
+        "url": "https://github.com/Hiram-Wong/ZyPlayer/releases/download/v$version/zyfun-win-$version-arm64.exe#/dl.7z"
       }
+    },
+    "hash": {
+      "url": "$baseurl/latest.yml",
+      "regex": "sha512:\\s+$base64"
     }
   }
 }

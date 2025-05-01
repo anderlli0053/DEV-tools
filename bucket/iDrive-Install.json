@@ -1,11 +1,11 @@
 {
-  "version": "6.7.4.47",
+  "version": "7.0.0.34            ",
   "description": "iDrive. Online cloud backup for your PC's, Macs and Mobile devices",
   "homepage": "https://idriveonlinebackup.com/",
   "license": "Proprietary",
   "changelog": "https://idriveonlinebackup.com/release-info#win",
   "url": "https://static.idriveonlinebackup.com/downloads/IDriveWinSetup.exe#/setup.exe",
-  "hash": "10603d554167ab890c94aae1afc0144c83b1e3e57c135d942895562ead745a7f",
+  "hash": "7ddd6ef721b2fbc47a09c6e353b3b1a56abbb2c816492e6ab6c9dbb9df45b2de",
   "pre_download": "Assert-Administrator",
   "pre_install": [
     "$processname = \"id_win\"",
@@ -36,8 +36,14 @@
     ]
   },
   "checkver": {
-    "url": "https://community.chocolatey.org/packages/idrive",
-    "regex": "Downloads of v ([\\d.]+)"
+    "script": [
+      "$dl_url = 'https://static.idriveonlinebackup.com/downloads/IDriveWinSetup.exe'",
+      "$dl = cache_path 'app_name' 'unknown' $dl_url",
+      "Start-BitsTransfer $dl_url $dl",
+      "$version = (Get-Item $dl).VersionInfo.FileVersion",
+      "return $version"
+    ],
+    "regex": "([\\d.]+)"
   },
   "autoupdate": {
     "url": "https://static.idriveonlinebackup.com/downloads/IDriveWinSetup.exe#/setup.exe"

@@ -1,34 +1,27 @@
 {
-  "version": "1.3.2",
-  "description": "fast & extensible static code analysis framework for Go",
-  "homepage": "https://revive.run/",
+  "version": "3.2.0",
+  "description": "Play Oculus-exclusive games on the HTC Vive or Valve Index",
+  "homepage": "https://github.com/LibreVR/Revive",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/mgechev/revive/releases/download/v1.3.2/revive_1.3.2_Windows_x86_64.tar.gz",
-      "hash": "eccb8c83f7b948366b29bbf97388bb5868877ca79cf959000d86444c4d96bf3d"
-    },
-    "32bit": {
-      "url": "https://ghproxy.com/https://github.com/mgechev/revive/releases/download/v1.3.2/revive_1.3.2_Windows_i386.tar.gz",
-      "hash": "8abe6cd0507f4ac2c61062e68d8754581bb0d3f89dcc9b4e13a0b372f485cb71"
+      "url": "https://github.com/LibreVR/Revive/releases/download/3.2.0/ReviveInstaller.exe#/dl.7z",
+      "hash": "7a2b59711237f934c5772eff29ef61c3f0e9e701976e7703fc3af4d8ff04487b"
     }
   },
-  "bin": "revive.exe",
-  "checkver": {
-    "github": "https://github.com/mgechev/revive"
-  },
+  "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe*\", \"$dir\\vc_redist*\" -Force -Recurse",
+  "shortcuts": [
+    [
+      "ReviveOverlay.exe",
+      "Revive Dashboard"
+    ]
+  ],
+  "checkver": "github",
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/mgechev/revive/releases/download/v$version/revive_$version_Windows_x86_64.tar.gz"
-      },
-      "32bit": {
-        "url": "https://ghproxy.com/https://github.com/mgechev/revive/releases/download/v$version/revive_$version_Windows_i386.tar.gz"
+        "url": "https://github.com/LibreVR/Revive/releases/download/$version/ReviveInstaller.exe#/dl.7z"
       }
-    },
-    "hash": {
-      "url": "https://ghproxy.com/https://github.com/mgechev/revive/releases/download/v$version/checksums.txt",
-      "mode": "extract"
     }
   }
 }

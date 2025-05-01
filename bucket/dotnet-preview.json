@@ -1,22 +1,26 @@
 {
-  "$schema": "https://ghproxy.com/https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
-  "version": "8.0.100-rc.2.23502.2",
+  "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
+  "version": "10.0.100-preview.3.25201.16",
   "homepage": "https://www.microsoft.com/net/",
   "description": ".NET is a free, cross-platform, open source developer platform for building many different types of applications.",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/8.0.100-rc.2.23502.2/dotnet-sdk-8.0.100-rc.2.23502.2-win-x64.zip",
-      "hash": "sha512:5bdeec491b41da1b7a7a35757a80be80c7e10f3c82af9f4037dde217b09c526d6e673209c467c44f766cef8611bc63aaf6d2a806b3879861872252b31339a47b"
+      "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/10.0.100-preview.3.25201.16/dotnet-sdk-10.0.100-preview.3.25201.16-win-x64.zip",
+      "hash": "sha512:fb45e1d0cc4ceab81da28ef70543bae460cd85a37eab4ec3301dccbf7a0bdec7e29bed3cc533ee466fa8c978f2f4215fdddedde8b0da3113ae1af51e1d27417e"
     },
     "32bit": {
-      "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/8.0.100-rc.2.23502.2/dotnet-sdk-8.0.100-rc.2.23502.2-win-x86.zip",
-      "hash": "sha512:f871f301cd098684d88a65403b99ac95fa9ce8531d27431efebd5c6ea7123797a91f8fbf187b65b5dc923ab60e7165653d8266830170a97a5657f3f848cb8647"
+      "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/10.0.100-preview.3.25201.16/dotnet-sdk-10.0.100-preview.3.25201.16-win-x86.zip",
+      "hash": "sha512:1df2edfb8a4ed469ae34c16c3d5552e51077205149474817d7b6764c8a17f53684f08cfec19d1687d7d061b204fe5fcb2098728a9e2656abdead67222196a7c7"
+    },
+    "arm64": {
+      "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/10.0.100-preview.3.25201.16/dotnet-sdk-10.0.100-preview.3.25201.16-win-arm64.zip",
+      "hash": "sha512:17889797c279519c3e98c909c2dc6952bcd15c1a7c5c2d915d87e1c8b544319262ddf7acaf80f71833f8371b8ad58b3eeaf3a32a3815fae1897585eea1154c06"
     }
   },
   "bin": "dotnet.exe",
   "checkver": {
-    "url": "https://ghproxy.com/https://raw.githubusercontent.com/dotnet/core/master/release-notes/releases-index.json",
+    "url": "https://raw.githubusercontent.com/dotnet/core/master/release-notes/releases-index.json",
     "jsonpath": "$..releases-index[0]",
     "regex": "\"latest-release\": \"(?<shaver>[^\"]+)\",(?s:.)*?\"latest-sdk\": \"(?<version>[^\"]+)\",",
     "replace": "${version}"
@@ -24,10 +28,13 @@
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-x64.zip"
+        "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-x64.zip"
       },
       "32bit": {
-        "url": "https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-x86.zip"
+        "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-x86.zip"
+      },
+      "arm64": {
+        "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/$version/dotnet-sdk-$version-win-arm64.zip"
       }
     },
     "hash": {

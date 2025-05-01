@@ -1,13 +1,13 @@
 {
-  "version": "23.9.22-519",
+  "version": "24.12.5-587",
   "description": "高德地图、百度地图（包括百度自定义地图）、腾讯地图、OpenStreetMap、CartoDb、ArcGIS在线地图的下载",
   "homepage": "https://github.com/Hxy1992/MapDownload",
   "license": {
     "identifier": "MIT license",
     "url": "https://github.com/Hxy1992/MapDownload/blob/main/LICENSE"
   },
-  "url": "https://ghproxy.com/https://github.com/Hxy1992/MapDownload/releases/download/v23.9.22-519/map-download-Setup-23.9.22-519.exe#/dl.7z",
-  "hash": "ba4da20b492b41378c6b4aa36ecd098631be082114c7a17685fb5f38c692cb12",
+  "url": "https://github.com/Hxy1992/MapDownload/releases/download/v24.12.5-587/map-download-Setup-24.12.5-587.exe#/dl.7z",
+  "hash": "bb651ae4a940a9108665a2e24284e304c615ec0e81055860a62663fb025b3da5",
   "pre_install": [
     "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
     "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninst*\" -Force -Recurse"
@@ -29,10 +29,10 @@
   ],
   "checkver": {
     "url": "https://api.github.com/repos/Hxy1992/MapDownload/releases",
-    "jsonpath": "$[0].assets[*].browser_download_url",
+    "jsonpath": "$[*].assets[*].browser_download_url",
     "regex": "map-download-Setup-([\\d.-]+)\\.exe"
   },
   "autoupdate": {
-    "url": "https://ghproxy.com/https://github.com/Hxy1992/MapDownload/releases/download/v$version/map-download-Setup-$version.exe#/dl.7z"
+    "url": "https://github.com/Hxy1992/MapDownload/releases/download/v$version/map-download-Setup-$version.exe#/dl.7z"
   }
 }

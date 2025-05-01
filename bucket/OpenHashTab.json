@@ -1,40 +1,31 @@
 {
-  "version": "3.0.4",
-  "description": "为资源管理器属性加上Hash校验",
+  "version": "3.0.5",
+  "description": "A shell extension for conveniently calculating and checking file hashes from file properties",
   "homepage": "https://github.com/namazso/OpenHashTab",
+  "license": "GPL-3.0-only",
+  "notes": "Due to Scoop's limitations, innounp is listed as a dependency though it is only required for installation.",
   "depends": [
-    "sudo",
-    "innounp"
+    "innounp",
+    "sudo"
   ],
-  "innosetup": true,
-  "architecture": {
-    "64bit": {
-      "installer": {
-        "script": [
-          "Move-Item \"$dir\\OpenHashTab,1.dll\" \"$dir\\OpenHashTab.dll\"",
-          "sudo regsvr32 /s \"$dir\\OpenHashTab.dll\""
-        ]
-      },
-      "uninstaller": {
-        "script": "sudo regsvr32 /u /s \"$dir\\OpenHashTab.dll\""
-      }
-    },
-    "32bit": {
-      "installer": {
-        "script": [
-          "Move-Item \"$dir\\OpenHashTab,3.dll\" \"$dir\\OpenHashTab.dll\"",
-          "sudo regsvr32 /s \"$dir\\OpenHashTab.dll\""
-        ]
-      },
-      "uninstaller": {
-        "script": "sudo regsvr32 /u /s \"$dir\\OpenHashTab.dll\""
-      }
-    }
+  "url": "https://github.com/namazso/OpenHashTab/releases/download/v3.0.5/OpenHashTab_setup.exe",
+  "hash": "98fb1f2d230dfa0a26915c5b314881fbb9fa76b9edbb720fdeaca35f3cb35f95",
+  "installer": {
+    "script": [
+      "Expand-InnoArchive -Path \"$dir\\$fname\" -DestinationPath \"$dir\" -Removal",
+      "if ([Environment]::Is64BitOperatingSystem) {",
+      "    Move-Item \"$dir\\OpenHashTab,2.dll\" -Destination \"$dir\\OpenHashTab.dll\"",
+      "} else {",
+      "    Move-Item \"$dir\\OpenHashTab,1.dll\" -Destination \"$dir\\OpenHashTab.dll\"",
+      "}",
+      "sudo \"$env:COMSPEC\" /c \"regsvr32 \"$dir\\OpenHashTab.dll\"\""
+    ]
   },
-  "url": "https://ghproxy.com/https://github.com/namazso/OpenHashTab/releases/download/v3.0.4/OpenHashTab_setup.exe#/setup.exe",
-  "hash": "9966e3ed6693dfc42904a2aaa1b294a2cd1edd059ef795729a76956cc21cd239",
+  "uninstaller": {
+    "script": "regsvr32 /u /s \"$dir\\OpenHashTab.dll\""
+  },
   "checkver": "github",
   "autoupdate": {
-    "url": "https://ghproxy.com/https://github.com/namazso/OpenHashTab/releases/download/v$version/OpenHashTab_setup.exe#/setup.exe"
+    "url": "https://github.com/namazso/OpenHashTab/releases/download/v$version/OpenHashTab_setup.exe"
   }
 }

@@ -1,27 +1,29 @@
 {
-  "autoupdate": {
-    "url": "https://nightly.link/jpochyla/psst/actions/runs/$matchRunid/Psst.exe.zip"
-  },
-  "bin": "psst-gui.exe",
-  "checkver": {
-    "regex": "(?sm)jpochyla/psst/actions/runs/(?<runid>\\d+).+datetime=\"(?<year>\\d+).(?<month>\\d+).(?<day>\\d+).(?<hour>\\d+).(?<minute>\\d+).(?<second>\\d+)",
-    "replace": "${year}${month}${day}.${hour}${minute}${second}",
-    "url": "https://scoop-apps.vercel.app/jpochyla/psst"
-  },
-  "description": "Fast Spotify client with native GUI, without Electron, built in Rust.",
-  "hash": "4500bdf001d6238fe7a8990c9685f58d4caa05019aac62dfbbf41f4248a1e984",
+  "version": "0.0.879+5bf8a69.11052181225",
+  "description": "Fast and multi-platform Spotify client with native GUI",
   "homepage": "https://github.com/jpochyla/psst",
   "license": {
     "identifier": "MIT",
     "url": "https://github.com/jpochyla/psst/blob/master/LICENSE.md"
   },
-  "notes": "Spotify Premium account is required.",
+  "url": "https://nightly.link/jpochyla/psst/actions/runs/11052181225/Psst.exe.zip",
+  "hash": "4654e5a8c29a7daec8b79bd9d7affccc5ecfb0b061d5d8c2e8c2ae61fb8ae4a9",
+  "checkver": {
+    "script": [
+      "$actions = Invoke-RestMethod -Uri 'https://api.github.com/repos/jpochyla/psst/actions/workflows/build.yml/runs'",
+      "$latest_develop = $actions.workflow_runs.PSObject.Properties.Value | Where-Object { $_.head_branch -eq 'master' } | Where-Object { $_.conclusion -eq 'success' } | Select-Object -first 1",
+      "$version = '0.0.' + $latest_develop.run_number + '+' + $latest_develop.head_sha.substring(0,7) + '.' + $latest_develop.id",
+      "Write-Output $version $latest_develop.id"
+    ],
+    "regex": "(?<version>[^\\s]+)\\s(?<id>\\d+)"
+  },
+  "autoupdate": {
+    "url": "https://nightly.link/jpochyla/psst/actions/runs/$matchId/Psst.exe.zip"
+  },
   "shortcuts": [
     [
       "psst-gui.exe",
-      "psst-gui"
+      "Psst"
     ]
-  ],
-  "url": "https://nightly.link/jpochyla/psst/actions/runs/4774278418/Psst.exe.zip",
-  "version": "20230422.190138"
+  ]
 }

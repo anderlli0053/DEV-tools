@@ -1,16 +1,19 @@
 {
-  "version": "6521820836",
+  "version": "14322148578",
   "description": "Chat client for twitch.tv. Only nightlies are supported (fork of Chatterino 2).",
   "homepage": "https://github.com/2547techno/technorino",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/2547techno/technorino/releases/download/nightly-build/chatterino-windows-x86-64-Qt-6.5.0.zip",
-      "hash": "7f39e331b1f9f74180634ed416f28e74937be3bb05b9f3933ac12978bdc6e3d0",
-      "extract_dir": "Chatterino2",
-      "pre_install": "Get-ChildItem \"$dir\\chatterino.exe\" | Rename-Item -NewName { $_.name.Replace('chatte', 'techno') }"
+      "url": "https://github.com/2547techno/technorino/releases/download/nightly-build/chatterino-windows-x86-64-Qt-6.7.3.zip",
+      "hash": "faade577702fffbf514a2ee05c4ec874faa2d0c3b367a7f3fe7fd9834d9e37cd"
     }
   },
+  "extract_dir": "Chatterino2",
+  "pre_install": [
+    "Get-ChildItem \"$dir/chatterino.exe\" | Rename-Item -NewName { $_.name.Replace('chatte', 'techno') }",
+    "'externally-packaged' | Out-File -Encoding utf8 -Append \"$dir/modes\""
+  ],
   "shortcuts": [
     [
       "technorino.exe",
@@ -19,13 +22,25 @@
   ],
   "bin": "technorino.exe",
   "checkver": {
-    "url": "https://api.github.com/repositories/604452497/actions/workflows/build.yml/runs?branch=technorino&status=success",
-    "jsonpath": "$.workflow_runs[0].id"
+    "script": [
+      "try {",
+      "    $null = (Invoke-WebRequest https://raw.githubusercontent.com/2547techno/technorino/technorino/.github/workflows/build.yml).Content -cmatch 'os: windows-latest\\s+qt-version: ([\\d.]+)'",
+      "    $Matches[1],",
+      "    (Invoke-RestMethod 'https://api.github.com/repositories/604452497/actions/workflows/build.yml/runs?branch=technorino&status=success').workflow_runs[0].id -join ' '",
+      "}",
+      "catch { '' }"
+    ],
+    "regex": "\\A(?<qt>[\\d.]+) (\\d+)\\Z"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/2547techno/technorino/releases/download/nightly-build/chatterino-windows-x86-64-Qt-6.5.0.zip"
+        "url": "https://github.com/2547techno/technorino/releases/download/nightly-build/chatterino-windows-x86-64-Qt-$matchQt.zip",
+        "hash": {
+          "url": "https://api.github.com/repositories/604452497/actions/runs/$version/artifacts",
+          "jsonpath": "$.artifacts[?(@.name == 'chatterino-windows-x86-64-qt-$matchQt.zip')].digest",
+          "regex": "\\Asha256:$sha256\\Z"
+        }
       }
     }
   }

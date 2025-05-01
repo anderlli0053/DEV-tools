@@ -1,16 +1,16 @@
 {
-  "version": "115.0",
+  "version": "137.0.2",
   "description": "Popular open source web browser.",
   "homepage": "https://www.mozilla.org/firefox/",
   "license": "MPL-2.0",
   "architecture": {
     "64bit": {
-      "url": "https://archive.mozilla.org/pub/firefox/releases/115.0/win64/en-US/Firefox%20Setup%20115.0.exe#/dl.7z",
-      "hash": "sha512:9ceb37b8d08f9e07eb3235f7cf454deb0c815c9729c608ebff3bab521ac4ddc7f258cfeec49de78dfe560500f9ceb331715b8241f01059e3e5964807f83ab0d2"
+      "url": "https://archive.mozilla.org/pub/firefox/releases/137.0.2/win64/en-US/Firefox%20Setup%20137.0.2.exe#/dl.7z",
+      "hash": "sha512:1bf4241bcc1c41a516f6313243153851ddcc49c22cd23fb8d5371a4b06b839235924f77b206a41880f71f47be0636e9ff2c7873f99daba106c7ee311513bb2dc"
     },
     "32bit": {
-      "url": "https://archive.mozilla.org/pub/firefox/releases/115.0/win32/en-US/Firefox%20Setup%20115.0.exe#/dl.7z",
-      "hash": "sha512:735e6a564c76c36c1528a58dcc7b1ca65c0aae379c37910a2e7e9ceacc6633711cef3f94bfe2cab85b2d771550b7e35ed602543ef1aed602ef814da9791b527a"
+      "url": "https://archive.mozilla.org/pub/firefox/releases/137.0.2/win32/en-US/Firefox%20Setup%20137.0.2.exe#/dl.7z",
+      "hash": "sha512:70f87fbddcdc25c8bb6aebd3634ce97761a85c85952b4e1d74efed937730840c208c3ab1b3d1665dcd0b59d3abbbbf8c7ee2a9568296ddfab245095e6ed31000"
     }
   },
   "extract_dir": "core",
@@ -30,8 +30,8 @@
   ],
   "persist": "Profile",
   "checkver": {
-    "url": "https://www.mozilla.org/en-US/firefox/notes/",
-    "regex": "<div class=\"c-release-version\">([\\d.]+)</div>"
+    "url": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+    "jsonpath": "$.LATEST_FIREFOX_VERSION"
   },
   "autoupdate": {
     "architecture": {

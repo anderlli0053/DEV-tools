@@ -1,5 +1,5 @@
 {
-  "version": "6675633079",
+  "version": "14730987384",
   "description": "Free and reliable P2P Bittorent client.",
   "homepage": "https://github.com/qbittorrent/qBittorrent",
   "license": {
@@ -8,31 +8,31 @@
   },
   "architecture": {
     "64bit": {
-      "url": "https://nightly.link/qbittorrent/qBittorrent/workflows/ci_windows.yaml/master/qBittorrent-CI_Windows-x64_libtorrent-2.0.9.zip",
-      "hash": "6311d3d83e7c433c326b23d1eef791ce160c95df7ae82a18d15eb5fb6bdb9de3",
+      "url": "https://nightly.link/qbittorrent/qBittorrent/workflows/ci_windows.yaml/master/qBittorrent-CI_Windows-x64_libtorrent-2.0.11.zip",
+      "hash": "0c692d3bff95d1d0929fc5c9733b3df4c78dc70241a9d1ac710ecaca031db2da",
       "extract_dir": "qBittorrent"
     }
   },
   "pre_install": [
-    "Remove-Item \"$dir\\qbittorrent.pdb\"",
-    "if ((!(Test-Path \"$persist_dir\\profile\")) -and ((Test-Path \"$persist_dir\\..\\qbittorrent-portable\\profile\") -or (Test-Path \"$env:APPDATA\\qBittorrent\"))) {",
-    "    Write-Host \"Scoop is migrating qbittorrent to use portable mode by default.\" -ForegroundColor Yellow",
-    "    Write-Host \"For details, see: https://github.com/ScoopInstaller/Extras/issues/5845\" -ForegroundColor Yellow",
-    "    if ((Test-Path \"$persist_dir\\..\\qbittorrent-portable\\profile\") -and (Test-Path \"$env:APPDATA\\qBittorrent\")) {",
-    "        Write-Host \"Both portable and non-portable qBittorrent profile exist.\" -ForegroundColor Yellow",
-    "        Write-Host \"Scoop will prioritize and import the non-portable one.\" -ForegroundColor Yellow",
+    "Remove-Item \"$dir/qbittorrent.pdb\"",
+    "if ((!(Test-Path \"$persist_dir/profile\")) -and ((Test-Path \"$persist_dir/../qbittorrent-portable/profile\") -or (Test-Path \"$env:APPDATA/qBittorrent\"))) {",
+    "    Write-Host 'Scoop is migrating qbittorrent to use portable mode by default.' -ForegroundColor Yellow",
+    "    Write-Host 'For details, see: https://github.com/ScoopInstaller/Extras/issues/5845' -ForegroundColor Yellow",
+    "    if ((Test-Path \"$persist_dir/../qbittorrent-portable/profile\") -and (Test-Path \"$env:APPDATA/qBittorrent\")) {",
+    "        Write-Host 'Both portable and non-portable qBittorrent profile exist.' -ForegroundColor Yellow",
+    "        Write-Host 'Scoop will prioritize and import the non-portable one.' -ForegroundColor Yellow",
     "    }",
-    "    New-Item \"$persist_dir\\profile\" -ItemType Directory | Out-Null",
-    "    if (Test-Path \"$env:APPDATA\\qBittorrent\") {",
-    "        Write-Host \"Copying non-portable profile's config and data to Scoop persist directory...\" -ForegroundColor Yellow",
-    "        Copy-Item \"$env:APPDATA\\qBittorrent\" \"$persist_dir\\profile\\qBittorrent\\config\" -Recurse | Out-Null",
-    "        Copy-Item \"$env:LOCALAPPDATA\\qBittorrent\" \"$persist_dir\\profile\\qBittorrent\\data\" -Recurse | Out-Null",
+    "    $null = New-Item \"$persist_dir/profile\" -ItemType Directory",
+    "    if (Test-Path \"$env:APPDATA/qBittorrent\") {",
+    "        Write-Host 'Copying non-portable profile''s config and data to Scoop persist directory...' -ForegroundColor Yellow",
+    "        $null = Copy-Item \"$env:APPDATA/qBittorrent\" \"$persist_dir/profile/qBittorrent/config\" -Recurse",
+    "        $null = Copy-Item \"$env:LOCALAPPDATA/qBittorrent\" \"$persist_dir/profile/qBittorrent/data\" -Recurse",
     "    } else {",
-    "        Write-Host \"Copying portable profile's config and data to Scoop persist directory...\" -ForegroundColor Yellow",
-    "        Write-Host \"If you haven't setup an absolute download path before torrenting, please manually migrate affected torrents, as they use relative path by default for storaging.\" -ForegroundColor Yellow",
-    "        Write-Host \"Or you can move them to an absolute download path in qbittorrent-portable and cleanly (re)install qbittorrent to let migration script to take care of them.\" -ForegroundColor Yellow",
-    "        Copy-Item \"$persist_dir\\..\\qbittorrent-portable\\profile\\qBittorrent\\config\" \"$persist_dir\\profile\\qBittorrent\\config\" -Recurse | Out-Null",
-    "        Copy-Item \"$persist_dir\\..\\qbittorrent-portable\\profile\\qBittorrent\\data\" \"$persist_dir\\profile\\qBittorrent\\data\" -Recurse | Out-Null",
+    "        Write-Host 'Copying portable profile's config and data to Scoop persist directory...' -ForegroundColor Yellow",
+    "        Write-Host 'If you haven't setup an absolute download path before torrenting, please manually migrate affected torrents, as they use relative path by default for storaging.' -ForegroundColor Yellow",
+    "        Write-Host 'Or you can move them to an absolute download path in qbittorrent-portable and cleanly (re)install qbittorrent to let migration script to take care of them.' -ForegroundColor Yellow",
+    "        $null = Copy-Item \"$persist_dir/../qbittorrent-portable/profile/qBittorrent/config\" \"$persist_dir/profile/qBittorrent/config\" -Recurse",
+    "        $null = Copy-Item \"$persist_dir/../qbittorrent-portable/profile/qBittorrent/data\" \"$persist_dir/profile/qBittorrent/data\" -Recurse",
     "    }",
     "}"
   ],
@@ -47,12 +47,13 @@
   "checkver": {
     "script": [
       "try {",
-      "    (Invoke-RestMethod 'https://api.github.com/repositories/3351871/actions/workflows/ci_windows.yaml/runs?branch=master&status=success').workflow_runs[0].id,",
-      "    (Invoke-RestMethod https://ghproxy.com/https://raw.githubusercontent.com/qbittorrent/qBittorrent/master/.github/workflows/ci_windows.yaml | Select-String 'libt_version: \\[\"([\\d.]+)\", \"[\\d.]+\"\\]').matches.groups[1].value -join ' '",
+      "    $null = (Invoke-WebRequest https://raw.githubusercontent.com/qbittorrent/qBittorrent/master/.github/workflows/ci_windows.yaml).Content -cmatch 'libt_version: \\[\"([\\d.]+)\", \"[\\d.]+\"\\]'",
+      "    $Matches[1],",
+      "    (Invoke-RestMethod 'https://api.github.com/repositories/3351871/actions/workflows/ci_windows.yaml/runs?branch=master&status=success').workflow_runs[0].id -join ' '",
       "}",
       "catch { '' }"
     ],
-    "regex": "\\A(\\d+) (?<libtorrent>[\\d.]+)\\Z"
+    "regex": "\\A(?<libtorrent>[\\d.]+) (\\d+)\\Z"
   },
   "autoupdate": {
     "architecture": {

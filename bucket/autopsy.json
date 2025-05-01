@@ -1,28 +1,25 @@
 {
-    "homepage": "https://www.sleuthkit.org/autopsy/",
-    "version": "4.22.0",
-    "license": "Apache 2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://ghproxy.com/https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.22.0/autopsy-4.22.0-64bit.msi",
-            "hash": "1bf09a1fff643c5741af21f8160b2e70caad62d0584ed2b271b49bd3c2efd57f",
-            "shortcuts": [
-                [
-                    "bin/autopsy64.exe",
-                    "Autopsy"
-                ]
-            ]
-        }
-    },
-    "checkver": {
-        "url": "https://github.com/sleuthkit/autopsy/releases/latest",
-        "re": "/releases/tag/autopsy-([\\d.]+)"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://ghproxy.com/https://github.com/sleuthkit/autopsy/releases/download/autopsy-$version/autopsy-$version-64bit.msi"
-            }
-        }
+  "version": "4.22.1",
+  "description": "Autopsy® is a digital forensics platform and graphical interface to The Sleuth Kit® and other digital forensics tools. It can be used by law enforcement, military, and corporate examiners to investigate what happened on a computer. You can even use it to recover photos from your camera's memory card.",
+  "homepage": "https://github.com/sleuthkit/autopsy",
+  "license": "Apache-2.0",
+  "checkver": {
+    "url": "https://api.github.com/repos/sleuthkit/autopsy/releases/latest",
+    "jsonpath": "$.tag_name",
+    "regex": "autopsy-(.*)"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.22.1/autopsy-4.22.1-64bit.msi",
+      "hash": "371897fbc40786e1e263391a226ef3c3622462234601268e3118fd3d3ce97521"
     }
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/sleuthkit/autopsy/releases/download/autopsy-$version/autopsy-$version-64bit.msi"
+      }
+    }
+  },
+  "bin": "bin/autopsy.exe"
 }

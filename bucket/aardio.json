@@ -1,28 +1,33 @@
 {
-    "version": "35.93.0",
-    "description": "aardio 编程语言，专注于桌面软件快速开发",
-    "homepage": "https://www.aardio.com/",
-    "license": "Freeware",
-    "url": "https://ide.update.aardio.com/releases/aardio.7z",
-    "hash": "312b1322e140ac1d6ac4913de4f0587af33a1e5cc71e2997e1030fc18a6040e1",
-    "bin": "aardio.exe",
-    "shortcuts": [
-        [
-            "aardio.exe",
-            "aardio"
-        ]
-    ],
-    "persist": [
-        "config",
-        "download",
-        "project",
-        "codes\\我的代码段"
-    ],
-    "checkver": {
-        "url": "http://ide.update.aardio.com/check/",
-        "jsonpath": "$.version"
-    },
-    "autoupdate": {
-        "url": "https://ide.update.aardio.com/releases/aardio.7z"
-    }
+  "version": "38.6.3",
+  "description": "灵活而强大的动态语言。A flexible and powerful dynamic language.",
+  "homepage": "https://www.aardio.com/",
+  "license": "Freeware",
+  "url": "https://www.aardio.com/download/ide/aardio.7z",
+  "hash": "77baa6a431f5e145176a43473494e18073094b2c12a90a219e99f77b6b4b287c",
+  "shortcuts": [
+    [
+      "aardio.exe",
+      "aardio"
+    ]
+  ],
+  "pre_install": [
+    ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
+    "persist_file -dir @(\"$dir\\config\",\"$dir\\project\") @(\"$persist_dir\\config\",\"$persist_dir\\project\")",
+    "handle_app_lnk",
+    "do_some_things"
+  ],
+  "pre_uninstall": [
+    "$bucket = (Get-Content \"$dir\\install.json\" | ConvertFrom-Json).bucket",
+    ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
+    "stop_process",
+    "remove_files @(\"$user_LocalAppData\\aardio\")"
+  ],
+  "checkver": {
+    "url": "https://ide.update.aardio.com/log/",
+    "regex": "aardio v([\\d\\.]+)"
+  },
+  "autoupdate": {
+    "url": "https://www.aardio.com/download/ide/aardio.7z"
+  }
 }

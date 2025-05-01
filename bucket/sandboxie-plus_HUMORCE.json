@@ -1,39 +1,47 @@
 {
-  "version": "1.9.8",
-  "description": "A sandbox-based isolation software for 32- and 64-bit Windows NT-based operating systems",
-  "homepage": "https://github.com/sandboxie-plus/Sandboxie",
+  "version": "1.15.11",
+  "description": "A sandbox-based isolation software for 32-bit and 64-bit Windows NT-based operating systems",
+  "homepage": "https://sandboxie-plus.com/",
   "license": "GPL-3.0-only",
-  "notes": "When the program asking for \"put SandBoxes folder into it's parent directory\", you should select \"No\" for keep directory structure of scoop, and protect your sandbox data, because the parent directory will be deleted when uninstalling.",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.9.8/Sandboxie-Plus-x64-v1.9.8.exe",
-      "hash": "765b322c908e04c9266f0b75e457eca2bd5fabdb2de4ff8b427c837079f32321"
+      "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.15.11/Sandboxie-Plus-x64-v1.15.11.exe",
+      "hash": "fb2658acc690d4b89ac43b786f146072e215792e1414d73fdfea7c25e2f9fc14"
     },
     "32bit": {
-      "url": "https://ghproxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.9.8/Sandboxie-Plus-x86-v1.9.8.exe",
-      "hash": "bc04edc73197040c227e7012b348fddcc6120e1257bc5622e3ccbff112ed3bb3"
+      "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.15.11/Sandboxie-Plus-x86-v1.15.11.exe",
+      "hash": "be138668348ad0760d64827522cc3612ee0ca089e4a962b5ce6d6cfe7b085411"
+    },
+    "arm64": {
+      "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.15.11/Sandboxie-Plus-ARM64-v1.15.11.exe",
+      "hash": "9ea6fe0480fcc1c8899cf84cda859bbb900f114d857f13ae0e507db8afc75041"
     }
   },
   "innosetup": true,
   "pre_install": [
     "ensure \"$persist_dir\" | Out-Null",
-    "Get-ChildItem \"$persist_dir\\*\" -Include 'Sandboxie.ini', 'Sandboxie-Plus.ini' | Copy-Item -Destination \"$dir\" -ErrorAction SilentlyContinue -Force"
+    "Get-ChildItem \"$persist_dir\\*.ini\" | Copy-Item -Destination \"$dir\" -Force -ErrorAction SilentlyContinue"
   ],
-  "pre_uninstall": "Get-ChildItem \"$dir\\*\" -Include 'Sandboxie.ini', 'Sandboxie-Plus.ini' | Copy-Item -Destination \"$persist_dir\" -ErrorAction SilentlyContinue -Force",
   "shortcuts": [
     [
       "SandMan.exe",
       "Sandboxie Plus"
     ]
   ],
-  "checkver": "github",
+  "pre_uninstall": "Get-ChildItem \"$dir\\*\" -Include 'Sandboxie.ini', 'Sandboxie-Plus.ini' | Copy-Item -Destination \"$persist_dir\" -Force -ErrorAction SilentlyContinue",
+  "checkver": {
+    "github": "https://github.com/sandboxie-plus/Sandboxie"
+  },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v$version/Sandboxie-Plus-x64-v$version.exe"
+        "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v$version/Sandboxie-Plus-x64-v$version.exe"
       },
       "32bit": {
-        "url": "https://ghproxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v$version/Sandboxie-Plus-x86-v$version.exe"
+        "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v$version/Sandboxie-Plus-x86-v$version.exe"
+      },
+      "arm64": {
+        "url": "https://github.com/sandboxie-plus/Sandboxie/releases/download/v$version/Sandboxie-Plus-ARM64-v$version.exe"
       }
     }
   }

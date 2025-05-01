@@ -1,21 +1,15 @@
 {
-  "version": "0.36",
-  "description": "UPBGE is an open-source, 3D game engine forked from the old Blender Game Engine and deployed with Blender itself",
-  "homepage": "https://upbge.org",
+  "version": "0.36.1",
+  "description": "Uchronia Project Blender Game Engine",
+  "homepage": "https://upbge.org/",
   "license": "GPL-3.0-or-later",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/UPBGE/upbge/releases/download/v0.36/UPBGE-0.36-windows-x86_64.7z",
-      "hash": "68bab20aaa521138faa761c24356c0f0c1cebab780838d5c3b369b62cb496a99",
-      "extract_dir": "UPBGE-0.36-windows-x86_64"
+      "url": "https://github.com/UPBGE/upbge/releases/download/v0.36.1/upbge-0.36.1-windows-x86_64.7z",
+      "hash": "4ddf64871519ee33dc6f6216a3ccd51784bbf6980a2f5d5dbe26117bde164ba8",
+      "extract_dir": "upbge-0.36.1-windows-x86_64"
     }
   },
-  "bin": [
-    [
-      "blender.exe",
-      "upbge"
-    ]
-  ],
   "shortcuts": [
     [
       "blender.exe",
@@ -23,13 +17,14 @@
     ]
   ],
   "checkver": {
-    "github": "https://github.com/UPBGE/upbge"
+    "url": "https://github.com/UPBGE/upbge/releases",
+    "regex": "/releases/tag/(?<prefix>v?\\.?)(?<version>[\\d.]+)"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/UPBGE/upbge/releases/download/v$version/UPBGE-$version-windows-x86_64.7z",
-        "extract_dir": "UPBGE-$version-windows-x86_64"
+        "url": "https://github.com/UPBGE/upbge/releases/download/$matchPrefix$version/upbge-$version-windows-x86_64.7z",
+        "extract_dir": "upbge-$version-windows-x86_64"
       }
     }
   }

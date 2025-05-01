@@ -1,20 +1,36 @@
 {
-  "version": "0.4",
-  "description": "A GOG Downloading tool.",
   "homepage": "https://github.com/Heroic-Games-Launcher/heroic-gogdl",
+  "description": "GOG Downloading module for Heroic Games Launcher ",
+  "version": "1.1.2",
   "license": "GPL-3.0-only",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/Heroic-Games-Launcher/heroic-gogdl/releases/download/v0.4/gogdl-Windows.zip",
-      "hash": "e58c3eeb397430677e5b94bc636bf626b8a16d09346532dac4b6119d55ac3df7"
+      "url": "https://github.com/Heroic-Games-Launcher/heroic-gogdl/releases/download/v1.1.2/gogdl_windows_x86_64.exe",
+      "hash": "795b0f25359b8fec7d40375c29736da5d304ae5aeed3a944dcf167868081a2b7",
+      "bin": [
+        "gogdl_windows_x86_64.exe"
+      ],
+      "pre_install": [
+        "function create($path, $type, $content) {",
+        "   if (-not (Test-Path \"$path\")) {",
+        "       New-Item \"$path\" -ItemType $type -Value $content | Out-Null",
+        "       Write-Output \"Creating $path...\"",
+        "   }",
+        "}",
+        "create $dir/store Directory"
+      ]
     }
   },
-  "bin": "gogdl.exe",
-  "checkver": "github",
+  "persist": [
+    "store"
+  ],
+  "checkver": {
+    "github": "https://github.com/Heroic-Games-Launcher/heroic-gogdl"
+  },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/Heroic-Games-Launcher/heroic-gogdl/releases/download/v$version/gogdl-Windows.zip"
+        "url": "https://github.com/Heroic-Games-Launcher/heroic-gogdl/releases/download/v$version/gogdl_windows_x86_64.exe"
       }
     }
   }

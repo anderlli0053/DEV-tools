@@ -1,5 +1,5 @@
 {
-  "version": "6.24",
+  "version": "7.11",
   "description": "Powerful archive manager",
   "homepage": "https://rarlab.com/",
   "license": {
@@ -9,12 +9,8 @@
   "notes": "Set up context menu within settings window.",
   "architecture": {
     "64bit": {
-      "url": "https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20231013/wrr/winrar-x64-624sc.exe#/dl.7z",
-      "hash": "0ec964ce4fce649e0f35b3db538f738f687b73d0aaabaf098b1468aba17704f4"
-    },
-    "32bit": {
-      "url": "https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20231013/wrr/winrar-x32-624sc.exe#/dl.7z",
-      "hash": "0eb07cda8401596324a8ec24309567541433bd786c78f1855e5690209538b095"
+      "url": "https://www.win-rar.com/fileadmin/winrar-versions/sc/sc20253103/wrr/winrar-x64-711sc.exe#/dl.7z",
+      "hash": "984973d89c0a3074b678d3e5aa2053042257473f4b265753c57bb3a5ad3c301f"
     }
   },
   "pre_install": "if (!(Test-Path \"$persist_dir\\rarreg.key\")) { New-Item \"$dir\\rarreg.key\" | Out-Null }",
@@ -32,15 +28,13 @@
   "persist": "rarreg.key",
   "checkver": {
     "url": "https://siku-api.deno.dev/winrar",
-    "regex": "\"ver\"\\s?:\\s?\"([\\d\\.]+)\".*?\"x64_date\"\\s?:\\s?\"(?<x64d>.*?)\".*?\"x32_date\"\\s?:\\s?\"(?<x32d>.*?)\""
+    "jsonpath": "$.combined",
+    "regex": "([\\d\\.]+)-(?<date>[\\d]+)"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://www.win-rar.com/fileadmin/winrar-versions/sc/sc$matchX64d/wrr/winrar-x64-$cleanVersionsc.exe#/dl.7z"
-      },
-      "32bit": {
-        "url": "https://www.win-rar.com/fileadmin/winrar-versions/sc/sc$matchX32d/wrr/winrar-x32-$cleanVersionsc.exe#/dl.7z"
+        "url": "https://www.win-rar.com/fileadmin/winrar-versions/sc/sc$matchDate/wrr/winrar-x64-$cleanVersionsc.exe#/dl.7z"
       }
     }
   }

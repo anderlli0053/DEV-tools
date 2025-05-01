@@ -1,5 +1,5 @@
 {
-  "version": "3.0.4",
+  "version": "3.1.7",
   "description": "Multifunctional integrated, cross platform, highly compatible assistant for your keyboard.",
   "homepage": "https://github.com/lnelab/link-plus",
   "license": "Unknown",
@@ -7,10 +7,11 @@
     "Visit following site for user guide:",
     "https://www.lnelab.com/docs"
   ],
+  "depends": "Scoop4kariiin/Scoop4kariiinUtils",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/lnelab/link-plus/releases/download/3.0.4/link-plus-win-3.0.4.exe#/dl.7z",
-      "hash": "sha512:2cc7ef2709781ed84af08056a3c7121e39c2459465e541617be62719ee6ce615c40f5934945657917a390cee7c66ad1be52bcc81147fda93e43e793bd74547f0",
+      "url": "https://github.com/lnelab/link-plus/releases/download/3.1.7/link-plus-win-3.1.7.exe#/dl.7z",
+      "hash": "sha512:8bf238a1e5602536b4bba3d56c15322c0d12656488bc8a5cce75872dc2e155503623c9e100f59d52ef9cbdfcc6bad671dd76e840a703db963973aec5113f434e",
       "pre_install": [
         "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
         "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
@@ -19,15 +20,9 @@
   },
   "installer": {
     "script": [
-      "$S4UtilsPath = Find-BucketDirectory -Root -Name $bucket | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
-      "if (Test-Path $S4UtilsPath) {",
-      "    Unblock-File $S4UtilsPath",
-      "    Import-Module $S4UtilsPath",
-      "    Mount-ExternalRuntimeData -Source \"$persist_dir\\link-plus\" -AppData",
-      "    Remove-Module -Name S4Utils -ErrorAction SilentlyContinue",
-      "} else {",
-      "    Write-Host \"Missing files, please re-add Scoop4kariiin bucket and re-install this app.\" -ForegroundColor Red",
-      "}"
+      "Import-Module -Name Scoop4kariiinUtils -ErrorAction Stop",
+      "Mount-ExternalRuntimeData -Source \"$persist_dir\\link-plus\" -AppData",
+      "Remove-Module -Name Scoop4kariiinUtils -ErrorAction SilentlyContinue"
     ]
   },
   "shortcuts": [
@@ -38,20 +33,16 @@
   ],
   "uninstaller": {
     "script": [
-      "$S4UtilsPath = Find-BucketDirectory -Root -Name $install.bucket | Join-Path -ChildPath \"scripts\\S4Utils.psm1\"",
-      "if (Test-Path $S4UtilsPath) {",
-      "    Unblock-File $S4UtilsPath",
-      "    Import-Module $S4UtilsPath",
-      "    Dismount-ExternalRuntimeData -Target \"link-plus\" -AppData",
-      "    Remove-Module -Name S4Utils -ErrorAction SilentlyContinue",
-      "}"
+      "Import-Module -Name Scoop4kariiinUtils -ErrorAction Stop",
+      "Dismount-ExternalRuntimeData -Target \"link-plus\" -AppData",
+      "Remove-Module -Name Scoop4kariiinUtils -ErrorAction SilentlyContinue"
     ]
   },
   "checkver": "github",
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/lnelab/link-plus/releases/download/$version/link-plus-win-$version.exe#/dl.7z",
+        "url": "https://github.com/lnelab/link-plus/releases/download/$version/link-plus-win-$version.exe#/dl.7z",
         "hash": {
           "url": "$baseurl/latest.yml",
           "regex": "sha512:\\s+$base64"

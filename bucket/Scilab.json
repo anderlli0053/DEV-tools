@@ -1,36 +1,32 @@
 {
-  "homepage": "https://www.scilab.org",
-  "description": "Open source software for numerical computation",
-  "version": "2023.1.0",
+  "homepage": "https://www.scilab.org/",
+  "version": "2025.0.0",
   "license": "GPL-2.0-only",
   "architecture": {
     "64bit": {
-      "url": "https://www.scilab.org/download/2023.1.0/scilab-2023.1.0.bin.x64.exe",
-      "hash": "0e1b2ac60dcf0b9dcce52fa33b9511432528fcbd543bdf13a057723288bb19a4"
+      "url": "https://www.scilab.org/download/2025.0.0/scilab-2025.0.0.bin.x64.exe#/dl.7z",
+      "hash": "2dfaed601e4318953ad23261f45d093ab3ed2f7660a0cbe74613dc64cb6f263d"
+    },
+    "32bit": {
+      "url": "https://www.scilab.org/download/6.1.1/scilab-6.1.1.exe#/dl.7z",
+      "hash": ""
     }
   },
-  "installer": {
-    "args": [
-      "/VERYSILENT",
-      "/DIR=$dir"
+  "bin": "scilab.exe",
+  "shortcuts": [
+    [
+      "scilab.exe",
+      "Scilab"
     ]
-  },
-  "uninstaller": {
-    "file": "unins000.exe",
-    "args": [
-      "/VERYSILENT",
-      "/CLOSEAPPLICATIONS",
-      "/FORCECLOSEAPPLICATIONS"
-    ]
-  },
+  ],
   "checkver": {
-    "url": "https://www.scilab.org/",
-    "regex": "Scilab ([\\d.]+)"
+    "url": "https://help.scilab.org/docs/current/en_US/CHANGES.html",
+    "regex": "Welcome to Scilab ([\\d.]+)"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://www.scilab.org/download/$version/scilab-$version.bin.x64.exe"
+        "url": "https://www.scilab.org/download/$version/scilab-$version.bin.x64.exe#/dl.7z"
       }
     }
   }

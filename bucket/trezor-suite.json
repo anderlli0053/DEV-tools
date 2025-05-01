@@ -1,5 +1,5 @@
 {
-  "version": "22.11.1",
+  "version": "24.5.4",
   "description": "Trezor Suite application (Trezor Desktop)",
   "homepage": "https://trezor.io/trezor-suite",
   "license": {
@@ -8,8 +8,8 @@
   },
   "architecture": {
     "64bit": {
-      "url": "https://trezor.io/content/binaries/trezor-suite/Trezor-Suite-22.11.1-win-x64.exe#/dl.7z",
-      "hash": "sha512:d3cce46580288f59d347ee921902558deef7aece6e74c6119de9816fe0d26ccfad44084c1381e4c5f0e8b22634670d4517db320ebd5880dd6a6c6446d209cec6",
+      "url": "https://github.com/trezor/trezor-suite/releases/download/v24.5.4/Trezor-Suite-24.5.4-win-x64.exe#/dl.7z",
+      "hash": "sha512:e646dbdcd17a6002ea745656215ee05d3037ee5be32f26bede5643300fa2532afb8c11f2dd4bfd282e83b5e18de6cb0584b1e349c041c31e975dd7eb7af940da",
       "installer": {
         "script": [
           "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" -DestinationPath \"$dir\" -Removal",
@@ -25,17 +25,16 @@
     ]
   ],
   "checkver": {
-    "url": "https://trezor.io/content/binaries/trezor-suite/latest.yml",
-    "regex": "Trezor-Suite-([\\d.]+)-win-x64.exe"
+    "github": "https://github.com/trezor/trezor-suite"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://trezor.io/content/binaries/trezor-suite/Trezor-Suite-$version-win-x64.exe#/dl.7z"
+        "url": "https://github.com/trezor/trezor-suite/releases/download/v$version/Trezor-Suite-$version-win-x64.exe#/dl.7z"
       }
     },
     "hash": {
-      "url": "https://trezor.io/content/binaries/trezor-suite/latest.yml",
+      "url": "https://github.com/trezor/trezor-suite/releases/download/v$version/latest.yml",
       "mode": "extract",
       "regex": "(?sm)$version-win-x64.exe.*?sha512: $base64"
     }

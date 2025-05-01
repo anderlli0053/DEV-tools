@@ -1,70 +1,42 @@
 {
-  "version": "17.0.2-21581411",
-  "homepage": "https://www.vmware.com/products/workstation-pro.html",
-  "description": "VMware Workstation $version Pro for Windows. This Workstation product installation includes VMware Tools for Windows 64-bit operating systems",
+  "version": "17.6.0",
+  "homepage": "https://www.vmware.com/ca/products/workstation-player.html",
+  "description": "An application for creating and running virtual machines on your computer.",
   "license": {
-    "identifier": "Proprietary",
-    "url": "https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/downloads/eula/universal_eula.pdf"
+    "identifier": "Freeware",
+    "url": "https://www.vmware.com/ca/help/legal.html"
   },
   "architecture": {
     "64bit": {
-      "url": "https://download3.vmware.com/software/WKST-1702-WIN/VMware-workstation-full-17.0.2-21581411.exe#/cosi.exe",
-      "hash": "ab925cf5b7424b8f28bf65a5c388ce6f680dfeb157612ee6d6c3dd0a63100a40",
-      "installer": {
-        "args": [
-          "/s",
-          "/v\"",
-          "/qn",
-          "EULAS_AGREED=1",
-          "DATACOLLECTION=0",
-          "DESKTOP_SHORTCUT=0",
-          "STARTMENU_SHORTCUT=0",
-          "AUTOSOFTWAREUPDATE=0",
-          "INSTALLDIR=\"\"$dir\"\"",
-          "\""
-        ],
-        "keep": true
-      },
-      "uninstaller": {
-        "file": "cosi.exe",
-        "args": [
-          "/s",
-          "/v\"",
-          "/qn",
-          "REMOVE=ALL",
-          "\""
-        ]
-      },
-      "shortcuts": [
-        [
-          "vmware.exe",
-          "VMware Workstation Pro"
-        ],
-        [
-          "vmplayer.exe",
-          "VMware Workstation Player"
-        ],
-        [
-          "vmnetcfg.exe",
-          "Virtual Network Editor"
-        ]
-      ]
+      "url": "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/17.6.0/24238078/windows/core/VMware-workstation-17.6.0-24238078.exe.tar",
+      "hash": "8866101cd4d411dc4f75ecba2458b95ad5ca4edd177e2a500a9d3662ea37fc50"
     }
   },
+  "pre_install": [
+    "Get-ChildItem -Path \"$dir\" -Filter \"*.exe\" | Rename-Item -NewName \"setup.exe\"",
+    "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+    "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList '/x'; Remove-Item \"$dir\\setup.exe\"",
+    "$msiInstaller = (Get-ChildItem \"$env:TEMP\" -Filter 'VMware*' -Recurse -Force).FullName; Copy-Item $msiInstaller \"$dir\\setup.msi\" -Force",
+    "Start-Process 'msiexec' -Wait -Verb 'RunAs' -ArgumentList @('/i', \"$dir\\setup.msi\", '/qn', '/norestart', 'REBOOT=ReallySuppress', 'EULAS_AGREED=1', 'ADDLOCAL=ALL')",
+    "Remove-Item $msiInstaller -Force"
+  ],
+  "pre_uninstall": [
+    "if ($cmd -eq 'uninstall') {",
+    "   if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+    "   Start-Process 'msiexec' -Wait -Verb 'RunAs' -ArgumentList @('/x', \"$dir\\setup.msi\", '/qn', '/norestart', 'REBOOT=ReallySuppress')",
+    "   Start-Sleep -Seconds 2",
+    "   Write-Host \"Please restart your computer to uninstall $app properly\" -F 'Red'",
+    "}"
+  ],
   "checkver": {
-    "url": "https://chocolatey.org/packages/vmwareworkstation",
-    "regex": "(?<major>\\d+).(?<minor>\\d+).(?<patch>\\d+).(?<flag>\\d+)",
-    "replace": "${major}.${minor}.${patch}-${flag}"
+    "url": "https://vmware-player.en.uptodown.com/windows/download",
+    "regex": "VMware Workstation Pro\\s(?<version>[\\d.]+)\\sBuild\\s(?<build>[\\d]+)",
+    "replace": "${version}"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://download3.vmware.com/software/WKST-$matchMajor$matchMinor$matchPatch-WIN/VMware-workstation-full-$version.exe#/cosi.exe",
-        "hash": {
-          "url": "https://customerconnect.vmware.com/channel/public/api/v1.0/dlg/details?locale=cn_CN&downloadGroup=WKST-$matchMajor$matchMinor$matchPatch-WIN&productId=1038",
-          "mode": "json",
-          "jsonpath": "$.downloadFiles[0].sha256checksum"
-        }
+        "url": "https://softwareupdate.vmware.com/cds/vmw-desktop/ws/$version/$matchBuild/windows/core/VMware-workstation-$version-$matchBuild.exe.tar"
       }
     }
   }

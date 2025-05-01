@@ -1,11 +1,11 @@
 {
-  "version": "52.2.1",
+  "version": "46.2.0",
   "description": "WebCatalog. Transform websites into desktop apps with WebCatalog, and access a wealth of exclusive apps for Mac & PC. ",
   "homepage": "https://webcatalog.io",
   "license": "???",
   "changelog": "https://webcatalog.io/changelog/",
-  "url": "https://cdn-2.webcatalog.io/webcatalog/WebCatalog%20Setup%2052.2.1.exe#/dl.7z",
-  "hash": "6d90787e8d8a7902eb88764e8a52b739bd862cf03968170bcf0daa22ba776448",
+  "url": "https://cdn-2.webcatalog.io/webcatalog/WebCatalog%20Setup%2046.2.0.exe#/dl.7z",
+  "hash": "008431c1435807846bcba9bdfb48e832a1194877861155b06f23c819b604068f",
   "installer": {
     "script": [
       "Expand-7ZipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal",
@@ -19,8 +19,9 @@
     ]
   ],
   "checkver": {
-    "url": "https://webcatalog.io",
-    "regex": "Version ([\\d.]+)"
+    "url": "https://github.com/microsoft/winget-pkgs/tree/master/manifests/w/WebCatalogLtd/WebCatalog/",
+    "regex": "/WebCatalogLtd/WebCatalog/([\\d.]+)\"",
+    "reverse": true
   },
   "autoupdate": {
     "url": "https://cdn-2.webcatalog.io/webcatalog/WebCatalog%20Setup%20$version.exe#/dl.7z"

@@ -1,28 +1,44 @@
 {
-    "version": "14c3309",
-    "description": "A programming language and a proof assistant designed for formalizing math and type-directed programming.",
-    "homepage": "https://github.com/aya-prover/aya-dev",
-    "license": "MIT",
-    "architecture": {
-        "64bit": {
-            "url": "https://ghproxy.com/https://github.com/aya-prover/aya-dev/releases/download/nightly-build/aya-prover_native_windows-x64.exe#/aya.exe",
-            "hash": "1bf09a1fff643c5741af21f8160b2e70caad62d0584ed2b271b49bd3c2efd57f"
-        }
-    },
-    "bin": "aya.exe",
-    "checkver": {
-        "url": "https://github.com/aya-prover/aya-dev/releases/tag/nightly-build",
-        "regex": "/aya-prover/aya-dev/commit/([\\da-f]{7})"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://ghproxy.com/https://github.com/aya-prover/aya-dev/releases/download/nightly-build/aya-prover_native_windows-x64.exe#/aya.exe",
-                "hash": {
-                    "url": "$url.sha256.txt",
-                    "regex": "$sha256"
-                }
-            }
-        }
-    }
+  "version": "1.7.0",
+  "description": "Android adb desktop app",
+  "homepage": "https://aya.liriliri.io/",
+  "license": {
+    "identifier": "AGPL-3.0 license",
+    "url": "https://github.com/liriliri/aya#AGPL-3.0-1-ov-file"
+  },
+  "url": "https://github.com/liriliri/aya/releases/download/v1.7.0/AYA-1.7.0-win-x64.exe#/dl.7z",
+  "hash": "6e7e9e4510319834bd73b2231680556735fabd887c8a4088771a3f7a8f3e2393",
+  "pre_install": [
+    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+    "Remove-Item \"$dir\\`$*\" -Force -Recurse"
+  ],
+  "installer": {
+    "script": [
+      "# handle runtime cache",
+      "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
+      "Mount-ExternalRuntimeData -Source \"$persist_dir\" -Target \"$env:APPDATA\\AYA\"",
+      "Remove-Module -Name AppsUtils"
+    ]
+  },
+  "uninstaller": {
+    "script": [
+      "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
+      "Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\AYA\"",
+      "Remove-Module -Name AppsUtils"
+    ]
+  },
+  "bin": "AYA.exe",
+  "shortcuts": [
+    [
+      "AYA.exe",
+      "AYA"
+    ]
+  ],
+  "checkver": {
+    "url": "https://api.github.com/repos/liriliri/aya/releases",
+    "regex": "/releases/tag/v([\\d.]+)"
+  },
+  "autoupdate": {
+    "url": "https://github.com/liriliri/aya/releases/download/v$version/AYA-$version-win-x64.exe#/dl.7z"
+  }
 }

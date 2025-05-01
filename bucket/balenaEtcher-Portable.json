@@ -1,43 +1,22 @@
 {
-    "version": "2.1.0",
-    "description": "balenaEtcher. Flash OS images to SD cards & USB drives, safely and easily.",
-    "homepage": "https://www.balena.io/etcher/",
-    "license": "Apache-2.0",
-    "changelog": "https://github.com/balena-io/etcher/blob/master/CHANGELOG.md",
-    "url": "https://ghproxy.com/https://github.com/balena-io/etcher/releases/download/v2.1.0/balenaEtcher-Portable-2.1.0.exe#/dl.7z",
-    "hash": "1bf09a1fff643c5741af21f8160b2e70caad62d0584ed2b271b49bd3c2efd57f",
-    "extract_dir": "$PLUGINSDIR",
-    "architecture": {
-        "64bit": {
-            "installer": {
-                "script": [
-                    "Remove-Item \"$dir\\*\" -Exclude \"app-64.7z\"",
-                    "Expand-7zipArchive \"$dir\\app-64.7z\" \"$dir\"",
-                    "Remove-Item \"$dir\\app-64.7z\""
-                ]
-            }
-        },
-        "32bit": {
-            "installer": {
-                "script": [
-                    "Remove-Item \"$dir\\*\" -Exclude \"app-32.7z\"",
-                    "Expand-7zipArchive \"$dir\\app-32.7z\" \"$dir\"",
-                    "Remove-Item \"$dir\\app-32.7z\""
-                ]
-            }
-        }
-    },
-    "bin": "balenaEtcher.exe",
-    "shortcuts": [
-        [
-            "balenaEtcher.exe",
-            "balenaEtcher"
-        ]
-    ],
-    "checkver": {
-        "github": "https://github.com/balena-io/etcher"
-    },
-    "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/balena-io/etcher/releases/download/v$version/balenaEtcher-Portable-$version.exe#/dl.7z"
-    }
+  "version": "2.1.0",
+  "description": "balenaEtcher. Flash OS images to SD cards & USB drives, safely and easily.",
+  "homepage": "https://www.balena.io/etcher/",
+  "license": "Apache-2.0",
+  "changelog": "https://github.com/balena-io/etcher/blob/master/CHANGELOG.md",
+  "url": "https://github.com/balena-io/etcher/releases/download/v2.1.0/balenaEtcher-win32-x64-2.1.0.zip#/dl.7z",
+  "hash": "a074e42710ba8ce0a82618f68ab066f786c7deeb1b61f2ddf29edabab8eefd94",
+  "bin": "balenaEtcher.exe",
+  "shortcuts": [
+    [
+      "balenaEtcher.exe",
+      "balenaEtcher"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/balena-io/etcher"
+  },
+  "autoupdate": {
+    "url": "https://github.com/balena-io/etcher/releases/download/v$version/balenaEtcher-win32-x64-$version.zip#/dl.7z"
+  }
 }

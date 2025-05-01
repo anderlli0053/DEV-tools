@@ -1,19 +1,43 @@
 {
-  "version": "6.1.1",
-  "description": "Display real-time trends of Chinese funds in the menubar",
-  "homepage": "https://www.aliyundrive.com/",
-  "license": "LGPL-3.0-only",
-  "url": "https://ghproxy.com/https://github.com/1zilc/fishing-funds/releases/download/v6.1.1/Fishing-Funds-Setup-6.1.1.exe#/dl.7z",
-  "hash": "sha512:1c6ab8d7d497dbe2f1495611a638fdc71c41522125bfeb7d17d8f3f1cfc39a29551268414d3791692d8e4eaa12ce67faf5673e7391db271e2fb4b3b95a5a0fa2",
-  "pre_install": [
-    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-    "Move-Item \"$dir\\`$R0\\*\" \"$dir\"",
-    "Remove-Item \"$dir\\`$PLUGINSDIR\",\"$dir\\`$R0\" -Force -Recurse"
-  ],
+  "version": "8.4.2",
+  "description": "基金,大盘,股票,虚拟货币状态栏显示小应用,基于 Electron 开发,数据源来自天天基金,蚂蚁基金,爱基金,腾讯证券等",
+  "homepage": "https://ff.1zilc.top/",
+  "license": {
+    "identifier": "GNU General Public License v3.0",
+    "url": "https://github.com/1zilc/fishing-funds/blob/main/LICENSE"
+  },
+  "url": "https://github.com/1zilc/fishing-funds/releases/download/v8.4.2/Fishing-Funds-Setup-8.4.2.exe#/abgo_bucket_installer.exe",
+  "hash": "8138d2e0db82ed1b9fd4ce050e01b6b474c1ef4deb4433c475e0312ebeb5e3d3",
   "shortcuts": [
     [
       "Fishing Funds.exe",
       "Fishing Funds"
     ]
-  ]
+  ],
+  "pre_install": [
+    ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
+    "$path_installer=\"$dir\\abgo_bucket_installer.exe\"",
+    "& $path_installer /S /D=$dir",
+    "$core_exe=\"$dir\\Fishing Funds.exe\"",
+    "sleep_install $core_exe",
+    "persist_file -dir @(\"$user_AppData\\Fishing Funds\") @(\"$persist_dir\\Fishing Funds\")",
+    "handle_app_lnk",
+    "do_some_things"
+  ],
+  "pre_uninstall": [
+    "$bucket = (Get-Content \"$dir\\install.json\" | ConvertFrom-Json).bucket",
+    ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
+    "stop_process $false",
+    "remove_files @(\"$user_AppData\\Fishing Funds\")",
+    "$ui_exe=\"$dir\\Uninstall Fishing Funds.exe\"",
+    "try{ & $ui_exe /S }catch{}",
+    "sleep_uninstall $ui_exe",
+    "remove_files @(\"$user_LocalAppData\\fishing-funds-updater\")"
+  ],
+  "checkver": {
+    "github": "https://github.com/1zilc/fishing-funds"
+  },
+  "autoupdate": {
+    "url": "https://github.com/1zilc/fishing-funds/releases/download/v$version/Fishing-Funds-Setup-$version.exe#/abgo_bucket_installer.exe"
+  }
 }

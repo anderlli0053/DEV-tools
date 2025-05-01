@@ -1,43 +1,31 @@
 {
-  "version": "3.8f",
-  "description": "Desktop utility to download images/videos/music/text from various websites, and more.",
   "homepage": "https://github.com/KurtBestor/Hitomi-Downloader",
-  "license": "Unknown",
+  "description": "🍰 Desktop utility to download images/videos/music/text from various websites, and more.",
+  "version": "4.2",
+  "license": "Unlicense",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/KurtBestor/Hitomi-Downloader/releases/download/v3.8f/hitomi_downloader_GUI.zip",
-      "hash": "7896a42a2d6648fb1a77e43f376dad30b34f072cceaac081bedc82b7c20c1f92"
+      "url": "https://github.com/KurtBestor/Hitomi-Downloader/releases/download/v4.2/hitomi_downloader_GUI.zip",
+      "hash": "98407a9028db9c0a24dcdb8aa11083dd3271fc6c9558edffb7d63f58dda9ab3b",
+      "pre_install": "if(!(Test-Path \"$persist_dir\\hitomi_downloader_GUI.ini\")) { New-Item \"$dir\\hitomi_downloader_GUI.ini\" -ItemType File -Force | Out-Null }"
     }
   },
-  "pre_install": [
-    "Rename-Item -Path \"$dir\\hitomi_downloader_GUI.exe\" -NewName 'hitomi_downloader.exe'",
-    "if (Test-Path \"$persist_dir\\hitomi_downloader.ini\") { Move-Item \"$persist_dir\\hitomi_downloader.ini*\" \"$dir\" -Force }",
-    "if (Test-Path \"$persist_dir\\hitomi_downloaded_*\\\") { Move-Item \"$persist_dir\\hitomi_downloaded_*\" \"$dir\" -Force }"
-  ],
-  "uninstaller": {
-    "script": [
-      "if(Test-Path \"$dir\\hitomi_downloader.ini\") { Move-Item \"$dir\\hitomi_downloader.ini\" \"$persist_dir\" -Force }",
-      "if(Test-Path \"$dir\\hitomi_downloaded_*\\\") { Move-Item \"$dir\\hitomi_downloaded_*\" \"$persist_dir\" -Force }"
-    ]
-  },
-  "persist": "hitomi_downloaded",
-  "bin": "hitomi_downloader.exe",
   "shortcuts": [
     [
-      "hitomi_downloader.exe",
-      "Hitomi Downloader",
-      "--no-admin"
+      "hitomi_downloader_GUI.exe",
+      "hitomi downloader GUI"
     ]
   ],
-  "notes": "Bypassing DPI is disabled.",
+  "persist": "hitomi_downloader_GUI.ini",
   "checkver": {
-    "url": "https://github.com/KurtBestor/Hitomi-Downloader/releases/latest",
-    "regex": "/releases/tag/v([\\d.]+\\w?)\""
+    "github": "https://github.com/KurtBestor/Hitomi-Downloader",
+    "regex": "Downloader\\sv(?<major>[\\d.]+)(?<build>[a-z]?)?",
+    "replace": "${major}${build}"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/KurtBestor/Hitomi-Downloader/releases/download/v$version/hitomi_downloader_GUI.zip"
+        "url": "https://github.com/KurtBestor/Hitomi-Downloader/releases/download/v$matchMajor$matchBuild/hitomi_downloader_GUI.zip"
       }
     }
   }

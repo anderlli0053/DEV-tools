@@ -1,12 +1,20 @@
 {
-  "version": "2.1.1",
-  "description": "ChatGPT in your terminal, without the need for API keys",
+  "version": "2.9.6",
+  "description": "AI Chatbots in terminal without needing API keys",
   "homepage": "https://github.com/aandrew-me/tgpt",
   "license": "GPL-3.0-only",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/aandrew-me/tgpt/releases/download/v2.1.1/tgpt-amd64.exe#/tgpt.exe",
-      "hash": "1dcc2455a6e5b680b3e08d7b5642d557c637ce6a3d461836cf2608ed4851a3db"
+      "url": "https://github.com/aandrew-me/tgpt/releases/download/v2.9.6/tgpt-amd64.exe#/tgpt.exe",
+      "hash": "049faab92c1bf897aca79afc35c86c92a550e017cfb35515be0b8b04f9ef99ee"
+    },
+    "32bit": {
+      "url": "https://github.com/aandrew-me/tgpt/releases/download/v2.9.6/tgpt-i386.exe#/tgpt.exe",
+      "hash": "06378bc09ec79e5eb2925f6c2f103b5426f85fe3e37a9031aeca28c5944741c0"
+    },
+    "arm64": {
+      "url": "https://github.com/aandrew-me/tgpt/releases/download/v2.9.6/tgpt-arm64.exe#/tgpt.exe",
+      "hash": "74b9e082541558f091a427ec812507db4e768e60414fdd7ea86eb46de4213a6f"
     }
   },
   "bin": "tgpt.exe",
@@ -14,8 +22,18 @@
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/aandrew-me/tgpt/releases/download/v$version/tgpt-amd64.exe#/tgpt.exe"
+        "url": "https://github.com/aandrew-me/tgpt/releases/download/v$version/tgpt-amd64.exe#/tgpt.exe"
+      },
+      "32bit": {
+        "url": "https://github.com/aandrew-me/tgpt/releases/download/v$version/tgpt-i386.exe#/tgpt.exe"
+      },
+      "arm64": {
+        "url": "https://github.com/aandrew-me/tgpt/releases/download/v$version/tgpt-arm64.exe#/tgpt.exe"
       }
+    },
+    "hash": {
+      "url": "https://github.com/aandrew-me/tgpt/releases/tag/v$version",
+      "find": "$sha256\\s+$basename"
     }
   }
 }

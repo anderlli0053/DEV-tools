@@ -1,0 +1,27 @@
+{
+  "##": "QQ音乐",
+  "version": "21.41.0",
+  "description": "[QQ音乐] - 一款带有精彩音乐推荐功能的播放器，是国内内容丰富之一的音乐平台",
+  "homepage": "https://y.qq.com",
+  "license": {
+    "identifier": "Proprietary",
+    "url": "http://y.qq.com/y/static/tips/service_tips.html"
+  },
+  "hash": "9feff8e1d1b268bbc13452912f9ef687da8ad14b8daa775df12dcf804cc11f14",
+  "url": "https://dldir1v6.qq.com/music/clntupate/QQMusic_Setup_2141.exe#/dl.7z",
+  "post_install": "Copy-Item \"$dir\\QQMusic.tpc\" \"$dir\\instok\"",
+  "checkver": {
+    "url": "https://y.qq.com/download/download.html",
+    "regex": "Windows PC.*\\:([\\d.]+)"
+  },
+  "bin": "QQMusic.exe",
+  "shortcuts": [
+    [
+      "QQMusic.exe",
+      "QQ音乐"
+    ]
+  ],
+  "autoupdate": {
+    "url": "https://dldir1v6.qq.com/music/clntupate/QQMusic_Setup_$majorVersion$minorVersion.exe#/dl.7z"
+  }
+}

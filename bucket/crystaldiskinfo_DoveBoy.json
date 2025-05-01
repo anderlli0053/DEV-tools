@@ -1,10 +1,10 @@
 {
-  "version": "9.1.0",
+  "version": "9.6.3",
   "description": "HDD/SSD utility software which supports S.M.A.R.T and a part of USB-HDD",
-  "homepage": "https://osdn.net/projects/crystaldiskinfo/",
+  "homepage": "https://crystalmark.info/en/",
   "license": "MIT",
-  "url": "https://dotsrc.dl.osdn.net/osdn/crystaldiskinfo/78950/CrystalDiskInfo9_1_0.zip",
-  "hash": "345e5a7d65b936bf690724a601aaeb7570adc8008494636fd8de3d6a83c7847b",
+  "url": "https://downloads.sourceforge.net/projects/crystaldiskinfo/9.6.3/CrystalDiskInfo9_6_3.zip",
+  "hash": "sha1:4c734cf436cbfa292fc4b4bdf4c84cfedfa7f5b7",
   "pre_install": [
     "if (!(Test-Path \"$persist_dir\\DiskInfo.ini\")) { New-Item \"$dir\\DiskInfo.ini\" | Out-Null }",
     "# Manually persist AMD RAID plugins (AMD_RC2t7x64.dll, AMD_RC2t7x86.dll)",
@@ -45,12 +45,11 @@
     "Smart",
     "DiskInfo.ini"
   ],
-  "checkver": "releases/(?<release>\\d+)\">CrystalDiskInfo\\s+([\\w.]+)<",
+  "checkver": {
+    "url": "https://sourceforge.net/projects/crystaldiskinfo/files/",
+    "regex": "href=\"/projects/crystaldiskinfo/files/latest/download\" title=\"/([\\w.]+)"
+  },
   "autoupdate": {
-    "url": "https://dotsrc.dl.osdn.net/osdn/crystaldiskinfo/$matchRelease/CrystalDiskInfo$underscoreVersion.zip",
-    "hash": {
-      "url": "https://osdn.net/projects/crystaldiskinfo/downloads/$matchRelease/CrystalDiskInfo$underscoreVersion.zip/",
-      "regex": "<dd>$sha256</dd>"
-    }
+    "url": "https://downloads.sourceforge.net/projects/crystaldiskinfo/$version/CrystalDiskInfo$underscoreVersion.zip"
   }
 }

@@ -1,0 +1,31 @@
+{
+  "version": "0.18.0",
+  "description": "A CLI tool to backup and sync your git repositories",
+  "homepage": "https://github.com/AkashRajpurohit/git-sync",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/AkashRajpurohit/git-sync/releases/download/v0.18.0/git-sync_0.18.0_windows_amd64.zip",
+      "hash": "aca87ce986903ff0478e56310894e1d8da713f82629f6a0f214f5faad1754650"
+    },
+    "32bit": {
+      "url": "https://github.com/AkashRajpurohit/git-sync/releases/download/v0.18.0/git-sync_0.18.0_windows_386.zip",
+      "hash": "9d78eece17c46ff76c0a42c6501f1dd424d4a7646c373cc29a525c08c5a0d825"
+    }
+  },
+  "bin": "git-sync.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/AkashRajpurohit/git-sync/releases/download/v$version/git-sync_$version_windows_amd64.zip"
+      },
+      "32bit": {
+        "url": "https://github.com/AkashRajpurohit/git-sync/releases/download/v$version/git-sync_$version_windows_386.zip"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/git-sync_checksums.txt"
+    }
+  }
+}

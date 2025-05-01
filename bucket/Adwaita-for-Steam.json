@@ -1,27 +1,29 @@
 {
-    "version": "3.9",
-    "description": "A skin to make Steam look more like a native GNOME app",
-    "homepage": "https://github.com/tkashkin/Adwaita-for-Steam",
-    "license": "MIT",
-    "depends": "steam",
-    "architecture": {
-        "64bit": {
-            "url": "https://ghproxy.com/https://github.com/tkashkin/Adwaita-for-Steam/archive/master.zip",
-            "hash": "1bf09a1fff643c5741af21f8160b2e70caad62d0584ed2b271b49bd3c2efd57f",
-            "extract_dir": "Adwaita-for-Steam-master"
-        }
-    },
-    "pre_install": [
-        "Remove-Item -Recurse -Force $env:SCOOP\\persist\\steam\\skins\\Adwaita -ErrorAction SilentlyContinue",
-        "New-Item -Type Junction -Path $env:SCOOP\\persist\\steam\\skins\\Adwaita -Target $dir\\Adwaita | Out-Null"
-    ],
-    "checkver": {
-        "github": "https://github.com/tkashkin/Adwaita-for-Steam"
-    },
-    "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/tkashkin/Adwaita-for-Steam/archive/master.zip",
-        "hash": {
-            "mode": "download"
-        }
+  "version": "3.9",
+  "description": "A skin to make Steam look more like a native GNOME app",
+  "homepage": "https://github.com/tkashkin/Adwaita-for-Steam",
+  "license": "MIT",
+  "depends": "steam",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/tkashkin/Adwaita-for-Steam/archive/master.zip",
+      "hash": "83b95753c8e353ac7dcac0eaf3f6e15cce03dfdcffdb4c73f37c042f2a826a6e",
+      "extract_dir": "Adwaita-for-Steam-master"
     }
+  },
+  "shortcuts": [
+    [
+      "install_windows.bat",
+      "Adwaita-for-Steam"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/tkashkin/Adwaita-for-Steam"
+  },
+  "autoupdate": {
+    "url": "https://github.com/tkashkin/Adwaita-for-Steam/archive/master.zip",
+    "hash": {
+      "mode": "download"
+    }
+  }
 }

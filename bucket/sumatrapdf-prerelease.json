@@ -1,27 +1,33 @@
 {
-  "version": "15471",
-  "description": "PDF and eBook reader",
+  "version": "3.2.12192",
+  "description": "Free PDF, eBook reader.",
   "homepage": "https://www.sumatrapdfreader.org",
   "license": "GPL-3.0-only,BSD-2-Clause",
-  "url": "https://www.sumatrapdfreader.org/dl/prerel/15471/SumatraPDF-prerel-64-install.exe",
-  "hash": "acb60227bccf3fdd2e26239c63292f4958838cba319766a658e4e7c71a88ef40",
-  "checkver": {
-    "url": "https://kjkpubsf.sfo2.digitaloceanspaces.com/software/sumatrapdf/sumatralatest.js",
-    "regex": "var sumLatestInstaller64\\s+=\\s+\"(?<url>https.*/prerel/(?<version>.*?)/SumatraPDF-prerel-64.install.exe)\";",
-    "replace": "${version}"
+  "architecture": {
+    "64bit": {
+      "url": "https://sourceforge.net/projects/bearapps/files/SumatraPDF-prerelease-12192-64.exe#/SumatraPDF.exe"
+    },
+    "32bit": {
+      "url": "https://sourceforge.net/projects/bearapps/files/SumatraPDF-prerelease-12192.exe#/SumatraPDF.exe"
+    }
   },
-  "autoupdate": {
-    "url": "$matchUrl"
-  },
-  "installer": {
-    "keep": false,
-    "script": [
-      "PUSHD \"$dir\"",
-      "&.\\\"$fname\" -x",
-      "Start-Sleep -Seconds 1",
-      "Remove-Item -Force \"$fname\"",
-      "POPD"
+  "pre_install": [
+    "$file = 'SumatraPDF-settings.txt'",
+    "if (-not (Test-Path \"$persist_dir\\$file\")) {",
+    "    Write-Host 'File' $file 'does not exists. Creating.' -f Yellow",
+    "    $CONT = @('CheckForUpdates = false')",
+    "    Set-Content \"$dir\\$file\" ($CONT -join \"`r`n\") -Encoding Ascii",
+    "}"
+  ],
+  "bin": "SumatraPDF.exe",
+  "shortcuts": [
+    [
+      "SumatraPDF.exe",
+      "SumatraPDF"
     ]
-  },
-  "post_install": "Write-Output '[Policies]' 'CopySelection    = 1' 'DiskAccess       = 1' 'FullscreenAccess = 1' 'InternetAccess   = 0' 'LinkProtocols    = http,https' 'PrinterAccess    = 0' 'RegistryAccess   = 0' 'SafeFileTypes    =' 'SavePreferences  = 1' | Out-File \"$dir\\sumatrapdfrestrict.ini\""
+  ],
+  "persist": [
+    "SumatraPDF-settings.txt",
+    "sumatrapdfcache"
+  ]
 }

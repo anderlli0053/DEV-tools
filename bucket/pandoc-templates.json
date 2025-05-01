@@ -1,22 +1,22 @@
 {
-  "version": "1698454747",
+  "version": "1742151449",
   "description": "Templates for pandoc, tagged to release",
   "homepage": "https://github.com/jgm/pandoc-templates",
-  "license": "GPL-2.0-or-later,BSD-3-Clause",
-  "url": "https://ghproxy.com/https://github.com/jgm/pandoc-templates/archive/refs/heads/master.zip",
-  "hash": "058c0a80068172269e5d23b5f533ec3f4d53ab1fb6e7fa967febeebbcb867567",
+  "license": "GPL-2.0-or-later",
+  "url": "https://codeload.github.com/jgm/pandoc-templates/zip/refs/heads/master#/_.zip",
+  "hash": "c63cf964d32df66b91942e76841060506e026e2dee708dc2caeabb6a2a8bc653",
   "pre_install": [
-    "$templates = \"$dir\\templates\"",
-    "Rename-Item \"$dir\\pandoc-templates-master\" $templates",
-    "$installPath = \"$env:APPDATA\\pandoc\\templates\"",
-    "if (!(Test-Path $installPath)) { New-Item -ItemType SymbolicLink -Path $installPath -Target $templates | Out-Null }"
+    "$templates = \"$dir/templates\"",
+    "Rename-Item \"$dir/pandoc-templates-master\" $templates",
+    "$installPath = \"$env:APPDATA/pandoc/templates\"",
+    "$null = New-Item -ItemType SymbolicLink -Path $installPath -Target $templates -ErrorAction Ignore"
   ],
-  "post_uninstall": "Remove-Item -Recurse -ErrorAction Ignore \"$env:APPDATA\\pandoc\\templates\"",
+  "post_uninstall": "Remove-Item -Recurse -ErrorAction Ignore \"$env:APPDATA/pandoc/templates\"",
   "checkver": {
-    "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repositories/115543137/commits/master).commit.committer.date -UFormat %s } catch { '' }",
+    "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repositories/115543137/commits)[0].commit.committer.date -UFormat %s } catch { '' }",
     "regex": "\\A(\\d+)\\Z"
   },
   "autoupdate": {
-    "url": "https://ghproxy.com/https://github.com/jgm/pandoc-templates/archive/refs/heads/master.zip"
+    "url": "https://codeload.github.com/jgm/pandoc-templates/zip/refs/heads/master#/_.zip"
   }
 }

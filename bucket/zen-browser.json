@@ -1,0 +1,46 @@
+{
+  "version": "1.11.5b",
+  "description": "A open-source browser based on the Firefox engine",
+  "homepage": "https://www.zen-browser.app/",
+  "license": "MPL-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/zen-browser/desktop/releases/download/1.11.5b/zen.installer.exe#/dl.7z",
+      "hash": "d6489410c034e7a4b4cffc37b36d935a7fc391ebe8d56113690791ceb336666b"
+    },
+    "arm64": {
+      "url": "https://github.com/zen-browser/desktop/releases/download/1.11.5b/zen.installer-arm64.exe#/dl.7z",
+      "hash": "d57c743fcc0b3fd1a50135e0c66b5eae6d2f66a3bb5ab891d17616550930b936"
+    }
+  },
+  "extract_dir": "core",
+  "bin": [
+    [
+      "zen.exe",
+      "zen",
+      "-profile \"$dir\\profile\""
+    ]
+  ],
+  "shortcuts": [
+    [
+      "zen.exe",
+      "Zen Browser",
+      "-profile \"$dir\\profile\""
+    ]
+  ],
+  "persist": "Profile",
+  "checkver": {
+    "url": "https://github.com/zen-browser/desktop/tags",
+    "regex": "releases/tag/([ab\\d.-]+)"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/zen-browser/desktop/releases/download/$version/zen.installer.exe#/dl.7z"
+      },
+      "arm64": {
+        "url": "https://github.com/zen-browser/desktop/releases/download/$version/zen.installer-arm64.exe#/dl.7z"
+      }
+    }
+  }
+}

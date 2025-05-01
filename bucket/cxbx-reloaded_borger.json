@@ -1,0 +1,30 @@
+{
+  "version": "ec9934a",
+  "description": "Microsoft Xbox emulator",
+  "homepage": "https://cxbx-reloaded.co.uk/",
+  "license": {
+    "identifier": "GPL-2.0",
+    "url": "https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/blob/master/COPYING"
+  },
+  "url": "https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/releases/download/CI-ec9934a/CxbxReloaded-Release-VS2019.zip",
+  "hash": "9916b5c6e6e381705ac00ab8360937ee5a8b80e4f8d5faf3bab5294335afb137",
+  "pre_install": "if (!(Test-Path \"$persist_dir\\settings.ini\")) { $null = New-Item \"$dir\\settings.ini\" }",
+  "bin": "cxbx.exe",
+  "shortcuts": [
+    [
+      "cxbx.exe",
+      "Microsoft Xbox [xbx][cxbx]"
+    ]
+  ],
+  "persist": [
+    "EmuDisk",
+    "settings.ini"
+  ],
+  "checkver": {
+    "url": "https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/releases.atom",
+    "regex": "CI-([a-f\\d]+)."
+  },
+  "autoupdate": {
+    "url": "https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/releases/download/CI-$version/CxbxReloaded-Release-VS2019.zip"
+  }
+}

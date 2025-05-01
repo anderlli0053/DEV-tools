@@ -1,12 +1,12 @@
 {
-  "version": "10314.12012.2019",
+  "version": "20784",
   "description": "Complete office suite.",
   "homepage": "https://www.wps.cn",
   "license": {
     "identifier": "Freeware"
   },
-  "url": "https://official-package.wpscdn.cn/wps/download/W.P.S.10314.12012.2019.exe",
-  "hash": "3d80d57762a8879cf09cb2ae18a3369ade3f98faab89387b1b75302d9449da0c",
+  "url": "https://official-package.wpscdn.cn/wps/download/WPS_Setup_20784.exe",
+  "hash": "d3362dee226a309b4ed486d1e0a89993e8256b5ab7089f14dcf6089cf69ecf29",
   "pre_install": [
     "Expand-7zipArchive \"$dir\\$fname\"",
     "Expand-7zipArchive \"$dir\\`$_11_\\`$EXEFILE\" -Switches '-t#'",
@@ -23,10 +23,10 @@
     ]
   ],
   "checkver": {
-    "url": "https://platform.wps.cn/",
-    "regex": "W\\.P\\.S\\.([\\d.]+)\\.exe"
+    "url": "https://www.wps.cn/platformUrls",
+    "regex": "/WPS_Setup_([\\d.]+)\\.exe"
   },
   "autoupdate": {
-    "url": "https://official-package.wpscdn.cn/wps/download/W.P.S.$version.exe"
+    "url": "https://official-package.wpscdn.cn/wps/download/WPS_Setup_$version.exe"
   }
 }

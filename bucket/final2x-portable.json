@@ -1,5 +1,5 @@
 {
-  "version": "2023-08-14",
+  "version": "2024-12-14",
   "description": "2^x Image Super-Resolution",
   "homepage": "https://github.com/Tohrusky/Final2x",
   "license": {
@@ -8,12 +8,12 @@
   },
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/Tohrusky/Final2x/releases/download/2023-08-14/Final2x-windows-x64-unpacked.zip",
-      "hash": "187117bbec11040f4581ba15ea0adc56c9af84b024aaa309b209f4a09e650b85"
+      "url": "https://github.com/Tohrusky/Final2x/releases/download/2024-12-14/Final2x-windows-x64-unpacked.7z",
+      "hash": "1d718728e372002626c963b444002a9434a6e78816eb3bcb0cf8e67d6a39ad40"
     },
     "arm64": {
-      "url": "https://ghproxy.com/https://github.com/Tohrusky/Final2x/releases/download/2023-08-14/Final2x-windows-arm64-unpacked.zip",
-      "hash": "3571cd8a7b2978c1a64c056ef73c966d04206446588502cd20e7d00db2c49dfe"
+      "url": "https://github.com/Tohrusky/Final2x/releases/download/2024-12-14/Final2x-windows-arm64-unpacked.7z",
+      "hash": "4c8d0dc09d57987f60cc7558ab36fc732e94ebcdd3d3895783328c826ba5e377"
     }
   },
   "installer": {
@@ -33,15 +33,16 @@
   ],
   "checkver": {
     "url": "https://api.github.com/repos/Tohrusky/Final2x/releases",
-    "regex": "/releases/tag/([\\d-]+)"
+    "jp": "$[0].assets[*].browser_download_url",
+    "regex": "/releases/download/([\\d-]+)/(?<arm64>Final2x-windows-arm64-unpacked\\.(?:zip|7z)).*?(?<x64>Final2x-windows-x64-unpacked\\.(?:zip|7z))"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/Tohrusky/Final2x/releases/download/$version/Final2x-windows-x64-unpacked.zip"
+        "url": "https://github.com/Tohrusky/Final2x/releases/download/$version/$matchX64"
       },
       "arm64": {
-        "url": "https://ghproxy.com/https://github.com/Tohrusky/Final2x/releases/download/$version/Final2x-windows-arm64-unpacked.zip"
+        "url": "https://github.com/Tohrusky/Final2x/releases/download/$version/$matchArm64"
       }
     }
   }

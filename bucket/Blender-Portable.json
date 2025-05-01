@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
     "version": "4.4.3",
     "description": "Blender. 3D creation suite",
     "homepage": "https://www.blender.org",
@@ -31,5 +32,39 @@
         "hash": {
             "url": "$baseurl/blender-$version.sha256"
         }
+=======
+  "version": "4.4.3",
+  "description": "Blender. 3D creation suite",
+  "homepage": "https://www.blender.org",
+  "license": "GPL-3.0-or-later",
+  "architecture": {
+    "64bit": {
+      "url": "https://mirror.clarkson.edu/blender/release/Blender4.4/blender-4.4.3-windows-x64.zip",
+      "hash": "60a9703b07f2cf42509f699ccdec4f5ede71c1932f6c14329f0e14c023e27d5c",
+      "extract_dir": "blender-4.4.3-windows-x64"
+>>>>>>> Stashed changes
     }
+  },
+  "bin": "blender.exe",
+  "shortcuts": [
+    [
+      "blender.exe",
+      "Blender"
+    ]
+  ],
+  "checkver": {
+    "url": "https://www.blender.org/download/",
+    "regex": "blender-([\\d.]+)-windows-x64.zip"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://mirror.clarkson.edu/blender/release/Blender$majorVersion.$minorVersion/blender-$version-windows-x64.zip",
+        "extract_dir": "blender-$version-windows-x64"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/blender-$version.sha256"
+    }
+  }
 }

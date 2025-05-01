@@ -1,24 +1,38 @@
 {
-    "homepage": "https://github.com/Dreamacro/clash/",
-    "description": "A rule-based tunnel in Go.",
-    "version": "1.3.0",
+    "version": "1.18.0",
+    "description": "A rule-based tunnel",
+    "homepage": "https://github.com/Dreamacro/clash",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Dreamacro/clash/releases/download/v1.3.0/clash-windows-amd64-v1.3.0.zip",
-            "hash": "963f5e9ddc7c9ba3ae405376dfa4783d6bb2108c80fd95f78f00ddbaf0a7fe03"
+            "url": "https://github.com/Dreamacro/clash/releases/download/v1.18.0/clash-windows-amd64-v1.18.0.zip",
+            "hash": "1766594ddbae7c49c901ce56eeef802dc9c5f9500157af468121271bf5d6183c",
+            "bin": [
+                [
+                    "clash-windows-amd64.exe",
+                    "clash"
+                ]
+            ]
+        },
+        "32bit": {
+            "url": "https://github.com/Dreamacro/clash/releases/download/v1.18.0/clash-windows-386-v1.18.0.zip",
+            "hash": "8cb3978c80f9c889acf00d0e6505f3ad7362ccdd510860f2efbc88b8cecb82c2",
+            "bin": [
+                [
+                    "clash-windows-386.exe",
+                    "clash"
+                ]
+            ]
         }
     },
-    "pre_install": "Rename-Item @(Get-ChildItem $dir\\clash-*.exe)[0] $dir\\clash.exe",
-    "bin": "clash.exe",
-    "checkver": {
-        "url": "https://github.com/Dreamacro/clash/releases",
-        "regex": "releases/tag/v([\\d.]+)"
-    },
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/Dreamacro/clash/releases/download/v$version/clash-windows-amd64-v$version.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/Dreamacro/clash/releases/download/v$version/clash-windows-386-v$version.zip"
             }
         }
     }

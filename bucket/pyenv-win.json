@@ -1,25 +1,20 @@
 {
   "version": "3.1.1",
-  "description": "pyenv for Windows. pyenv is a simple python version management tool. windows下的 pyenv，一个简单的python版本管理工具。",
+  "description": "windows 下的 pyenv，一个简单的 python 版本管理工具。pyenv for Windows. pyenv is a simple python version management tool. ",
   "homepage": "https://github.com/pyenv-win/pyenv-win",
-  "license": "Freeware",
+  "license": {
+    "identifier": "MIT",
+    "url": "https://github.com/pyenv-win/pyenv-win/blob/master/LICENSE"
+  },
   "url": "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1",
   "hash": "54f9ad87646ee9c69c8842266e90868c28a67a9241eb82d89da066c943b8fd0b",
   "pre_install": [
-    "Write-Host \"please ensure your network can access Github,and continue install\" -ForegroundColor Red",
-    "pause"
+    ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
+    "try { & \"$dir\\install-pyenv-win.ps1\" }catch{ throw 'Install error due to possible network issues.'}",
+    "persist_file -dir @(\"$env:UserProfile\\.pyenv\") @(\"$persist_dir\\.pyenv\")",
+    "do_some_things"
   ],
-  "post_install": [
-    "Invoke-Expression $dir\\install-pyenv-win.ps1",
-    "$data_path=\"$env:userProfile/.pyenv/pyenv-win/install_cache\"",
-    "$count=0;$current_bucket_name=foreach($_ in scoop bucket list,$count){if(($count -eq 0) -and ($_.Source -match \"abgox/abgo_bucket\")){echo $_.Name};$count++}",
-    "$ps1 = \"$bucketsdir\\$current_bucket_name\\bin\\persist_link.ps1 $data_path $persist_dir\\install_cache\"",
-    "Invoke-Expression \"$ps1\""
-  ],
-  "pre_uninstall": [
-    "$ps1=\"$dir\\install-pyenv-win.ps1 -Uninstall\"",
-    "Invoke-Expression $ps1"
-  ],
+  "pre_uninstall": "& \"$dir\\install-pyenv-win.ps1\" -Uninstall",
   "checkver": "github",
   "autoupdate": {
     "url": "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1"

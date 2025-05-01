@@ -1,10 +1,10 @@
 {
-  "version": "9.1.1",
+  "version": "9.6.3",
   "description": "A HDD/SSD utility software which supports a part of USB, Intel RAID and NVMe.",
-  "homepage": "https://crystalmark.info/en/",
+  "homepage": "https://crystalmark.info/en/software/crystaldiskinfo/",
   "license": "MIT",
-  "url": "https://crystalmark.info/download/zz/CrystalDiskInfo9_1_1KureiKei.zip",
-  "hash": "3a3f62783dc65b5d173c10df96c843df0bb56e33c4c513d461c5f63f8e75d4e3",
+  "url": "https://zenlayer.dl.sourceforge.net/project/crystaldiskinfo/9.6.3/CrystalDiskInfo9_6_3KureiKei.zip",
+  "hash": "sha1:049cc7bb40fc6dea773e25ff0afdb8dc856cec1e",
   "architecture": {
     "64bit": {
       "shortcuts": [
@@ -32,7 +32,7 @@
     }
   },
   "pre_install": [
-    "if (!(Test-Path \"$persist_dir\\DiskInfo.ini\")) {",
+    "if (-not (Test-Path \"$persist_dir\\DiskInfo.ini\")) {",
     "    New-Item \"$dir\\DiskInfo.ini\" -ItemType File | Out-Null",
     "}"
   ],
@@ -42,9 +42,9 @@
   ],
   "checkver": {
     "url": "https://crystalmark.info/en/download/",
-    "regex": "meta name=\"description.+CrystalDiskInfo ([\\w\\.]+) - Manual"
+    "regex": "CrystalDiskInfo ([\\w\\.]+) &#8211;"
   },
   "autoupdate": {
-    "url": "https://crystalmark.info/download/zz/CrystalDiskInfo$underscoreVersionKureiKei.zip"
+    "url": "https://zenlayer.dl.sourceforge.net/project/crystaldiskinfo/$version/CrystalDiskInfo$underscoreVersionKureiKei.zip"
   }
 }

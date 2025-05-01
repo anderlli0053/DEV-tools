@@ -1,5 +1,5 @@
 {
-  "version": "6.3.1-0-g2974176",
+  "version": "7.2.0-1",
   "description": "A command-line utility that pipes video streams from various services into a video player.",
   "homepage": "https://streamlink.github.io/",
   "license": "BSD-2-Clause",
@@ -17,57 +17,48 @@
   "architecture": {
     "64bit": {
       "url": [
-        "https://nightly.link/streamlink/windows-builds/workflows/nightly/master/streamlink-6.3.1-0-g2974176-py311-x86_64.zip.zip",
-        "https://ghproxy.com/https://raw.githubusercontent.com/2bc4/streamlink-ttvlol/master/twitch.py"
+        "https://nightly.link/streamlink/windows-builds/workflows/main/master/streamlink-7.2.0-1-py313-x86_64.zip.zip",
+        "https://raw.githubusercontent.com/2bc4/streamlink-ttvlol/master/twitch.py"
       ],
       "hash": [
-        "da69bea37ff0762e7601f85b0ccdfd3a5cfb4c0dba5bd6fee90edbd80dffa184",
-        "bd328f5aa32f55ff4ff32af8cf24d44db6881270bd0077a2776fda5976484382"
-      ]
-    },
-    "32bit": {
-      "url": [
-        "https://nightly.link/streamlink/windows-builds/workflows/nightly/master/streamlink-6.3.1-0-g2974176-py311-x86.zip.zip",
-        "https://ghproxy.com/https://raw.githubusercontent.com/2bc4/streamlink-ttvlol/master/twitch.py"
-      ],
-      "hash": [
-        "7731537645992bbb485a1115f88dd55750b200d8eba7f0428cc9ce2cbeb5446a",
-        "bd328f5aa32f55ff4ff32af8cf24d44db6881270bd0077a2776fda5976484382"
+        "be908c65cd4efc5bdd280d4dce9623c1261a663fec4759c731363befde200766",
+        "9d233bd69ed555e3d983fc625b658ef4079c281ed1e1f8553f8d5fbf81c567be"
       ]
     }
   },
   "pre_install": [
-    "Expand-7zipArchive \"$dir\\streamlink-$version-py311-x86*.zip\" \"$dir\" -Removal",
-    "$python = try { (py.exe -0p | Select-Object -First 1 | Select-String \\S+\\Z).Matches.Value } catch {}",
+    "Expand-7zipArchive \"$dir/streamlink-$version-py313-x86*.zip\" \"$dir\" -Removal",
+    "$python = try { $null = (py.exe -0p | Select-Object -First 1) -cmatch '\\S+\\Z'; $Matches[1] } catch {}",
     "$paths = 'bin', 'pkgs'",
-    "if ($python -and ($ver = [System.Version]((py.exe -V) -Replace '[^\\d.]')) -lt [System.Version]'3.12.0' -and $ver -ge [System.Version]'3.11.0') {",
-    "New-Item -ItemType SymbolicLink -Path \"$dir\\Python\" -Target ($python | Split-Path) | Out-Null",
-    "} else { $paths += 'Python' }",
-    "$paths | ForEach-Object { Move-Item \"$dir\\streamlink-$version-py311-x86*\\$_\" \"$dir\" }",
-    "Remove-Item -Recurse \"$dir\\streamlink-$version-py311-x86*\"",
-    "Move-Item -Force \"$dir\\twitch.py\" \"$dir\\pkgs\\streamlink\\plugins\"",
-    "if (!(Test-Path \"$persist_dir\\config\")) {",
-    "    if (Test-Path \"$env:APPDATA\\streamlink\\config\") {",
-    "        info 'Copying existing ''config'' from ''%APPDATA%\\streamlink\\config'''",
-    "        Copy-Item \"$env:APPDATA\\streamlink\\config\" \"$dir\\config\"",
-    "    } else {",
-    "        New-Item \"$dir\\config\" | Out-Null",
-    "    }",
-    "}"
+    "if ($python -and ($ver = try { [Version]((py.exe -V) -Replace '[^\\d.]') } catch {}) -lt [Version]'3.14.0' -and $ver -ge [Version]'3.13.0') {",
+    "    $null = New-Item -ItemType SymbolicLink -Path \"$dir/Python\" -Target (Split-Path $python)",
+    "}",
+    "else { $paths += 'Python' }",
+    "$paths | ForEach-Object { Move-Item \"$dir/streamlink-$version-py313-x86*/$_\" \"$dir\" }",
+    "Remove-Item -Recurse \"$dir/streamlink-$version-py313-x86*\"",
+    "Move-Item -Force \"$dir/twitch.py\" \"$dir/pkgs/streamlink/plugins\"",
+    "$session = (Get-ChildItem \"$dir/pkgs/streamlink/session/session.py\").FullName",
+    "(Get-Content -Raw $session).Replace('plugins_lazy: bool = True', 'plugins_lazy: bool = False') | Set-Content $session",
+    "if (Test-Path \"$persist_dir/config\") { return }",
+    "if (Test-Path \"$env:APPDATA/streamlink/config\") {",
+    "    info 'Copying existing ''config'' from ''%APPDATA%\\streamlink\\config'''",
+    "    return $null = Copy-Item \"$env:APPDATA/streamlink/config\" \"$dir/config\"",
+    "}",
+    "$null = New-Item \"$dir/config\""
   ],
   "bin": [
     [
-      "bin\\streamlink.exe",
+      "bin/streamlink.exe",
       "streamlink",
       "--config \"$dir\\config\""
     ],
-    "bin\\streamlinkw.exe"
+    "bin/streamlinkw.exe"
   ],
   "persist": "config",
   "checkver": {
     "script": [
       "try {",
-      "    (Invoke-RestMethod https://api.github.com/repositories/472790314/actions/artifacts).artifacts[0].name -Match 'streamlink-([\\w.-]+)-py' | Out-Null",
+      "    $null = (Invoke-RestMethod https://api.github.com/repositories/472790314/actions/artifacts).artifacts[0].name -cmatch 'streamlink-([\\w.-]+)-py'",
       "    $verSplit = $matches[1].split('-')",
       "    if ($verSplit.Length -eq 3 -and $verSplit[2][0] -eq 'g') { $build = 'nightly' }",
       "    else { $build = 'main' }",
@@ -83,14 +74,8 @@
     "architecture": {
       "64bit": {
         "url": [
-          "https://nightly.link/streamlink/windows-builds/workflows/$matchBuild/master/streamlink-$version-py311-x86_64.zip.zip",
-          "https://ghproxy.com/https://raw.githubusercontent.com/2bc4/streamlink-ttvlol/master/twitch.py"
-        ]
-      },
-      "32bit": {
-        "url": [
-          "https://nightly.link/streamlink/windows-builds/workflows/$matchBuild/master/streamlink-$version-py311-x86.zip.zip",
-          "https://ghproxy.com/https://raw.githubusercontent.com/2bc4/streamlink-ttvlol/master/twitch.py"
+          "https://nightly.link/streamlink/windows-builds/workflows/$matchBuild/master/streamlink-$version-py313-x86_64.zip.zip",
+          "https://raw.githubusercontent.com/2bc4/streamlink-ttvlol/master/twitch.py"
         ]
       }
     }

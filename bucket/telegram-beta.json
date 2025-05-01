@@ -1,39 +1,39 @@
 {
-  "version": "4.6.12",
+  "version": "4.1.2",
   "description": "A messaging app with a focus on speed and security",
   "homepage": "https://telegram.org",
   "license": "GPL-3.0-only",
   "architecture": {
-    "32bit": {
-      "hash": "a3babc86ca5729c4c610901efd51886908bcddd454d484b86132e0f3e1baf363",
-      "url": "https://ghproxy.com/https://github.com/telegramdesktop/tdesktop/releases/download/v4.6.12/tportable.4.6.12.beta.zip"
-    },
     "64bit": {
-      "hash": "769ce75b882d90e9be75d69ee8e5d126a09e8d22aeeccb60a959a65a0779bb68",
-      "url": "https://ghproxy.com/https://github.com/telegramdesktop/tdesktop/releases/download/v4.6.12/tportable-x64.4.6.12.beta.zip"
+      "url": "https://github.com/telegramdesktop/tdesktop/releases/download/v4.1.2/tportable-x64.4.1.2.beta.zip",
+      "hash": "f9a15de89aa600a9f2a250954f55ca1befaa297d121345edb02d7c771839fca9"
+    },
+    "32bit": {
+      "url": "https://github.com/telegramdesktop/tdesktop/releases/download/v4.1.2/tportable.4.1.2.beta.zip",
+      "hash": "20f14d05062b724f5013f8f1beada2667abc9fb0a27af41eb582835815d4b792"
     }
   },
   "extract_dir": "Telegram",
   "pre_install": "Set-Content \"$dir\\telegram-beta.cmd\" '@start \"Telegram\" /D \"%~dp0\" \"%~dp0Telegram.exe\" %*' -Encoding Ascii",
   "bin": "telegram-beta.cmd",
-  "persist": "tdata",
   "shortcuts": [
     [
       "Telegram.exe",
       "Telegram (Beta)"
     ]
   ],
+  "persist": "tdata",
   "checkver": {
-    "regex": "\\/telegramdesktop\\/tdesktop\\/releases\\/tag\\/v([\\d.]+).+\\n.+Pre-release",
-    "url": "https://github.com/telegramdesktop/tdesktop/releases/"
+    "url": "https://github.com/telegramdesktop/tdesktop/releases/",
+    "regex": "/telegramdesktop/tdesktop/releases/download/v([\\d.]+)/tportable\\.([\\d\\.(?:beta)(?:zip)]+)"
   },
   "autoupdate": {
     "architecture": {
-      "32bit": {
-        "url": "https://ghproxy.com/https://github.com/telegramdesktop/tdesktop/releases/download/v$version/tportable.$version.beta.zip"
-      },
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/telegramdesktop/tdesktop/releases/download/v$version/tportable-x64.$version.beta.zip"
+        "url": "https://github.com/telegramdesktop/tdesktop/releases/download/v$version/tportable-x64.$match2"
+      },
+      "32bit": {
+        "url": "https://github.com/telegramdesktop/tdesktop/releases/download/v$version/tportable.$match2"
       }
     }
   }

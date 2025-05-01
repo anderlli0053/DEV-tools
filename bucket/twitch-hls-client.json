@@ -1,29 +1,43 @@
 {
-  "version": "0.5.4",
+  "$schema": "https://raw.githubusercontent.com/brian6932/Scoop/64bit-v2-v3-v4/schema.json",
+  "version": "1.4.0",
   "description": "Lightweight CLI client for watching low latency Twitch streams with ad blocking",
   "homepage": "https://github.com/2bc4/twitch-hls-client",
   "license": "GPL-3.0-or-later",
   "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/2bc4/twitch-hls-client/releases/download/0.5.4/twitch-hls-client-x86_64-pc-windows-msvc.zip",
-      "hash": "94141c3fda65c88b80c77b03fd6870c6ff306fafc8eaeddea6c3bd3769c4b518"
+    "64bit-v3": {
+      "url": "https://github.com/2bc4/twitch-hls-client/releases/download/1.4.0/twitch-hls-client-x86_64-v3-pc-windows-msvc.zip",
+      "hash": "803517e334215930ead2b60ca16336f4134cd3180091bc6f39fc60f10723908f"
     },
-    "32bit": {
-      "url": "https://ghproxy.com/https://github.com/2bc4/twitch-hls-client/releases/download/0.5.4/twitch-hls-client-i686-pc-windows-msvc.zip",
-      "hash": "c18dcf2e2b2521fcf60eb39b499a2d60e161d783a2dc5ea5d20e895df7495968"
+    "64bit": {
+      "url": "https://github.com/2bc4/twitch-hls-client/releases/download/1.4.0/twitch-hls-client-x86_64-pc-windows-msvc.zip",
+      "hash": "e133371ea5cfaaf918feff7c1983d65740f075ddf29c43be05ca45e2e128d566"
     }
   },
-  "pre_install": "'README.md', 'LICENSE' | ForEach-Object { Remove-Item \"$dir\\$_\" }",
-  "bin": "twitch-hls-client.exe",
+  "pre_install": [
+    "'README.md', 'LICENSE' | ForEach-Object { Remove-Item \"$dir/$_\" }",
+    "$null = if (!(Test-Path \"$persist_dir$($cfg = '/config')\")) { New-Item \"$dir$cfg\" }"
+  ],
+  "bin": [
+    [
+      "twitch-hls-client.exe",
+      "twitch-hls-client",
+      "-c \"$dir\\config\""
+    ]
+  ],
+  "persist": "config",
   "checkver": "github",
   "autoupdate": {
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.com/https://github.com/2bc4/twitch-hls-client/releases/download/$version/twitch-hls-client-x86_64-pc-windows-msvc.zip"
+      "64bit-v3": {
+        "url": "https://github.com/2bc4/twitch-hls-client/releases/download/$version/twitch-hls-client-x86_64-v3-pc-windows-msvc.zip"
       },
-      "32bit": {
-        "url": "https://ghproxy.com/https://github.com/2bc4/twitch-hls-client/releases/download/$version/twitch-hls-client-i686-pc-windows-msvc.zip"
+      "64bit": {
+        "url": "https://github.com/2bc4/twitch-hls-client/releases/download/$version/twitch-hls-client-x86_64-pc-windows-msvc.zip"
       }
+    },
+    "hash": {
+      "url": "$baseurl/sha256sums"
     }
   }
 }

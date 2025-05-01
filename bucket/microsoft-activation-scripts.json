@@ -1,25 +1,21 @@
 {
-    "version": "2.4",
-    "description": "A Windows and Office activator using HWID / KMS38 / Online KMS activation methods, with a focus on open-source code and fewer antivirus detections.",
-    "homepage": "https://massgrave.dev/",
-    "license": {
-        "identifier": "GPL-3.0 license",
-        "url": "https://github.com/massgravel/Microsoft-Activation-Scripts/blob/master/LICENSE"
-    },
-    "url": "https://ghproxy.com/https://github.com/massgravel/Microsoft-Activation-Scripts/archive/master.zip",
-    "hash": "1d1e2aba322d36c431f99658c766a292d50614580c7dd16377919626de2e7b7f",
-    "extract_dir": "Microsoft-Activation-Scripts-master",
-    "shortcuts": [
-        [
-            "MAS\\All-In-One-Version\\MAS_AIO.cmd",
-            "MAS_AIO"
-        ]
-    ],
-    "checkver": {
-        "url": "https://github.com/massgravel/Microsoft-Activation-Scripts/releases.atom",
-        "regex": "/releases/tag/([\\d.]+)"
-    },
-    "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/massgravel/Microsoft-Activation-Scripts/archive/master.zip"
-    }
+  "version": "0.2025.04.29.4e70206",
+  "description": "A Windows and Office activator using HWID / KMS38 / Online KMS activation methods, with a focus on open-source code and fewer antivirus detections.",
+  "homepage": "https://massgrave.dev/",
+  "license": {
+    "identifier": "GPL-3.0 license",
+    "url": "https://github.com/massgravel/Microsoft-Activation-Scripts/blob/master/LICENSE"
+  },
+  "url": "https://github.com/massgravel/Microsoft-Activation-Scripts/archive/master.zip",
+  "hash": "f0c7948b4d630f83b31697a5c14a5db3b0a745d23199b170543ba5f8088980e3",
+  "extract_dir": "Microsoft-Activation-Scripts-master",
+  "env_add_path": "MAS\\All-In-One-Version",
+  "checkver": {
+    "url": "https://github.com/massgravel/Microsoft-Activation-Scripts/commits/master.atom",
+    "regex": "(?s)>(\\d+)-(\\d+)-(\\d+)T.*?/(?<sha>(?<short>[0-9a-f]{7})[0-9a-f]{33})",
+    "replace": "0.${1}.${2}.${3}.${short}"
+  },
+  "autoupdate": {
+    "url": "https://github.com/massgravel/Microsoft-Activation-Scripts/archive/master.zip"
+  }
 }

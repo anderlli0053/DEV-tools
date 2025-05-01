@@ -2,13 +2,19 @@
   "homepage": "https://github.com/GopeedLab/gopeed",
   "description": "A high-speed downloader developed by Golang + Flutter, supports (HTTP, BitTorrent, Magnet) protocol, and supports all platforms.",
   "license": "GPL-3.0-only",
-  "version": "1.3.3",
+  "version": "1.7.0",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/GopeedLab/gopeed/releases/download/v1.3.3/Gopeed-v1.3.3-windows-amd64-portable.zip",
-      "hash": "5ba468899890ab2e06f83f2980d2d7f3603fd96c137bb03806518affada6177e"
+      "url": "https://github.com/GopeedLab/gopeed/releases/download/v1.7.0/Gopeed-v1.7.0-windows-amd64-portable.zip",
+      "hash": "5e0672f43db97e2faee8bfd48782fc5b0e29e97ae695af2158f3a9686a3b7087"
     }
   },
+  "pre_install": "if(!(Test-Path \"$persist_dir\\gopeed.db\")) { New-Item \"$dir\\gopeed.db\" -ItemType File -Force | Out-Null }",
+  "persist": [
+    "extensions",
+    ".extensions",
+    "gopeed.db"
+  ],
   "shortcuts": [
     [
       "gopeed.exe",
@@ -19,7 +25,7 @@
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/GopedLab/gopeed/releases/download/v$version/Gopeed-v$version-windows-amd64-portable.zip"
+        "url": "https://github.com/GopeedLab/gopeed/releases/download/v$version/Gopeed-v$version-windows-amd64-portable.zip"
       }
     }
   }

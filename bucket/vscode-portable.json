@@ -1,20 +1,21 @@
 {
+  "version": "1.99.3",
+  "description": "Lightweight but powerful source code editor",
   "homepage": "https://code.visualstudio.com/",
-  "version": "1.80.2",
   "license": {
     "identifier": "Freeware",
     "url": "https://code.visualstudio.com/License/"
   },
   "notes": [
-    "Visual Studio Code now supports Portable Mode! Please move the following directories:",
-    "From \"$env:USERPROFILE\\.vscode\\extensions\" to \"$env:USERPROFILE\\scoop\\persist\\vscode-portable\\data\\extensions\"",
-    "From \"$env:APPDATA\\Code\" to \"$env:USERPROFILE\\scoop\\persist\\vscode-portable\\data\\user-data\"",
-    "Add Visual Studio Code as a context menu option by running: \"$dir\\vscode-install-context.reg\""
+    "Add Visual Studio Code as a context menu option by running:",
+    "'reg import \"$dir\\install-context.reg\"'",
+    "For file associations, run:",
+    "'reg import \"$dir\\install-associations.reg\"'"
   ],
   "architecture": {
     "64bit": {
-      "url": "https://update.code.visualstudio.com/1.80.2/win32-x64-archive/stable#/dl.7z",
-      "hash": "2e4fd3bcada1e66b1fed4e11722538806726236837f5240032f48444f126d9dd"
+      "url": "https://update.code.visualstudio.com/1.99.3/win32-x64-archive/stable#/dl.7z",
+      "hash": "da542001b746381863359e9124b1dfd5851f29770c020a74b519f2d57370c50b"
     }
   },
   "bin": [
@@ -30,6 +31,16 @@
     ]
   ],
   "post_install": [
+    "$dirpath = \"$dir\".Replace('\\', '\\\\')",
+    "$exepath = \"$dir\\Code.exe\".Replace('\\', '\\\\')",
+    "if (!(Test-Path \"$dir\\data\\extensions\") -and (Test-Path \"$env:USERPROFILE\\.vscode\\extensions\")) {",
+    "    info '[Portable Mode] Copying extensions...'",
+    "    Copy-Item \"$env:USERPROFILE\\.vscode\\extensions\" \"$dir\\data\" -Recurse",
+    "}",
+    "if (!(Test-Path \"$dir\\data\\user-data\") -and (Test-Path \"$env:AppData\\Code\")) {",
+    "    info '[Portable Mode] Copying user data...'",
+    "    Copy-Item \"$env:AppData\\Code\" \"$dir\\data\\user-data\" -Recurse",
+    "}",
     "$extensions_file = \"$dir\\data\\extensions\\extensions.json\"",
     "if ((Test-Path \"$extensions_file\")) {",
     "    info 'Adjusting path in extensions file...'",
@@ -38,16 +49,16 @@
   ],
   "persist": "data",
   "checkver": {
-    "url": "https://code.visualstudio.com/sha?build=stable",
-    "jsonpath": "$.products[?(@.platform.os == 'win32-x64-archive')].name"
+    "url": "https://update.code.visualstudio.com/api/update/win32-x64-archive/stable/latest",
+    "jsonpath": "$.name"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
         "url": "https://update.code.visualstudio.com/$version/win32-x64-archive/stable#/dl.7z",
         "hash": {
-          "url": "https://code.visualstudio.com/sha?build=stable",
-          "jsonpath": "$.products[?(@.platform.os == 'win32-x64-archive')].sha256hash"
+          "url": "https://update.code.visualstudio.com/api/update/win32-x64-archive/stable/latest",
+          "jsonpath": "$.sha256hash"
         }
       }
     }

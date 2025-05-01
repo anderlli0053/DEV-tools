@@ -1,19 +1,27 @@
 {
-  "version": "2.5.95",
-  "description": "Completely Uninstall Stubborn Software, Windows Apps & Browser Extension.",
-  "homepage": "https://hibitsoft.ir/Uninstaller.html",
-  "url": "https://hibitsoft.ir/HiBitUninstaller/HiBitUninstaller-Portable-2.5.95.zip",
-  "hash": "sha256:85c33e4cf0e3931bd689181172bef6f862c7f75bf14a1f09a50bc0d6371bed7f",
-  "shortcuts": [
-    [
-      "HiBitUninstaller-Portable.exe",
-      "HiBit Uninstaller"
-    ]
+  "version": "3.2.55",
+  "description": "Completely uninstall stubborn software, windows apps & browser extension.",
+  "homepage": "https://www.hibitsoft.ir/Uninstaller.html",
+  "license": {
+    "identifier": "Proprietary"
+  },
+  "url": "https://www.hibitsoft.ir/HiBitUninstaller/HiBitUninstaller-Portable-3.2.55.zip",
+  "hash": "2df20fb949e2d4dee3705f1e3dc89ae005864751e582febd1ddfde612ab29183",
+  "pre_install": [
+    "if (!(Test-Path \"$persist_dir\\HiBitUninstaller\")) {",
+    "    ensure \"$dir\\HiBitUninstaller\"",
+    "    New-Item \"$dir\\HiBitUninstaller\\Settings.ini\" | Out-Null",
+    "}"
   ],
-  "bin": [
+  "shortcuts": [
     [
       "HiBitUninstaller-Portable.exe",
       "HiBitUninstaller"
     ]
-  ]
+  ],
+  "persist": "HiBitUninstaller",
+  "checkver": "Latest version: ([\\d.]+)",
+  "autoupdate": {
+    "url": "https://www.hibitsoft.ir/HiBitUninstaller/HiBitUninstaller-Portable-$version.zip"
+  }
 }

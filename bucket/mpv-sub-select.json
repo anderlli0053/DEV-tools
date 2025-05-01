@@ -1,17 +1,17 @@
 {
-  "version": "1682250729",
+  "version": "1743769264",
   "description": "An advanced conditional subtitle track selector for mpv player",
   "homepage": "https://github.com/CogentRedTester/mpv-sub-select",
   "license": "MIT",
-  "url": "https://ghproxy.com/https://github.com/CogentRedTester/mpv-sub-select/archive/refs/heads/master.zip",
-  "hash": "3b798d67997fde6c003d0a3e88a83c54b6a904a19f897e07a5e6039c69811881",
+  "url": "https://codeload.github.com/CogentRedTester/mpv-sub-select/zip/refs/heads/master#/_.zip",
+  "hash": "8a5ff8e386447a235daa61a0406a8751e3ea426c090ad8c6a5a10b57e03b72e2",
   "extract_dir": "mpv-sub-select-master",
-  "pre_install": "'README.md', 'LICENSE' | ForEach-Object { Remove-Item \"$dir\\$_\" }",
+  "pre_install": "'README.md', 'LICENSE' | ForEach-Object { Remove-Item \"$dir/$_\" }",
   "checkver": {
-    "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repositories/313069059/commits/master).commit.committer.date -UFormat %s } catch { '' }",
+    "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repositories/313069059/commits)[0].commit.committer.date -UFormat %s } catch { '' }",
     "regex": "\\A(\\d+)\\Z"
   },
   "autoupdate": {
-    "url": "https://ghproxy.com/https://github.com/CogentRedTester/mpv-sub-select/archive/refs/heads/master.zip"
+    "url": "https://codeload.github.com/CogentRedTester/mpv-sub-select/zip/refs/heads/master#/_.zip"
   }
 }

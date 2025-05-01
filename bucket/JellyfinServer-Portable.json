@@ -1,5 +1,5 @@
 {
-  "version": "10.8.9",
+  "version": "10.10.7",
   "description": "Jellyfin Server. Software Media System",
   "homepage": "https://jellyfin.org",
   "license": "GPL-2.0-only",
@@ -12,11 +12,11 @@
   },
   "architecture": {
     "64bit": {
-      "url": "https://repo.jellyfin.org/releases/server/windows/versions/stable/combined/10.8.9/jellyfin_10.8.9.zip",
-      "hash": "a67d476fab4474885c4556aa1c573f3b5b492bd88bcef598f60591b47b3c270b"
+      "url": "https://repo.jellyfin.org/files/server/windows/latest-stable/amd64/jellyfin_10.10.7-amd64.zip",
+      "hash": "29d4d2a837152e7f644ed8f2b2b456fdf5c422f3d7fb2cc7996c36ab7b631d48"
     }
   },
-  "extract_dir": "jellyfin_10.8.9",
+  "extract_dir": "jellyfin_10.10.7",
   "extract_to": "system",
   "bin": [
     [
@@ -27,14 +27,13 @@
   ],
   "persist": "data",
   "checkver": {
-    "url": "https://repo.jellyfin.org/releases/server/windows/versions/stable/combined/",
-    "regex": "\"([\\d.]+)/",
-    "reverse": true
+    "url": "https://repo.jellyfin.org/?path=/server/windows/latest-stable/amd64",
+    "regex": "Current Stable \\(v([\\d+.]+)\\)"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://repo.jellyfin.org/releases/server/windows/versions/stable/combined/$version/jellyfin_$version.zip"
+        "url": "https://repo.jellyfin.org/files/server/windows/latest-stable/amd64/jellyfin_$version-amd64.zip"
       }
     },
     "hash": {

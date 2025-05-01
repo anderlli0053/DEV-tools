@@ -1,27 +1,45 @@
 {
-  "version": "3.1.1",
+  "version": "3.5.0",
   "description": "TLS/SSL toolkit",
   "homepage": "https://slproweb.com/products/Win32OpenSSL.html",
   "license": "Apache-2.0",
   "architecture": {
     "64bit": {
-      "url": "https://slproweb.com/download/Win64OpenSSL-3_1_1.exe",
-      "hash": "2424f0209c015aefc0da0a8c00d06186fccc9553ac3a9a5087b79f265efca8f4"
+      "url": "https://slproweb.com/download/Win64OpenSSL-3_5_0.exe",
+      "hash": "d91f543af5f312800d5763cd5cd42eb597476101542c4aeaead59e7527e09640"
     },
     "32bit": {
-      "url": "https://slproweb.com/download/Win32OpenSSL-3_1_1.exe",
-      "hash": "f2e51490041012d796551ee23546613d89b6b57a2880726a56235ce147326d51"
+      "url": "https://slproweb.com/download/Win32OpenSSL-3_5_0.exe",
+      "hash": "47ca0422ae3900ce6d4e4a720bcde1b617031a0313bbf9f5bf2679101c9f34d5"
+    },
+    "arm64": {
+      "url": "https://slproweb.com/download/Win64ARMOpenSSL-3_5_0.exe",
+      "hash": "d4a22a3dc426b0195de57ebce51eca8c7f3f3ca8f4414588adc95accf223e6d4"
     }
   },
+  "pre_install": [
+    "$arch = switch ($architecture) {",
+    "    '64bit' { 'x64'; break }",
+    "    '32bit' { 'x86'; break }",
+    "    'arm64' { $architecture; break }",
+    "}",
+    "$null = Get-ChildItem \"$dir/lib/VC/$arch/MT\" | ForEach-Object { New-Item -ItemType HardLink -Target $_.FullName -Path \"$dir/lib/$($_.Name)\" }"
+  ],
   "innosetup": true,
   "env_add_path": "bin",
   "env_set": {
-    "OPENSSL_CONF": "$dir\\bin\\cnf\\openssl.cnf",
+    "OPENSSL_ROOT_DIR": "$dir",
     "OPENSSL_LIB_DIR": "$dir\\lib",
     "OPENSSL_INCLUDE_DIR": "$dir\\include",
-    "OPENSSL_MODULES": "$dir\\bin"
+    "OPENSSL_MODULES": "$dir\\bin",
+    "OPENSSL_CONF": "$dir\\bin\\cnf\\openssl.cnf"
   },
-  "checkver": "Win32 OpenSSL v([^\\s]+)",
+  "checkver": {
+    "url": "https://raw.githubusercontent.com/slproweb/opensslhashes/master/win32_openssl_hashes.json",
+    "jsonpath": "$.files..basever",
+    "regex": "([\\d.]+)",
+    "reverse": true
+  },
   "autoupdate": {
     "architecture": {
       "64bit": {
@@ -29,10 +47,13 @@
       },
       "32bit": {
         "url": "https://slproweb.com/download/Win32OpenSSL-$underscoreVersion.exe"
+      },
+      "arm64": {
+        "url": "https://slproweb.com/download/Win64ARMOpenSSL-$underscoreVersion.exe"
       }
     },
     "hash": {
-      "url": "https://ghproxy.com/https://raw.githubusercontent.com/slproweb/opensslhashes/master/win32_openssl_hashes.json",
+      "url": "https://raw.githubusercontent.com/slproweb/opensslhashes/master/win32_openssl_hashes.json",
       "jsonpath": "$.files.['$basename'].sha256"
     }
   }

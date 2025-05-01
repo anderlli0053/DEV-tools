@@ -2,10 +2,10 @@
   "homepage": "https://www.capcut.cn/",
   "description": "Video editing application produced by ByteDance",
   "license": "Proprietary",
-  "version": "4.7.1.10713",
-  "url": "https://lf3-package.vlabstatic.com/obj/faceu-packages/Jianying_4_7_1_10713_jianyingpro_0_creatortool.exe#/jianyingpro.7z",
-  "hash": "11e633a32d64f6ca097d21244b9839588513fc7bd261a3230cb6f95d87a6fd02",
-  "extract_dir": "JYPacket/4.7.1.10713",
+  "version": "8.1.1.12944",
+  "url": "https://lf3-package.vlabstatic.com/obj/faceu-packages/Jianying_8_1_1_12944_jianyingpro_0_creatortool.exe#/jianyingpro.7z",
+  "hash": "md5:8f9fecf81d19ed566a0784d285fd0513",
+  "extract_dir": "JYPacket/8.1.1.12944",
   "shortcuts": [
     [
       "JianyingPro.exe",
@@ -13,12 +13,17 @@
     ]
   ],
   "checkver": {
-    "url": "https://lf3-beecdn.bytetos.com/obj/ies-fe-bee/bee_prod/biz_80/bee_prod_80_bee_publish_3563.json",
-    "regex": "default.*?https://(?<path>.*?)/Jianying_(?<major>[\\d]+)_(?<minor>[\\d]+)_(?<patch>[\\d]+)_(?<build>[\\d]+)_jianyingpro_0_creatortool.exe",
+    "url": "https://is.snssdk.com/service/settings/v3/?device_platform=windows&os_version=10&aid=3704&iid=0&version_code=197888",
+    "jsonpath": "$.data.settings.update_reminder.lastest_stable_url",
+    "regex": "https://(?<path>.*?)/Jianying_(?<major>[\\d]+)_(?<minor>[\\d]+)_(?<patch>[\\d]+)_(?<build>[\\d]+)_jianyingpro_0_creatortool.exe",
     "replace": "${major}.${minor}.${patch}.${build}"
   },
   "autoupdate": {
     "url": "https://$matchPath/Jianying_$underscoreVersion_jianyingpro_0_creatortool.exe#/jianyingpro.7z",
+    "hash": {
+      "url": "https://is.snssdk.com/service/settings/v3/?device_platform=windows&os_version=10&aid=3704&iid=0&version_code=197888",
+      "jsonpath": "$.data.settings.update_reminder.lastest_stable_url_md5"
+    },
     "extract_dir": "JYPacket/$version"
   }
 }

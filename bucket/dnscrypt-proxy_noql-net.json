@@ -1,0 +1,32 @@
+{
+  "version": "2.1.8",
+  "description": "dnscrypt-proxy 2 - A flexible DNS proxy, with support for encrypted DNS protocols.",
+  "homepage": "https://github.com/DNSCrypt/dnscrypt-proxy",
+  "license": "ISC",
+  "notes": "",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.1.8/dnscrypt-proxy-win64-2.1.8.zip",
+      "hash": "dcbef9a4079164545ab9d8a95b4d97da3e639213451dd2c14237ceba59c909bb"
+    }
+  },
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/$version/dnscrypt-proxy-win64-$version.zip"
+      }
+    }
+  },
+  "pre_install": [
+    "'dnscrypt-proxy.toml', 'query.log' | ForEach-Object {",
+    "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" -ItemType File | Out-Null }",
+    "};"
+  ],
+  "persist": [
+    "dnscrypt-proxy.toml",
+    "query.log"
+  ],
+  "extract_dir": "win64",
+  "bin": "dnscrypt-proxy.exe"
+}

@@ -1,0 +1,40 @@
+{
+  "version": "0.5.16",
+  "descirption": "An open source alternative to ChatGPT that runs 100% offline on your computer",
+  "homepage": "https://jan.ai/",
+  "license": "AGPL-3.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/janhq/jan/releases/download/v0.5.16/jan-win-x64-0.5.16.exe",
+      "hash": "sha512:e618f15f124ce73122aa4f06b3ee4a1ffb3918027c963a81543363ec457475a603ea7c5221f0ed15198581ef6534a4b425c6f59b76e11c5588393015907ef756"
+    }
+  },
+  "installer": {
+    "script": [
+      "$file = (Get-ChildItem \"$dir\" 'jan-*.exe' | Select-Object -First 1).FullName",
+      "Expand-7ZipArchive \"$file\" \"$dir\\\" -Removal",
+      "Expand-7ZipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal",
+      "Remove-Item \"$dir\\`$PLUGINSDIR\",\"$dir\\`$R0\"  -Force -Recurse"
+    ]
+  },
+  "shortcuts": [
+    [
+      "Jan.exe",
+      "Jan"
+    ]
+  ],
+  "checkver": {
+    "github": "https://github.com/janhq/jan"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/janhq/jan/releases/download/v$version/jan-win-x64-$version.exe",
+        "hash": {
+          "url": "https://github.com/janhq/jan/releases/download/v$version/latest.yml",
+          "regex": "sha512: $base64"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "version": "V2RayN-PROV1.9",
+  "description": "A GUI client for Windows and optimized for Iran.",
+  "homepage": "https://github.com/lowercase78/V2RayN-PRO",
+  "license": "GPL-3",
+  "notes": "",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/lowercase78/V2RayN-PRO/releases/download/V2RayN-PROV1.9/v2rayN-Pro.zip",
+      "hash": "8bb5781ccaf3574f50555f856274e6d4c0fcedae0d5274765d5c00abb7063541"
+    }
+  },
+  "checkver": {
+    "url": "https://api.github.com/repos/lowercase78/V2RayN-PRO/releases",
+    "jsonpath": "$.[0].tag_name"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/lowercase78/V2RayN-PRO/releases/download/$version/v2rayN-Pro.zip"
+      }
+    }
+  },
+  "persist": "guiConfigs",
+  "extract_dir": "v2rayN-Pro",
+  "bin": "v2rayN.exe",
+  "shortcuts": [
+    [
+      "v2rayN.exe",
+      "v2rayN"
+    ]
+  ]
+}

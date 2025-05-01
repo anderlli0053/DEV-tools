@@ -1,22 +1,31 @@
 {
-  "version": "0.1.0",
+  "version": "1.2.8",
+  "description": "A tool for showing disk usage",
+  "homepage": "https://github.com/chenquan/diskusage",
+  "license": "Apache-2.0",
   "architecture": {
-    "32bit": {
-      "url": "https://ghproxy.com/https://github.com/kemokemo/diskusage/releases/download/v0.1.0/diskusage_Windows_386.zip",
-      "bin": [
-        "diskusage.exe"
-      ],
-      "hash": "1038c82449465ce56eddf2a5b6a5858e046b37b1e5f560a4c3b6792fb9f1e36e"
-    },
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/kemokemo/diskusage/releases/download/v0.1.0/diskusage_Windows_x86_64.zip",
-      "bin": [
-        "diskusage.exe"
-      ],
-      "hash": "d678725bd0ed9f8939a7b78711d8c110e7066f7acba197e443ffd03fb5ec4544"
+      "url": "https://github.com/chenquan/diskusage/releases/download/v1.2.8/diskusage-v1.2.8-windows-amd64.zip",
+      "hash": "md5:a52ce6bc1ca9ae7047a0bf9a7b4a755e"
+    },
+    "arm64": {
+      "url": "https://github.com/chenquan/diskusage/releases/download/v1.2.8/diskusage-v1.2.8-windows-arm64.zip",
+      "hash": "md5:06501aa56e9f35c048f8681dd9ae0d86"
     }
   },
-  "homepage": "https://github.com/kemokemo/diskusage",
-  "license": "MIT",
-  "description": "This is a tiny tool to show the diskusage of the Windows."
+  "bin": "diskusage.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/chenquan/diskusage/releases/download/v$version/diskusage-v$version-windows-amd64.zip"
+      },
+      "arm64": {
+        "url": "https://github.com/chenquan/diskusage/releases/download/v$version/diskusage-v$version-windows-arm64.zip"
+      }
+    },
+    "hash": {
+      "url": "$url.md5"
+    }
+  }
 }

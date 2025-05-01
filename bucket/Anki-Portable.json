@@ -1,51 +1,51 @@
 {
-    "version": "25.02",
-    "description": "Anki. Powerful and intelligent flash cards",
-    "homepage": "https://apps.ankiweb.net",
-    "license": "AGPL-3.0-only",
-    "changelog": "https://github.com/ankitects/anki/releases",
-    "suggest": {
-        "vcredist": "extras/vcredist2008"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://ghproxy.com/https://github.com/ankitects/anki/releases/download/25.02/anki-25.02-windows-qt6.exe#/dl.7z",
-            "hash": "1bf09a1fff643c5741af21f8160b2e70caad62d0584ed2b271b49bd3c2efd57f"
-        }
-    },
-    "pre_install": [
-        "@(",
-        "    '@echo off'",
-        "    'SET _allParams=\"%*\"'",
-        "    'IF /i %_allParams:-b =%==%_allParams% ('",
-        "    \"    start `\"anki`\" /D `\"%~dp0`\" `\"%~dp0anki.exe`\" -b `\"$persist_dir\\data`\" %*\"",
-        "    ') ELSE ('",
-        "    '    start \"anki\" /D \"%~dp0\" \"%~dp0anki.exe\" %*'",
-        "    ')'",
-        ") | Set-Content \"$dir\\anki.cmd\" -Encoding ASCII",
-        "Remove-Item \"$dir\\`$*\" -Recurse"
-    ],
-    "bin": "anki.cmd",
-    "shortcuts": [
-        [
-            "anki.cmd",
-            "Anki",
-            "",
-            "anki.exe"
-        ]
-    ],
-    "persist": "data",
-    "checkver": {
-        "github": "https://github.com/ankitects/anki"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://ghproxy.com/https://github.com/ankitects/anki/releases/download/$version/anki-$version-windows-qt6.exe#/dl.7z"
-            }
-        },
-        "hash": {
-            "url": "$baseurl/anki-$version-checksums.txt"
-        }
+  "version": "25.02.4",
+  "description": "Anki. Powerful and intelligent flash cards",
+  "homepage": "https://apps.ankiweb.net",
+  "license": "AGPL-3.0-only",
+  "changelog": "https://github.com/ankitects/anki/releases",
+  "suggest": {
+    "vcredist": "extras/vcredist2008"
+  },
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/ankitects/anki/releases/download/25.02.4/anki-25.02.4-windows-qt6.exe#/dl.7z",
+      "hash": "5d1041ad76457c79a6915ac612b8a2fcd6b9216370d03d199d4b54e5bb3678ee"
     }
+  },
+  "pre_install": [
+    "@(",
+    "    '@echo off'",
+    "    'SET _allParams=\"%*\"'",
+    "    'IF /i %_allParams:-b =%==%_allParams% ('",
+    "    \"    start `\"anki`\" /D `\"%~dp0`\" `\"%~dp0anki.exe`\" -b `\"$persist_dir\\data`\" %*\"",
+    "    ') ELSE ('",
+    "    '    start \"anki\" /D \"%~dp0\" \"%~dp0anki.exe\" %*'",
+    "    ')'",
+    ") | Set-Content \"$dir\\anki.cmd\" -Encoding ASCII",
+    "Remove-Item \"$dir\\`$*\" -Recurse"
+  ],
+  "bin": "anki.cmd",
+  "shortcuts": [
+    [
+      "anki.cmd",
+      "Anki",
+      "",
+      "anki.exe"
+    ]
+  ],
+  "persist": "data",
+  "checkver": {
+    "github": "https://github.com/ankitects/anki"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/ankitects/anki/releases/download/$version/anki-$version-windows-qt6.exe#/dl.7z"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/anki-$version-checksums.txt"
+    }
+  }
 }

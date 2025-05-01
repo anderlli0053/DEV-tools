@@ -1,10 +1,10 @@
 {
-  "version": "8.0.4c",
+  "version": "8.0.6",
   "description": "A simple disk benchmark software.",
-  "homepage": "https://crystalmark.info/en/",
+  "homepage": "https://crystalmark.info/en/software/crystaldiskmark/",
   "license": "MIT",
-  "url": "https://dotsrc.dl.osdn.net/osdn/crystaldiskmark/77936/CrystalDiskMark8_0_4cShizuku.zip",
-  "hash": "4b3fc3fdc50d866526cb0cd78b0a95ba97a022884b78ce068179800ecc2cf0e8",
+  "url": "https://zenlayer.dl.sourceforge.net/project/crystaldiskmark/8.0.6/CrystalDiskMark8_0_6Shizuku.zip",
+  "hash": "sha1:0b6684896f662f402c6f1abeb7eeeb8f71122918",
   "architecture": {
     "64bit": {
       "shortcuts": [
@@ -33,7 +33,7 @@
   },
   "pre_install": [
     "'DiskMark32S.ini', 'DiskMark64S.ini', 'DiskMarkA64S.ini' | ForEach-Object {",
-    "    if (!(Test-Path \"$persist_dir\\$_\")) {",
+    "    if (-not (Test-Path \"$persist_dir\\$_\")) {",
     "        New-Item \"$dir\\$_\" -ItemType File | Out-Null",
     "    }",
     "}"
@@ -44,14 +44,10 @@
     "DiskMarkA64S.ini"
   ],
   "checkver": {
-    "url": "https://osdn.net/projects/crystaldiskmark/",
-    "regex": "releases\\/(?<release>[\\d]+)\">CrystalDiskMark ([\\w.]+)<"
+    "url": "https://crystalmark.info/en/download/",
+    "regex": "CrystalDiskMark ([\\w\\.]+) &#8211;"
   },
   "autoupdate": {
-    "url": "https://dotsrc.dl.osdn.net/osdn/crystaldiskmark/$matchRelease/CrystalDiskMark$underscoreVersionShizuku.zip",
-    "hash": {
-      "url": "https://osdn.net/projects/crystaldiskmark/releases/rss",
-      "xpath": "//osdn:file[@url='https://osdn.net/projects/crystaldiskmark/downloads/$matchRelease/CrystalDiskMark$underscoreVersionShizuku.zip/']/@sha256"
-    }
+    "url": "https://zenlayer.dl.sourceforge.net/project/crystaldiskmark/$version/CrystalDiskMark$underscoreVersionShizuku.zip"
   }
 }

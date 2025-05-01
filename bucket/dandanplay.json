@@ -1,43 +1,35 @@
 {
   "homepage": "https://www.dandanplay.com/",
-  "description": "A free to use bangumi player with danmaku support",
-  "version": "13.6.0",
+  "description": "A local video player with danmu.",
+  "version": "15.13.0",
   "license": "Unknown",
   "architecture": {
     "64bit": {
-      "url": "https://dandan.sakurateam.top/dandanplay-x64_13.6.0.zip",
-      "hash": "e8e3d7e46ed3173b941fe9e4effcbcbd148aaabec394cef0e326a8dc8fa23d9d",
+      "url": "https://github.com/kaedei/dandanplay/releases/download/windows-15.13.0.0/dandanplay-x64_15.13.0.zip",
+      "hash": "70578f1a06d95026fb4f878569156622761a83845d67f1f247d03e97e9dabda6",
       "extract_dir": "dandanplay-x64"
     }
   },
-  "pre_install": [
-    "if (!(Test-Path \"$persist_dir\\Config\")) {",
-    "    New-Item -Path \"$persist_dir\\Config\" -ItemType Directory | Out-Null",
-    "}",
-    "# Disable auto update",
-    "if (!(Test-Path \"$persist_dir\\Config\\ConnectionSettings.xml\")) {",
-    "    New-Item -Force -Path \"$persist_dir\\Config\\ConnectionSettings.xml\" -ItemType File -Value '<?xml version=\"1.0\"?><ConnectionSettings><EnableAutoUpdate>false</EnableAutoUpdate><NotifyOnUpdateDownloaded>false</NotifyOnUpdateDownloaded></ConnectionSettings>' | Out-Null",
-    "}",
-    "# Disable  tracking",
-    "if (!(Test-Path \"$persist_dir\\Config\\UserSettings.xml\")) {",
-    "    New-Item -Force -Path \"$persist_dir\\Config\\UserSettings.xml\" -ItemType File -Value '<?xml version=\"1.0\"?><UserSettings><EnableTelemetry>false</EnableTelemetry></UserSettings>' | Out-Null",
-    "}"
+  "persist": [
+    "Cache",
+    "Config",
+    "Log"
   ],
   "shortcuts": [
     [
       "dandanplay.exe",
-      "弹弹play"
+      "DandanPlay"
     ]
   ],
-  "persist": [
-    "Config",
-    "Log",
-    "Cache"
-  ],
   "checkver": {
-    "regex": "dandanplay-x64_([\\d.]+).zip"
+    "url": "https://github.com/kaedei/dandanplay/releases/latest",
+    "regex": "(?sm)/releases/tag/windows-(?<ver>[\\d.]+).+\\bv(?<version>[\\d.]+)</"
   },
   "autoupdate": {
-    "url": "https://dandan.sakurateam.top/dandanplay-x64_$version.zip"
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/kaedei/dandanplay/releases/download/windows-$matchVer/dandanplay-x64_$version.zip"
+      }
+    }
   }
 }

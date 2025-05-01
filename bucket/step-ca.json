@@ -1,15 +1,25 @@
 {
-  "version": "0.24.2",
+  "version": "0.28.1",
+  "description": "A private certificate authority (X.509 & SSH) & ACME server for secure automated certificate management.",
+  "homepage": "https://github.com/smallstep/certificates",
+  "license": "Apache-2.0",
   "architecture": {
     "64bit": {
-      "url": "http://github.com/smallstep/certificates/releases/download/v0.24.2/step-ca_windows_0.24.2_amd64.zip",
-      "bin": [
-        "step-ca_0.24.2/step-ca.exe"
-      ],
-      "hash": "88c91ab0781b235218a8a4595ef1b02175c9c2808026c0870717dc64f7960b16"
+      "url": "https://github.com/smallstep/certificates/releases/download/v0.28.1/step-ca_windows_0.28.1_amd64.zip",
+      "hash": "e7292a5615f81d0a95d4a7561771427d99639e83ad7bd3ca9d8580ad9c2f8033",
+      "bin": "step-ca.exe"
     }
   },
-  "homepage": "https://smallstep.com/docs/step-ca",
-  "license": "Apache-2.0",
-  "description": "A private certificate authority (X.509 & SSH) & ACME server for secure automated certificate management, so you can use TLS everywhere & SSO for SSH."
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/smallstep/certificates/releases/download/v$version/step-ca_windows_$version_amd64.zip"
+      }
+    },
+    "hash": {
+      "url": "$baseurl/checksums.txt",
+      "find": "^$sha256 $basename$"
+    }
+  }
 }

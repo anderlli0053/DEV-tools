@@ -1,10 +1,18 @@
 {
-  "version": "7.98.72",
+  "version": "8.36",
   "description": "爱思助手",
   "homepage": "https://www.i4.cn/pro_pc.html",
   "license": "Freeware",
-  "url": "https://d-ali4tool.i4.cn/i4tools/V7/v7.98/72/i4Tools_v7.98.72_Setup.exe#/dl.7z",
-  "hash": "809da5e146dbcd06403069a21ddb786766ff7fee3d62439bbc7eb6a0df0a6808",
+  "architecture": {
+    "64bit": {
+      "url": "https://d-app6.i4.cn/i4tools/V8/8.36/i4Tools8_v8.36_Setup_x64.exe#/dl.7z",
+      "hash": "63e229d5b91c6b9519f9d09722c95df13c20058ceca1e2f79b2c432fcfe12b41"
+    },
+    "32bit": {
+      "url": "https://d-app6.i4.cn/i4tools/V8/8.36/i4Tools8_v8.36_Setup_x86.exe#/dl.7z",
+      "hash": "2c65e5ecedaab3722887d83df8895bd8b51c0621238738a929365ccb1ace7b4c"
+    }
+  },
   "bin": "i4Tools.exe",
   "shortcuts": [
     [
@@ -28,13 +36,17 @@
     ]
   },
   "checkver": {
-    "script": [
-      "try { $detail = Invoke-WebRequest 'https://url.i4.cn/faIfqyaa' -MaximumRedirection 0 -ErrorAction Ignore } catch { $_.Exception.Response }",
-      "return $detail.Headers.Location"
-    ],
-    "regex": "/i4Tools_v([\\d.]+)"
+    "url": "https://www.i4.cn/pro_pc.html",
+    "regex": "\\SV([\\d.]+)\\&nbsp"
   },
   "autoupdate": {
-    "url": "https://d-ali4tool.i4.cn/i4tools/V$majorVersion/v$majorVersion.$minorVersion/$patchVersion/i4Tools_v$version_Setup.exe#/dl.7z"
+    "architecture": {
+      "64bit": {
+        "url": "https://d-app6.i4.cn/i4tools/V$majorVersion/$version/i4Tools$majorVersion_v$version_Setup_x64.exe#/dl.7z"
+      },
+      "32bit": {
+        "url": "https://d-app6.i4.cn/i4tools/V$majorVersion/$version/i4Tools$majorVersion_v$version_Setup_x86.exe#/dl.7z"
+      }
+    }
   }
 }

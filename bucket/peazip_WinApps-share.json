@@ -1,0 +1,54 @@
+{
+  "version": "10.4.0",
+  "description": "A free file archiver utility, based on Open Source technologies",
+  "homepage": "https://www.peazip.org",
+  "license": "LGPL-3.0-only",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/peazip/PeaZip/releases/download/10.4.0/peazip_portable-10.4.0.WIN64.zip",
+      "hash": "c65a03885150c77f3f4d52e15ab08c78c0e13bb926c4bf825ec2b10411e231f3",
+      "extract_dir": "peazip_portable-10.4.0.WIN64"
+    },
+    "32bit": {
+      "url": "https://github.com/peazip/PeaZip/releases/download/10.4.0/peazip_portable-10.4.0.WINDOWS.zip",
+      "hash": "a4181feb651ddcdfe7113da686c9b9eae50e64f5d973441dd56f1439a0c4a048",
+      "extract_dir": "peazip_portable-10.4.0.WINDOWS"
+    }
+  },
+  "pre_install": [
+    "$manifest.persist | ForEach-Object {",
+    "    if ([io.path]::GetExtension($_)) {",
+    "        if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
+    "    }",
+    "}"
+  ],
+  "bin": "peazip.exe",
+  "shortcuts": [
+    [
+      "peazip.exe",
+      "PeaZip"
+    ]
+  ],
+  "persist": [
+    "res\\altconf.txt",
+    "res\\bookmarks.txt",
+    "res\\conf.txt",
+    "res\\conf-lastgood.txt",
+    "res\\custedit.txt"
+  ],
+  "checkver": {
+    "github": "https://github.com/peazip/PeaZip"
+  },
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/peazip/PeaZip/releases/download/$version/peazip_portable-$version.WIN64.zip",
+        "extract_dir": "peazip_portable-$version.WIN64"
+      },
+      "32bit": {
+        "url": "https://github.com/peazip/PeaZip/releases/download/$version/peazip_portable-$version.WINDOWS.zip",
+        "extract_dir": "peazip_portable-$version.WINDOWS"
+      }
+    }
+  }
+}

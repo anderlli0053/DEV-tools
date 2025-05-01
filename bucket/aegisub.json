@@ -1,43 +1,28 @@
 {
-  "homepage": "https://github.com/Aegisub/Aegisub",
-  "description": "Aegisub is a free, cross-platform open source tool for creating and modifying subtitles",
-  "version": "3.2.2",
+  "version": "3.4.2",
+  "description": "Advanced subtitle editor",
+  "homepage": "https://aegisub.org/",
   "license": "BSD-3-Clause",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/Aegisub/Aegisub/releases/download/v3.2.2/aegisub-3.2.2-portable-64.exe#dl.7z",
-      "hash": "d3865957ef6b6be1a320f01ac2f264349f9db7abc4864457963f9fdad5cd2256",
-      "extract_dir": "aegisub-3.2.2-portable-64",
-      "shortcuts": [
-        [
-          "aegisub64.exe",
-          "Aegisub"
-        ]
-      ]
-    },
-    "32bit": {
-      "url": "https://ghproxy.com/https://github.com/Aegisub/Aegisub/releases/download/v3.2.2/aegisub-3.2.2-portable-32.exe#dl.7z",
-      "hash": "849f6005d18a33495dcc22d4a5ecb6a2d087f653994db9498ec85c1eb9110f51",
-      "extract_dir": "aegisub-3.2.2-portable-32",
-      "shortcuts": [
-        [
-          "aegisub32.exe",
-          "Aegisub"
-        ]
-      ]
-    }
+  "url": "https://github.com/TypesettingTools/Aegisub/releases/download/v3.4.2/aegisub-3.4.2-portable.zip",
+  "hash": "2839195774b8de051071c40e0461b628a286089147ce3e025b539b0695beebed",
+  "extract_dir": "aegisub-portable",
+  "bin": "aegisub.exe",
+  "shortcuts": [
+    [
+      "aegisub.exe",
+      "Aegisub"
+    ]
+  ],
+  "pre_install": "@(\"config.json\",\"hotkey.json\") | ForEach-Object {if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$_\" -ItemType File > $null }}",
+  "persist": [
+    "config.json",
+    "hotkey.json",
+    "config"
+  ],
+  "checkver": {
+    "github": "https://github.com/TypesettingTools/Aegisub"
   },
-  "checkver": "github",
   "autoupdate": {
-    "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.com/https://github.com/Aegisub/Aegisub/releases/download/v$version/aegisub-$version-portable-64.exe#dl.7z",
-        "extract_dir": "aegisub-$version-portable-64"
-      },
-      "32bit": {
-        "url": "https://ghproxy.com/https://github.com/Aegisub/Aegisub/releases/download/v$version/aegisub-$version-portable-32.exe#dl.7z",
-        "extract_dir": "aegisub-$version-portable-32"
-      }
-    }
+    "url": "https://github.com/TypesettingTools/Aegisub/releases/download/v$version/aegisub-$version-portable.zip"
   }
 }

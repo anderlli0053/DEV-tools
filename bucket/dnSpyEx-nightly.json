@@ -1,16 +1,16 @@
 {
-  "version": "2023-10-23-run487-id6617626056",
+  "version": "2025-04-17-run706-id14523024419",
   "description": "Revival of the well known .NET debugger and assembly editor, dnSpy",
   "homepage": "https://github.com/dnSpyEx/dnSpy",
   "license": "GPL-3.0-only",
   "architecture": {
     "64bit": {
-      "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win64.zip#/dl.7z",
-      "hash": "cfa8563ac36fc73074684726ff4c5fe74d359a1f0eb0ff8d604ca6bfdb30e7e8"
+      "url": "https://nightly.link/dnSpyEx/dnSpy/actions/runs/14523024419/dnSpy-net-win64.zip#/dl.7z",
+      "hash": "e91fa602882f99e00fb14a1a6392568f60d62007e31e641557a611d65cf44bf8"
     },
     "32bit": {
-      "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win32.zip#/dl.7z",
-      "hash": "10df5eb133f6e5d43f8545a5bdf5383998574387a7c6c9e3496c831904e440ef"
+      "url": "https://nightly.link/dnSpyEx/dnSpy/actions/runs/14523024419/dnSpy-net-win32.zip#/dl.7z",
+      "hash": "bd3cef095c21202279471ce783ef584d6cf1a5179f26dce71d53ee9e29dea1ff"
     }
   },
   "bin": [
@@ -30,17 +30,17 @@
     ]
   ],
   "checkver": {
-    "url": "https://github.com/dnSpyEx/dnSpy/actions/workflows/build.yml?query=branch%3Amaster+is%3Asuccess",
-    "regex": "<a class=\"Link--primary css-truncate css-truncate-target\" .*? aria-label=\"Run (?<runCount>[\\d]+) of.*? href=\".*?/runs/(?<runId>[\\d]+?)\">[\\S\\s]+? datetime=\"(?<buildDate>\\d{4}-\\d{2}-\\d{2})T",
-    "replace": "${buildDate}-run${runCount}-id${runId}"
+    "url": "https://api.github.com/repos/dnSpyEx/dnSpy/actions/runs?status=success&branch=master&per_page=1&exclude_pull_requests=true",
+    "regex": "{\"id\":(?<runid>\\d+),.*?\"run_number\":(?<runnumber>\\d+).*?\"created_at\":\"(?<date>\\d+-\\d+-\\d+)T",
+    "replace": "${date}-run${runnumber}-id${runid}"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win64.zip#/dl.7z"
+        "url": "https://nightly.link/dnSpyEx/dnSpy/actions/runs/$matchRunid/dnSpy-net-win64.zip#/dl.7z"
       },
       "32bit": {
-        "url": "https://nightly.link/dnSpyEx/dnSpy/workflows/build/master/dnSpy-net-win32.zip#/dl.7z"
+        "url": "https://nightly.link/dnSpyEx/dnSpy/actions/runs/$matchRunid/dnSpy-net-win32.zip#/dl.7z"
       }
     }
   }

@@ -1,21 +1,21 @@
 {
-  "version": "2.31.0",
+  "version": "2.32.0",
   "description": "One for all free music in China",
-  "homepage": "http://listen1.github.io/listen1",
+  "homepage": "http://listen1.github.io/listen1/",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/listen1/listen1_desktop/releases/download/v2.31.0/listen1_2.31.0_win_x64.7z",
-      "hash": "5c7fead946b4b8401228242c0c2940f90d5fe1b07e916f1cba8f47360ef24db6"
+      "url": "https://github.com/listen1/listen1_desktop/releases/download/v2.32.0/listen1_2.32.0_win_x64.7z",
+      "hash": "sha512:239ef85c64f720ac312de13de3d49768344b9b292f55f143d4622ed0127fe4e0cb85a74ff9ccdc2f20edc5c67eba7e3383a07912e13e5e6abbde53a98b0c0031"
     },
     "32bit": {
-      "url": "https://ghproxy.com/https://github.com/listen1/listen1_desktop/releases/download/v2.31.0/listen1_2.31.0_win_ia32.7z",
-      "hash": "16831baaebe358c021f548cf9ef4458dbcce82a03dffa8c7d00d0f51e6e598db"
+      "url": "https://github.com/listen1/listen1_desktop/releases/download/v2.32.0/listen1_2.32.0_win_ia32.7z",
+      "hash": "sha512:69292539ff341eca8cfaf484d1e82c61bb666050d3c131bf9b43ee7d02e5ddfc9af54f780a5621bb62bb5b1a69cf9591cd6258a73e3085772595cab8b83f6642"
+    },
+    "arm64": {
+      "url": "https://github.com/listen1/listen1_desktop/releases/download/v2.32.0/listen1_2.32.0_win_arm64.7z",
+      "hash": "sha512:23496bd6f4fdd10b53899492f141977813c10cf549aa29059945c6eea925808f6af400a67e4f876a2dc428d090ab74429392f2efbd698ad4fa90c7bd297b386c"
     }
-  },
-  "post_install": "New-Item -ItemType Junction -Path $env:APPDATA\\listen1 -Target $persist_dir\\appdata -ErrorAction SilentlyContinue | Out-Null",
-  "uninstaller": {
-    "script": "Remove-Item -Path $env:APPDATA\\listen1 -Recurse -Force -ErrorAction SilentlyContinue | Out-Null"
   },
   "shortcuts": [
     [
@@ -23,17 +23,19 @@
       "Listen1"
     ]
   ],
-  "persist": "appdata",
   "checkver": {
     "github": "https://github.com/listen1/listen1_desktop"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/listen1/listen1_desktop/releases/download/v$version/listen1_$version_win_x64.7z"
+        "url": "https://github.com/listen1/listen1_desktop/releases/download/v$version/listen1_$version_win_x64.7z"
       },
       "32bit": {
-        "url": "https://ghproxy.com/https://github.com/listen1/listen1_desktop/releases/download/v$version/listen1_$version_win_ia32.7z"
+        "url": "https://github.com/listen1/listen1_desktop/releases/download/v$version/listen1_$version_win_ia32.7z"
+      },
+      "arm64": {
+        "url": "https://github.com/listen1/listen1_desktop/releases/download/v$version/listen1_$version_win_arm64.7z"
       }
     }
   }

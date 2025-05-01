@@ -1,0 +1,34 @@
+{
+  "homepage": "https://frippery.org/busybox",
+  "description": "BusyBox is a single binary that contains many common Unix tools",
+  "version": "5579-g5749feb35",
+  "license": "GPL-2.0",
+  "architecture": {
+    "64bit": {
+      "url": "https://frippery.org/files/busybox/busybox-w64-FRP-5579-g5749feb35.exe#/busybox.exe",
+      "hash": "1255109d6335adf8374888f9c9fc70221f098cb6bf03f183e710e71179ecad78"
+    }
+  },
+  "checkver": {
+    "url": "https://frippery.org/files/busybox/?C=M;O=D",
+    "regex": ">busybox-w32-FRP-([\\w-]+)\\."
+  },
+  "autoupdate": {
+    "hash": {
+      "url": "$baseurl/SHA256SUM"
+    },
+    "architecture": {
+      "64bit": {
+        "url": "https://frippery.org/files/busybox/busybox-w64-FRP-$version.exe#/busybox.exe"
+      }
+    }
+  },
+  "bin": [
+    "busybox.exe",
+    [
+      "busybox.exe",
+      "gunzip",
+      "gunzip"
+    ]
+  ]
+}

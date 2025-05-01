@@ -1,13 +1,13 @@
 {
-  "version": "1.8.4",
+  "version": "25.3.31",
   "description": "Project X originates from XTLS protocol, providing a set of network tools such as Xray-core and REALITY.",
   "homepage": "https://github.com/XTLS/Xray-core",
   "license": "MPL-2.0",
   "notes": "",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/XTLS/Xray-core/releases/download/v1.8.4/Xray-windows-64.zip",
-      "hash": "9F6225E2B818C12660001D550FB323ACC25F4CE146489582ACED40C206785D87"
+      "url": "https://github.com/XTLS/Xray-core/releases/download/v25.3.31/Xray-windows-64.zip",
+      "hash": "6040acac9e32728e8e9326f1eb0b098f3a8274b4ab188ac9edf6a9d28abd657f"
     }
   },
   "checkver": {
@@ -18,9 +18,11 @@
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/XTLS/Xray-core/releases/download/v$version/Xray-windows-64.zip"
+        "url": "https://github.com/XTLS/Xray-core/releases/download/v$version/Xray-windows-64.zip"
       }
     }
   },
+  "pre_install": "if (!(Test-Path \"$persist_dir\\$config.json\")) { New-Item \"$dir\\config.json\" }",
+  "persist": "config.json",
   "bin": "xray.exe"
 }

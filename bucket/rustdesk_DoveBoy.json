@@ -1,16 +1,16 @@
 {
-  "version": "1.2.1",
+  "version": "1.3.9",
   "description": "An open-source remote desktop software, written in Rust.",
   "homepage": "https://github.com/rustdesk/rustdesk",
   "license": "AGPL-3.0-only",
   "architecture": {
     "64bit": {
-      "url": "https://ghproxy.com/https://github.com/rustdesk/rustdesk/releases/download/1.2.1/rustdesk-1.2.1-x86_64.exe",
-      "hash": "d4014a1a3200f1109b0989701ce8534d281a3d446f72c347856cd822532d27de"
+      "url": "https://github.com/rustdesk/rustdesk/releases/download/1.3.9/rustdesk-1.3.9-x86_64.exe",
+      "hash": "df37d49857727733ccefc661d9ccb7a848a586bdac3781c976287004a8ffc417"
     },
     "32bit": {
-      "url": "https://ghproxy.com/https://github.com/rustdesk/rustdesk/releases/download/1.2.1/rustdesk-1.2.1-x86-sciter.exe",
-      "hash": "6f8c7a8ce5e9335901cb0831e045daff6f374a2a0c4fef9cf0294db0cb82c291"
+      "url": "https://github.com/rustdesk/rustdesk/releases/download/1.3.9/rustdesk-1.3.9-x86-sciter.exe",
+      "hash": "d1d382867de187babd6f9a85f85241dc41d11ee20f8bbac9a962fe48922c4820"
     }
   },
   "shortcuts": [
@@ -20,14 +20,17 @@
     ]
   ],
   "pre_install": "Get-ChildItem \"$dir\" 'rustdesk-*.exe' | Select-Object -First 1 | Rename-Item -NewName 'RustDesk.exe'",
-  "checkver": "github",
+  "checkver": {
+    "url": "https://github.com/rustdesk/rustdesk/releases",
+    "regex": "/releases/tag/([\\d.]+)"
+  },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://ghproxy.com/https://github.com/rustdesk/rustdesk/releases/download/$version/rustdesk-$version-x86_64.exe"
+        "url": "https://github.com/rustdesk/rustdesk/releases/download/$version/rustdesk-$version-x86_64.exe"
       },
       "32bit": {
-        "url": "https://ghproxy.com/https://github.com/rustdesk/rustdesk/releases/download/$version/rustdesk-$version-x86-sciter.exe"
+        "url": "https://github.com/rustdesk/rustdesk/releases/download/$version/rustdesk-$version-x86-sciter.exe"
       }
     }
   }

@@ -1,26 +1,21 @@
 {
-  "version": "10.25",
-  "description": "Monkey’s Audio is a fast and easy way to compress digital music.",
   "homepage": "https://monkeysaudio.com/",
-  "license": {
-    "identifier": "Freeware",
-    "url": "https://monkeysaudio.com/license.html"
-  },
+  "version": "11.08",
+  "license": "",
   "architecture": {
     "64bit": {
-      "url": "https://monkeysaudio.com/files/MAC_1025_x64.exe#/dl.7z",
-      "hash": "11dd607c2eff86855fa3d2475f0e94bdc2647777d399cc43f492665ca8c6d929"
+      "url": "https://monkeysaudio.com/files/MAC_1108_x64.exe",
+      "hash": "af51d7d4d897f9ad137eef3b260c741b19c7da106086d00b8b4010e01c5fbf53"
     },
     "32bit": {
-      "url": "https://monkeysaudio.com/files/MAC_1025.exe#/dl.7z",
-      "hash": "2547fe82978716919e4293b54fa9f6183b6a8628fc0670f6913d168fcf391bc3"
+      "url": "https://monkeysaudio.com/files/MAC_1108.exe",
+      "hash": "ce2a4ecb37f206500333cf951d5528368123f5d4a317d240480b22c01f58c007"
     }
   },
-  "persist": "File Lists",
-  "bin": "MAC.exe",
-  "post_install": [
-    "Move-Item \"$dir\\`$SYSDIR\\*\" \"$dir\"",
-    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$SYSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
+  "innosetup": true,
+  "bin": [
+    "MAC.exe",
+    "Monkey's Audio.exe"
   ],
   "shortcuts": [
     [
@@ -28,17 +23,14 @@
       "Monkey's Audio"
     ]
   ],
-  "checkver": {
-    "url": "https://monkeysaudio.com/versionhistory.html",
-    "regex": "Version\\s*([\\d.-]+)"
-  },
+  "checkver": "([\\d.]+) <small>",
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://monkeysaudio.com/files/MAC_$cleanVersion_x64.exe#/dl.7z"
+        "url": "https://monkeysaudio.com/files/MAC_$cleanVersion_x64.exe"
       },
       "32bit": {
-        "url": "https://monkeysaudio.com/files/MAC_$cleanVersion.exe#/dl.7z"
+        "url": "https://monkeysaudio.com/files/MAC_$cleanVersion.exe"
       }
     }
   }

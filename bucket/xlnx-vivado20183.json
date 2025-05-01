@@ -26,19 +26,19 @@
     ""
   ],
   "url": [
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p0.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p0-p1.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p0-p2.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p0-p3.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p1.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p2.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p3.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p4.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p5.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p01.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p03.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p04.7z",
-    "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p05.7z"
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p0.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p0-p1.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p0-p2.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p0-p3.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p1.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p2.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p3.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p4.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p00-p5.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p01.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p03.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p04.7z",
+    "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-p05.7z"
   ],
   "hash": [
     "4db223f17db1e05860ee1b90733149931d72f86c4e92a023b5d0477da9de61eb",
@@ -75,6 +75,8 @@
     "$bucketdir = Find-BucketDirectory -Name $bucket",
     "",
     "'data', 'home', 'scripts' | ForEach-Object { ensure \"$dir\\$_\" | Out-Null }",
+    "",
+    "$current_dir = if (get_config NO_JUNCTIONS) { $dir } else { \"$(appdir $app $global)\\current\".Replace('/', '\\') }",
     "",
     "Write-Host \"S2. Creating scripts...\" -ForegroundColor DarkCyan",
     "",
@@ -128,7 +130,7 @@
     "$cont = $cont -replace '@SCRIPT_LNKNAME@', \"Xilinx DocNav 2018.3 CVP\"",
     "Set-Content \"$ofile\" ($cont -join \"`r`n\") -Encoding ASCII",
     "",
-    "$TOOL_INST_PATH = \"$(current_dir $dir)\".Replace('/', '\\\\')",
+    "$TOOL_INST_PATH = \"$current_dir\"",
     "$escdir = $TOOL_INST_PATH -replace \"\\\\\",\"\\\\\"",
     "(gc \"$bucketdir\\..\\scripts\\xlnx-vivado20183\\install-context.reg.templ\") | % {$_ -replace \"%TOOL_INST_PATH%\",\"$escdir\"} | out-file -enc oem \"$dir\\install-context.reg\"",
     "cp \"$bucketdir\\..\\scripts\\xlnx-vivado20183\\uninstall-context.reg\" \"$dir\"",
@@ -138,8 +140,9 @@
     "",
     "$bucketdir = Find-BucketDirectory -Name $bucket",
     "",
-    "$TOOL_INST_PATH = \"$(current_dir $dir)\".Replace('/', '\\\\')",
-    "$escdir = \"$(current_dir $dir)\"",
+    "$current_dir = if (get_config NO_JUNCTIONS) { $dir } else { \"$(appdir $app $global)\\current\".Replace('/', '\\') }",
+    "$TOOL_INST_PATH = \"$current_dir\"",
+    "$escdir = $TOOL_INST_PATH -replace \"\\\\\",\"\\\\\"",
     "",
     "(gc \"$bucketdir\\..\\scripts\\xlnx-vivado20183\\settings\\DocNav\\.settings64-DocNav.bat\") | % {$_ -replace \"%TOOL_INST_PATH%\",\"$escdir\"} | out-file -enc oem \"$dir\\DocNav\\.settings64-DocNav.bat\"",
     "(gc \"$bucketdir\\..\\scripts\\xlnx-vivado20183\\settings\\DocNav\\.settings64-DocNav.sh\") | % {$_ -replace \"%TOOL_INST_PATH%\",\"$escdir\"} | out-file -enc oem \"$dir\\DocNav\\.settings64-DocNav.sh\"",
@@ -222,6 +225,6 @@
     "regex": "xlnx-vivado20183-win64-([\\d.]+).7z<"
   },
   "autoupdate": {
-    "url": "https://ghproxy.com/https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-$version.7z"
+    "url": "https://github.com/SayCV/gh-cdn-eda/releases/download/v1.0.1/xlnx-vivado20183-$version.7z"
   }
 }

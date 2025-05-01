@@ -1,5 +1,5 @@
 {
-  "version": "0",
+  "version": "119.0.5497.20",
   "description": "Opera Beta. Fast, secure, easy-to-use browser.",
   "homepage": "https://www.opera.com/browsers/opera/beta",
   "license": {
@@ -8,12 +8,8 @@
   },
   "architecture": {
     "64bit": {
-      "url": "https://download1.operacdn.com/pub/opera-developer/0/win/Opera_Developer_0_Setup_x64.exe#/dl.7z",
-      "hash": "56c06f1a58751e10235a2c3a5e56702387f4bf851c20e1157f6662b5c5f691f6"
-    },
-    "32bit": {
-      "url": "https://download1.operacdn.com/pub/opera-developer/0/win/Opera_Developer_0_Setup.exe#/dl.7z",
-      "hash": "81597cf9375c5558a755e8a1dff318d1ca9a98add8ce66a3a316e461562e460b"
+      "url": "https://download1.operacdn.com/pub/opera-beta/119.0.5497.20/win/Opera_beta_119.0.5497.20_Setup_x64.exe#/dl.7z",
+      "hash": "95bfc3cb46adafba4ac2eca30dce86940da80e5955c6077ec8d75bb268357afa"
     }
   },
   "installer": {
@@ -35,20 +31,17 @@
   ],
   "persist": "profile",
   "checkver": {
-    "url": "https://community.chocolatey.org/packages/opera-beta",
-    "regex": " Opera Beta ([\\d.]+)-beta<"
+    "url": "https://fossies.org/windows/www/",
+    "regex": "Opera_beta_([\\d.]+)_Setup"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://download1.operacdn.com/pub/opera-beta/$version/win/Opera_Beta_$version_Setup_x64.exe#/dl.7z"
+        "url": "https://download1.operacdn.com/pub/opera-beta/$version/win/Opera_beta_$version_Setup_x64.exe#/dl.7z"
       },
-      "32bit": {
-        "url": "https://download1.operacdn.com/pub/opera-beta/$version/win/Opera_Beta_$version_Setup.exe#/dl.7z"
+      "hash": {
+        "url": "$url.sha256sum"
       }
-    },
-    "hash": {
-      "url": "$url.sha256sum"
     }
   }
 }

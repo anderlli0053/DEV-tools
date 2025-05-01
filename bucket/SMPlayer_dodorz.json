@@ -1,19 +1,22 @@
 {
   "homepage": "https://www.smplayer.info/",
-  "version": "21.8.0",
+  "version": "24.5.0",
   "license": "GPL-2.0-only",
   "architecture": {
     "64bit": {
-      "url": "https://downloads.sourceforge.net/project/smplayer/SMPlayer/21.8.0/smplayer-portable-21.8.0.0-x64.7z",
-      "hash": "sha1:fc3a4f384cf3fb5733b7dd784c467460451e4b92"
+      "url": "https://github.com/smplayer-dev/smplayer/releases/download/v24.5.0/smplayer-portable-24.5.0.0-x64.7z",
+      "hash": "0e2d42e97325cdadadd77c150437fc7a43a0e5d9e9fbc9d14ea21a6b88db5b63"
     },
     "32bit": {
-      "url": "https://downloads.sourceforge.net/project/smplayer/SMPlayer/21.8.0/smplayer-portable-21.8.0.0-win32.7z",
-      "hash": "sha1:e772bb17060ab145c50b2aa351a4012e889f122f"
+      "url": "https://github.com/smplayer-dev/smplayer/releases/download/v24.5.0/smplayer-portable-24.5.0.0-win32-qt5.6.7z",
+      "hash": "969c1360aab031f8add9250fbaf555e927c36390e890090b53cdb970771aba44"
     }
   },
   "extract_dir": "smplayer-portable",
-  "bin": "smplayer.exe",
+  "bin": [
+    "smplayer.exe",
+    "simple_web_server"
+  ],
   "persist": [
     "smplayer.ini",
     "playlist.ini",
@@ -31,24 +34,16 @@
     ]
   ],
   "checkver": {
-    "url": "https://www.smplayer.info/downloads/",
-    "regex": "Click here to download SMPlayer ([\\d.]+) \\(64-bit\\)"
+    "github": "https://github.com/smplayer-dev/smplayer"
   },
   "autoupdate": {
     "architecture": {
       "64bit": {
-        "url": "https://downloads.sourceforge.net/project/smplayer/SMPlayer/$version/smplayer-portable-$version.0-x64.7z",
-        "hash": {
-          "mode": "fosshub"
-        }
+        "url": "https://github.com/smplayer-dev/smplayer/releases/download/v$version/smplayer-portable-$version.0-x64.7z"
       },
       "32bit": {
-        "url": "https://downloads.sourceforge.net/project/smplayer/SMPlayer/$version/smplayer-portable-$version.0-win32.7z",
-        "hash": {
-          "mode": "fosshub"
-        }
+        "url": "https://github.com/smplayer-dev/smplayer/releases/download/v$version/smplayer-portable-$version.0-win32-qt5.6.7z"
       }
-    },
-    "extract_dir": "smplayer-portable-$version.0"
+    }
   }
 }

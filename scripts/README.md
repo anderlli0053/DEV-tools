@@ -1,6 +1,6 @@
 # About [S4Utils](S4Utils.psm1)
 
-_A PowerShell module for this bucket, which contains several functions to help building app manifests._
+_A PowerShell Script Module for this bucket, which contains several functions to help building app manifests._
 
 ## Functions
 
@@ -9,6 +9,9 @@ _A PowerShell module for this bucket, which contains several functions to help b
 - [Remove-ProfileContent](#remove-profilecontent)
 - [Mount-ExternalRuntimeData](#mount-externalruntimedata)
 - [Dismount-ExternalRuntimeData](#dismount-externalruntimedata)
+- [Import-PersistItem](#import-persistitem)
+- [New-PersistItem](#new-persistitem)
+- [Backup-PersistItem](#backup-persistitem)
 
 ----
 
@@ -18,10 +21,10 @@ _Generate scripts which modifies PowerShell profile._
 
 |Parameters|Type|Mandatory|Descriptions|
 |----|:----:|:----:|----|
-|`Type`|String|&check;|Type of scripts to generate, support `ImportModule`, `RemoveModule` in current version.|
-|`Name`|String|&check;|Use the name of manifest file.|
+|`Behavior`|String|&check;|Type of scripts to generate, support `ImportModule`, `RemoveModule` in current version.|
+|`PSModuleName`|String|&check;|Name of PowerShell module, should be `$manifest.psmodule.name` in most situations.|
+|`AppDir`|String|&check;|Path of the app directory, should be `$dir` in most situations.|
 |`BucketDir`|String|&check;|Path of Scoop4kariiin bucket root directory.|
-|`ModuleName`|String|&cross;|Value of `name` in `psmodule` field, use this parameter if it differs from manifest name.|
 
 - See [Windows-screenFetch manifest](../bucket/Windows-screenFetch.json) for example.
 
@@ -57,12 +60,12 @@ _Mount external runtime data._
 
 |Parameters|Type|Mandatory|Descriptions|
 |----|:----:|:----:|----|
-|`Source`|String|&check;|Source folder persisted in `$persist_dir`, support `Persist` as alias.|
-|`Target`|String|&cross;|The target path, which is the actual path app uses to access the runtime data.|
-|`AppData`|Switch|&cross;|Use this parameter if target folder locates in `$env:APPDATA` using the name of persisted folder, value of `$Target` will be forced overwritten.|
+|`Source`|String|&check;|Path of source folder in scoop persist directory.|
+|`Target`|String|&cross;|The actual path which app uses to access the runtime data.|
+|`AppData`|Switch|&cross;|Conveniently mount folder in `$env:APPDATA` by the name of source folder. Value of `$Target` will be overwritten.|
 
 - Either `Target` or `AppData` should be specified.
-- See [lne-link manifest](../bucket/lne-link.json) for example.
+- See [link-plus manifest](../bucket/link-plus.json) for example.
 
 ----
 
@@ -72,10 +75,58 @@ _Unmount external runtime data._
 
 |Parameters|Type|Mandatory|Descriptions|
 |----|:----:|:----:|----|
-|`Path`|String|&check;|The target path, which is the actual path app uses to access the runtime data, support `Name`, `Target` as alias. Or just use the folder name with `AppData` parameter.|
-|`AppData`|Switch|&cross;|Use this parameter if target folder locates in `$env:APPDATA` using the name of persisted folder, value of `$Path` will be forced overwritten.|
+|`Target`|String|&check;|Path or name of runtime folder mounted by scoop.
+|`AppData`|Switch|&cross;|Conveniently dismount folder in `$env:APPDATA` with folder name in `Target` parameter. Value of `$Target` will be overwritten.|
 
-- See [lne-link manifest](../bucket/lne-link.json) for example.
+- See [link-plus manifest](../bucket/link-plus.json) for example.
+
+----
+
+### `Import-PersistItem`
+
+_Import files persisted by other app._
+
+|Parameters|Type|Mandatory|Descriptions|
+|----|:----:|:----:|----|
+|`PersistDir`|String|&check;|Path of persist directory. Use `$persist_dir` here.|
+|`SourceApp`|String|&check;|Name of source app to import from.|
+|`ConflictAction`|String|&cross;|Actions when item conflicts.<br/>Use `Skip` to skip entire importing process.<br/>Use `Mix` to skip conflict items in target directory and import non-conflict ones from source directory.<br/>Use `Overwrite` to force import items from source directory and keep non-conflict ones in target directory.<br/>Use `ReplaceDir` to totally replace entire directory.|
+|`Select`|String|&cross;|Specific items to import. Use `,` to separate multiple values.|
+|`Sync`|Switch|&cross;|Create junction instead of copying files.|
+|`Backup`|Switch|&cross;|Rename original item instead of removing it.|
+
+- See [Snipaste2 manifest](../bucket/Snipaste2.json) for example.
+
+----
+
+### `New-PersistItem`
+
+_Create items in persist directory._
+
+|Parameters|Type|Mandatory|Descriptions|
+|----|:----:|:----:|----|
+|`PersistDir`|String|&check;|Path of persist directory. Use `$persist_dir` here.|
+|`Name`|String|&check;|Name of item to create. Use `,` to separate multiple values.|
+|`Type`|String|&check;|Type of item to create.|
+|`Content`|String|&cross;|Initial content of file, use with parameter `-Type File`.|
+|`Force`|Switch|&cross;|Force overwrite if target exists.|
+|`Backup`|Switch|&cross;|Rename original item instead of removing it, use with parameter `-Force`.|
+
+- See [Snipaste2 manifest](../bucket/Snipaste2.json) for example.
+
+----
+
+### `Backup-PersistItem`
+
+_Backup items to persist directory._
+
+|Parameters|Type|Mandatory|Descriptions|
+|----|:----:|:----:|----|
+|`AppDir`|String|&check;|Path of app directory. Use `$dir` here.|
+|`PersistDir`|String|&check;|Path of persist directory. Use `$persist_dir` here.|
+|`Name`|String|&check;|Name of item to backup. Use `,` to separate multiple values.|
+
+- See [Snipaste2 manifest](../bucket/Snipaste2.json) for example.
 
 ----
 
