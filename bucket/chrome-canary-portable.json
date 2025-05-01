@@ -1,67 +1,4 @@
 {
-<<<<<<< Updated upstream
-    "version": "138.0.7153.0",
-    "description": "Fast, secure, and free web browser, built for the modern web.",
-    "homepage": "https://www.google.com/chrome/canary",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://www.google.com/chrome/privacy/eula_text.html"
-    },
-    "architecture": {
-        "64bit": {
-            "url": "https://dl.google.com/release2/chrome/gzdk7at6bteq4w54wibn3wwmty_138.0.7153.0/138.0.7153.0_chrome_installer.exe#/dl.7z",
-            "hash": "abb6134d4c762a5201ed4fe90f428d314fd32b97c6a8ab0b84e705913b3c82dc"
-        },
-        "32bit": {
-            "url": "https://dl.google.com/release2/chrome/acjnnxdiah2kbegkcgwjxu5k3xhq_138.0.7153.0/138.0.7153.0_chrome_installer.exe#/dl.7z",
-            "hash": "429c0a5cc14f9e98781a8f2986c87200e44e6b5247d6557d2bf713d4b07d3c42"
-        }
-    },
-    "installer": {
-        "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
-    },
-    "bin": [
-        [
-            "chrome.exe",
-            "chrome-canary",
-            "--user-data-dir=\"$dir\\User Data\""
-        ],
-        [
-            "chrome.exe",
-            "google-chrome-canary",
-            "--user-data-dir=\"$dir\\User Data\""
-        ]
-    ],
-    "shortcuts": [
-        [
-            "chrome.exe",
-            "Google Chrome (Canary)",
-            "--user-data-dir=\"$dir\\User Data\""
-        ]
-    ],
-    "persist": "User Data",
-    "checkver": {
-        "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
-        "regex": "(?sm)<canary32><version>(?<ver32>[\\d.]+)</version>.+release2/chrome/(?<32>[\\w-]+)_.+<canary64><version>(?<version>[\\d.]+)</version>.+release2/chrome/(?<64>[\\w-]+)_.+</canary64>"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://dl.google.com/release2/chrome/$match64_$version/$version_chrome_installer.exe#/dl.7z",
-                "hash": {
-                    "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
-                    "xpath": "/chromechecker/canary64[version='$version']/sha256"
-                }
-            },
-            "32bit": {
-                "url": "https://dl.google.com/release2/chrome/$match32_$matchVer32/$matchVer32_chrome_installer.exe#/dl.7z",
-                "hash": {
-                    "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
-                    "xpath": "/chromechecker/canary32[version='$matchVer32']/sha256"
-                }
-            }
-        }
-=======
   "version": "137.0.7150.0",
   "description": "Fast, secure, and free web browser, built for the modern web.",
   "homepage": "https://www.google.com/chrome/canary",
@@ -77,7 +14,6 @@
     "32bit": {
       "url": "https://dl.google.com/release2/chrome/naujfwhbxbmuddgysh77xed5pm_137.0.7150.0/137.0.7150.0_chrome_installer.exe#/dl.7z",
       "hash": "75afb120bdf0289aa874f86d4829dc2692abe5df31cff1571285412f755854f0"
->>>>>>> Stashed changes
     }
   },
   "installer": {

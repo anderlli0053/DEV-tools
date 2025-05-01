@@ -1,38 +1,4 @@
 {
-<<<<<<< Updated upstream
-    "version": "20250428",
-    "description": "Initiate a traceroute request from a Windows device with a link visualization.",
-    "homepage": "https://en.ipip.net/product/client.html",
-    "license": "Freeware",
-    "architecture": {
-        "64bit": {
-            "url": "https://cdn.ipip.net/17mon/besttrace.exe",
-            "hash": "b018a74cba0f34683d749cfd6511e4d04aba85b4517e5dce0adc0c33dbd2a925"
-        }
-    },
-    "innosetup": true,
-    "shortcuts": [
-        [
-            "17monipdb.exe",
-            "Best Trace"
-        ]
-    ],
-    "checkver": {
-        "script": [
-            "try { $detail = Invoke-WebRequest -Method HEAD 'https://cdn.ipip.net/17mon/besttrace.exe' -MaximumRedirection 0 -ErrorAction Ignore } catch { $_.Exception.Response }",
-            "if ($detail.StatusCode -eq 200) { return ([DateTime]$detail.Headers.'Last-Modified'[0]).ToUniversalTime().ToString(\"yyyyMMdd\") } else { return '' }"
-        ],
-        "regex": "(\\d{8})"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://cdn.ipip.net/17mon/besttrace.exe"
-            }
-        }
-    }
-}
-=======
   "version": "3.9.3-2",
   "homepage": "https://www.ipip.net/",
   "license": "Freeware",
@@ -46,4 +12,3 @@
     ]
   ]
 }
->>>>>>> Stashed changes
