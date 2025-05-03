@@ -10,6 +10,6 @@
     }
   },
   "post_install": [
-    "foreach ($exe in (Get-ChildItem -Path $dir -Filter *.exe -Recurse)) { scoop shim add $exe.BaseName --path=$exe.FullName }"
+    "Get-ChildItem -Path $dir -Filter *.exe -Recurse | ForEach-Object { scoop shim add $_.BaseName --path=$_.FullName }"
   ]
 }
