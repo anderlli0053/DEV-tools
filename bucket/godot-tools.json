@@ -9,14 +9,7 @@
       "hash": "62dd190e6083e2cf1904e7b7e42da4c274b02f56ea6a1f2ad96bc80ec271ba18"
     }
   },
-  "bin": [
-  "FBX2glTF-windows-x86_64",
-  "oidnBenchmark",
-  "oidnDenoise",
-  "oidnTest",
-  "rcedit-x64",
-  "signtool",
-  "cert2spc",
-  "makecat"
-]
+  "post_install": [
+    "foreach ($exe in (Get-ChildItem -Path $dir -Filter *.exe -Recurse)) { scoop shim add $exe.BaseName --path=$exe.FullName }"
+  ]
 }
