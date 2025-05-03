@@ -1,80 +1,15 @@
 {
-    "version": "1.0.0",
-    "homepage": "https://andrewpozenel.com",
-    "description": "Additional Godot Engine Tools that you can set in the Godot Editor settings by yourself",
-    "license": "Proprietary",
-    "architecture": {
-        "64bit": {
-            "url": "https://andrewpozenel.com/storage/godot_tools.7z",
-            "hash": "62dd190e6083e2cf1904e7b7e42da4c274b02f56ea6a1f2ad96bc80ec271ba18"
-        }
-    },
-    "bin": [
-        [
-            "FBX2glTF-windows-x86_64.exe",
-            "FBX2glTF"
-        ],
-        [
-            "bin/oidnBenchmark.exe",
-            "oidnBenchmark"
-        ],
-        [
-            "bin/oidnDenoise.exe",
-            "oidnDenoise"
-        ],
-        [
-            "bin/oidnTest.exe",
-            "oidnTest"
-        ],
-        [
-            "rcedit-x64.exe",
-            "rcedit"
-        ],
-        [
-            "signtool.exe",
-            "signtool"
-        ],
-        [
-            "cert2spc.exe",
-            "cert2spc"
-        ],
-        [
-            "makecat.exe",
-            "makecat"
-        ]
-    ],
-    "shortcuts": [
-        [
-            "$dir/FBX2glTF-windows-x86_64.exe",
-            "FBX2glTF"
-        ],
-        [
-            "$dir/bin/oidnBenchmark.exe",
-            "oidnBenchmark"
-        ],
-        [
-            "$dir/bin/oidnDenoise.exe",
-            "oidnDenoise"
-        ],
-        [
-            "$dir/bin/oidnTest.exe",
-            "oidnTest"
-        ],
-        [
-            "$dir/rcedit-x64.exe",
-            "rcedit"
-        ],
-        [
-            "$dir/signtool.exe",
-            "signtool"
-        ],
-        [
-            "$dir/cert2spc.exe",
-            "cert2spc"
-        ],
-        [
-            "$dir/makecat.exe",
-            "makecat"
-        ]
-    ]
+  "version": "1.0.0",
+  "homepage": "https://andrewpozenel.com",
+  "description": "Additional Godot Engine Tools that you can set in the Godot Editor settings by yourself",
+  "license": "Proprietary",
+  "architecture": {
+    "64bit": {
+      "url": "https://andrewpozenel.com/storage/godot_tools.7z",
+      "hash": "62dd190e6083e2cf1904e7b7e42da4c274b02f56ea6a1f2ad96bc80ec271ba18"
+    }
+  },
+  "pre_install": [
+    "Get-ChildItem -Path $dir -Filter *.exe -Recurse | ForEach-Object { New-Shim -Name $_.BaseName -Path $_.FullName -Force }"
+  ]
 }
