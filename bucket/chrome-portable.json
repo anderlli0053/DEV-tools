@@ -31,6 +31,13 @@
             "--user-data-dir=\"$dir\\User Data\""
         ]
     ],
+    "post_install": [
+        "Remove-Item -Force -Recurse -ErrorAction SilentlyContinue -Path \"$ENV:LOCALAPPDATA\\Google\\Chrome\\User Data\"",
+        "New-Item -ItemType Junction -target \"$dir\\User Data\" -Path \"$ENV:LOCALAPPDATA\\Google\\Chrome\\User Data\""
+    ],
+    "post_uninstall": [
+        "Remove-Item -Force -Recurse -ErrorAction SilentlyContinue -Path \"$ENV:LOCALAPPDATA\\Google\\Chrome\\User Data\""
+    ],
     "shortcuts": [
         [
             "chrome.exe",
