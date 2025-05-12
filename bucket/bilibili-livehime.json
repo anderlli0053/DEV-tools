@@ -1,37 +1,37 @@
 {
-  "homepage": "https://live.bilibili.com/liveHime",
-  "description": "BiliBili Live Streaming tool",
-  "license": "Unknown",
-  "version": "7.9.1.8786",
-  "architecture": {
-    "64bit": {
-      "url": "https://dl.hdslb.com/bili/bililive/win/Livehime-Win-beta-7.9.1.8786-x64.exe",
-      "hash": "md5:2ef756f9376f2fb530c129401c17c2a6"
-    }
-  },
-  "depends": "innounp",
-  "installer": {
-    "script": "Expand-InnoArchive -Path \"$dir\\$fname\" -Removal"
-  },
-  "shortcuts": [
-    [
-      "livehime.exe",
-      "Bilibili Live Hime"
-    ]
-  ],
-  "checkver": {
-    "url": "https://api.live.bilibili.com/xlive/app-blink/v1/liveVersionInfo/getHomePageLiveVersion?system_version=2",
-    "jsonpath": "$.data.curr_version"
-  },
-  "autoupdate": {
+    "homepage": "https://live.bilibili.com/liveHime",
+    "description": "BiliBili Live Streaming tool",
+    "license": "Unknown",
+    "version": "7.9.2.8803",
     "architecture": {
-      "64bit": {
-        "url": "https://dl.hdslb.com/bili/bililive/win/Livehime-Win-beta-$version-x64.exe",
-        "hash": {
-          "url": "https://api.live.bilibili.com/xlive/app-blink/v1/liveVersionInfo/getHomePageLiveVersion?system_version=2",
-          "jsonpath": "$.data.file_md5"
+        "64bit": {
+            "url": "https://dl.hdslb.com/bili/bililive/win/Livehime-Win-beta-7.9.2.8803-x64.exe",
+            "hash": "md5:07cf351db8cf347448a4606c18d6a948"
         }
-      }
+    },
+    "depends": "innounp",
+    "installer": {
+        "script": "Expand-InnoArchive -Path \"$dir\\$fname\" -Removal"
+    },
+    "shortcuts": [
+        [
+            "livehime.exe",
+            "Bilibili Live Hime"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.live.bilibili.com/xlive/app-blink/v1/liveVersionInfo/getHomePageLiveVersion?system_version=2",
+        "jsonpath": "$.data.curr_version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.hdslb.com/bili/bililive/win/Livehime-Win-beta-$version-x64.exe",
+                "hash": {
+                    "url": "https://api.live.bilibili.com/xlive/app-blink/v1/liveVersionInfo/getHomePageLiveVersion?system_version=2",
+                    "jsonpath": "$.data.file_md5"
+                }
+            }
+        }
     }
-  }
 }
