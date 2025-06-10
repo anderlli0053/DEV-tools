@@ -1,47 +1,47 @@
 {
-  "version": "14680846678",
-  "description": "Chat client for https://twitch.tv",
-  "homepage": "https://github.com/Chatterino/chatterino2",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/Chatterino/chatterino2/releases/download/nightly-build/chatterino-windows-x86-64-Qt-6.7.1.zip",
-      "hash": "ef2f6cfc0ac7687e5300238d63a924cc38fe17bc18825659589d7d5ef12cdb10"
-    }
-  },
-  "extract_dir": "Chatterino2",
-  "pre_install": [
-    "Get-ChildItem \"$dir/chatterino.exe\" | Rename-Item -NewName { $_.name.Replace('o', 'o-portable') }",
-    "'portable' | Out-File -Encoding utf8 -Append \"$dir/modes\""
-  ],
-  "persist": [
-    "Logs",
-    "Misc",
-    "Settings"
-  ],
-  "shortcuts": [
-    [
-      "chatterino-portable.exe",
-      "Chatterino-portable"
-    ]
-  ],
-  "bin": "chatterino-portable.exe",
-  "checkver": {
-    "script": [
-      "try {",
-      "    $null = (Invoke-WebRequest https://raw.githubusercontent.com/Chatterino/chatterino2/master/.github/workflows/build.yml).Content -cmatch 'os: windows-latest\\s+qt-version: ([\\d.]+)'",
-      "    $Matches[1],",
-      "    (Invoke-RestMethod 'https://api.github.com/repositories/77624593/actions/workflows/build.yml/runs?branch=master&status=success').workflow_runs[0].id -join ' '",
-      "}",
-      "catch { '' }"
-    ],
-    "regex": "\\A(?<qt>[\\d.]+) (\\d+)\\Z"
-  },
-  "autoupdate": {
+    "version": "15522102028",
+    "description": "Chat client for https://twitch.tv",
+    "homepage": "https://github.com/Chatterino/chatterino2",
+    "license": "MIT",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/Chatterino/chatterino2/releases/download/nightly-build/chatterino-windows-x86-64-Qt-$matchQt.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/Chatterino/chatterino2/releases/download/nightly-build/chatterino-windows-x86-64-Qt-6.7.1.zip",
+            "hash": "38ea0419df2bbf657195e0af10b589a5fbd55d538960e708e3457f39a40c079a"
+        }
+    },
+    "extract_dir": "Chatterino2",
+    "pre_install": [
+        "Get-ChildItem \"$dir/chatterino.exe\" | Rename-Item -NewName { $_.name.Replace('o', 'o-portable') }",
+        "'portable' | Out-File -Encoding utf8 -Append \"$dir/modes\""
+    ],
+    "persist": [
+        "Logs",
+        "Misc",
+        "Settings"
+    ],
+    "shortcuts": [
+        [
+            "chatterino-portable.exe",
+            "Chatterino-portable"
+        ]
+    ],
+    "bin": "chatterino-portable.exe",
+    "checkver": {
+        "script": [
+            "try {",
+            "    $null = (Invoke-WebRequest https://raw.githubusercontent.com/Chatterino/chatterino2/master/.github/workflows/build.yml).Content -cmatch 'os: windows-latest\\s+qt-version: ([\\d.]+)'",
+            "    $Matches[1],",
+            "    (Invoke-RestMethod 'https://api.github.com/repositories/77624593/actions/workflows/build.yml/runs?branch=master&status=success').workflow_runs[0].id -join ' '",
+            "}",
+            "catch { '' }"
+        ],
+        "regex": "\\A(?<qt>[\\d.]+) (\\d+)\\Z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Chatterino/chatterino2/releases/download/nightly-build/chatterino-windows-x86-64-Qt-$matchQt.zip"
+            }
+        }
     }
-  }
 }
