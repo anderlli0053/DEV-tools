@@ -1,37 +1,37 @@
 {
-  "version": "1.2.10",
-  "description": "一款支持多个大语言模型（LLM）服务商的桌面客户端",
-  "homepage": "https://github.com/CherryHQ/cherry-studio/",
-  "license": "Apache-2.0",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v1.2.10/Cherry-Studio-1.2.10-x64-portable.exe",
-      "hash": "3caf6a21e64f553ba5afd16c0037a7617f902552d834dd0d1f222fce22c30ed6"
-    },
-    "arm64": {
-      "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v1.2.10/Cherry-Studio-1.2.10-arm64-portable.exe",
-      "hash": "1e1d58aedf6040dc25b901250a4372b7b67d62bc8b824683ab8f704f0dc58b32"
-    }
-  },
-  "pre_install": "Get-ChildItem \"$dir\" -Filter \"Cherry-Studio*.exe\" | Rename-Item -NewName \"CherryStudio.exe\"",
-  "shortcuts": [
-    [
-      "CherryStudio.exe",
-      "Cherry Studio"
-    ]
-  ],
-  "checkver": "github",
-  "autoupdate": {
+    "version": "1.4.1",
+    "description": "一款支持多个大语言模型（LLM）服务商的桌面客户端",
+    "homepage": "https://github.com/CherryHQ/cherry-studio/",
+    "license": "Apache-2.0",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-x64-portable.exe"
-      },
-      "arm64": {
-        "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-arm64-portable.exe"
-      }
+        "64bit": {
+            "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v1.4.1/Cherry-Studio-1.4.1-x64-portable.exe",
+            "hash": "feb42a485e29afa20b53f28c7be5bb7e82399a80aa6972ec5ebc25a37ee494cb"
+        },
+        "arm64": {
+            "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v1.4.1/Cherry-Studio-1.4.1-arm64-portable.exe",
+            "hash": "bc1db9d7d94026d46f66f18c6dd7d33216d466568e1ba464cbd683387c57d395"
+        }
     },
-    "hash": {
-      "mode": "download"
+    "pre_install": "Get-ChildItem \"$dir\" -Filter \"Cherry-Studio*.exe\" | Rename-Item -NewName \"CherryStudio.exe\"",
+    "shortcuts": [
+        [
+            "CherryStudio.exe",
+            "Cherry Studio"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-x64-portable.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-arm64-portable.exe"
+            }
+        },
+        "hash": {
+            "mode": "download"
+        }
     }
-  }
 }
