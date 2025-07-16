@@ -1,46 +1,46 @@
 {
-  "version": "4.10.0-beta01",
-  "description": "One-stop online barrage drama tracking platform",
-  "homepage": "https://github.com/open-ani/ani",
-  "license": "GPL-3.0-only",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/open-ani/ani/releases/download/v4.10.0-beta01/ani-4.10.0-beta01-windows-x86_64.zip",
-      "hash": "40c45d0f2f7885d587d5f11f698dde00ba6af74f6e3d48438d8aaedc60cdbd70",
-      "extract_dir": "Ani"
-    }
-  },
-  "bin": "Ani.exe",
-  "shortcuts": [
-    [
-      "Ani.exe",
-      "Ani"
-    ]
-  ],
-  "installer": {
-    "script": [
-      "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name muggle) scripts/DoradoUtils.psm1)",
-      "Mount-ExternalRuntimeData -Source \"$persist_dir\\data\" -Target \"$env:APPDATA\\Him188\"",
-      "Remove-Module -Name DoradoUtils"
-    ]
-  },
-  "uninstaller": {
-    "script": [
-      "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name muggle) scripts/DoradoUtils.psm1)",
-      "Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\Him188\"",
-      "Remove-Module -Name DoradoUtils"
-    ]
-  },
-  "checkver": {
-    "url": "https://api.github.com/repos/open-ani/ani/releases",
-    "jsonpath": "$..tag_name",
-    "regex": "v([-\\d.\\w]+)"
-  },
-  "autoupdate": {
+    "version": "4.11.1",
+    "description": "One-stop online barrage drama tracking platform",
+    "homepage": "https://github.com/open-ani/ani",
+    "license": "GPL-3.0-only",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/open-ani/ani/releases/download/v$version/ani-$version-windows-x86_64.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/open-ani/ani/releases/download/v4.11.1/ani-4.11.1-windows-x86_64.zip",
+            "hash": "543cbdb59dc46215f65aa11cf1c7a053dfe14113e75b9deff21e71d15cde4226",
+            "extract_dir": "Ani"
+        }
+    },
+    "bin": "Ani.exe",
+    "shortcuts": [
+        [
+            "Ani.exe",
+            "Ani"
+        ]
+    ],
+    "installer": {
+        "script": [
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name muggle) scripts/DoradoUtils.psm1)",
+            "Mount-ExternalRuntimeData -Source \"$persist_dir\\data\" -Target \"$env:APPDATA\\Him188\"",
+            "Remove-Module -Name DoradoUtils"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name muggle) scripts/DoradoUtils.psm1)",
+            "Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\Him188\"",
+            "Remove-Module -Name DoradoUtils"
+        ]
+    },
+    "checkver": {
+        "url": "https://api.github.com/repos/open-ani/ani/releases",
+        "jsonpath": "$..tag_name",
+        "regex": "v([-\\d.\\w]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/open-ani/ani/releases/download/v$version/ani-$version-windows-x86_64.zip"
+            }
+        }
     }
-  }
 }
