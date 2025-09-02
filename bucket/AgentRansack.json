@@ -1,13 +1,23 @@
 {
-    "homepage": "https://www.mythicsoft.com/agentransack/",
-    "license": "unknown",
     "version": "3527",
-    "url": "https://download.mythicsoft.com/flp/3527/agentransack_3527.exe",
-    "hash": "ea92430874f4335723ecdb97d62f20d005ac65459d9d83da33dc43a3ce5706a5",
+    "description": "Agent Ransack (FileLocator Lite) is a free file search tool for finding files on your PC or network drives.",
+    "homepage": "https://www.mythicsoft.com/agentransack/",
+    "license": "Liteware",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.mythicsoft.com/flp/3527/agentransack_inx64_3527.exe",
+            "hash": "9947180a45df9a9cf3911d0fbccfe7922be54480403634fddef2c462258ed13f"
+        },
+        "32bit": {
+            "url": "https://download.mythicsoft.com/flp/3527/agentransack_in_3527.exe",
+            "hash": "2a4c2ae77dc71fb6acf1135fc81fdcf5a94587d1a42a557f19fab0511c62b977"
+        }
+    },
     "innosetup": true,
     "bin": [
-        "AgentRansack.exe",
-        "flpsearch.exe"
+        "flpsearch.exe",
+        "flpidx.exe",
+        "AgentRansack.exe"
     ],
     "shortcuts": [
         [
@@ -15,17 +25,19 @@
             "Agent Ransack"
         ]
     ],
-    "persist": [
-        "config\\config.xml",
-        "config\\flpui.xml",
-        "config\\history.xml",
-        "regkey.xml"
-    ],
+    "persist": "config",
     "checkver": {
         "url": "https://www.mythicsoft.com/agentransack/download/",
-        "regex": "Build ([\\d.]+)</a>"
+        "regex": "agentransack_inx64_([\\d.]+).exe"
     },
     "autoupdate": {
-        "url": "https://download.mythicsoft.com/flp/$version/agentransack_$version.exe"
+        "architecture": {
+            "64bit": {
+                "url": "https://download.mythicsoft.com/flp/$version/agentransack_inx64_$version.exe"
+            },
+            "32bit": {
+                "url": "https://download.mythicsoft.com/flp/$version/agentransack_in_$version.exe"
+            }
+        }
     }
 }
