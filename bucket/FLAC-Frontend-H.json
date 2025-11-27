@@ -1,0 +1,53 @@
+{
+    "version": "2.2-build-20251127",
+    "description": "A tool to encode and decode FLAC files. Fork of the FLAC Frontend 2.1 but with advanced options.",
+    "homepage": "https://github.com/hat3k/FLAC-Frontend-H",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://github.com/hat3k/FLAC-Frontend-H/blob/main/LICENSE"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/hat3k/FLAC-Frontend-H/releases/download/2.2-build-20251127/FLAC.frontend-H.2.2.build.20251127.x86.7z",
+            "hash": "sha256:8211ce1ec0867d80229ad4a33b9810f063104c8521638f7905f288dc292c2908"
+        },
+        "64bit": {
+            "url": "https://github.com/hat3k/FLAC-Frontend-H/releases/download/2.2-build-20251127/FLAC.frontend-H.2.2.build.20251127.x64.7z",
+            "hash": "sha256:0e5512cac89d2a3d61570490c221a5e311f4eea312d37b4cbafcb1308ed24baf"
+        }
+    },
+    "pre_install": [
+        
+        "$innerFolder = Get-ChildItem \"$dir\" -Directory | Where-Object { $_.Name -match 'FLAC Frontend' } | Select-Object -First 1",
+        "if ($innerFolder) {",
+        "    Get-ChildItem \"$($innerFolder.FullName)\" | ForEach-Object {",
+        "        Move-Item \"$($_.FullName)\" \"$dir\"",
+        "    }",
+        "    Remove-Item \"$($innerFolder.FullName)\"",
+        "}"
+    ],
+    "bin": [
+        ["tools\\flac.exe", "flac"],
+        ["tools\\metaflac.exe", "metaflac"]
+    ],
+    "shortcuts": [
+        [
+            "FLAC frontend-H.exe",
+            "FLAC Frontend H"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/hat3k/FLAC-Frontend-H",
+        "regex": "releases/tag/([\\d.]+-build-\\d+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/hat3k/FLAC-Frontend-H/releases/download/$version/FLAC.frontend-H.$match1.x86.7z"
+            },
+            "64bit": {
+                "url": "https://github.com/hat3k/FLAC-Frontend-H/releases/download/$version/FLAC.frontend-H.$match1.x64.7z"
+            }
+        }
+    }
+}
