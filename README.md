@@ -7,12 +7,7 @@
 📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦
 <hr>
 
-[![Tests](https://github.com/anderlli0053/DEV-tools/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/anderlli0053/DEV-tools/actions/workflows/ci.yml)
 
-
-[![DevSkim](https://github.com/anderlli0053/DEV-tools/actions/workflows/devskim.yml/badge.svg?branch=master)](https://github.com/anderlli0053/DEV-tools/actions/workflows/devskim.yml)
-
-[![Pull Requests](https://github.com/anderlli0053/DEV-tools/actions/workflows/pull_request.yml/badge.svg?branch=master)](https://github.com/anderlli0053/DEV-tools/actions/workflows/pull_request.yml)
 
 
 
@@ -30,7 +25,7 @@
 
 Everything regarding Scoop software can be found on [this](https://scoop.sh/) official page
 
-### Scoop bucket for development tools, be it game dev or just regular software development, *and of course because i am not so well organized as it look like, there are also some games in here...*
+### This repository/bucket has become a "sanctuary" for various apps, not just developement tools as it was supposed to be at first 😄
 <hr><hr>
 Add this bucket after installing Scoop by typing:
 
@@ -54,12 +49,9 @@ Once the Scoop is successfully installed and in the System PATH, you can use wha
 ___It started as a collection of manifests for development tools that i wrote, but then turned into a container of pretty much everything. Apps, Games, ... you name it!.___
 <hr>
 
-### THIS BUCKET CONTAINS [BOT]S THAT TAKE CARE OF IT, MEANING THEY UPDATE, LINT AND CHECK FOR OTHER MANIFEST ANOMALIES, ...! ###
+### THIS BUCKET USES GitHub's CI/CD THAT TAKE CARE OF IT ###
 
 <hr>
-
-
-× Andrew Poženel (SloDevTeam) AKA anderlli0053 ×
 
 📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦
 <hr>
