@@ -1,0 +1,47 @@
+{
+    "version": "2.11",
+    "description": "Converts Warframe's custom file formats into standard formats. Includes both a GUI application and a separate CLI tool.",
+    "homepage": "https://github.com/Puxtril/Warframe-Exporter",
+    "license": "GPL-3.0-only",
+    "url": [
+        "https://github.com/Puxtril/Warframe-Exporter/releases/download/v2.11/Warframe-Exporter-CLI.exe",
+        "https://github.com/Puxtril/Warframe-Exporter/releases/download/v2.11/Warframe-Exporter.zip"
+    ],
+    "hash": [
+        "sha256:fcf367c71e5659e1bd21a65bd03643e636fd6068346d7801c293205edad5a703",
+        "sha256:7ea15e3e45cba3d85afee54907a6a167e493b7125aaa4439bfaa342df6eae1f6"
+    ],
+    "installer": {
+        "script": [
+            "# The CLI tool is already an executable, keep it in place",
+            "# Extract the ZIP file containing the GUI application",
+            "$zipFile = Get-ChildItem \"$dir\" -Filter 'Warframe-Exporter.zip' | Select-Object -First 1",
+            "if ($zipFile) {",
+            "    Expand-Archive \"$zipFile\" -DestinationPath \"$dir\" -Force",
+            "    Remove-Item \"$zipFile\" -Force",
+            "}"
+        ]
+    },
+    "bin": [
+        "Warframe-Exporter-CLI.exe",
+        "Warframe-Exporter.exe"
+    ],
+    "shortcuts": [
+        [
+            "Warframe-Exporter.exe",
+            "Warframe Exporter"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/Puxtril/Warframe-Exporter"
+    },
+    "autoupdate": {
+        "url": [
+            "https://github.com/Puxtril/Warframe-Exporter/releases/download/v$version/Warframe-Exporter-CLI.exe",
+            "https://github.com/Puxtril/Warframe-Exporter/releases/download/v$version/Warframe-Exporter.zip"
+        ],
+        "hash": {
+            "mode": "download"
+        }
+    }
+}
