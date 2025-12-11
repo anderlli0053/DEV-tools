@@ -1,0 +1,44 @@
+{
+    "version": "0.136.3.51",
+    "description": "A fast cross-platform, open-source programming language ideally suited for apps and games, with advanced 2D graphics and sound support.",
+    "homepage": "https://blitzmax.org/",
+    "license": "MIT",
+    "url": "https://github.com/bmx-ng/bmx-ng/releases/download/v0.136.3.51.win32.mingw/BlitzMax_win32_mingw_0.136.3.51.7z",
+    "hash": "sha256:aacb11fb22c5bd97110de1e31898b436e9c690bbf11a0270d23c2a771250e625",
+    "installer": {
+        "script": [
+            "# Move files from BlitzMax subdirectory to root",
+            "$blitzDir = Get-ChildItem \"$dir\" -Filter 'BlitzMax' -Directory | Select-Object -First 1",
+            "if ($blitzDir) {",
+            "    Get-ChildItem \"$blitzDir\" | Move-Item -Destination \"$dir\" -Force",
+            "    Remove-Item \"$blitzDir\" -Recurse -Force",
+            "}"
+        ]
+    },
+    "env_set": {
+        "BMXPATH": "$dir"
+    },
+    "bin": [
+        "MaxIDE.exe",
+        "bin\\bcc.exe",
+        "bin\\bmk.exe",
+        "bin\\docmods.exe",
+        "bin\\makedocs.exe"
+    ],
+    "shortcuts": [
+        [
+            "MaxIDE.exe",
+            "BlitzMax IDE"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/bmx-ng/bmx-ng",
+        "regex": "BlitzMax Win32 \\(mingw\\) v([\\d.]+)\\.\\d+"
+    },
+    "autoupdate": {
+        "url": "https://github.com/bmx-ng/bmx-ng/releases/download/v$version.win32.mingw/BlitzMax_win32_mingw_$version.7z",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}

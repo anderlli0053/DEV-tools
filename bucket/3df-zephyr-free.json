@@ -1,0 +1,41 @@
+{
+    "version": "8.031",
+    "description": "A free photogrammetry software for personal use, perfect for learning and viewing 3D models. It can process projects with up to 50 images.",
+    "homepage": "https://www.3dflow.net/3df-zephyr-free/",
+    "license": {
+        "identifier": "Freeware",
+        "notes": "Free for personal use. Limited to 50 images per project and has export/editing restrictions compared to paid editions."
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://3df-eu.fra1.digitaloceanspaces.com/8.031/3DF%20Zephyr%20Free%20v8.031%20(x64).exe",
+            "hash": "sha256:8cfc4b62e9edfbb88b48b5fd31c4ba8c7175700a21f6e13186cfc4c4d1415d30"
+        }
+    },
+    "innosetup": true,
+    "bin": [
+        "3DF Zephyr Free.exe",
+        "3DF Masquerade.exe"
+    ],
+    "shortcuts": [
+        [
+            "3DF Zephyr Free.exe",
+            "3DF Zephyr Free"
+        ],
+        [
+            "3DF Masquerade.exe",
+            "3DF Masquerade"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.3dflow.net/3df-zephyr-free/",
+        "regex": "3DF%20Zephyr%20Free%20v([\\d.]+)%20\\(x64\\)\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://3df-eu.fra1.digitaloceanspaces.com/$version/3DF%20Zephyr%20Free%20v$version%20(x64).exe"
+            }
+        }
+    }
+}

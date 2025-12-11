@@ -1,0 +1,36 @@
+{
+    "version": "0.1.0",
+    "description": "An easy, pleasant, speedy, and exciting way to use your favorite OS.",
+    "homepage": "https://desktop.kerahq.com/",
+    "license": "GPL-3.0-or-later",
+    "url": "https://gitlab.com/kerahq/releases/-/raw/main/Kera%20Desktop/Kera-Desktop-Windows-x64.zip",
+    "hash": "sha256:e7f81d2a87b102b09d6e7bd4852ec82a98b89196126da6cb95ea4599a3d844db",
+    "installer": {
+        "script": [
+            "# Move files from Kera-Desktop-Windows-x64 subdirectory to root",
+            "$keraDir = Get-ChildItem \"$dir\" -Filter 'Kera-Desktop-Windows-x64' -Directory | Select-Object -First 1",
+            "if ($keraDir) {",
+            "    Get-ChildItem \"$keraDir\" | Move-Item -Destination \"$dir\" -Force",
+            "    Remove-Item \"$keraDir\" -Recurse -Force",
+            "}"
+        ]
+    },
+    "bin": "Kera-Desktop.exe",
+    "shortcuts": [
+        [
+            "Kera-Desktop.exe",
+            "Kera Desktop"
+        ]
+    ],
+    "checkver": {
+        "url": "https://gitlab.com/kerahq/Kera-Desktop/-/tags",
+        "regex": "/tags/([\\d.]+)\"",
+        "reverse": true
+    },
+    "autoupdate": {
+        "url": "https://gitlab.com/kerahq/releases/-/raw/main/Kera%20Desktop/Kera-Desktop-Windows-x64.zip",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}

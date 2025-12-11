@@ -1,0 +1,49 @@
+{
+    "version": "1.2.3.2",
+    "description": "Merges multiple speed camera files into one single optimized and cleaned file for car navigation systems like iGO, Garmin, etc.",
+    "homepage": "https://er-ef.net/cn-companion.html",
+    "license": "Freeware",
+    "url": "https://er-ef.net/downloads/CN-Companion-v.1.2.3.2-Setup.zip",
+    "hash": "sha256:b89749624fad44115ce1f8ce499a98578eb7f93caf5632087840b80c55c3c59f",
+    "pre_install": [
+        "# Check for administrator privileges before attempting InnoSetup extraction",
+        "if (-not (is_admin)) { abort \"$app requires admin rights to $cmd\" }"
+    ],
+    "installer": {
+        "script": [
+            "# The ZIP contains an InnoSetup installer. Extract it first.",
+            "$installerExe = Get-ChildItem \"$dir\" -Filter 'CN-Companion-v.*-Setup.exe' | Select-Object -First 1",
+            "if ($installerExe) {",
+            "    # Use Scoop's InnoSetup handler to extract the nested installer",
+            "    Start-Process -FilePath \"$installerExe\" -ArgumentList \"/VERYSILENT /DIR=`\"$dir\\app`\" /NORESTART\" -Wait",
+            "    # Move the extracted application files from the 'app' folder to the root",
+            "    if (Test-Path \"$dir\\app\") {",
+            "        Get-ChildItem \"$dir\\app\" | Move-Item -Destination \"$dir\" -Force",
+            "        Remove-Item \"$dir\\app\" -Recurse -Force",
+            "    }",
+            "    # Clean up the downloaded installer",
+            "    Remove-Item \"$installerExe\" -Force",
+            "} else {",
+            "    Write-Error 'Could not find the nested InnoSetup installer EXE in the ZIP.'",
+            "    exit 1",
+            "}"
+        ]
+    },
+    "bin": "CN Companion.exe",
+    "shortcuts": [
+        [
+            "CN Companion.exe",
+            "CN Companion"
+        ]
+    ],
+    "checkver": {
+        "url": "https://er-ef.net/cn-companion.html",
+        "regex": "CN-Companion-v\\.([\\d.]+)-Setup\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://er-ef.net/downloads/CN-Companion-v.$version-Setup.zip",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}

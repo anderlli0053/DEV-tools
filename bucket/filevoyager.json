@@ -1,0 +1,48 @@
+{
+    "version": "25.12.5.0",
+    "description": "Swiss Army knife of file management",
+    "homepage": "https://www.filevoyager.com/",
+    "license": "Freeware",
+    "architecture": {
+        "32bit": {
+            "url": "https://www.filevoyager.com/wp-content/uploads/FileVoyager_Portable_25.12.5.0_Full.7z",
+            "hash": "sha256:a093fa2b3a3ecc12eb5936585882f5c61828535f131a685f9a3a9f5190632e4b"
+        },
+        "64bit": {
+            "url": "https://www.filevoyager.com/wp-content/uploads/FileVoyager_x64_Portable_25.12.5.0_Full.7z",
+            "hash": "sha256:4a18f006a29c52aeaa8ac5db38b3855cb2f3d821a7c067d34a74e7f38b5ee036"
+        }
+    },
+    "pre_install": [
+        
+        "$innerFolder32 = Get-ChildItem \"$dir\" -Directory | Where-Object { $_.Name -match 'FileVoyager_Portable' } | Select-Object -First 1",
+        "$innerFolder64 = Get-ChildItem \"$dir\" -Directory | Where-Object { $_.Name -match 'FileVoyager_x64_Portable' } | Select-Object -First 1",
+        "$innerFolder = if ($innerFolder32) { $innerFolder32 } else { $innerFolder64 }",
+        "if ($innerFolder) {",
+        "    Get-ChildItem \"$($innerFolder.FullName)\" | ForEach-Object {",
+        "        Move-Item \"$($_.FullName)\" \"$dir\"",
+        "    }",
+        "    Remove-Item \"$($innerFolder.FullName)\"",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "FileVoyager.exe",
+            "FileVoyager"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.filevoyager.com/",
+        "regex": "FileVoyager_x64_Portable_([\\d.]+)_Full\\.7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://www.filevoyager.com/wp-content/uploads/FileVoyager_Portable_$version_Full.7z"
+            },
+            "64bit": {
+                "url": "https://www.filevoyager.com/wp-content/uploads/FileVoyager_x64_Portable_$version_Full.7z"
+            }
+        }
+    }
+}

@@ -1,0 +1,76 @@
+{
+    "version": "3.2.0-preview",
+    "description": "KEXI is a visual database apps builder simpler than old databases and easier than spreadsheets.",
+    "homepage": "https://kexi-project.org/en/",
+    "license": {
+        "identifier": "GPL-2.0-or-later",
+        "url": "https://kexi-project.org/en/about/license"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.kde.org/Attic/kexi/win64/KEXI_3.2.0_Preview_2019-04-01_%28e2eb6f465%29_Win64.exe",
+            "hash": "sha256:175af04e3a0d715d88ddd5f0ab7c6f10610ff1b292fcc0980115576c46b4f534"
+        }
+    },
+    "depends": "7zip",
+    "installer": {
+        "script": [
+            "# Extract the NSIS installer first",
+            "$nsiFile = Get-ChildItem \"$dir\" -Filter '*.exe' | Select-Object -First 1",
+            "if (-not $nsiFile) {",
+            "    Write-Error 'No installer file found'",
+            "    exit 1",
+            "}",
+            "",
+            "# Extract NSIS installer",
+            "Expand-7ZipArchive \"$nsiFile\" \"$dir\\_temp\"",
+            "",
+            "# Find the 7z SFX archive inside",
+            "$sfxFile = Get-ChildItem \"$dir\\_temp\" -Filter '*.exe' | Where-Object { $_.Name -match 'KEXI.*Win64\\.exe$' } | Select-Object -First 1",
+            "if (-not $sfxFile) {",
+            "    Write-Error 'No SFX archive found in NSIS installer'",
+            "    exit 1",
+            "}",
+            "",
+            "# Extract the SFX archive (7z SFX)",
+            "Expand-7ZipArchive \"$sfxFile\" \"$dir\\_extracted\"",
+            "",
+            "# Move bin folder contents to root",
+            "if (Test-Path \"$dir\\_extracted\\bin\") {",
+            "    Get-ChildItem \"$dir\\_extracted\\bin\" | Move-Item -Destination \"$dir\" -Force",
+            "}",
+            "",
+            "# Clean up temporary files",
+            "Remove-Item \"$dir\\_temp\" -Recurse -Force -ErrorAction SilentlyContinue",
+            "Remove-Item \"$dir\\_extracted\" -Recurse -Force -ErrorAction SilentlyContinue",
+            "Remove-Item \"$nsiFile\" -Force -ErrorAction SilentlyContinue"
+        ]
+    },
+    "bin": [
+        "kexi-3.2.exe",
+        "kbuildsycoca5.exe",
+        "kioslave.exe",
+        "update-mime-database.exe"
+    ],
+    "shortcuts": [
+        [
+            "kexi-3.2.exe",
+            "KEXI"
+        ]
+    ],
+    "checkver": {
+        "url": "https://download.kde.org/Attic/kexi/win64/",
+        "regex": "KEXI_([\\d.]+)_Preview_([\\d-]+)_\\([a-f0-9]+\\)_Win64\\.exe",
+        "replace": "$1-preview"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.kde.org/Attic/kexi/win64/KEXI_$version_Preview_$matchDate_($matchHash)_Win64.exe",
+                "hash": {
+                    "mode": "download"
+                }
+            }
+        }
+    }
+}

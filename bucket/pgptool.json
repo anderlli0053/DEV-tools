@@ -1,0 +1,35 @@
+{
+    "version": "0.6.0.0",
+    "description": "A free and easy-to-use tool for encrypting and decrypting files using PGP (Pretty Good Privacy).",
+    "homepage": "https://pgptool.github.io/",
+    "license": "GPL-3.0-or-later",
+    "url": "https://github.com/pgptool/pgptool/releases/download/0.6.0.0/pgptoolgui-0.6.0.0.zip",
+    "hash": "sha256:7edbd04086cf8347a7cefdfa1592c14c4c9b8708086b278ab39d71e43738fe78",
+    "depends": "java/openjdk",
+    "installer": {
+        "script": [
+            "# Move files from the versioned subdirectory to the root",
+            "$appDir = Get-ChildItem \"$dir\" -Filter 'pgptoolgui-*' -Directory | Select-Object -First 1",
+            "if ($appDir) {",
+            "    Get-ChildItem \"$appDir\" | Move-Item -Destination \"$dir\" -Force",
+            "    Remove-Item \"$appDir\" -Recurse -Force",
+            "}"
+        ]
+    },
+    "bin": "pgptool.exe",
+    "shortcuts": [
+        [
+            "pgptool.exe",
+            "PGPTool"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/pgptool/pgptool"
+    },
+    "autoupdate": {
+        "url": "https://github.com/pgptool/pgptool/releases/download/$version/pgptoolgui-$version.zip",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}

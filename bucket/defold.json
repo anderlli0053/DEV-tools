@@ -1,37 +1,43 @@
 {
-    "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/defold/defold/releases/download/$version/Defold-x86_64-win32.zip"
+    "version": "1.11.2",
+    "description": "A completely free to use game engine for development of desktop, mobile and web games.",
+    "homepage": "https://github.com/defold/defold",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/defold/defold/releases/download/1.11.2/Defold-x86_64-win32.zip",
+            "hash": "sha256:2c77e3353033cd1dfefcf9263fd60dbdc49a35eb5de2d113e03aeb1ebd49511a"
+        }
+    },
+    "installer": {
+        "script": [
+            "# Move files from Defold subdirectory to root",
+            "$defoldDir = Get-ChildItem \"$dir\" -Filter 'Defold' -Directory | Select-Object -First 1",
+            "if ($defoldDir) {",
+            "    Get-ChildItem \"$defoldDir\" | Move-Item -Destination \"$dir\" -Force",
+            "    Remove-Item \"$defoldDir\" -Recurse -Force",
+            "}"
+        ]
     },
     "bin": "Defold.exe",
-    "checkver": {
-        "github": "https://github.com/defold/defold"
-    },
-    "description": "Defold is a completely free to use game engine for development of desktop, mobile and web games.",
-    "extract_dir": "Defold",
-    "hash": "2770a3f1652104b66bea7bf142f75397566274b10c2e6b6c4743e58298e994d3",
-    "homepage": "https://defold.com/",
-    "license": "https://defold.com/license/",
     "shortcuts": [
         [
             "Defold.exe",
             "Defold"
         ]
     ],
-    "suggest": {
-        "7zip": "main/7zip",
-        "CCache": "main/ccache",
-        "CMake": "main/cmake",
-        "Curl": "main/curl",
-        "Git": "main/git",
-        "JDK": "java/openjdk",
-        "MSys2": "main/msys2",
-        "MinGW": "main/mingw",
-        "Patch": "main/patch",
-        "Python": "main/python",
-        "RipGrep": "main/ripgrep",
-        "WGet": "main/wget",
-        "Windows Terminal": "extras/windows-terminal"
+    "checkver": {
+        "github": "https://github.com/defold/defold",
+        "regex": "/releases/tag/([\\d.]+)"
     },
-    "url": "https://ghproxy.com/https://github.com/defold/defold/releases/download/1.4.8/Defold-x86_64-win32.zip",
-    "version": "1.4.8"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/defold/defold/releases/download/$version/Defold-x86_64-win32.zip",
+                "hash": {
+                    "mode": "download"
+                }
+            }
+        }
+    }
 }

@@ -1,0 +1,49 @@
+{
+    "version": "1.4.3.0",
+    "description": "Converts Microsoft Word documents from the old *.doc format to the new *.docx format.",
+    "homepage": "https://er-ef.net/doc2docx.html",
+    "license": "Freeware",
+    "url": "https://er-ef.net/downloads/Setup-doc2docx-v.1.4.3.0.zip",
+    "hash": "sha256:4de09ded74a1f3aedf3fb56433db7bf874002aef707c07b1de98bf3852ea31cf",
+    "pre_install": [
+        "# Check for administrator privileges as the installer likely requires them",
+        "if (-not (is_admin)) { abort \"$app requires admin rights to $cmd\" }"
+    ],
+    "installer": {
+        "script": [
+            "# The ZIP contains an InnoSetup installer. Extract it first.",
+            "$installerExe = Get-ChildItem \"$dir\" -Filter 'Setup-doc2docx-v.*.exe' | Select-Object -First 1",
+            "if ($installerExe) {",
+            "    # Use Scoop's InnoSetup handler to extract the nested installer",
+            "    Start-Process -FilePath \"$installerExe\" -ArgumentList \"/VERYSILENT /DIR=`\"$dir\\app`\" /NORESTART\" -Wait",
+            "    # Move the extracted application files from the 'app' folder to the root",
+            "    if (Test-Path \"$dir\\app\") {",
+            "        Get-ChildItem \"$dir\\app\" | Move-Item -Destination \"$dir\" -Force",
+            "        Remove-Item \"$dir\\app\" -Recurse -Force",
+            "    }",
+            "    # Clean up the downloaded installer",
+            "    Remove-Item \"$installerExe\" -Force",
+            "} else {",
+            "    Write-Error 'Could not find the nested InnoSetup installer EXE in the ZIP.'",
+            "    exit 1",
+            "}"
+        ]
+    },
+    "bin": "doc2docx.exe",
+    "shortcuts": [
+        [
+            "doc2docx.exe",
+            "doc2docx"
+        ]
+    ],
+    "checkver": {
+        "url": "https://er-ef.net/doc2docx.html",
+        "regex": "Setup-doc2docx-v\\.([\\d.]+)\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://er-ef.net/downloads/Setup-doc2docx-v.$version.zip",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}

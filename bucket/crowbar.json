@@ -1,19 +1,27 @@
 {
     "version": "0.74",
+    "description": "GoldSource and Source Engine Modding Tool",
     "homepage": "https://github.com/ZeqMacaw/Crowbar",
-    "description": "Crowbar tool - for Source engine compilation/decompilation",
-    "license": "Freeware",
-    "notes": [
-        "Check the Crowbar steam group for more information\nhttps://steamcommunity.com/groups/CrowbarTool"
-    ],
+    "license": "CC-BY-SA-3.0",
+    "url": "https://github.com/ZeqMacaw/Crowbar/releases/download/v0.74/Crowbar_2023-02-16_0.74.7z",
+    "hash": "sha1:CF1E5C89264E891F53E1C633217D5B055B3C1F0E",
     "bin": "Crowbar.exe",
     "shortcuts": [
         [
-            "crowbar.exe",
-            "crowbar"
+            "Crowbar.exe",
+            "Crowbar"
         ]
     ],
-    "checkver": "github",
-    "url": "https://github.com/ZeqMacaw/Crowbar/releases/download/v0.74/Crowbar_2023-02-16_0.74.7z",
-    "hash": "a33d16ea4894ec01686e53d01c6a2b8f816f4abdaead7ece41262e03ffa9c13f"
+    "checkver": {
+        "github": "https://github.com/ZeqMacaw/Crowbar",
+        "regex": "Crowbar_([\\d-]+)_([\\d.]+)\\.7z"
+    },
+    "autoupdate": {
+        "url": "https://github.com/ZeqMacaw/Crowbar/releases/download/v$version/Crowbar_$match1_$version.7z",
+        "hash": {
+            "url": "https://github.com/ZeqMacaw/Crowbar/releases/tag/v$version",
+            "regex": "SHA1 of Crowbar_$match1_$version\\.7z: ([A-Fa-f0-9]{40})",
+            "mode": "extract"
+        }
+    }
 }

@@ -1,0 +1,40 @@
+{
+    "version": "2025.04.28",
+    "description": "A program that dumps Steam app tokens, package tokens, and depot keys, enabling SteamDB to display information for private or removed apps.",
+    "homepage": "https://steamdb.info/tokendumper/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/SteamDatabase/SteamTokenDumper/releases/download/2025.04.28/SteamTokenDumper-win-x64.zip",
+            "hash": "sha256:c32e3cb6366cfb6f57973bd0a09e57b3f1244ba4f39b709c6c33af7e99b17a7c"
+        },
+        "32bit": {
+            "url": "https://github.com/SteamDatabase/SteamTokenDumper/releases/download/2025.04.28/SteamTokenDumper-win-x86.zip",
+            "hash": "sha256:6096d134a2995309dd09f8ebb66934558a39a5eace7bfc5a8bafc976329bb745"
+        }
+    },
+    "bin": "SteamTokenDumper.exe",
+    "shortcuts": [
+        [
+            "SteamTokenDumper.exe",
+            "Steam Token Dumper"
+        ]
+    ],
+    "persist": "SteamTokenDumper.config.ini",
+    "checkver": {
+        "github": "https://github.com/SteamDatabase/SteamTokenDumper"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/SteamDatabase/SteamTokenDumper/releases/download/$version/SteamTokenDumper-win-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/SteamDatabase/SteamTokenDumper/releases/download/$version/SteamTokenDumper-win-x86.zip"
+            }
+        },
+        "hash": {
+            "mode": "download"
+        }
+    }
+}

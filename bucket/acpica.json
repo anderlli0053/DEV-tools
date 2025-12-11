@@ -1,23 +1,27 @@
 {
     "version": "20250807",
-    "description": "ACPICA tools for the development and debug of ACPI tables",
-    "homepage": "http://www.acpica.org",
+    "description": "The ACPI Component Architecture (ACPICA) project provides an open-source, OS-independent implementation of the ACPI specification, including the iASL compiler and utilities.",
+    "homepage": "https://www.intel.com/content/www/us/en/developer/topic-technology/open/acpica/overview.html",
     "license": {
-        "identifier": "Intel-ACPI,GPL-2.0-only,BSD-3-Clause",
-        "url": "https://acpica.org/sites/acpica/files/licensing.txt"
+        "identifier": "Intel-ACPI",
+        "url": "https://github.com/acpica/acpica/blob/master/license.txt"
     },
-    "url": "https://downloadmirror.intel.com/864104/iasl-win-20250807.zip",
-    "hash": "38497484F8AAEB48411A9E85BF28C61DE5232F10921344D845B608A33A59CD4E",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloadmirror.intel.com/864104/iasl-win-20250807.zip",
+            "hash": "sha256:38497484F8AAEB48411A9E85BF28C61DE5232F10921344D845B608A33A59CD4E"
+        }
+    },
     "bin": [
         "acpibin.exe",
-        "acpidump.exe",
+        "acpidump.exe", 
         "acpiexec.exe",
         "acpihelp.exe",
         "acpisrc.exe",
         "acpixtract.exe",
         "iasl.exe"
     ],
-    "env_set": {
+	"env_set": {
         "IASL_PREFIX": "$dir\\"
     },
     "checkver": {
@@ -25,10 +29,14 @@
         "regex": "Summary of changes for version ([\\d]+)"
     },
     "autoupdate": {
-        "url": "https://downloadmirror.intel.com/864104/iasl-win-$version.zip",
-        "hash": {
-            "url": "https://www.intel.com/content/www/us/en/download/774881/acpi-component-architecture-downloads-windows-binary-tools.html",
-            "regex": "SHA256: ([a-fA-F0-9]+)"
+        "architecture": {
+            "64bit": {
+                "url": "https://downloadmirror.intel.com/864104/iasl-win-$version.zip",
+                "hash": {
+                    "url": "https://www.intel.com/content/www/us/en/download/774881/acpi-component-architecture-downloads-windows-binary-tools.html",
+                    "regex": "SHA256: ([A-F0-9]{64})"
+                }
+            }
         }
     }
 }

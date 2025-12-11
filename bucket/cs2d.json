@@ -1,0 +1,56 @@
+{
+    "version": "1.0.1.6",
+    "description": "A 2D multiplayer shooter with bomb planting, hostage rescue, and various missions. Features a large arsenal including portal guns, lasers, RPGs, and turrets.",
+    "homepage": "https://cs2d.com/",
+    "license": "Freeware",
+    "url": "https://www.unrealsoftware.de/get.php?get=cs2d_1016_win.zip&p=1&cid=1619",
+    "hash": "sha256:d9a123aa280050972c8e07dccab25abd362b60c2bddc78f6086e33fcffd2ecbe",
+    "installer": {
+        "script": [
+            "# Rename get.php to .zip and extract",
+            "$phpFile = Get-ChildItem \"$dir\" -Filter 'get.php' | Select-Object -First 1",
+            "if ($phpFile) {",
+            "    $zipFile = \"$dir\\cs2d.zip\"",
+            "    Rename-Item \"$phpFile\" -NewName \"$zipFile\" -Force",
+            "    Expand-Archive \"$zipFile\" -DestinationPath \"$dir\" -Force",
+            "    Remove-Item \"$zipFile\" -Force",
+            "}"
+        ]
+    },
+    "bin": [
+        "Launcher.exe",
+        "CS2D.exe"
+    ],
+    "shortcuts": [
+        [
+            "Launcher.exe",
+            "CS2D Launcher"
+        ],
+        [
+            "CS2D.exe",
+            "CS2D"
+        ],
+        [
+            "CS2D -fullscreen.bat",
+            "CS2D (Fullscreen)"
+        ],
+        [
+            "CS2D -directx.bat",
+            "CS2D (DirectX)"
+        ],
+        [
+            "CS2D -fullscreen -directx.bat",
+            "CS2D (Fullscreen + DirectX)"
+        ]
+    ],
+    "checkver": {
+        "url": "https://cs2d.com/download.php",
+        "regex": "Latest Version: ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://www.unrealsoftware.de/get.php?get=cs2d_$cleanVersion_win.zip&p=1&cid=1619",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}

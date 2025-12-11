@@ -1,29 +1,35 @@
 {
-  "version": "2.2.14.383",
-  "description": "The new generation of the SETCCE proXSign is a response to the limitations of plugin support in most web browsers.",
-  "homepage": "https://proxsign.setcce.si/proXSignCustomerPages/index.html",
-  "url": "https://public.setcce.si/proxsign/update/SETCCE_proXSign_setup.exe",
-  "hash": "a948d0c9b25cbf98f875759282b66431491005de264fd12e27bb9af0a5c59276",
-  "innosetup": true,
-  "installer": {
-    "script": [
-      "Move-Item \"$dir\\bin\\*\" \"$dir\" -Force",
-      "Move-Item \"$dir\\etc\\*\" \"$dir\" -Force",
-      "Remove-Item \"$dir\\bin\", \"$dir\\etc\" -Force -Recurse"
-    ]
-  },
-  "shortcuts": [
-    [
-      "proxsign.exe",
-      "proXSign"
-    ]
-  ],
-  "persist": "proxsign.ini",
-  "checkver": {
-    "url": "https://proxsign.setcce.si/proXSignCustomerPages/getVersions",
-    "jsonpath": "$.win"
-  },
-  "autoupdate": {
-    "url": "https://public.setcce.si/proxsign/update/SETCCE_proXSign_setup.exe"
-  }
+    "version": "2.2.14.383",
+    "description": "A browser-independent digital signature component for signing PDF and XML documents with a personal digital certificate.",
+    "homepage": "https://proxsign.setcce.si/proXSignCustomerPages/index.html",
+    "license": {
+        "identifier": "Freeware",
+        "notes": "Usage requires a valid personal digital certificate. See provided EULA and license files in the docs directory."
+    },
+    "url": "https://public.setcce.si/proxsign/update/SETCCE_proXSign_setup_2.2.14.383.exe",
+    "hash": "sha256:a948d0c9b25cbf98f875759282b66431491005de264fd12e27bb9af0a5c59276",
+    "depends": "extras/vcredist-aio",
+    "pre_install": [
+        "# Check for administrator privileges (typical for system-wide component installation)",
+        "if (-not (is_admin)) { abort \"$app requires admin rights to $cmd\" }"
+    ],
+    "innosetup": true,
+    "bin": "bin\\proxsign.exe",
+    "shortcuts": [
+        [
+            "bin\\proxsign.exe",
+            "SETCCE proXSign"
+        ]
+    ],
+    "persist": "etc/proxsign.ini",
+    "checkver": {
+        "url": "https://proxsign.setcce.si/proXSignCustomerPages/index.html",
+        "regex": "SETCCE_proXSign_setup_([\\d.]+)\\.exe"
+    },
+    "autoupdate": {
+        "url": "https://public.setcce.si/proxsign/update/SETCCE_proXSign_setup_$version.exe",
+        "hash": {
+            "mode": "download"
+        }
+    }
 }

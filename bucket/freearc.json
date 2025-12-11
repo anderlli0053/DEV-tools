@@ -1,19 +1,70 @@
 {
-  "version": "0.666",
-  "description": "A fast but efficient file archiver.",
-  "homepage": "https://sourceforge.net/projects/freearc/",
-  "license": "GPL-2.0-only",
-  "url": "https://web.archive.org/web/20161220154726if_/http://freearc.org/download/0.666/FreeArc-portable-0.666-win32.zip",
-  "hash": "2abc7be9603efbc797f1f44ab3cc50304fff7062e41aab10e833ff953375fb79",
-  "bin": "bin\\Arc.exe",
-  "shortcuts": [
-    [
-      "bin\\FreeArc.exe",
-      "FreeArc"
-    ]
-  ],
-  "persist": [
-    "arc.ini",
-    "freearc.ini"
-  ]
+    "version": "0.51",
+    "description": "FreeArc combines best 7-zip and RAR features: auto-selected LZMA/PPMD/Multimedia compression, 1gb dictionary, exe/dict/delta data filters, updatable solid archives, SFXes, recovery record, AES+Twofish+Serpent encryption, Linux support and much more...",
+    "homepage": "https://sourceforge.net/projects/freearc/",
+    "license": {
+        "identifier": "GPL-2.0-or-later",
+        "url": "https://sourceforge.net/p/freearc/code/HEAD/tree/trunk/COPYING"
+    },
+    "url": "https://downloads.sourceforge.net/project/freearc/FreeArc/FreeArc%200.51/FreeArc-0.51-win32.exe?ts=gAAAAABpOfLay6PovmHhXoMSL6ok9SUNNEnVHP1x0_XmKnNvIl4gYBXX4nPTtZOy8JNj2NKUxidx_4lbyJxeJNxaUxZKWtN2Ag%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Ffreearc%2Ffiles%2FFreeArc%2FFreeArc%25200.51%2FFreeArc-0.51-win32.exe%2Fdownload%3Fuse_mirror%3Dsf-eu-introserv-1",
+    "hash": "sha256:6539dcec7fc5f5a62e0b44dd6f796a7ef7a09c16ec43d100ac2e6ffc74a8faba",
+    "installer": {
+        "script": [
+            "# Extract NSIS installer",
+            "$installerFile = Get-ChildItem \"$dir\" -Filter 'FreeArc-*.exe' | Select-Object -First 1",
+            "if (-not $installerFile) {",
+            "    Write-Error 'No FreeArc installer found'",
+            "    exit 1",
+            "}",
+            "",
+            "# Extract the NSIS installer contents",
+            "Expand-7ZipArchive \"$installerFile\" \"$dir\\_temp\"",
+            "",
+            "# Find and move bin directory contents",
+            "$binDir = Get-ChildItem \"$dir\\_temp\" -Filter 'bin' -Directory -Recurse | Select-Object -First 1",
+            "if ($binDir) {",
+            "    Get-ChildItem \"$binDir\" | Move-Item -Destination \"$dir\" -Force",
+            "} else {",
+            "    # Alternative: look for executables directly in extracted structure",
+            "    $exes = Get-ChildItem \"$dir\\_temp\" -Filter '*.exe' -Recurse",
+            "    if ($exes.Count -gt 0) {",
+            "        $exes | Move-Item -Destination \"$dir\" -Force",
+            "    }",
+            "}",
+            "",
+            "# Clean up temporary files",
+            "Remove-Item \"$dir\\_temp\" -Recurse -Force -ErrorAction SilentlyContinue",
+            "Remove-Item \"$installerFile\" -Force -ErrorAction SilentlyContinue"
+        ]
+    },
+    "bin": [
+        "Arc.exe",
+        "FreeArc.exe",
+        "fc-cache.exe",
+        "fc-list.exe",
+        "gdk-pixbuf-query-loaders.exe",
+        "gspawn-win32-helper.exe",
+        "gspawn-win32-helper-console.exe",
+        "gtk2_prefs.exe",
+        "gtk-query-immodules-2.0.exe",
+        "gtk-update-icon-cache.exe",
+        "pango-querymodules.exe",
+        "unarc.exe"
+    ],
+    "shortcuts": [
+        [
+            "FreeArc.exe",
+            "FreeArc"
+        ]
+    ],
+    "checkver": {
+        "url": "https://sourceforge.net/projects/freearc/rss?path=/FreeArc",
+        "regex": "/FreeArc%20([\\d.]+)/FreeArc-([\\d.]+)-win32\\.exe"
+    },
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/project/freearc/FreeArc/FreeArc%20$version/FreeArc-$version-win32.exe",
+        "hash": {
+            "mode": "download"
+        }
+    }
 }
