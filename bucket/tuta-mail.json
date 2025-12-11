@@ -1,0 +1,46 @@
+{
+    "version": "315.251204.0",
+    "description": "A secure, open-source email service with a strong focus on privacy, featuring end-to-end encryption for emails, contacts, and calendars. Includes a free, fully-featured desktop client.",
+    "homepage": "https://tuta.com/",
+    "license": "GPL-3.0-only",
+    "url": "https://github.com/tutao/tutanota/releases/download/tutanota-desktop-release-315.251204.0/tutanota-desktop-win.exe",
+    "hash": "sha256:e2fc5a5b6b3108ae189e548cbbba643352905fe079d6e0d89e76e4a67e2618e4",
+    "depends": "7zip",
+    "installer": {
+        "script": [
+            "# Extract NSIS installer first",
+            "Expand-7ZipArchive \"$dir\\tutanota-desktop-win.exe\" \"$dir\\_temp\"",
+            "",
+            "# Find and extract the app-64.7z archive",
+            "$appArchive = Get-ChildItem \"$dir\\_temp\" -Filter 'app-64.7z' -Recurse | Select-Object -First 1",
+            "if ($appArchive) {",
+            "    Expand-7ZipArchive \"$appArchive\" \"$dir\"",
+            "} else {",
+            "    Write-Error 'Could not find app-64.7z archive in the installer'",
+            "    exit 1",
+            "}",
+            "",
+            "# Clean up temporary files",
+            "Remove-Item \"$dir\\_temp\" -Recurse -Force -ErrorAction SilentlyContinue",
+            "Remove-Item \"$dir\\tutanota-desktop-win.exe\" -Force -ErrorAction SilentlyContinue"
+        ]
+    },
+    "bin": "Tuta Mail.exe",
+    "shortcuts": [
+        [
+            "Tuta Mail.exe",
+            "Tuta Mail"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/tutao/tutanota",
+        "regex": "tutanota-desktop-release-([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/tutao/tutanota/releases/download/tutanota-desktop-release-$version/tutanota-desktop-win.exe",
+        "hash": {
+            "mode": "download"
+        }
+    },
+    "notes": "Tuta Mail is an encrypted email service. After installation, you will need to sign in with or create a Tuta account to use the desktop client."
+}

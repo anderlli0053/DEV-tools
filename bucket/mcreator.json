@@ -1,0 +1,43 @@
+{
+    "version": "2025.3.45720",
+    "description": "An open-source software used to make Minecraft Java Edition mods, Bedrock Edition Add-Ons, and data packs using an intuitive easy-to-learn interface or with an integrated code editor[citation:2].",
+    "homepage": "https://mcreator.net/",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/MCreator/MCreator/releases/download/2025.3.45720/MCreator.2025.3.Windows.64bit.zip",
+            "hash": "sha256:0fbf70df44bea716b94f0be550cc25e3c86ef34e813a6dd172f1d68871f7c6e7"
+        }
+    },
+    "installer": {
+        "script": [
+            "# Move files from the date-based subdirectory (e.g., MCreator20253) to the root",
+            "$mcreatorDir = Get-ChildItem \"$dir\" -Filter 'MCreator*' -Directory | Select-Object -First 1",
+            "if ($mcreatorDir) {",
+            "    Get-ChildItem \"$mcreatorDir\" | Move-Item -Destination \"$dir\" -Force",
+            "    Remove-Item \"$mcreatorDir\" -Recurse -Force",
+            "}"
+        ]
+    },
+    "bin": "mcreator.exe",
+    "shortcuts": [
+        [
+            "mcreator.exe",
+            "MCreator"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/MCreator/MCreator",
+        "regex": "download/([\\d.]+)/MCreator\\.([\\d]+)\\.Windows\\.64bit\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/MCreator/MCreator/releases/download/$version/MCreator.$match2.Windows.64bit.zip",
+                "hash": {
+                    "mode": "download"
+                }
+            }
+        }
+    }
+}

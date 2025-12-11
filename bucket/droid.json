@@ -1,0 +1,40 @@
+{
+    "version": "6.9.10",
+    "description": "Digital Record and Object Identification (DROID) - A software tool for performing automated batch identification of file formats.",
+    "homepage": "https://github.com/digital-preservation/droid",
+    "license": {
+        "identifier": "Apache-2.0",
+        "url": "https://github.com/digital-preservation/droid/blob/master/LICENSE"
+    },
+    "url": "https://github.com/digital-preservation/droid/releases/download/6.9.10/droid-binary-6.9.10-bin-win64-with-jre.zip",
+    "hash": "sha256:6f1187d1885bece9cb6543a7419b97e60458591df7e8c3e201c45b579b5d7c5a",
+    "installer": {
+        "script": [
+            "# The ZIP extracts to a top-level folder. Move contents to root.",
+            "$droidDir = Get-ChildItem \"$dir\" -Filter 'droid-binary-*' -Directory | Select-Object -First 1",
+            "if ($droidDir) {",
+            "    Get-ChildItem \"$droidDir\" | Move-Item -Destination \"$dir\" -Force",
+            "    Remove-Item \"$droidDir\" -Recurse -Force",
+            "}"
+        ]
+    },
+    "bin": [
+        "droid.bat",
+        "sigtool.bat"
+    ],
+    "shortcuts": [
+        [
+            "droid.bat",
+            "DROID"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/digital-preservation/droid"
+    },
+    "autoupdate": {
+        "url": "https://github.com/digital-preservation/droid/releases/download/$version/droid-binary-$version-bin-win64-with-jre.zip",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}
