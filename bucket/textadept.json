@@ -1,11 +1,20 @@
 {
-    "version": "12.6",
-    "description": "A fast, minimalist, and remarkably extensible cross-platform text editor",
-    "homepage": "https://orbitalquark.github.io/textadept/",
+    "version": "12.9",
+    "description": "A fast, minimalist, and remarkably extensible cross-platform text editor for programmers.",
+    "homepage": "https://github.com/orbitalquark/textadept",
     "license": "MIT",
-    "url": "https://github.com/orbitalquark/textadept/releases/download/textadept_12.6/textadept_12.6.win.zip",
-    "hash": "a4503fba92f96f41e807a23d4d7c468b672391d23c1ffa02fec91a01a5f59d25",
-    "extract_dir": "textadept",
+    "url": "https://github.com/orbitalquark/textadept/releases/download/textadept_12.9/textadept_12.9.win.zip",
+    "hash": "sha256:cac909a614be575d29e748dcb866ebb16cef551644b99d736b8e189f2081e688",
+    "installer": {
+        "script": [
+            "# Move files from 'textadept' subdirectory to root",
+            "$taDir = Get-ChildItem \"$dir\" -Filter 'textadept' -Directory | Select-Object -First 1",
+            "if ($taDir) {",
+            "    Get-ChildItem \"$taDir\" | Move-Item -Destination \"$dir\" -Force",
+            "    Remove-Item \"$taDir\" -Recurse -Force",
+            "}"
+        ]
+    },
     "bin": [
         "textadept.exe",
         "textadept-curses.exe"
@@ -14,10 +23,20 @@
         [
             "textadept.exe",
             "Textadept"
+        ],
+        [
+            "textadept-curses.exe",
+            "Textadept Curses"
         ]
     ],
-    "checkver": "Stable Release.*?\\(([\\d.]+)\\)",
+    "checkver": {
+        "github": "https://github.com/orbitalquark/textadept",
+        "regex": "/releases/tag/textadept_([\\d.]+)"
+    },
     "autoupdate": {
-        "url": "https://github.com/orbitalquark/textadept/releases/download/textadept_$version/textadept_$version.win.zip"
+        "url": "https://github.com/orbitalquark/textadept/releases/download/textadept_$version/textadept_$version.win.zip",
+        "hash": {
+            "mode": "download"
+        }
     }
 }
