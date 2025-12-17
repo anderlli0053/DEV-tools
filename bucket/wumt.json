@@ -1,53 +1,25 @@
 {
-  "architecture": {
-    "32bit": {
-      "bin": [
+    "version": "1.0.9462",
+    "description": "A portable alternative to Windows Update, allowing more control over update installation.",
+    "homepage": "https://github.com/sergiye/winUpdateMiniTool",
+    "license": "GPL-3.0-only",
+    "url": "https://github.com/sergiye/winUpdateMiniTool/releases/download/1.0.9462/winUpdateMiniTool.zip",
+    "hash": "sha256:a56382cf78968519b24f0dafe22ce95875a2be2748b2714e3c52c45122282541",
+    "bin": "winUpdateMiniTool.exe",
+    "shortcuts": [
         [
-          "wumt_x64.exe",
-          "wumt"
+            "winUpdateMiniTool.exe",
+            "Windows Update MiniTool"
         ]
-      ],
-      "shortcuts": [
-        [
-          "wumt_x86.exe",
-          "Windows Update MiniTool"
-        ]
-      ]
+    ],
+    "checkver": {
+        "github": "https://github.com/sergiye/winUpdateMiniTool",
+        "regex": "tag/([\\d.]+)"
     },
-    "64bit": {
-      "bin": [
-        [
-          "wumt_x86.exe",
-          "wumt"
-        ]
-      ],
-      "shortcuts": [
-        [
-          "wumt_x86.exe",
-          "Windows Update MiniTool"
-        ]
-      ]
+    "autoupdate": {
+        "url": "https://github.com/sergiye/winUpdateMiniTool/releases/download/$version/winUpdateMiniTool.zip",
+        "hash": {
+            "mode": "download"
+        }
     }
-  },
-  "autoupdate": {
-    "hash": {
-      "mode": "extract",
-      "regex": "^$sha256([\\s]+)$basename",
-      "url": "https://scoop-apps.vercel.app/zd423"
-    },
-    "url": "https://pan.jiemi.workers.dev/?file=/scoop/zd423/$matchFilename"
-  },
-  "checkver": {
-    "regex": "(?s)(?<filename>wumt_v(([\\d.]+)).*?\\.(?:7z|zip|rar))",
-    "reverse": true,
-    "url": "https://scoop-apps.vercel.app/zd423"
-  },
-  "description": "Alternative to standard Windows Update.",
-  "hash": "54bb1a1a861459f9c03baa844543b4b4d6d0d293a48678e7aa786dd5234e8de2",
-  "homepage": "https://forum.ru-board.com/topic.cgi?forum=5&amp;topic=48142",
-  "license": {
-    "identifier": "Freeware"
-  },
-  "url": "https://pan.jiemi.workers.dev/?file=/scoop/zd423/wumt_v22.04.2022.zip",
-  "version": "22.04.2022"
 }
