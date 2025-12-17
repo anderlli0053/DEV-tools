@@ -1,23 +1,36 @@
 {
-    "version": "1.5.0.0",
+    "version": "1.0.6.0",
     "description": "Tool to find silent switches for various software installers to enable unattended installations.",
-    "homepage": "https://www.softpedia.com/get/System/Launchers-Shutdown-Tools/Universal-Silent-Switch-Finder.shtml",
+    "homepage": "https://www.appdeploynews.com/adn-silent-switch-finder/",
     "license": "Freeware",
-    "url": "https://softpedia-secure-download.com/dl/7dab23a5ff71063ce5268b98dfa668ca/6941e878/100180984/software/system/ussf.exe",
-    "hash": "sha256:d9076bf31bcf4107b85d4bf368d752f6debe58f9cce8b50f0a50fece2243da38",
-    "bin": "ussf.exe",
+    "url": "https://www.appdeploynews.com/downloads/ADN_Silent_Switch_Finder/ADN%20Silent%20Switch%20Finder1.0.6.0.exe",
+    "hash": "sha256:374ac9a265b42127a50d0ac784e8bf86fde42fba71ae4096148b554579a0c453",
+    "installer": {
+        "script": [
+            "# Scoop downloads the file with a sanitized name",
+            "# Find the downloaded .exe file and rename it",
+            "$downloadedExe = Get-ChildItem -Path $dir -Filter \"*.exe\" | Select-Object -First 1",
+            "if ($downloadedExe) {",
+            "    Write-Host \"Renaming '$($downloadedExe.Name)' to 'ADN-Silent-Switch-Finder.exe'\"",
+            "    Rename-Item -Path $downloadedExe.FullName -NewName \"ADN-Silent-Switch-Finder.exe\" -Force",
+            "} else {",
+            "    Write-Error \"No .exe file found in $dir\"",
+            "}"
+        ]
+    },
+    "bin": "ADN-Silent-Switch-Finder.exe",
     "shortcuts": [
         [
-            "ussf.exe",
-            "Universal Silent Switch Finder"
+            "ADN-Silent-Switch-Finder.exe",
+            "ADN Silent Switch Finder"
         ]
     ],
     "checkver": {
-        "url": "https://www.softpedia.com/get/System/Launchers-Shutdown-Tools/Universal-Silent-Switch-Finder.shtml",
-        "regex": "Latest version:\\s+([\\d.]+)"
+        "url": "https://www.appdeploynews.com/adn-silent-switch-finder/",
+        "regex": "ADN Silent Switch Finder ([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://softpedia-secure-download.com/dl/7dab23a5ff71063ce5268b98dfa668ca/6941e878/100180984/software/system/ussf.exe",
+        "url": "https://www.appdeploynews.com/downloads/ADN_Silent_Switch_Finder/ADN%20Silent%20Switch%20Finder$version.exe",
         "hash": {
             "mode": "download"
         }
