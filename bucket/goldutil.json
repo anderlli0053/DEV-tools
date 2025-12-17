@@ -1,0 +1,38 @@
+{
+    "version": "1.4.0",
+    "description": "GoldSrc engine utilities for working with Half-Life, Counter-Strike, and other GoldSrc engine games.",
+    "homepage": "https://github.com/L-P/goldutil",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/L-P/goldutil/releases/download/v1.4.0/goldutil-windows-amd64.zip",
+            "hash": "sha256:dac4ac2450dbba7270bb96c61d580c84e00334783095c4b045eda275d11433b6"
+        }
+    },
+    "bin": "goldutil.exe",
+    "shortcuts": [
+        [
+            "goldutil.exe",
+            "GoldUtil"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/L-P/goldutil/releases/download/v$version/goldutil-windows-amd64.zip"
+            }
+        },
+        "hash": {
+            "mode": "download"
+        }
+    },
+    "notes": [
+        "GoldUtil is a command-line tool for GoldSrc engine files.",
+        "For usage instructions and commands, visit: https://l-p.github.io/goldutil/",
+        "Common usage:",
+        "  goldutil --help                    Show all commands",
+        "  goldutil bsp info <map.bsp>        Get BSP file information",
+        "  goldutil wad extract <texture.wad> Extract WAD textures"
+    ]
+}

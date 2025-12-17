@@ -1,17 +1,33 @@
 {
-    "version": "nightly",
+    "version": "latest",
     "description": "Download management tool",
     "homepage": "https://jdownloader.org",
-    "license": "Shareware|AGPL-3.0-only",
+    "license": "AGPL-3.0-only",
     "suggest": {
-        "JRE": "java/temurin8-jre"
+        "JRE": [
+            "java/temurin8-jre",
+            "java/temurin11-jre",
+            "java/temurin17-jre"
+        ]
     },
-    "url": [
-        "http://installer.jdownloader.org/JDownloader.jar",
-        "http://jdownloader.org/lib/tpl/arctic/images/favicon.ico#/icon.ico"
+    "url": "http://installer.jdownloader.org/JDownloader.jar",
+    "hash": "sha1:4c08652614f9b3773f45a1a9dfae696c3756d6eb",
+    "pre_install": [
+        "$iconPath = \"$dir\\icon.ico\"",
+        "if (!(Test-Path $iconPath)) {",
+        "    Invoke-WebRequest -Uri 'http://jdownloader.org/lib/tpl/arctic/images/favicon.ico' -OutFile $iconPath",
+        "}",
+        "Set-Content \"$dir\\JDownloader.bat\" '@start javaw.exe -jar \"%~dp0JDownloader.jar\"' -Encoding Ascii"
     ],
-    "pre_install": "Set-Content \"$dir\\JDownloader.bat\" '@start javaw.exe -jar \"%~dp0JDownloader.jar\"' -Encoding Ascii",
-    "bin": "JDownloader.jar",
+    "installer": {
+        "script": [
+            "if (!(Get-Command java -ErrorAction SilentlyContinue)) {",
+            "    Write-Host 'Java is required for JDownloader.' -ForegroundColor Yellow",
+            "    Write-Host 'Install it via: scoop install temurin8-jre' -ForegroundColor Yellow",
+            "}"
+        ]
+    },
+    "bin": "JDownloader.bat",
     "shortcuts": [
         [
             "JDownloader.bat",
@@ -24,4 +40,8 @@
         "cfg",
         "logs"
     ]
+    "autoupdate": {
+        "note": "JDownloader updates itself automatically. This manifest tracks the installer version.",
+        "url": "http://installer.jdownloader.org/JDownloader.jar"
+    }
 }
