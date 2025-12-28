@@ -1,0 +1,39 @@
+{
+    "version": "0.39.2",
+    "description": "ImageHeat is a program for viewing encoded textures.",
+    "homepage": "https://github.com/bartlomiejduda/ImageHeat",
+    "license": "GPL-3.0-only",
+    "url": "https://github.com/bartlomiejduda/ImageHeat/releases/download/v0.39.2/ImageHeat_v0.39.2.zip",
+    "hash": "8a648d74ce1105c0585e53178bebcb463630390130c529e11e65974f0f09cf02",
+    "pre_install": [
+        "if (!(Test-Path \"$dir\\ImageHeat\")) {",
+        "    Write-Error 'Expected folder structure not found. The ZIP should contain an \"ImageHeat\" folder.'",
+        "    exit 1",
+        "}",
+        "Get-ChildItem \"$dir\\ImageHeat\\*\" | Move-Item -Destination \"$dir\" -Force",
+        "Remove-Item \"$dir\\ImageHeat\" -Recurse -Force"
+    ],
+    "bin": [
+        [
+            "ImageHeat-v0.39.2.exe",
+            "imageheat"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "ImageHeat-v0.39.2.exe",
+            "ImageHeat"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/bartlomiejduda/ImageHeat",
+        "regex": "ImageHeat v([\\d.]+)\"",
+        "useragent": "Scoop"
+    },
+    "autoupdate": {
+        "url": "https://github.com/bartlomiejduda/ImageHeat/releases/download/v$version/ImageHeat-v$version-Windows.zip",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}
