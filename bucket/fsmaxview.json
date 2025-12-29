@@ -1,0 +1,29 @@
+{
+    "version": "3.4",
+    "description": "FastStone MaxView is a fast, compact and innovative image viewer that supports all major graphic formats.",
+    "homepage": "https://www.faststone.org/FSMaxViewDetail.htm",
+    "license": "Shareware",
+    "url": "https://www.faststonesoft.net/DN/FSMaxView34.zip",
+    "hash": "4ae63a72b117840069c05aaba16a532726b7a62b5b2f6356d68fdb050e620c4f",
+    "pre_install": [
+        "Get-ChildItem \"$dir\\FSMaxView34\\*\" | Move-Item -Destination \"$dir\" -Force",
+        "Remove-Item \"$dir\\FSMaxView34\" -Recurse -Force"
+    ],
+    "bin": "MaxView.exe",
+    "shortcuts": [
+        [
+            "MaxView.exe",
+            "FastStone MaxView"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.faststone.org/FSMaxViewDetail.htm",
+        "regex": "Version\\s+([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://www.faststonesoft.net/DN/FSMaxView$cleanVersion.zip",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}
