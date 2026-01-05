@@ -1,0 +1,91 @@
+{
+    "version": "Beta4",
+    "description": "Dynamic and static analysis antivirus with Real Time Protection for Windows, including EDR, ClamAV, YARA-X, machine learning AI, behavioral analysis, and more.",
+    "homepage": "https://github.com/HydraDragonAntivirus/HydraDragonAntivirus",
+    "license": "AGPL-3.0-only",
+    "url": [
+        "https://github.com/HydraDragonAntivirus/HydraDragonAntivirus/releases/download/Beta4/antivirus.py",
+        "https://github.com/HydraDragonAntivirus/HydraDragonAntivirus/releases/download/Beta4/HydraDragonAntivirus-1.bin",
+        "https://github.com/HydraDragonAntivirus/HydraDragonAntivirus/releases/download/Beta4/HydraDragonAntivirus.exe"
+    ],
+    "hash": [
+        "7e6577095f4eecfd46ef6a72ab113419ee848961212d63b9ccafb79023d337ce",
+        "b597108c917a048276851e02f7527ac0954c62f3a799fd985782264e47db9d64",
+        "1a44747ba2e8faf6b4cac4a94bd2d55b0db20b0d3db6d853c7d06108796f6ae1"
+    ],
+    "depends": "innounp",
+    "installer": {
+        "script": [
+            "# Inno Setup installers: .exe is the installer, .bin contains the data",
+            "# We need to extract using the .exe which will read the .bin",
+            "$innounp = \"$env:SCOOP\\apps\\innounp\\current\\innounp.exe\"",
+            "if (Test-Path $innounp) {",
+            "    # Extract using innounp - it will handle both .exe and associated .bin",
+            "    & $innounp -x \"$dir\\HydraDragonAntivirus.exe\" -d\"$dir\" | Out-Null",
+            "    ",
+            "    # The main app is usually in the {app} folder after extraction",
+            "    if (Test-Path \"$dir\\{app}\") {",
+            "        Get-ChildItem \"$dir\\{app}\\*\" | Move-Item -Destination \"$dir\" -Force",
+            "        Remove-Item \"$dir\\{app}\" -Recurse -Force",
+            "    }",
+            "    ",
+            "    # Clean up installer files",
+            "    Remove-Item \"$dir\\HydraDragonAntivirus.exe\" -Force",
+            "    Remove-Item \"$dir\\HydraDragonAntivirus-1.bin\" -Force",
+            "    Remove-Item \"$dir\\antivirus.py\" -Force",
+            "    Remove-Item \"$dir\\script.*\" -Force -ErrorAction SilentlyContinue",
+            "    Remove-Item \"$dir\\*unins*\" -Force -ErrorAction SilentlyContinue",
+            "    ",
+            "    # Check what executable was extracted",
+            "    $exe = Get-ChildItem \"$dir\\*.exe\" -Exclude 'innounp.exe' | Select-Object -First 1",
+            "    if ($exe) {",
+            "        # Rename to standard name if needed",
+            "        if ($exe.Name -ne 'HydraDragonAntivirus.exe') {",
+            "            Rename-Item $exe.FullName \"HydraDragonAntivirus.exe\" -Force",
+            "        }",
+            "    }",
+            "} else {",
+            "    Write-Error 'innounp is required to extract Inno Setup installer. Install innounp first.'",
+            "    exit 1",
+            "}"
+        ]
+    },
+    "bin": "HydraDragonAntivirus.exe",
+    "shortcuts": [
+        [
+            "HydraDragonAntivirus.exe",
+            "Hydra Dragon Antivirus"
+        ]
+    ],
+    "notes": [
+        "NOTE: This antivirus software was only extracted from the installer, not properly installed.",
+        "The application may not work correctly because:",
+        "1. Registry entries were not created",
+        "2. System services were not installed",
+        "3. Drivers were not installed",
+        "4. System integrations were not set up",
+        "",
+        "To properly install Hydra Dragon Antivirus:",
+        "1. Go to the installation directory:",
+        "   $env:SCOOP\\apps\\hydradragonantivirus\\current",
+        "2. Run the original installer manually: HydraDragonAntivirus.exe",
+        "3. Follow the installation wizard",
+        "",
+        "The extracted files are in: $dir",
+        "You can access this location by running: scoop prefix hydradragonantivirus"
+    ],
+    "checkver": {
+        "github": "https://github.com/HydraDragonAntivirus/HydraDragonAntivirus",
+        "regex": "download/([\\w]+)/antivirus\\.py"
+    },
+    "autoupdate": {
+        "url": [
+            "https://github.com/HydraDragonAntivirus/HydraDragonAntivirus/releases/download/$version/antivirus.py",
+            "https://github.com/HydraDragonAntivirus/HydraDragonAntivirus/releases/download/$version/HydraDragonAntivirus-1.bin",
+            "https://github.com/HydraDragonAntivirus/HydraDragonAntivirus/releases/download/$version/HydraDragonAntivirus.exe"
+        ],
+        "hash": {
+            "mode": "download"
+        }
+    }
+}

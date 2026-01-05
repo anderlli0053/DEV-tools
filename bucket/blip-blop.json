@@ -1,0 +1,47 @@
+{
+    "version": "0.1.1",
+    "description": "Blip'n Blop PC video game",
+    "homepage": "https://github.com/Vermeille/blip-blop",
+    "license": "Unknown",
+    "url": "https://github.com/Vermeille/blip-blop/releases/download/v0.1.1/BlipnBlop-0.1.1-win64.exe",
+    "hash": "2b822073c347fbd0ad79827392c8416cea9ad65d41f6387ac70c470cc0f040d6",
+    "installer": {
+        "script": [
+            "$tempDir = Join-Path $dir 'temp_extract'",
+            "New-Item -ItemType Directory -Path $tempDir -Force | Out-Null",
+            "",
+            "$7z = \"$env:SCOOP\\apps\\7zip\\current\\7z.exe\"",
+            "if (Test-Path $7z) {",
+            "    & $7z x \"$dir\\$fname\" \"-o$tempDir\" -y | Out-Null",
+            "    Get-ChildItem -Path $tempDir -Exclude '$PLUGINSDIR', 'Uninstall.exe', '[NSIS].nsi' |",
+            "        Move-Item -Destination $dir -Force",
+            "    Remove-Item $tempDir -Recurse -Force",
+            "    Remove-Item \"$dir\\$fname\" -Force",
+            "    if (Test-Path \"$dir\\[LICENSE].txt\") {",
+            "        Rename-Item \"$dir\\[LICENSE].txt\" \"LICENSE.txt\" -Force",
+            "    }",
+            "} else {",
+            "    Write-Error '7zip is required to extract NSIS installer. Install 7zip first.'",
+            "    exit 1",
+            "}"
+        ]
+    },
+    "bin": "blipblop.exe",
+    "shortcuts": [
+        [
+            "blipblop.exe",
+            "Blip'n Blop"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/Vermeille/blip-blop",
+        "regex": "tag/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/Vermeille/blip-blop/releases/download/v$version/BlipnBlop-$version-win64.exe",
+        "hash": {
+            "mode": "download"
+        }
+    },
+    "depends": "7zip"
+}

@@ -1,0 +1,51 @@
+{
+    "version": "5.001.0000006.2",
+    "description": "Dahua Config Tool for configuring Dahua surveillance devices (English version)",
+    "homepage": "https://support.dahuasecurity.com/en/toolsDownloadDetails?IsDpValue=Q93jdSLr94chjRuQ1y%2FcQQ%3D%3D",
+    "license": "Proprietary",
+    "url": "https://supportfile.dahuasecurity.com/public_files%2F1aa27fd0ed894efe8ed1a683456f43ae.zip?auth_key=1767654025-0-0-4fc9359181f1006b27367f1d5682082c&response-content-disposition=attachment;filename=General_ConfigTool_ChnEng_V5.001.0000006.2.R.20250922.zip",
+    "hash": "7b394e3c667821624b426f43cf11fae991b08c1283917a04f8cc1232b54805f2",
+    "depends": "7zip",
+    "pre_install": [
+        "$7z = \"$env:SCOOP\\apps\\7zip\\current\\7z.exe\"",
+        "$exePath = \"$dir\\General_ConfigTool_ChnEng_V5.001.0000006.2.R.20250922.exe\"",
+        "if (Test-Path $exePath) {",
+        "    if (Test-Path $7z) {",
+        "        $tempDir = Join-Path $dir 'temp_extract'",
+        "        New-Item -ItemType Directory -Path $tempDir -Force | Out-Null",
+        "        & $7z x $exePath \"-o$tempDir\" -y | Out-Null",
+        "        Get-ChildItem \"$tempDir\\*\" -Recurse | Where-Object {",
+        "            $_.Name -notmatch '\\$PLUGINSDIR|Uninstall\\.exe|\\[NSIS\\]\\.nsi|7z\\.(dll|exe)|ReflushIcon\\.bat'",
+        "        } | Move-Item -Destination $dir -Force -ErrorAction SilentlyContinue",
+        "        Remove-Item $tempDir -Recurse -Force -ErrorAction SilentlyContinue",
+        "        if (Test-Path \"$dir\\Lang\\Lang_1.xml\") {",
+        "            Remove-Item \"$dir\\Lang\\Lang_1.xml\" -Force -ErrorAction SilentlyContinue",
+        "        }",
+        "        Remove-Item $exePath -Force -ErrorAction SilentlyContinue",
+        "    } else {",
+        "        Write-Error '7zip is required to extract NSIS installer. Install 7zip first.'",
+        "        exit 1",
+        "    }",
+        "} else {",
+        "    Write-Error 'EXE installer not found after ZIP extraction.'",
+        "    exit 1",
+        "}"
+    ],
+    "bin": "ConfigTool.exe",
+    "shortcuts": [
+        [
+            "ConfigTool.exe",
+            "Dahua Config Tool"
+        ]
+    ],
+    "checkver": {
+        "url": "https://support.dahuasecurity.com/en/toolsDownloadDetails?IsDpValue=Q93jdSLr94chjRuQ1y%2FcQQ%3D%3D",
+        "regex": "Version：V([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://supportfile.dahuasecurity.com/public_files%2F1aa27fd0ed894efe8ed1a683456f43ae.zip?auth_key=1767654025-0-0-4fc9359181f1006b27367f1d5682082c&response-content-disposition=attachment;filename=General_ConfigTool_ChnEng_V5.001.0000006.2.R.20250922.zip",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}
