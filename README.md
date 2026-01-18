@@ -1,60 +1,59 @@
-![wooden-box-148977_1280](https://user-images.githubusercontent.com/22171451/210179607-af7ce307-de94-40cd-8975-b3f18d0cfdda.png)
+# 📦 DEV-tools Scoop Bucket
+
+![Wooden Box Banner](https://user-images.githubusercontent.com/22171451/210179607-af7ce307-de94-40cd-8975-b3f18d0cfdda.png)
+
+> **Note:** This repository has evolved from development tools into a "sanctuary" for various applications - apps, games, and more!
+
+## 🚀 Quick Start
+
+Add this bucket to your Scoop installation:
+
+```
+scoop bucket add anderlli0053_DEV-tools https://github.com/anderlli0053/DEV-tools.git
+```
+
+Pro Tip: Quick install everything at once:
+
+```
+scoop bucket add anderlli0053_DEV-tools https://github.com/anderlli0053/DEV-tools.git && scoop update && scoop install <app-name>
+```
+📥 Installation Example
+
+```
+scoop install gdevelop
+```
+
+Or simply:
+```
+
+scoop install <any-app-name-in-bucket>
+
+```
+
+🔄 Maintenance
+
+    Update the bucket: scoop update
+
+    View all Scoop commands: Just type scoop and press Enter
+
+📋 Requirements
+
+    Scoop installed and in your system PATH
+
+    Any command-line interface (CMD, PowerShell, etc.)
+
+🏗️ CI/CD Status
+
+This bucket is automatically maintained using GitHub's CI/CD pipeline:
 
 
+ℹ️ About
 
+What started as a personal collection of manifests for development tools has grown into a comprehensive container for all kinds of software. From utilities to games, if you can name it, it might be here!
 
-<hr>
-📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦
-<hr>
+🔗 Resources
 
+- [Scoop search engine](https://scoop.sh/)
+- [Official Scoop repository](https://github.com/ScoopInstaller/Scoop/)  
 
-
-
-
-[![Issues](https://github.com/anderlli0053/DEV-tools/actions/workflows/issues.yml/badge.svg?branch=master)](https://github.com/anderlli0053/DEV-tools/actions/workflows/issues.yml)
-
-
-[![Excavator](https://github.com/anderlli0053/DEV-tools/actions/workflows/excavator.yml/badge.svg?branch=master)](https://github.com/anderlli0053/DEV-tools/actions/workflows/excavator.yml)
-
-
-[![Commented Pull Request](https://github.com/anderlli0053/DEV-tools/actions/workflows/issue_comment.yml/badge.svg?branch=master)](https://github.com/anderlli0053/DEV-tools/actions/workflows/issue_comment.yml)
-
-
-[![Visitors](https://api.visitorbadge.io/api/combined?path=https%3A%2F%2Fgithub.com%2Fanderlli0053%2FDEV-tools&labelColor=%2337d67a&countColor=%23697689)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Fanderlli0053%2FDEV-tools)
-<hr><hr>
-
-Everything regarding Scoop software can be found on [this](https://scoop.sh/) official page
-
-### This repository/bucket has become a "sanctuary" for various apps, not just developement tools as it was supposed to be at first 😄
-<hr><hr>
-Add this bucket after installing Scoop by typing:
-
-```scoop bucket add anderlli0053_DEV-tools https://github.com/anderlli0053/DEV-tools.git```
-
-Even faster way is ```scoop bucket add anderlli0053_DEV-tools https://github.com/anderlli0053/DEV-tools.git && scoop update && scoop install <anyAPPNameInTheBucket>```
-<hr><hr>
-Installing example:
-
-* ```scoop install gdevelop```
-
-or basically ```scoop install <anyAPPNameInTheBucket>```
-
-For updating the bucket with the upstream use ```scoop update```, for other commands you can write ```scoop``` and press ENTER, it will output the list of available Scoop commands.
-<hr>
-Once the Scoop is successfully installed and in the System PATH, you can use whatever command-line you like, CMD, PowerShell,...
-
-
-<hr>
-
-___It started as a collection of manifests for development tools that i wrote, but then turned into a container of pretty much everything. Apps, Games, ... you name it!.___
-<hr>
-
-### THIS BUCKET USES GitHub's CI/CD THAT TAKE CARE OF IT ###
-
-<hr>
-
-📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦📦
-<hr>
-
-
-<hr>
+📦
