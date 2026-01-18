@@ -1,14 +1,18 @@
 {
-    "version": "3.5",
+    "version": "3.8.2",
     "description": "用于扫描 Apache Tomcat 服务器漏洞的 python 脚本。",
     "homepage": "https://github.com/p0dalirius/ApacheTomcatScanner",
     "license": "",
     "suggest": {
         "Python 3.7+": "python"
     },
-    "url": "https://github.com/p0dalirius/ApacheTomcatScanner/archive/refs/heads/main.zip",
+    "url": "https://github.com/p0dalirius/ApacheTomcatScanner/archive/refs/tags/3.8.2.zip",
     "hash": "",
-    "pre_install": "Set-Content \"$dir\\ApacheTomcatScanner.bat\" '@pushd %~dp0\npython3 \"ApacheTomcatScanner.py\" %*\n@popd' -Encoding Ascii",
+    "pre_install": [
+        "Set-Content \"$dir\\ApacheTomcatScanner.bat\" '@pushd %~dp0",
+        "python3 \"ApacheTomcatScanner.py\" %*",
+        "@popd' -Encoding Ascii"
+    ],
     "post_install": [
         "Move-Item -Path \"$dir\\ApacheTomcatScanner-main\\*\" -Destination \"$dir\\\"",
         "Remove-Item \"$dir\\ApacheTomcatScanner-main\" -Force -Recurse",
