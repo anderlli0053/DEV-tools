@@ -1,0 +1,31 @@
+{
+    "version": "1.4.1.0",
+    "description": "A Bloxstrap/Fishstrap fork, focused on performance and customization",
+    "homepage": "https://froststrap.github.io/",
+    "license": "AGPL-3.0-or-later|MIT|Unlicense",
+    "suggest": {
+        ".NET Desktop Runtime 8.0": "versions/windowsdesktop-runtime-8.0"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/RealMeddsam/Froststrap/releases/download/v1.4.1.0/Froststrap-v1.4.1.0.exe#/Froststrap.exe",
+            "hash": "cb28d4cb667c6078ceb272b6e892c0b8fc69581d6ab9024375a3b10e215ec0ba"
+        }
+    },
+    "installer": {
+        "script": "if ($cmd -eq 'update') { Start-Process \"$dir\\Froststrap.exe\" -Wait -Args @('-quiet', '-upgrade'); exit 0 } else { Start-Process \"$dir\\Froststrap.exe\" -Wait -Args @('-quiet'); }"
+    },
+    "uninstaller": {
+        "script": "Start-Process \"$dir\\Froststrap.exe\" -Wait -Args @('-uninstall', '-quiet');"
+    },
+    "checkver": {
+        "github": "https://github.com/RealMeddsam/Froststrap"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/RealMeddsam/Froststrap/releases/download/v$version/Froststrap-v$version.exe#/Froststrap.exe"
+            }
+        }
+    }
+}

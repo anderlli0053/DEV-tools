@@ -1,13 +1,13 @@
 {
-    "version": "4.16.6",
+    "version": "4.19.8",
     "homepage": "https://github.com/yairm210/UnCiv",
     "description": "Open source, mod-friendly Android + Desktop remake of Civ V, made with LibGDX",
     "license": "MPL-2.0",
     "suggest": {
         "Java Runtime Environment": "java/temurin-jre"
     },
-    "url": "https://github.com/yairm210/Unciv/releases/download/4.16.6/Unciv-Windows64.zip",
-    "hash": "f8c3c6ea3153de23ee10ba4c8ab3f8deee4476cfb950a3b469412b24f3eca556",
+    "url": "https://github.com/yairm210/Unciv/releases/download/4.19.8/Unciv-Windows64.zip",
+    "hash": "ad6305216541d8d4d130a6b9fe45a19082084848068b84c94149b92eb88cac22",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\GameSettings.json\")) {",
         "New-Item \"$dir\\GameSettings.json\" -Value '{resolution:1200x800,windowState:{width:1920,height:1080},isFreshlyCreated:true,multiplayer:{userId:},version:1}' | Out-Null",
@@ -25,7 +25,8 @@
         "SaveFiles"
     ],
     "checkver": {
-        "github": "https://github.com/yairm210/UnCiv"
+        "url": "https://api.github.com/repos/yairm210/UnCiv/releases",
+        "jsonpath": "$[?(@.prerelease == false && @.assets[?(@.name == 'Unciv-Windows64.zip')])].tag_name"
     },
     "autoupdate": {
         "url": "https://github.com/yairm210/Unciv/releases/download/$version/Unciv-Windows64.zip"

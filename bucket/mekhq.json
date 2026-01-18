@@ -1,9 +1,11 @@
 {
-    "version": "0.48.0",
+    "version": "0.50.11",
     "description": "Helper program for MegaMek - includes MegaMek and MegaMekLab",
     "homepage": "https://megamek.org",
     "license": "GPL-2.0-or-later",
-    "url": "https://github.com/MegaMek/mekhq/releases/download/v0.48.0/mekhq-windows-0.48.0.zip",
+    "url": "https://github.com/MegaMek/mekhq/releases/download/v0.50.11/mekhq-0.50.11.tar.gz",
+    "hash": "0509da7eb98810ef4bc3c58da2cdb45e2215f1a3d5103ee0e487081c02d919f6",
+    "extract_dir": "MekHQ-0.50.11",
     "shortcuts": [
         [
             "MekHQ.exe",
@@ -20,9 +22,10 @@
     ],
     "checkver": {
         "url": "https://megamek.org/downloads.html",
-        "re": "Stable: ([\\d.]+)"
+        "re": "MekHQ[\\s\\S]+?Milestone:[\\s]+(?<version>[\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://github.com/MegaMek/mekhq/releases/download/v$version/mekhq-windows-$version.zip"
+        "url": "https://github.com/MegaMek/mekhq/releases/download/v$version/mekhq-$version.tar.gz",
+        "extract_dir": "MekHQ-$version"
     }
 }
