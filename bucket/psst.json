@@ -1,29 +1,30 @@
 {
-  "version": "0.0.879+5bf8a69.11052181225",
-  "description": "Fast and multi-platform Spotify client with native GUI",
-  "homepage": "https://github.com/jpochyla/psst",
-  "license": {
-    "identifier": "MIT",
-    "url": "https://github.com/jpochyla/psst/blob/master/LICENSE.md"
-  },
-  "url": "https://nightly.link/jpochyla/psst/actions/runs/11052181225/Psst.exe.zip",
-  "hash": "4654e5a8c29a7daec8b79bd9d7affccc5ecfb0b061d5d8c2e8c2ae61fb8ae4a9",
-  "checkver": {
-    "script": [
-      "$actions = Invoke-RestMethod -Uri 'https://api.github.com/repos/jpochyla/psst/actions/workflows/build.yml/runs'",
-      "$latest_develop = $actions.workflow_runs.PSObject.Properties.Value | Where-Object { $_.head_branch -eq 'master' } | Where-Object { $_.conclusion -eq 'success' } | Select-Object -first 1",
-      "$version = '0.0.' + $latest_develop.run_number + '+' + $latest_develop.head_sha.substring(0,7) + '.' + $latest_develop.id",
-      "Write-Output $version $latest_develop.id"
-    ],
-    "regex": "(?<version>[^\\s]+)\\s(?<id>\\d+)"
-  },
-  "autoupdate": {
-    "url": "https://nightly.link/jpochyla/psst/actions/runs/$matchId/Psst.exe.zip"
-  },
-  "shortcuts": [
-    [
-      "psst-gui.exe",
-      "Psst"
+    "version": "2025.12.20-ae4f16d",
+    "description": "Fast and multi-platform Spotify client with native GUI",
+    "homepage": "https://github.com/jpochyla/psst",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/jpochyla/psst/blob/master/LICENSE.md"
+    },
+    "url": "https://github.com/jpochyla/psst/releases/download/rolling/Psst.exe#/psst.exe",
+    "hash": "0a2fd27183fc30188e17144ede1a9d8faaafc33274ddfa851c000536da3a6cf1",
+    "checkver": {
+        "script": [
+            "$rel_info = Invoke-RestMethod -Uri 'https://api.github.com/repos/jpochyla/psst/releases'",
+            "$latest_rel = $rel_info | Sort-Object {$_.published_at} | Select-Object -last 1",
+            "$latest_exe = $latest_rel.assets | Where-Object {$_.name.EndsWith(\".exe\")} | Sort-Object {$_.published_at} | Select-Object -last 1",
+            "Write-Output $latest_rel.name $latest_exe.browser_download_url $latest_exe.digest"
+        ],
+        "regex": "\\((?<version>[\\w\\d.-]+)\\)\\s+(?<url>[^\\s]+)\\s(?<hash>[^\\s]+)?"
+    },
+    "autoupdate": {
+        "url": "$matchUrl#/psst.exe",
+        "hash": "$matchHash"
+    },
+    "shortcuts": [
+        [
+            "psst.exe",
+            "Psst"
+        ]
     ]
-  ]
 }

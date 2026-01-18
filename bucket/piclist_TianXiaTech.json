@@ -1,0 +1,41 @@
+{
+    "##": "PicList",
+    "version": "3.2.2",
+    "description": "PicList是一款高效的云存储和图床平台管理工具，在PicGo的基础上经过深度的二次开发，不仅完整保留了PicGo的所有功能，还增添了许多新的feature",
+    "homepage": "https://github.com/Kuingsmile/PicList",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/Kuingsmile/PicList?tab=MIT-1-ov-file#readme"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Kuingsmile/PicList/releases/download/v3.2.2/PicList-Setup-3.2.2-x64.exe#/dl.7z",
+            "hash": "5048743289b3f718ad896a152ec03bba228eb86e2a08c09d98c011bcd36c940f"
+        },
+        "32bit": {
+            "url": "https://github.com/Kuingsmile/PicList/releases/download/v3.2.2/PicList-Setup-3.2.2.exe#/dl.7z",
+            "hash": "3877fc8d0c2b42da15754e00afc2108acaef1598b94cb5810c846859382f92cc"
+        }
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Kuingsmile/PicList/releases/download/v$version/PicList-Setup-$version-x64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://github.com/Kuingsmile/PicList/releases/download/v$version/PicList-Setup-$version.exe#/dl.7z"
+            }
+        }
+    },
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" $dir",
+        "Remove-Item \"$dir\\`$*\" -Force -Recurse"
+    ],
+    "shortcuts": [
+        [
+            "PicList.exe",
+            "PicList"
+        ]
+    ]
+}

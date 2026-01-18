@@ -1,34 +1,34 @@
 {
-  "version": "1.0.28",
-  "description": "A cross-platform library to access USB devices",
-  "homepage": "https://github.com/libusb/libusb",
-  "license": "LGPL-2.1-only",
-  "url": "https://github.com/libusb/libusb/releases/download/v1.0.28/libusb-1.0.28.7z",
-  "hash": "ce633f98c3ce6aec82be3c0d273ab8bdd160642174faba4eb47d8dcd92af7f05",
-  "architecture": {
-    "64bit": {
-      "env_set": {
-        "LIBUSB_LIBRARIES": "$dir\\VS2022\\MS64\\static",
-        "LibUSB_LIBDIR": "$dir\\VS2022\\MS64\\static",
-        "LibUSB_INCDIR": "$dir\\include",
-        "LIBUSB_INCLUDE_DIRS": "$dir\\include"
-      }
+    "version": "1.0.29",
+    "description": "A cross-platform library to access USB devices",
+    "homepage": "https://github.com/libusb/libusb",
+    "license": "LGPL-2.1-only",
+    "url": "https://github.com/libusb/libusb/releases/download/v1.0.29/libusb-1.0.29.7z",
+    "hash": "964a38152ca9a104cd00ec8d2f0617b89cd814f9b635e29763c68563d951521d",
+    "architecture": {
+        "64bit": {
+            "env_set": {
+                "LIBUSB_LIBRARIES": "$dir\\VS2022\\MS64\\static",
+                "LibUSB_LIBDIR": "$dir\\VS2022\\MS64\\static",
+                "LibUSB_INCDIR": "$dir\\include",
+                "LIBUSB_INCLUDE_DIRS": "$dir\\include"
+            }
+        },
+        "32bit": {
+            "env_set": {
+                "LIBUSB_LIBRARIES": "$dir\\VS2022\\MS32\\static",
+                "LibUSB_LIBDIR": "$dir\\VS2022\\MS32\\static",
+                "LibUSB_INCDIR": "$dir\\include",
+                "LIBUSB_INCLUDE_DIRS": "$dir\\include"
+            }
+        }
     },
-    "32bit": {
-      "env_set": {
-        "LIBUSB_LIBRARIES": "$dir\\VS2022\\MS32\\static",
-        "LibUSB_LIBDIR": "$dir\\VS2022\\MS32\\static",
-        "LibUSB_INCDIR": "$dir\\include",
-        "LIBUSB_INCLUDE_DIRS": "$dir\\include"
-      }
+    "checkver": {
+        "url": "https://api.github.com/repositories/15120676/releases",
+        "jsonpath": "$[0].tag_name",
+        "regex": "\\Av([\\d.]+(?:-rc\\d+)?)\\Z"
+    },
+    "autoupdate": {
+        "url": "https://github.com/libusb/libusb/releases/download/v$version/libusb-$version.7z"
     }
-  },
-  "checkver": {
-    "url": "https://api.github.com/repositories/15120676/releases",
-    "jsonpath": "$[0].tag_name",
-    "regex": "\\Av([\\d.]+(?:-rc\\d+)?)\\Z"
-  },
-  "autoupdate": {
-    "url": "https://github.com/libusb/libusb/releases/download/v$version/libusb-$version.7z"
-  }
 }

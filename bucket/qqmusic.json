@@ -1,25 +1,25 @@
 {
-  "version": "1933",
-  "homepage": "https://y.qq.com/",
-  "license": "Freeware",
-  "url": "https://dldir1.qq.com/music/clntupate/QQMusic_Setup_1933.exe#/dl.7z",
-  "hash": "md5:c18dd6703fb8d62ee565b8a677ba377a",
-  "post_install": "Copy-Item \"$dir\\QQMusic.tpc\" \"$dir\\instok\"",
-  "shortcuts": [
-    [
-      "QQMusic.exe",
-      "QQMusic"
-    ]
-  ],
-  "checkver": {
-    "url": "https://api.nicoconi.com/updater/qqmusic",
-    "xpath": "//module_version"
-  },
-  "autoupdate": {
-    "url": "https://dldir1.qq.com/music/clntupate/QQMusic_Setup_$version.exe#/dl.7z",
-    "hash": {
-      "url": "https://api.nicoconi.com/updater/qqmusic",
-      "xpath": "//module_hash"
+    "version": "2201",
+    "homepage": "https://y.qq.com/",
+    "license": "Freeware",
+    "url": "https://sw.pcmgr.qq.com/cf50bc7f8d369937ed69e9c32e3b60c6/69521bac/spcmgr/download/QQMusic_Setup_2201.exe#/dl.7z",
+    "hash": "a17543e02bacf7525587bd47b337dabf07107a809ea4092d0af1327d3738d9ae",
+    "post_install": "Copy-Item \"$dir\\QQMusic.tpc\" \"$dir\\instok\"",
+    "shortcuts": [
+        [
+            "QQMusic.exe",
+            "QQMusic"
+        ]
+    ],
+    "checkver": {
+        "script": [
+            "$res = Invoke-WebRequest -UseBasicParsing -Uri 'https://luban.m.qq.com/api/public/software-manager/softwareProxy' -Body 'cmdid=3318&jprxReq%5Breq%5D%5Bsoft_id_list%5D%5B%5D=10' -Method 'POST'",
+            "Write-Output $res.Content"
+        ],
+        "jsonpath": "$.resp.soft_list[0].download_https_url",
+        "regex": "//(?<url>.+)/QQMusic_Setup_(\\d+)\\.exe"
+    },
+    "autoupdate": {
+        "url": "https://$matchUrl/QQMusic_Setup_$version.exe#/dl.7z"
     }
-  }
 }

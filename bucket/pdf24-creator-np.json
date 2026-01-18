@@ -1,5 +1,5 @@
 {
-    "version": "11.25.1",
+    "version": "11.29.0",
     "homepage": "https://tools.pdf24.org/en/creator",
     "description": "Free and easy to use PDF software with several functions",
     "license": {
@@ -8,27 +8,25 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://download.pdf24.org/pdf24-creator-11.25.1-x64.msi#/setup.msi_",
-            "hash": "87fa997ebb41dd6d56a3f8fd65fb72ddfc11c30d0e8021c18fbe7f879bcbce6e"
+            "url": "https://download.pdf24.org/pdf24-creator-11.29.0-x64.msi#/setup.msi_",
+            "hash": "e9d7cec5bcae55f9e68c795afb270bee6482f5814f8421e5d2c8323b2a472163"
         },
         "32bit": {
-            "url": "https://download.pdf24.org/pdf24-creator-11.25.1-x86.msi#/setup.msi_",
-            "hash": "761dd02efa192c101f14ea0af036f6116aaf24947f025759ef1accfdf81da401"
+            "url": "https://download.pdf24.org/pdf24-creator-11.29.0-x86.msi#/setup.msi_",
+            "hash": "63dfaaa0bcd434bf9c0a6e63e0725d519ffc625152f0753b59a2f8f1279eafc4"
         }
     },
     "post_install": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
         "Write-Host \"Please wait and don't cancel the script...\" -F 'Yellow'",
         "Start-Process 'msiexec' -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn', \"INSTALLDIR=$dir\", \"TARGETDIR=$dir\")",
-        "Stop-Service -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'; Stop-Process -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'",
-        "Stop-Process -Name 'explorer' -Force -ErrorAction 'SilentlyContinue'; Start-Sleep -Seconds 3"
+        "Stop-Service -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'; Stop-Process -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'"
     ],
     "pre_uninstall": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
         "Stop-Service -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'; Stop-Process -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'",
         "Write-Host \"Please wait and don't cancel the script...\" -F 'Yellow'",
-        "Start-Process 'msiexec' -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn')",
-        "Stop-Process -Name 'explorer' -Force -ErrorAction 'SilentlyContinue'; Start-Sleep -Seconds 3"
+        "Start-Process 'msiexec' -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn')"
     ],
     "checkver": "Version\\s([\\d.]+)",
     "autoupdate": {

@@ -1,0 +1,37 @@
+{
+    "version": "1.1.0",
+    "description": "A cross-platform subtitle display software. 一个跨平台的字幕显示软件。",
+    "homepage": "https://github.com/HiMeditator/auto-caption",
+    "license": "MIT",
+    "notes": "Note that 'DASHSCOPE_API_KEY' environment variable must be set to your DASHSCOPE API key before running the program.",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/HiMeditator/auto-caption/releases/download/v1.1.0/auto-caption-1.1.0-setup.exe#/dl.7z",
+            "hash": "73bd5e0d0139cabed22e0b6ed1f440c9f7d7f217eb8ecae8249b510c98f4dfb2"
+        }
+    },
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
+    ],
+    "shortcuts": [
+        [
+            "auto-caption.exe",
+            "auto-caption"
+        ]
+    ],
+    "env_set": {
+        "DASHSCOPE_API_KEY": "TODO"
+    },
+    "checkver": {
+        "github": "https://github.com/HiMeditator/auto-caption"
+    },
+    "autoupdate": {
+        "url": "https://github.com/HiMeditator/auto-caption/releases/download/v$version/auto-caption-$version-setup.exe#/dl.7z",
+        "hash": {
+            "mode": "extract",
+            "url": "https://github.com/HiMeditator/auto-caption/releases/expanded_assets/v$version",
+            "regex": "auto-caption-$version-setup\\.exe.*?sha256:$sha256"
+        }
+    }
+}

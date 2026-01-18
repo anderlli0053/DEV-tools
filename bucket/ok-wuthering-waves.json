@@ -1,0 +1,35 @@
+{
+    "version": "3.0.18",
+    "description": "鸣潮 后台自动战斗 自动刷声骸 一键日常 Automation for Wuthering Waves",
+    "homepage": "https://github.com/ok-oldking/ok-wuthering-waves",
+    "license": "AGPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ok-oldking/ok-wuthering-waves/releases/download/v3.0.18/ok-ww-win32.zip",
+            "hash": "1640aa71099150ab98b4c4b0a08d4caa5abfb0f579ef3c6978df0fdc18afe34a",
+            "extract_dir": "ok-ww"
+        }
+    },
+    "shortcuts": [
+        [
+            "ok-ww.exe",
+            "ok-wuthering-waves"
+        ]
+    ],
+    "persist": [
+        "cache",
+        "data",
+        "logs"
+    ],
+    "checkver": {
+        "github": "https://github.com/ok-oldking/ok-wuthering-waves"
+    },
+    "autoupdate": {
+        "url": "https://github.com/ok-oldking/ok-wuthering-waves/releases/download/v$version/ok-ww-win32.zip",
+        "hash": {
+            "mode": "extract",
+            "url": "https://github.com/ok-oldking/ok-wuthering-waves/releases/expanded_assets/v$version",
+            "regex": "ok-ww-win32\\.zip.*?sha256:$sha256"
+        }
+    }
+}

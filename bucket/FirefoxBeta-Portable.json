@@ -1,75 +1,75 @@
 {
-  "version": "139.0b1",
-  "description": "Firefox Beta. Beta builds of Firefox: the popular open source web browser.",
-  "homepage": "https://www.mozilla.org/en-US/firefox/beta/",
-  "license": "MPL-2.0",
-  "changelog": "https://www.mozilla.org/en-US/firefox/104.0beta/releasenotes/",
-  "notes": [
-    "To set profile 'Scoop-Beta' as *DEFAULT*, or profiles/settings was lost after update:",
-    "  - Run 'Firefox Beta Profile Manager', choose 'Scoop-Beta' then click 'Start Firefox'.",
-    "  - Visit 'about:profiles' page in Firefox Beta to check *DEFAULT* profile.",
-    "For details: https://support.mozilla.org/en-US/kb/profile-manager-create-remove-switch-firefox-profiles"
-  ],
-  "architecture": {
-    "64bit": {
-      "url": "https://archive.mozilla.org/pub/firefox/releases/139.0b1/win64/en-US/Firefox%20Setup%20139.0b1.exe#/dl.7z",
-      "hash": "sha512:b286dfe2dab7204d6e22d776a3f53546c136471e93a2a5cc408795d95b312d77cc44aae10c560619216c805869d2f0e285b9ebac24ec34e09f66d2dba6746f2d"
-    },
-    "32bit": {
-      "url": "https://archive.mozilla.org/pub/firefox/releases/139.0b1/win32/en-US/Firefox%20Setup%20139.0b1.exe#/dl.7z",
-      "hash": "sha512:78fd8443c3cd2204da04c753a7e4b2f10b872cf76e7bd75ca7ad35c0d904d68adf712e56f5931842de6b3aef3782df9beda59bdbcd7d9aedc295e707ca47d7ee"
-    }
-  },
-  "extract_dir": "core",
-  "post_install": [
-    "firefox-beta -CreateProfile \"Scoop-Beta $persist_dir\\profile\"",
-    "$Addition = \"$persist_dir\\addition\"",
-    "if (Test-Path $Addition) {",
-    "  info 'Copying additional items...'",
-    "  Copy-Item -Path $Addition\\* -Destination $dir -Force -Recurse -ErrorAction SilentlyContinue",
-    "}"
-  ],
-  "bin": [
-    [
-      "firefox.exe",
-      "firefox-beta"
-    ]
-  ],
-  "shortcuts": [
-    [
-      "firefox.exe",
-      "Firefox Beta"
+    "version": "148.0b3",
+    "description": "Firefox Beta. Beta builds of Firefox: the popular open source web browser.",
+    "homepage": "https://www.mozilla.org/en-US/firefox/beta/",
+    "license": "MPL-2.0",
+    "changelog": "https://www.mozilla.org/en-US/firefox/104.0beta/releasenotes/",
+    "notes": [
+        "To set profile 'Scoop-Beta' as *DEFAULT*, or profiles/settings was lost after update:",
+        "  - Run 'Firefox Beta Profile Manager', choose 'Scoop-Beta' then click 'Start Firefox'.",
+        "  - Visit 'about:profiles' page in Firefox Beta to check *DEFAULT* profile.",
+        "For details: https://support.mozilla.org/en-US/kb/profile-manager-create-remove-switch-firefox-profiles"
     ],
-    [
-      "firefox.exe",
-      "Firefox Beta Profile Manager",
-      "-P"
-    ]
-  ],
-  "persist": [
-    "distribution",
-    "profile"
-  ],
-  "checkver": {
-    "url": "https://community.chocolatey.org/packages/firefox-dev#releasenotes",
-    "regex": "version &#39;([\\db.]+)"
-  },
-  "autoupdate": {
     "architecture": {
-      "64bit": {
-        "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/en-US/Firefox%20Setup%20$version.exe#/dl.7z",
-        "hash": {
-          "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
-          "regex": "$sha512\\s+win64/en-US/$basename"
+        "64bit": {
+            "url": "https://archive.mozilla.org/pub/firefox/releases/148.0b3/win64/en-US/Firefox%20Setup%20148.0b3.exe#/dl.7z",
+            "hash": "sha512:8d38e99acae6fcbec1bb0d2b8f77e9e437614857ceb6cb7836d6181d17d5ca10aa4bc56ad6e7a856e999a9d3edee88c0988f69377f6201ba51a9720a28f65e41"
+        },
+        "32bit": {
+            "url": "https://archive.mozilla.org/pub/firefox/releases/148.0b3/win32/en-US/Firefox%20Setup%20148.0b3.exe#/dl.7z",
+            "hash": "sha512:8632c7ae3b0cb81fc1b5b32e3ad13a5718bf7f8d4221ee3f7d7483399def681f604c362e973de996324dfc2b17e6e3e32b4b7b9d70f67df97859e6a751e76966"
         }
-      },
-      "32bit": {
-        "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/en-US/Firefox%20Setup%20$version.exe#/dl.7z",
-        "hash": {
-          "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
-          "regex": "$sha512\\s+win32/en-US/$basename"
+    },
+    "extract_dir": "core",
+    "post_install": [
+        "firefox-beta -CreateProfile \"Scoop-Beta $persist_dir\\profile\"",
+        "$Addition = \"$persist_dir\\addition\"",
+        "if (Test-Path $Addition) {",
+        "  info 'Copying additional items...'",
+        "  Copy-Item -Path $Addition\\* -Destination $dir -Force -Recurse -ErrorAction SilentlyContinue",
+        "}"
+    ],
+    "bin": [
+        [
+            "firefox.exe",
+            "firefox-beta"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "firefox.exe",
+            "Firefox Beta"
+        ],
+        [
+            "firefox.exe",
+            "Firefox Beta Profile Manager",
+            "-P"
+        ]
+    ],
+    "persist": [
+        "distribution",
+        "profile"
+    ],
+    "checkver": {
+        "url": "https://community.chocolatey.org/packages/firefox-dev#releasenotes",
+        "regex": "version &#39;([\\db.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/en-US/Firefox%20Setup%20$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win64/en-US/$basename"
+                }
+            },
+            "32bit": {
+                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/en-US/Firefox%20Setup%20$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win32/en-US/$basename"
+                }
+            }
         }
-      }
     }
-  }
 }

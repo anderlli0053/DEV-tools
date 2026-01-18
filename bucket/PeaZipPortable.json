@@ -1,28 +1,28 @@
 {
-  "autoupdate": {
-    "hash": {
-      "regex": "MD5 Hash: +[\\w]{32}",
-      "url": "https://portableapps.com/apps/utilities/peazip_portable"
+    "homepage": "https://portableapps.com/apps/utilities/peazip_portable",
+    "description": "File archiver, compressor",
+    "version": "7.3.0",
+    "license": "",
+    "url": "https://astuteinternet.dl.sourceforge.net/project/portableapps/PeaZip%20Portable/PeaZipPortable_7.3.0.paf.exe#/dl.7z",
+    "hash": "md5:67dd99fa2a2d6ad1a07016d5ee136b86",
+    "bin": "PeaZipPortable.exe",
+    "shortcuts": [
+        [
+            "PeaZipPortable.exe",
+            "PeaZipPortable"
+        ]
+    ],
+    "persist": "Data",
+    "checkver": {
+        "url": "https://portableapps.com/apps/utilities/peazip_portable",
+        "re": "Version \\s+([\\w\\.]* for Win"
     },
-    "url": "https://astuteinternet.dl.sourceforge.net/project/portableapps/PeaZip%20Portable/PeaZipPortable_$version.paf.exe"
-  },
-  "bin": "PeaZipPortable.exe",
-  "checkver": {
-    "re": "Version \\s+([\\w\\.]* for Win",
-    "url": "https://portableapps.com/apps/utilities/peazip_portable"
-  },
-  "description": "File archiver, compressor",
-  "hash": "e3665e3473646264b8ad1a70115625e268f930b18fd28122790b7d97ec025a2c",
-  "homepage": "https://portableapps.com/apps/utilities/peazip_portable",
-  "license": "",
-  "persist": "Data",
-  "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
-  "shortcuts": [
-    [
-      "PeaZipPortable.exe",
-      "PeaZipPortable"
-    ]
-  ],
-  "url": "https://astuteinternet.dl.sourceforge.net/project/portableapps/PeaZip%20Portable/PeaZipPortable_9.0.0.paf.exe",
-  "version": "9.0.0"
+    "autoupdate": {
+        "url": "https://astuteinternet.dl.sourceforge.net/project/portableapps/PeaZip%20Portable/PeaZipPortable_$version.paf.exe",
+        "hash": {
+            "url": "https://portableapps.com/apps/utilities/peazip_portable",
+            "regex": "MD5 Hash: +[\\w]{32}"
+        }
+    },
+    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
 }

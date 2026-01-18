@@ -1,0 +1,27 @@
+{
+    "version": "6.2.6",
+    "description": "A professional test tool for HTTP applications, with special focus on RESTful web services and web API applications.",
+    "homepage": "https://www.httpmaster.net",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.httpmaster.net/license/professional_license"
+    },
+    "url": "https://www.httpmaster.net/downloads/httpmaster_6.2.6.zip",
+    "hash": "10355312a839e5390a094d25d9457f1412b133845ee69f73915e414f68149569",
+    "bin": "HttpMaster.Command.exe",
+    "shortcuts": [
+        [
+            "HttpMaster.Windows.exe",
+            "HttpMaster Professional"
+        ]
+    ],
+    "pre_install": "if (!(Test-Path \"$persist_dir\\HttpMaster.Settings.xml\")) { Set-Content -Encoding ASCII -Path \"$dir\\HttpMaster.Settings.xml\" -Value '<?xml version=\"1.0\" encoding=\"utf-8\"?><Settings></Settings>' }",
+    "persist": "HttpMaster.Settings.xml",
+    "checkver": {
+        "url": "https://www.httpmaster.net/download",
+        "regex": "/downloads/httpmaster_([\\d.]+).zip"
+    },
+    "autoupdate": {
+        "url": "https://www.httpmaster.net/downloads/httpmaster_$version.zip"
+    }
+}

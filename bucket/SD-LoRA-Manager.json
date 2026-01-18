@@ -1,0 +1,30 @@
+{
+    "version": "1.2.2",
+    "description": "LoRA Manager for Civit Models",
+    "homepage": "https://github.com/hanbinhsh/SD-LoRA-Manager",
+    "license": "Unknown",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/hanbinhsh/SD-LoRA-Manager/releases/download/1.2.2/SD_LoRA_Manager.exe",
+            "hash": "1f24f1068f575050c28458a14dc670728e57bbedb629aa57df3c3e8646a0451b"
+        }
+    },
+    "shortcuts": [
+        [
+            "SD_LoRA_Manager.exe",
+            "SD-LoRA-Manager"
+        ]
+    ],
+    "persist": "config",
+    "checkver": {
+        "github": "https://github.com/hanbinhsh/SD-LoRA-Manager"
+    },
+    "autoupdate": {
+        "url": "https://github.com/hanbinhsh/SD-LoRA-Manager/releases/download/$version/SD_LoRA_Manager.exe",
+        "hash": {
+            "mode": "extract",
+            "url": "https://github.com/hanbinhsh/SD-LoRA-Manager/releases/expanded_assets/$version",
+            "regex": "SD_LoRA_Manager.*\\.exe.*?sha256:$sha256"
+        }
+    }
+}

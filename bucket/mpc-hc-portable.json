@@ -1,57 +1,57 @@
 {
-  "version": "2.4.2",
-  "description": "An extremely light-weight, open source media player for Windows.",
-  "homepage": "https://github.com/clsid2/mpc-hc",
-  "license": "GPL-3.0-only",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/clsid2/mpc-hc/releases/download/2.4.2/MPC-HC.2.4.2.x64.zip",
-      "hash": "c6da2bc068cb47f0a3640e22f59a2b984cec4b573d3d7a7ae2c264e2a480bf56",
-      "bin": [
-        [
-          "mpc-hc64.exe",
-          "mpc-hc"
-        ]
-      ],
-      "shortcuts": [
-        [
-          "mpc-hc64.exe",
-          "MPC-HC x64"
-        ]
-      ]
-    },
-    "32bit": {
-      "url": "https://github.com/clsid2/mpc-hc/releases/download/2.4.2/MPC-HC.2.4.2.x86.zip",
-      "hash": "403a02d08c1003730b51a3890e682489f51e8e5f89a6bf9c2c47522eea4db80f",
-      "bin": "mpc-hc.exe",
-      "shortcuts": [
-        [
-          "mpc-hc.exe",
-          "MPC-HC"
-        ]
-      ]
-    }
-  },
-  "pre_install": [
-    "@('mpc-hc64.ini', 'mpc-hc.ini') | ForEach-Object {",
-    "    if (!(Test-Path \"$persist_dir\\$_\")) {Set-Content \"$dir\\$_\" (@('[Settings]', 'UpdaterAutoCheck=0') -join \"`r`n\") -Encoding UTF-8}",
-    "}"
-  ],
-  "persist": [
-    "mpc-hc64.ini",
-    "mpc-hc.ini"
-  ],
-  "checkver": {
-    "github": "https://github.com/clsid2/mpc-hc"
-  },
-  "autoupdate": {
+    "version": "2.6.0",
+    "description": "An extremely light-weight, open source media player for Windows.",
+    "homepage": "https://github.com/clsid2/mpc-hc",
+    "license": "GPL-3.0-only",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/clsid2/mpc-hc/releases/download/$version/MPC-HC.$version.x64.zip"
-      },
-      "32bit": {
-        "url": "https://github.com/clsid2/mpc-hc/releases/download/$version/MPC-HC.$version.x86.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/clsid2/mpc-hc/releases/download/2.6.0/MPC-HC.2.6.0.x64.zip",
+            "hash": "98a625d65212816fc97d75727739430389c7d1e0d904fd1ed8524b894712f90c",
+            "bin": [
+                [
+                    "mpc-hc64.exe",
+                    "mpc-hc"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "mpc-hc64.exe",
+                    "MPC-HC x64"
+                ]
+            ]
+        },
+        "32bit": {
+            "url": "https://github.com/clsid2/mpc-hc/releases/download/2.6.0/MPC-HC.2.6.0.x86.zip",
+            "hash": "9102bbd867391449424426d2016765c21d2cca7acc29ce47abf4946cc0e5a183",
+            "bin": "mpc-hc.exe",
+            "shortcuts": [
+                [
+                    "mpc-hc.exe",
+                    "MPC-HC"
+                ]
+            ]
+        }
+    },
+    "pre_install": [
+        "@('mpc-hc64.ini', 'mpc-hc.ini') | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) {Set-Content \"$dir\\$_\" (@('[Settings]', 'UpdaterAutoCheck=0') -join \"`r`n\") -Encoding UTF-8}",
+        "}"
+    ],
+    "persist": [
+        "mpc-hc64.ini",
+        "mpc-hc.ini"
+    ],
+    "checkver": {
+        "github": "https://github.com/clsid2/mpc-hc"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/clsid2/mpc-hc/releases/download/$version/MPC-HC.$version.x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/clsid2/mpc-hc/releases/download/$version/MPC-HC.$version.x86.zip"
+            }
+        }
     }
-  }
 }

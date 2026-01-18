@@ -1,21 +1,13 @@
 {
-    "version": "1.13.4",
-    "description": "User-friendly Desktop Client App for AI Models/LLMs",
-    "homepage": "https://chatboxai.app/",
-    "license": "GPL-3.0-or-later",
+    "homepage": "https://chatboxai.app",
+    "version": "1.18.4",
+    "license": "GPL-3.0 license",
     "architecture": {
         "64bit": {
-            "url": "https://download.chatboxai.app/releases/Chatbox-1.13.4-Setup.exe",
-            "hash": "a26d48a8964cb3aee74d8a59ac2b05dcdd4b0a3a168ef229dd1be6b437a33779"
+            "url": "https://download.chatboxai.app/releases/Chatbox-1.18.4-Setup.exe#/dl.7z",
+            "hash": "0234cd327365c9c235971f306449254eef4ac15019b58c6fa610c387fe0e6f0c",
+            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" | Out-Null"
         }
-    },
-    "installer": {
-        "script": [
-            "$file = (Get-ChildItem \"$dir\" 'Chatbox*.exe' | Select-Object -First 1).FullName",
-            "Expand-7ZipArchive \"$file\" \"$dir\\\" -Removal",
-            "Expand-7ZipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal",
-            "Remove-Item \"$dir\\`$PLUGINSDIR\",\"$dir\\`$R0\"  -Force -Recurse"
-        ]
     },
     "shortcuts": [
         [
@@ -23,14 +15,29 @@
             "Chatbox"
         ]
     ],
+    "post_install": [
+        "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "    ensure \"$persist_dir\" | Out-Null",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\data\")) {",
+        "    ensure \"$persist_dir\\data\" | Out-Null",
+        "}",
+        "New-Item $env:AppData\\xyz.chatboxapp.app -ItemType Junction -Target \"$persist_dir\\data\" | Out-Null"
+    ],
+    "pre_uninstall": [
+        "if (Test-Path \"$Env:AppData\\xyz.chatboxapp.app\\*\") {",
+        "    Remove-Item $env:APPDATA\\xyz.chatboxapp.app -Force -Recurse",
+        "}"
+    ],
     "checkver": {
-        "url": "https://chatboxai.app/help-center/changelog",
-        "regex": "<h3>v([\\d.]+) - \\d{4}.\\d{2}.\\d{2}</h3>"
+        "url": "https://chatboxai.app/en/help-center/changelog",
+        "regex": "<h2>v([\\d.]+) - [\\d.]+</h2>"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.chatboxai.app/releases/Chatbox-$version-Setup.exe"
+                "url": "https://download.chatboxai.app/releases/Chatbox-$version-Setup.exe#/dl.7z"
             }
         }
     }

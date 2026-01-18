@@ -1,30 +1,40 @@
 {
-  "homepage": "https://ryujinx.org",
-  "version": "1.1.1403",
-  "description": "Nintendo Switch Emulator written in C#",
-  "pre_install": [
-    "function create($path, $type, $content) {",
-    "   if (-not (Test-Path \"$path\")) {",
-    "       New-Item \"$path\" -ItemType $type -Value $content | Out-Null",
-    "       Write-Output \"Creating $path...\"",
-    "   }",
-    "}",
-    "create $dir/portable Directory"
-  ],
-  "persist": "portable",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/ryujinx-mirror/ryujinx/releases/download/r.49574a9/ryujinx-r.49574a9-win_x64.zip",
-      "hash": "aa4d7c8c31e368fa78d15abbb8c79b78f8692bcb27c5ec9b18725c37aeb16d26",
-      "bin": [
-        "Ryujinx.exe"
-      ],
-      "shortcuts": [
-        [
-          "Ryujinx.exe",
-          "Nintendo Switch (Ryujinx)"
-        ]
-      ]
+    "homepage": "https://ryujinx.org",
+    "version": "1.3.3",
+    "description": "Nintendo Switch Emulator written in C#",
+    "pre_install": [
+        "function create($path, $type, $content) {",
+        "   if (-not (Test-Path \"$path\")) {",
+        "       New-Item \"$path\" -ItemType $type -Value $content | Out-Null",
+        "       Write-Output \"Creating $path...\"",
+        "   }",
+        "}",
+        "create $dir/portable Directory"
+    ],
+    "persist": "portable",
+    "extract_dir": "publish",
+    "architecture": {
+        "64bit": {
+            "url": "https://git.ryujinx.app/api/v4/projects/1/packages/generic/Ryubing/1.3.3/ryujinx-1.3.3-win_x64.zip",
+            "hash": "baa93f48b012eefeca339a78a39844599ccd194c109093f354a4b9d1e03a056e",
+            "bin": "Ryujinx.exe",
+            "shortcuts": [
+                [
+                    "Ryujinx.exe",
+                    "Nintendo Switch (Ryujinx)"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://git.ryujinx.app/api/v4/projects/1/releases",
+        "jsonpath": "$.[0].name"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://git.ryujinx.app/api/v4/projects/1/packages/generic/Ryubing/$version/ryujinx-$version-win_x64.zip"
+            }
+        }
     }
-  }
 }

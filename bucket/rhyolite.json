@@ -1,0 +1,43 @@
+{
+    "version": "0.1.10",
+    "description": "A simple text editor written in Rust using Tauri and svelte for frontend.",
+    "homepage": "https://github.com/rhyolite-org/rhyolite",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rhyolite-org/rhyolite/releases/download/v0.1.10/Rhyolite_0.1.10_x64-setup.exe",
+            "hash": "7e6622ea8422580c94599741f9b54b4ad697f75ed887a66ab04e8a64db0c0501"
+        },
+        "32bit": {
+            "url": "https://github.com/rhyolite-org/rhyolite/releases/download/v0.1.10/Rhyolite_0.1.10_x86-setup.exe",
+            "hash": "0d1b3fe7aca45acfe93b8a2e99bb6fcaa27d90e268f22701dcf5d57742a791f1"
+        },
+        "arm64": {
+            "url": "https://github.com/rhyolite-org/rhyolite/releases/download/v0.1.10/Rhyolite_0.1.10_arm64-setup.exe",
+            "hash": "0cad252b955c1de216c601ee7a842c726ef4b05f0fbed43b182f2142e35a99e8"
+        }
+    },
+    "shortcuts": [
+        [
+            "Rhyolite.exe",
+            "Rhyolite"
+        ]
+    ],
+    "post_install": "Remove-Item \"$dir\\uninstall*\", \"$dir\\`$*\" -Force -Recurse",
+    "post_uninstall": "if ($purge) { Remove-Item \"$env:LOCALAPPDATA\\com.rhyolite.dev\" -Force -Recurse -ErrorAction SilentlyContinue }",
+    "notes": "Rhyolite is NOT portable. Settings are stored in '%USERPROFILE%\\Documents\\Rhyolite'.",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rhyolite-org/rhyolite/releases/download/v$version/Rhyolite_$version_x64-setup.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/rhyolite-org/rhyolite/releases/download/v$version/Rhyolite_$version_x86-setup.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/rhyolite-org/rhyolite/releases/download/v$version/Rhyolite_$version_arm64-setup.exe"
+            }
+        }
+    }
+}

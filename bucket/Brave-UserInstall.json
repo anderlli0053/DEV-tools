@@ -1,5 +1,5 @@
 {
-    "version": "1.84.135",
+    "version": "1.86.139",
     "description": "Brave. Secure, Fast & Private Web Browser with Adblocker",
     "homepage": "https://brave.com/",
     "license": {
@@ -9,12 +9,16 @@
     "changelog": "https://brave.com/latest/",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/brave/brave-browser/releases/download/v1.84.135/BraveBrowserStandaloneSilentSetup.exe#/setup.exe",
-            "hash": "6dfbf628f4a4e6839f68ab33a7848674a650845938c3ec07fc94e8ce2705dc7f"
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.86.139/BraveBrowserStandaloneSilentSetup.exe#/setup.exe",
+            "hash": "d9bc2a72900c5bea70d716437aeb50c61060dabf052b8f192fced03ae070ca14"
         },
         "32bit": {
-            "url": "https://github.com/brave/brave-browser/releases/download/v1.84.135/BraveBrowserStandaloneSilentSetup32.exe#/setup.exe",
-            "hash": "023c54980ba7de209fb2092c4b0fd7ecff66cdb6019b1f0be97896fd7357fd1c"
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.86.139/BraveBrowserStandaloneSilentSetup32.exe#/setup.exe",
+            "hash": "a3956094882ae0f5da88d00c37189a31cf46829ae3cd7f394ebeee3bf8632309"
+        },
+        "arm64": {
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.86.139/BraveBrowserStandaloneSilentSetupArm64.exe#/setup.exe",
+            "hash": "0724b42381672b1e4aa6d051c7d1ec1c5b236141b8996c3a3a7c6e6da26045c0"
         }
     },
     "pre_install": [
@@ -60,7 +64,14 @@
             },
             "32bit": {
                 "url": "https://github.com/brave/brave-browser/releases/download/v$version/BraveBrowserStandaloneSilentSetup32.exe#/setup.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/BraveBrowserStandaloneSilentSetupArm64.exe#/setup.exe"
             }
+        },
+        "hash": {
+            "url": "$url.sha256",
+            "regex": "$sha256.*?\\.exe"
         }
     }
 }

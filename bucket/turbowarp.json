@@ -1,0 +1,47 @@
+{
+    "version": "1.15.2",
+    "description": "A better offline editor for Scratch 3.",
+    "homepage": "https://desktop.turbowarp.org/",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/TurboWarp/desktop/releases/download/v1.15.2/TurboWarp-Setup-1.15.2-x64.exe#/dl.7z",
+            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+            "hash": "0c9bc97178b7b218b950672690866a6c18ceb49f2912ac80a6611acd2f6b6d10"
+        },
+        "32bit": {
+            "url": "https://github.com/TurboWarp/desktop/releases/download/v1.15.2/TurboWarp-Setup-1.15.2-ia32.exe#/dl.7z",
+            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+            "hash": "50226a9873edf3f19d06958381233e4d8df22cef4112ceeddd65cea74cbd6d0b"
+        },
+        "arm64": {
+            "url": "https://github.com/TurboWarp/desktop/releases/download/v1.15.2/TurboWarp-Setup-1.15.2-arm64.exe#/dl.7z",
+            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\"",
+            "hash": "a74b85cd9124a9a77f351a5df3e52e1f5b3afac71e9f42c57930fb7ce98aa3ad"
+        }
+    },
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\", \"$dir\\resources\\app-update.yml\"  -Force -Recurse",
+    "shortcuts": [
+        [
+            "TurboWarp.exe",
+            "TurboWarp"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/TurboWarp/desktop"
+    },
+    "notes": "TurboWarp is NOT portable.",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/TurboWarp/desktop/releases/download/v$version/TurboWarp-Setup-$version-x64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://github.com/TurboWarp/desktop/releases/download/v$version/TurboWarp-Setup-$version-ia32.exe#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://github.com/TurboWarp/desktop/releases/download/v$version/TurboWarp-Setup-$version-arm64.exe#/dl.7z"
+            }
+        }
+    }
+}

@@ -1,46 +1,46 @@
 {
-  "version": "6.4.9.2",
-  "description": "Wacom Tablet. Drivers for Wacom Tablet",
-  "homepage": "https://www.wacom.com/",
-  "license": "Proprietary",
-  "changelog": "https://www.wacom.com/en-au/support/product-support/drivers",
-  "url": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/WacomTablet_6.4.9-2.exe#/setup.7z",
-  "hash": "9e9d3a6dcbe4e7c4351aabfddd8f9a99f2482685f5e5ccc7c0d91ef092b85b2a",
-  "pre_download": "Assert-Administrator",
-  "pre_install": [
-    "$processname = \"WacomDesktopCenter\"",
-    "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-    "if ($process) {",
-    "   $process.CloseMainWindow()",
-    "   Start-Sleep -Seconds 5",
-    "   if (!$process.HasExited) {",
-    "       Start-Sleep -Seconds 25",
-    "       $process | Stop-Process -Force",
-    "   }",
-    "}"
-  ],
-  "installer": {
-    "script": [
-      "$programname = \"WacomDesktopCenter*\"",
-      "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
-      "$filepath = \"$ProgramFiles\\Tablet\\Wacom\\32\\WacomDesktopCenter.exe\"",
-      "$SimpleVersion = \"$majorVersion.$minorVersion.$patchVersion.$buildVersion\"",
-      "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-      "{",
-      "   &\"$dir\\setup.exe\" /S | Out-Null",
-      "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-      "   {",
-      "       exit 1",
-      "   }",
-      "}"
-    ]
-  },
-  "checkver": {
-    "url": "https://www.wacom.com/en-au/support/product-support/drivers",
-    "regex": "Driver ([\\d.]+)-([\\d]) Windows",
-    "replace": "$1.$2"
-  },
-  "autoupdate": {
-    "url": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/WacomTablet_$majorVersion.$minorVersion.$patchVersion-$buildVersion.exe#/setup.7z"
-  }
+    "version": "6.4.12.3",
+    "description": "Wacom Tablet. Drivers for Wacom Tablet",
+    "homepage": "https://www.wacom.com/",
+    "license": "Proprietary",
+    "changelog": "https://www.wacom.com/en-au/support/product-support/drivers",
+    "url": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/WacomTablet_6.4.12-3.exe#/setup.7z",
+    "hash": "9acb036280debe9ba1f8bc493b648cb3f7fcc462f0a489751dfc0e44654c0464",
+    "pre_download": "Assert-Administrator",
+    "pre_install": [
+        "$processname = \"WacomDesktopCenter\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
+    ],
+    "installer": {
+        "script": [
+            "$programname = \"WacomDesktopCenter*\"",
+            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
+            "$filepath = \"$ProgramFiles\\Tablet\\Wacom\\32\\WacomDesktopCenter.exe\"",
+            "$SimpleVersion = \"$majorVersion.$minorVersion.$patchVersion.$buildVersion\"",
+            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "{",
+            "   &\"$dir\\setup.exe\" /S | Out-Null",
+            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}"
+        ]
+    },
+    "checkver": {
+        "url": "https://www.wacom.com/en-au/support/product-support/drivers",
+        "regex": "Driver ([\\d.]+)-([\\d]) Windows",
+        "replace": "$1.$2"
+    },
+    "autoupdate": {
+        "url": "https://cdn.wacom.com/u/productsupport/drivers/win/professional/WacomTablet_$majorVersion.$minorVersion.$patchVersion-$buildVersion.exe#/setup.7z"
+    }
 }

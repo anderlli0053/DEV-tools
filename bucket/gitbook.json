@@ -1,0 +1,24 @@
+{
+    "version": "3.2.3",
+    "description": "gitbook, 避免使用 gitbook-cli 自动下载时卡在 Installing",
+    "homepage": "https://github.com/gendloop/gitbook",
+    "license": "LGPL-2.1-or-later",
+    "notes": "<Portable>",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gendloop/gitbook/releases/download/v3.2.3/gitbook-3.2.3-win64.7z",
+            "hash": "8cdd21e4580ab6d9e5acb90f350887083ec2b0eed82642f18fdc0f5dd789b930"
+        }
+    },
+    "installer": {
+        "script": "7z x \"$dir\\gitbook-3.2.3-win64.zip\" -o\"$env:USERPROFILE\\.gitbook\\versions\""
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gendloop/gitbook/releases/download/v$version/gitbook-$version-win64.7z"
+            }
+        }
+    }
+}

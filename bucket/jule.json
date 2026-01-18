@@ -1,0 +1,32 @@
+{
+    "version": "0.1.7",
+    "description": "An effective programming language to build efficient, fast, reliable and safe software while maintaining simplicity.",
+    "homepage": "https://jule.dev/",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/julelang/jule/releases/download/jule0.1.7/jule0.1.7-windows-amd64.zip",
+            "hash": "90d7d4a3d499e31af8cda39545c606724db59d2c57924af50d22159d1cbd7397"
+        },
+        "arm64": {
+            "url": "https://github.com/julelang/jule/releases/download/jule0.1.7/jule0.1.7-windows-arm64.zip",
+            "hash": "fa23711ab569b7af671f1917671b07f3718d4578e83a8c5c246e184bf0964719"
+        }
+    },
+    "extract_dir": "jule",
+    "bin": "bin\\julec.exe",
+    "checkver": {
+        "url": "https://github.com/julelang/jule/releases.atom",
+        "regex": "Repository/\\d+/jule(.+?)<"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/julelang/jule/releases/download/jule$version/jule$version-windows-amd64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/julelang/jule/releases/download/jule$version/jule$version-windows-arm64.zip"
+            }
+        }
+    }
+}

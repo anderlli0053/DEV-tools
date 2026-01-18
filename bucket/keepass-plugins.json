@@ -1,0 +1,36 @@
+{
+    "version": "1.0.0",
+    "description": "KeePass常用插件合集",
+    "homepage": "https://github.com/gendloop/keepass-plugins",
+    "license": "LGPL-2.1-or-later",
+    "depends": "extras/keepass",
+    "notes": [
+        "<Portable>"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gendloop/keepass-plugins/releases/download/v1.0.0/keepass-plugins-1.0.0-win64.7z",
+            "hash": "4eb923f8e3b4fd8700a8469cad95c875403ee8ffb33b0eaae3e025104ad936ca"
+        }
+    },
+    "installer": {
+        "script": [
+            "Get-ChildItem -Path \"$dir\" -Filter *.dll | Copy-Item -Destination \"$(appdir keepass $global)\\current\\Plugins\" -Force",
+            "Get-ChildItem -Path \"$dir\" -Filter *.plgx | Copy-Item -Destination \"$(appdir keepass $global)\\current\\Plugins\" -Force"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Get-ChildItem -Path \"$(appdir keepass $global)\\current\\Plugins\" -Filter *.dll | Remove-Item -Force",
+            "Get-ChildItem -Path \"$(appdir keepass $global)\\current\\Plugins\" -Filter *.plgx | Remove-Item -Force"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gendloop/keepass-plugins/releases/download/v$version/keepass-plugins-$version-win64.7z"
+            }
+        }
+    }
+}

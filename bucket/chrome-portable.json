@@ -8,17 +8,15 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://dl.google.com/release2/chrome/acz5qwfw7e6ogbe5gd3hixxbfmuq_144.0.7559.60/144.0.7559.60_chrome_installer.exe#/dl.7z",
+            "url": "https://dl.google.com/release2/chrome/acz5qwfw7e6ogbe5gd3hixxbfmuq_144.0.7559.60/144.0.7559.60_chrome_installer_uncompressed.exe#/dl.7z",
             "hash": "4372ba2664312500615198c37941ff55e4e7568744f1092f7da9dcd273dbc650"
         },
         "32bit": {
-            "url": "https://dl.google.com/release2/chrome/grzayel6fcgpyj6ggvchy3yj2q_144.0.7559.60/144.0.7559.60_chrome_installer.exe#/dl.7z",
+            "url": "https://dl.google.com/release2/chrome/grzayel6fcgpyj6ggvchy3yj2q_144.0.7559.60/144.0.7559.60_chrome_installer_uncompressed.exe#/dl.7z",
             "hash": "493367b6be9e624cee1e4ed32420ca3acac75694bde7655ba1b41d100f4e3e4b"
         }
     },
-    "installer": {
-        "script": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal"
-    },
+    "extract_dir": "Chrome-bin",
     "bin": [
         [
             "chrome.exe",
@@ -31,11 +29,6 @@
             "--user-data-dir=\"$dir\\User Data\""
         ]
     ],
-    "post_install": [
-        "Remove-Item -Force -Recurse -ErrorAction SilentlyContinue -Path \"$ENV:LOCALAPPDATA\\Google\\Chrome\\User Data\"",
-        "New-Item -ItemType Junction -target \"$dir\\User Data\" -Path \"$ENV:LOCALAPPDATA\\Google\\Chrome\\User Data\""
-    ],
-    "post_uninstall": "Remove-Item -Force -Recurse -ErrorAction SilentlyContinue -Path \"$ENV:LOCALAPPDATA\\Google\\Chrome\\User Data\"",
     "shortcuts": [
         [
             "chrome.exe",
@@ -51,14 +44,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.google.com/release2/chrome/$match64_$version/$version_chrome_installer.exe#/dl.7z",
+                "url": "https://dl.google.com/release2/chrome/$match64_$version/$version_chrome_installer_uncompressed.exe#/dl.7z",
                 "hash": {
                     "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
                     "xpath": "/chromechecker/stable64[version='$version']/sha256"
                 }
             },
             "32bit": {
-                "url": "https://dl.google.com/release2/chrome/$match32_$version/$version_chrome_installer.exe#/dl.7z",
+                "url": "https://dl.google.com/release2/chrome/$match32_$version/$version_chrome_installer_uncompressed.exe#/dl.7z",
                 "hash": {
                     "url": "https://scoopinstaller.github.io/UpdateTracker/googlechrome/chrome.min.xml",
                     "xpath": "/chromechecker/stable32[version='$version']/sha256"

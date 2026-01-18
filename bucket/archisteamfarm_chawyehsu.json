@@ -6,12 +6,12 @@
     "architecture": {
         "64bit": {
             "url": "https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/6.3.1.6/ASF-win-x64.zip",
-            "hash": "a1e94e3b8f28b22716dc8f7c193ca6ec23ac353f347f3706364f72188c488395"
+            "hash": "sha512:32c3cd788e1218a2ba4188e688f49cbb230d9063e32ac180aebc6168e8799f0868daa8fb12b293e77c59d11eea97467239d6de740ae9caf8720b2ff94e0fde24"
+        },
+        "arm64": {
+            "url": "https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/6.3.1.6/ASF-win-arm64.zip",
+            "hash": "sha512:1bde457cfba444cb5dc3f5968bda09a88e6c8919966020222825cc2e046fec7f2c848652afe21434e716217f2ce27d389a5b73a51d85a37945e95d744bc6a641"
         }
-    },
-    "suggest": {
-        ".NET Desktop Runtime": "dotnet-desktop-runtime",
-        "Visual C++ Redistributable": "extras/vcredist2019"
     },
     "shortcuts": [
         [
@@ -19,13 +19,23 @@
             "ArchiSteamFarm"
         ]
     ],
-    "persist": "config",
+    "persist": [
+        "config",
+        "plugins"
+    ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/$version/ASF-win-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/$version/ASF-win-arm64.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/SHA512SUMS",
+            "regex": "$sha512\\s+$basename"
         }
     }
 }

@@ -1,50 +1,50 @@
 {
-  "version": "7.6.0-preview.4",
-  "description": "Cross-platform automation and configuration tool/framework, known as Powershell Core, that works well with existing tools and is optimized for dealing with structured data. (beta channel)",
-  "homepage": "https://github.com/PowerShell/PowerShell",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.0-preview.4/PowerShell-7.6.0-preview.4-win-x64.zip",
-      "hash": "385012237c108ecdfcd35dbdbb989194f56d8381f864ea69e4ecc8bd7215c6b4"
-    },
-    "32bit": {
-      "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.0-preview.4/PowerShell-7.6.0-preview.4-win-x86.zip",
-      "hash": "fe9798670058404b3b2ad1e4b611dfc74bc3a12c7c4c9f2bfb4d46903c0ada4f"
-    },
-    "arm64": {
-      "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.0-preview.4/PowerShell-7.6.0-preview.4-win-arm64.zip",
-      "hash": "57c875b583801e3ca6208c8772471a7d913aa4c727e868a0b1a24ba16c43dfaf"
-    }
-  },
-  "bin": "pwsh.exe",
-  "shortcuts": [
-    [
-      "pwsh.exe",
-      "PowerShell"
-    ]
-  ],
-  "pre_install": "if(!(Test-Path \"$dir\\profile.ps1\")) { New-Item \"$dir\\profile.ps1\" -ItemType File }",
-  "persist": "profile.ps1",
-  "checkver": {
-    "url": "https://api.github.com/repos/PowerShell/PowerShell/releases",
-    "regex": "/releases/tag/(?:v)?([\\d.]+-[\\w.]+)"
-  },
-  "autoupdate": {
+    "version": "7.6.0-preview.6",
+    "description": "Cross-platform automation and configuration tool/framework, known as Powershell Core, that works well with existing tools and is optimized for dealing with structured data. (beta channel)",
+    "homepage": "https://github.com/PowerShell/PowerShell",
+    "license": "MIT",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x64.zip"
-      },
-      "32bit": {
-        "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x86.zip"
-      },
-      "arm64": {
-        "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-arm64.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.0-preview.6/PowerShell-7.6.0-preview.6-win-x64.zip",
+            "hash": "481ce45bd9ebfab9a5b254a35f145fb6259bd452ae67d92ab1d231b6367987d9"
+        },
+        "32bit": {
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.0-preview.6/PowerShell-7.6.0-preview.6-win-x86.zip",
+            "hash": "22e52d5583e032aad40afb4136c001dd30d9f3d571cd50683d482ba14cc594a6"
+        },
+        "arm64": {
+            "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.0-preview.6/PowerShell-7.6.0-preview.6-win-arm64.zip",
+            "hash": "36dc90e7f0e7870b0970c9a58790de4de4217e65acafaf790e87b7c97d93649f"
+        }
     },
-    "hash": {
-      "url": "https://github.com/PowerShell/PowerShell/releases/tag/v$version/",
-      "find": "$basename\\s*<ul>\\s*<li>([A-Fa-f0-9]{64})"
+    "bin": "pwsh.exe",
+    "shortcuts": [
+        [
+            "pwsh.exe",
+            "PowerShell"
+        ]
+    ],
+    "pre_install": "if(!(Test-Path \"$dir\\profile.ps1\")) { New-Item \"$dir\\profile.ps1\" -ItemType File }",
+    "persist": "profile.ps1",
+    "checkver": {
+        "url": "https://api.github.com/repos/PowerShell/PowerShell/releases",
+        "regex": "/releases/tag/(?:v)?([\\d.]+-[\\w.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-x86.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/PowerShell/PowerShell/releases/download/v$version/PowerShell-$version-win-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/PowerShell/PowerShell/releases/tag/v$version/",
+            "find": "$basename\\s*<ul>\\s*<li>([A-Fa-f0-9]{64})"
+        }
     }
-  }
 }

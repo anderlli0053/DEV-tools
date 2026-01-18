@@ -1,40 +1,40 @@
 {
-  "version": "0.3.21-beta-release",
-  "description": "Web SSH & Telnet (WebSSH & WebTelnet client) 🔮",
-  "homepage": "https://sshwifty-demo.nirui.org/",
-  "license": {
-    "identifier": "AGPL-3.0 license",
-    "url": "https://github.com/nirui/sshwifty/blob/master/LICENSE.md"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/nirui/sshwifty/releases/download/0.3.21-beta-release-prebuild/sshwifty_0.3.21-beta-release_windows_amd64.tar.gz",
-      "hash": "5a14c5b64c5ebe660d387981492ed6521f1d74c949185bf06e6fd54adf327844"
+    "version": "0.4.3-beta-release",
+    "description": "Web SSH & Telnet (WebSSH & WebTelnet client) 🔮",
+    "homepage": "https://sshwifty-demo.nirui.org/",
+    "license": {
+        "identifier": "AGPL-3.0 license",
+        "url": "https://github.com/nirui/sshwifty/blob/master/LICENSE.md"
     },
-    "32bit": {
-      "url": "https://github.com/nirui/sshwifty/releases/download/0.3.21-beta-release-prebuild/sshwifty_0.3.21-beta-release_windows_386.tar.gz",
-      "hash": "8c35384bec82877c93d81e41d9ba0557df749d8856db826b82b84db1a229c514"
-    }
-  },
-  "pre_install": "Get-ChildItem \"$dir\\sshwifty*.exe\" | Rename-Item -NewName 'sshwifty.exe'",
-  "bin": [
-    [
-      "sshwifty.exe",
-      "sshwifty"
-    ]
-  ],
-  "checkver": {
-    "url": "https://api.github.com/repos/nirui/sshwifty/releases",
-    "regex": "(?sm)browser_download_url.*?releases/download/(?<tag>[\\w.-]+)/sshwifty_([\\w.-]+)_windows_386.tar.gz"
-  },
-  "autoupdate": {
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/nirui/sshwifty/releases/download/$matchTag/sshwifty_$version_windows_amd64.tar.gz"
-      },
-      "32bit": {
-        "url": "https://github.com/nirui/sshwifty/releases/download/$matchTag/sshwifty_$version_windows_386.tar.gz"
-      }
+        "64bit": {
+            "url": "https://github.com/nirui/sshwifty/releases/download/0.4.3-beta-release-prebuild/sshwifty_0.4.3-beta-release_windows_amd64.tar.gz",
+            "hash": "04f3069a479190028533bd5c6a3ab7df03bee6e32bdfcbdcdef870ee38707047"
+        },
+        "32bit": {
+            "url": "https://github.com/nirui/sshwifty/releases/download/0.4.3-beta-release-prebuild/sshwifty_0.4.3-beta-release_windows_386.tar.gz",
+            "hash": "e69c9356e33f53ae4f3b57a9885499f704b66ae5fef1bdbb70ec088275f1be37"
+        }
+    },
+    "pre_install": "Get-ChildItem \"$dir\\sshwifty*.exe\" | Rename-Item -NewName 'sshwifty.exe'",
+    "bin": [
+        [
+            "sshwifty.exe",
+            "sshwifty"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/nirui/sshwifty/releases",
+        "regex": "(?sm)browser_download_url.*?releases/download/(?<tag>[\\w.-]+)/sshwifty_([\\w.-]+)_windows_386.tar.gz"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/nirui/sshwifty/releases/download/$matchTag/sshwifty_$version_windows_amd64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://github.com/nirui/sshwifty/releases/download/$matchTag/sshwifty_$version_windows_386.tar.gz"
+            }
+        }
     }
-  }
 }

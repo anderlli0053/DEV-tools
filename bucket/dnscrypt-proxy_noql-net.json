@@ -1,32 +1,40 @@
 {
-  "version": "2.1.8",
-  "description": "dnscrypt-proxy 2 - A flexible DNS proxy, with support for encrypted DNS protocols.",
-  "homepage": "https://github.com/DNSCrypt/dnscrypt-proxy",
-  "license": "ISC",
-  "notes": "",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.1.8/dnscrypt-proxy-win64-2.1.8.zip",
-      "hash": "dcbef9a4079164545ab9d8a95b4d97da3e639213451dd2c14237ceba59c909bb"
-    }
-  },
-  "checkver": "github",
-  "autoupdate": {
+    "version": "2.1.15",
+    "description": "dnscrypt-proxy 2 - A flexible DNS proxy, with support for encrypted DNS protocols.",
+    "homepage": "https://github.com/DNSCrypt/dnscrypt-proxy",
+    "license": "ISC",
+    "notes": "",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/$version/dnscrypt-proxy-win64-$version.zip"
-      }
-    }
-  },
-  "pre_install": [
-    "'dnscrypt-proxy.toml', 'query.log' | ForEach-Object {",
-    "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" -ItemType File | Out-Null }",
-    "};"
-  ],
-  "persist": [
-    "dnscrypt-proxy.toml",
-    "query.log"
-  ],
-  "extract_dir": "win64",
-  "bin": "dnscrypt-proxy.exe"
+        "64bit": {
+            "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.1.15/dnscrypt-proxy-win64-2.1.15.zip",
+            "hash": "5aa02cb30eda8b2dc64b910793b86cbdba436f3b53db79b048421c35f1f10550",
+            "extract_dir": "win64"
+        },
+        "arm64": {
+            "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.1.15/dnscrypt-proxy-winarm-2.1.15.zip",
+            "hash": "b44da63ac62de1a02ad779a1e5616b63ce61ae712274106d40c79243984d011c",
+            "extract_dir": "winarm"
+        }
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/$version/dnscrypt-proxy-win64-$version.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/$version/dnscrypt-proxy-winarm-$version.zip"
+            }
+        }
+    },
+    "pre_install": [
+        "'dnscrypt-proxy.toml', 'query.log' | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" -ItemType File | Out-Null }",
+        "};"
+    ],
+    "persist": [
+        "dnscrypt-proxy.toml",
+        "query.log"
+    ],
+    "bin": "dnscrypt-proxy.exe"
 }

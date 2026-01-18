@@ -1,0 +1,35 @@
+{
+    "version": "254",
+    "description": "This is the release repository for Fan Control, a highly customizable fan controlling software for Windows.",
+    "homepage": "https://github.com/Rem0o/FanControl.Releases",
+    "license": {
+        "identifier": "© [2023] [Rémi Mercier]. All rights reserved.",
+        "url": "https://github.com/Rem0o/FanControl.Releases?tab=License-1-ov-file#License-1-ov-file"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Rem0o/FanControl.Releases/releases/download/V254/FanControl_254_net_10_0.zip",
+            "hash": "592a9c47ea0428e1abf5050b20e209451f385755d9a7cf77cf71d4ad1324a895"
+        }
+    },
+    "bin": "FanControl.exe",
+    "shortcuts": [
+        [
+            "FanControl.exe",
+            "FanControl"
+        ]
+    ],
+    "persist": "Configurations",
+    "checkver": {
+        "url": "https://api.github.com/repos/Rem0o/FanControl.Releases/releases",
+        "jp": "$[0].assets[*].browser_download_url",
+        "regex": "/releases/download/V([\\d]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Rem0o/FanControl.Releases/releases/download/V$version/FanControl_$version_net_10_0.zip"
+            }
+        }
+    }
+}

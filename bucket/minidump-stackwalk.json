@@ -1,0 +1,24 @@
+{
+    "version": "0.26.1",
+    "description": "Analyzes minidumps and produces a report (either human-readable or JSON)",
+    "homepage": "https://github.com/rust-minidump/rust-minidump",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/rust-minidump/rust-minidump/releases/download/v0.26.1/minidump-stackwalk-x86_64-pc-windows-msvc.zip",
+            "hash": "dc6da411047ef15b784bffe0f9bf7ecb9221186c4c8fd655e3d8a3fbba0a9c61"
+        }
+    },
+    "bin": "minidump-stackwalk.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rust-minidump/rust-minidump/releases/download/v$version/minidump-stackwalk-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

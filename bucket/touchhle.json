@@ -1,0 +1,34 @@
+{
+    "version": "0.2.3",
+    "description": "A high-level emulator for iPhone OS apps.",
+    "homepage": "https://touchhle.org/",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/touchHLE/touchHLE/releases/download/v0.2.3/touchHLE_v0.2.3_Windows_x86_64.zip",
+            "hash": "81738b6be028bac78070b3ce204c2d0745ddb7d5a8cfac0960c1229126833e83"
+        }
+    },
+    "shortcuts": [
+        [
+            "touchHLE.exe",
+            "touchHLE"
+        ]
+    ],
+    "pre_install": "if (!(Test-Path \"$dir\\touchHLE_options.txt\")) { Set-Content -Encoding ASCII -Path \"$dir\\touchHLE_options.txt\" -Value $null }",
+    "persist": [
+        "touchHLE_options.txt",
+        "touchHLE_apps",
+        "touchHLE_sandbox"
+    ],
+    "checkver": {
+        "github": "https://github.com/touchHLE/touchHLE"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/touchHLE/touchHLE/releases/download/v$version/touchHLE_v$version_Windows_x86_64.zip"
+            }
+        }
+    }
+}

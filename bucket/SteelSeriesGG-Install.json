@@ -1,33 +1,33 @@
 {
-  "version": "85.0.0",
-  "description": "SteelSeries GG. SteelSeries GG helps create better connections with your gear, your people and your game",
-  "homepage": "https://steelseries.com/gg/",
-  "license": "Propritary",
-  "changelog": "https://techblog.steelseries.com/",
-  "url": "https://steelseries.com/gg/downloads/gg/latest/windows#/setup.exe",
-  "hash": "381feab0dd060af2fefe508836f0956d1c26ffdb81a6b78c3c7799c10fbbab79",
-  "pre_download": "Assert-Administrator",
-  "installer": {
-    "script": [
-      "$programname = \"SteelSeries GG*\"",
-      "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
-      "$filepath = \"$ProgramFiles\\SteelSeries\\GG\\SteelSeriesGG.exe\"",
-      "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-      "{",
-      "   &\"$dir\\setup.exe\" /S | Out-Null",
-      "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-      "   {",
-      "       exit 1",
-      "   }",
-      "}",
-      "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
-    ]
-  },
-  "checkver": {
-    "url": "https://techblog.steelseries.com/",
-    "regex": "Release notes for GG ([\\d.]+)"
-  },
-  "autoupdate": {
-    "url": "https://steelseries.com/gg/downloads/gg/latest/windows#/setup.exe"
-  }
+    "version": "102.0.0",
+    "description": "SteelSeries GG. SteelSeries GG helps create better connections with your gear, your people and your game",
+    "homepage": "https://steelseries.com/gg/",
+    "license": "Propritary",
+    "changelog": "https://techblog.steelseries.com/",
+    "url": "https://steelseries.com/gg/downloads/gg/latest/windows#/setup.exe",
+    "hash": "9265e4de7698a82d02dfc3b8aca5b0110bb1c3ce27c7a7f3ecc479a5b59bc8c1",
+    "pre_download": "Assert-Administrator",
+    "installer": {
+        "script": [
+            "$programname = \"SteelSeries GG*\"",
+            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFiles\")",
+            "$filepath = \"$ProgramFiles\\SteelSeries\\GG\\SteelSeriesGG.exe\"",
+            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "{",
+            "   &\"$dir\\setup.exe\" /S | Out-Null",
+            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}",
+            "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
+        ]
+    },
+    "checkver": {
+        "url": "https://techblog.steelseries.com/",
+        "regex": "Release notes for GG ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://steelseries.com/gg/downloads/gg/latest/windows#/setup.exe"
+    }
 }

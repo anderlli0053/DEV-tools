@@ -1,0 +1,30 @@
+{
+    "version": "8.0.7279",
+    "description": "系统映像制作",
+    "homepage": "https://github.com/gendloop/MacriumReflect",
+    "license": "LGPL-2.1-or-later",
+    "notes": [
+        "<Installer>"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gendloop/MacriumReflect/releases/download/v8.0.7279/MacriumReflect-8.0.7279-win64.7z",
+            "hash": "9a917df934ebff628649d6c8e5f54c638e0a255ed170f6121044b14004fd5b99"
+        }
+    },
+    "installer": {
+        "script": [
+            "Push-Location \"$dir\"",
+            "Start-Process MacriumReflect-$version-win64.exe",
+            "Pop-Location"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gendloop/MacriumReflect/releases/download/v$version/MacriumReflect-$version-win64.7z"
+            }
+        }
+    }
+}

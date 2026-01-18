@@ -1,5 +1,5 @@
 {
-    "version": "2.6.1.40902",
+    "version": "3.2.0.65851",
     "description": "Toolbox App. A control panel for all JetBrains tools.",
     "homepage": "https://www.jetbrains.com/toolbox/",
     "license": {
@@ -7,19 +7,39 @@
         "url": "https://www.jetbrains.com/legal/"
     },
     "notes": [
+        "Manual install is needed since installer is encrypted and signed.",
         "By default all your tools are installed into '$dir\\apps' folder and are persisted.",
         "This could be changed inside settings menu."
     ],
-    "url": "https://download.jetbrains.com/toolbox/jetbrains-toolbox-2.6.1.40902.exe",
-    "hash": "810295d84c2f9ba4fb12a39c5a1fd74d75268e72bd7721404c44767fdbf4de15",
-    "pre_install": [
-        "Expand-7zipArchive \"$dir\\jetbrains-toolbox-$version.exe\" \"$dir\\installer\" -Removal",
-        "Expand-7zipArchive \"$dir\\installer\\.text\" \"$dir\"",
-        "Remove-Item \"$dir\\`$*\", \"$dir\\installer\" -Recurse"
-    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://download.jetbrains.com/toolbox/jetbrains-toolbox-3.2.0.65851.exe#/setup.exe",
+            "hash": "620cf6a93dec8cc736686a98e1cd655935aa291439f53a60d7448bc49646119f"
+        }
+    },
+    "installer": {
+        "file": "setup.exe"
+    },
     "post_install": [
+        "Move-Item \"$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\JetBrains Toolbox\\JetBrains Toolbox.lnk\" \"$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\Scoop Apps\"",
+        "function Create-Junction { param ([string]$runtimeCache, [string]$runtimeCachePersist)",
+        "  if (-not (Test-Path $runtimeCache)) { return }",
+        "  if (Test-Path $runtimeCachePersist) {",
+        "    Remove-Item $runtimeCache -Force -Recurse -ErrorAction SilentlyContinue",
+        "    New-Item -Type Junction -Path $runtimeCache -Target $runtimeCachePersist | Out-Null",
+        "  } else {",
+        "    mkdir $runtimeCache -ErrorAction SilentlyContinue",
+        "    Move-Item $runtimeCache $runtimeCachePersist -Force",
+        "    New-Item -Type Junction -Path $runtimeCache -Target $runtimeCachePersist | Out-Null",
+        "  }",
+        "}",
+        "foreach ($folder in @('JetBrains', 'Google')) {",
+        "  Create-Junction -runtimeCache \"$env:USERPROFILE\\$folder\" -runtimeCachePersist \"$persist_dir\\USERPROFILE\\$folder\"",
+        "  Create-Junction -runtimeCache \"$env:LOCALAPPDATA\\$folder\" -runtimeCachePersist \"$persist_dir\\LOCALAPPDATA\\$folder\"",
+        "  Create-Junction -runtimeCache \"$env:APPDATA\\$folder\" -runtimeCachePersist \"$persist_dir\\APPDATA\\$folder\"",
+        "}",
         "$config = \"$env:LOCALAPPDATA\\JetBrains\\Toolbox\\.settings.json\"",
-        "if (!(Test-Path $config)) {",
+        "if (-not (Test-Path $config)) {",
         "    $settings = @{",
         "        'autostart' = $false",
         "        'install_location' = \"$dir\\apps\"",
@@ -27,29 +47,20 @@
         "    }",
         "    New-Item $config -Type File -Force | Out-Null",
         "    Set-Content $config ($settings | ConvertToPrettyJson) -Encoding ASCII -Force",
-        "} else { # NOTE: Remove the migration script after 6 months (2024-02-15)",
-        "  $conf_content = (Get-Content $config | ConvertFrom-Json)",
-        "  if ($conf_content.'install_location' -eq \"$dir\") {",
-        "    $conf_content.'install_location' = \"$dir\\apps\"",
-        "    Set-Content $config ($conf_content | ConvertToPrettyJson) -Encoding ASCII -Force",
-        "  }",
-        "}",
-        "# NOTE END"
+        "}"
     ],
-    "bin": "jetbrains-toolbox.exe",
-    "shortcuts": [
-        [
-            "jetbrains-toolbox.exe",
-            "JetBrains Toolbox"
-        ]
+    "post_uninstall": "Remove-Item \"$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\Scoop Apps\\JetBrains Toolbox.lnk\" -ErrorAction SilentlyContinue",
+    "env_add_path": "scripts",
+    "persist": [
+        "apps",
+        "scripts"
     ],
-    "persist": "apps",
     "checkver": {
         "url": "https://data.services.jetbrains.com/products/releases?code=TBA&latest=true&type=release",
         "jsonpath": "$.TBA..build"
     },
     "autoupdate": {
-        "url": "https://download.jetbrains.com/toolbox/jetbrains-toolbox-$version.exe",
+        "url": "https://download.jetbrains.com/toolbox/jetbrains-toolbox-$version.exe#/setup.exe",
         "hash": {
             "url": "$url.sha256"
         }

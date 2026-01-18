@@ -1,0 +1,26 @@
+{
+    "version": "3.1.0",
+    "description": "A RSS reader for the terminal.",
+    "homepage": "https://github.com/guyfedwards/nom",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/guyfedwards/nom/releases/download/v3.1.0/nom_3.1.0_windows_amd64.tar.gz",
+            "hash": "1cff462d7fb48f1e269ae75f2000f6160a0e9258848e3d53e384f8d0bccbf19f"
+        }
+    },
+    "bin": "nom.exe",
+    "post_uninstall": "if ($purge) { Remove-Item \"$env:APPDATA\\nom\" -Force -Recurse -ErrorAction SilentlyContinue }",
+    "notes": "Settings are stored in '%APPDATA%\\nom', and will be purged during uninstallation.",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/guyfedwards/nom/releases/download/v$version/nom_$version_windows_amd64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

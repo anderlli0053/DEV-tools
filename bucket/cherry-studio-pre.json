@@ -1,49 +1,37 @@
 {
-    "version": "1.7.13",
+    "version": "1.7.0-rc.3",
     "description": "A desktop client that supports for multiple LLM providers (Pre-release).",
     "homepage": "https://cherry-ai.com",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v1.7.13/Cherry-Studio-1.7.13-x64-setup.exe#/dl.7z",
-            "hash": "sha512:a68e6d9d3c3f0dd3873b6898eee7c7a1a480e37dd346c6bd2f1270ef674a78e49de9e334baceb613d21ba736ad031b0dd136c6b28a8cf6b37ee8618bcfc23777",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$*\", \"$dir\\Unintall*\" -Recurse"
-            ]
+            "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v1.7.0-rc.3/Cherry-Studio-1.7.0-rc.3-x64-portable.exe#/Cherry-Studio.exe",
+            "hash": "2dc3fe41be630c797df5704a99e3e16d9742a896f99921a2009deddf59ed4fce"
+        },
+        "arm64": {
+            "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v1.7.0-rc.3/Cherry-Studio-1.7.0-rc.3-arm64-portable.exe#/Cherry-Studio.exe",
+            "hash": "72bf9211d9776ef7dbe26f70012599da6a23ec5f4faca6cbb9bc8e685c49b0b6"
         }
     },
     "shortcuts": [
         [
-            "Cherry Studio.exe",
-            "Cherry Studio"
+            "Cherry-Studio.exe",
+            "Cherry Studio (Preview)"
         ]
-    ],
-    "post_install": [
-        "if (Test-Path \"$persist_dir\\data\\*\") {",
-        "    New-Item \"$Env:AppData\\CherryStudio\" -ItemType Directory -Force | Out-Null",
-        "    Copy-Item \"$persist_dir\\data\\*\" \"$Env:AppData\\CherryStudio\" -Recurse",
-        "}"
-    ],
-    "pre_uninstall": [
-        "if (Test-Path \"$Env:AppData\\CherryStudio\\*\") {",
-        "    Remove-Item \"$persist_dir\\data\" -Recurse -Force",
-        "    Move-Item \"$Env:AppData\\CherryStudio\" \"$persist_dir\\data\" -Force",
-        "}"
     ],
     "persist": "data",
     "checkver": {
         "url": "https://api.github.com/repos/CherryHQ/cherry-studio/releases",
-        "regex": "download/v([\\d.]+)/"
+        "jsonpath": "$[?(@.prerelease == true)].tag_name",
+        "regex": "v([\\w.-]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-x64-setup.exe#/dl.7z",
-                "hash": {
-                    "url": "$baseurl/latest.yml",
-                    "regex": "sha512: $base64"
-                }
+                "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-x64-portable.exe#/Cherry-Studio.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-arm64-portable.exe#/Cherry-Studio.exe"
             }
         }
     }

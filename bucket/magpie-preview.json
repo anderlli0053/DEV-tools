@@ -1,68 +1,55 @@
 {
-  "autoupdate": {
-    "extract_dir": "Dorion_$version_win64_portable",
-    "architecture": {
-      "64bit": {
-        "url": "https://github.com/Blinue/Magpie/releases/download/$version/Magpie-$version-x64.zip"
-      },
-      "arm64": {
-        "url": "https://github.com/Blinue/Magpie/releases/download/$version/Magpie-$version-ARM64.zip"
-      }
-    }
-  },
-  "checkver": {
-    "script": [
-      "$rel_info = Invoke-RestMethod -Uri 'https://api.github.com/repos/Blinue/Magpie/releases'",
-      "$latest = $rel_info | Sort-Object {$_.published_at} | Select-Object -last 1",
-      "Write-Output $latest.tag_name"
-    ],
-    "regex": "(?<version>.+)"
-  },
-  "description": "Magpie magnifies any window to fullscreen with a handful of algorithms/filter. The main goal is to tackle the situations where the games either do not natively support fullscreen or display blurry images under fullscreen modes(Preview Edition).",
-  "homepage": "https://github.com/Blinue/Magpie",
-  "license": {
-    "identifier": "GPL-3.0-or-later",
-    "url": "https://github.com/Blinue/Magpie/raw/main/LICENSE"
-  },
-  "notes": "Hints: <https://github.com/Blinue/Magpie/blob/main/README_EN.md#hints>",
-  "pre_install": [
-    "info '[Portable Mode]: Copying user data...'",
-    "if (Test-Path \"$persist_dir\\ScaleModels.json\") {",
-    "    Copy-Item \"$persist_dir\\ScaleModels.json\" \"$dir\\\" | Out-Null",
-    "}",
-    "if (Test-Path \"$persist_dir\\User Data\\*\") {",
-    "    ensure \"$env:AppData\\Magpie\" | Out-Null",
-    "    Copy-Item \"$persist_dir\\User Data\\*\" \"$env:AppData\\Magpie\\\" -Recurse -Force | Out-Null",
-    "}"
-  ],
-  "shortcuts": [
-    [
-      "Magpie.exe",
-      "Magpie"
-    ]
-  ],
-  "uninstaller": {
-    "script": [
-      "info '[Portable Mode]: Backing up user data...'",
-      "if (Test-Path \"$dir\\ScaleModels.json\") {",
-      "    ensure \"$persist_dir\" | Out-Null",
-      "    Copy-Item \"$dir\\ScaleModels.json\" \"$persist_dir\\\" | Out-Null",
-      "}",
-      "if (Test-Path \"$env:AppData\\Magpie\\*\") {",
-      "    ensure \"$persist_dir\\User Data\" | Out-Null",
-      "    Copy-Item \"$env:AppData\\Magpie\\*\" \"$persist_dir\\User Data\\\" -Recurse -Force | Out-Null",
-      "}"
-    ]
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/Blinue/Magpie/releases/download/onnx-preview2/Magpie-onnx-preview2-x64.zip",
-      "hash": "80a1d5d802c15c8be671829b0d36711843ccf4ada40c4be8843512e960725b74"
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Blinue/Magpie/releases/download/$version/Magpie-$version-x64.zip",
+                "hash": "$matchX64hash"
+            },
+            "arm64": {
+                "url": "https://github.com/Blinue/Magpie/releases/download/$version/Magpie-$version-ARM64.zip",
+                "hash": "$matchArmhash"
+            }
+        }
     },
-    "arm64": {
-      "url": "https://github.com/Blinue/Magpie/releases/download/onnx-preview2/Magpie-onnx-preview2-ARM64.zip",
-      "hash": "43bd185f57a1d7dd647df9f0bdb0333597cd462c97925fa1330944905c0d617e"
-    }
-  },
-  "version": "onnx-preview2"
+    "checkver": {
+        "script": [
+            "$rel_info = Invoke-RestMethod -Uri 'https://api.github.com/repos/Blinue/Magpie/releases'",
+            "$latest = $rel_info | Sort-Object {$_.published_at} | Select-Object -last 1",
+            "$latest_x64 = $latest.assets | Where-Object {$_.name.EndsWith('x64.zip')} | Select-Object -first 1",
+            "$latest_arm64 = $latest.assets | Where-Object {$_.name.EndsWith('ARM64.zip')} | Select-Object -first 1",
+            "Write-Output $latest.tag_name $latest_x64.digest $latest_arm64.digest"
+        ],
+        "regex": "(?<version>[^\\s]+)\\s(?<x64hash>[^\\s]+)?\\s(?<armhash>[^\\s]+)?"
+    },
+    "description": "Magpie magnifies any window to fullscreen with a handful of algorithms/filter. The main goal is to tackle the situations where the games either do not natively support fullscreen or display blurry images under fullscreen modes(Preview Edition).",
+    "homepage": "https://github.com/Blinue/Magpie",
+    "license": {
+        "identifier": "GPL-3.0-or-later",
+        "url": "https://github.com/Blinue/Magpie/raw/main/LICENSE"
+    },
+    "notes": "Hints: <https://github.com/Blinue/Magpie/wiki/FAQ%20(EN)>",
+    "shortcuts": [
+        [
+            "Magpie.exe",
+            "Magpie Preview"
+        ]
+    ],
+    "persist": [
+        "config",
+        "cache",
+        "logs"
+    ],
+    "pre_install": "Copy-Item \"$persist_dir\\model.json\" \"$dir\\model.json\" -ErrorAction 'SilentlyContinue'",
+    "pre_uninstall": "Copy-Item \"$dir\\model.json\" \"$persist_dir\\model.json\" -ErrorAction 'SilentlyContinue'",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Blinue/Magpie/releases/download/v0.12.1/Magpie-v0.12.1-x64.zip",
+            "hash": "8bc8bc233438f546b7996b00b21d7376f4f7d3d8a4940e6a8800babd2225b2de"
+        },
+        "arm64": {
+            "url": "https://github.com/Blinue/Magpie/releases/download/v0.12.1/Magpie-v0.12.1-ARM64.zip",
+            "hash": "f61ec427c31cef202403c81b27f76e95dc9ee85db3fb8b15076afb02ee753c0d"
+        }
+    },
+    "version": "v0.12.1"
 }

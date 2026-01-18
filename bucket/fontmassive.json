@@ -1,0 +1,51 @@
+{
+    "version": "3.8.1",
+    "description": "A font manager that allows previewing typefaces in a single list.",
+    "homepage": "http://fontmassive.ru/fm.php",
+    "license": {
+        "identifier": "Donationware",
+        "url": "http://fontmassive.ru/donate.php"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "http://fontmassive.ru/download.php?prog=FontMassive64#/dl.zip",
+            "hash": "d677efa9ec68e9a721c0a0e457758d9bcf785f0b833f85f30f93e0a0522a4e6b"
+        },
+        "32bit": {
+            "url": "http://fontmassive.ru/download.php?prog=FontMassive#/dl.zip",
+            "hash": "81324a3b0c0499abd2d2f7975ec1f7c85ee3a2b6f30ebae2c91d08c4733af646"
+        }
+    },
+    "extract_dir": "FontMassive Pack",
+    "shortcuts": [
+        [
+            "FontMassive.exe",
+            "FontMassive"
+        ]
+    ],
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\FM3_data\")) { New-Item -ItemType \"directory\" -Path \"$persist_dir\\FM3_data\" }",
+        "if (!(Test-Path \"$persist_dir\\FM3_data\\colorstyles.ini\")) { Set-Content -Encoding ASCII -Path \"$dir\\FM3_data\\colorstyles.ini\" -Value $null }",
+        "if (!(Test-Path \"$persist_dir\\FM3_data\\settings.ini\")) { Set-Content -Encoding ASCII -Path \"$dir\\FM3_data\\settings.ini\" -Value $null }",
+        "if (!(Test-Path \"$persist_dir\\FM3_data\\tags.ini\")) { Set-Content -Encoding ASCII -Path \"$dir\\FM3_data\\tags.ini\" -Value $null }"
+    ],
+    "persist": [
+        "FM3_data\\colorstyles.ini",
+        "FM3_data\\settings.ini",
+        "FM3_data\\tags.ini"
+    ],
+    "checkver": {
+        "url": "https://fontmassive.ru/data/fm/History_ru.txt",
+        "regex": "=== ([\\d.]+) \\("
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://fontmassive.ru/download.php?prog=FontMassive64#/dl.zip"
+            },
+            "32bit": {
+                "url": "http://fontmassive.ru/download.php?prog=FontMassive#/dl.zip"
+            }
+        }
+    }
+}

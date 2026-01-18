@@ -1,0 +1,43 @@
+{
+    "version": "1.1.16",
+    "description": "一个由WgpSec狼组安全团队开发的FoFa客户端数据查看工具，使用JavaFX编写，支持多标签查询、导出Excel文件等功能。",
+    "homepage": "https://github.com/wgpsec/fofa_viewer",
+    "license": "MIT",
+    "suggest": {
+        "JDK": [
+            "java/oraclejdk",
+            "java/openjdk"
+        ]
+    },
+    "url": [
+        "https://github.com/wgpsec/fofa_viewer/releases/download/1.1.16/FofaViewer_1.1.16.zip",
+        "https://github.com/wgpsec/fofa_viewer/releases/download/1.1.16/FofaViewer_1.1.16_JDK8.zip"
+    ],
+    "hash": [
+        "c662f2e8a77ec6473cffefc826b1d45a7b3780993dca5166a611a7e0def7cdfa",
+        "7de2c83f34ce7936ada2ca66e5187158a7a68cb2c420039c8814c16b83f47677"
+    ],
+    "pre_install": [
+        "Set-Content \"$dir\\fofaviewer.bat\" '@pushd %~dp0",
+        "@start javaw.exe -jar \"fofaviewer.jar\" %*",
+        "@popd' -Encoding Ascii"
+    ],
+    "bin": "fofaviewer.bat",
+    "shortcuts": [
+        [
+            "fofaviewer.bat",
+            "FofaViewer"
+        ]
+    ],
+    "persist": [
+        "config.properties",
+        "rules.db"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": [
+            "https://github.com/wgpsec/fofa_viewer/releases/download/$version/FofaViewer_$version.zip",
+            "https://github.com/wgpsec/fofa_viewer/releases/download/$version/FofaViewer_$version_JDK8.zip"
+        ]
+    }
+}

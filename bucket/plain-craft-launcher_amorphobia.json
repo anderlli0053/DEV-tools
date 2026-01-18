@@ -1,37 +1,37 @@
 {
-  "version": "2.10.0",
-  "description": "新一代 Minecraft / 我的世界 启动器",
-  "homepage": "https://afdian.net/@LTCat",
-  "license": {
-    "identifier": "Freeware",
-    "url": "https://shimo.im/docs/rGrd8pY8xWkt6ryW/read"
-  },
-  "url": "https://raw.githubusercontent.com/Hex-Dragon/PCL2/main/%E6%9C%80%E6%96%B0%E6%AD%A3%E5%BC%8F%E7%89%88.zip",
-  "hash": "dbcf749f4929f1adf3d4403c6d32bea6e3b446bfec2496e9263e8226ded4a94a",
-  "notes": "由于官方发布在网盘上，没有完美的自动更新手段，如有新版本请发 issue 提醒",
-  "pre_install": [
-    "ensure \"$persist_dir\\PCL\" | Out-Null",
-    "ensure \"$persist_dir\\.minecraft\" | Out-Null",
-    "$conf = \"$persist_dir\\PCL\\Setup.ini\"",
-    "if (!(Test-Path \"$conf\")) {",
-    "    $content = \"LaunchFolderSelect:$persist_dir\\.minecraft\\\"",
-    "    Add-Content \"$conf\" \"$content\"",
-    "}"
-  ],
-  "persist": [
-    "PCL",
-    ".minecraft"
-  ],
-  "shortcuts": [
-    [
-      "Plain Craft Launcher 2.exe",
-      "Plain Craft Launcher"
-    ]
-  ],
-  "checkver": {
-    "github": "https://github.com/Hex-Dragon/PCL2"
-  },
-  "autoupdate": {
-    "url": "https://raw.githubusercontent.com/Hex-Dragon/PCL2/main/%E6%9C%80%E6%96%B0%E6%AD%A3%E5%BC%8F%E7%89%88.zip"
-  }
+    "version": "2.12.2",
+    "description": "新一代 Minecraft / 我的世界 启动器",
+    "homepage": "https://afdian.net/@LTCat",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://shimo.im/docs/rGrd8pY8xWkt6ryW/read"
+    },
+    "url": "https://raw.githubusercontent.com/Hex-Dragon/PCL2/main/%E6%9C%80%E6%96%B0%E6%AD%A3%E5%BC%8F%E7%89%88.zip",
+    "hash": "2bbb47a4c3d2a37b78731ec72f038c4bc7ce4e62fdb3f1302a6de593616bcd47",
+    "notes": "由于官方发布在网盘上，没有完美的自动更新手段，如有新版本请发 issue 提醒",
+    "pre_install": [
+        "ensure \"$persist_dir\\PCL\" | Out-Null",
+        "ensure \"$persist_dir\\.minecraft\" | Out-Null",
+        "$conf = \"$persist_dir\\PCL\\Setup.ini\"",
+        "if (!(Test-Path \"$conf\")) {",
+        "    $content = \"LaunchFolderSelect:$persist_dir\\.minecraft\\\"",
+        "    Add-Content \"$conf\" \"$content\"",
+        "}"
+    ],
+    "persist": [
+        "PCL",
+        ".minecraft"
+    ],
+    "shortcuts": [
+        [
+            "Plain Craft Launcher 2.exe",
+            "Plain Craft Launcher"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/Hex-Dragon/PCL2"
+    },
+    "autoupdate": {
+        "url": "https://raw.githubusercontent.com/Hex-Dragon/PCL2/main/%E6%9C%80%E6%96%B0%E6%AD%A3%E5%BC%8F%E7%89%88.zip"
+    }
 }

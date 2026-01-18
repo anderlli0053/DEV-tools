@@ -1,0 +1,41 @@
+{
+    "homepage": "https://github.com/HarbourMasters/2ship2harkinian",
+    "version": "3.0.2",
+    "description": "Zelda Majora's Mask Decompilation",
+    "license": {
+        "url": "https://github.com/HarbourMasters/2ship2harkinian/blob/develop/LICENSE",
+        "identifier": "CC0"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/HarbourMasters/2ship2harkinian/releases/download/3.0.2/2Ship-Mion-Charlie-Win64.zip",
+            "hash": "3ec569adfe22cb10f5be1fd93a2b9c2f25c9ae0731b11f49b9580c250b09abf4",
+            "shortcuts": [
+                [
+                    "2ship.exe",
+                    "Zelda - Majora's Mask (SoH)"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "saves",
+        "mods",
+        "roms"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/HarbourMasters/2ship2harkinian/releases",
+        "jsonpath": {
+            "version": "$.[0].name",
+            "download": "$.[0].assets[?(@.name =~ /.+Win64\\.zip$/i)].browser_download_url"
+        },
+        "regex": "([\\d\\.]+\\d+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "$matchDownload"
+            }
+        }
+    }
+}

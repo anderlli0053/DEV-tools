@@ -1,27 +1,27 @@
 {
-  "_comment": "Don't forget to update exe name hardcoded in installer/script",
-  "version": "6.14.0.0",
-  "description": "Powerful tool which extends the functionality of Windows Firewall and provides new extra features which makes Windows Firewall better",
-  "homepage": "https://www.binisoft.org/wfc.php",
-  "license": "Freeware",
-  "depends": "sudo",
-  "url": "https://www.binisoft.org/download/wfc6setup.exe",
-  "hash": "0fbf810c5d12ca863ceec5f390bbba1780cca4e877e1fb84e3bb801783950603",
-  "installer": {
-    "script": "sudo cmd.exe /c start /WAIT \"$dir\\wfc6setup.exe\" -install -close \"$dir\""
-  },
-  "uninstaller": {
-    "script": [
-      "sudo taskkill.exe /f /im wfc.exe",
-      "sudo sc.exe stop wfcs",
-      "sudo sc.exe delete wfcs",
-      "sudo reg.exe delete \"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Windows Firewall Control\" /f"
-    ]
-  },
-  "checkver": {
-    "re": ">([\\d.]+)<"
-  },
-  "autoupdate": {
-    "url": "https://www.binisoft.org/download/wfc$majorVersionsetup.exe"
-  }
+    "_comment": "Don't forget to update exe name hardcoded in installer/script",
+    "version": "6.24.0.0",
+    "description": "Powerful tool which extends the functionality of Windows Firewall and provides new extra features which makes Windows Firewall better",
+    "homepage": "https://www.binisoft.org/wfc.php",
+    "license": "Freeware",
+    "depends": "sudo",
+    "url": "https://www.binisoft.org/download/wfc6setup.exe",
+    "hash": "3ce197383ed41e80789f0aa72c1847360721d094b116fd0a610e86e6124708ce",
+    "installer": {
+        "script": "sudo cmd.exe /c start /WAIT \"$dir\\wfc6setup.exe\" -install -close \"$dir\""
+    },
+    "uninstaller": {
+        "script": [
+            "sudo taskkill.exe /f /im wfc.exe",
+            "sudo sc.exe stop wfcs",
+            "sudo sc.exe delete wfcs",
+            "sudo reg.exe delete \"HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Windows Firewall Control\" /f"
+        ]
+    },
+    "checkver": {
+        "re": ">([\\d.]+)<"
+    },
+    "autoupdate": {
+        "url": "https://www.binisoft.org/download/wfc$majorVersionsetup.exe"
+    }
 }

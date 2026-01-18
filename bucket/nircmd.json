@@ -1,8 +1,17 @@
 {
     "version": "2.87",
-    "description": "Execute various system wide tasks.",
     "homepage": "https://www.nirsoft.net/utils/nircmd.html",
-    "license": "Freeware",
+    "bin": "nircmd.exe",
+    "shortcuts": [
+        [
+            "nircmd.exe",
+            "NirSoft\\NirCmd"
+        ]
+    ],
+    "persist": [
+        "nircmd_lng.ini",
+        "nircmd.cfg"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://www.nirsoft.net/utils/nircmd-x64.zip",
@@ -13,8 +22,13 @@
             "hash": "122aee2fbdd0c793367b519635c45e5611688159b72f5e58a27f9256a53c9014"
         }
     },
-    "env_add_path": ".",
-    "checkver": "<td>NirCmd v([\\d.]+)",
+    "description": "Do many useful tasks from command-line.",
+    "license": "Freeware",
+    "notes": "If this application is useful to you, please consider donating to NirSoft - https://www.nirsoft.net/donate.html",
+    "checkver": {
+        "url": "https://www.nirsoft.net/pad/nircmd.xml",
+        "xpath": "/XML_DIZ_INFO/Program_Info/Program_Version"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {

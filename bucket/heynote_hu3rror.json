@@ -1,34 +1,34 @@
 {
-  "version": "2.2.1",
-  "description": "A dedicated scratchpad for developers",
-  "homepage": "https://github.com/heyman/heynote",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/heyman/heynote/releases/download/v2.2.1/Heynote_2.2.1.exe#/dl.7z",
-      "hash": "sha512:ac05f1fb3ab49e2eb587d57b2e2c1ad9172f814d725e5718c612cc5a44f95cae2a0e4a2045ae6dd81bc8b9aca47aa13ac40ab91371b459cc0ecd72bb11ed3695"
-    }
-  },
-  "pre_install": [
-    "Expand-7ZipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-    "Remove-Item \"$dir\\`$*\" -Recurse"
-  ],
-  "shortcuts": [
-    [
-      "Heynote.exe",
-      "Heynote"
-    ]
-  ],
-  "checkver": "github",
-  "autoupdate": {
+    "version": "2.7.1",
+    "description": "A dedicated scratchpad for developers",
+    "homepage": "https://github.com/heyman/heynote",
+    "license": "MIT",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/heyman/heynote/releases/download/v$version/Heynote_$version.exe#/dl.7z",
-        "hash": {
-          "url": "$baseurl/latest.yml",
-          "regex": "sha512:\\s+$base64"
+        "64bit": {
+            "url": "https://github.com/heyman/heynote/releases/download/v2.7.1/Heynote_2.7.1.exe#/dl.7z",
+            "hash": "sha512:ebd301185738f59a17bf8603b0a63936ac2dbac02b618e1e32c647ba8817dbde667ef126ccfba8f4373a41631c7b2ec79935986ab659924749fec4c0e8e7c894"
         }
-      }
+    },
+    "pre_install": [
+        "Expand-7ZipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\`$*\" -Recurse"
+    ],
+    "shortcuts": [
+        [
+            "Heynote.exe",
+            "Heynote"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/heyman/heynote/releases/download/v$version/Heynote_$version.exe#/dl.7z",
+                "hash": {
+                    "url": "$baseurl/latest.yml",
+                    "regex": "sha512:\\s+$base64"
+                }
+            }
+        }
     }
-  }
 }

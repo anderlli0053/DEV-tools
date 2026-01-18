@@ -1,0 +1,36 @@
+{
+    "version": "2.54.0",
+    "description": "Web File Browser.",
+    "homepage": "https://github.com/filebrowser/filebrowser",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/filebrowser/filebrowser/releases/download/v2.54.0/windows-amd64-filebrowser.zip",
+            "hash": "ca2fead406f3a0a09b9468f5380948d00489a995e3a660ccb60a1d89910d94e0"
+        },
+        "32bit": {
+            "url": "https://github.com/filebrowser/filebrowser/releases/download/v2.54.0/windows-386-filebrowser.zip",
+            "hash": "9f5a6052a99d10df9d8d390235fe9cfb39eddf624f3b9010e8c1eb21e9e91e24"
+        }
+    },
+    "bin": "filebrowser.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/filebrowser/filebrowser/releases/download/v$version/windows-amd64-filebrowser.zip",
+                "hash": {
+                    "url": "$baseurl/filebrowser_$version_checksums.txt",
+                    "regex": "$sha256\\s+$basename"
+                }
+            },
+            "32bit": {
+                "url": "https://github.com/filebrowser/filebrowser/releases/download/v$version/windows-386-filebrowser.zip",
+                "hash": {
+                    "url": "$baseurl/filebrowser_$version_checksums.txt",
+                    "regex": "$sha256\\s+$basename"
+                }
+            }
+        }
+    }
+}

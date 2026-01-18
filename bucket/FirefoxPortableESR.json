@@ -1,28 +1,28 @@
 {
-  "autoupdate": {
-    "hash": {
-      "regex": "MD5 Hash: +[\\w]{32}",
-      "url": "https://portableapps.com/apps/internet/firefox-portable-esr"
+    "homepage": "https://portableapps.com/apps/internet/firefox-portable-esr",
+    "description": "Browser",
+    "version": "68.8.0",
+    "license": "",
+    "url": "https://newcontinuum.dl.sourceforge.net/project/portableapps/Mozilla%20Firefox%2C%20Portable%20Ed./Mozilla%20Firefox%20ESR%2C%20Portable%20Edition%2068.8.0/FirefoxPortableESR_68.8.0_English.paf.exe#/dl.7z",
+    "hash": "md5:5f0fbf333ac2745eab7d00346ba8aac9",
+    "bin": "FirefoxPortableESR.exe",
+    "shortcuts": [
+        [
+            "FirefoxPortableESR.exe",
+            "FirefoxPortableESR"
+        ]
+    ],
+    "persist": "Data",
+    "checkver": {
+        "url": "https://portableapps.com/apps/internet/firefox-portable-esr",
+        "re": "Version \\s+([\\w\\.]* for Win"
     },
-    "url": "https://iweb.dl.sourceforge.net/project/portableapps/Mozilla%20Firefox%2C%20Portable%20Ed./Mozilla%20Firefox%20ESR%2C%20Portable%20Edition%20$version/FirefoxPortableESR_$version_English.paf.exe"
-  },
-  "bin": "FirefoxPortableESR.exe",
-  "checkver": {
-    "re": "Version \\s+([\\w\\.]* for Win",
-    "url": "https://portableapps.com/apps/internet/firefox-portable-esr"
-  },
-  "description": "Browser",
-  "hash": "5140cb1defe249048aad1015eb00c162af41a6cdecca5ef9b036116fff454da7",
-  "homepage": "https://portableapps.com/apps/internet/firefox-portable-esr",
-  "license": "",
-  "persist": "Data",
-  "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
-  "shortcuts": [
-    [
-      "FirefoxPortableESR.exe",
-      "FirefoxPortableESR"
-    ]
-  ],
-  "url": "https://iweb.dl.sourceforge.net/project/portableapps/Mozilla%20Firefox%2C%20Portable%20Ed./Mozilla%20Firefox%20ESR%2C%20Portable%20Edition%20102.8.0/FirefoxPortableESR_102.8.0_English.paf.exe",
-  "version": "102.8.0"
+    "autoupdate": {
+        "url": "https://iweb.dl.sourceforge.net/project/portableapps/Mozilla%20Firefox%2C%20Portable%20Ed./Mozilla%20Firefox%20ESR%2C%20Portable%20Edition%20$version/FirefoxPortableESR_$version_English.paf.exe",
+        "hash": {
+            "url": "https://portableapps.com/apps/internet/firefox-portable-esr",
+            "regex": "MD5 Hash: +[\\w]{32}"
+        }
+    },
+    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
 }

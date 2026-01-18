@@ -1,37 +1,22 @@
 {
-    "version": "1.3.8",
-    "description": "A Clash GUI based on Tauri.",
-    "homepage": "https://github.com/zzzgydi/clash-verge",
-    "license": "GPL-3.0-only",
-    "notes": "zzzgydi/clash-verge has been archived, continue to use 'scoop install extras/clash-verge-rev' instead",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/Clash.Verge_1.3.8_x64_portable.zip",
-            "hash": "a7c296228e054930fabdbfd836279d0d3c413b1a08dcaa4604c540bf8905d529"
-        }
-    },
+    "homepage": "https://github.com/clash-verge-rev/clash-verge-rev",
+    "description": "A Clash GUI based on tauri. ",
+    "version": "2.4.4",
+    "license": "GPL-3.0",
+    "url": "https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.4.4/Clash.Verge_2.4.4_x64-setup.exe#/dl.7z",
+    "hash": "4e9c36d057b50f94f764885dc751814521b27dad5347ef52b545fec58b3919ff",
+    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$TEMP\", \"$dir\\uninst*\" -Force -Recurse",
+    "bin": "clash-verge.exe",
     "shortcuts": [
         [
-            "Clash Verge.exe",
+            "clash-verge.exe",
             "Clash Verge"
         ]
     ],
-    "persist": ".config",
-    "post_install": [
-        "if (!(Test-Path \"$persist_dir\\.config\\PORTABLE\")) {",
-        "    New-Item -Path \"$persist_dir\\.config\\PORTABLE\" -ItemType file | Out-Null",
-        "}"
-    ],
-    "pre_uninstall": [
-        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-        "Start-Process \"$dir\\resources\\uninstall-service.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden'; Start-Sleep -Seconds 3"
-    ],
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/clash-verge-rev/clash-verge-rev"
+    },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/zzzgydi/clash-verge/releases/download/v$version/Clash.Verge_$version_x64_portable.zip"
-            }
-        }
+        "url": "https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v$version/Clash.Verge_$version_x64-setup.exe#/dl.7z"
     }
 }

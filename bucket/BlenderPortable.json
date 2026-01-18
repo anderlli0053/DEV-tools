@@ -1,28 +1,28 @@
 {
-    "autoupdate": {
-        "hash": {
-            "regex": "MD5 Hash: +[\\w]{32}",
-            "url": "https://portableapps.com/apps/graphics_pictures/blender_portable"
-        },
-        "url": "https://ayera.dl.sourceforge.net/project/portableapps/Blender%20Portable/BlenderPortable_$version.paf.exe"
-    },
-    "bin": "BlenderPortable.exe",
-    "checkver": {
-        "re": "Version \\s+([\\w\\.]* for Win",
-        "url": "https://portableapps.com/apps/graphics_pictures/blender_portable"
-    },
-    "description": "Rendering",
-    "hash": "2b298978e57abcb70ddb67ca01acf4a475ee9ce3963b78b80018b8b08047c837",
     "homepage": "https://portableapps.com/apps/graphics_pictures/blender_portable",
+    "description": "Rendering",
+    "version": "2.82a",
     "license": "",
-    "persist": "Data",
-    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+    "url": "https://ayera.dl.sourceforge.net/project/portableapps/Blender%20Portable/BlenderPortable_2.82a.paf.exe#/dl.7z",
+    "hash": "md5:a6c080702468939df4012d44b9d7d4de",
+    "bin": "BlenderPortable.exe",
     "shortcuts": [
         [
             "BlenderPortable.exe",
             "BlenderPortable"
         ]
     ],
-    "url": "https://ayera.dl.sourceforge.net/project/portableapps/Blender%20Portable/BlenderPortable_5.0.1.paf.exe",
-    "version": "5.0.1"
+    "persist": "Data",
+    "checkver": {
+        "url": "https://portableapps.com/apps/graphics_pictures/blender_portable",
+        "re": "Version \\s+([\\w\\.]* for Win"
+    },
+    "autoupdate": {
+        "url": "https://ayera.dl.sourceforge.net/project/portableapps/Blender%20Portable/BlenderPortable_$version.paf.exe",
+        "hash": {
+            "url": "https://portableapps.com/apps/graphics_pictures/blender_portable",
+            "regex": "MD5 Hash: +[\\w]{32}"
+        }
+    },
+    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
 }

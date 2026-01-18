@@ -1,0 +1,32 @@
+{
+    "version": "1.11.1",
+    "description": "An enhanced audio panel for Windows.",
+    "homepage": "https://github.com/Odizinne/QontrolPanel",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Odizinne/QontrolPanel/releases/download/1.11.1/QontrolPanel_win64_msvc2022.zip",
+            "hash": "26d23bf981e09dcfe89d3ac0ca3e58a2e822d0e58988b0593884e7c64f648253"
+        }
+    },
+    "extract_dir": "QontrolPanel",
+    "shortcuts": [
+        [
+            "bin\\QontrolPanel.exe",
+            "QontrolPanel"
+        ]
+    ],
+    "post_uninstall": "if ($purge) { Remove-Item \"$env:APPDATA\\Odizinne\\QontrolPanel\", \"$env:LOCALAPPDATA\\Odizinne\\QontrolPanel\" -Force -Recurse -ErrorAction SilentlyContinue }",
+    "notes": [
+        "QontrolPanel is NOT portable.",
+        "Settings are stored in '%APPDATA%\\Odizinne\\QontrolPanel', and will be purged during uninstallation."
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Odizinne/QontrolPanel/releases/download/$version/QontrolPanel_win64_msvc2022.zip"
+            }
+        }
+    }
+}

@@ -1,51 +1,28 @@
 {
-    "version": "5.5.0",
-    "description": "A free Java Development Environment designed for beginners, used by millions worldwide. It has a specially designed interface to help learning.",
     "homepage": "https://www.bluej.org/",
-    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "version": "5.5.0",
+    "license": "GPL-2.0-only",
+    "depends": "OpenJFX",
     "url": "https://github.com/k-pet-group/BlueJ-Greenfoot/releases/download/BLUEJ-RELEASE-5.5.0/BlueJ-windows-5.5.0.zip",
-    "hash": "sha256:270bf1ece5c22a325cec48ac0d827ebbda18e27519f4b11f3baa33ba0a60b321",
+    "hash": "270bf1ece5c22a325cec48ac0d827ebbda18e27519f4b11f3baa33ba0a60b321",
     "installer": {
         "script": [
-            "# Handle the extraction structure",
-            "$exePath = Join-Path $dir 'bluej.exe'",
-            "$bluejFolder = Join-Path $dir 'bluej'",
-            "$exeInFolder = Join-Path $bluejFolder 'bluej.exe'",
-            "",
-            "# Only move if exe exists in folder but NOT at root",
-            "if (Test-Path $exeInFolder -PathType Leaf) {",
-            "    if (-not (Test-Path $exePath -PathType Leaf)) {",
-            "        Move-Item $exeInFolder $dir",
-            "    } else {",
-            "        # Exe exists at both locations - remove the nested one",
-            "        Remove-Item $exeInFolder",
-            "    }",
-            "}",
-            "",
-            "# Clean up empty bluej folder",
-            "if (Test-Path $bluejFolder -PathType Container) {",
-            "    $items = Get-ChildItem $bluejFolder",
-            "    if ($items.Count -eq 0) {",
-            "        Remove-Item $bluejFolder",
-            "    }",
-            "}"
+            "Expand-7ZipArchive \"$dir\\bluej-dist.jar\" \"$dir\" -Removal",
+            "$jpxf=\"set JAVAFXPATH=$(appdir OpenJFX $global)\\current\"",
+            "Set-Content \"$dir\\BlueJ.bat\" (@('@echo off', 'set APPBASE=%~dp0', $jpxf, 'set CP=%APPBASE%lib\\bluej.jar', 'set JAVAFX_CP=\"%JAVAFXPATH%\\lib\\javafx.base.jar;%JAVAFXPATH%\\lib\\javafx.controls.jar;%JAVAFXPATH%\\lib\\javafx.fxml.jar;%JAVAFXPATH%\\lib\\javafx.graphics.jar;%JAVAFXPATH%\\lib\\javafx.media.jar;%JAVAFXPATH%\\lib\\javafx.properties.jar;%JAVAFXPATH%\\lib\\javafx.swing.jar;%JAVAFXPATH%\\lib\\javafx.swt.jar;%JAVAFXPATH%\\lib\\javafx.web.jar\"', 'start %JAVA_HOME%\\bin\\javaw.exe -Djavafx.embed.singleThread=true -cp %CP%;%JAVAFX_CP% bluej.Boot -javafxpath=\"%JAVAFXPATH%\" %*') -join \"`r`n\") -Encoding Ascii"
         ]
     },
-    "bin": "bluej.exe",
+    "post_install": "Remove-Item \"$dir\\*.class\",\"$dir\\installer-logo.gif\",\"$dir\\installer.props\",\"$dir\\META-INF\" -Force -Recurse",
+    "bin": "BlueJ.bat",
     "shortcuts": [
         [
-            "bluej.exe",
+            "BlueJ.bat",
             "BlueJ"
         ]
     ],
-    "checkver": {
-        "github": "https://github.com/k-pet-group/BlueJ-Greenfoot",
-        "regex": "tag/BLUEJ-RELEASE-([\\d.]+)"
-    },
+    "persist": "userhome",
+    "checkver": "<h4>Version ([\\d.]+), released",
     "autoupdate": {
-        "url": "https://github.com/k-pet-group/BlueJ-Greenfoot/releases/download/BLUEJ-RELEASE-$version/BlueJ-windows-$version.zip",
-        "hash": {
-            "mode": "download"
-        }
+        "url": "https://github.com/k-pet-group/BlueJ-Greenfoot/releases/download/BLUEJ-RELEASE-$version/BlueJ-windows-$version.zip"
     }
 }

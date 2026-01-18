@@ -1,0 +1,54 @@
+{
+    "version": "1.3.13",
+    "description": "An advanced scientific programmable calculator, based on Free42.",
+    "homepage": "https://thomasokken.com/plus42/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://thomasokken.com/plus42/download/Plus42Windows.zip",
+            "extract_dir": "Plus42Windows",
+            "hash": "11376ba60773370c4d6848246fc6202c2673943daf920a5a19b3560bc4534506"
+        },
+        "32bit": {
+            "url": "https://thomasokken.com/plus42/download/Plus42Windows-32bit.zip",
+            "extract_dir": "Plus42Windows-32bit",
+            "hash": "0cc1b062aea280dc57a13ec85091ada1a15a41707f27eaf233bcb83091f9cbce"
+        }
+    },
+    "shortcuts": [
+        [
+            "Plus42Binary.exe",
+            "Plus42 Binary"
+        ],
+        [
+            "Plus42Decimal.exe",
+            "Plus42 Decimal"
+        ]
+    ],
+    "pre_install": [
+        "Set-Content -Encoding ASCII -Path \"$dir\\portable\" -Value $null",
+        "if (!(Test-Path \"$persist_dir\\print.bin\")) { Set-Content -Encoding ASCII -Path \"$dir\\print.bin\" -Value $null }",
+        "if (!(Test-Path \"$persist_dir\\state.bin\")) { Set-Content -Encoding ASCII -Path \"$dir\\state.bin\" -Value $null }",
+        "if (!(Test-Path \"$persist_dir\\keymap.txt\")) { Set-Content -Encoding ASCII -Path \"$dir\\keymap.txt\" -Value $null }"
+    ],
+    "post_install": "if (Test-Path \"$persist_dir\") { Get-ChildItem \"$persist_dir\\*\" -Include '*.p42', '*.layout', '*.gif' | Move-Item -Force -Destination $dir }",
+    "pre_uninstall": "Get-ChildItem \"$dir\\*\" -Include '*.p42', '*.layout', '*.gif' | Move-Item -Force -Destination $persist_dir",
+    "persist": [
+        "print.bin",
+        "state.bin",
+        "keymap.txt"
+    ],
+    "checkver": {
+        "regex": "The latest release is.*<b>([^<>]+)</b>( for Windows)?"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://thomasokken.com/plus42/download/Plus42Windows.zip"
+            },
+            "32bit": {
+                "url": "https://thomasokken.com/plus42/download/Plus42Windows-32bit.zip"
+            }
+        }
+    }
+}

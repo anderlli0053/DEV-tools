@@ -1,0 +1,34 @@
+{
+    "version": "10.3",
+    "description": "A free development tool for desktop, server and IoT solutions.",
+    "homepage": "https://www.b4x.com/b4j.html",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.b4x.com/b4j/files/B4J.exe",
+            "hash": "7ce55f19e7a5849535aa03b7c7491740db4dbf5315c525a6505c920f16b9f274"
+        }
+    },
+    "innosetup": true,
+    "pre_install": [
+        "Get-ChildItem \"$dir\" '*,2.*' | ForEach-Object { Rename-Item $_.Fullname ($_.Name -Replace ',2') }",
+        "Get-ChildItem \"$dir\" '*,1.*' | Remove-Item"
+    ],
+    "shortcuts": [
+        [
+            "B4J.exe",
+            "B4J"
+        ]
+    ],
+    "notes": "B4J depends on JDK with OpenJFX. It is recommended to install 'lemon/b4j-openjfx'.",
+    "checkver": {
+        "regex": "(?sm)Latest Versions.*>B4J v([\\d.]+)<"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.b4x.com/b4j/files/B4J.exe"
+            }
+        }
+    }
+}

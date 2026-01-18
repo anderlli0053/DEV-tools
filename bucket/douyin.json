@@ -1,43 +1,25 @@
 {
-  "version": "5.9.0",
-  "description": "抖音，一个短视频平台。",
-  "homepage": "https://www.douyin.com/",
-  "license": "Unknown",
-  "url": "https://lf-douyin-pc-web.douyinstatic.com/obj/douyin-pc-web/douyin-pc-client/7044145585217083655/releases/142058964/5.9.0/win32-ia32/douyin-v5.9.0-win32-ia32-default.exe#/dl.zip",
-  "hash": "7115c9a8902a1361fccc97782439b13df5bf6cacec7e5e06ba0b6f6bb7ed66ea",
-  "shortcuts": [
-    [
-      "douyin.exe",
-      "抖音"
-    ]
-  ],
-  "pre_install": [
-    ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
-    "Expand-7zipArchive \"$dir\\app.7z\" \"$dir\" -Removal",
-    "persist_file -dir @(\"$user_AppData\\douyin\",\"$user_AppData\\douyin_widget\") @(\"$persist_dir\\douyin\",\"$persist_dir\\douyin_widget\")",
-    "handle_app_lnk",
-    "do_some_things"
-  ],
-  "pre_uninstall": [
-    "$bucket = (Get-Content \"$dir\\install.json\" | ConvertFrom-Json).bucket",
-    ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
-    "stop_process $false",
-    "remove_files @(\"$user_AppData\\douyin\",\"$user_AppData\\douyin_widget\",\"$user_LocalAppData\\app_shell_cache_6383\")"
-  ],
-  "checkver": {
-    "script": [
-      ". \"$pwd\\bin\\utils.ps1\"",
-      "$dl_info = get_installer_info 'ByteDance/Douyin'",
-      "\"ver:$($dl_info.PackageVersion);\"",
-      "\"x86:$($dl_info.x86_exe.InstallerUrl);\""
+    "version": "7.0.0",
+    "description": "短视频社交应用程序",
+    "homepage": "https://douyin.com/",
+    "license": "Proprietary",
+    "url": "https://douyin.com/download/pc/obj/douyin-pc-web/douyin-pc-client/7044145585217083655/releases/273089372/7.0.0/win32-ia32/douyin-v7.0.0-win32-ia32-douyin.exe#/dl.7z",
+    "hash": "134461597ed2d7fa50cfb832f5b110346b411f439ec06a854220efa9544a07dc",
+    "pre_install": "Expand-7zipArchive \"$dir\\app.7z\" \"$dir\"",
+    "post_install": "Remove-Item \"$dir\\app.7z\", \"$dir\\`$*\", \"$dir\\uninst*\", \"$dir\\resources\\app-update.yml\", \"$dir\\installer_downloader*\", \"$dir\\app_shell_updater*\" -Force -Recurse",
+    "shortcuts": [
+        [
+            "douyin.exe",
+            "抖音",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
     ],
-    "regex": "ver:(?<version>.+?); x86:(?<x86>.+?);"
-  },
-  "autoupdate": {
-    "url": "$matchX86#/dl.zip",
-    "hash": {
-      "url": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/b/ByteDance/Douyin/$version/ByteDance.Douyin.installer.yaml",
-      "regex": "Architecture: x86[\\s\\S]+?InstallerSha256:\\s?(.+)"
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://douyin.com/downloadpage/pc",
+        "regex": "/douyin-pc-client/(?<id>\\d+)/releases/(?<build>\\d+)/([\\d.]+)/win32-ia32/"
+    },
+    "autoupdate": {
+        "url": "https://douyin.com/download/pc/obj/douyin-pc-web/douyin-pc-client/$matchId/releases/$matchBuild/$version/win32-ia32/douyin-v$version-win32-ia32-douyin.exe#/dl.7z"
     }
-  }
 }

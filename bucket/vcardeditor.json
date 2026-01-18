@@ -1,0 +1,20 @@
+{
+    "version": "0.5.9",
+    "description": "A simple vCard (*.vcf) file editor.",
+    "homepage": "https://github.com/abdelkader/vCardEditor",
+    "license": "Freeware",
+    "url": "https://github.com/abdelkader/vCardEditor/releases/download/v0.5.9/vCardEditor.exe",
+    "hash": "d2bb9be6fa162d700a1e0fd144f92a4d052701d3e2b987c8b4ca22e2a69d0d08",
+    "shortcuts": [
+        [
+            "vCardEditor.exe",
+            "vCardEditor"
+        ]
+    ],
+    "pre_install": "if (!(Test-Path \"$persist_dir\\config.xml\")) { Set-Content -Encoding ASCII -Path \"$dir\\config.xml\" -Value $null }",
+    "persist": "config.xml",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/abdelkader/vCardEditor/releases/download/v$version/vCardEditor.exe"
+    }
+}

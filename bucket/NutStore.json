@@ -1,0 +1,28 @@
+{
+    "version": "1.2.3",
+    "description": "坚果云",
+    "homepage": "https://github.com/gendloop/NutStore",
+    "license": "LGPL-2.1-or-later",
+    "notes": "<Installer>",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gendloop/NutStore/releases/download/v1.2.3/NutStore-1.2.3-win64.7z",
+            "hash": "a6f58e5d60c4a7167529c80de8678fad70a445a5afcde902cfc93689477d3a8c"
+        }
+    },
+    "installer": {
+        "script": [
+            "Push-Location \"$dir\"",
+            "Start-Process NutStore-$version-win64.exe",
+            "Pop-Location"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gendloop/NutStore/releases/download/v$version/NutStore-$version-win64.7z"
+            }
+        }
+    }
+}

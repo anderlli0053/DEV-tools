@@ -9,12 +9,16 @@
     "changelog": "https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md",
     "architecture": {
         "64bit": {
-            "url": "https://brave-browser-downloads.s3.brave.com/latest/brave_installer-x64.exe#/dl.7z",
-            "hash": "d7dd682098dd7d1a93a858faa2cd52654e768b9d7f02ba6f82f2dd8d84a07b21"
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.86.139/brave-v1.86.139-win32-x64.zip",
+            "hash": "b5b921f2b51e6153f60e2c0ff6ed1a94f81a8412df69ec3c34f90e10f3bfe4fa"
         },
         "32bit": {
-            "url": "https://brave-browser-downloads.s3.brave.com/latest/brave_installer-ia32.exe#/dl.7z",
-            "hash": "83499479f13c4dcf7e283ed86986c9bdffb86b135cca9dc27b803dbbdca3b184"
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.86.139/brave-v1.86.139-win32-ia32.zip",
+            "hash": "ebf15595d92bf8ab96dad6aaad6c233fa1ca08cc3412ad14ca16da9d23ef77f6"
+        },
+        "arm64": {
+            "url": "https://github.com/brave/brave-browser/releases/download/v1.86.139/brave-v1.86.139-win32-arm64.zip",
+            "hash": "167df28dff9cc8441692846005b6d0ce94ddf58d8cafc71a2e8c69f530c7a90a"
         }
     },
     "pre_install": "Expand-7zipArchive \"$dir\\chrome.7z\" -ExtractDir 'Chrome-bin' -Removal",
@@ -32,11 +36,17 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://brave-browser-downloads.s3.brave.com/latest/brave_installer-x64.exe#/dl.7z"
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-x64.zip"
             },
             "32bit": {
-                "url": "https://brave-browser-downloads.s3.brave.com/latest/brave_installer-ia32.exe#/dl.7z"
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-ia32.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-arm64.zip"
             }
+        },
+        "hash": {
+            "url": "$url.sha256"
         }
     }
 }

@@ -1,0 +1,35 @@
+{
+    "##": "see https://github.com/hoilc/scoop-lemon/blob/master/bucket/vmutils.json",
+    "version": "1.133.0",
+    "description": "Utils for Victoria Metrics",
+    "homepage": "https://docs.victoriametrics.com/vmctl.html",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v1.133.0/vmutils-windows-amd64-v1.133.0.zip",
+            "hash": "a5bace018daecd393fcd9989cc87ae0c06fdfbcf2044606fe1b939f8a5b25be2"
+        }
+    },
+    "bin": [
+        "vmagent.exe",
+        "vmalert.exe",
+        "vmauth.exe",
+        "vmbackup.exe",
+        "vmctl.exe",
+        "vmrestore.exe"
+    ],
+    "pre_install": "Get-ChildItem \"$dir\" 'vm*.exe' | ForEach-Object { Rename-Item $_.Fullname ($_.Name -Replace '-windows-amd64-prod') }",
+    "checkver": {
+        "github": "https://github.com/VictoriaMetrics/VictoriaMetrics"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v$version/vmutils-windows-amd64-v$version.zip",
+                "hash": {
+                    "url": "$baseurl/vmutils-windows-amd64-v$version_checksums.txt"
+                }
+            }
+        }
+    }
+}

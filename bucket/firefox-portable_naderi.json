@@ -1,54 +1,54 @@
 {
-  "version": "137.0.2",
-  "description": "Popular open source web browser.",
-  "homepage": "https://www.mozilla.org/firefox/",
-  "license": "MPL-2.0",
-  "architecture": {
-    "64bit": {
-      "url": "https://archive.mozilla.org/pub/firefox/releases/137.0.2/win64/en-US/Firefox%20Setup%20137.0.2.exe#/dl.7z",
-      "hash": "sha512:1bf4241bcc1c41a516f6313243153851ddcc49c22cd23fb8d5371a4b06b839235924f77b206a41880f71f47be0636e9ff2c7873f99daba106c7ee311513bb2dc"
-    },
-    "32bit": {
-      "url": "https://archive.mozilla.org/pub/firefox/releases/137.0.2/win32/en-US/Firefox%20Setup%20137.0.2.exe#/dl.7z",
-      "hash": "sha512:70f87fbddcdc25c8bb6aebd3634ce97761a85c85952b4e1d74efed937730840c208c3ab1b3d1665dcd0b59d3abbbbf8c7ee2a9568296ddfab245095e6ed31000"
-    }
-  },
-  "extract_dir": "core",
-  "bin": [
-    [
-      "firefox.exe",
-      "firefox",
-      "-profile \"$dir\\profile\""
-    ]
-  ],
-  "shortcuts": [
-    [
-      "firefox.exe",
-      "Firefox",
-      "-profile \"$dir\\profile\""
-    ]
-  ],
-  "persist": "Profile",
-  "checkver": {
-    "url": "https://product-details.mozilla.org/1.0/firefox_versions.json",
-    "jsonpath": "$.LATEST_FIREFOX_VERSION"
-  },
-  "autoupdate": {
+    "version": "147.0",
+    "description": "Popular open source web browser.",
+    "homepage": "https://www.mozilla.org/firefox/",
+    "license": "MPL-2.0",
     "architecture": {
-      "64bit": {
-        "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/en-US/Firefox%20Setup%20$version.exe#/dl.7z",
-        "hash": {
-          "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
-          "regex": "$sha512\\s+win64/en-US/$basename"
+        "64bit": {
+            "url": "https://archive.mozilla.org/pub/firefox/releases/147.0/win64/en-US/Firefox%20Setup%20147.0.exe#/dl.7z",
+            "hash": "sha512:5bff6f66054654175bf40deb39b05d1ac9fe67711a173d760c1e4c7e172a72a86902f7461457e44898875c6f20b8acabc2f72e6ea88c7a7993388c3e80b74df2"
+        },
+        "32bit": {
+            "url": "https://archive.mozilla.org/pub/firefox/releases/147.0/win32/en-US/Firefox%20Setup%20147.0.exe#/dl.7z",
+            "hash": "sha512:fe6ebc41a9f075e2fa81922d2c9c4e8ede95af29ee96dc142ddf05462511c1054b6b8185cca5de94208bad693dc94abd6da2a1bab6b350f2609af649200b3d89"
         }
-      },
-      "32bit": {
-        "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/en-US/Firefox%20Setup%20$version.exe#/dl.7z",
-        "hash": {
-          "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
-          "regex": "$sha512\\s+win32/en-US/$basename"
+    },
+    "extract_dir": "core",
+    "bin": [
+        [
+            "firefox.exe",
+            "firefox",
+            "-profile \"$dir\\profile\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "firefox.exe",
+            "Firefox",
+            "-profile \"$dir\\profile\""
+        ]
+    ],
+    "persist": "Profile",
+    "checkver": {
+        "url": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+        "jsonpath": "$.LATEST_FIREFOX_VERSION"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/en-US/Firefox%20Setup%20$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win64/en-US/$basename"
+                }
+            },
+            "32bit": {
+                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/en-US/Firefox%20Setup%20$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win32/en-US/$basename"
+                }
+            }
         }
-      }
     }
-  }
 }

@@ -1,0 +1,31 @@
+{
+    "version": "0.8.25",
+    "description": "A command line tool for Amazon Route 53.",
+    "homepage": "https://github.com/barnybug/cli53",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/barnybug/cli53/releases/download/v0.8.25/cli53-windows-amd64.exe#/cli53.exe",
+            "hash": "7c5b1e481174d492650cfa41940ecb2d17a50e5ce0b4c12ebae46bd1d9bb2452"
+        },
+        "arm64": {
+            "url": "https://github.com/barnybug/cli53/releases/download/v0.8.25/cli53-windows-arm64.exe#/cli53.exe",
+            "hash": "c760237a26cf9c0a439803057478d48e1b88a6ab4f58f7f0b60d4aba9ba823c3"
+        }
+    },
+    "bin": "cli53.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/barnybug/cli53/releases/download/v$version/cli53-windows-amd64.exe#/cli53.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/barnybug/cli53/releases/download/v$version/cli53-windows-arm64.exe#/cli53.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/cli53_$version_checksums.txt"
+        }
+    }
+}

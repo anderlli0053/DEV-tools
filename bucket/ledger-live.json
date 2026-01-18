@@ -1,40 +1,40 @@
 {
-  "version": "2.111.0",
-  "description": "Ledger Live (Desktop)",
-  "homepage": "https://www.ledger.com/ledger-live",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://download.live.ledger.com/ledger-live-desktop-2.111.0-win-x64.exe#/dl.7z",
-      "hash": "sha512:e493bdc5bc3c60f0219f33a7ae631b232545a42a7519d1e409edf3f7eadcbbfb6e863aa6c99f7f39f89cc1d50379ef7ad5b77ab06de2d2512249fe70ba045b73",
-      "installer": {
-        "script": [
-          "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" -DestinationPath \"$dir\" -Removal",
-          "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
-        ]
-      }
-    }
-  },
-  "shortcuts": [
-    [
-      "Ledger Live.exe",
-      "Ledger Live"
-    ]
-  ],
-  "checkver": {
-    "url": "https://download.live.ledger.com/latest.yml",
-    "regex": "ledger-live-desktop-([\\d.]+)-win"
-  },
-  "autoupdate": {
+    "version": "2.135.2",
+    "description": "Ledger Wallet, formerly Ledger Live (Desktop)",
+    "homepage": "https://www.ledger.com/ledger-live",
+    "license": "MIT",
     "architecture": {
-      "64bit": {
-        "url": "https://download.live.ledger.com/ledger-live-desktop-$version-win-x64.exe#/dl.7z"
-      }
+        "64bit": {
+            "url": "https://download.live.ledger.com/ledger-live-desktop-2.135.2-win-x64.exe#/dl.7z",
+            "hash": "sha512:c5557d46bf12bfe4f5304e31bd088a128454a95c38162e2fd63314ac88ab8c815918d2ce88616f570d1e1370dead79b46976339b5a156ce25679775cb1c6ea6a",
+            "installer": {
+                "script": [
+                    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" -DestinationPath \"$dir\" -Removal",
+                    "Remove-Item \"$dir\\`$R0\",\"$dir\\`$PLUGINSDIR\" -Force -Recurse"
+                ]
+            }
+        }
     },
-    "hash": {
-      "url": "https://download.live.ledger.com/latest.yml",
-      "mode": "extract",
-      "regex": "(?sm)$version-win-x64.exe.*?sha512: $base64"
+    "shortcuts": [
+        [
+            "Ledger Wallet.exe",
+            "Ledger Wallet"
+        ]
+    ],
+    "checkver": {
+        "url": "https://download.live.ledger.com/latest.yml",
+        "regex": "ledger-live-desktop-([\\d.]+)-win"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.live.ledger.com/ledger-live-desktop-$version-win-x64.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "https://download.live.ledger.com/latest.yml",
+            "mode": "extract",
+            "regex": "(?sm)$version-win-x64.exe.*?sha512: $base64"
+        }
     }
-  }
 }

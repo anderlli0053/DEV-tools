@@ -1,0 +1,25 @@
+{
+    "version": "4.0.2",
+    "description": "(Cosmopolitan Executable) A single-file distributable web server.",
+    "homepage": "https://redbean.dev/",
+    "license": "ISC",
+    "architecture": {
+        "64bit": {
+            "url": "https://cosmo.zip/pub/cosmos/v/4.0.2/bin/redbean#/redbean.exe",
+            "hash": "489c5de2c418f30bb525befb840f2a93e9ce7a1f58825aa4393c907b32c4e012"
+        }
+    },
+    "bin": "redbean.exe",
+    "checkver": {
+        "url": "https://cosmo.zip/pub/cosmos/v/",
+        "regex": "href=\"([\\d.]+)/\"",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cosmo.zip/pub/cosmos/v/$version/bin/redbean#/redbean.exe"
+            }
+        }
+    }
+}

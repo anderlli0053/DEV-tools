@@ -1,28 +1,28 @@
 {
-  "autoupdate": {
-    "hash": {
-      "regex": "MD5 Hash: +[\\w]{32}",
-      "url": "https://portableapps.com/apps/games/the_mana_world_portable"
+    "homepage": "https://portableapps.com/apps/games/the_mana_world_portable",
+    "description": "2D, retro-style MMORPG",
+    "version": "1.9.3.23",
+    "license": "",
+    "url": "https://downloads.sourceforge.net/portableapps/TheManaWorldPortable_1.9.3.23.paf.exe#/dl.7z",
+    "hash": "md5:454de661ed771d85a95b1221502b4859",
+    "bin": "TheManaWorldPortable.exe",
+    "shortcuts": [
+        [
+            "TheManaWorldPortable.exe",
+            "TheManaWorldPortable"
+        ]
+    ],
+    "persist": "Data",
+    "checkver": {
+        "url": "https://portableapps.com/apps/games/the_mana_world_portable",
+        "re": "Version \\s+([\\w\\.]* for Win"
     },
-    "url": "https://downloads.sourceforge.net/portableapps/TheManaWorldPortable_$version.paf.exe"
-  },
-  "bin": "TheManaWorldPortable.exe",
-  "checkver": {
-    "re": "Version \\s+([\\w\\.]* for Win",
-    "url": "https://portableapps.com/apps/games/the_mana_world_portable"
-  },
-  "description": "2D, retro-style MMORPG",
-  "hash": "a5d4cd0a4cfcd39ba132f8b866200b07e7f00eff633a8cecfc891eed6bd86043",
-  "homepage": "https://portableapps.com/apps/games/the_mana_world_portable",
-  "license": "",
-  "persist": "Data",
-  "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
-  "shortcuts": [
-    [
-      "TheManaWorldPortable.exe",
-      "TheManaWorldPortable"
-    ]
-  ],
-  "url": "https://downloads.sourceforge.net/portableapps/TheManaWorldPortable_2.1.3.17.paf.exe",
-  "version": "2.1.3.17"
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/portableapps/TheManaWorldPortable_$version.paf.exe",
+        "hash": {
+            "url": "https://portableapps.com/apps/games/the_mana_world_portable",
+            "regex": "MD5 Hash: +[\\w]{32}"
+        }
+    },
+    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
 }

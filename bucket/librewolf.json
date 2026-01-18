@@ -1,19 +1,15 @@
 {
-    "version": "137.0.2-1",
+    "version": "147.0.1-3",
     "description": "A fork of Firefox, focused on privacy, security and freedom.",
     "homepage": "https://librewolf.net/",
     "license": "MPL-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/137.0.2-1/librewolf-137.0.2-1-windows-x86_64-portable.zip",
-            "hash": "0090411a1fc525d86ad20a5935872d357c8cb87c5ec10dbae79a73cbd588fdca"
-        },
-        "32bit": {
-            "url": "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/137.0.2-1/librewolf-137.0.2-1-windows-i686-portable.zip",
-            "hash": "03d872ce3605acd4df22a2a9f0627b81e336e943edda03e5d73aa383d740d615"
+            "url": "https://codeberg.org/api/packages/librewolf/generic/librewolf/147.0.1-3/librewolf-147.0.1-3-windows-x86_64-portable.zip",
+            "hash": "bc01cac354fe94e6a03673628c3552baaf151f01588c62fe66c16d650adae0d0"
         }
     },
-    "extract_dir": "librewolf-137.0.2-1",
+    "extract_dir": "librewolf-147.0.1-3",
     "pre_install": [
         "'LibreWolf-WinUpdater.exe', 'ScheduledTask-Create.ps1', 'ScheduledTask-Remove.ps1' | ForEach-Object { \"$dir/$_\" } | Remove-Item",
         "",
@@ -47,16 +43,13 @@
         "Copy-Item \"$dir/LibreWolf/*.js\", \"$dir/LibreWolf/*.cfg\" \"$persist_dir/LibreWolf\" -Exclude librewolf.cfg"
     ],
     "checkver": {
-        "url": "https://gitlab.com/api/v4/projects/44042130/releases/permalink/latest",
+        "url": "https://codeberg.org/api/v1/repos/librewolf/bsys6/releases/latest",
         "jsonpath": "$.tag_name"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/$version/librewolf-$version-windows-x86_64-portable.zip"
-            },
-            "32bit": {
-                "url": "https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/$version/librewolf-$version-windows-i686-portable.zip"
+                "url": "https://codeberg.org/api/packages/librewolf/generic/librewolf/$version/librewolf-$version-windows-x86_64-portable.zip"
             }
         },
         "hash": {

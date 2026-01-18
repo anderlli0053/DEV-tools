@@ -1,44 +1,44 @@
 {
-  "version": "10.10.7",
-  "description": "Jellyfin Server. Software Media System",
-  "homepage": "https://jellyfin.org",
-  "license": "GPL-2.0-only",
-  "suggest": {
-    "ffmpeg": [
-      "ffmpeg",
-      "ffmpeg-nightly"
-    ],
-    "nssm": "nssm"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://repo.jellyfin.org/files/server/windows/latest-stable/amd64/jellyfin_10.10.7-amd64.zip",
-      "hash": "29d4d2a837152e7f644ed8f2b2b456fdf5c422f3d7fb2cc7996c36ab7b631d48"
-    }
-  },
-  "extract_dir": "jellyfin_10.10.7",
-  "extract_to": "system",
-  "bin": [
-    [
-      "system\\jellyfin.exe",
-      "jellyfin",
-      "-d \"$dir\\data\""
-    ]
-  ],
-  "persist": "data",
-  "checkver": {
-    "url": "https://repo.jellyfin.org/?path=/server/windows/latest-stable/amd64",
-    "regex": "Current Stable \\(v([\\d+.]+)\\)"
-  },
-  "autoupdate": {
+    "version": "10.11.5",
+    "description": "Jellyfin Server. Software Media System",
+    "homepage": "https://jellyfin.org",
+    "license": "GPL-2.0-only",
+    "suggest": {
+        "ffmpeg": [
+            "ffmpeg",
+            "ffmpeg-nightly"
+        ],
+        "nssm": "nssm"
+    },
     "architecture": {
-      "64bit": {
-        "url": "https://repo.jellyfin.org/files/server/windows/latest-stable/amd64/jellyfin_$version-amd64.zip"
-      }
+        "64bit": {
+            "url": "https://repo.jellyfin.org/files/server/windows/latest-stable/amd64/jellyfin_10.11.5-amd64.zip",
+            "hash": "0391b370de8488465dc752fa2e8ffda5c9e1b2bef5ade7cc47b963f717028704"
+        }
     },
-    "hash": {
-      "url": "$url.sha256sum"
+    "extract_dir": "jellyfin_10.11.5",
+    "extract_to": "system",
+    "bin": [
+        [
+            "system\\jellyfin.exe",
+            "jellyfin",
+            "-d \"$dir\\data\""
+        ]
+    ],
+    "persist": "data",
+    "checkver": {
+        "url": "https://repo.jellyfin.org/?path=/server/windows/latest-stable/amd64",
+        "regex": "Current Stable \\(v([\\d+.]+)\\)"
     },
-    "extract_dir": "jellyfin_$version"
-  }
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://repo.jellyfin.org/files/server/windows/latest-stable/amd64/jellyfin_$version-amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256sum"
+        },
+        "extract_dir": "jellyfin_$version"
+    }
 }

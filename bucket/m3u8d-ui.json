@@ -1,0 +1,42 @@
+{
+    "version": "1.26.7",
+    "description": "m3u8视频下载工具, 提供windows/macos图形界面, 下载后自动将ts文件合并、转换格式为mp4",
+    "homepage": "https://github.com/orestonce/m3u8d",
+    "license": {
+        "identifier": "MIT license",
+        "url": "https://github.com/orestonce/m3u8d#MIT-1-ov-file"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/orestonce/m3u8d/releases/download/v1.26.7/m3u8d_windows_x64_qt-v1.26.7.exe",
+            "hash": "0d190ad3825bd2cd0ae97791acc123145b6f5ae669cf557c1a7280ade7c6e2fb"
+        },
+        "32bit": {
+            "url": "https://github.com/orestonce/m3u8d/releases/download/v1.26.7/m3u8d_windows_x86_qt-v1.26.7.exe",
+            "hash": "e0e056b1a59e68ef9cbf1fb3493b97b788c03b0a7d82c2bcb9e8198b91ca8d17"
+        }
+    },
+    "pre_install": "Get-ChildItem \"$dir\\m3u8d*.exe\" | Rename-Item -NewName 'm3u8d-ui.exe'",
+    "bin": "m3u8d-ui.exe",
+    "shortcuts": [
+        [
+            "m3u8d-ui.exe",
+            "m3u8d-ui"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/orestonce/m3u8d/releases",
+        "jp": "$[0].assets[*].browser_download_url",
+        "regex": "/releases/download/v([\\d.]+)/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/orestonce/m3u8d/releases/download/v$version/m3u8d_windows_x64_qt-v$version.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/orestonce/m3u8d/releases/download/v$version/m3u8d_windows_x86_qt-v$version.exe"
+            }
+        }
+    }
+}

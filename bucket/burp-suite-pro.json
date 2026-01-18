@@ -1,0 +1,36 @@
+{
+    "version": "2023.11.1.1",
+    "description": "Burp Suite Professional with loader",
+    "homepage": "https://github.com/M41KL-N41TT/BurpSuite",
+    "license": "Proprietary",
+    "notes": "Activate by running burpsuite-loader.ps1 and following the instructions.",
+    "depends": "unzip",
+    "url": [
+        "https://portswigger.net/burp/releases/download?product=pro&version=2023.11.1.1&type=Jar#/burpsuite_pro_v2023.11.1.1.jar",
+        "https://github.com/M41KL-N41TT/BurpSuite/raw/main/loader.jar"
+    ],
+    "hash": [
+        "84D8DA57387C076F90F24876646478BFCA69D52D36264EF5772B422A30C168DE",
+        "1E288C686963EAFC34411D4F94265EB1809492AB57A474848669EB3285A2AFB3"
+    ],
+    "pre_install": [
+        "$ldr = \"$dir\\loader.jar\"",
+        "$exe = \"$dir\\burpsuite_pro_v2023.11.1.1.jar\"",
+        "$src = \"$bucketsdir\\ifgbucket\\scripts\\burpsuite.ps1\"; $dst = \"$dir\\burpsuite.ps1\"; (Get-Content $src) -replace '_LDR_', $ldr -replace '_EXE_', $exe | Set-Content $dst",
+        "$src = \"$bucketsdir\\ifgbucket\\scripts\\burpsuite-loader.ps1\"; $dst = \"$dir\\burpsuite-loader.ps1\"; (Get-Content $src) -replace '_LDR_', $ldr | Set-Content $dst"
+    ],
+
+    "post_install": [
+        "unzip $dir\\burpsuite_pro_v2023.11.1.1.jar resources/Media/favicon.ico -d $dir",
+        "$wsh = New-Object -ComObject WScript.Shell",
+        "$sc = $wsh.CreateShortcut(\"$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\Burp Suite Professional.lnk\")",
+        "$sc.TargetPath = \"$dir\\burpsuite.ps1\"",
+        "$sc.IconLocation = \"$dir\\resources\\Media\\favicon.ico\"",
+        "$sc.Save()"
+    ],
+
+    "post_uninstall": [
+        "Remove-Item -Force \"$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\Burp Suite Professional.lnk\""
+    ],
+    "bin": [ "burpsuite.ps1", "burpsuite-loader.ps1" ]
+}

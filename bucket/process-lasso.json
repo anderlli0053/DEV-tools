@@ -1,48 +1,68 @@
 {
-  "##": "Based on https://github.com/jonisb/Misc-scoops/blob/master/bucket/ProcessLasso.json",
-  "version": "12.3.1",
-  "description": "Real-Time CPU Optimization and Automation.",
-  "homepage": "https://bitsum.com/processlasso/",
-  "license": {
-    "identifier": "Shareware",
-    "url": "https://bitsum.com/howfree/"
-  },
-  "url": "https://dl.bitsum.com/files/processlassosetup64.exe#/dl.7z",
-  "hash": "09332a2ace6814567d52e263ad7b8acaf86354e7998c960a2fb481fe82683468",
-  "extract_to": "ProcessLasso",
-  "installer": {
-    "script": [
-      "Remove-Item \"$dir\\ProcessLasso\\`$PLUGINSDIR\" -Force -Recurse",
-      "Move-Item \"$dir\\ProcessLasso\\*\" -Destination \"$dir\"",
-      "Remove-Item \"$dir\\ProcessLasso\" -Force -Recurse"
-    ]
-  },
-  "post_install": [
-    "$config = \"${env:LOCALAPPDATA}\\ProcessLasso\\config\\prolasso.ini\"",
-    "If (!(Test-Path $config)) { New-Item $config -ItemType File -Force | Out-Null }",
-    "\"[Advanced]`nAutomaticUpdate=false\" | Out-File -File \"$config\" -Encoding utf8"
-  ],
-  "shortcuts": [
-    [
-      "ProcessLassoLauncher.exe",
-      "Process Lasso"
-    ]
-  ],
-  "persist": [
-    "config",
-    "logs"
-  ],
-  "post_uninstall": [
-    "If ($cmd -eq 'uninstall') {",
-    "  Remove-Item \"${env:LOCALAPPDATA}\\ProcessLasso\\config\\prolasso.ini\"",
-    "  Remove-Item \"${env:LOCALAPPDATA}\\ProcessLasso\\logs\\*\" -Force -Recurse",
-    "}"
-  ],
-  "checkver": {
-    "url": "https://bitsum.com/changes/processlasso/",
-    "regex": "Process Lasso v.*>([\\d.]+)"
-  },
-  "autoupdate": {
-    "url": "https://dl.bitsum.com/files/processlassosetup64.exe#/dl.7z"
-  }
+    "homepage": "https://bitsum.com/",
+    "description": "Real-Time CPU Optimization and Automation",
+    "version": "17.0.2-beta+rel.17.01.2026.1702",
+    "license": "Freemium",
+    "url": "https://dl.bitsum.com/files/beta/processlassosetup64.exe#/dl.7z",
+    "hash": "159046c77e6b1682d809dac8ce309bfc6f9085415fa9c85736036374950ed186",
+    "extract_to": "Process Lasso",
+    "shortcuts": [
+        [
+            "Process Lasso/ProcessLassoLauncher.exe",
+            "Process Lasso"
+        ]
+    ],
+    "persist": [
+        "Process Lasso/config",
+        "Process Lasso/logs"
+    ],
+    "installer": {
+        "script": "Remove-Item \"$dir/Process Lasso/`$PLUGINSDIR\" -Recurse"
+    },
+    "checkver": {
+        "script": [
+            "$changes = Invoke-WebRequest -Uri 'https://bitsum.com/changes/processlasso'",
+            "$latest_vers = $changes.Links | ForEach-Object {$_.outerHTML | Select-String \"([\\d.]+[^-]+) - ([^<]+)\"}",
+            "$latest_release = $latest_vers | Sort-Object {Get-Date $_.Matches.Groups[2].Value} | Select-Object -last 1",
+            "$base_version = $latest_release.Matches.Groups[1].Value.ToLower() -replace \"\\s\", \"-\"",
+            "$current_version_details = Invoke-WebRequest -Uri 'https://bitsum.com/current_version_processlasso.txt' -UseBasicParsing",
+            "$content = $current_version_details.Content -split \"`n\" | Where-Object {$_ -ne ''}",
+            "$beta_revision = $null",
+            "$revision_line = $content | Select-String \"^\\((\\d+)\\)\" -CaseSensitive | Select-Object -first 1",
+            "if ($revision_line) {",
+            "    $beta_revision = $revision_line.Matches.Groups[1].Value",
+            "}",
+            "$date_time_format = \"dd.MM.yyyy\"",
+            "$release_date_time = $null",
+            "$last_lines = $content[-2..-1] ",
+            "if ($last_lines.Count -eq 2) {",
+            "    $full_date_string = \"$($last_lines[0].Trim()) $($last_lines[1].Trim())\"",
+            "    try {",
+            "        $release_date_time = Get-Date $full_date_string",
+            "        if ($release_date_time.Hour -ne 0 -or $release_date_time.Minute -ne 0) {",
+            "            $date_time_format = \"dd.MM.yyyy.HHmm\" # Include Hour and Minute",
+            "        }",
+            "    } catch {",
+            "        $release_date_time = Get-Date $latest_release.Matches.Groups[2].Value",
+            "    }",
+            "} else {",
+            "    $release_date_time = Get-Date $latest_release.Matches.Groups[2].Value",
+            "}",
+            "$semver_suffix = \"\"",
+            "$url_segment = \"\"",
+            "if ($base_version -match 'beta') {",
+            "    $url_segment = 'beta/'",
+            "    if ($beta_revision) {",
+            "        $semver_suffix = \".$beta_revision\"",
+            "    }",
+            "}",
+            "$semver_metadata = \"+rel.$($release_date_time.ToString($date_time_format))\"",
+            "$semver = \"$base_version$semver_suffix$semver_metadata\"",
+            "Write-Output \"$url_segment $semver\""
+        ],
+        "regex": "(?<url>[\\w/]*)\\s(?<version>[\\d\\w\\.\\-\\+]+)"
+    },
+    "autoupdate": {
+        "url": "https://dl.bitsum.com/files/$matchUrlprocesslassosetup64.exe#/dl.7z"
+    }
 }

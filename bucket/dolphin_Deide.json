@@ -1,39 +1,39 @@
 {
-  "homepage": "https://dolphin-emu.org/",
-  "version": "2503",
-  "description": "Gamecube & Wii emulator",
-  "license": {
-    "identifier": "GPL-2.0",
-    "url": "https://github.com/dolphin-emu/dolphin/blob/master/license.txt"
-  },
-  "url": "https://dl.dolphin-emu.org/releases/2503/dolphin-2503-x64.7z",
-  "hash": "dd4d8ef51539838455d7c7eb6650d133e125b532bcb0f9c2bbba6d366651905f",
-  "extract_dir": "Dolphin-x64",
-  "pre_install": [
-    "function create($path, $type, $content) {",
-    "   if (-not (Test-Path \"$path\")) {",
-    "       New-Item \"$path\" -ItemType $type -Value $content | Out-Null",
-    "       Write-Output \"Creating $path...\"",
-    "   }",
-    "}",
-    "create $dir/portable.txt File"
-  ],
-  "bin": "Dolphin.exe",
-  "shortcuts": [
-    [
-      "Dolphin.exe",
-      "Gamecube & Wii"
-    ]
-  ],
-  "persist": [
-    "portable.txt",
-    "User"
-  ],
-  "checkver": {
-    "url": "https://dolphin-emu.org/download/",
-    "regex": "https:\\/\\/dl\\.dolphin-emu\\.org\\/releases\\/(?<version>\\d+)\\/dolphin-\\d+-x64\\.7z"
-  },
-  "autoupdate": {
-    "url": "https://dl.dolphin-emu.org/releases/$version/dolphin-$version-x64.7z"
-  }
+    "homepage": "https://dolphin-emu.org/",
+    "version": "2512",
+    "description": "Gamecube & Wii emulator",
+    "license": {
+        "identifier": "GPL-2.0",
+        "url": "https://github.com/dolphin-emu/dolphin/blob/master/license.txt"
+    },
+    "url": "https://dl.dolphin-emu.org/releases/2512/dolphin-2512-x64.7z",
+    "hash": "315a78b30fd9723923634efd426b0ad68d4ec61a4ad579847507f91e2fa12f91",
+    "extract_dir": "Dolphin-x64",
+    "pre_install": [
+        "function create($path, $type, $content) {",
+        "   if (-not (Test-Path \"$path\")) {",
+        "       New-Item \"$path\" -ItemType $type -Value $content | Out-Null",
+        "       Write-Output \"Creating $path...\"",
+        "   }",
+        "}",
+        "create $dir/portable.txt File"
+    ],
+    "bin": "Dolphin.exe",
+    "shortcuts": [
+        [
+            "Dolphin.exe",
+            "Gamecube & Wii"
+        ]
+    ],
+    "persist": [
+        "portable.txt",
+        "User"
+    ],
+    "checkver": {
+        "url": "https://dolphin-emu.org/download/",
+        "regex": "https:\\/\\/dl\\.dolphin-emu\\.org\\/releases\\/(?<version>\\d+)\\/dolphin-\\d+-x64\\.7z"
+    },
+    "autoupdate": {
+        "url": "https://dl.dolphin-emu.org/releases/$version/dolphin-$version-x64.7z"
+    }
 }

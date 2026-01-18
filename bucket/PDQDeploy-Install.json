@@ -1,46 +1,46 @@
 {
-  "version": "19.4.56.0",
-  "description": "PDQ Deploy. Update third-party software, deploy custom scripts, and make impactful configuration changes in minutes.",
-  "homepage": "https://www.pdq.com/pdq-deploy/",
-  "license": "Proprietary",
-  "changelog": "https://www.pdq.com/releases/",
-  "architecture": {
-    "64bit": {
-      "url": "https://services.pdq.com/download/deploy-inventory/Deploy_19.4.56.0.exe#/setup.exe",
-      "hash": "ae78442f647cb1ee8667bd60374161231d923c69772f6b7603688207e6dd9151"
-    }
-  },
-  "pre_download": "Assert-Administrator",
-  "installer": {
-    "script": [
-      "$programname = \"PDQ Deploy*\"",
-      "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFilesX86\")",
-      "$filepath = \"$ProgramFiles\\Admin Arsenal\\PDQ Deploy\\PDQDeployConsole.exe\"",
-      "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-      "{",
-      "   &\"$dir\\setup.exe\" /S | Out-Null",
-      "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-      "   {",
-      "       exit 1",
-      "   }",
-      "}",
-      "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
-    ]
-  },
-  "post_install": [
-    "$programname = \"PDQ Deploy\"",
-    "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
-    "if (Test-Path \"$CommonDesktopPath\\$programname.lnk\") {Remove-Item \"$CommonDesktopPath\\$programname.lnk\" -Force}"
-  ],
-  "checkver": {
-    "url": "https://www.pdq.com/releases/",
-    "regex": "/Deploy_([\\d.]+).exe"
-  },
-  "autoupdate": {
+    "version": "19.6.29.0",
+    "description": "PDQ Deploy. Update third-party software, deploy custom scripts, and make impactful configuration changes in minutes.",
+    "homepage": "https://www.pdq.com/pdq-deploy/",
+    "license": "Proprietary",
+    "changelog": "https://www.pdq.com/releases/",
     "architecture": {
-      "64bit": {
-        "url": "https://services.pdq.com/download/deploy-inventory/Deploy_$version.exe#/setup.exe"
-      }
+        "64bit": {
+            "url": "https://services.pdq.com/download/deploy-inventory/Deploy_19.6.29.0.exe#/setup.exe",
+            "hash": "31d13487330b237a76b5a35cf6780b3d094422d07c14560b8d709c6b456b5cf0"
+        }
+    },
+    "pre_download": "Assert-Administrator",
+    "installer": {
+        "script": [
+            "$programname = \"PDQ Deploy*\"",
+            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFilesX86\")",
+            "$filepath = \"$ProgramFiles\\Admin Arsenal\\PDQ Deploy\\PDQDeployConsole.exe\"",
+            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "{",
+            "   &\"$dir\\setup.exe\" /S | Out-Null",
+            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}",
+            "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
+        ]
+    },
+    "post_install": [
+        "$programname = \"PDQ Deploy\"",
+        "$CommonDesktopPath = [Environment]::GetFolderPath(\"CommonDesktopDirectory\")",
+        "if (Test-Path \"$CommonDesktopPath\\$programname.lnk\") {Remove-Item \"$CommonDesktopPath\\$programname.lnk\" -Force}"
+    ],
+    "checkver": {
+        "url": "https://www.pdq.com/releases/",
+        "regex": "/Deploy_([\\d.]+).exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://services.pdq.com/download/deploy-inventory/Deploy_$version.exe#/setup.exe"
+            }
+        }
     }
-  }
 }

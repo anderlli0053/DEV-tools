@@ -1,0 +1,30 @@
+{
+    "version": "9.0.60",
+    "description": "雷电模拟器",
+    "homepage": "https://github.com/gendloop/LeidianSimulator",
+    "license": "LGPL-2.1-or-later",
+    "notes": [
+        "<Installer>"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gendloop/LeidianSimulator/releases/download/v9.0.60/LeidianSimulator-9.0.60-win64.7z",
+            "hash": "9ce2218454a2c58a5acefad9ae707c47950492ced476a839fb467730d213324a"
+        }
+    },
+    "installer": {
+        "script": [
+            "Push-Location \"$dir\"",
+            "Start-Process LeidianSimulator-$version-win64.exe",
+            "Pop-Location"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gendloop/LeidianSimulator/releases/download/v$version/LeidianSimulator-$version-win64.7z"
+            }
+        }
+    }
+}

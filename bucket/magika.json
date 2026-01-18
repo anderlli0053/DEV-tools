@@ -1,0 +1,27 @@
+{
+    "version": "1.0.1",
+    "description": "A tool to determine the content type of a file with deep learning.",
+    "homepage": "https://github.com/google/magika",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/google/magika/releases/download/cli%2Fv1.0.1/magika-x86_64-pc-windows-msvc.zip",
+            "hash": "462cde11c92c72318cbe776eb9cb9dbc2e2c067ee2b99e393f7bde5c0f9b28da"
+        }
+    },
+    "bin": "magika.exe",
+    "checkver": {
+        "url": "https://github.com/google/magika/releases.atom",
+        "regex": "Repository/\\d+/cli/v(.+?)<"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/google/magika/releases/download/cli%2Fv$version/magika-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

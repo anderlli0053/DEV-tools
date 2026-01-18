@@ -1,54 +1,54 @@
 {
-  "version": "137.0.2",
-  "description": "A free email application that’s easy to set up and customize.",
-  "homepage": "https://www.thunderbird.net",
-  "license": "MPL-2.0",
-  "architecture": {
-    "64bit": {
-      "url": "https://archive.mozilla.org/pub/thunderbird/releases/137.0.2/win64/fa-IR/Thunderbird%20Setup%20137.0.2.exe#/dl.7z",
-      "hash": "sha512:83518a87fb7c0424ff70dbc1ef6b261779097948ca87e66369a6e479dd10d0a42fbd1b35d815e060620c029d96c66453a21d665e575cd447a4d6e4efe37e5a67"
-    },
-    "32bit": {
-      "url": "https://archive.mozilla.org/pub/thunderbird/releases/137.0.2/win32/fa-IR/Thunderbird%20Setup%20137.0.2.exe#/dl.7z",
-      "hash": "sha512:83518a87fb7c0424ff70dbc1ef6b261779097948ca87e66369a6e479dd10d0a42fbd1b35d815e060620c029d96c66453a21d665e575cd447a4d6e4efe37e5a67"
-    }
-  },
-  "extract_dir": "core",
-  "bin": [
-    [
-      "thunderbird.exe",
-      "thunderbird-fa",
-      "-profile \"$dir\\profile\""
-    ]
-  ],
-  "shortcuts": [
-    [
-      "thunderbird.exe",
-      "Mozilla Thunderbird (fa)",
-      "-profile \"$dir\\profile\""
-    ]
-  ],
-  "persist": "profile",
-  "checkver": {
-    "url": "https://product-details.mozilla.org/1.0/thunderbird_versions.json",
-    "jsonpath": "$.LATEST_THUNDERBIRD_VERSION"
-  },
-  "autoupdate": {
+    "version": "147.0",
+    "description": "A free email application that’s easy to set up and customize.",
+    "homepage": "https://www.thunderbird.net",
+    "license": "MPL-2.0",
     "architecture": {
-      "64bit": {
-        "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/win64/fa-IR/Thunderbird%20Setup%20$version.exe#/dl.7z",
-        "hash": {
-          "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/SHA512SUMS",
-          "regex": "$sha512\\s+win64/fa-IR/$basename"
+        "64bit": {
+            "url": "https://archive.mozilla.org/pub/thunderbird/releases/147.0/win64/fa-IR/Thunderbird%20Setup%20147.0.exe#/dl.7z",
+            "hash": "sha512:552cce31fc5c53558ace601ee14af2b37a5e001e528440f9924c6316340820c2563bf21655b482a2d9415b3af301027729cb950c7bd24c201dd0e14be01be990"
+        },
+        "32bit": {
+            "url": "https://archive.mozilla.org/pub/thunderbird/releases/147.0/win32/fa-IR/Thunderbird%20Setup%20147.0.exe#/dl.7z",
+            "hash": "sha512:552cce31fc5c53558ace601ee14af2b37a5e001e528440f9924c6316340820c2563bf21655b482a2d9415b3af301027729cb950c7bd24c201dd0e14be01be990"
         }
-      },
-      "32bit": {
-        "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/win32/fa-IR/Thunderbird%20Setup%20$version.exe#/dl.7z",
-        "hash": {
-          "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/SHA512SUMS",
-          "regex": "$sha512\\s+win32/fa-IR/$basename"
+    },
+    "extract_dir": "core",
+    "bin": [
+        [
+            "thunderbird.exe",
+            "thunderbird-fa",
+            "-profile \"$dir\\profile\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "thunderbird.exe",
+            "Mozilla Thunderbird (fa)",
+            "-profile \"$dir\\profile\""
+        ]
+    ],
+    "persist": "profile",
+    "checkver": {
+        "url": "https://product-details.mozilla.org/1.0/thunderbird_versions.json",
+        "jsonpath": "$.LATEST_THUNDERBIRD_VERSION"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/win64/fa-IR/Thunderbird%20Setup%20$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win64/fa-IR/$basename"
+                }
+            },
+            "32bit": {
+                "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/win32/fa-IR/Thunderbird%20Setup%20$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://archive.mozilla.org/pub/thunderbird/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win32/fa-IR/$basename"
+                }
+            }
         }
-      }
     }
-  }
 }

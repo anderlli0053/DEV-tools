@@ -1,9 +1,24 @@
 {
+    "homepage": "https://www.charlesproxy.com/",
+    "description": "An HTTP proxy / HTTP monitor / Reverse Proxy that enables a developer to view all of the HTTP and SSL / HTTPS traffic between their machine and the Internet.",
+    "version": "4.6.8",
+    "license": "Proprietary",
     "architecture": {
         "64bit": {
-            "hash": "816cefee8e4246e1818f4788a0f3589a1f500a173152e0e5849e8deb1d3d6ebb",
-            "url": "https://www.charlesproxy.com/assets/release/4.6.7/charles-proxy-4.6.7-win64.msi"
+            "url": "https://www.charlesproxy.com/assets/release/4.6.8/charles-proxy-4.6.8-win64.msi",
+            "hash": "e5619c0258cd43a8d6ad7a1e23ce31cb445519f649725a15005ab7b1c70f2c1b"
         }
+    },
+    "extract_dir": "PFiles\\Charles",
+    "shortcuts": [
+        [
+            "Charles.exe",
+            "Charles 4"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.charlesproxy.com/download/previous-release/",
+        "regex": "(?sm)Previous Release.*?v([\\d.]+)</"
     },
     "autoupdate": {
         "architecture": {
@@ -11,38 +26,5 @@
                 "url": "https://www.charlesproxy.com/assets/release/$version/charles-proxy-$version-win64.msi"
             }
         }
-    },
-    "bin": "Charles.exe",
-    "checkver": {
-        "regex": "Version\\s+([\\d.]+)",
-        "url": "https://www.charlesproxy.com/documentation/version-history"
-    },
-    "description": "Charles is an HTTP proxy / HTTP monitor / Reverse Proxy that enables a developer to view all of the HTTP and SSL / HTTPS traffic between their machine and the Internet.",
-    "extract_dir": "PFiles\\Charles",
-    "homepage": "https://www.charlesproxy.com/",
-    "license": {
-        "identifier": "Shareware"
-    },
-    "notes": "license: <https://zhile.io/2017/07/07/charles-proxy-usage-and-license.html>",
-    "pre_install": [
-        "info '[Portable Mode]: Copying user data...'",
-        "if (Test-Path \"$persist_dir\\User Data\\*\") {",
-        "    Copy-Item \"$persist_dir\\User Data\\*\" \"$env:AppData\\Charles\\\" -Recurse -Force | Out-Null",
-        "}"
-    ],
-    "shortcuts": [
-        [
-            "Charles.exe",
-            "Charles4"
-        ]
-    ],
-    "uninstaller": {
-        "script": [
-            "info '[Portable Mode]: Backing up user data...'",
-            "if (Test-Path \"$env:AppData\\Charles\\*\") {",
-            "    Copy-Item \"$env:AppData\\Charles\\*\" \"$persist_dir\\User Data\\\" -Recurse -Force | Out-Null",
-            "}"
-        ]
-    },
-    "version": "4.6.7"
+    }
 }

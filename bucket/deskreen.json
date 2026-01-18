@@ -1,22 +1,51 @@
 {
-    "version": "2.0.4",
-    "description": "Turn any device into a secondary screen for your computer.",
+    "version": "3.2.1",
+    "description": "Deskreen turns any device with a web browser into a secondary screen for your computer. ⭐️ Star to support our work!",
     "homepage": "https://deskreen.com/",
     "license": {
-        "identifier": "AGPL-3.0-or-later",
-        "url": "https://github.com/pavlobu/deskreen/blob/master/LICENSE"
+        "identifier": "AGPL-3.0 license",
+        "url": "https://github.com/pavlobu/deskreen#AGPL-3.0-1-ov-file"
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/pavlobu/deskreen/releases/download/v2.0.4/Deskreen.Setup.2.0.4.exe#/dl.7z",
-            "hash": "sha512:77ad6b05fa8dc5c08645793e2728783060829218d4b32fbdf4bc9aa41cb440723726de08d548803a86c56ed87aebb9a8a4f27e11e9378239a29eaea882ea5680",
-            "installer": {
-                "script": [
-                    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
-                ]
-            }
+            "url": "https://github.com/pavlobu/deskreen/releases/download/v3.2.1/deskreen-ce-3.2.1-x64.exe#/dl.7z",
+            "hash": "bd94fc5bec453b4a28f50c824d742ab2d07b2c5bd1c88b6e7ba91b84c5a13388",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\" -Force -Recurse"
+            ]
+        },
+        "32bit": {
+            "url": "https://github.com/pavlobu/deskreen/releases/download/v3.2.1/deskreen-ce-3.2.1-ia32.exe#/dl.7z",
+            "hash": "cc9afce32ad995307012133f106fbf7f1ac55c2ac2b06dbfb2ad835aad0da8a2",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\" -Force -Recurse"
+            ]
+        },
+        "arm64": {
+            "url": "https://github.com/pavlobu/deskreen/releases/download/v3.2.1/deskreen-ce-3.2.1-arm64.exe#/dl.7z",
+            "hash": "77993f423d453dd165507f514da55e7defe5c394e9a1b63beb71e6b3c72d55d1",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\" -Force -Recurse"
+            ]
         }
+    },
+    "installer": {
+        "script": [
+            "# handle runtime cache",
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
+            "Mount-ExternalRuntimeData -Source \"$persist_dir\\appdata\" -Target \"$env:APPDATA\\Deskreen\"",
+            "Remove-Module -Name AppsUtils"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
+            "Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\Deskreen\"",
+            "Remove-Module -Name AppsUtils"
+        ]
     },
     "shortcuts": [
         [
@@ -25,17 +54,20 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/pavlobu/deskreen"
+        "url": "https://api.github.com/repos/pavlobu/deskreen/releases",
+        "regex": "/releases/tag/v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/pavlobu/deskreen/releases/download/v$version/Deskreen.Setup.$version.exe#/dl.7z"
+                "url": "https://github.com/pavlobu/deskreen/releases/download/v$version/deskreen-ce-$version-x64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://github.com/pavlobu/deskreen/releases/download/v$version/deskreen-ce-$version-ia32.exe#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://github.com/pavlobu/deskreen/releases/download/v$version/deskreen-ce-$version-arm64.exe#/dl.7z"
             }
-        },
-        "hash": {
-            "url": "$baseurl/latest.yml",
-            "regex": "sha512:\\s+$base64"
         }
     }
 }

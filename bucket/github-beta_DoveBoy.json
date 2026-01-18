@@ -1,36 +1,36 @@
 {
-  "version": "3.4.20-beta1",
-  "description": "Extend your GitHub workflow beyond your browser.",
-  "homepage": "https://desktop.github.com/",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://central.github.com/deployments/desktop/desktop/latest/GitHubDesktop-3.4.20-beta1-x64-full.nupkg?env=beta",
-      "hash": "sha1:4618deeba460454e6884ba108c228be9ed0fd00a"
-    }
-  },
-  "extract_dir": "lib\\net45",
-  "bin": "GitHubDesktop.exe",
-  "shortcuts": [
-    [
-      "GitHubDesktop.exe",
-      "GitHub Desktop Beta"
-    ]
-  ],
-  "checkver": {
-    "url": "https://central.github.com/api/deployments/desktop/desktop/latest/RELEASES?env=beta",
-    "regex": "GitHubDesktop-([\\d.\\-beta]+)-full\\.nupkg",
-    "reverse": true
-  },
-  "autoupdate": {
+    "version": "3.5.5-beta1",
+    "description": "Extend your GitHub workflow beyond your browser.",
+    "homepage": "https://desktop.github.com/",
+    "license": "MIT",
     "architecture": {
-      "64bit": {
-        "url": "https://central.github.com/deployments/desktop/desktop/latest/GitHubDesktop-$version-x64-full.nupkg?env=beta",
-        "hash": {
-          "url": "https://central.github.com/api/deployments/desktop/desktop/latest/RELEASES?env=beta",
-          "regex": "$sha1\\s+GithubDesktop-$version-"
+        "64bit": {
+            "url": "https://central.github.com/deployments/desktop/desktop/latest/GitHubDesktop-3.5.5-beta1-x64-full.nupkg?env=beta",
+            "hash": "sha1:451e99c28a02bc3aba6fd63b63ee59076f468b7e"
         }
-      }
+    },
+    "extract_dir": "lib\\net45",
+    "bin": "GitHubDesktop.exe",
+    "shortcuts": [
+        [
+            "GitHubDesktop.exe",
+            "GitHub Desktop Beta"
+        ]
+    ],
+    "checkver": {
+        "url": "https://central.github.com/api/deployments/desktop/desktop/latest/RELEASES?env=beta",
+        "regex": "GitHubDesktop-([\\d.\\-beta]+)-full\\.nupkg",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://central.github.com/deployments/desktop/desktop/latest/GitHubDesktop-$version-x64-full.nupkg?env=beta",
+                "hash": {
+                    "url": "https://central.github.com/api/deployments/desktop/desktop/latest/RELEASES?env=beta",
+                    "regex": "$sha1\\s+GithubDesktop-$version-"
+                }
+            }
+        }
     }
-  }
 }

@@ -1,0 +1,30 @@
+{
+    "version": "3.10.168",
+    "description": "桌面日历",
+    "homepage": "https://github.com/gendloop/DesktopCalendar",
+    "license": "LGPL-2.1-or-later",
+    "notes": [
+        "<Installer>"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gendloop/DesktopCalendar/releases/download/v3.10.168/DesktopCalendar-3.10.168-win64.7z",
+            "hash": "645b7102724d902c61dde0613587cd4b948514ccb76cc5f68b5c18dec7effa4d"
+        }
+    },
+    "installer": {
+        "script": [
+            "Push-Location \"$dir\"",
+            "Start-Process DesktopCalendar-$version-win64.exe",
+            "Pop-Location"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gendloop/DesktopCalendar/releases/download/v$version/DesktopCalendar-$version-win64.7z"
+            }
+        }
+    }
+}

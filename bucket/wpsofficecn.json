@@ -1,43 +1,43 @@
 {
-  "version": "12.1.0.20784",
-  "description": "[WPS Office 中文版] - 协同办公软件",
-  "homepage": "https://www.wps.cn",
-  "license": {
-    "identifier": "Freeware",
-    "url": "https://www.wps.cn/privacy/useragreement"
-  },
-  "url": "https://official-package.wpscdn.cn/wps/download/WPS_Setup_20784.exe#/dl.7z",
-  "hash": "d3362dee226a309b4ed486d1e0a89993e8256b5ab7089f14dcf6089cf69ecf29",
-  "pre_install": [
-    "Expand-7zipArchive \"$dir\\`$_11_\\`$EXEFILE\" -Switches '-t#'",
-    "Move-Item \"$dir\\`$_11_\\*.7z\" $dir",
-    "Remove-Item \"$dir\\*\" -Exclude '4.7z','2.7z' -Recurse",
-    "Expand-7zipArchive \"$dir\\4.7z\" -ExtractDir 'office6' -Removal",
-    "Expand-7zipArchive \"$dir\\2.7z\" -ExtractDir 'CONTROL\\office6' -Overwrite 'All' -Removal"
-  ],
-  "bin": [
-    [
-      "wpsoffice.exe",
-      "wpsofficecn"
+    "version": "12.1.0.24657",
+    "description": "[WPS Office 中文版] - 协同办公软件",
+    "homepage": "https://www.wps.cn",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.wps.cn/privacy/useragreement"
+    },
+    "url": "https://official-package.wpscdn.cn/wps/download/WPS_Setup_24657.exe#/dl.7z",
+    "hash": "96cfeb19e5dc4cfbd327db80489a8c0d90bf5737c229a4e42a6fb178a528fa98",
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\`$_11_\\`$EXEFILE\" -Switches '-t#'",
+        "Move-Item \"$dir\\`$_11_\\*.7z\" $dir",
+        "Remove-Item \"$dir\\*\" -Exclude '4.7z','2.7z' -Recurse",
+        "Expand-7zipArchive \"$dir\\4.7z\" -ExtractDir 'office6' -Removal",
+        "Expand-7zipArchive \"$dir\\2.7z\" -ExtractDir 'CONTROL\\office6' -Overwrite 'All' -Removal"
+    ],
+    "bin": [
+        [
+            "wpsoffice.exe",
+            "wpsofficecn"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "wpsoffice.exe",
+            "WPS Office"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.wps.cn/platformUrls",
+        "jsonpath": "$.productDetail.productVcode"
+    },
+    "autoupdate": {
+        "url": "https://official-package.wpscdn.cn/wps/download/WPS_Setup_$buildVersion.exe#/dl.7z"
+    },
+    "notes": [
+        "WPS 运行后，后台会常驻部分相关进程，卸载或更新失败时，先执行关闭进程操作：",
+        "",
+        "Get-Process *wps* | Stop-Process",
+        ""
     ]
-  ],
-  "shortcuts": [
-    [
-      "wpsoffice.exe",
-      "WPS Office"
-    ]
-  ],
-  "checkver": {
-    "url": "https://www.wps.cn/platformUrls",
-    "jsonpath": "$.productDetail.productVcode"
-  },
-  "autoupdate": {
-    "url": "https://official-package.wpscdn.cn/wps/download/WPS_Setup_$buildVersion.exe#/dl.7z"
-  },
-  "notes": [
-    "WPS 运行后，后台会常驻部分相关进程，卸载或更新失败时，先执行关闭进程操作：",
-    "",
-    "Get-Process *wps* | Stop-Process",
-    ""
-  ]
 }

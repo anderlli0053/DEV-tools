@@ -1,28 +1,28 @@
 {
-  "autoupdate": {
-    "hash": {
-      "regex": "MD5 Hash: +[\\w]{32}",
-      "url": "https://portableapps.com/apps/utilities/lightscreen_portable"
+    "homepage": "https://portableapps.com/apps/utilities/lightscreen_portable",
+    "description": "Screenshot utility",
+    "version": "2.4",
+    "license": "",
+    "url": "https://astuteinternet.dl.sourceforge.net/project/portableapps/Lightscreen%20Portable/LightscreenPortable_2.4_English.paf.exe#/dl.7z",
+    "hash": "md5:9316a8add74dbfa2b98cb85c60685bdf",
+    "bin": "LightscreenPortable.exe",
+    "shortcuts": [
+        [
+            "LightscreenPortable.exe",
+            "LightscreenPortable"
+        ]
+    ],
+    "persist": "Data",
+    "checkver": {
+        "url": "https://portableapps.com/apps/utilities/lightscreen_portable",
+        "re": "Version \\s+([\\w\\.]* for Win"
     },
-    "url": "https://astuteinternet.dl.sourceforge.net/project/portableapps/Lightscreen%20Portable/LightscreenPortable_$version_English.paf.exe"
-  },
-  "bin": "LightscreenPortable.exe",
-  "checkver": {
-    "re": "Version \\s+([\\w\\.]* for Win",
-    "url": "https://portableapps.com/apps/utilities/lightscreen_portable"
-  },
-  "description": "Screenshot utility",
-  "hash": "8aa93254874c5df3616c15ecbdf4c8f066e8c99b49875056c3249c04fc870a6a",
-  "homepage": "https://portableapps.com/apps/utilities/lightscreen_portable",
-  "license": "",
-  "persist": "Data",
-  "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
-  "shortcuts": [
-    [
-      "LightscreenPortable.exe",
-      "LightscreenPortable"
-    ]
-  ],
-  "url": "https://astuteinternet.dl.sourceforge.net/project/portableapps/Lightscreen%20Portable/LightscreenPortable_2.5_English.paf.exe",
-  "version": "2.5"
+    "autoupdate": {
+        "url": "https://astuteinternet.dl.sourceforge.net/project/portableapps/Lightscreen%20Portable/LightscreenPortable_$version_English.paf.exe",
+        "hash": {
+            "url": "https://portableapps.com/apps/utilities/lightscreen_portable",
+            "regex": "MD5 Hash: +[\\w]{32}"
+        }
+    },
+    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
 }

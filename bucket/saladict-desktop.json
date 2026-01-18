@@ -1,0 +1,34 @@
+{
+    "version": "1.0.0",
+    "description": "saladict-desktop 桌面划词与翻译工具",
+    "homepage": "https://github.com/gendloop/saladict-desktop",
+    "license": "LGPL-2.1-or-later",
+    "notes": [
+        "<Portable>",
+        "from https://github.com/zenghongtu/saladict-desktop"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gendloop/saladict-desktop/releases/download/v1.0.0/saladict-desktop-1.0.0-win64.7z",
+            "hash": "98fa8203175c4839e7993ee2f69afb293d8aa8d3c20f856bb3d9b3917c135cdf"
+        }
+    },
+    "bin": "saladict-desktop.exe",
+    "shortcuts": [
+        [
+            "saladict-desktop.exe",
+            "saladict-desktop"
+        ]
+    ],
+    "pre_uninstall": [
+        "\"$dir\\Uninstall saladict-desktop.exe\""
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gendloop/saladict-desktop/releases/download/v$version/saladict-desktop-$version-win64.7z"
+            }
+        }
+    }
+}

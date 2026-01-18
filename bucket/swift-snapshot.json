@@ -1,78 +1,71 @@
 {
-  "homepage": "https://www.swift.org/",
-  "description": "The Swift Programming Language (Snapshot build)",
-  "license": "Apache-2.0",
-  "version": "snapshot-2025-04-03-a",
-  "architecture": {
-    "64bit": {
-      "url": "https://download.swift.org/development/windows10/swift-DEVELOPMENT-SNAPSHOT-2025-04-03-a/swift-DEVELOPMENT-SNAPSHOT-2025-04-03-a-windows10.exe",
-      "hash": "05cfa6f9edede58e112a68b039b5c49496b86412938ca1b6dfcfa127a10c9820"
-    },
-    "arm64": {
-      "url": "https://download.swift.org/development/windows10-arm64/swift-DEVELOPMENT-SNAPSHOT-2025-04-03-a/swift-DEVELOPMENT-SNAPSHOT-2025-04-03-a-windows10-arm64.exe",
-      "hash": "2d784259011520e5c10d4989911250c26a343bd6f7d556a25eac444652f12738"
-    }
-  },
-  "depends": "main/wixtoolset",
-  "suggest": {
-    "python39": "versions/python39",
-    "vcredist": "extras/vcredist2022"
-  },
-  "installer": {
-    "script": [
-      "wix.exe burn extract \"$dir\\$fname\" -o \"$dir\\extracted\" -oba \"$dir\\extracted\"",
-      "$productVersion = ([xml](Get-Content -Raw \"$dir\\extracted\\manifest.xml\" -Encoding utf8)).BurnManifest.Registration.Version",
-      "Get-ChildItem \"$dir\\extracted\\WixAttachedContainer\\*.msi\" | ForEach-Object {",
-      "    if ($_.Name -match 'rtl.msi') {",
-      "        Expand-MsiArchive $_ \"$dir\\Runtimes\\usr\\bin\"",
-      "    } else {",
-      "        Expand-MsiArchive $_ \"$dir\"",
-      "    }",
-      "}",
-      "if (Test-Path \"$dir\\LocalApp\\Programs\\Swift\\Tools\") {",
-      "    Get-ChildItem \"$dir\\LocalApp\\Programs\\Swift\\Tools\\$productVersion\" | ForEach-Object {",
-      "        Move-Item -Path $_ -Destination \"$dir\\LocalApp\\Programs\\Swift\\Toolchains\\$($productVersion)+Asserts\\usr\\bin\" -Force",
-      "    }",
-      "    Remove-Item \"$dir\\LocalApp\\Programs\\Swift\\Tools\" -Recurse | Out-Null",
-      "}",
-      "Move-Item -Path \"$dir\\LocalApp\\Programs\\Swift\\Platforms\\$productVersion\\Windows.platform\" -Destination \"$dir\\LocalApp\\Programs\\Swift\\Platforms\"",
-      "Move-Item -Path \"$dir\\LocalApp\\Programs\\Swift\\Toolchains\\$($productVersion)+Asserts\\usr\" -Destination \"$dir\\LocalApp\\Programs\\Swift\\Toolchains\"",
-      "Move-Item -Path \"$dir\\LocalApp\\Programs\\Swift\\Redistributables\\$productVersion\\*\" -Destination \"$dir\\LocalApp\\Programs\\Swift\\Redistributables\"",
-      "Get-ChildItem \"$dir\\LocalApp\\Programs\\Swift\" | ForEach-Object {",
-      "    Move-Item -Path $_ -Destination \"$dir\\\" -Force",
-      "}",
-      "Remove-Item \"$dir\\Platforms\\$productVersion\" -Recurse | Out-Null",
-      "Remove-Item \"$dir\\Toolchains\\$($productVersion)+Asserts\" -Recurse | Out-Null",
-      "Remove-Item \"$dir\\Redistributables\\$productVersion\" -Recurse | Out-Null",
-      "@(\"$fname\", 'extracted', 'LocalApp', 'SourceDir') | ForEach-Object {",
-      "    Remove-Item \"$dir\\$_\" -Recurse -ErrorAction SilentlyContinue | Out-Null",
-      "}"
-    ]
-  },
-  "env_add_path": [
-    "Toolchains\\usr\\bin",
-    "Runtimes\\usr\\bin"
-  ],
-  "env_set": {
-    "SDKROOT": "$dir\\Platforms\\Windows.platform\\Developer\\SDKs\\Windows.sdk"
-  },
-  "checkver": {
-    "url": "https://download.swift.org/development/windows10/latest-build.json",
-    "regex": "swift-DEVELOPMENT-SNAPSHOT-(?<build>[\\w\\-]+)-windows10.exe",
-    "replace": "snapshot-${build}"
-  },
-  "autoupdate": {
+    "homepage": "https://www.swift.org/",
+    "description": "The Swift Programming Language (Snapshot build)",
+    "license": "Apache-2.0",
+    "version": "snapshot-2026-01-09-a",
     "architecture": {
-      "64bit": {
-        "url": "https://download.swift.org/development/windows10/swift-DEVELOPMENT-SNAPSHOT-$matchBuild/swift-DEVELOPMENT-SNAPSHOT-$matchBuild-windows10.exe"
-      },
-      "arm64": {
-        "url": "https://download.swift.org/development/windows10-arm64/swift-DEVELOPMENT-SNAPSHOT-$matchBuild/swift-DEVELOPMENT-SNAPSHOT-$matchBuild-windows10-arm64.exe"
-      }
-    }
-  },
-  "notes": [
-    "Swift Toolchain does not bundle Python39 which is a requirement for LLDB to work.",
-    "Please install Python39 from versions/python39 if you want to use the LLDB debugger."
-  ]
+        "64bit": {
+            "url": "https://download.swift.org/development/windows10/swift-DEVELOPMENT-SNAPSHOT-2026-01-09-a/swift-DEVELOPMENT-SNAPSHOT-2026-01-09-a-windows10.exe",
+            "hash": "743dcf1c669243a8b915dd2b75e159581edcbaddc1ec4321cb541babb12d6ffd"
+        },
+        "arm64": {
+            "url": "https://download.swift.org/development/windows10-arm64/swift-DEVELOPMENT-SNAPSHOT-2026-01-09-a/swift-DEVELOPMENT-SNAPSHOT-2026-01-09-a-windows10-arm64.exe",
+            "hash": "533ba322425ff6f06abd96317a1db4a46ad4e289013abcc1370e9b2db1c15304"
+        }
+    },
+    "depends": "main/wixtoolset",
+    "suggest": {
+        "python39": "versions/python39",
+        "vcredist": "extras/vcredist2022"
+    },
+    "installer": {
+        "script": [
+            "wix.exe burn extract \"$dir\\$fname\" -o \"$dir\\extracted\" -oba \"$dir\\extracted\"",
+            "$productVersion = ([xml](Get-Content -Raw \"$dir\\extracted\\manifest.xml\" -Encoding utf8)).BurnManifest.Registration.Version",
+            "Get-ChildItem \"$dir\\extracted\\WixAttachedContainer\\*.msi\" | ForEach-Object {",
+            "    if ($_.Name -match 'rtl.*.msi') {",
+            "        Expand-MsiArchive $_ \"$dir\\Runtimes\\usr\\bin\"",
+            "    } else {",
+            "        Expand-MsiArchive $_ \"$dir\"",
+            "    }",
+            "}",
+            "Rename-Item -Path \"$dir\\LocalApp\\Programs\\Swift\\Toolchains\\$($productVersion)+Asserts\" -NewName \"$dir\\LocalApp\\Programs\\Swift\\Toolchains\\Asserts\"",
+            "Move-Item -Path \"$dir\\LocalApp\\Programs\\Swift\\Platforms\\$productVersion\\*.platform\" -Destination \"$dir\\LocalApp\\Programs\\Swift\\Platforms\"",
+            "Move-Item -Path \"$dir\\LocalApp\\Programs\\Swift\\Redistributables\\$productVersion\\*\" -Destination \"$dir\\LocalApp\\Programs\\Swift\\Redistributables\"",
+            "Get-ChildItem \"$dir\\LocalApp\\Programs\\Swift\" | ForEach-Object {",
+            "    Move-Item -Path \"$($_.FullName)\" -Destination \"$dir\\\" -Force",
+            "}",
+            "Remove-Item \"$dir\\Platforms\\$productVersion\" -Recurse | Out-Null",
+            "Remove-Item \"$dir\\Redistributables\\$productVersion\" -Recurse | Out-Null",
+            "@(\"$fname\", 'extracted', 'LocalApp', 'SourceDir') | ForEach-Object {",
+            "    Remove-Item \"$dir\\$_\" -Recurse -ErrorAction SilentlyContinue | Out-Null",
+            "}"
+        ]
+    },
+    "env_add_path": [
+        "Toolchains\\Asserts\\usr\\bin",
+        "Runtimes\\usr\\bin"
+    ],
+    "env_set": {
+        "SDKROOT": "$dir\\Platforms\\Windows.platform\\Developer\\SDKs\\Windows.sdk"
+    },
+    "checkver": {
+        "url": "https://download.swift.org/development/windows10/latest-build.json",
+        "regex": "swift-DEVELOPMENT-SNAPSHOT-(?<build>[\\w\\-]+)-windows10.exe",
+        "replace": "snapshot-${build}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.swift.org/development/windows10/swift-DEVELOPMENT-SNAPSHOT-$matchBuild/swift-DEVELOPMENT-SNAPSHOT-$matchBuild-windows10.exe"
+            },
+            "arm64": {
+                "url": "https://download.swift.org/development/windows10-arm64/swift-DEVELOPMENT-SNAPSHOT-$matchBuild/swift-DEVELOPMENT-SNAPSHOT-$matchBuild-windows10-arm64.exe"
+            }
+        }
+    },
+    "notes": [
+        "Swift Toolchain does not bundle Python39 which is a requirement for LLDB to work.",
+        "Please install Python39 from versions/python39 if you want to use the LLDB debugger."
+    ]
 }

@@ -1,40 +1,40 @@
 {
-  "version": "6.4.2",
-  "description": "Installer for Windows programs.",
-  "homepage": "http://www.jrsoftware.org/isinfo.php",
-  "license": "http://www.jrsoftware.org/files/is/license.txt",
-  "url": "http://www.jrsoftware.org/download.php/is.exe#innosetup-6.4.2.exe",
-  "hash": "238e2cf82c212a3879a050e02d787283c54bcb72d5cb6070830942de56627d5b",
-  "installer": {
-    "script": [
-      "$args = @('/VERYSILENT', '/SUPPRESSMSGBOXES', '/ALLUSERS', '/NORESTART', '/NOICONS', \"/DIR=`\"$dir`\"\")",
-      "Start-Process \"$dir\\$fname\" -ArgumentList $args -Wait -Verb RunAs",
-      "Remove-Item \"$dir\\$fname\""
+    "version": "6.7.0",
+    "description": "Installer for Windows programs.",
+    "homepage": "http://www.jrsoftware.org/isinfo.php",
+    "license": "http://www.jrsoftware.org/files/is/license.txt",
+    "url": "http://www.jrsoftware.org/download.php/is.exe#innosetup-6.7.0.exe",
+    "hash": "f45c7d68d1e660cf13877ec36738a5179ce72a33414f9959d35e99b68c52a697",
+    "installer": {
+        "script": [
+            "$args = @('/VERYSILENT', '/SUPPRESSMSGBOXES', '/ALLUSERS', '/NORESTART', '/NOICONS', \"/DIR=`\"$dir`\"\")",
+            "Start-Process \"$dir\\$fname\" -ArgumentList $args -Wait -Verb RunAs",
+            "Remove-Item \"$dir\\$fname\""
+        ],
+        "#args": [
+            "/VERYSILENT",
+            "/SUPPRESSMSGBOXES",
+            "/ALLUSERS",
+            "/NORESTART",
+            "/NOICONS",
+            "/DIR=\"$dir\""
+        ]
+    },
+    "uninstaller": {
+        "script": "Start-Process \"$dir\\unins000.exe\" -ArgumentList '/VERYSILENT' -Wait -Verb RunAs"
+    },
+    "bin": "Compil32.exe",
+    "shortcuts": [
+        [
+            "Compil32.exe",
+            "Inno Setup Compiler"
+        ]
     ],
-    "#args": [
-      "/VERYSILENT",
-      "/SUPPRESSMSGBOXES",
-      "/ALLUSERS",
-      "/NORESTART",
-      "/NOICONS",
-      "/DIR=\"$dir\""
-    ]
-  },
-  "uninstaller": {
-    "script": "Start-Process \"$dir\\unins000.exe\" -ArgumentList '/VERYSILENT' -Wait -Verb RunAs"
-  },
-  "bin": "Compil32.exe",
-  "shortcuts": [
-    [
-      "Compil32.exe",
-      "Inno Setup Compiler"
-    ]
-  ],
-  "checkver": {
-    "url": "http://www.jrsoftware.org/isdl.php",
-    "regex": "innosetup-([\\d.]+)\\.exe"
-  },
-  "autoupdate": {
-    "url": "http://www.jrsoftware.org/download.php/is.exe#innosetup-$version.exe"
-  }
+    "checkver": {
+        "url": "http://www.jrsoftware.org/isdl.php",
+        "regex": "innosetup-([\\d.]+)\\.exe"
+    },
+    "autoupdate": {
+        "url": "http://www.jrsoftware.org/download.php/is.exe#innosetup-$version.exe"
+    }
 }

@@ -1,36 +1,35 @@
 {
-  "homepage": "http://www.dandanplay.com/",
-  "description": "A local video player with danmu.",
-  "version": "13.6.0",
-  "license": "Unknown",
-  "architecture": {
-    "64bit": {
-      "url": "https://dandan.sakurateam.top/dandanplay-x64_13.6.0.zip",
-      "hash": "e8e3d7e46ed3173b941fe9e4effcbcbd148aaabec394cef0e326a8dc8fa23d9d",
-      "extract_dir": "dandanplay-x64"
-    }
-  },
-  "persist": [
-    "Cache",
-    "Config",
-    "Log"
-  ],
-  "shortcuts": [
-    [
-      "dandanplay.exe",
-      "DandanPlay"
-    ]
-  ],
-  "notes": "[Break Change] Developer remove x86 package from version 11.2.0",
-  "checkver": {
-    "url": "http://www.dandanplay.com/",
-    "regex": "dandanplay-x64_([\\d\\.]+)\\.zip"
-  },
-  "autoupdate": {
+    "homepage": "https://www.dandanplay.com/",
+    "description": "A local video player with danmu.",
+    "version": "16.5.0.0",
+    "license": "Unknown",
     "architecture": {
-      "64bit": {
-        "url": "https://dandan.sakurateam.top/dandanplay-x64_$version.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/kaedei/dandanplay/releases/download/windows-16.5.0.0/dandanplay-x64_16.5.0.zip",
+            "hash": "1b7f4f0c1d3fabcd15aaf0f50fef6cd5280e7bfc55f4780c394de48b0945de22",
+            "extract_dir": "dandanplay-x64"
+        }
+    },
+    "persist": [
+        "Cache",
+        "Config",
+        "Log"
+    ],
+    "shortcuts": [
+        [
+            "dandanplay.exe",
+            "DandanPlay"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/kaedei/dandanplay/releases/latest",
+        "regex": "/tag/windows-([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/kaedei/dandanplay/releases/download/windows-$version/dandanplay-x64_$matchHead.zip"
+            }
+        }
     }
-  }
 }

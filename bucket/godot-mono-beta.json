@@ -1,25 +1,35 @@
 {
-    "version": "4.4-beta4",
+    "version": "4.6-beta3",
     "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
     "homepage": "https://godotengine.org/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/godotengine/godot-builds/releases/download/4.4-beta4/Godot_v4.4-beta4_mono_win64.zip",
-            "hash": "sha512:73d6b576023d7d9cfbfcef046b5a7fb80a9007e9046def317ae225f8d349fd798714e97d33137f09f2a223329134f03f5861830a835da3fc54d79b1dfbc1843e",
-            "extract_dir": "Godot_v4.4-beta4_mono_win64"
+            "url": "https://github.com/godotengine/godot-builds/releases/download/4.6-beta3/Godot_v4.6-beta3_mono_win64.zip",
+            "hash": "sha512:5670d149d885c11a206e3864acf4ba36a4a89416700b38a11ea642df7c5abbe53a49a203abb83c5eafb94dc4b3b1db008a09bf45c5f34beb9cdb0f384d99d5ac",
+            "extract_dir": "Godot_v4.6-beta3_mono_win64"
         },
         "32bit": {
-            "url": "https://github.com/godotengine/godot-builds/releases/download/4.4-beta4/Godot_v4.4-beta4_mono_win32.zip",
-            "hash": "sha512:90357e597c5b89d3d8a28b40ac8a87e8242340fc92302cb127d040ddaa21f3cf9d861c8834d32c0ed95bf2432a17f920d527bcee4520af523dd9d36c048884db",
-            "extract_dir": "Godot_v4.4-beta4_mono_win32"
+            "url": "https://github.com/godotengine/godot-builds/releases/download/4.6-beta3/Godot_v4.6-beta3_mono_win32.zip",
+            "hash": "sha512:2e104b3ce42bf0f7c5e94df860532d1c21dc88cd9fbc86c758f776e150442ba977db0f30d54f853d4292f93e5571af223b16117774cee650ed2499585ed8527e",
+            "extract_dir": "Godot_v4.6-beta3_mono_win32"
+        },
+        "arm64": {
+            "url": "https://github.com/godotengine/godot-builds/releases/download/4.6-beta3/Godot_v4.6-beta3_mono_windows_arm64.zip",
+            "hash": "sha512:b290deeb2458fe087bd4fb82afe6665e11be7c14da38285b5b04e189f3c3ccccfbe05f45a3f12cc3504d00f9083d752c8e5de80f69cd3be411bc90b248f9c994",
+            "extract_dir": "Godot_v4.6-beta3_mono_windows_arm64"
         }
     },
     "pre_install": [
-        "Remove-Item \"$dir\\Godot_*_console.*\"",
+        "Get-Item \"$dir\\Godot_*_console.exe\" | Rename-Item -NewName 'godot-mono.console.exe'",
         "Get-Item \"$dir\\Godot_*.exe\" | Rename-Item -NewName 'godot-mono.exe'"
     ],
-    "bin": "godot-mono.exe",
+    "bin": [
+        [
+            "godot-mono.console.exe",
+            "godot-mono"
+        ]
+    ],
     "shortcuts": [
         [
             "godot-mono.exe",
@@ -27,9 +37,8 @@
         ]
     ],
     "checkver": {
-        "url": "https://github.com/godotengine/godot-builds/releases",
-        "regex": "(?<ver>[\\d.]+)-beta(?<beta>[\\d.]+)",
-        "replace": "${1}-beta${2}"
+        "url": "https://api.github.com/repos/godotengine/godot-builds/tags",
+        "jsonpath": "$[?(@.name =~ /^[\\d.]+-beta\\d+$/)].name"
     },
     "autoupdate": {
         "architecture": {
@@ -40,6 +49,10 @@
             "32bit": {
                 "url": "https://github.com/godotengine/godot-builds/releases/download/$version/Godot_v$version_mono_win32.zip",
                 "extract_dir": "Godot_v$version_mono_win32"
+            },
+            "arm64": {
+                "url": "https://github.com/godotengine/godot-builds/releases/download/$version/Godot_v$version_mono_windows_arm64.zip",
+                "extract_dir": "Godot_v$version_mono_windows_arm64"
             }
         },
         "hash": {

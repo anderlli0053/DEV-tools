@@ -1,28 +1,40 @@
 {
-    "version": "feature_12",
-    "description": "arch1t3cht's Aegisub fork",
+    "version": "12",
+    "description": "Cross-platform advanced subtitle editor, with new feature branches. Read the README on the feature branch.",
     "homepage": "https://github.com/arch1t3cht/Aegisub",
-    "license": "https://ghproxy.com/https://raw.githubusercontent.com/arch1t3cht/Aegisub/feature/LICENCE",
-    "url": "https://ghproxy.com/https://github.com/arch1t3cht/Aegisub/releases/download/feature_12/Windows.MSVC.Release.-.portable.zip",
-    "hash": "1bf09a1fff643c5741af21f8160b2e70caad62d0584ed2b271b49bd3c2efd57f",
+    "license": "https://github.com/arch1t3cht/Aegisub/blob/feature/LICENCE",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/arch1t3cht/Aegisub/releases/download/feature_12/Windows.MSVC.Release.wx.master.-.portable.zip",
+            "hash": "0d242ae0333f1e9aa9ff734274d06d22fe4b4763717255c6b78af1af109672ef"
+        }
+    },
     "pre_install": [
-        "Expand-Archive -Path $dir\\aegisub-portable-64.zip -DestinationPath $dir\\",
-        "Move-Item -Path $dir\\aegisub-portable\\* -Destination $dir\\",
-        "Remove-Item -Recurse $dir\\aegisub-portable",
-        "Remove-Item $dir\\aegisub-portable-64.zip"
+        "Expand-ZipArchive -Path \"$dir\\aegisub-portable-64.zip\" -DestinationPath \"$dir\"-ExtractDir \"aegisub-portable\" -Removal",
+        "if (!(Test-Path -Path \"$persist_dir\\config.json\")) { Move-Item -Path \"$dir\\config.json\" -Destination \"$persist_dir\\config.json\" }",
+        "New-Item -Type SymbolicLink -Target \"$persist_dir\\config.json\" -Path \"$dir\\config.json\" -Force"
     ],
     "shortcuts": [
         [
-            "Aegisub.exe",
+            "aegisub.exe",
             "Aegisub"
         ]
     ],
+    "persist": [
+        "autoback",
+        "autosave",
+        "config"
+    ],
     "checkver": {
-        "url": "https://github.com/arch1t3cht/Aegisub/releases",
-        "regex": "tag/(feature_\\d+)"
+        "github": "https://github.com/arch1t3cht/Aegisub",
+        "jsonpath": "$.tag_name",
+        "regex": "^feature_([0-9]+)$"
     },
     "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/arch1t3cht/Aegisub/releases/download/$version/Windows.MSVC.Release.-.portable.zip"
-    },
-    "notes": "Automation scripts will fail to load for unknown reason. If you need the feature, use the installer instead of the portable build."
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/arch1t3cht/Aegisub/releases/download/feature_$version/Windows.MSVC.Release.wx.master.-.portable.zip"
+            }
+        }
+    }
 }

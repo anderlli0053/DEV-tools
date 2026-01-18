@@ -1,46 +1,46 @@
 {
-  "homepage": "http://pdm-project.org",
-  "version": "2.24.1",
-  "description": "Python package and dependency manager supporting the latest PEP standards",
-  "license": "MIT",
-  "url": "https://files.pythonhosted.org/packages/b1/9a/079e57adc78b523c05e336691981d8f1af5a1833e133f8578273a13b564a/pdm-2.24.1-py3-none-any.whl",
-  "depends": "python",
-  "hash": "4e496d6396de0633e011c33f971db08fc8f3b5b4c794163e4d867cf411960f16",
-  "bin": "venv\\Scripts\\pdm.exe",
-  "installer": {
-    "script": [
-      "python -m venv \"$dir\\venv\"",
-      "& \"$dir\\venv\\Scripts\\python.exe\" -m pip install \"$dir\\$fname\""
-    ]
-  },
-  "post_install": [
-    "if (-not (Test-Path -Path $PROFILE\\..\\Completions -PathType Container)) {",
-    "    mkdir $PROFILE\\..\\Completions",
-    "    echo @'",
-    "Get-ChildItem \"$PROFILE\\..\\Completions\\\" | ForEach-Object {",
-    "    . $_.FullName",
-    "}",
-    "'@ | Out-File -Append -Encoding utf8 $PROFILE",
-    "}",
-    "& \"$dir\\venv\\Scripts\\pdm.exe\" completion powershell | Out-File -Encoding utf8 $PROFILE\\..\\Completions\\pdm_completion.ps1"
-  ],
-  "uninstaller": {
-    "script": [
-      "$oldPath = [Environment]::GetEnvironmentVariable(\"PYTHONPATH\", [System.EnvironmentVariableTarget]::User)",
-      "If (-not [string]::IsNullOrWhiteSpace($oldPath)) {",
-      "    $newPath = ($oldPath.Split(';') | Where { $_ -notlike \"$dir\\venv\\*\" }) -join ';'",
-      "    [Environment]::SetEnvironmentVariable(\"PYTHONPATH\", $newPath, [System.EnvironmentVariableTarget]::User)",
-      "}",
-      "Remove-Item -Path $PROFILE\\..\\Completions\\pdm_completion.ps1 -ErrorAction SilentlyContinue"
-    ]
-  },
-  "checkver": {
-    "url": "https://pypi.org/pypi/pdm/json",
-    "jp": "$.urls[?(@.packagetype == 'bdist_wheel')].url",
-    "re": "https://files.pythonhosted.org/packages/(.*/pdm-(?<version>[\\d.]+(?:post\\d+)?)-.*\\.whl)",
-    "replace": "${version}"
-  },
-  "autoupdate": {
-    "url": "https://files.pythonhosted.org/packages/$match1"
-  }
+    "homepage": "http://pdm-project.org",
+    "version": "2.26.4",
+    "description": "Python package and dependency manager supporting the latest PEP standards",
+    "license": "MIT",
+    "url": "https://files.pythonhosted.org/packages/3d/3e/9a6c971909bf924dd9e689558059776455442e650e4a27a044f816b07f4b/pdm-2.26.4-py3-none-any.whl",
+    "depends": "python",
+    "hash": "87def29545c0665501ded5b431a90554db37de510ab76cb9b9fb79273103e611",
+    "bin": "venv\\Scripts\\pdm.exe",
+    "installer": {
+        "script": [
+            "python -m venv \"$dir\\venv\"",
+            "& \"$dir\\venv\\Scripts\\python.exe\" -m pip install \"$dir\\$fname\""
+        ]
+    },
+    "post_install": [
+        "if (-not (Test-Path -Path $PROFILE\\..\\Completions -PathType Container)) {",
+        "    mkdir $PROFILE\\..\\Completions",
+        "    echo @'",
+        "Get-ChildItem \"$PROFILE\\..\\Completions\\\" | ForEach-Object {",
+        "    . $_.FullName",
+        "}",
+        "'@ | Out-File -Append -Encoding utf8 $PROFILE",
+        "}",
+        "& \"$dir\\venv\\Scripts\\pdm.exe\" completion powershell | Out-File -Encoding utf8 $PROFILE\\..\\Completions\\pdm_completion.ps1"
+    ],
+    "uninstaller": {
+        "script": [
+            "$oldPath = [Environment]::GetEnvironmentVariable(\"PYTHONPATH\", [System.EnvironmentVariableTarget]::User)",
+            "If (-not [string]::IsNullOrWhiteSpace($oldPath)) {",
+            "    $newPath = ($oldPath.Split(';') | Where { $_ -notlike \"$dir\\venv\\*\" }) -join ';'",
+            "    [Environment]::SetEnvironmentVariable(\"PYTHONPATH\", $newPath, [System.EnvironmentVariableTarget]::User)",
+            "}",
+            "Remove-Item -Path $PROFILE\\..\\Completions\\pdm_completion.ps1 -ErrorAction SilentlyContinue"
+        ]
+    },
+    "checkver": {
+        "url": "https://pypi.org/pypi/pdm/json",
+        "jp": "$.urls[?(@.packagetype == 'bdist_wheel')].url",
+        "re": "https://files.pythonhosted.org/packages/(.*/pdm-(?<version>[\\d.]+(?:post\\d+)?)-.*\\.whl)",
+        "replace": "${version}"
+    },
+    "autoupdate": {
+        "url": "https://files.pythonhosted.org/packages/$match1"
+    }
 }

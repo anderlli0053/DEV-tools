@@ -1,42 +1,39 @@
 {
-    "version": "2.5.4",
-    "description": "Twitch chat client",
-    "homepage": "https://chatterino.com",
+    "version": "21099728620",
+    "description": "Chat client for https://twitch.tv",
+    "homepage": "https://github.com/Chatterino/chatterino2",
     "license": "MIT",
-    "suggest": {
-        "vcredist": [
-            "extras/vcredist2013",
-            "extras/vcredist2022"
-        ]
-    },
     "architecture": {
         "64bit": {
-            "url": "https://chatterino.fra1.digitaloceanspaces.com/bin/2.5.4/Chatterino.Portable.zip",
-            "hash": "df847316885322a879a6d9522fd9cc1437686ca883ccc01f013ffb349bdbca27"
+            "url": "https://github.com/Chatterino/chatterino2/releases/download/nightly-build/chatterino-windows-x86-64-Qt-6.7.1.zip",
+            "hash": "2861e2610dd8c3eb1597db68729e6109d9224ff3292bfc7843e63c061c916886"
         }
     },
-    "extract_dir": "chatterino2",
-    "bin": "chatterino.exe",
+    "extract_dir": "Chatterino2",
+    "pre_install": "'externally-packaged' | Out-File -Encoding utf8 -Append \"$dir/modes\"",
     "shortcuts": [
         [
             "chatterino.exe",
             "Chatterino"
         ]
     ],
-    "persist": [
-        "Settings",
-        "Cache",
-        "Logs",
-        "Misc",
-        "ProfileAvatars"
-    ],
-    "checkver": "/([\\d.]+)/Chatterino.Portable.zip",
+    "bin": "chatterino.exe",
+    "checkver": {
+        "script": [
+            "try {",
+            "    $null = (Invoke-WebRequest https://raw.githubusercontent.com/Chatterino/chatterino2/master/.github/workflows/build.yml).Content -cmatch 'os: windows-latest\\s+qt-version: ([\\d.]+)'",
+            "    $Matches[1],",
+            "    (Invoke-RestMethod 'https://api.github.com/repositories/77624593/actions/workflows/build.yml/runs?branch=master&status=success').workflow_runs[0].id -join ' '",
+            "}",
+            "catch { '' }"
+        ],
+        "regex": "\\A(?<qt>[\\d.]+) (\\d+)\\Z"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://chatterino.fra1.digitaloceanspaces.com/bin/$version/Chatterino.Portable.zip"
+                "url": "https://github.com/Chatterino/chatterino2/releases/download/nightly-build/chatterino-windows-x86-64-Qt-$matchQt.zip"
             }
-        },
-        "extract_dir": "chatterino$majorVersion"
+        }
     }
 }

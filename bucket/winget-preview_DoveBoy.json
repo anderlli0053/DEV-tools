@@ -1,37 +1,37 @@
 {
-  "version": "1.11.230",
-  "description": "Windows Package Manager CLI (aka winget)",
-  "homepage": "https://github.com/microsoft/winget-cli",
-  "license": "MIT",
-  "notes": [
-    "At least Windows 10 build 17763 is required to use winget.",
-    "For documentation on settings, see: https://aka.ms/winget-settings."
-  ],
-  "suggest": {
-    "vcredist": "extras/vcredist"
-  },
-  "url": "https://github.com/microsoft/winget-cli/releases/download/v1.11.230-preview/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle#/dl.7z",
-  "hash": "2d9c1502614b3abf04a5a2cfa060e8aa50e2b7658b723702dacb4f8f93d029c9",
-  "architecture": {
-    "64bit": {
-      "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x64.msix' | Remove-Item -Force -Recurse"
+    "version": "1.28.90",
+    "description": "Windows Package Manager CLI (aka winget)",
+    "homepage": "https://github.com/microsoft/winget-cli",
+    "license": "MIT",
+    "notes": [
+        "At least Windows 10 build 17763 is required to use winget.",
+        "For documentation on settings, see: https://aka.ms/winget-settings."
+    ],
+    "suggest": {
+        "vcredist": "extras/vcredist"
     },
-    "32bit": {
-      "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x86.msix' | Remove-Item -Force -Recurse"
+    "url": "https://github.com/microsoft/winget-cli/releases/download/v1.28.90-preview/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle#/dl.7z",
+    "hash": "5e8cf489c8e26ee2b4e7267e4fbf8a25674ec7222eea3114a76b9f042b4e214c",
+    "architecture": {
+        "64bit": {
+            "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x64.msix' | Remove-Item -Force -Recurse"
+        },
+        "32bit": {
+            "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x86.msix' | Remove-Item -Force -Recurse"
+        }
+    },
+    "installer": {
+        "script": "Get-ChildItem \"$dir\" '*.msix' | Select-Object -ExpandProperty Fullname | Expand-7zipArchive -DestinationPath \"$dir\" -Removal"
+    },
+    "bin": "winget.exe",
+    "checkver": {
+        "url": "https://github.com/microsoft/winget-cli/releases.atom",
+        "regex": "tag/v([\\d.]+)-preview"
+    },
+    "autoupdate": {
+        "url": "https://github.com/microsoft/winget-cli/releases/download/v$version-preview/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle#/dl.7z",
+        "hash": {
+            "url": "https://github.com/microsoft/winget-cli/releases/download/v$version-preview/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.txt"
+        }
     }
-  },
-  "installer": {
-    "script": "Get-ChildItem \"$dir\" '*.msix' | Select-Object -ExpandProperty Fullname | Expand-7zipArchive -DestinationPath \"$dir\" -Removal"
-  },
-  "bin": "winget.exe",
-  "checkver": {
-    "url": "https://github.com/microsoft/winget-cli/releases.atom",
-    "regex": "tag/v([\\d.]+)-preview"
-  },
-  "autoupdate": {
-    "url": "https://github.com/microsoft/winget-cli/releases/download/v$version-preview/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle#/dl.7z",
-    "hash": {
-      "url": "https://github.com/microsoft/winget-cli/releases/download/v$version-preview/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.txt"
-    }
-  }
 }

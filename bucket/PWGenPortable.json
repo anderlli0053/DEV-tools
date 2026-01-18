@@ -1,28 +1,28 @@
 {
-  "autoupdate": {
-    "hash": {
-      "regex": "MD5 Hash: +[\\w]{32}",
-      "url": "https://portableapps.com/apps/security/pwgen-portable"
+    "homepage": "https://portableapps.com/apps/security/pwgen-portable",
+    "description": "Secure password generator",
+    "version": "3.0.0",
+    "license": "",
+    "url": "https://newcontinuum.dl.sourceforge.net/project/portableapps/PWGen%20Portable/PWGenPortable_3.0.0.paf.exe#/dl.7z",
+    "hash": "md5:d5ca4d7777ea14a7ce3ece2345c8cc10",
+    "bin": "PWGenPortable.exe",
+    "shortcuts": [
+        [
+            "PWGenPortable.exe",
+            "PWGenPortable"
+        ]
+    ],
+    "persist": "Data",
+    "checkver": {
+        "url": "https://portableapps.com/apps/security/pwgen-portable",
+        "re": "Version \\s+([\\w\\.]* for Win"
     },
-    "url": "https://ayera.dl.sourceforge.net/project/portableapps/PWGen%20Portable/PWGenPortable_$version.paf.exe"
-  },
-  "bin": "PWGenPortable.exe",
-  "checkver": {
-    "re": "Version \\s+([\\w\\.]* for Win",
-    "url": "https://portableapps.com/apps/security/pwgen-portable"
-  },
-  "description": "Secure password generator",
-  "hash": "501cbcc96f00e8d262995641a0dd5178b8c38f55f7ba8bd2920bbaa7de0745c3",
-  "homepage": "https://portableapps.com/apps/security/pwgen-portable",
-  "license": "",
-  "persist": "Data",
-  "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
-  "shortcuts": [
-    [
-      "PWGenPortable.exe",
-      "PWGenPortable"
-    ]
-  ],
-  "url": "https://ayera.dl.sourceforge.net/project/portableapps/PWGen%20Portable/PWGenPortable_3.4.4.paf.exe",
-  "version": "3.4.4"
+    "autoupdate": {
+        "url": "https://ayera.dl.sourceforge.net/project/portableapps/PWGen%20Portable/PWGenPortable_$version.paf.exe",
+        "hash": {
+            "url": "https://portableapps.com/apps/security/pwgen-portable",
+            "regex": "MD5 Hash: +[\\w]{32}"
+        }
+    },
+    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
 }

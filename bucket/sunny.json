@@ -1,0 +1,37 @@
+{
+    "version": "2.4.0",
+    "description": "A simple and beautiful screenshot software tool.",
+    "homepage": "https://sunny.xmuli.tech",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://sourceforge.net/projects/sunnypages/files/v2.4/sunny_protable_2.4.0_x64.zip",
+            "hash": "sha1:3449229c10bf3890a744f7dcc65bed705d960f51"
+        },
+        "32bit": {
+            "url": "https://sourceforge.net/projects/sunnypages/files/v2.4/sunny_protable_2.4.0_x86.zip",
+            "hash": "sha1:ebe2f955e886af82da21507bc13fcfc580c4f5fa"
+        }
+    },
+    "shortcuts": [
+        [
+            "Sunny.exe",
+            "Sunny"
+        ]
+    ],
+    "persist": "xconfig.json",
+    "checkver": {
+        "url": "https://sourceforge.net/projects/sunnypages/rss",
+        "regex": "/files/v(?<tag>[\\d.]+)/sunny_protable_([\\d.]+)_x64.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://sourceforge.net/projects/sunnypages/files/v$matchTag/sunny_protable_$version_x64.zip"
+            },
+            "32bit": {
+                "url": "https://sourceforge.net/projects/sunnypages/files/v$matchTag/sunny_protable_$version_x86.zip"
+            }
+        }
+    }
+}

@@ -1,57 +1,57 @@
 {
-  "version": "2.10.7",
-  "description": "PCL2 社区版，可体验上游暂未合并的功能",
-  "homepage": "https://pcl-community.github.io/projects/pcl-ce/",
-  "license": {
-    "identifier": "Freeware",
-    "url": "https://github.com/PCL-Community/PCL2-CE/blob/dev/LICENCE"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/PCL-Community/PCL2-CE/releases/download/2.10.7/PCL2_CE_x64.exe",
-      "hash": "76dd9248ee7f86255df128f7ef57358a70b5d6cb1be2b35911ae60b844b010b0",
-      "shortcuts": [
-        [
-          "PCL2_CE_x64.exe",
-          "Plain Craft Launcher (CE)"
-        ]
-      ]
+    "version": "2.13.4",
+    "description": "PCL2 社区版，可体验上游暂未合并的功能",
+    "homepage": "https://pcl-community.github.io/projects/pcl-ce/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://github.com/PCL-Community/PCL2-CE/blob/dev/LICENCE"
     },
-    "arm64": {
-      "url": "https://github.com/PCL-Community/PCL2-CE/releases/download/2.10.7/PCL2_CE_ARM64.exe",
-      "hash": "c33f9361f83d3e7af44e49fab5b05e419bb9ef709056c9c867e75be21e837731",
-      "shortcuts": [
-        [
-          "PCL2_CE_ARM64.exe",
-          "Plain Craft Launcher (CE)"
-        ]
-      ]
-    }
-  },
-  "pre_install": [
-    "ensure \"$persist_dir\\PCL\" | Out-Null",
-    "ensure \"$persist_dir\\.minecraft\" | Out-Null",
-    "$conf = \"$persist_dir\\PCL\\Setup.ini\"",
-    "if (!(Test-Path \"$conf\")) {",
-    "    $content = \"LaunchFolderSelect:$persist_dir\\.minecraft\\\"",
-    "    Add-Content \"$conf\" \"$content\"",
-    "}"
-  ],
-  "persist": [
-    "PCL",
-    ".minecraft"
-  ],
-  "checkver": {
-    "github": "https://github.com/PCL-Community/PCL2-CE"
-  },
-  "autoupdate": {
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/PCL-Community/PCL2-CE/releases/download/$version/PCL2_CE_x64.exe"
-      },
-      "arm64": {
-        "url": "https://github.com/PCL-Community/PCL2-CE/releases/download/$version/PCL2_CE_ARM64.exe"
-      }
+        "64bit": {
+            "url": "https://github.com/PCL-Community/PCL2-CE/releases/download/2.13.4/PCL2_CE_Release_x64.exe",
+            "hash": "a5d3235d1847ee0a82477ea8701e4892bf5ca138129609ee3905f42ec14465b5",
+            "shortcuts": [
+                [
+                    "PCL2_CE_Release_x64.exe",
+                    "Plain Craft Launcher (CE)"
+                ]
+            ]
+        },
+        "arm64": {
+            "url": "https://github.com/PCL-Community/PCL2-CE/releases/download/2.13.4/PCL2_CE_Release_ARM64.exe",
+            "hash": "ff07d2cdde8ec545ad9694d44056e3e22e5f4cfb37e61fcaf3a3f7b2a6a2a5dd",
+            "shortcuts": [
+                [
+                    "PCL2_CE_Release_ARM64.exe",
+                    "Plain Craft Launcher (CE)"
+                ]
+            ]
+        }
+    },
+    "pre_install": [
+        "ensure \"$persist_dir\\PCL\" | Out-Null",
+        "ensure \"$persist_dir\\.minecraft\" | Out-Null",
+        "$conf = \"$persist_dir\\PCL\\Setup.ini\"",
+        "if (!(Test-Path \"$conf\")) {",
+        "    $content = \"LaunchFolderSelect:$persist_dir\\.minecraft\\\"",
+        "    Add-Content \"$conf\" \"$content\"",
+        "}"
+    ],
+    "persist": [
+        "PCL",
+        ".minecraft"
+    ],
+    "checkver": {
+        "github": "https://github.com/PCL-Community/PCL2-CE"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/PCL-Community/PCL2-CE/releases/download/$version/PCL2_CE_Release_x64.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/PCL-Community/PCL2-CE/releases/download/$version/PCL2_CE_Release_ARM64.exe"
+            }
+        }
     }
-  }
 }

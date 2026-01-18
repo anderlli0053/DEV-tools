@@ -1,0 +1,38 @@
+{
+    "##": "see https://github.com/danielpauldd/scoop-bucket/blob/master/bucket/hfs3.json",
+    "homepage": "https://github.com/rejetto/hfs",
+    "description": "HFS is a free, one single executable file Http File Server software.",
+    "license": "GPL-3.0",
+    "version": "3.0.1",
+    "url": "https://github.com/rejetto/hfs/releases/download/v3.0.1/hfs-windows-x64-3.0.1.zip",
+    "hash": "6f52c85d416c252b379c19d4206d1979834172e59444b240c25b4aacabb037cd",
+    "pre_install": "if (!(Test-Path \"$persist_dir\\config.yaml\")) { New-Item \"$dir\\config.yaml\" | Out-Null }",
+    "bin": [
+        [
+            "hfs.exe",
+            "hfs3",
+            "--cwd $dir"
+        ],
+        [
+            "hfs.exe",
+            "hfs",
+            "--cwd $dir"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "hfs.exe",
+            "HFS 3",
+            "--cwd $dir"
+        ]
+    ],
+    "persist": [
+        "config.yaml",
+        "logs",
+        "plugins"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://github.com/rejetto/hfs/releases/download/v$version/hfs-windows-x64-$version.zip"
+    }
+}

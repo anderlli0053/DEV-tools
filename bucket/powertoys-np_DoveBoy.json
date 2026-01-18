@@ -1,46 +1,46 @@
 {
-  "version": "0.90.1",
-  "description": "System utilities to maximize productivity.",
-  "homepage": "https://github.com/microsoft/PowerToys",
-  "license": "MIT",
-  "depends": "dotnet-sdk",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/microsoft/PowerToys/releases/download/v0.90.1/PowerToysSetup-0.90.1-x64.exe#/setup.exe",
-      "hash": "0df50c8896c73f0cc7c4e291e55350b87142824588da6ef6334a9065392f44f5"
-    },
-    "arm64": {
-      "url": "https://github.com/microsoft/PowerToys/releases/download/v0.90.1/PowerToysSetup-0.90.1-arm64.exe#/setup.exe",
-      "hash": "9356847e88a7dd43dfe428e6aa8e35b196ce7b24cc30d1c3d6771167ffc8c1e7"
-    }
-  },
-  "installer": {
-    "args": [
-      "/silent",
-      "/norestart"
-    ],
-    "keep": true
-  },
-  "uninstaller": {
-    "file": "setup.exe",
-    "args": [
-      "/silent",
-      "/uninstall"
-    ]
-  },
-  "checkver": {
-    "url": "https://api.github.com/repos/microsoft/PowerToys/releases",
-    "jsonpath": "$[0].assets[*].browser_download_url",
-    "regex": "/releases/download/(?<tag>[\\w.]+)/PowerToysSetup-([\\d.]+)-x64\\.exe"
-  },
-  "autoupdate": {
+    "version": "0.96.1",
+    "description": "System utilities to maximize productivity.",
+    "homepage": "https://github.com/microsoft/PowerToys",
+    "license": "MIT",
+    "depends": "dotnet-sdk",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/microsoft/PowerToys/releases/download/$matchTag/PowerToysSetup-$version-x64.exe#/setup.exe"
-      },
-      "arm64": {
-        "url": "https://github.com/microsoft/PowerToys/releases/download/$matchTag/PowerToysSetup-$version-arm64.exe#/setup.exe"
-      }
+        "64bit": {
+            "url": "https://github.com/microsoft/PowerToys/releases/download/v0.96.1/PowerToysSetup-0.96.1-x64.exe#/setup.exe",
+            "hash": "e67d2d4098ca0ceb6910d418989567f4a62cd868210e1b29d8a76e0e64a3626e"
+        },
+        "arm64": {
+            "url": "https://github.com/microsoft/PowerToys/releases/download/v0.96.1/PowerToysSetup-0.96.1-arm64.exe#/setup.exe",
+            "hash": "0f5562a1c2ad8bd42d19b79ead72bb7ad77c3ee2b93c2415ac15015ccdfb6f8e"
+        }
+    },
+    "installer": {
+        "args": [
+            "/silent",
+            "/norestart"
+        ],
+        "keep": true
+    },
+    "uninstaller": {
+        "file": "setup.exe",
+        "args": [
+            "/silent",
+            "/uninstall"
+        ]
+    },
+    "checkver": {
+        "url": "https://api.github.com/repos/microsoft/PowerToys/releases",
+        "jsonpath": "$[0].assets[*].browser_download_url",
+        "regex": "/releases/download/(?<tag>[\\w.]+)/PowerToysSetup-([\\d.]+)-x64\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/microsoft/PowerToys/releases/download/$matchTag/PowerToysSetup-$version-x64.exe#/setup.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/microsoft/PowerToys/releases/download/$matchTag/PowerToysSetup-$version-arm64.exe#/setup.exe"
+            }
+        }
     }
-  }
 }

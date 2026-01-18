@@ -1,32 +1,32 @@
 {
-  "version": "8.2-5",
-  "description": "A small and friendly GNU editor, inspired by Pico",
-  "homepage": "https://www.nano-editor.org/",
-  "license": "GPL-3.0-only",
-  "notes": [
-    "Configure nano by editing its configuration file %USERPROFILE%\\.nanorc",
-    "NOTE: The config file was named nano.rc in the 2.5.3 release, but is now named .nanorc"
-  ],
-  "url": "https://files.lhmouse.com/nano-win/nano-win_10406_v8.2-5-ga2ef80988.7z",
-  "hash": "c6abb9a39d703fb7b0222c64218e9ffd93ce8ef0bfed357f877241bb75da8f58",
-  "post_install": [
-    "if (-not (Test-Path \"$env:USERPROFILE\\.nanorc\")) {",
-    "   Copy-Item \"$dir\\.nanorc\" \"$env:USERPROFILE\\.nanorc\"",
-    "}"
-  ],
-  "checkver": {
-    "url": "https://files.lhmouse.com/nano-win/?C=N&O=D",
-    "regex": "nano-win_(?<build>\\d+)_v([\\d.-]+)-(?<commit>\\w+)\\.7z"
-  },
-  "architecture": {
-    "64bit": {
-      "bin": "pkg_x86_64-w64-mingw32\\bin\\nano.exe"
+    "version": "8.7-4",
+    "description": "A small and friendly GNU editor, inspired by Pico",
+    "homepage": "https://www.nano-editor.org/",
+    "license": "GPL-3.0-only",
+    "notes": [
+        "Configure nano by editing its configuration file %USERPROFILE%\\.nanorc",
+        "NOTE: The config file was named nano.rc in the 2.5.3 release, but is now named .nanorc"
+    ],
+    "url": "https://files.lhmouse.com/nano-win/nano-win_10554_v8.7-4-g87c60d98.7z",
+    "hash": "a7cdbdda41f3095e85c9cab1db203658d848cc738f90e8e844825f550d273522",
+    "post_install": [
+        "if (-not (Test-Path \"$env:USERPROFILE\\.nanorc\")) {",
+        "   Copy-Item \"$dir\\.nanorc\" \"$env:USERPROFILE\\.nanorc\"",
+        "}"
+    ],
+    "checkver": {
+        "url": "https://files.lhmouse.com/nano-win/?C=N&O=D",
+        "regex": "nano-win_(?<build>\\d+)_v([\\d.-]+)-(?<commit>\\w+)\\.7z"
     },
-    "32bit": {
-      "bin": "pkg_i686-w64-mingw32\\bin\\nano.exe"
+    "architecture": {
+        "64bit": {
+            "bin": "pkg_x86_64-w64-mingw32\\bin\\nano.exe"
+        },
+        "32bit": {
+            "bin": "pkg_i686-w64-mingw32\\bin\\nano.exe"
+        }
+    },
+    "autoupdate": {
+        "url": "https://files.lhmouse.com/nano-win/nano-win_$matchBuild_v$version-$matchCommit.7z"
     }
-  },
-  "autoupdate": {
-    "url": "https://files.lhmouse.com/nano-win/nano-win_$matchBuild_v$version-$matchCommit.7z"
-  }
 }

@@ -1,66 +1,66 @@
 {
-  "version": "4.3.2",
-  "description": "🔧 Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。",
-  "homepage": "https://rubickcenter.github.io/docs",
-  "license": {
-    "identifier": "MIT license",
-    "url": "https://github.com/rubickCenter/rubick#MIT-1-ov-file"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/rubickCenter/rubick/releases/download/v4.3.2/rubick-Setup-4.3.2-x64.exe#/dl.7z",
-      "hash": "sha512:0e4c4141b450f2f2f77b3d95beb41b23f613ace06b71029aa9b5cf35c9792e043fd3541277de4f4f757cecd2e001d142a34dafcaa539bf8079c33bb4b31d2f16",
-      "pre_install": [
-        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
-      ]
+    "version": "4.3.8",
+    "description": "🔧 Electron based open source toolbox, free integration of rich plug-ins. 基于 electron 的开源工具箱，自由集成丰富插件。",
+    "homepage": "https://rubickcenter.github.io/docs",
+    "license": {
+        "identifier": "MIT license",
+        "url": "https://github.com/rubickCenter/rubick#MIT-1-ov-file"
     },
-    "32bit": {
-      "url": "https://github.com/rubickCenter/rubick/releases/download/v4.3.2/rubick-Setup-4.3.2-ia32.exe#/dl.7z",
-      "hash": "sha512:914c59fb0225ff9a1102ebbaa16d467ee51700286a85e36e7a7bbcc66ec10d47ab63238d2493e8bf2f042791742d290af8ed06e744c4e45b8f5122e1b012a9d5",
-      "pre_install": [
-        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
-        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
-      ]
-    }
-  },
-  "installer": {
-    "script": [
-      "ensure \"$persist_dir\" | Out-Null",
-      "New-Item \"$env:APPDATA\\rubick\" -ItemType Junction -Target \"$persist_dir\" | Out-Null"
-    ]
-  },
-  "uninstaller": {
-    "script": "Remove-Item \"$env:APPDATA\\rubick\" -Recurse -Force -ErrorAction 'SilentlyContinue'"
-  },
-  "shortcuts": [
-    [
-      "rubick.exe",
-      "rubick"
-    ]
-  ],
-  "checkver": {
-    "url": "https://api.github.com/repos/rubickCenter/rubick/releases",
-    "regex": "/releases/tag/v([\\d.]+)"
-  },
-  "autoupdate": {
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/rubickCenter/rubick/releases/download/v$version/rubick-Setup-$version-x64.exe#/dl.7z",
-        "hash": {
-          "url": "$baseurl/latest.yml",
-          "mode": "extract",
-          "regex": "(?sm)$basename.*?sha512:\\s*?$base64"
+        "64bit": {
+            "url": "https://github.com/rubickCenter/rubick/releases/download/v4.3.8/rubick-Setup-4.3.8-x64.exe#/dl.7z",
+            "hash": "sha512:437250fe0aabbacdac8a5f6c80a937331ef54e7c1c981ebf9a93098c46868a50e8f755607621700fd73de2f50b2e735ecd68d66f75f9c05dd8779ba7ad33eca6",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
+            ]
+        },
+        "32bit": {
+            "url": "https://github.com/rubickCenter/rubick/releases/download/v4.3.8/rubick-Setup-4.3.8-ia32.exe#/dl.7z",
+            "hash": "sha512:7c2d6bb3c22ff32a3c1f0e57c27c15ce0834b28a7d1d687678f590a182292e94b0d965dc89b4f50911b7c7867f197c91ccec801ee8a466439ed3e03af8af21a8",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse"
+            ]
         }
-      },
-      "32bit": {
-        "url": "https://github.com/rubickCenter/rubick/releases/download/v$version/rubick-Setup-$version-ia32.exe#/dl.7z",
-        "hash": {
-          "url": "$baseurl/latest.yml",
-          "mode": "extract",
-          "regex": "(?sm)$basename.*?sha512:\\s*?$base64"
+    },
+    "installer": {
+        "script": [
+            "ensure \"$persist_dir\" | Out-Null",
+            "New-Item \"$env:APPDATA\\rubick\" -ItemType Junction -Target \"$persist_dir\" | Out-Null"
+        ]
+    },
+    "uninstaller": {
+        "script": "Remove-Item \"$env:APPDATA\\rubick\" -Recurse -Force -ErrorAction 'SilentlyContinue'"
+    },
+    "shortcuts": [
+        [
+            "rubick.exe",
+            "rubick"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/rubickCenter/rubick/releases",
+        "regex": "/releases/tag/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/rubickCenter/rubick/releases/download/v$version/rubick-Setup-$version-x64.exe#/dl.7z",
+                "hash": {
+                    "url": "$baseurl/latest.yml",
+                    "mode": "extract",
+                    "regex": "(?sm)$basename.*?sha512:\\s*?$base64"
+                }
+            },
+            "32bit": {
+                "url": "https://github.com/rubickCenter/rubick/releases/download/v$version/rubick-Setup-$version-ia32.exe#/dl.7z",
+                "hash": {
+                    "url": "$baseurl/latest.yml",
+                    "mode": "extract",
+                    "regex": "(?sm)$basename.*?sha512:\\s*?$base64"
+                }
+            }
         }
-      }
     }
-  }
 }

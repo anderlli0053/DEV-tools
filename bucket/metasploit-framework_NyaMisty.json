@@ -1,71 +1,77 @@
 {
-  "homepage": "https://github.com/rapid7/metasploit-framework",
-  "description": "Metasploit Framework",
-  "version": "6.4.44-20250107113454",
-  "license": "BSD-3-clause",
-  "hash": "d60c262d57230b3d0cfea4f4460d51583d8068cc1e4ab72a3573bb416e0ded31",
-  "url": "https://windows.metasploit.com/metasploit-framework-6.4.44-20250107113454-1rapid7-1-x64.msi",
-  "bin": [
-    [
-      "bin\\msfconsole.bat",
-      "msfconsole"
+    "homepage": "https://github.com/rapid7/metasploit-framework",
+    "description": "Metasploit Framework",
+    "version": "6.4.109-20260117060459",
+    "license": "BSD-3-clause",
+    "hash": "6ca19c3979100778f662fe5c695e6c121223594e57fa38ef79aa9701ca2adb5f",
+    "url": "https://windows.metasploit.com/metasploit-framework-6.4.109-20260117060459-1rapid7-1-x64.msi",
+    "bin": [
+        [
+            "bin\\msfconsole.bat",
+            "msfconsole"
+        ],
+        [
+            "bin\\msfd.bat",
+            "msfd"
+        ],
+        [
+            "bin\\msfdb.bat",
+            "msfdb"
+        ],
+        [
+            "bin\\msfbinscan.bat",
+            "msfbinscan.bat"
+        ],
+        [
+            "bin\\msfelfscan.bat",
+            "msfelfscan"
+        ],
+        [
+            "bin\\msfmachscan.bat",
+            "msfmachscan"
+        ],
+        [
+            "bin\\msfpescan.bat",
+            "msfpescan"
+        ],
+        [
+            "bin\\msfrop.bat",
+            "msfrop"
+        ],
+        [
+            "bin\\msfrpc.bat",
+            "msfrpc"
+        ],
+        [
+            "bin\\msfrpcd.bat",
+            "msfrpcd"
+        ],
+        [
+            "bin\\msfvenom.bat",
+            "msfvenom"
+        ]
     ],
-    [
-      "bin\\msfd.bat",
-      "msfd"
+    "shortcuts": [
+        
     ],
-    [
-      "bin\\msfdb.bat",
-      "msfdb"
+    "installer": {
+        "script": [
+            "Remove-Item –Recurse $dir\\System64",
+            "Expand-7zipArchive $dir\\metasploit-framework.zip $dir\\",
+            "Remove-Item $dir\\metasploit-framework.zip"
+        ]
+    },
+    "suggest": {
+        
+    },
+    "persist": [
+        
     ],
-    [
-      "bin\\msfbinscan.bat",
-      "msfbinscan.bat"
-    ],
-    [
-      "bin\\msfelfscan.bat",
-      "msfelfscan"
-    ],
-    [
-      "bin\\msfmachscan.bat",
-      "msfmachscan"
-    ],
-    [
-      "bin\\msfpescan.bat",
-      "msfpescan"
-    ],
-    [
-      "bin\\msfrop.bat",
-      "msfrop"
-    ],
-    [
-      "bin\\msfrpc.bat",
-      "msfrpc"
-    ],
-    [
-      "bin\\msfrpcd.bat",
-      "msfrpcd"
-    ],
-    [
-      "bin\\msfvenom.bat",
-      "msfvenom"
-    ]
-  ],
-  "shortcuts": [],
-  "installer": {
-    "script": [
-      "Remove-Item –Recurse $dir\\System64",
-      "Expand-7zipArchive $dir\\metasploit-framework.zip $dir\\",
-      "Remove-Item $dir\\metasploit-framework.zip"
-    ]
-  },
-  "suggest": {},
-  "persist": [],
-  "checkver": {
-    "url": "https://windows.metasploit.com/LATEST",
-    "regex": "metasploit-framework-([\\d.+-]+?)-1rapid7-1-x64\\.msi"
-  },
-  "autoupdate": {
-    "url": "https://windows.metasploit.com/metasploit-framework-$version-1rapid7-1-x64.msi"
-  }
+    "checkver": {
+        "url": "https://windows.metasploit.com/LATEST",
+        "regex": "metasploit-framework-([\\d.+-]+?)-1rapid7-1-x64\\.msi"
+    },
+    "autoupdate": {
+        "url": "https://windows.metasploit.com/metasploit-framework-$version-1rapid7-1-x64.msi"
+    }
 }

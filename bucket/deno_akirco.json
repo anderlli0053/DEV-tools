@@ -1,24 +1,34 @@
 {
-  "version": "2.2.12",
-  "description": "A secure runtime for JavaScript and TypeScript",
-  "homepage": "https://deno.land",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/denoland/deno/releases/download/v2.2.12/deno-x86_64-pc-windows-msvc.zip",
-      "hash": "74dfa60a258f5a06ab339c6b4a33446c98d48f551201657fa5c8f28bb48b86b3"
-    }
-  },
-  "bin": "deno.exe",
-  "post_install": "& \"$dir\\deno.exe\" upgrade",
-  "checkver": {
-    "github": "https://github.com/denoland/deno"
-  },
-  "autoupdate": {
+    "version": "2.6.5",
+    "description": "A secure runtime for JavaScript and TypeScript",
+    "homepage": "https://deno.land",
+    "license": "MIT",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/denoland/deno/releases/download/v$version/deno-x86_64-pc-windows-msvc.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/denoland/deno/releases/download/v2.6.5/deno-x86_64-pc-windows-msvc.zip",
+            "hash": "7838e9f0cd3c516c973745a0ad8527776d39f60f24d09d77757167652d6b70d8"
+        }
+    },
+    "notes": [
+        "i change the DENO_DIR to $persist_dir\\.deno",
+        "if you want to change it, set the DENO_DIR environment variable"
+    ],
+    "bin": "deno.exe",
+    "env_set": {
+        "DENO_DIR": "$persist_dir\\.deno",
+        "DENO_INSTALL_ROOT": "$dir\\.deno\\bin"
+    },
+    "env_add_path": ".deno\\bin",
+    "persist": ".deno",
+    "post_install": "& \"$dir\\deno.exe\" upgrade",
+    "checkver": {
+        "github": "https://github.com/denoland/deno"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/denoland/deno/releases/download/v$version/deno-x86_64-pc-windows-msvc.zip"
+            }
+        }
     }
-  }
 }

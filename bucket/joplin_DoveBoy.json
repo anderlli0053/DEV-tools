@@ -1,52 +1,52 @@
 {
-  "version": "3.2.13",
-  "description": "A note taking and to-do application with synchronization capabilities",
-  "homepage": "https://joplinapp.org",
-  "license": {
-    "identifier": "MIT",
-    "url": "https://github.com/laurent22/joplin/blob/dev/LICENSE"
-  },
-  "url": "https://github.com/laurent22/joplin/releases/download/v3.2.13/Joplin-Setup-3.2.13.exe#/dl.7z",
-  "hash": "sha512:29075a479923c0bea8d650a4f550082387bea6d8bc8213400d01e5f70277a27850291900da580147e03daf966a2ef4c0f0e0ce6e8d5407d1bb829e42839fa1eb",
-  "architecture": {
-    "64bit": {
-      "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+    "version": "3.5.12",
+    "description": "A note taking and to-do application with synchronization capabilities",
+    "homepage": "https://joplinapp.org",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/laurent22/joplin/blob/dev/LICENSE"
     },
-    "32bit": {
-      "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
+    "url": "https://github.com/laurent22/joplin/releases/download/v3.5.12/Joplin-Setup-3.5.12.exe#/dl.7z",
+    "hash": "sha512:b7568cf0ecc16d1840f62fd244d12fa2f88b130daf21b2e1ededd219ac01e76c5f1ca734b91ca1e5a66395e57388590844e13d20619bf777e5ef0592384c05e9",
+    "architecture": {
+        "64bit": {
+            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+        },
+        "32bit": {
+            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
+        }
+    },
+    "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse",
+    "installer": {
+        "script": [
+            "ensure \"$persist_dir\\appdata\" | Out-Null",
+            "New-Item \"$env:APPDATA\\Joplin\" -ItemType Junction -Target \"$persist_dir\\appdata\" | Out-Null",
+            "ensure \"$persist_dir\\.config\\joplin-desktop\" | Out-Null",
+            "New-Item \"$env:USERPROFILE\\.config\\joplin-desktop\" -ItemType Junction -Target \"$persist_dir\\.config\\joplin-desktop\" | Out-Null"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Remove-Item \"$env:APPDATA\\Joplin\" -Recurse -Force -ErrorAction 'SilentlyContinue'",
+            "Remove-Item \"$env:USERPROFILE\\.config\\joplin-desktop\" -Recurse -Force -ErrorAction 'SilentlyContinue'"
+        ]
+    },
+    "bin": "Joplin.exe",
+    "shortcuts": [
+        [
+            "Joplin.exe",
+            "Joplin"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/laurent22/joplin/releases/latest",
+        "regex": "/releases/tag/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/laurent22/joplin/releases/download/v$version/Joplin-Setup-$version.exe#/dl.7z",
+        "hash": {
+            "url": "$baseurl/latest.yml",
+            "regex": "sha512:\\s+$base64"
+        }
     }
-  },
-  "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse",
-  "installer": {
-    "script": [
-      "ensure \"$persist_dir\\appdata\" | Out-Null",
-      "New-Item \"$env:APPDATA\\Joplin\" -ItemType Junction -Target \"$persist_dir\\appdata\" | Out-Null",
-      "ensure \"$persist_dir\\.config\\joplin-desktop\" | Out-Null",
-      "New-Item \"$env:USERPROFILE\\.config\\joplin-desktop\" -ItemType Junction -Target \"$persist_dir\\.config\\joplin-desktop\" | Out-Null"
-    ]
-  },
-  "uninstaller": {
-    "script": [
-      "Remove-Item \"$env:APPDATA\\Joplin\" -Recurse -Force -ErrorAction 'SilentlyContinue'",
-      "Remove-Item \"$env:USERPROFILE\\.config\\joplin-desktop\" -Recurse -Force -ErrorAction 'SilentlyContinue'"
-    ]
-  },
-  "bin": "Joplin.exe",
-  "shortcuts": [
-    [
-      "Joplin.exe",
-      "Joplin"
-    ]
-  ],
-  "checkver": {
-    "url": "https://api.github.com/repos/laurent22/joplin/releases/latest",
-    "regex": "/releases/tag/v([\\d.]+)"
-  },
-  "autoupdate": {
-    "url": "https://github.com/laurent22/joplin/releases/download/v$version/Joplin-Setup-$version.exe#/dl.7z",
-    "hash": {
-      "url": "$baseurl/latest.yml",
-      "regex": "sha512:\\s+$base64"
-    }
-  }
 }

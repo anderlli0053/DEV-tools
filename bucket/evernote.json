@@ -1,35 +1,35 @@
 {
-  "version": "10.136.4",
-  "homepage": "https://evernote.com/",
-  "license": "Freeware",
-  "url": "https://win.desktop.evernote.com/builds/Evernote-10.136.4-win-ddl-stage-20250425130902-73f93a1cb56f24fda13c41f68997ab515a93e055-setup.exe#/dl.7z",
-  "hash": "sha512:0119d84163607d8fb0281fbfb45bbc48524641d2f53bb0cf7f66003068d9c9edb92876cbc2b8599b07bba4b8918c7c8863302fc92870c2de90504b4f5bbbf360",
-  "installer": {
-    "script": [
-      "Remove-Item \"$dir\\`$R0\", \"$dir\\resources\" -Force -Recurse",
-      "if ($architecture -eq '64bit') {",
-      "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-      "} elseif ($architecture -eq '32bit') {",
-      "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
-      "}",
-      "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
-    ]
-  },
-  "shortcuts": [
-    [
-      "Evernote.exe",
-      "Evernote"
-    ]
-  ],
-  "checkver": {
-    "url": "https://public.evernote.com/ddl-updater/updater/win/public/latest.yml",
-    "regex": "Evernote-([\\d.]+)-(?<build>.+).exe"
-  },
-  "autoupdate": {
-    "url": "https://win.desktop.evernote.com/builds/Evernote-$version-$matchBuild.exe#/dl.7z",
-    "hash": {
-      "url": "https://public.evernote.com/ddl-updater/updater/win/public/latest.yml",
-      "regex": "sha512: $base64"
+    "version": "10.171.1",
+    "homepage": "https://evernote.com/",
+    "license": "Freeware",
+    "url": "https://win.desktop.evernote.com/builds/Evernote-10.171.1-win-ddl-stage-20260109004126-5dd12dd250c439cad4b9d4500315a442fb5ced7d-setup.exe#/dl.7z",
+    "hash": "sha512:4f417d1eb2378bf90f2fbbe9e0a20f634509400f3600928f381884e967048331f73a69bac80fa0524ac7bccf0254cb12a843d5cd683ab8a39988ebd17b55b951",
+    "installer": {
+        "script": [
+            "Remove-Item \"$dir\\`$R0\", \"$dir\\resources\" -Force -Recurse",
+            "if ($architecture -eq '64bit') {",
+            "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+            "} elseif ($architecture -eq '32bit') {",
+            "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+            "}",
+            "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
+        ]
+    },
+    "shortcuts": [
+        [
+            "Evernote.exe",
+            "Evernote"
+        ]
+    ],
+    "checkver": {
+        "url": "https://public.evernote.com/ddl-updater/updater/win/public/latest.yml",
+        "regex": "Evernote-([\\d.]+)-(?<build>.+).exe"
+    },
+    "autoupdate": {
+        "url": "https://win.desktop.evernote.com/builds/Evernote-$version-$matchBuild.exe#/dl.7z",
+        "hash": {
+            "url": "https://public.evernote.com/ddl-updater/updater/win/public/latest.yml",
+            "regex": "sha512: $base64"
+        }
     }
-  }
 }

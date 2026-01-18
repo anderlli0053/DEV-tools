@@ -1,43 +1,43 @@
 {
-  "$schema": "https://raw.githubusercontent.com/brian6932/Scoop/64bit-v2-v3-v4/schema.json",
-  "version": "1.4.0",
-  "description": "Lightweight CLI client for watching low latency Twitch streams with ad blocking",
-  "homepage": "https://github.com/2bc4/twitch-hls-client",
-  "license": "GPL-3.0-or-later",
-  "architecture": {
-    "64bit-v3": {
-      "url": "https://github.com/2bc4/twitch-hls-client/releases/download/1.4.0/twitch-hls-client-x86_64-v3-pc-windows-msvc.zip",
-      "hash": "803517e334215930ead2b60ca16336f4134cd3180091bc6f39fc60f10723908f"
-    },
-    "64bit": {
-      "url": "https://github.com/2bc4/twitch-hls-client/releases/download/1.4.0/twitch-hls-client-x86_64-pc-windows-msvc.zip",
-      "hash": "e133371ea5cfaaf918feff7c1983d65740f075ddf29c43be05ca45e2e128d566"
-    }
-  },
-  "pre_install": [
-    "'README.md', 'LICENSE' | ForEach-Object { Remove-Item \"$dir/$_\" }",
-    "$null = if (!(Test-Path \"$persist_dir$($cfg = '/config')\")) { New-Item \"$dir$cfg\" }"
-  ],
-  "bin": [
-    [
-      "twitch-hls-client.exe",
-      "twitch-hls-client",
-      "-c \"$dir\\config\""
-    ]
-  ],
-  "persist": "config",
-  "checkver": "github",
-  "autoupdate": {
+    "$schema": "https://raw.githubusercontent.com/brian6932/Scoop/64bit-v2-v3-v4/schema.json",
+    "version": "1.6.1",
+    "description": "Lightweight CLI client for watching low latency Twitch streams with ad blocking",
+    "homepage": "https://github.com/2bc4/twitch-hls-client",
+    "license": "GPL-3.0-or-later",
     "architecture": {
-      "64bit-v3": {
-        "url": "https://github.com/2bc4/twitch-hls-client/releases/download/$version/twitch-hls-client-x86_64-v3-pc-windows-msvc.zip"
-      },
-      "64bit": {
-        "url": "https://github.com/2bc4/twitch-hls-client/releases/download/$version/twitch-hls-client-x86_64-pc-windows-msvc.zip"
-      }
+        "64bit-v3": {
+            "url": "https://github.com/2bc4/twitch-hls-client/releases/download/1.6.1/twitch-hls-client-x86_64-v3-pc-windows-msvc.zip",
+            "hash": "67e1e01439b264b090293bb2e3eb9056c779f8453696817bd18576d148435376"
+        },
+        "64bit": {
+            "url": "https://github.com/2bc4/twitch-hls-client/releases/download/1.6.1/twitch-hls-client-x86_64-pc-windows-msvc.zip",
+            "hash": "60df782056807b607196f5cafc4226ad1f733e8e082e90031996dc85d36dcf02"
+        }
     },
-    "hash": {
-      "url": "$baseurl/sha256sums"
+    "pre_install": [
+        "Remove-Item \"$dir/LICENSE\"",
+        "$null = if (!(Test-Path \"$persist_dir$($cfg = '/config')\")) { New-Item \"$dir$cfg\" }"
+    ],
+    "bin": [
+        [
+            "twitch-hls-client.exe",
+            "twitch-hls-client",
+            "-c \"$dir\\config\""
+        ]
+    ],
+    "persist": "config",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit-v3": {
+                "url": "https://github.com/2bc4/twitch-hls-client/releases/download/$version/twitch-hls-client-x86_64-v3-pc-windows-msvc.zip"
+            },
+            "64bit": {
+                "url": "https://github.com/2bc4/twitch-hls-client/releases/download/$version/twitch-hls-client-x86_64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sums"
+        }
     }
-  }
 }

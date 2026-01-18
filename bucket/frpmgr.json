@@ -1,48 +1,48 @@
 {
-  "version": "1.21.0",
-  "description": "A user-friendly desktop GUI client for FRP on Windows.",
-  "homepage": "https://github.com/koho/frpmgr",
-  "license": "Apache-2.0",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/koho/frpmgr/releases/download/v1.21.0/frpmgr-1.21.0-setup-x64.exe",
-      "hash": "56b5dbf34af1e7aa4780c58082d431b8663ed7c7d10adc6cd073a39de77d8ee0"
-    },
-    "32bit": {
-      "url": "https://github.com/koho/frpmgr/releases/download/v1.21.0/frpmgr-1.21.0-setup-x86.exe",
-      "hash": "d995fce31b3d3dc685e3dfebf2f969b29c15c69db17ea31e76785b29d898b4cf"
-    }
-  },
-  "pre_install": [
-    "Expand-7zipArchive \"$dir\\$fname\" -Overwrite 'Skip' -Removal",
-    "Remove-Item \"$dir\\`$*\" -Recurse",
-    "Move-Item \"$dir\\AppConfig\" \"$dir\\app.config\"",
-    "Move-Item \"$dir\\LangConfig\" \"$dir\\lang.config\"",
-    "Move-Item \"$dir\\MainApplication\" \"$dir\\frpmgr.exe\""
-  ],
-  "shortcuts": [
-    [
-      "frpmgr.exe",
-      "FRP Manager"
-    ]
-  ],
-  "persist": [
-    "lang.config",
-    "app.config",
-    "profiles"
-  ],
-  "checkver": "github",
-  "autoupdate": {
+    "version": "1.25.0",
+    "description": "A user-friendly desktop GUI client for FRP on Windows.",
+    "homepage": "https://github.com/koho/frpmgr",
+    "license": "Apache-2.0",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/koho/frpmgr/releases/download/v$version/frpmgr-$version-setup-x64.exe"
-      },
-      "32bit": {
-        "url": "https://github.com/koho/frpmgr/releases/download/v$version/frpmgr-$version-setup-x86.exe"
-      }
+        "64bit": {
+            "url": "https://github.com/koho/frpmgr/releases/download/v1.25.0/frpmgr-1.25.0-setup-x64.exe",
+            "hash": "93bebb7dd7ef5b69a5940994a0ff8d3255fdb0e895cc8463e3de099e702fe783"
+        },
+        "32bit": {
+            "url": "https://github.com/koho/frpmgr/releases/download/v1.25.0/frpmgr-1.25.0-setup-x86.exe",
+            "hash": "12a33557a3204ba63905c5a7a8849f76b3697fe618e6939577c6e1ece16fd9ef"
+        }
     },
-    "hash": {
-      "url": "https://github.com/koho/frpmgr/releases/download/v$version/frpmgr-$version-sha256-checksums.txt"
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\$fname\" -Overwrite 'Skip' -Removal",
+        "Remove-Item \"$dir\\`$*\" -Recurse",
+        "Move-Item \"$dir\\AppConfig\" \"$dir\\app.config\"",
+        "Move-Item \"$dir\\LangConfig\" \"$dir\\lang.config\"",
+        "Move-Item \"$dir\\MainApplication\" \"$dir\\frpmgr.exe\""
+    ],
+    "shortcuts": [
+        [
+            "frpmgr.exe",
+            "FRP Manager"
+        ]
+    ],
+    "persist": [
+        "lang.config",
+        "app.config",
+        "profiles"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/koho/frpmgr/releases/download/v$version/frpmgr-$version-setup-x64.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/koho/frpmgr/releases/download/v$version/frpmgr-$version-setup-x86.exe"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/koho/frpmgr/releases/download/v$version/frpmgr-$version-sha256-checksums.txt"
+        }
     }
-  }
 }

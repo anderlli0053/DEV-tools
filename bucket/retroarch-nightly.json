@@ -1,30 +1,26 @@
 {
-    "version": "nightly",
-    "description": "Frontend for emulators, game engines and media players (nightly)",
+    "version": "2026-01-18",
+    "description": "Frontend for emulators, game engines and media players",
     "homepage": "https://www.retroarch.com/",
     "license": {
-        "identifier": "GPL-3.0",
-        "url": "https://github.com/libretro/RetroArch/blob/master/COPYING"
+        "url": "https://github.com/libretro/RetroArch/blob/master/COPYING",
+        "identifier": "GPL-3.0"
     },
-    "notes": [
-        "ATTENTION: Retroarch requires BIOS/firmware files for some emulation.",
-        "It is recommended to read the libretro docs for each core you plan to use.",
-        "See https://docs.libretro.com/library/bios/ for more information."
-    ],
     "architecture": {
-        "32bit": {
-            "url": "https://buildbot.libretro.com/nightly/windows/x86/RetroArch.7z",
-            "extract_dir": "RetroArch-Win32"
-        },
         "64bit": {
-            "url": "https://buildbot.libretro.com/nightly/windows/x86_64/RetroArch.7z",
+            "url": "https://buildbot.libretro.com/nightly/windows/x86_64/2026-01-18_RetroArch.7z",
+            "hash": "9392053b2735c1e1b05e1d32ab80d71343db44396440a3f188dd0fc42671924c",
             "extract_dir": "RetroArch-Win64"
+        },
+        "32bit": {
+            "url": "https://buildbot.libretro.com/nightly/windows/x86/2026-01-18_RetroArch.7z",
+            "hash": "2aa5f81ebb50eea400ee9e77706747d07a90595cc0728243045a50da554a12f0",
+            "extract_dir": "RetroArch-Win32"
         }
     },
     "pre_install": [
-        "if (!(Test-Path \"$persist_dir\\retroarch.cfg\")) { Move-Item \"$dir\\retroarch.default.cfg\" \"$dir\\retroarch.cfg\" }",
-        "'favorites', 'history' | ForEach-Object {",
-        "    if (!(Test-Path \"$persist_dir\\content_$_.lpl\")) { New-Item \"$dir\\content_$_.lpl\" | Out-Null }",
+        "if (!(Test-Path \"$persist_dir\\retroarch.cfg\")) {",
+        "    New-Item \"$persist_dir\\retroarch.cfg\" -Type File | Out-Null",
         "}"
     ],
     "bin": [
@@ -43,30 +39,35 @@
         "assets\\wallpapers",
         "cores",
         "cheats",
-        "config",
-        "downloads",
         "overlays",
         "playlists",
         "records",
         "recordings",
         "saves",
         "screenshots",
-        "shaders\\presets",
         "states",
         "system",
         "thumbnails",
-        "content_favorites.lpl",
-        "content_history.lpl",
         "retroarch.cfg"
     ],
+    "checkver": {
+        "url": "https://buildbot.libretro.com/nightly/windows/x86_64/",
+        "regex": "(?smi)(\\d{4}-\\d{2}-\\d{2})_RetroArch\\.7z",
+        "reverse": true
+    },
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "https://buildbot.libretro.com/nightly/windows/x86/RetroArch.7z"
-            },
             "64bit": {
-                "url": "https://buildbot.libretro.com/nightly/windows/x86_64/RetroArch.7z"
+                "url": "https://buildbot.libretro.com/nightly/windows/x86_64/$version_RetroArch.7z"
+            },
+            "32bit": {
+                "url": "https://buildbot.libretro.com/nightly/windows/x86/$version_RetroArch.7z"
             }
         }
-    }
+    },
+    "notes": [
+        "ATTENTION: Retroarch requires BIOS/firmware files for some emulation.",
+        "It is recommended to read the libretro docs for each core you plan to use.",
+        "See https://docs.libretro.com/library/bios/ for more information."
+    ]
 }

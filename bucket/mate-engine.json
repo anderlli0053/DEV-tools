@@ -1,0 +1,40 @@
+{
+    "version": "X3.2.0",
+    "description": "A free Desktop Mate alternative with a lightweight interface and custom VRM support, though with more features.",
+    "homepage": "https://github.com/shinyflvre/Mate-Engine",
+    "license": {
+        "identifier": "AGPL-3.0-only",
+        "url": "https://raw.githubusercontent.com/shinyflvre/Mate-Engine/refs/heads/main/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/shinyflvre/Mate-Engine/releases/download/Public-Release-X3.2.0/Public.Release.X3.2.0.zip",
+            "hash": "2a22db853d411146e05228583e1045eb2fe42e1f4dee90a8f78a28eb0eedf8fe"
+        }
+    },
+    "shortcuts": [
+        [
+            "MateEngineX.exe",
+            "Mate Engine"
+        ]
+    ],
+    "post_install": "if (Test-Path \"$persist_dir\\backup\") { Get-ChildItem \"$persist_dir\\backup\\*\" -Include '*.gguf' | Move-Item -Force -Destination \"$dir\\MateEngineX_Data\\StreamingAssets\\\" }",
+    "pre_uninstall": "Get-ChildItem \"$dir\\MateEngineX_Data\\StreamingAssets\\*\" -Include '*.gguf' | Move-Item -Force -Destination \"$persist_dir\\backup\"",
+    "persist": "backup",
+    "post_uninstall": "if ($purge) { Remove-Item \"$env:USERPROFILE\\AppData\\LocalLow\\Shinymoon\\MateEngineX\" -Force -Recurse -ErrorAction SilentlyContinue }",
+    "notes": [
+        "Mate Engine is NOT portable.",
+        "Settings are stored in '%USERPROFILE%\\AppData\\LocalLow\\Shinymoon\\MateEngineX', and will be purged during uninstallation."
+    ],
+    "checkver": {
+        "url": "https://github.com/shinyflvre/Mate-Engine/releases.atom",
+        "regex": "Repository/\\d+/Public-Release-(.+?)<"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/shinyflvre/Mate-Engine/releases/download/Public-Release-$version/Public.Release.$version.zip"
+            }
+        }
+    }
+}

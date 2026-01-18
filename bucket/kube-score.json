@@ -1,0 +1,31 @@
+{
+    "version": "1.20.0",
+    "description": "A tool that performs static code analysis of your Kubernetes object definitions.",
+    "homepage": "https://github.com/zegl/kube-score",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/zegl/kube-score/releases/download/v1.20.0/kube-score_1.20.0_windows_amd64.tar.gz",
+            "hash": "21524bac56fc7309bd822af31d52e8c329874adba6135dc68db2a5c55db1a63e"
+        },
+        "arm64": {
+            "url": "https://github.com/zegl/kube-score/releases/download/v1.20.0/kube-score_1.20.0_windows_arm64.tar.gz",
+            "hash": "8c7392407195baef6a5e51d14dcc93d391344fd73a8b59caf0fbf6bb673cde4c"
+        }
+    },
+    "bin": "kube-score.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/zegl/kube-score/releases/download/v$version/kube-score_$version_windows_amd64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/zegl/kube-score/releases/download/v$version/kube-score_$version_windows_arm64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

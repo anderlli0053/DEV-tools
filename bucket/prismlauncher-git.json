@@ -1,18 +1,41 @@
 {
-    "version": "10.0-573aa8c",
+    "##": "Please keep the key properties of games/prismlauncher and versions/prismlauncher-git in sync.",
+    "version": "10.0-e8b5d49",
     "description": "An open source Minecraft launcher with the ability to manage multiple instances, accounts and mods. Focused on user freedom and free redistributability.",
     "homepage": "https://prismlauncher.org/",
     "license": "GPL-3.0-only",
-    "notes": "To add Prism Launcher file association options for .ZIPs and .MRPACKS, run this: \"$dir\\install-associations.reg\"",
-    "architecture": {
-        "64bit": {
-            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/trigger_builds/develop/PrismLauncher-Windows-MSVC-573aa8c-Debug.zip",
-            "hash": "181c2549b03028ddf68838e09d43bcdd4bf43faf35c1c5e2b2042f6370d2dcb4"
-        }
-    },
+    "notes": [
+        "Add Prism Launcher file association options for .ZIPs and .MRPACKS by running:",
+        "reg import \"$dir\\install-associations.reg\""
+    ],
     "suggest": {
         "vcredist": "extras/vcredist2022"
     },
+    "architecture": {
+        "64bit": {
+            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-w64-Portable-e8b5d49-Debug.zip",
+            "hash": "41e12b77cabf86ccff430cefbfe9981a1deaad051e7102d3aa4619825b7701a6"
+        },
+        "arm64": {
+            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-arm64-Portable-e8b5d49-Debug.zip",
+            "hash": "f54fbe14740e79c2411ba192cf7fd45aa7f1b2b824e7879c559e3785e7c6665c"
+        }
+    },
+    "pre_install": [
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
+        "# Please keep the file list the same in both pre_install and pre_uninstall scripts.",
+        "$contents = @{",
+        "    'metacache' = '{}'",
+        "}",
+        "'accounts.json', 'metacache', 'prismlauncher.cfg' | ForEach-Object {",
+        "    if (Test-Path \"$persist_dir\\$_\") {",
+        "        Copy-Item \"$persist_dir\\$_\" \"$dir\\$_\" -Force",
+        "    } else {",
+        "        Set-Content -Path \"$dir\\$_\" -Value $contents[$_]",
+        "    }",
+        "}",
+        "Remove-Item -Path $dir\\prismlauncher_updater.exe -Force -ErrorAction Ignore"
+    ],
     "post_install": [
         "'install-associations', 'uninstall-associations' | ForEach-Object {",
         "    if (Test-Path \"$bucketsdir\\versions\\scripts\\prismlauncher-git\\$_.reg\") {",
@@ -30,9 +53,35 @@
             "Prism Launcher"
         ]
     ],
+    "persist": [
+        "assets",
+        "cache",
+        "catpacks",
+        "icons",
+        "iconthemes",
+        "instances",
+        "java",
+        "libraries",
+        "logs",
+        "meta",
+        "mods",
+        "skins",
+        "themes",
+        "translations"
+    ],
+    "pre_uninstall": [
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
+        "# Please keep the file list the same in both pre_install and pre_uninstall scripts.",
+        "'accounts.json', 'metacache', 'prismlauncher.cfg' | ForEach-Object {",
+        "    if (Test-Path -Path \"$dir\\$_\") {",
+        "        Copy-Item -Path \"$dir\\$_\" -Destination \"$persist_dir\\$_\" -Force",
+        "    }",
+        "}",
+        "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-associations.reg\" }"
+    ],
     "checkver": {
         "script": [
-            "$apiUrl = 'https://api.github.com/repositories/553135896/actions/workflows/trigger_builds.yml/runs?branch=develop&status=success&event=push'",
+            "$apiUrl = 'https://api.github.com/repositories/553135896/actions/workflows/build.yml/runs?branch=develop&status=success&event=push'",
             "$fullSha = (Invoke-RestMethod -Uri $apiUrl).workflow_runs[0].head_sha",
             "$cmakeContent = Invoke-WebRequest \"https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/$fullSha/CMakeLists.txt\" | Select-Object -ExpandProperty Content",
             "$majorVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_MAJOR (\\d+)\\)').Groups[1].Value",
@@ -46,7 +95,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/trigger_builds/develop/PrismLauncher-Windows-MSVC-$matchSha-Debug.zip"
+                "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-w64-Portable-$matchSha-Debug.zip"
+            },
+            "arm64": {
+                "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-arm64-Portable-$matchSha-Debug.zip"
             }
         }
     }

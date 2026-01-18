@@ -1,47 +1,47 @@
 {
-  "version": "25.056.0324.0003",
-  "description": "Microsoft OneDrive. Save your photos and files to OneDrive and access them from any device, anywhere.",
-  "homepage": "https://www.microsoft.com/en-ww/microsoft-365/onedrive/online-cloud-storage",
-  "license": "Proprietary",
-  "changelog": "https://support.microsoft.com/en-us/office/onedrive-release-notes-845dcf18-f921-435e-bf28-4e24b95e5fc0",
-  "architecture": {
-    "64bit": {
-      "url": "https://oneclient.sfx.ms/Win/Installers/25.056.0324.0003/amd64/OneDriveSetup.exe#/setup.exe",
-      "hash": "57b0f93302f86abe533e26df3b402eb5bb0cf51bb1fb4eeff7e1da4b78f13af1"
-    },
-    "arm64": {
-      "url": "https://oneclient.sfx.ms/Win/Installers/25.056.0324.0003/arm64/OneDriveSetup.exe#/setup.exe",
-      "hash": "8cb5bb0d6050662f0c1a469bab1809d00b68f6e31006a688d6f59c52adeefcf2"
-    }
-  },
-  "installer": {
-    "script": [
-      "$programname = \"Microsoft OneDrive*\"",
-      "$LocalAppData = [Environment]::GetFolderPath(\"LocalApplicationData\")",
-      "$filepath = \"$LocalAppData\\Microsoft\\OneDrive\\OneDrive.exe\"",
-      "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-      "{",
-      "   &\"$dir\\setup.exe\" /silent /update /restart | Out-Null",
-      "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-      "   {",
-      "       exit 1",
-      "   }",
-      "}",
-      "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
-    ]
-  },
-  "checkver": {
-    "url": "https://support.microsoft.com/en-au/office/onedrive-release-notes-845dcf18-f921-435e-bf28-4e24b95e5fc0",
-    "regex": "role=\"none\">Version ([\\d.]+) "
-  },
-  "autoupdate": {
+    "version": "25.222.1112.0002",
+    "description": "Microsoft OneDrive. Save your photos and files to OneDrive and access them from any device, anywhere.",
+    "homepage": "https://www.microsoft.com/en-ww/microsoft-365/onedrive/online-cloud-storage",
+    "license": "Proprietary",
+    "changelog": "https://support.microsoft.com/en-us/office/onedrive-release-notes-845dcf18-f921-435e-bf28-4e24b95e5fc0",
     "architecture": {
-      "64bit": {
-        "url": "https://oneclient.sfx.ms/Win/Installers/$version/amd64/OneDriveSetup.exe#/setup.exe"
-      },
-      "arm64": {
-        "url": "https://oneclient.sfx.ms/Win/Installers/$version/arm64/OneDriveSetup.exe#/setup.exe"
-      }
+        "64bit": {
+            "url": "https://oneclient.sfx.ms/Win/Installers/25.222.1112.0002/amd64/OneDriveSetup.exe#/setup.exe",
+            "hash": "393b52d3e81eaa7e5dc092338a974097c956af8c24fb7ac29ad61a1c29ed394e"
+        },
+        "arm64": {
+            "url": "https://oneclient.sfx.ms/Win/Installers/25.222.1112.0002/arm64/OneDriveSetup.exe#/setup.exe",
+            "hash": "54a1c3d4ed9fd9ae7f3adecba6efe5f49daaab9aa90262e6391d8034eb21b72f"
+        }
+    },
+    "installer": {
+        "script": [
+            "$programname = \"Microsoft OneDrive*\"",
+            "$LocalAppData = [Environment]::GetFolderPath(\"LocalApplicationData\")",
+            "$filepath = \"$LocalAppData\\Microsoft\\OneDrive\\OneDrive.exe\"",
+            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "{",
+            "   &\"$dir\\setup.exe\" /silent /update /restart | Out-Null",
+            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}",
+            "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
+        ]
+    },
+    "checkver": {
+        "url": "https://support.microsoft.com/en-au/office/onedrive-release-notes-845dcf18-f921-435e-bf28-4e24b95e5fc0",
+        "regex": "role=\"none\">Version ([\\d.]+) "
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://oneclient.sfx.ms/Win/Installers/$version/amd64/OneDriveSetup.exe#/setup.exe"
+            },
+            "arm64": {
+                "url": "https://oneclient.sfx.ms/Win/Installers/$version/arm64/OneDriveSetup.exe#/setup.exe"
+            }
+        }
     }
-  }
 }

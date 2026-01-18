@@ -1,28 +1,28 @@
 {
-    "autoupdate": {
-        "hash": {
-            "regex": "MD5 Hash: +[\\w]{32}",
-            "url": "https://portableapps.com/apps/music_video/autodrum-portable"
-        },
-        "url": "https://downloads.sourceforge.net/portableapps/AutoDrumPortable_$version.paf.exe"
-    },
-    "bin": "AutoDrumPortable.exe",
-    "checkver": {
-        "re": "Version \\s+([\\w\\.]* for Win",
-        "url": "https://portableapps.com/apps/music_video/autodrum-portable"
-    },
-    "description": "Automatic drum accompanist",
-    "hash": "3a78c4a37f6e3377d450ce74d57e804472d61cac5ba88f4980be2d579912cfc2",
     "homepage": "https://portableapps.com/apps/music_video/autodrum-portable",
+    "description": "Automatic drum accompanist",
+    "version": "4.2",
     "license": "",
-    "persist": "Data",
-    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+    "url": "https://downloads.sourceforge.net/portableapps/AutoDrumPortable_4.2.paf.exe#/dl.7z",
+    "hash": "md5:4285ba422beb139fcb27a025d6189324",
+    "bin": "AutoDrumPortable.exe",
     "shortcuts": [
         [
             "AutoDrumPortable.exe",
             "AutoDrumPortable"
         ]
     ],
-    "url": "https://downloads.sourceforge.net/portableapps/AutoDrumPortable_8.1.paf.exe",
-    "version": "8.1"
+    "persist": "Data",
+    "checkver": {
+        "url": "https://portableapps.com/apps/music_video/autodrum-portable",
+        "re": "Version \\s+([\\w\\.]* for Win"
+    },
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/portableapps/AutoDrumPortable_$version.paf.exe",
+        "hash": {
+            "url": "https://portableapps.com/apps/music_video/autodrum-portable",
+            "regex": "MD5 Hash: +[\\w]{32}"
+        }
+    },
+    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
 }

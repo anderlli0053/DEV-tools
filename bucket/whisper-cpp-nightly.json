@@ -1,0 +1,61 @@
+{
+    "version": "4576",
+    "description": "(Nightly Version) whisper.cpp is high-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model",
+    "homepage": "https://github.com/ggml-org/whisper.cpp",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://nightly.link/ggml-org/whisper.cpp/actions/runs/20709781504/whisper-bin-x64.zip#/dl.zip",
+            "hash": "9b0029d5d16dc24cf5de8376d77d3761a2100acac239e08c1901e28a6539607e"
+        },
+        "32bit": {
+            "url": "https://nightly.link/ggml-org/whisper.cpp/actions/runs/20709781504/whisper-bin-Win32.zip#/dl.zip",
+            "hash": "243e4ab52503535818dc8947d1a4755c7f5437773a8579b1b19a6dc54cf86982"
+        }
+    },
+    "pre_install": "Get-ChildItem \"$dir\" 'whisper*.zip' | Select-Object -First 1 -ExpandProperty FullName | Expand-7zipArchive -Destination \"$dir\" -ExtractDir 'Release' -Removal",
+    "bin": [
+        [
+            "whisper-cli.exe",
+            "whisper-cpp"
+        ],
+        [
+            "whisper-bench.exe",
+            "whisper-cpp-bench"
+        ],
+        [
+            "whisper-command.exe",
+            "whisper-cpp-command"
+        ],
+        [
+            "quantize.exe",
+            "whisper-cpp-quantize"
+        ],
+        [
+            "whisper-server.exe",
+            "whisper-cpp-server"
+        ],
+        [
+            "whisper-stream.exe",
+            "whisper-cpp-stream"
+        ],
+        [
+            "whisper-talk-llama.exe",
+            "whisper-cpp-talk-llama"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/ggml-org/whisper.cpp/actions/workflows/build.yml?query=branch%3Amaster+event%3Apush+is%3Asuccess",
+        "regex": "(?sm)/actions/runs/(?<run>\\d+)\".*?#(\\d+):"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nightly.link/ggml-org/whisper.cpp/actions/runs/$matchRun/whisper-bin-x64.zip#/dl.zip"
+            },
+            "32bit": {
+                "url": "https://nightly.link/ggml-org/whisper.cpp/actions/runs/$matchRun/whisper-bin-Win32.zip#/dl.zip"
+            }
+        }
+    }
+}

@@ -1,42 +1,42 @@
 {
-  "version": "2024.12.1-563",
-  "homepage": "https://posit.co/download/rstudio-desktop/",
-  "description": "An IDE for R, which includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.",
-  "license": "AGPL-3.0-only",
-  "notes": "For 32bit, please install 'versions/rstudio11",
-  "depends": "r",
-  "architecture": {
-    "64bit": {
-      "url": "https://download1.rstudio.org/electron/windows/RStudio-2024.12.1-563.zip",
-      "hash": "a3e01fbbf05f3431f055d91d4c5b260042d0bbb083ceebccc69e67a50084a842"
-    }
-  },
-  "bin": [
-    [
-      "bin\\rstudio.exe",
-      "rstudio-preview"
-    ]
-  ],
-  "shortcuts": [
-    [
-      "bin\\rstudio.exe",
-      "RStudio Preview"
-    ]
-  ],
-  "checkver": {
-    "url": "https://posit.co/download/rstudio-desktop/",
-    "regex": "RStudio-(?<date>[\\d.]+)-(?<build>\\d+)",
-    "replace": "${date}-${build}"
-  },
-  "autoupdate": {
+    "version": "2026.01.0-392",
+    "homepage": "https://posit.co/download/rstudio-desktop/",
+    "description": "An IDE for R, which includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.",
+    "license": "AGPL-3.0-only",
+    "notes": "For 32bit, please install 'versions/rstudio11",
+    "depends": "r",
     "architecture": {
-      "64bit": {
-        "url": "https://download1.rstudio.org/electron/windows/RStudio-$matchDate-$matchBuild.zip"
-      }
+        "64bit": {
+            "url": "https://download1.rstudio.org/electron/windows/RStudio-2026.01.0-392.zip",
+            "hash": "b1ff9631e5bc4f08a1caf1b82b72e3a3da2ed7a0c5d2f04576760420feb36e65"
+        }
     },
-    "hash": {
-      "url": "https://posit.co/download/rstudio-desktop/",
-      "find": "(?s)$url.*?data-content=\"$sha256\""
+    "bin": [
+        [
+            "bin\\rstudio.exe",
+            "rstudio-preview"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "bin\\rstudio.exe",
+            "RStudio Preview"
+        ]
+    ],
+    "checkver": {
+        "url": "https://posit.co/download/rstudio-desktop/",
+        "regex": "RStudio-(?<date>[\\d.]+)-(?<build>\\d+)",
+        "replace": "${date}-${build}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download1.rstudio.org/electron/windows/RStudio-$matchDate-$matchBuild.zip"
+            }
+        },
+        "hash": {
+            "url": "https://posit.co/download/rstudio-desktop/",
+            "find": "(?s)$url.*?data-content=\"$sha256\""
+        }
     }
-  }
 }

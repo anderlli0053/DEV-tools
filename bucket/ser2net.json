@@ -1,0 +1,23 @@
+{
+    "version": "4.6.6",
+    "description": "Serial to network interface, allows TCP/UDP to serial port connections.",
+    "homepage": "https://github.com/cminyard/ser2net",
+    "license": "GPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/cminyard/ser2net/releases/download/v4.6.6/Ser2Net-4.6.6-windows.exe",
+            "hash": "81164791a38cefab9992973e6d82753ddd6faec15c3e9348fe3add3057836b9e"
+        }
+    },
+    "innosetup": true,
+    "bin": "bin\\ser2net.exe",
+    "pre_install": "New-Item -ItemType Directory -Path \"$dir\\etc\\ser2net\", \"$dir\\share\\ser2net\" | Out-Null",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/cminyard/ser2net/releases/download/v$version/Ser2Net-$version-windows.exe"
+            }
+        }
+    }
+}

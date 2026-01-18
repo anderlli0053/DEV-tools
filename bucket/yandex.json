@@ -1,48 +1,48 @@
 {
-  "version": "25.2.6.722",
-  "description": "Fast, secure, and free web browser, built for the modern web.",
-  "homepage": "https://browser.yandex.com",
-  "license": "Freeware",
-  "architecture": {
-    "64bit": {
-      "url": "https://browser.yandex.com/download/?full=1#/dl.7z",
-      "hash": "66fda4ca0bba3cd1a71fb00dc6e0d2aedd31df2ccbdfac45c8d9a78318f64e1c"
-    },
-    "32bit": {
-      "url": "https://browser.yandex.com/download/?full=1&bitness=32#/dl.7z",
-      "hash": "928cb047574da91be8a90bc5552d86714b660ad279aee8a65eac9dcbcc0555bf"
-    }
-  },
-  "installer": {
-    "script": "Expand-7zipArchive \"$dir\\browser.7z\" -ExtractDir 'Browser-bin' -Removal"
-  },
-  "bin": [
-    [
-      "browser.exe",
-      "yandex",
-      "--user-data-dir=\"$dir\\User Data\""
-    ]
-  ],
-  "shortcuts": [
-    [
-      "browser.exe",
-      "Yandex",
-      "--user-data-dir=\"$dir\\User Data\""
-    ]
-  ],
-  "persist": "User Data",
-  "checkver": {
-    "url": "https://www.whatismybrowser.com/guides/the-latest-version/yandex-browser",
-    "regex": "<td>([\\d.]+)</td>"
-  },
-  "autoupdate": {
+    "version": "25.12.0.2213",
+    "description": "Fast, secure, and free web browser, built for the modern web.",
+    "homepage": "https://browser.yandex.com",
+    "license": "Freeware",
     "architecture": {
-      "64bit": {
-        "url": "https://browser.yandex.com/download/?full=1#/dl.7z"
-      },
-      "32bit": {
-        "url": "https://browser.yandex.com/download/?full=1&bitness=32#/dl.7z"
-      }
+        "64bit": {
+            "url": "https://browser.yandex.com/download/?full=1#/dl.7z",
+            "hash": "7139fc3e833b77868948cc90047f372c517bc42a7609a76a6e0e83824bd7f7b1"
+        },
+        "32bit": {
+            "url": "https://browser.yandex.com/download/?full=1&bitness=32#/dl.7z",
+            "hash": "90873de4c9194dddc7ec8a5bf03a3ab0868402b6f92d7883de0cadb73d91f42e"
+        }
+    },
+    "installer": {
+        "script": "Expand-7zipArchive \"$dir\\browser.7z\" -ExtractDir 'Browser-bin' -Removal"
+    },
+    "bin": [
+        [
+            "browser.exe",
+            "yandex",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "browser.exe",
+            "Yandex",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://www.whatismybrowser.com/guides/the-latest-version/yandex-browser",
+        "regex": "<td>([\\d.]+)</td>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://browser.yandex.com/download/?full=1#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://browser.yandex.com/download/?full=1&bitness=32#/dl.7z"
+            }
+        }
     }
-  }
 }

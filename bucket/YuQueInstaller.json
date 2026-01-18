@@ -1,0 +1,28 @@
+{
+    "version": "3.4.3",
+    "description": "语雀安装包",
+    "homepage": "https://github.com/gendloop/YuQueInstaller",
+    "license": "LGPL-2.1-or-later",
+    "notes": "<Installer>",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gendloop/YuQueInstaller/releases/download/v3.4.3/YuQueInstaller-3.4.3-win64.7z",
+            "hash": "fa7a500590341d20823a483906f922e4549c8c9ef00a2fb9690e1f6c8b874b8f"
+        }
+    },
+    "installer": {
+        "script": [
+            "Push-Location \"$dir\"",
+            "Start-Process YuQueInstaller-$version-win64.exe",
+            "Pop-Location"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gendloop/YuQueInstaller/releases/download/v$version/YuQueInstaller-$version-win64.7z"
+            }
+        }
+    }
+}

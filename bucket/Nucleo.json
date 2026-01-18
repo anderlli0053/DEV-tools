@@ -1,0 +1,28 @@
+{
+    "version": "4.1.3",
+    "description": "创建, 管理和导出图标的工具",
+    "homepage": "https://github.com/gendloop/Nucleo",
+    "license": "LGPL-2.1-or-later",
+    "notes": "<Installer>",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gendloop/Nucleo/releases/download/v4.1.3/Nucleo-4.1.3-win64.7z",
+            "hash": "5d2980d8dfdaff0b86f0afac72e41d05f0e82862d89102bf4f328f624328c906"
+        }
+    },
+    "installer": {
+        "script": [
+            "Push-Location \"$dir\"",
+            "Start-Process Nucleo-$version-win64.exe",
+            "Pop-Location"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gendloop/Nucleo/releases/download/v$version/Nucleo-$version-win64.7z"
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+{
+    "version": "4576",
+    "description": "(BLAS Nightly Version) whisper.cpp is high-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model",
+    "homepage": "https://github.com/ggml-org/whisper.cpp",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://nightly.link/ggml-org/whisper.cpp/actions/runs/20709781504/whisper-blas-bin-x64.zip#/dl.zip",
+            "hash": "1617e974f1b48cfd4b24e175711762febc3d2a128e3aa081f437530d26b49a1b"
+        },
+        "32bit": {
+            "url": "https://nightly.link/ggml-org/whisper.cpp/actions/runs/20709781504/whisper-blas-bin-Win32.zip#/dl.zip",
+            "hash": "27cff59f60b13b0465def6dd2f4bfb2561d84fb5a64d115864a36e330d7ad170"
+        }
+    },
+    "pre_install": "Get-ChildItem \"$dir\" 'whisper*.zip' | Select-Object -First 1 -ExpandProperty FullName | Expand-7zipArchive -Destination \"$dir\" -ExtractDir 'Release' -Removal",
+    "bin": [
+        [
+            "whisper-cli.exe",
+            "whisper-cpp"
+        ],
+        [
+            "whisper-bench.exe",
+            "whisper-cpp-bench"
+        ],
+        [
+            "whisper-command.exe",
+            "whisper-cpp-command"
+        ],
+        [
+            "quantize.exe",
+            "whisper-cpp-quantize"
+        ],
+        [
+            "whisper-server.exe",
+            "whisper-cpp-server"
+        ],
+        [
+            "whisper-stream.exe",
+            "whisper-cpp-stream"
+        ],
+        [
+            "whisper-talk-llama.exe",
+            "whisper-cpp-talk-llama"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/ggml-org/whisper.cpp/actions/workflows/build.yml?query=branch%3Amaster+event%3Apush+is%3Asuccess",
+        "regex": "(?sm)/actions/runs/(?<run>\\d+)\".*?#(\\d+):"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nightly.link/ggml-org/whisper.cpp/actions/runs/$matchRun/whisper-blas-bin-x64.zip#/dl.zip"
+            },
+            "32bit": {
+                "url": "https://nightly.link/ggml-org/whisper.cpp/actions/runs/$matchRun/whisper-blas-bin-Win32.zip#/dl.zip"
+            }
+        }
+    }
+}

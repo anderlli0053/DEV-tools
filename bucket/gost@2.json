@@ -1,0 +1,40 @@
+{
+    "version": "2.12.0",
+    "description": "(V2 Version) GO Simple Tunnel - a simple tunnel written in golang.",
+    "homepage": "https://v2.gost.run/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ginuerzh/gost/releases/download/v2.12.0/gost_2.12.0_windows_amd64.zip",
+            "hash": "2ebe0cb6ac5e966647b222a1f5ac1ae4ce1f340e190f5f69e381c4f694526d43"
+        },
+        "32bit": {
+            "url": "https://github.com/ginuerzh/gost/releases/download/v2.12.0/gost_2.12.0_windows_386.zip",
+            "hash": "f7732f53c1acaeaee1265ed7b48250ddc59f713c1d4f93e3dfb73387c4544fd8"
+        },
+        "arm64": {
+            "url": "https://github.com/ginuerzh/gost/releases/download/v2.12.0/gost_2.12.0_windows_arm64.zip",
+            "hash": "6fa65251f64b498653a25a462bcaa945c4262083814af77b4077fc9e940b2a2e"
+        }
+    },
+    "pre_install": "Get-ChildItem \"$dir\" 'gost-*.exe' | Select-Object -First 1 | Rename-Item -NewName 'gost.exe'",
+    "bin": "gost.exe",
+    "persist": "conf",
+    "checkver": {
+        "url": "https://github.com/ginuerzh/gost/releases.atom",
+        "regex": "Repository/\\d+/v(.+?)<"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ginuerzh/gost/releases/download/v$version/gost_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/ginuerzh/gost/releases/download/v$version/gost_$version_windows_386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/ginuerzh/gost/releases/download/v$version/gost_$version_windows_arm64.zip"
+            }
+        }
+    }
+}

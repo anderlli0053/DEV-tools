@@ -1,32 +1,41 @@
 {
-  "version": "1.11.9",
-  "description": "The universal proxy platform.",
-  "homepage": "https://github.com/SagerNet/sing-box",
-  "license": "GPL",
-  "notes": "",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/SagerNet/sing-box/releases/download/v1.11.9/sing-box-1.11.9-windows-amd64.zip",
-      "hash": "79eaf7e9655452c796269c4dff247d04b2533a00cfe60eccf0f2054ba96b248e",
-      "extract_dir": "sing-box-1.11.9-windows-amd64"
-    }
-  },
-  "checkver": "github",
-  "autoupdate": {
+    "version": "1.12.17",
+    "description": "The universal proxy platform.",
+    "homepage": "https://github.com/SagerNet/sing-box",
+    "license": "GPL",
+    "notes": "",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/SagerNet/sing-box/releases/download/v$version/sing-box-$version-windows-amd64.zip",
-        "extract_dir": "sing-box-$version-windows-amd64"
-      }
-    }
-  },
-  "pre_install": "if (!(Test-Path \"$persist_dir\\$config.json\")) { New-Item \"$dir\\config.json\" }",
-  "persist": "config.json",
-  "bin": "sing-box.exe",
-  "shortcuts": [
-    [
-      "sing-box.exe",
-      "sing-box"
+        "64bit": {
+            "url": "https://github.com/SagerNet/sing-box/releases/download/v1.12.17/sing-box-1.12.17-windows-amd64.zip",
+            "hash": "214623c436d4ad5bb513568e098a9e039d004641672a8fbc795d31d3b3e28b0a",
+            "extract_dir": "sing-box-1.12.17-windows-amd64"
+        },
+        "arm64": {
+            "url": "https://github.com/SagerNet/sing-box/releases/download/v1.12.17/sing-box-1.12.17-windows-arm64.zip",
+            "hash": "56e13a030b00a63ba5b529569cda1b6fd261cb173f2759c4acaee5bd20bce884",
+            "extract_dir": "sing-box-1.12.17-windows-arm64"
+        }
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/SagerNet/sing-box/releases/download/v$version/sing-box-$version-windows-amd64.zip",
+                "extract_dir": "sing-box-$version-windows-amd64"
+            },
+            "arm64": {
+                "url": "https://github.com/SagerNet/sing-box/releases/download/v$version/sing-box-$version-windows-arm64.zip",
+                "extract_dir": "sing-box-$version-windows-arm64"
+            }
+        }
+    },
+    "pre_install": "if (!(Test-Path \"$persist_dir\\$config.json\")) { New-Item \"$dir\\config.json\" }",
+    "persist": "config.json",
+    "bin": "sing-box.exe",
+    "shortcuts": [
+        [
+            "sing-box.exe",
+            "sing-box"
+        ]
     ]
-  ]
 }

@@ -1,0 +1,35 @@
+{
+    "version": "2.7.0",
+    "description": "Hysteria is a powerful, lightning fast and censorship resistant proxy.",
+    "homepage": "https://v2.hysteria.network/",
+    "license": "MIT",
+    "notes": "",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/apernet/hysteria/releases/download/app/v2.7.0/hysteria-windows-amd64.exe",
+            "hash": "fb87160f17a598868d5b9613ac191fc06dcf87aec61673f97d3bd121c87de562"
+        },
+        "arm64": {
+            "url": "https://github.com/apernet/hysteria/releases/download/app/v2.7.0/hysteria-windows-arm64.exe",
+            "hash": "2a88ed9417bc69a2e05e1101dc507ff8bc062f5020c23a1cf61afdbcc69bbdfd"
+        }
+    },
+    "checkver": {
+        "url": "https://api.github.com/repos/apernet/hysteria/releases",
+        "jsonpath": "$.[0].assets[3]",
+        "regex": "download/app/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/apernet/hysteria/releases/download/app/v$version/hysteria-windows-amd64.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/apernet/hysteria/releases/download/app/v$version/hysteria-windows-arm64.exe"
+            }
+        }
+    },
+    "pre_install": "if (!(Test-Path \"$persist_dir\\$config.json\")) { New-Item \"$dir\\config.json\" }",
+    "persist": "config.json",
+    "bin": "hysteria-windows-amd64.exe"
+}

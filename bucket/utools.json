@@ -1,46 +1,17 @@
 {
-  "version": "7.1.1",
+  "description": "uTools",
   "homepage": "https://u.tools/",
-  "description": "新一代效率工具平台",
-  "license": "Freeware",
-  "architecture": {
-    "64bit": {
-      "url": "https://open.u-tools.cn/download/uTools-7.1.1.exe#/uTools.7z",
-      "hash": "9b135fb53d6dd5403be8174aec17440814600e19a095f9af68c4b8df68b41c37",
-      "installer": {
-        "script": "7z x $original_dir/PLUGINSDIR/app-64.7z -o\"$original_dir\\utools\""
-      }
-    },
-    "32bit": {
-      "url": "https://open.u-tools.cn/download/uTools-7.1.1-ia32.exe#/uTools.7z",
-      "hash": "94fe89432f9678e955a7fa7378f0aa5fa9dec38d8cf8dbf726015fadf072c78c",
-      "installer": {
-        "script": "7z x $original_dir/PLUGINSDIR/app-32.7z -o\"$original_dir\\utools\""
-      }
-    }
-  },
-  "extract_dir": "$PLUGINSDIR",
-  "extract_to": "PLUGINSDIR",
-  "post_install": "Remove-Item -RECURSE $original_dir/PLUGINSDIR",
-  "bin": "utools\\uTools.exe",
-  "shortcuts": [
-    [
-      "utools\\uTools.exe",
-      "uTools"
-    ]
+  "version": "7.8.0",
+  "url": "https://res.u-tools.cn/release/uTools-7.5.0.exe#/dl.7z",
+  "hash": "c22c0a0b90550cc3ffbb85eb9d211575ae4ba5907dbf9090ea8b4480277e23bb",
+  "pre_install": [
+      "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\`\\app-64.7z\" \"$dir\"",
+      "Remove-Item \"$dir\\`$*\" -Recurse"
   ],
-  "checkver": {
-    "url": "https://u.tools/download/",
-    "regex": "uTools-(\\d+[\\.\\d]+)\\.exe"
-  },
-  "autoupdate": {
-    "architecture": {
-      "64bit": {
-        "url": "https://open.u-tools.cn/download/uTools-$version.exe#/uTools.7z"
-      },
-      "32bit": {
-        "url": "https://open.u-tools.cn/download/uTools-$version-ia32.exe#/uTools.7z"
-      }
-    }
-  }
+    "shortcuts": [
+        [
+            "uTools.exe",
+            "uTools"
+        ]
+    ]
 }

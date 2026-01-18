@@ -1,0 +1,37 @@
+{
+    "version": "b473-9565c7f",
+    "description": "(CUDA 12 Backend) stable-diffusion.cpp enables inference of Stable Diffusion and Flux in pure C/C++.",
+    "homepage": "https://github.com/leejet/stable-diffusion.cpp",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/leejet/stable-diffusion.cpp/releases/download/master-473-9565c7f/sd-master-9565c7f-bin-win-cuda12-x64.zip",
+                "https://github.com/leejet/stable-diffusion.cpp/releases/download/master-473-9565c7f/cudart-sd-bin-win-cu12-x64.zip"
+            ],
+            "hash": [
+                "f5c6998b3e6ac8ed74ab7a211f8b6e89c6b0e3e3813633356547aea8d702e239",
+                "fe20366827d357c00797eebb58244dddab7fd9a348d70090c3871004c320f38d"
+            ]
+        }
+    },
+    "bin": [
+        "sd-cli.exe",
+        "sd-server.exe"
+    ],
+    "checkver": {
+        "url": "https://github.com/leejet/stable-diffusion.cpp/releases.atom",
+        "regex": "Repository/\\d+/master-(?<build>\\d+)-(?<commit>[0-9a-f]{7})<",
+        "replace": "b${build}-${commit}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/leejet/stable-diffusion.cpp/releases/download/master-$matchBuild-$matchCommit/sd-master-$matchCommit-bin-win-cuda12-x64.zip",
+                    "https://github.com/leejet/stable-diffusion.cpp/releases/download/master-$matchBuild-$matchCommit/cudart-sd-bin-win-cu12-x64.zip"
+                ]
+            }
+        }
+    }
+}

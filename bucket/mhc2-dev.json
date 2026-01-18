@@ -1,24 +1,25 @@
 {
-  "version": "192106158",
-  "description": "Next generation color management in Windows.",
-  "homepage": "https://github.com/dantmnf/MHC2",
-  "license": "Unlicense",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/dantmnf/MHC2/releases/download/ci-build/MHC2Gen.zip",
-      "hash": "f5018ef2a664f7ee736f70d718d216eb71d1470c218748be944aef3895a81fad"
-    }
-  },
-  "bin": "MHC2Gen.exe",
-  "checkver": {
-    "script": "Invoke-WebRequest -Uri 'https://api.github.com/repos/dantmnf/MHC2/releases/tags/ci-build' | ConvertFrom-Json | Select-Object -ExpandProperty url | % { $_.Split('/') } | Select-Object -Last 1",
-    "regex": "(\\d+)"
-  },
-  "autoupdate": {
+    "version": "244053622",
+    "description": "Next generation color management in Windows.",
+    "homepage": "https://github.com/dantmnf/MHC2",
+    "license": "Unlicense",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/dantmnf/MHC2/releases/download/ci-build/MHC2Gen.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/dantmnf/MHC2/releases/download/ci-build/MHC2Gen.zip",
+            "hash": "b8a462320816266bb221c493662e83fd0901ab6589bccd5e6699be106b40cb35"
+        }
+    },
+    "bin": "MHC2Gen.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/dantmnf/MHC2/releases/tags/ci-build",
+        "jsonpath": "$.url",
+        "regex": "/([^/]+)$"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/dantmnf/MHC2/releases/download/ci-build/MHC2Gen.zip"
+            }
+        }
     }
-  }
 }

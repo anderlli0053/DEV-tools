@@ -5,11 +5,11 @@
     "license": "MPL-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://archive.basilisk-browser.org/2025.10.10/windows/x86_64/basilisk-20251009121624.win64.7z",
+            "url": "https://dl.basilisk-browser.org/basilisk-20251009121624.win64.7z",
             "hash": "c59ea307fbf350ba27ce501a61ffb16c64f78ee24f1d08e82be00bc6b1f45c36"
         },
         "32bit": {
-            "url": "https://archive.basilisk-browser.org/2025.10.10/windows/x86_32/basilisk-20251009121613.win32.7z",
+            "url": "https://dl.basilisk-browser.org/basilisk-20251009121613.win32.7z",
             "hash": "e202731cb51de86bdb95782c7cde9a452feec14040df49b014844cea7fecea5e"
         }
     },
@@ -28,15 +28,15 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://archive.basilisk-browser.org/$version/windows/x86_64/basilisk-$matchWin64.win64.7z"
+                "url": "https://dl.basilisk-browser.org/basilisk-$matchWin64.win64.7z"
             },
             "32bit": {
-                "url": "https://archive.basilisk-browser.org/$version/windows/x86_32/basilisk-$matchWin32.win32.7z"
+                "url": "https://dl.basilisk-browser.org/basilisk-$matchWin32.win32.7z"
             }
         },
         "hash": {
             "url": "https://basilisk-browser.org/download.html",
-            "regex": "$basename:\\s+$sha256"
+            "regex": "(?sm)$basename:.*?$sha256"
         }
     }
 }

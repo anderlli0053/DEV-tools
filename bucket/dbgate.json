@@ -1,23 +1,31 @@
 {
-  "version": "5.5.6",
-  "description": "Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.",
-  "homepage": "https://dbgate.org/",
-  "license": "GPL-3.0-or-later",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/dbgate/dbgate/releases/latest/download/dbgate-windows-latest.zip",
-      "hash": "65afad3afc1fb3c9f2989a7b8d86ae3969cd9506a0ae3815c2c2e0af6b5ab3e1"
+    "version": "6.8.2",
+    "description": "A database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.",
+    "homepage": "https://dbgate.org/",
+    "license": "GPL-3.0",
+    "architecture": {
+        "64bit": {
+            "hash": "0632e03051b8ea3dd4aa4ddc8c9643ddacd23d2033d93f8a20832bb2338e95fe",
+            "url": "https://github.com/dbgate/dbgate/releases/download/v6.8.2/dbgate-6.8.2-win_x64.zip"
+        }
     },
-    "arm64": {
-      "url": "https://github.com/dbgate/dbgate/releases/download/v5.5.6/dbgate-5.5.6-win_arm64.zip",
-      "hash": "5b7fa93942ebcba4b66d7322fd8436fd2c7f87becec5d446c9b69966491b27fd"
+    "pre_install": "Remove-Item \"$dir\\resources\\app-update.yml\" -Force -Recurse",
+    "shortcuts": [
+        [
+            "dbgate.exe",
+            "DbGate",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "github": "https://github.com/dbgate/dbgate"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/dbgate/dbgate/releases/download/v$version/dbgate-$version-win_x64.zip"
+            }
+        }
     }
-  },
-  "bin": "DbGate.exe",
-  "shortcuts": [
-    [
-      "DbGate.exe",
-      "DbGate"
-    ]
-  ]
 }

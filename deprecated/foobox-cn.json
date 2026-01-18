@@ -1,0 +1,24 @@
+{
+    "version": "8.6",
+    "description": "foobox 是一个 foobar2000 默认用户界面 (DUI) 的皮肤配置，具有简洁而美观实用的特点，善于管理曲目数量大的媒体库 ，对音乐各种封面提供丰富的支持",
+    "homepage": "https://github.com/dream7180/foobox-cn",
+    "license": "GPL-3.0-only",
+    "url": "https://github.com/dream7180/foobox-cn/releases/download/8.6/foobox_x64.cn.v8.6-1.exe#/dl.7z",
+    "hash": "cf8e0e4a8799a96499b658887f9a4cbf5632e58462bd6bc307fe1a01e0def0f5",
+    "shortcuts": [
+        [
+            "foobar2000.exe",
+            "Foobox"
+        ]
+    ],
+    "pre_install": "if (!(Test-Path \"$persist_dir\\profile\")) { Rename-Item -Path \"$dir\\`$_13_\" -NewName 'profile' }",
+    "post_install": "Remove-Item \"$dir\\uninstall*\", \"$dir\\`$*\" -Force -Recurse",
+    "persist": "profile",
+    "checkver": {
+        "url": "https://api.github.com/repos/dream7180/foobox-cn/releases/latest",
+        "regex": "/releases/download/([\\d.]+)/(?<filename>[^/\"]+)\""
+    },
+    "autoupdate": {
+        "url": "https://github.com/dream7180/foobox-cn/releases/download/$version/$matchFilename#/dl.7z"
+    }
+}

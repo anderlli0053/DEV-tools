@@ -1,0 +1,30 @@
+{
+    "version": "15.0.0",
+    "description": "向日葵远程控制",
+    "homepage": "https://github.com/gendloop/Sun",
+    "license": "LGPL-2.1-or-later",
+    "notes": [
+        "<Installer>"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gendloop/Sun/releases/download/v15.0.0/Sun-15.0.0-win64.7z",
+            "hash": "dd1e72e991587131747ebb6009066ecc4f3e0cd0e0ad9ed33c493baed9ff5484"
+        }
+    },
+    "installer": {
+        "script": [
+            "Push-Location \"$dir\"",
+            "Start-Process Sun-$version-win64.exe",
+            "Pop-Location"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gendloop/Sun/releases/download/v$version/Sun-$version-win64.7z"
+            }
+        }
+    }
+}

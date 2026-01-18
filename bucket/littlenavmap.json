@@ -1,0 +1,45 @@
+{
+    "version": "3.0.18",
+    "description": "A free flight planner, navigation tool, moving map, airport search and airport information system for Flight Simulator X, Microsoft Flight Simulator 2020, Prepar3D and X-Plane.",
+    "homepage": "https://albar965.github.io/littlenavmap.html",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/albar965/littlenavmap/releases/download/v3.0.18/LittleNavmap-win64-3.0.18.zip",
+            "extract_dir": "LittleNavmap-win64-3.0.18",
+            "hash": "4a56358980b253c5876df8c8f7a7bab0873ca006c705eba20571a05e99adbc6f"
+        },
+        "32bit": {
+            "url": "https://github.com/albar965/littlenavmap/releases/download/v3.0.18/LittleNavmap-win32-3.0.18.zip",
+            "extract_dir": "LittleNavmap-win32-3.0.18",
+            "hash": "b1c893fe2413a7bbce676037abaffe71e9e28a3e5821ccd2193ffddd3b6f2ca0"
+        }
+    },
+    "shortcuts": [
+        [
+            "littlenavmap.exe",
+            "Little Navmap",
+            "-c \"Little Navmap Cache\" -p \"Little Navmap Settings\"  -l \"Little Navmap Logs\""
+        ]
+    ],
+    "persist": [
+        "Little Navmap Cache",
+        "Little Navmap Settings",
+        "Little Navmap Logs"
+    ],
+    "checkver": {
+        "github": "https://github.com/albar965/littlenavmap"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/albar965/littlenavmap/releases/download/v$version/LittleNavmap-win64-$version.zip",
+                "extract_dir": "LittleNavmap-win64-$version"
+            },
+            "32bit": {
+                "url": "https://github.com/albar965/littlenavmap/releases/download/v$version/LittleNavmap-win32-$version.zip",
+                "extract_dir": "LittleNavmap-win32-$version"
+            }
+        }
+    }
+}

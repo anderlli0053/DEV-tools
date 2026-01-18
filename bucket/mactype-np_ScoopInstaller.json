@@ -1,0 +1,53 @@
+{
+    "##": "The MacType installer is created with AdvancedInstaller.",
+    "version": "1.2025.6.9",
+    "description": "Provides better font rendering for Windows.",
+    "homepage": "https://mactype.net",
+    "license": "GPL-3.0-or-later",
+    "notes": [
+        "Launch MacType Wizard (macwiz.exe) to configure MacType.",
+        "",
+        "Antivirus software may conflict with MacType because it detects MacType trying to modify running software.",
+        "Workarounds:",
+        "- Run in Service Mode (recommended)",
+        "- Add `HookChildProcesses=0` to profile; see: https://github.com/snowie2000/mactype/wiki/HookChildProcesses"
+    ],
+    "url": "https://github.com/snowie2000/mactype/releases/download/v1.2025.6.9/MacTypeInstaller_2025.6.9.exe",
+    "hash": "66678f5535c2e2aa24d20d538612cf340acf9113b63579f722404e4ece9dd0de",
+    "innosetup": true,
+    "uninstaller": {
+        "script": [
+            "$text = @(",
+            "    'If you encounter \"file in use\" error during uninstallation, try the following steps:'",
+            "    '    1. Launch MacType Wizard (macwiz.exe) and select \"Manual\" mode.'",
+            "    '    2. Reboot.'",
+            "    '    3. Run `scoop uninstall mactype-np`.'",
+            ")",
+            "warn $($text -join \"`r`n\")"
+        ]
+    },
+    "bin": [
+        "MacTray.exe",
+        "MacWiz.exe"
+    ],
+    "shortcuts": [
+        [
+            "MacTray.exe",
+            "MacType Tray"
+        ],
+        [
+            "MacWiz.exe",
+            "MacType Wizard"
+        ]
+    ],
+    "persist": [
+        "ini",
+        "MacType.ini"
+    ],
+    "checkver": {
+        "github": "https://github.com/snowie2000/mactype"
+    },
+    "autoupdate": {
+        "url": "https://github.com/snowie2000/mactype/releases/download/v$version/MacTypeInstaller_$minorVersion.$patchVersion.$buildVersion.exe"
+    }
+}

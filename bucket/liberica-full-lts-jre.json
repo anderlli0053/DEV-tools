@@ -1,19 +1,19 @@
 {
     "description": "BellSoft Liberica is a 100% open-source Java implementation",
     "homepage": "https://bell-sw.com/java",
-    "version": "21.0.7-9",
+    "version": "25.0.1-13",
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/bell-sw/Liberica/releases/download/21.0.7%2B9/bellsoft-jre21.0.7%2B9-windows-amd64-full.zip",
-            "hash": "sha1:19b75416c8bbb6034604ef8377df405807e82487"
+            "url": "https://github.com/bell-sw/Liberica/releases/download/25.0.1%2B13/bellsoft-jre25.0.1%2B13-windows-amd64-full.zip",
+            "hash": "sha1:e6319dcc02978529de345c843b2c6d3e5bee0a7d"
         },
-        "32bit": {
-            "url": "https://github.com/bell-sw/Liberica/releases/download/21.0.7%2B9/bellsoft-jre21.0.7%2B9-windows-i586-full.zip",
-            "hash": "sha1:800510dc7f954b0f454f763c20f68ef4ff7e0ee8"
+        "arm64": {
+            "url": "https://github.com/bell-sw/Liberica/releases/download/25.0.1%2B13/bellsoft-jre25.0.1%2B13-windows-aarch64-full.zip",
+            "hash": "sha1:b9661e35fc73df13275fd58fc15f2bb4038a1785"
         }
     },
-    "extract_dir": "jre-21.0.7-full",
+    "extract_dir": "jre-25.0.1-full",
     "env_add_path": "bin",
     "env_set": {
         "JAVA_HOME": "$dir"
@@ -22,15 +22,16 @@
         "url": "https://api.bell-sw.com/v1/liberica/releases?bundle-type=jre-full&version-modifier=latest&release-type=lts&os=windows&arch=x86&installation-type=archive&package-type=zip&output=json&fields=version",
         "jsonpath": "$.version",
         "regex": "(?<major>[\\d.]+)(?:\\+)(?<build>[\\d]+)",
-        "replace": "${major}-${build}"
+        "replace": "${major}-${build}",
+        "reverse": true
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/bell-sw/Liberica/releases/download/$matchMajor%2B$matchBuild/bellsoft-jre$matchMajor%2B$matchBuild-windows-amd64-full.zip"
             },
-            "32bit": {
-                "url": "https://github.com/bell-sw/Liberica/releases/download/$matchMajor%2B$matchBuild/bellsoft-jre$matchMajor%2B$matchBuild-windows-i586-full.zip"
+            "arm64": {
+                "url": "https://github.com/bell-sw/Liberica/releases/download/$matchMajor%2B$matchBuild/bellsoft-jre$matchMajor%2B$matchBuild-windows-aarch64-full.zip"
             }
         },
         "hash": {

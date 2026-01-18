@@ -1,0 +1,30 @@
+{
+    "version": "5.0.74",
+    "description": "火绒",
+    "homepage": "https://github.com/gendloop/HuoRong",
+    "license": "LGPL-2.1-or-later",
+    "notes": [
+        "<Installer>"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gendloop/HuoRong/releases/download/v5.0.74/HuoRong-5.0.74-win64.7z",
+            "hash": "bd9ec9ebd200c5849a6e0a69e31a356fefb5ebf1bf04b41a780c9aa205613b70"
+        }
+    },
+    "installer": {
+        "script": [
+            "Push-Location \"$dir\"",
+            "Start-Process HuoRong-$version-win64.exe",
+            "Pop-Location"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gendloop/HuoRong/releases/download/v$version/HuoRong-$version-win64.7z"
+            }
+        }
+    }
+}

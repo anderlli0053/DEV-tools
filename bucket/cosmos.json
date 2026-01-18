@@ -1,0 +1,26 @@
+{
+    "version": "4.0.2",
+    "description": "Prebuilt Actually Portable Executables for popular open source projects.",
+    "homepage": "https://cosmo.zip/",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://cosmo.zip/pub/cosmos/zip/cosmos-4.0.2.zip",
+            "hash": "494ecbd87c2f2f622f91066d4fe5d9ffc1aaaa13de02db1714dd84d014ed398f"
+        }
+    },
+    "extract_dir": "bin",
+    "notes": "PATH is untouched.",
+    "checkver": {
+        "url": "https://cosmo.zip/pub/cosmos/v/",
+        "regex": "href=\"([\\d.]+)/\"",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cosmo.zip/pub/cosmos/zip/cosmos-$version.zip"
+            }
+        }
+    }
+}

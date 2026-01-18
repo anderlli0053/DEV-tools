@@ -1,0 +1,40 @@
+{
+    "version": "6.61",
+    "description": "A small program that converts BIN CD or DVD images to ISO images.",
+    "homepage": "https://softwareok.com/?seite=Freeware/WinBin2Iso",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://softwareok.com/Download/WinBin2Iso_Portable_x64.zip",
+            "hash": "e53205d59eb94f044a2fb58eedfcb449d83c236d734f7e47faf0b20ff49b2570"
+        },
+        "32bit": {
+            "url": "https://softwareok.com/Download/WinBin2Iso_Portable_Unicode.zip",
+            "hash": "34d0cc061522ac9959b9135766001cc1e0aa718007b22e42a56febb5b98092ef"
+        }
+    },
+    "shortcuts": [
+        [
+            "WinBin2Iso.exe",
+            "WinBin2Iso"
+        ]
+    ],
+    "pre_install": [
+        "Get-ChildItem \"$dir\" 'WinBin2Iso*.exe' | Select-Object -First 1 | Rename-Item -NewName 'WinBin2Iso.exe'",
+        "if (!(Test-Path \"$persist_dir\\WinBin2Iso.ini\")) { Set-Content -Encoding ASCII -Path \"$dir\\WinBin2Iso.ini\" -Value $null }"
+    ],
+    "persist": "WinBin2Iso.ini",
+    "checkver": {
+        "regex": "WinBin2Iso ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://softwareok.com/Download/WinBin2Iso_Portable_x64.zip"
+            },
+            "32bit": {
+                "url": "https://softwareok.com/Download/WinBin2Iso_Portable_Unicode.zip"
+            }
+        }
+    }
+}

@@ -1,29 +1,50 @@
 {
-  "version": "1.1.2.606",
-  "description": "A simple & powerful proxy utility, with support of routing rules for clash/sing-box",
-  "homepage": "https://karing.app/",
-  "license": "Freeware",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/KaringX/karing/releases/download/v1.1.2.606/karing_1.1.2.606_windows_x64.zip",
-      "hash": "74912555b3ad7d43d0dff050d43ee51cc135c659e67eb9b87cdca81838378f7d"
-    }
-  },
-  "shortcuts": [
-    [
-      "karing.exe",
-      "Karing"
-    ]
-  ],
-  "persist": "profiles",
-  "checkver": {
-    "github": "https://github.com/KaringX/karing"
-  },
-  "autoupdate": {
+    "version": "1.2.12.1500",
+    "description": "Simple & Powerful proxy utility, Support routing rules for clash/sing-box",
+    "homepage": "https://karing.app/",
+    "license": {
+        "identifier": "Copyright (C) 2024 by nebula",
+        "url": "https://github.com/KaringX/karing?tab=License-1-ov-file#License-1-ov-file"
+    },
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/KaringX/karing/releases/download/v$version/karing_$version_windows_x64.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/KaringX/karing/releases/download/v1.2.12.1500/karing_1.2.12.1500_windows_x64.exe",
+            "hash": "46c8d12b2b6b1a8ccd5b22f945c911c19be55de2a6e2019a0108770d8d4df27f"
+        }
+    },
+    "innosetup": true,
+    "installer": {
+        "script": [
+            "# handle runtime cache",
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
+            "Mount-ExternalRuntimeData -Source \"$persist_dir\\appdata\" -Target \"$env:APPDATA\\karing\"",
+            "Remove-Module -Name AppsUtils"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
+            "Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\karing\"",
+            "Remove-Module -Name AppsUtils"
+        ]
+    },
+    "bin": "karing.exe",
+    "shortcuts": [
+        [
+            "karing.exe",
+            "karing"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/KaringX/karing/releases",
+        "jp": "$[0].assets[*].browser_download_url",
+        "regex": "/releases/download/v([\\d.]+)/karing_([\\d.]+)_windows"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/KaringX/karing/releases/download/v$version/karing_$version_windows_x64.exe"
+            }
+        }
     }
-  }
 }

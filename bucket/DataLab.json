@@ -1,29 +1,29 @@
 {
-  "version": "0.18.2",
-  "description": "A platform for scientific and technical data processing and visualization",
-  "homepage": "https://datalab-platform.com/",
-  "license": "BSD-3-Clause",
-  "url": "https://github.com/DataLab-Platform/DataLab/releases/download/v0.18.2/DataLab-0.18.2.msi",
-  "hash": "cc1ffcbe16e8ca418a4832639df2d4d782246b0b0e9c9cb2eb86612ba64e6d7e",
-  "installer": {
-    "script": [
-      "Expand-DarkArchive \"$dir\\$fname\" \"$dir\" -Removal",
-      "Get-ChildItem $dir -Exclude 'AttachedContainer' | Remove-Item -Force -Recurse",
-      "Get-ChildItem \"$dir\\DataLab-*.msi\" | Expand-MsiArchive -DestinationPath $dir -Removal",
-      "Move-Item \"$dir\\PFiles\\DataLab\\*\" \"$dir\"",
-      "Remove-Item \"$dir\\PFiles\" -Recurse -Force"
-    ]
-  },
-  "shortcuts": [
-    [
-      "DataLab.exe",
-      "DataLab"
-    ]
-  ],
-  "checkver": {
-    "github": "https://github.com/DataLab-Platform/DataLab"
-  },
-  "autoupdate": {
-    "url": "https://github.com/DataLab-Platform/DataLab/releases/download/v$version/DataLab-$version.msi"
-  }
+    "version": "1.0.2",
+    "description": "A platform for scientific and technical data processing and visualization",
+    "homepage": "https://datalab-platform.com/",
+    "license": "BSD-3-Clause",
+    "url": "https://github.com/DataLab-Platform/DataLab/releases/download/v1.0.2/DataLab-1.0.2.msi",
+    "hash": "9d7dfe3664b20f8dc14d5471ecc281971bb472f55521967994f43b2e330cf285",
+    "installer": {
+        "script": [
+            "Expand-DarkArchive \"$dir\\$fname\" \"$dir\" -Removal",
+            "Get-ChildItem $dir -Exclude 'AttachedContainer' | Remove-Item -Force -Recurse",
+            "Get-ChildItem \"$dir\\DataLab-*.msi\" | Expand-MsiArchive -DestinationPath $dir -Removal",
+            "Move-Item \"$dir\\PFiles\\DataLab\\*\" \"$dir\"",
+            "Remove-Item \"$dir\\PFiles\" -Recurse -Force"
+        ]
+    },
+    "shortcuts": [
+        [
+            "DataLab.exe",
+            "DataLab"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/DataLab-Platform/DataLab"
+    },
+    "autoupdate": {
+        "url": "https://github.com/DataLab-Platform/DataLab/releases/download/v$version/DataLab-$version.msi"
+    }
 }

@@ -1,0 +1,104 @@
+{
+    "##": "The shortcut will be created when adding the Appx package",
+    "version": "4.8.12",
+    "description": "第三方哔哩哔哩UWP客户端",
+    "homepage": "https://github.com/ywmoyue/biliuwp-lite",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ywmoyue/biliuwp-lite/releases/download/v4.8.12/BiliLite.Packages_4.8.12.0_x64.zip",
+            "hash": "063d7dee3e842477798be1a749c92c24689ae30b567698c5e728e257ce43e064",
+            "extract_dir": "BiliLite.Packages_4.8.12.0_x64_Test"
+        },
+        "32bit": {
+            "url": "https://github.com/ywmoyue/biliuwp-lite/releases/download/v4.8.12/BiliLite.Packages_4.8.12.0_x86.zip",
+            "hash": "c222cdcee97a63a761868ec87ed774fffe81c68512f00df8e80271c3eaa6833c",
+            "extract_dir": "BiliLite.Packages_4.8.12.0_x86_Test"
+        },
+        "arm64": {
+            "url": "https://github.com/ywmoyue/biliuwp-lite/releases/download/v4.8.12/BiliLite.Packages_4.8.12.0_ARM64.zip",
+            "hash": "03363d087a111d15ac9d5d425bf55051fcc8689fed116446d7f3151a7626566b",
+            "extract_dir": "BiliLite.Packages_4.8.12.0_ARM64_Test"
+        }
+    },
+    "installer": {
+        "script": [
+            "if ($env:CI -eq \"true\") { Return }",
+            "if ($PSVersionTable.PSVersion.Major -ge 6) { Import-Module Appx -UseWindowsPowershell 3>$null }",
+            "$msixFile = Get-ChildItem \"$dir\\*.msix\" | Select-Object -First 1",
+            "",
+            "try {",
+            "    Add-AppxPackage -Path $msixFile.FullName -ForceTargetApplicationShutdown -AllowUnsigned -ErrorAction Stop",
+            "} catch {",
+            "    Write-Host 'Installation failed, attempting to import certificate...' -ForegroundColor Yellow",
+            "    $signature = Get-AuthenticodeSignature -FilePath $msixFile.FullName",
+            "    $certificate = $signature.SignerCertificate",
+            "    ",
+            "    $trusted = $false",
+            "    Get-ChildItem 'Cert:\\LocalMachine\\Root' | ForEach-Object {",
+            "        if ($_.Thumbprint -eq $certificate.Thumbprint) { $trusted = $true }",
+            "    }",
+            "    ",
+            "    if (!$trusted) {",
+            "        if (!(is_admin)) { error \"$app requires admin rights to import certificate\"; break }",
+            "        Write-Host 'Importing certificate...' -ForegroundColor Yellow",
+            "        $rootStore = Get-Item 'cert:\\LocalMachine\\Root'",
+            "        $rootStore.Open('ReadWrite')",
+            "        $rootStore.Add($certificate)",
+            "        $rootStore.Close()",
+            "    } else {",
+            "        Write-Host 'Certificate already exists, skipping import...' -ForegroundColor Yellow",
+            "    }",
+            "    ",
+            "    Write-Host 'Retrying installation...' -ForegroundColor Yellow",
+            "    Add-AppxPackage -Path $msixFile.FullName -ForceTargetApplicationShutdown",
+            "}"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if ($env:CI -eq \"true\") { Return }",
+            "if ($cmd -eq \"update\") { Write-Host \"Skipping uninstallation because of update operation...\" ; Return }",
+            "if ($PSVersionTable.PSVersion.Major -ge 6) { Import-Module Appx -UseWindowsPowershell 3>$null }",
+            "$package = Get-AppxPackage '5422.502643927C6AD'",
+            "if (!$package) { warn \"$app is already uninstalled out of scoop.\" ; return }",
+            "if ($purge) {",
+            "    Remove-AppxPackage $package",
+            "    $msixFile = Get-ChildItem \"$dir\\*.msix\" -ErrorAction SilentlyContinue | Select-Object -First 1",
+            "    if ($msixFile) {",
+            "        $signature = Get-AuthenticodeSignature -FilePath $msixFile.FullName",
+            "        $certificate = $signature.SignerCertificate",
+            "        $rootCertificate = Get-ChildItem 'Cert:\\LocalMachine\\Root' | Where-Object { $_.Thumbprint -eq $certificate.Thumbprint }",
+            "        if ($rootCertificate) {",
+            "            Write-Host \"\" -ForegroundColor Yellow",
+            "            Write-Host \"Package certificate found in trusted root store:\" -ForegroundColor Yellow",
+            "            Write-Host \"  Subject: $($rootCertificate.Subject)\" -ForegroundColor Yellow",
+            "            Write-Host \"  Thumbprint: $($rootCertificate.Thumbprint)\" -ForegroundColor Yellow",
+            "            Write-Host \"\" -ForegroundColor Yellow",
+            "            Write-Host \"To remove the certificate, run the following command as administrator:\" -ForegroundColor Yellow",
+            "            Write-Host \"  Get-ChildItem 'Cert:\\LocalMachine\\Root' | Where-Object { `$_`.Thumbprint -eq '$($rootCertificate.Thumbprint)' } | Remove-Item\" -ForegroundColor Cyan",
+            "        }",
+            "    }",
+            "} else {",
+            "    Remove-AppxPackage $package -PreserveRoamableApplicationData",
+            "}"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ywmoyue/biliuwp-lite/releases/download/v$version/BiliLite.Packages_$version.0_x64.zip",
+                "extract_dir": "BiliLite.Packages_$version.0_x64_Test"
+            },
+            "32bit": {
+                "url": "https://github.com/ywmoyue/biliuwp-lite/releases/download/v$version/BiliLite.Packages_$version.0_x86.zip",
+                "extract_dir": "BiliLite.Packages_$version.0_x86_Test"
+            },
+            "arm64": {
+                "url": "https://github.com/ywmoyue/biliuwp-lite/releases/download/v$version/BiliLite.Packages_$version.0_ARM64.zip",
+                "extract_dir": "BiliLite.Packages_$version.0_ARM64_Test"
+            }
+        }
+    }
+}

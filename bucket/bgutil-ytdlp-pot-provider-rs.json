@@ -1,0 +1,44 @@
+{
+    "version": "0.6.1",
+    "description": "Proof-of-origin token provider plugin for yt-dlp (Rust)",
+    "homepage": "https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs",
+    "license": "GPL-3.0-only",
+    "suggest": {
+        "yt-dlp": "main/yt-dlp",
+        "yt-dlp-nightly": "versions/yt-dlp-nightly",
+        "yt-dlp-master": "versions/yt-dlp-master"
+    },
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs/releases/download/v0.6.1/bgutil-pot-windows-x86_64.exe#/bgutil-pot.exe",
+                "https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs/releases/download/v0.6.1/bgutil-ytdlp-pot-provider-rs.zip"
+            ],
+            "hash": [
+                "977b7a5c262b36be7ecd645b48753d184600e604960055c90846147e01495ea4",
+                "be70fb2c2ce45f1bda01efd98e6bcc67fb75109cb4eed97849a52524ab202ff2"
+            ]
+        }
+    },
+    "notes": [
+        "Run something like:",
+        "New-Item -ItemType Junction -Target (scoop prefix bgutil-ytdlp-pot-provider-rs) -Path \"$(scoop prefix yt-dlp)/yt-dlp-plugins/bgutil-ytdlp-pot-provider-rs\""
+    ],
+    "env_set": {
+        "BGUTIL_CONFIG": "$dir\\config.toml"
+    },
+    "pre_install": "$null = if (!(Test-Path \"$persist_dir$($cfg = '/config.toml')\")) { New-Item \"$dir$cfg\" }",
+    "bin": "bgutil-pot.exe",
+    "persist": "config.toml",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs/releases/download/v$version/bgutil-pot-windows-x86_64.exe#/bgutil-pot.exe",
+                    "https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs/releases/download/v$version/bgutil-ytdlp-pot-provider-rs.zip"
+                ]
+            }
+        }
+    }
+}

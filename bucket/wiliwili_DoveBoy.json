@@ -1,48 +1,48 @@
 {
-  "version": "1.5.1",
-  "description": "专为手柄控制设计的第三方跨平台B站客户端，目前可以运行在PC全平台和Nintendo Switch上 | Yet another Bilibili client",
-  "homepage": "https://xfangfang.github.io/wiliwili",
-  "license": {
-    "identifier": "GPL-3.0 license",
-    "url": "https://github.com/xfangfang/wiliwili/blob/yoga/LICENSE"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/xfangfang/wiliwili/releases/download/v1.5.1/wiliwili-Windows-x86_64.zip",
-      "hash": "bbe1e9bca3a2ff64025cbbb9de9bb91b419f7d47496bcdbe74780ea70fa2dc66"
-    }
-  },
-  "extract_dir": "wiliwili",
-  "installer": {
-    "script": [
-      "# handle runtime cache",
-      "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
-      "Mount-ExternalRuntimeData -Source \"$persist_dir\\appdata\" -Target \"$env:LOCALAPPDATA\\xfangfang\"",
-      "Remove-Module -Name AppsUtils"
-    ]
-  },
-  "uninstaller": {
-    "script": [
-      "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
-      "Dismount-ExternalRuntimeData -Target \"$env:LOCALAPPDATA\\xfangfang\"",
-      "Remove-Module -Name AppsUtils"
-    ]
-  },
-  "shortcuts": [
-    [
-      "wiliwili.exe",
-      "wiliwili"
-    ]
-  ],
-  "checkver": {
-    "url": "https://api.github.com/repos/xfangfang/wiliwili/releases",
-    "regex": "(?sm)browser_download_url.*?releases/download/v([\\d.]+)/wiliwili-Windows-x86_64\\.zip"
-  },
-  "autoupdate": {
+    "version": "1.5.3",
+    "description": "专为手柄控制设计的第三方跨平台B站客户端，目前可以运行在PC全平台和Nintendo Switch上 | Yet another Bilibili client",
+    "homepage": "https://xfangfang.github.io/wiliwili",
+    "license": {
+        "identifier": "GPL-3.0 license",
+        "url": "https://github.com/xfangfang/wiliwili/blob/yoga/LICENSE"
+    },
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/xfangfang/wiliwili/releases/download/v$version/wiliwili-Windows-x86_64.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/xfangfang/wiliwili/releases/download/v1.5.3/wiliwili-Windows-x86_64.zip",
+            "hash": "44e0019231241814b0d3306a8d9ee5b1b983c05cbe9b76ba3eefd2e72b35d3b7"
+        }
+    },
+    "extract_dir": "wiliwili",
+    "installer": {
+        "script": [
+            "# handle runtime cache",
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
+            "Mount-ExternalRuntimeData -Source \"$persist_dir\\appdata\" -Target \"$env:LOCALAPPDATA\\xfangfang\"",
+            "Remove-Module -Name AppsUtils"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
+            "Dismount-ExternalRuntimeData -Target \"$env:LOCALAPPDATA\\xfangfang\"",
+            "Remove-Module -Name AppsUtils"
+        ]
+    },
+    "shortcuts": [
+        [
+            "wiliwili.exe",
+            "wiliwili"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/xfangfang/wiliwili/releases",
+        "regex": "(?sm)browser_download_url.*?releases/download/v([\\d.]+)/wiliwili-Windows-x86_64\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/xfangfang/wiliwili/releases/download/v$version/wiliwili-Windows-x86_64.zip"
+            }
+        }
     }
-  }
 }

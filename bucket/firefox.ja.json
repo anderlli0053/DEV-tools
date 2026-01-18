@@ -1,57 +1,57 @@
 {
-  "homepage": "https://www.mozilla.org/ja/firefox/new/",
-  "version": "138.0",
-  "architecture": {
-    "64bit": {
-      "url": "https://download.mozilla.org/?product=firefox-138.0-SSL&os=win64&lang=ja#/firefox-setup.exe",
-      "hash": "7a89c7f7412dd41035b36d840197f5b25cbe40d78e36cdda291613d6fc5bbbe8"
-    },
-    "32bit": {
-      "url": "https://download.mozilla.org/?product=firefox-138.0-SSL&os=win&lang=ja#/firefox-setup.exe",
-      "hash": "6cecc78706a4984cbb0f55f509518c584646cdb4037b9864e7a8e48aebd05119"
-    }
-  },
-  "bin": "firefox.exe",
-  "shortcuts": [
-    [
-      "firefox.exe",
-      "Firefox"
-    ],
-    [
-      "firefox.exe",
-      "Firefox Profile Manager",
-      "-P"
-    ]
-  ],
-  "pre_install": "echo \"[Install]`nInstallDirectoryPath=$dir`nQuickLaunchShortcut=false`nDesktopShortcut=false`nStartMenuShortcuts=false\" | sc \"$dir\\install.ini\"",
-  "installer": {
-    "file": "firefox-setup.exe",
-    "args": "/INI=$dir\\install.ini"
-  },
-  "uninstaller": {
-    "file": "uninstall\\helper.exe",
-    "args": "/S"
-  },
-  "checkver": {
-    "url": "https://www.mozilla.org/ja/firefox/notes/",
-    "re": "data-latest-firefox=\"([\\d.]+)\""
-  },
-  "autoupdate": {
+    "homepage": "https://www.mozilla.org/ja/firefox/new/",
+    "version": "147.0.1",
     "architecture": {
-      "64bit": {
-        "url": "https://download.mozilla.org/?product=firefox-$version-SSL&os=win64&lang=ja#/firefox-setup.exe",
-        "hash": {
-          "find": "([a-fA-F0-9]{64})\\s+(?:win64/ja/Firefox Setup ([\\d.]+).exe)",
-          "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA256SUMS"
+        "64bit": {
+            "url": "https://download.mozilla.org/?product=firefox-147.0.1-SSL&os=win64&lang=ja#/firefox-setup.exe",
+            "hash": "f9d354875c0ef8a7cc9cccfc12a0b064ecf7731486372a09eed27235bff52acb"
+        },
+        "32bit": {
+            "url": "https://download.mozilla.org/?product=firefox-147.0.1-SSL&os=win&lang=ja#/firefox-setup.exe",
+            "hash": "264dab8d799e662aab0f4a375cf24524bea024f54ddf4a02f3738a54e8716583"
         }
-      },
-      "32bit": {
-        "url": "https://download.mozilla.org/?product=firefox-$version-SSL&os=win&lang=ja#/firefox-setup.exe",
-        "hash": {
-          "find": "([a-fA-F0-9]{64})\\s+(?:win32/ja/Firefox Setup ([\\d.]+).exe)",
-          "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA256SUMS"
+    },
+    "bin": "firefox.exe",
+    "shortcuts": [
+        [
+            "firefox.exe",
+            "Firefox"
+        ],
+        [
+            "firefox.exe",
+            "Firefox Profile Manager",
+            "-P"
+        ]
+    ],
+    "pre_install": "echo \"[Install]`nInstallDirectoryPath=$dir`nQuickLaunchShortcut=false`nDesktopShortcut=false`nStartMenuShortcuts=false\" | sc \"$dir\\install.ini\"",
+    "installer": {
+        "file": "firefox-setup.exe",
+        "args": "/INI=$dir\\install.ini"
+    },
+    "uninstaller": {
+        "file": "uninstall\\helper.exe",
+        "args": "/S"
+    },
+    "checkver": {
+        "url": "https://www.mozilla.org/ja/firefox/notes/",
+        "re": "data-latest-firefox=\"([\\d.]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.mozilla.org/?product=firefox-$version-SSL&os=win64&lang=ja#/firefox-setup.exe",
+                "hash": {
+                    "find": "([a-fA-F0-9]{64})\\s+(?:win64/ja/Firefox Setup ([\\d.]+).exe)",
+                    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA256SUMS"
+                }
+            },
+            "32bit": {
+                "url": "https://download.mozilla.org/?product=firefox-$version-SSL&os=win&lang=ja#/firefox-setup.exe",
+                "hash": {
+                    "find": "([a-fA-F0-9]{64})\\s+(?:win32/ja/Firefox Setup ([\\d.]+).exe)",
+                    "url": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/$version/SHA256SUMS"
+                }
+            }
         }
-      }
     }
-  }
 }

@@ -1,0 +1,28 @@
+{
+    "version": "7.10.2",
+    "description": "Command-line tools for Gel.",
+    "homepage": "https://docs.geldata.com/reference/cli",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/gel-cli-7.10.2+d0c0adc.exe#/gel.exe",
+            "hash": "75c8a497d33bbc51e81fd558ee2dc80efc39a007f7ca72c784328f17dee03951"
+        }
+    },
+    "bin": "gel.exe",
+    "checkver": {
+        "script": [
+            "$indexes = Invoke-RestMethod 'https://packages.edgedb.com/archive/.jsonindexes/x86_64-pc-windows-msvc.json'",
+            "$latest = $indexes.packages | Sort-Object -Property revision | Select-Object -Last 1",
+            "return $latest.version"
+        ],
+        "regex": "(.+)\\+(?<commit>.+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://packages.edgedb.com/archive/x86_64-pc-windows-msvc/gel-cli-$version+$matchCommit.exe#/gel.exe"
+            }
+        }
+    }
+}

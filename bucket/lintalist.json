@@ -1,29 +1,38 @@
 {
-  "homepage": "https://github.com/lintalist/lintalist",
-  "description": "This program allows you to store and (incrementally) search and edit texts in bundles and paste a selected text in your active program.",
-  "version": "1.9.20",
-  "license": "GPL-2.0-only",
-  "checkver": "github",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/lintalist/lintalist/releases/download/v1.9.20/lintalist64.zip",
-      "hash": "DCB7FD6C0786F414DD399D1A50D6C646FD2C128C2FAE37CA2E8744474EFBC4A0"
+    "version": "1.9.26",
+    "description": "Searchable interactive texts to copy & paste text, run scripts, using easily exchangeable bundles.",
+    "homepage": "https://github.com/lintalist/lintalist",
+    "license": "GPL-2.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/lintalist/lintalist/releases/download/v1.9.26/lintalist64.zip",
+            "hash": "2fa6285bdce1868a943eca31c1bf2caba864029d3f3c424f5d97f4efc9ef2af8"
+        },
+        "32bit": {
+            "url": "https://github.com/lintalist/lintalist/releases/download/v1.9.26/lintalist.zip",
+            "hash": "d61997ed18b328a991b6320590f390b94c54fb6e836f358bb8a63f0ea17bb390"
+        }
     },
-    "32bit": {
-      "url": "https://ghproxy.com/https://github.com/lintalist/lintalist/releases/download/v1.9.20/lintalist.zip",
-      "hash": "7A187A171747341937B025CEBED7B915B11C54C74D10FCF17A5586B493A0CDAF"
+    "pre_install": "if (!(Test-Path \"$persist_dir\\Settings.ini\")) { New-Item \"$dir\\Settings.ini\" | Out-Null }",
+    "shortcuts": [
+        [
+            "lintalist.exe",
+            "Lintalist"
+        ]
+    ],
+    "persist": [
+        "Settings.ini",
+        "bundles"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/lintalist/lintalist/releases/download/v$version/lintalist64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/lintalist/lintalist/releases/download/v$version/lintalist.zip"
+            }
+        }
     }
-  },
-  "persist": [
-    "themes",
-    "local",
-    "bundles"
-  ],
-  "bin": "Lintalist.exe",
-  "shortcuts": [
-    [
-      "Lintalist.exe",
-      "Lintalist"
-    ]
-  ]
 }

@@ -1,24 +1,42 @@
 {
-  "version": "25042501",
-  "description": "微信视频号下载器",
-  "homepage": "https://github.com/ltaoo/wx_channels_download",
-  "license": "Unknown",
-  "url": "https://github.com/ltaoo/wx_channels_download/releases/download/25042501/wx_video_download_25042501_windows_x64.exe",
-  "hash": "457818f4d4491ad87f10255671d884367a405e05f2a3c679765bd4e10b0c9134",
-  "pre_install": "Get-ChildItem \"$dir\\wx_video_download*.exe\" | Rename-Item -NewName 'wx-video-download.exe'",
-  "bin": "wx-video-download.exe",
-  "shortcuts": [
-    [
-      "wx-video-download.exe",
-      "wx-video-download"
-    ]
-  ],
-  "checkver": {
-    "url": "https://api.github.com/repos/ltaoo/wx_channels_download/releases",
-    "jp": "$[0].assets[*].browser_download_url",
-    "regex": "/releases/download/([\\d]+)/(?<file>wx_video_download_([\\d]+)(?:-|_)win.*?\\.exe)"
-  },
-  "autoupdate": {
-    "url": "https://github.com/ltaoo/wx_channels_download/releases/download/$version/$matchFile"
-  }
+    "version": "260110",
+    "description": "微信视频号下载器",
+    "homepage": "https://github.com/ltaoo/wx_channels_download",
+    "license": "Unknown",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ltaoo/wx_channels_download/releases/download/v260110/wx_video_download_v260110_windows_x86_64.zip",
+            "hash": "2ec7fbbe94e738b297750141fd014b08c9c332fa6ed7407b0ead67e1673da4d3"
+        },
+        "arm64": {
+            "url": "https://github.com/ltaoo/wx_channels_download/releases/download/v260110/wx_video_download_v260110_windows_arm64.zip",
+            "hash": "d2c54c16f9a5584145f0663aff9f390bf5fee77be18105af9da84c8c60c92bf5"
+        }
+    },
+    "pre_install": "Get-ChildItem \"$dir\\wx_video_download*.exe\" | Rename-Item -NewName 'wx-video-download.exe'",
+    "bin": "wx-video-download.exe",
+    "shortcuts": [
+        [
+            "wx-video-download.exe",
+            "wx-video-download"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/ltaoo/wx_channels_download/releases/latest",
+        "jp": "$.assets[*].browser_download_url",
+        "regex": "/releases/download/v([\\d]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ltaoo/wx_channels_download/releases/download/v$version/wx_video_download_v$version_windows_x86_64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/ltaoo/wx_channels_download/releases/download/v$version/wx_video_download_v$version_windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/wx_video_download_v$version_checksums.txt"
+        }
+    }
 }

@@ -1,28 +1,28 @@
 {
-  "autoupdate": {
-    "hash": {
-      "regex": "MD5 Hash: +[\\w]{32}",
-      "url": "https://portableapps.com/apps/utilities/virtuawin_portable"
+    "homepage": "https://portableapps.com/apps/utilities/virtuawin_portable",
+    "description": "Virtual desktop manager",
+    "version": "4.4",
+    "license": "",
+    "url": "https://versaweb.dl.sourceforge.net/project/portableapps/VirtuaWin%20Portable/VirtuaWinPortable_4.4_English.paf.exe#/dl.7z",
+    "hash": "md5:ff5240a697bd0ef7de2a7f86f46b6c64",
+    "bin": "VirtuaWinPortable.exe",
+    "shortcuts": [
+        [
+            "VirtuaWinPortable.exe",
+            "VirtuaWinPortable"
+        ]
+    ],
+    "persist": "Data",
+    "checkver": {
+        "url": "https://portableapps.com/apps/utilities/virtuawin_portable",
+        "re": "Version \\s+([\\w\\.]* for Win"
     },
-    "url": "https://versaweb.dl.sourceforge.net/project/portableapps/VirtuaWin%20Portable/VirtuaWinPortable_$version_English.paf.exe"
-  },
-  "bin": "VirtuaWinPortable.exe",
-  "checkver": {
-    "re": "Version \\s+([\\w\\.]* for Win",
-    "url": "https://portableapps.com/apps/utilities/virtuawin_portable"
-  },
-  "description": "Virtual desktop manager",
-  "hash": "b37a815886d3eb03ebb4293f979cd593b359a7705aec0084f009315b6bf0815f",
-  "homepage": "https://portableapps.com/apps/utilities/virtuawin_portable",
-  "license": "",
-  "persist": "Data",
-  "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
-  "shortcuts": [
-    [
-      "VirtuaWinPortable.exe",
-      "VirtuaWinPortable"
-    ]
-  ],
-  "url": "https://versaweb.dl.sourceforge.net/project/portableapps/VirtuaWin%20Portable/VirtuaWinPortable_4.5_English.paf.exe",
-  "version": "4.5"
+    "autoupdate": {
+        "url": "https://versaweb.dl.sourceforge.net/project/portableapps/VirtuaWin%20Portable/VirtuaWinPortable_$version_English.paf.exe",
+        "hash": {
+            "url": "https://portableapps.com/apps/utilities/virtuawin_portable",
+            "regex": "MD5 Hash: +[\\w]{32}"
+        }
+    },
+    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
 }

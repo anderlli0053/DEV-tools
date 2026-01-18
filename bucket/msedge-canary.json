@@ -1,47 +1,47 @@
 {
-  "version": "120.0.2185.0",
-  "description": "Fast, secure, and free web browser, built for the modern web based",
-  "homepage": "https://www.microsoft.com/en-us/edge",
-  "license": {
-    "identifier": "Proprietary Software"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "http://msedge.f.tlu.dl.delivery.mp.microsoft.com/filestreamingservice/files/5ebd1eac-89c0-4b44-9bf2-9fcdf1c2b388?P1=1698982218&P2=404&P3=2&P4=XXpDvkjQZw57Jx0LbpuS%2bgPT8OshMdgCncmqwV6FdVmI5ww3HJWihMx9iNLCDWlS9XX23jvcCKIpz36PYfOkug%3d%3d%3d%3dd%3d3d#/dl.7z",
-      "hash": "6e6b1b2e1150205463540bfabb5264ac7a09e4f2fe6c711375b54f2a6d1263f1"
-    }
-  },
-  "pre_install": [
-    "Expand-7zipArchive \"$dir\\MSEDGE.7z\" -ExtractDir 'Chrome-bin' -Removal",
-    "Rename-Item \"$dir\\$version\" \"$dir\\current\" "
-  ],
-  "bin": [
-    [
-      "current\\msedge.exe",
-      "msedge-canary",
-      "--user-data-dir=\"$dir\\User Data\""
-    ]
-  ],
-  "shortcuts": [
-    [
-      "current\\msedge.exe",
-      "Edge Canary",
-      "--user-data-dir=\"$dir\\User Data\""
-    ]
-  ],
-  "persist": "User Data",
-  "checkver": {
-    "url": "https://42wim.github.io/edgeupdates/canary.txt",
-    "regex": "(?sm)(?<version>(.*?)):http://(?<64>(.*))"
-  },
-  "autoupdate": {
+    "version": "128.0.2610.0",
+    "description": "Fast, secure, and free web browser, built for the modern web based",
+    "homepage": "https://www.microsoft.com/en-us/edge",
+    "license": {
+        "identifier": "Proprietary Software"
+    },
     "architecture": {
-      "64bit": {
-        "url": "http://$match64#/dl.7z",
-        "hash": {
-          "url": "https://42wim.github.io/edgeupdates/canary.sha256"
+        "64bit": {
+            "url": "http://msedge.f.tlu.dl.delivery.mp.microsoft.com/filestreamingservice/files/86584d92-362b-4bc1-a9d5-be224663d9e9?P1=1717299028&P2=404&P3=2&P4=KNdaNp0IHfCjINbEupnlP9rbSCrxKetzeJ6MoBidEThNVUKIu7G5ORTQdFEdNuAK14BQPhvreFh7idqR7iPhNg%3d%3d%3d%3dd%3d3d3d#/dl.7z",
+            "hash": "3e4739de956237a9c86654d75f4da6743900f90bd3e5a390a23c289065576361"
         }
-      }
+    },
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\MSEDGE.7z\" -ExtractDir 'Chrome-bin' -Removal",
+        "Rename-Item \"$dir\\$version\" \"$dir\\current\" "
+    ],
+    "bin": [
+        [
+            "current\\msedge.exe",
+            "msedge-canary",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "current\\msedge.exe",
+            "Edge Canary",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://42wim.github.io/edgeupdates/canary.txt",
+        "regex": "(?sm)(?<version>(.*?)):http://(?<64>(.*))"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://$match64#/dl.7z",
+                "hash": {
+                    "url": "https://42wim.github.io/edgeupdates/canary.sha256"
+                }
+            }
+        }
     }
-  }
 }

@@ -1,0 +1,36 @@
+{
+    "version": "3.1.2",
+    "description": "A todo list with electron.",
+    "homepage": "https://github.com/tonylu110/uyou-todo-electron",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/tonylu110/uyou-todo-electron/releases/download/3.1.2/uyou.ToDo-3.1.2-x64.zip",
+            "hash": "0b05fd1278b6aef331f28b625ff08184f9a724a340b4ff664b45e9c6d07f5c33"
+        },
+        "arm64": {
+            "url": "https://github.com/tonylu110/uyou-todo-electron/releases/download/3.1.2/uyou.ToDo-3.1.2-arm64.zip",
+            "hash": "4c3782385d09bd3c0f378ac01ffcc36beaafc38ca06c447f53ab4c5fcf6b9bcf"
+        }
+    },
+    "post_install": "Remove-Item \"$dir\\resources\\app-update.yml\" -Force -Recurse",
+    "shortcuts": [
+        [
+            "uyou ToDo.exe",
+            "uyou ToDo",
+            "--user-data-dir=\"User Data\""
+        ]
+    ],
+    "persist": "User Data",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/tonylu110/uyou-todo-electron/releases/download/$version/uyou.ToDo-$version-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/tonylu110/uyou-todo-electron/releases/download/$version/uyou.ToDo-$version-arm64.zip"
+            }
+        }
+    }
+}

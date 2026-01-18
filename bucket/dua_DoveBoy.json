@@ -1,23 +1,27 @@
 {
-  "version": "2.30.0",
-  "description": "Disk Usage Analyzer",
-  "homepage": "https://github.com/Byron/dua-cli",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/Byron/dua-cli/releases/download/v2.30.0/dua-v2.30.0-x86_64-pc-windows-msvc.zip",
-      "hash": "03926d799703342d644ebe2c4aa7141b5a71cbdbafe4cc3e36c83de32ae3644c",
-      "extract_dir": "dua-v2.30.0-x86_64-pc-windows-msvc"
-    }
-  },
-  "bin": "dua.exe",
-  "checkver": "github",
-  "autoupdate": {
+    "version": "2.33.0",
+    "description": "Disk Usage Analyzer",
+    "homepage": "https://github.com/Byron/dua-cli",
+    "license": "MIT",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/Byron/dua-cli/releases/download/v$version/dua-v$version-x86_64-pc-windows-msvc.zip",
-        "extract_dir": "dua-v$version-x86_64-pc-windows-msvc"
-      }
+        "64bit": {
+            "url": "https://github.com/Byron/dua-cli/releases/download/v2.33.0/dua-v2.33.0-x86_64-pc-windows-msvc.zip",
+            "hash": "24caf507e3b07b4e8a69c6182d7585129a1020aeaa76545fd5de536978b22ac3",
+            "extract_dir": "dua-v2.33.0-x86_64-pc-windows-msvc"
+        }
+    },
+    "bin": "dua.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/Byron/dua-cli/releases",
+        "jsonpath": "$[*].assets[*].browser_download_url",
+        "regex": "/releases/download/v([\\d.]+)/dua-v([\\d.]+)-x86_64-pc-windows"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Byron/dua-cli/releases/download/v$version/dua-v$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "dua-v$version-x86_64-pc-windows-msvc"
+            }
+        }
     }
-  }
 }

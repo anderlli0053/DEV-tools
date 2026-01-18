@@ -1,28 +1,28 @@
 {
-  "autoupdate": {
-    "hash": {
-      "regex": "MD5 Hash: +[\\w]{32}",
-      "url": "https://portableapps.com/apps/graphics_pictures/lazpaint-portable"
+    "homepage": "https://portableapps.com/apps/graphics_pictures/lazpaint-portable",
+    "description": "Image editor",
+    "version": "7.1.3",
+    "license": "",
+    "url": "https://phoenixnap.dl.sourceforge.net/project/portableapps/LazPaint%20Portable/LazPaintPortable_7.1.3.paf.exe#/dl.7z",
+    "hash": "md5:3a818e4033b75aed8cd13b4e0507fd36",
+    "bin": "LazPaintPortable.exe",
+    "shortcuts": [
+        [
+            "LazPaintPortable.exe",
+            "LazPaintPortable"
+        ]
+    ],
+    "persist": "Data",
+    "checkver": {
+        "url": "https://portableapps.com/apps/graphics_pictures/lazpaint-portable",
+        "re": "Version \\s+([\\w\\.]* for Win"
     },
-    "url": "https://phoenixnap.dl.sourceforge.net/project/portableapps/LazPaint%20Portable/LazPaintPortable_$version.paf.exe"
-  },
-  "bin": "LazPaintPortable.exe",
-  "checkver": {
-    "re": "Version \\s+([\\w\\.]* for Win",
-    "url": "https://portableapps.com/apps/graphics_pictures/lazpaint-portable"
-  },
-  "description": "Image editor",
-  "hash": "842c9f4669fcf7e5adeb1e5c886feda38c925115a299639779b84a3d98461131",
-  "homepage": "https://portableapps.com/apps/graphics_pictures/lazpaint-portable",
-  "license": "",
-  "persist": "Data",
-  "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
-  "shortcuts": [
-    [
-      "LazPaintPortable.exe",
-      "LazPaintPortable"
-    ]
-  ],
-  "url": "https://phoenixnap.dl.sourceforge.net/project/portableapps/LazPaint%20Portable/LazPaintPortable_7.1.6.paf.exe",
-  "version": "7.1.6"
+    "autoupdate": {
+        "url": "https://phoenixnap.dl.sourceforge.net/project/portableapps/LazPaint%20Portable/LazPaintPortable_$version.paf.exe",
+        "hash": {
+            "url": "https://portableapps.com/apps/graphics_pictures/lazpaint-portable",
+            "regex": "MD5 Hash: +[\\w]{32}"
+        }
+    },
+    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
 }

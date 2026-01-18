@@ -1,28 +1,28 @@
 {
-  "autoupdate": {
-    "hash": {
-      "regex": "MD5 Hash: +[\\w]{32}",
-      "url": "https://portableapps.com/apps/office/openoffice_portable"
+    "homepage": "https://portableapps.com/apps/office/openoffice_portable",
+    "description": "Office suite",
+    "version": "4.1.7",
+    "license": "",
+    "url": "https://managedway.dl.sourceforge.net/project/portableapps/OpenOffice.org%20Portable/OpenOfficePortable_4.1.7_MultilingualStandard.paf.exe#/dl.7z",
+    "hash": "md5:3fb3d199947a2bc88b83ab5afa729dc6",
+    "bin": "OpenOfficePortable.exe",
+    "shortcuts": [
+        [
+            "OpenOfficePortable.exe",
+            "OpenOfficePortable"
+        ]
+    ],
+    "persist": "Data",
+    "checkver": {
+        "url": "https://portableapps.com/apps/office/openoffice_portable",
+        "re": "Version \\s+([\\w\\.]* for Win"
     },
-    "url": "https://managedway.dl.sourceforge.net/project/portableapps/OpenOffice.org%20Portable/OpenOfficePortable_$version_MultilingualStandard.paf.exe"
-  },
-  "bin": "OpenOfficePortable.exe",
-  "checkver": {
-    "re": "Version \\s+([\\w\\.]* for Win",
-    "url": "https://portableapps.com/apps/office/openoffice_portable"
-  },
-  "description": "Office suite",
-  "hash": "6961b99e1fcd03acb5520775eb54e85b5420af4eedc09fffa737ec553db65a3e",
-  "homepage": "https://portableapps.com/apps/office/openoffice_portable",
-  "license": "",
-  "persist": "Data",
-  "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
-  "shortcuts": [
-    [
-      "OpenOfficePortable.exe",
-      "OpenOfficePortable"
-    ]
-  ],
-  "url": "https://managedway.dl.sourceforge.net/project/portableapps/OpenOffice.org%20Portable/OpenOfficePortable_4.1.13_MultilingualStandard.paf.exe",
-  "version": "4.1.13"
+    "autoupdate": {
+        "url": "https://managedway.dl.sourceforge.net/project/portableapps/OpenOffice.org%20Portable/OpenOfficePortable_$version_MultilingualStandard.paf.exe",
+        "hash": {
+            "url": "https://portableapps.com/apps/office/openoffice_portable",
+            "regex": "MD5 Hash: +[\\w]{32}"
+        }
+    },
+    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
 }

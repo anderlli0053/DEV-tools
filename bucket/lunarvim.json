@@ -1,47 +1,54 @@
 {
-    "version": "1.3.0",
-    "description": "Lunarvim is a community-driven framework for neovim, written in lua. It is a full-featured IDE, with a focus on simplicity and ease of use.",
+    "version": "1.4",
+    "description": "an IDE layer for Neovim",
     "homepage": "https://www.lunarvim.org/",
-    "license": "GPL-3.0-only",
+    "license": "GPL-3.0-or-later",
     "url": [
         "https://raw.githubusercontent.com/LunarVim/LunarVim/master/utils/installer/install.ps1",
-        "https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/uninstall.ps1",
-        "https://raw.githubusercontent.com/LunarVim/LunarVim/master/utils/bin/lvim.ps1"
+        "https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/uninstall.ps1"
     ],
     "hash": [
         "fc6f0ebc6104cd085c58e35ce737a367afcda2e10080a506212762eae5294d52",
-        "90799fcdc9dd2ca8959281fabeed2683562a9df59943fbec63405266ebde8f0e",
-        "1a04e5c7981598105d26f6340d9c6f80c2486515842a797e3918151861e713a1"
-    ],
-    "bin": [
-        [
-            "install.ps1",
-            "lvim_install"
-        ],
-        [
-            "bin\\lvim.ps1",
-            "lvim"
-        ]
-    ],
-    "env_set": {
-        "LUNARVIM_RUNTIME_DIR": "$dir\\lunarvim",
-        "LUNARVIM_CONFIG_DIR": "$dir\\config",
-        "LUNARVIM_CACHE_DIR": "$dir\\cache",
-        "LUNARVIM_BASE_DIR": "$dir\\lunarvim\\lvim"
-    },
-    "persist": [
-        "config",
-        "cache"
+        "90799fcdc9dd2ca8959281fabeed2683562a9df59943fbec63405266ebde8f0e"
     ],
     "installer": {
         "script": [
-            "Write-Host \"Installing LunarVim...\" -ForegroundColor Green",
-            "If (!(Test-Path \"$dir\\bin\")) { New-Item \"$dir\\bin\" -ItemType Directory | Out-Null }",
-            "Move-Item \"$dir\\lvim.ps1\" \"$dir\\bin\\lvim.ps1\" -Force | Out-Null"
+            "$env:INSTALL_PREFIX = \"$dir\"",
+            "$env:LUNARVIM_RUNTIME_DIR = \"$dir\\LunarVim\"",
+            "$env:LUNARVIM_BASE_DIR = \"$dir\\LunarVim\\lvim\"",
+            "$env:LUNARVIM_CONFIG_DIR = \"$dir\\config\"",
+            "$env:LUNARVIM_CACHE_DIR = \"$dir\\cache\"",
+            "$env:XDG_DATA_HOME = \"$dir\\data\"",
+            "$env:XDG_STATE_HOME = \"$dir\\state\"",
+            "Invoke-Expression(\"$dir\\install.ps1\")",
+            "Set-Content \"$dir\\lvim.bat\" (@('@echo off', 'set XDG_DATA_HOME=%~dp0data', 'set XDG_STATE_HOME=%~dp0state', 'set LUNARVIM_RUNTIME_DIR=%~dp0LunarVim', 'set LUNARVIM_BASE_DIR=%~dp0LunarVim\\lvim', 'set LUNARVIM_CONFIG_DIR=%~dp0config', 'set LUNARVIM_CACHE_DIR=%~dp0cache', 'nvim -u \"%LUNARVIM_BASE_DIR%\\init.lua\" %*') -join \"`r`n\") -Encoding Ascii"
         ]
     },
-    "notes": "To finish installing it, run `lvim_install`. To run it, `lvim`.",
     "uninstaller": {
-        "script": "Invoke-Expression -Command \"& '$dir\\uninstall.ps1'\""
+        "file": "uninstall.ps1"
+    },
+    "bin": "lvim.bat",
+    "shortcuts": [
+        [
+            "lvim.bat",
+            "LunarVim"
+        ]
+    ],
+    "depends": [
+        "main/neovim",
+        "main/git",
+        "main/make"
+    ],
+    "suggest": {
+        "Python": "main/python",
+        "Node.js": "main/nodejs"
+    },
+    "persist": "config",
+    "checkver": {
+        "url": "https://www.lunarvim.org/docs/installation",
+        "regex": "https://raw\\.githubusercontent\\.com/LunarVim/LunarVim/release-([\\d.]+)/neovim-(?<nvim>[\\d.]+)/utils/installer/install\\.ps1"
+    },
+    "autoupdate": {
+        "url": "https://raw.githubusercontent.com/LunarVim/LunarVim/release-$version/neovim-$matchNvim/utils/installer/install.ps1"
     }
 }

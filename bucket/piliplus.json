@@ -1,0 +1,35 @@
+{
+    "version": "1.1.5.4",
+    "description": "使用Flutter开发的BiliBili第三方客户端",
+    "homepage": "https://github.com/bggRGjQaUbCoE/PiliPlus",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/bggRGjQaUbCoE/PiliPlus/releases/download/1.1.5.4/PiliPlus_windows_1.1.5+4543_x64.zip",
+            "hash": "5dd5d7ba9d5fc752f37a6478b77e3ed55607e7da7c10acaacc504fa12fd418fa"
+        }
+    },
+    "extract_dir": "PiliPlus-Win",
+    "shortcuts": [
+        [
+            "piliplus.exe",
+            "PiliPlus"
+        ]
+    ],
+    "post_uninstall": "if ($purge) { Remove-Item \"$env:APPDATA\\com.example\\piliplus\", \"$env:LOCALAPPDATA\\com.example\\piliplus\" -Force -Recurse -ErrorAction SilentlyContinue }",
+    "notes": [
+        "PiliPlus is NOT portable.",
+        "Settings are stored in '%APPDATA%\\com.example\\piliplus', and will be purged during uninstallation."
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/bggRGjQaUbCoE/PiliPlus/releases/latest",
+        "regex": "/download/([^/]+)/PiliPlus_windows_(?<main>[\\d.]+)%2B(?<build>\\d+)_x64.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/bggRGjQaUbCoE/PiliPlus/releases/download/$version/PiliPlus_windows_$matchMain+$matchBuild_x64.zip"
+            }
+        }
+    }
+}

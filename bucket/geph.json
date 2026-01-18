@@ -1,0 +1,30 @@
+{
+    "version": "5.4.1",
+    "description": "A VPN Client",
+    "homepage": "https://github.com/geph-official/gephgui-pkg",
+    "license": "MPL 2.0",
+    "notes": "",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/geph-official/gephgui-pkg/releases/download/v5.4.1/geph-windows-setup.exe",
+            "hash": "a7a5b9e10f5fa8e10eeb64116688eb358ea90bb258e35bf45ac0b4e54e6257bc"
+        }
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/geph-official/gephgui-pkg/releases/download/v$version/geph-windows-setup.exe"
+            }
+        }
+    },
+    "installer": {
+        "script": [
+            "Start-Process -Wait -FilePath \"$dir\\geph-windows-setup.exe\" -ArgumentList '/SILENT'",
+            "Remove-Item \"$dir\\geph-windows-setup.exe\""
+        ]
+    },
+    "uninstaller": {
+        "script": "Start-Process -Wait -FilePath \"$env:ProgramFiles\\Geph\\unins000.exe\" -ArgumentList '/SILENT'"
+    }
+}

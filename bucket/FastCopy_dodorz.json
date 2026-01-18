@@ -1,56 +1,56 @@
 {
-  "version": "5.8.1",
-  "description": "The Fastest copy/backup software.",
-  "homepage": "https://fastcopy.jp",
-  "license": {
-    "identifier": "Freeware",
-    "url": "https://fastcopy.jp/help/fastcopy_eng.htm#license"
-  },
-  "url": "https://fastcopy.jp/archive/FastCopy5.8.1_installer.exe",
-  "hash": "8cf334a89d788442d5c8a7cac8cadaf1670c161a29229771641a03acd5a4b0ec",
-  "pre_install": [
-    "if (!(Test-Path \"$persist_dir\\FastCopy2.ini\")) {",
-    "   Set-Content \"$dir\\FastCopy2.ini\" '[main]' -Encoding ASCII",
-    "}"
-  ],
-  "architecture": {
-    "64bit": {
-      "installer": {
-        "script": [
-          "Invoke-ExternalCommand \"$dir\\$fname\" '/EXTRACT64' | Out-Null",
-          "Get-ChildItem \"$dir\\FastCopy$version*x64\\*\" -Recurse | Move-Item -Destination $dir",
-          "Remove-Item \"$dir\\$fname\", \"$dir\\FastCopy$version*\" "
-        ]
-      }
+    "version": "5.11.2",
+    "description": "The Fastest copy/backup software.",
+    "homepage": "https://fastcopy.jp",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://fastcopy.jp/help/fastcopy_eng.htm#license"
     },
-    "32bit": {
-      "installer": {
-        "script": [
-          "Invoke-ExternalCommand \"$dir\\$fname\" '/EXTRACT32' | Out-Null",
-          "Get-ChildItem \"$dir\\FastCopy$version\\*\" -Recurse | Move-Item -Destination $dir",
-          "Remove-Item \"$dir\\$fname\", \"$dir\\FastCopy$version\" "
-        ]
-      }
-    }
-  },
-  "bin": [
-    "FastCopy.exe",
-    "FcHash.exe",
-    "fcp.exe"
-  ],
-  "shortcuts": [
-    [
-      "FastCopy.exe",
-      "FastCopy"
+    "url": "https://fastcopy.jp/archive/FastCopy5.11.2_installer.exe",
+    "hash": "70b273dd08c15d40fac59a217b93be195bacfa47acabd031463a6df800d29fea",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\FastCopy2.ini\")) {",
+        "   Set-Content \"$dir\\FastCopy2.ini\" '[main]' -Encoding ASCII",
+        "}"
     ],
-    [
-      "setup.exe",
-      "FastCopy Setup"
-    ]
-  ],
-  "persist": "FastCopy2.ini",
-  "checkver": "FastCopy ver ([\\d.]+)",
-  "autoupdate": {
-    "url": "https://fastcopy.jp/archive/FastCopy$version_installer.exe"
-  }
+    "architecture": {
+        "64bit": {
+            "installer": {
+                "script": [
+                    "Invoke-ExternalCommand \"$dir\\$fname\" '/EXTRACT64' | Out-Null",
+                    "Get-ChildItem \"$dir\\FastCopy$version*x64\\*\" -Recurse | Move-Item -Destination $dir",
+                    "Remove-Item \"$dir\\$fname\", \"$dir\\FastCopy$version*\" "
+                ]
+            }
+        },
+        "32bit": {
+            "installer": {
+                "script": [
+                    "Invoke-ExternalCommand \"$dir\\$fname\" '/EXTRACT32' | Out-Null",
+                    "Get-ChildItem \"$dir\\FastCopy$version\\*\" -Recurse | Move-Item -Destination $dir",
+                    "Remove-Item \"$dir\\$fname\", \"$dir\\FastCopy$version\" "
+                ]
+            }
+        }
+    },
+    "bin": [
+        "FastCopy.exe",
+        "FcHash.exe",
+        "fcp.exe"
+    ],
+    "shortcuts": [
+        [
+            "FastCopy.exe",
+            "FastCopy"
+        ],
+        [
+            "setup.exe",
+            "FastCopy Setup"
+        ]
+    ],
+    "persist": "FastCopy2.ini",
+    "checkver": "FastCopy ver ([\\d.]+)",
+    "autoupdate": {
+        "url": "https://fastcopy.jp/archive/FastCopy$version_installer.exe"
+    }
 }

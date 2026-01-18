@@ -7,15 +7,15 @@
         "url": "http://nsis.sourceforge.net/License"
     },
     "url": "https://sourceforge.net/projects/nsis/files/NSIS%203/3.11/nsis-3.11-setup.exe#/setup.exe",
-    "hash": "sha1:a64bbad73d4638d668ffdbd0887be7d6528d6a9d",
+    "hash": "38d49f8fe09b1c332b01d0940e57b7258f4447733643273a01c59959ad9d3b0a",
     "installer": {
         "script": [
-            "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/S', \"/D=$dir\") -Verb RunAs | Out-Null",
+            "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList @('/S', \"/D=$dir\") -RunAs | Out-Null",
             "Remove-Item \"$([Environment]::GetFolderPath('startmenu'))\\Programs\\NSIS.lnk\""
         ]
     },
     "uninstaller": {
-        "script": "Start-Process -Wait \"$dir\\uninst-nsis.exe\" -ArgumentList '/S' -Verb RunAs | Out-Null"
+        "script": "Invoke-ExternalCommand \"$dir\\uninst-nsis.exe\" -ArgumentList @('/S') -RunAs | Out-Null"
     },
     "bin": [
         "makensis.exe",

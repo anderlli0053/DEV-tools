@@ -1,57 +1,54 @@
 {
-  "version": "3.1.8.203715",
-  "description": "网易云音乐客户端",
-  "homepage": "https://music.163.com/",
-  "license": {
-    "identifier": "EULA",
-    "url": "https://music.163.com/html/web2/service.html"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://d1.music.126.net/dmusic/NeteaseCloudMusic_Music_official_3.1.8.203715_64.exe#/dl.7z",
-      "hash": "71ce6bd848a3b7c9a249597264960fe2ff806f2c0e9f5303a25b0669228bd299"
-    },
-    "32bit": {
-      "url": "https://d1.music.126.net/dmusic/NeteaseCloudMusic_Music_official_3.1.8.203715_32.exe#/dl.7z",
-      "hash": "622fd422fe941204b6e4c71eb22ef0205fc75174ddd872a991045b420c433699"
-    }
-  },
-  "installer": {
-    "script": [
-      "Get-ChildItem \"$dir\\redist_packages\" | Move-Item -Destination \"$dir\" -Force",
-      "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name dorado) scripts/DoradoUtils.psm1)",
-      "Mount-ExternalRuntimeData -Source \"$persist_dir\\appdata\" -Target \"$env:LOCALAPPDATA\\Netease\\CloudMusic\"",
-      "Remove-Module -Name DoradoUtils"
-    ]
-  },
-  "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\",\"$dir\\redist_packages\" -Force -Recurse",
-  "uninstaller": {
-    "script": [
-      "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name dorado) scripts/DoradoUtils.psm1)",
-      "Dismount-ExternalRuntimeData -Target \"$env:LOCALAPPDATA\\Netease\\CloudMusic\"",
-      "Remove-Module -Name DoradoUtils"
-    ]
-  },
-  "bin": "cloudmusic.exe",
-  "shortcuts": [
-    [
-      "cloudmusic.exe",
-      "网易云音乐"
-    ]
-  ],
-  "checkver": {
-    "url": "https://music.163.com/api/appcustomconfig/get",
-    "jsonpath": "$.data.web-new-download.pc64.downloadUrl",
-    "regex": "NeteaseCloudMusic_Music_official_([\\d.]+)_64.exe"
-  },
-  "autoupdate": {
+    "version": "3.1.26.204919",
+    "description": "网易云音乐客户端",
+    "homepage": "https://music.163.com/",
+    "license": "Freeware",
     "architecture": {
-      "64bit": {
-        "url": "https://d1.music.126.net/dmusic/NeteaseCloudMusic_Music_official_$version_64.exe#/dl.7z"
-      },
-      "32bit": {
-        "url": "https://d1.music.126.net/dmusic/NeteaseCloudMusic_Music_official_$version_32.exe#/dl.7z"
-      }
+        "64bit": {
+            "url": "https://d8.music.126.net/dmusic2/NeteaseCloudMusic_Music_official_3.1.26.204919_64.exe#/dl.7z",
+            "hash": "90c8f9679fa3dd89975a4382d934df3936e79d583ffa84b90660354955ceff79"
+        },
+        "32bit": {
+            "url": "https://d8.music.126.net/dmusic2/NeteaseCloudMusic_Music_official_3.1.26.204919_32.exe#/dl.7z",
+            "hash": "4d2146d6606ddef6e8f8891213788734588bdd2ad199e375b008a699edc125c8"
+        }
+    },
+    "installer": {
+        "script": [
+            "Get-ChildItem \"$dir\\redist_packages\" | Move-Item -Destination \"$dir\" -Force",
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name extras-cn) scripts/AppsUtils.psm1)",
+            "Mount-ExternalRuntimeData -Source \"$persist_dir\\appdata\" -Target \"$env:LOCALAPPDATA\\Netease\\CloudMusic\"",
+            "Remove-Module -Name AppsUtils"
+        ]
+    },
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\",\"$dir\\redist_packages\" -Force -Recurse",
+    "uninstaller": {
+        "script": [
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name extras-cn) scripts/AppsUtils.psm1)",
+            "Dismount-ExternalRuntimeData -Target \"$env:LOCALAPPDATA\\Netease\\CloudMusic\"",
+            "Remove-Module -Name AppsUtils"
+        ]
+    },
+    "bin": "cloudmusic.exe",
+    "shortcuts": [
+        [
+            "cloudmusic.exe",
+            "网易云音乐"
+        ]
+    ],
+    "checkver": {
+        "url": "https://music.163.com/api/appcustomconfig/get",
+        "jsonpath": "$.data.web-new-download.pc64.downloadUrl",
+        "regex": "NeteaseCloudMusic_Music_official_([\\d.]+)_64.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://d8.music.126.net/dmusic2/NeteaseCloudMusic_Music_official_$version_64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://d8.music.126.net/dmusic2/NeteaseCloudMusic_Music_official_$version_32.exe#/dl.7z"
+            }
+        }
     }
-  }
 }

@@ -1,27 +1,38 @@
 {
-  "##": "QQ音乐",
-  "version": "21.41.0",
-  "description": "[QQ音乐] - 一款带有精彩音乐推荐功能的播放器，是国内内容丰富之一的音乐平台",
-  "homepage": "https://y.qq.com",
-  "license": {
-    "identifier": "Proprietary",
-    "url": "http://y.qq.com/y/static/tips/service_tips.html"
-  },
-  "hash": "9feff8e1d1b268bbc13452912f9ef687da8ad14b8daa775df12dcf804cc11f14",
-  "url": "https://dldir1v6.qq.com/music/clntupate/QQMusic_Setup_2141.exe#/dl.7z",
-  "post_install": "Copy-Item \"$dir\\QQMusic.tpc\" \"$dir\\instok\"",
-  "checkver": {
-    "url": "https://y.qq.com/download/download.html",
-    "regex": "Windows PC.*\\:([\\d.]+)"
-  },
-  "bin": "QQMusic.exe",
-  "shortcuts": [
-    [
-      "QQMusic.exe",
-      "QQ音乐"
-    ]
-  ],
-  "autoupdate": {
-    "url": "https://dldir1v6.qq.com/music/clntupate/QQMusic_Setup_$majorVersion$minorVersion.exe#/dl.7z"
-  }
+    "##": "QQ音乐",
+    "version": "22.0.1",
+    "description": "[QQ音乐] - 一款带有精彩音乐推荐功能的播放器，是国内内容丰富之一的音乐平台",
+    "homepage": "https://y.qq.com",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "http://y.qq.com/y/static/tips/service_tips.html"
+    },
+    "hash": "a17543e02bacf7525587bd47b337dabf07107a809ea4092d0af1327d3738d9ae",
+    "url": "https://c.y.qq.com/cgi-bin/file_redirect.fcg?bid=dldir&file=ecosfile%2Fmusic_clntupate%2Fpc%2Fother%2FQQMusic_Setup_2201.exe&sign=1-c98195b3a0589ddd4429c727f6f529c843fa894b02bbe09e7a616f8152f053a3-694e3336#/dl.7z",
+    "post_install": "Copy-Item \"$dir\\QQMusic.tpc\" \"$dir\\instok\"",
+    "checkver": {
+        "script": [
+            "$url = 'https://y.qq.com/download/download.js'",
+            "$res = Invoke-WebRequest -Uri $url -UseBasicParsing",
+            "$content = $res.Content",
+            "$jsonString = $content -replace '^MusicJsonCallback\\(|\\)$', ''",
+            "$data = $jsonString | ConvertFrom-Json",
+            "$json = $data.data | Where-Object { $_.Ftitle -match \"Windows PC\" }",
+            "$version = $json.Fversion -replace '^最新版:', ''",
+            "$downloadUrl = $json.Flink1",
+            "$str = \"$($version)_____$($downloadUrl)\"",
+            "Write-Output $str"
+        ],
+        "regex": "([\\d.]+)_____https://c.y.qq.com/(?<url>.+)"
+    },
+    "bin": "QQMusic.exe",
+    "shortcuts": [
+        [
+            "QQMusic.exe",
+            "QQ音乐"
+        ]
+    ],
+    "autoupdate": {
+        "url": "https://c.y.qq.com/$matchUrl#/dl.7z"
+    }
 }

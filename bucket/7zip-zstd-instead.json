@@ -1,42 +1,42 @@
 {
-  "version": "v24.09-v1.5.7-R1",
-  "homepage": "https://github.com/mcmilk/7-Zip-zstd/",
-  "description": "Multi-format compression/decompression tool with brotli and other codecs (beta version)",
-  "license": "LGPL-2.1-or-later",
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v24.09-v1.5.7-R1/7z24.09-zstd-x64.exe#/dl.7z",
-      "hash": "2378901c99005aed525971e6d308a3a80807efc6bb21075df53bbb7cd697572b"
-    },
-    "32bit": {
-      "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v24.09-v1.5.7-R1/7z24.09-zstd-x32.exe#/dl.7z",
-      "hash": "5dec4e0d4a7ff43bc0022ad33044293efdde2afc8e911f4fcb6ac9bcee4f6e7c"
-    }
-  },
-  "post_install": "scoop config use_external_7zip true",
-  "post_uninstall": "scoop config use_external_7zip false",
-  "bin": [
-    "7z.exe",
-    "7zG.exe"
-  ],
-  "shortcuts": [
-    [
-      "7zFM.exe",
-      "7-Zip"
-    ]
-  ],
-  "checkver": {
-    "url": "https://api.github.com/repos/mcmilk/7-Zip-zstd/releases",
-    "jsonpath": "$[0].tag_name"
-  },
-  "autoupdate": {
+    "version": "v25.01-v1.5.7-R4",
+    "homepage": "https://github.com/mcmilk/7-Zip-zstd/",
+    "description": "Multi-format compression/decompression tool with brotli and other codecs (beta version)",
+    "license": "LGPL-2.1-or-later",
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/$version/7z$matchHead-zstd-x64.exe#/dl.7z"
-      },
-      "32bit": {
-        "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/$version/7z$matchHead-zstd-x32.exe#/dl.7z"
-      }
+        "64bit": {
+            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v25.01-v1.5.7-R4/7z25.01-zstd-x64.exe#/dl.7z",
+            "hash": "5a55a8b6abb09d4b5ddd64c95f22a5270cb46752fb7a5353073508922b141596"
+        },
+        "32bit": {
+            "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/v25.01-v1.5.7-R4/7z25.01-zstd-x32.exe#/dl.7z",
+            "hash": "76fb9f4eff5235032261f5e498c5733bbd7617b7895d724a77306fa869a55e23"
+        }
+    },
+    "post_install": "scoop config use_external_7zip true",
+    "post_uninstall": "scoop config use_external_7zip false",
+    "bin": [
+        "7z.exe",
+        "7zG.exe"
+    ],
+    "shortcuts": [
+        [
+            "7zFM.exe",
+            "7-Zip"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/mcmilk/7-Zip-zstd/releases",
+        "jsonpath": "$[0].tag_name"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/$version/7z$matchHead-zstd-x64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://github.com/mcmilk/7-Zip-zstd/releases/download/$version/7z$matchHead-zstd-x32.exe#/dl.7z"
+            }
+        }
     }
-  }
 }

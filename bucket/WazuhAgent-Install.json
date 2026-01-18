@@ -1,35 +1,35 @@
 {
-  "version": "4.11.2",
-  "description": "Wazuh Agent. It communicates with the Wazuh server, sending data in near real-time through an encrypted and authenticated channel.",
-  "homepage": "https://wazuh.com/",
-  "license": "GPL-2.0-only",
-  "changelog": "https://documentation.wazuh.com/current/release-notes/index.html",
-  "url": "https://packages.wazuh.com/4.x/windows/wazuh-agent-4.11.2-1.msi#/setup.msi_",
-  "hash": "921ebef63d487e7cda10e588fffaeceb63857a5e785fe1ebce09b5c1da34cda8",
-  "pre_download": "Assert-Administrator",
-  "installer": {
-    "script": [
-      "$programname = \"programname*\"",
-      "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFilesX86\")",
-      "$filepath = \"$ProgramFiles\\ossec-agent\\VERSION\"",
-      "$fileversion = Get-Content -Path $filepath",
-      "$fileversion = $fileversion.substring(1)",
-      "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ([System.Version]\"$fileversion\" -lt [System.Version]\"$version\"))",
-      "{",
-      "   Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn') -RunAs | Out-Null",
-      "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ([System.Version]\"$fileversion\" -lt [System.Version]\"$version\"))",
-      "   {",
-      "       exit 1",
-      "   }",
-      "}",
-      "if (Test-Path -Path \"$dir\\setup.msi_\") { Remove-Item \"$dir\\setup.msi_\" -Force }"
-    ]
-  },
-  "checkver": {
-    "url": "https://documentation.wazuh.com/current/release-notes/index.html",
-    "regex": "<span class=\"doc\">([\\d.]+)"
-  },
-  "autoupdate": {
-    "url": "https://packages.wazuh.com/$majorVersion.x/windows/wazuh-agent-$version-1.msi#/setup.msi_"
-  }
+    "version": "4.14.2",
+    "description": "Wazuh Agent. It communicates with the Wazuh server, sending data in near real-time through an encrypted and authenticated channel.",
+    "homepage": "https://wazuh.com/",
+    "license": "GPL-2.0-only",
+    "changelog": "https://documentation.wazuh.com/current/release-notes/index.html",
+    "url": "https://packages.wazuh.com/4.x/windows/wazuh-agent-4.14.2-1.msi#/setup.msi_",
+    "hash": "e1eb434f1694283b89e07021cce1bded4ef25275d9efe6ca0edf2d514a7ea959",
+    "pre_download": "Assert-Administrator",
+    "installer": {
+        "script": [
+            "$programname = \"programname*\"",
+            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFilesX86\")",
+            "$filepath = \"$ProgramFiles\\ossec-agent\\VERSION\"",
+            "$fileversion = Get-Content -Path $filepath",
+            "$fileversion = $fileversion.substring(1)",
+            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ([System.Version]\"$fileversion\" -lt [System.Version]\"$version\"))",
+            "{",
+            "   Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn') -RunAs | Out-Null",
+            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ([System.Version]\"$fileversion\" -lt [System.Version]\"$version\"))",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}",
+            "if (Test-Path -Path \"$dir\\setup.msi_\") { Remove-Item \"$dir\\setup.msi_\" -Force }"
+        ]
+    },
+    "checkver": {
+        "url": "https://documentation.wazuh.com/current/release-notes/index.html",
+        "regex": "<span class=\"doc\">([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://packages.wazuh.com/$majorVersion.x/windows/wazuh-agent-$version-1.msi#/setup.msi_"
+    }
 }

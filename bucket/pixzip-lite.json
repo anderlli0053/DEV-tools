@@ -1,0 +1,28 @@
+{
+    "version": "3.3.1",
+    "description": "An easy to use batch image compression software. / 简单易用的批量图片压缩软件",
+    "homepage": "https://github.com/richhost/pixzip-lite",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/richhost/pixzip-lite/releases/download/v3.3.1/PixZip.Lite-3.3.1-win-x64.exe#/dl.7z",
+            "hash": "08a05775b720eb8a86795aafb81af7a909515f745482e3d8774e7d8e3451e666",
+            "pre_install": "Expand-7zipArchive -Removal \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
+        }
+    },
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Force -Recurse",
+    "shortcuts": [
+        [
+            "PixZip Lite.exe",
+            "PixZip Lite"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/richhost/pixzip-lite/releases/download/v$version/PixZip.Lite-$version-win-x64.exe#/dl.7z"
+            }
+        }
+    }
+}

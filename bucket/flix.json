@@ -1,0 +1,33 @@
+{
+    "##": "#updateManually",
+    "version": "1.8.1",
+    "description": "Flix 快传，像聊天一样传文件",
+    "homepage": "https://flix.center/",
+    "license": "Proprietary",
+    "architecture": {
+        "64bit": {
+            "url": "https://scoop-lemon.tari.xyz/hosted/flix/Flix_1.8.1.zip",
+            "hash": "4a7f1be0bd3ee3b2fcf7f32c0b2342890237a94d8b9f801638586627e0aaa1a8"
+        }
+    },
+    "extract_dir": "flix",
+    "shortcuts": [
+        [
+            "flix.exe",
+            "Flix"
+        ]
+    ],
+    "post_uninstall": "if ($purge) { Remove-Item \"$env:APPDATA\\com.ifreedomer\\flix\" -Force -Recurse -ErrorAction SilentlyContinue }",
+    "notes": "Flix is NOT portable. Settings are stored in '%APPDATA%\\com.ifreedomer\\flix', and will be purged during uninstallation.",
+    "checkver": {
+        "url": "https://scoop-lemon.tari.xyz/hosted/flix/latest.yml",
+        "regex": "version: ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://scoop-lemon.tari.xyz/hosted/flix/Flix_$version.zip"
+            }
+        }
+    }
+}

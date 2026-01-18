@@ -1,15 +1,15 @@
 {
-    "version": "41365",
+    "version": "2026.01.14",
     "description": "A free and open-source multi-platform parametric 3D modeler.",
     "homepage": "https://www.freecadweb.org",
     "license": "LGPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-41365-conda-Windows-x86_64-py311.7z",
-            "hash": "39a1dc8be7bac07552ca23354e0dc7d7ac53416c3b1fa7375d59c29cc6217f0d"
+            "url": "https://github.com/FreeCAD/FreeCAD/releases/download/weekly-2026.01.14/FreeCAD_weekly-2026.01.14-Windows-x86_64-py311.7z",
+            "hash": "61bf8298d21d556a7982ded063f98a295065898f552067116521ce16012a3ab4"
         }
     },
-    "extract_dir": "FreeCAD_weekly-builds-41365-conda-Windows-x86_64-py311",
+    "extract_dir": "FreeCAD_weekly-2026.01.14-Windows-x86_64-py311",
     "bin": "bin\\FreeCADCmd.exe",
     "shortcuts": [
         [
@@ -18,19 +18,15 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/FreeCAD/FreeCAD-Bundle/releases/tags/weekly-builds",
-        "regex": "FreeCAD_weekly-builds-([\\d]+)-conda-Windows"
+        "url": "https://api.github.com/repos/FreeCAD/FreeCAD/releases",
+        "regex": "FreeCAD_weekly-([\\d.]+)-Windows-x86_64"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-$version-conda-Windows-x86_64-py311.7z"
+                "url": "https://github.com/FreeCAD/FreeCAD/releases/download/weekly-$version/FreeCAD_weekly-$version-Windows-x86_64-py311.7z"
             }
         },
-        "hash": {
-            "url": "$url-SHA256.txt",
-            "regex": "(?sm):\\s+([a-fA-F\\d\\s]+)CertUtil"
-        },
-        "extract_dir": "FreeCAD_weekly-builds-$version-conda-Windows-x86_64-py311"
+        "extract_dir": "FreeCAD_weekly-$version-Windows-x86_64-py311"
     }
 }

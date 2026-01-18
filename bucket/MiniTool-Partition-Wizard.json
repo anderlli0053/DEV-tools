@@ -1,34 +1,38 @@
 {
-  "version": "12.7",
-  "description": "All-in-one Disk Partition Manager",
-  "homepage": "https://www.partitionwizard.com/",
-  "license": "Freeware",
-  "innosetup": true,
-  "architecture": {
-    "64bit": {
-      "url": "https://cdn2.minitool.com/download-center/release/products/pw/current-release/pwfree1207-64bit-online.exe",
-      "hash": "58e6d8ccd3cf43cb91bd8641ff3d6d7bf32e37335b9836101e3a7df6f79a1f37"
-    },
-    "32bit": {
-      "url": "https://cdn2.minitool.com/download-center/release/products/pw/current-release/pwfree1207-32bit-online.exe",
-      "hash": "e693ea5d160754dd953ce8d9c5146dd4b8d87d43ca53bfa0868b581a9ae61cf7"
-    }
-  },
-  "shortcuts": [
-    [
-      "partitionwizard.exe",
-      "MiniTool Partition Wizard"
-    ]
-  ],
-  "checkver": "MiniTool Partition Wizard <span class=\"big\">([\\d.]+)",
-  "autoupdate": {
+    "version": "13.5",
+    "description": "All-in-one Disk Partition Manager",
+    "homepage": "https://partitionwizard.com",
+    "license": "Proprietary",
     "architecture": {
-      "64bit": {
-        "url": "https://cdn2.minitool.com/download-center/release/products/pw/current-release/pwfree$majorVersion0$minorVersion-64bit-online.exe"
-      },
-      "32bit": {
-        "url": "https://cdn2.minitool.com/download-center/release/products/pw/current-release/pwfree$majorVersion0$minorVersion-32bit-online.exe"
-      }
+        "64bit": {
+            "url": "https://cdn2.minitool.com/?p=pw&e=pwfree-64bit-portable#/dl.7z",
+            "hash": "91f2bb052a6f5ce65bbeb5ffbb05cbe8795b2470a94ee81c749ee6426f9e0880",
+            "extract_dir": "pwfree-64bit-portable"
+        },
+        "32bit": {
+            "url": "https://cdn2.minitool.com/?p=pw&e=pwfree-32bit-portable#/dl.7z",
+            "hash": "c14c515e88753d3fd77e53a6160bdd7fa4f4210c687e1dfbe96d3818dc8e3b20",
+            "extract_dir": "pwfree-32bit-portable"
+        }
+    },
+    "shortcuts": [
+        [
+            "partitionwizard.exe",
+            "MiniTool Partition Wizard"
+        ]
+    ],
+    "checkver": {
+        "url": "https://partitionwizard.com/upgrade-history.html",
+        "regex": "<h2>V([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cdn2.minitool.com/?p=pw&e=pwfree-64bit-portable#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://cdn2.minitool.com/?p=pw&e=pwfree-32bit-portable#/dl.7z"
+            }
+        }
     }
-  }
 }

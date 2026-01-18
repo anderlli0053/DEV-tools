@@ -1,61 +1,61 @@
 {
-  "homepage": "http://www.softwareok.com/?seite=Freeware/Q-Dir",
-  "version": "12.18",
-  "description": "Q-Dir is a great alternative file manager for Windows with a amazing Quadro-View technique. ",
-  "license": {
-    "identifier": "Freeware"
-  },
-  "extract_dir": "Q-Dir",
-  "architecture": {
-    "64bit": {
-      "url": "https://www.softwareok.com/Download/Q-Dir_Portable_x64.zip",
-      "hash": "da4f00ea1693a4698ed011b69ef32ca16924f64b66bb7bebc6b0965a4c262456",
-      "installer": {
-        "script": [
-          "mv \"$dir/Q-Dir_x64.exe\" \"$dir/Q-Dir.exe\"",
-          "New-Item -Path $dir\\start.qdr -ItemType File -Force | Out-Null"
-        ]
-      }
+    "homepage": "http://www.softwareok.com/?seite=Freeware/Q-Dir",
+    "version": "12.45",
+    "description": "Q-Dir is a great alternative file manager for Windows with a amazing Quadro-View technique. ",
+    "license": {
+        "identifier": "Freeware"
     },
-    "32bit": {
-      "url": "https://www.softwareok.com/Download/Q-Dir_Portable.zip",
-      "hash": "0df5c71b6bb8d464c17647bd91c5e857e1c986d51ac08ff978ed132c84e25cf4",
-      "installer": {
-        "script": "New-Item -Path $dir\\start.qdr -ItemType File"
-      }
-    }
-  },
-  "persist": [
-    "Favoriten",
-    "start.qdr",
-    "Q-Dir.ini"
-  ],
-  "bin": "Q-Dir.exe",
-  "shortcuts": [
-    [
-      "Q-Dir.exe",
-      "Q-Dir"
-    ]
-  ],
-  "checkver": "Q-Dir ([^\\ ]+)",
-  "autoupdate": {
+    "extract_dir": "Q-Dir",
     "architecture": {
-      "64bit": {
-        "url": "https://www.softwareok.com/Download/Q-Dir_Portable_x64.zip",
-        "hash": {
-          "mode": "extract",
-          "url": "https://www.softwareok.com/?Download=Q-Dir",
-          "find": "Q-Dir_Portable_x64\\.zip<div id=[\\w\\d]{5} align=right><a href=\"https://www\\.virustotal\\.com/de/file/($sha256)"
+        "64bit": {
+            "url": "https://www.softwareok.com/Download/Q-Dir_Portable_x64.zip",
+            "hash": "7e2d0cc73bdbae0a33092e2a57095f80ef83bacc01935290b31f63e8682e7971",
+            "installer": {
+                "script": [
+                    "mv \"$dir/Q-Dir_x64.exe\" \"$dir/Q-Dir.exe\"",
+                    "New-Item -Path $dir\\start.qdr -ItemType File -Force | Out-Null"
+                ]
+            }
+        },
+        "32bit": {
+            "url": "https://www.softwareok.com/Download/Q-Dir_Portable.zip",
+            "hash": "1b68e0a94fd378b773e154a584aef130e254263716a027f9b7bd4d4fb3310ce6",
+            "installer": {
+                "script": "New-Item -Path $dir\\start.qdr -ItemType File"
+            }
         }
-      },
-      "32bit": {
-        "url": "https://www.softwareok.com/Download/Q-Dir_Portable.zip",
-        "hash": {
-          "mode": "extract",
-          "url": "https://www.softwareok.com/?Download=Q-Dir",
-          "find": "Q-Dir_Portable\\.zip<div id=[\\w\\d]{5} align=right><a href=\"https://www\\.virustotal\\.com/de/file/($sha256)"
+    },
+    "persist": [
+        "Favoriten",
+        "start.qdr",
+        "Q-Dir.ini"
+    ],
+    "bin": "Q-Dir.exe",
+    "shortcuts": [
+        [
+            "Q-Dir.exe",
+            "Q-Dir"
+        ]
+    ],
+    "checkver": "Q-Dir ([^\\ ]+)",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.softwareok.com/Download/Q-Dir_Portable_x64.zip",
+                "hash": {
+                    "mode": "extract",
+                    "url": "https://www.softwareok.com/?Download=Q-Dir",
+                    "find": "Q-Dir_Portable_x64\\.zip<div id=[\\w\\d]{5} align=right><a href=\"https://www\\.virustotal\\.com/de/file/($sha256)"
+                }
+            },
+            "32bit": {
+                "url": "https://www.softwareok.com/Download/Q-Dir_Portable.zip",
+                "hash": {
+                    "mode": "extract",
+                    "url": "https://www.softwareok.com/?Download=Q-Dir",
+                    "find": "Q-Dir_Portable\\.zip<div id=[\\w\\d]{5} align=right><a href=\"https://www\\.virustotal\\.com/de/file/($sha256)"
+                }
+            }
         }
-      }
     }
-  }
 }

@@ -1,0 +1,37 @@
+{
+    "##": "The shortcut will be created when adding the Appx package",
+    "version": "25.12.11.1105",
+    "description": "A Windows Event Log viewer for tech support and IT professionals.",
+    "homepage": "https://github.com/microsoft/EventLogExpert",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/microsoft/EventLogExpert/releases/download/v25.12.11.1105/EventLogExpert_25.12.11.1105_x64.msix#/EventLogExpert.msix",
+            "hash": "e101f6d08464421b7215115e9b7252cb8a55b7810da96bafed8cd539b41468b2"
+        }
+    },
+    "pre_install": [
+        "if ($env:CI -eq \"true\") { Return }",
+        "if ($PSVersionTable.PSVersion.Major -ge 6) { Import-Module Appx -UseWindowsPowershell 3>$null }",
+        "Add-AppxPackage \"$dir\\EventLogExpert.msix\" -ForceTargetApplicationShutdown"
+    ],
+    "pre_uninstall": [
+        "if ($env:CI -eq \"true\") { Return }",
+        "if ($PSVersionTable.PSVersion.Major -ge 6) { Import-Module Appx -UseWindowsPowershell 3>$null }",
+        "$package = Get-AppxPackage 'eventlogexpert'",
+        "if (!$package) { warn \"$app is already uninstalled out of scoop.\" ; return }",
+        "if ($purge) {",
+        "    Remove-AppxPackage $package",
+        "} else {",
+        "    Remove-AppxPackage $package -PreserveRoamableApplicationData",
+        "}"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/microsoft/EventLogExpert/releases/download/v$version/EventLogExpert_$version_x64.msix#/EventLogExpert.msix"
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "version": "2025.11.1",
+    "description": "A basic yt-dlp frontend.",
+    "homepage": "https://github.com/NickvisionApps/Parabolic",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/NickvisionApps/Parabolic/releases/download/2025.11.1/NickvisionParabolicPortable.zip",
+            "hash": "1e02a0913f86e775110d6848d0f9c4befe67f3c6007744d170416677ceadd0bb"
+        }
+    },
+    "shortcuts": [
+        [
+            "org.nickvision.tubeconverter.winui.exe",
+            "Parabolic"
+        ]
+    ],
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config.json\")) { Set-Content -Encoding ASCII -Path \"$dir\\config.json\" -Value '{}' }",
+        "if (!(Test-Path \"$persist_dir\\prev.json\")) { Set-Content -Encoding ASCII -Path \"$dir\\prev.json\" -Value '{}' }",
+        "if (!(Test-Path \"$persist_dir\\history.json\")) { Set-Content -Encoding ASCII -Path \"$dir\\history.json\" -Value '{}' }",
+        "if (!(Test-Path \"$persist_dir\\recovery.json\")) { Set-Content -Encoding ASCII -Path \"$dir\\recovery.json\" -Value '{}' }"
+    ],
+    "persist": [
+        "config.json",
+        "prev.json",
+        "history.json",
+        "recovery.json"
+    ],
+    "notes": "If Parabolic fails to start properly, please run $dir\\windowsappruntimeinstall.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/NickvisionApps/Parabolic/releases/download/$version/NickvisionParabolicPortable.zip"
+            }
+        }
+    }
+}

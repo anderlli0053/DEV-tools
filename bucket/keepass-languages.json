@@ -1,0 +1,34 @@
+{
+    "version": "1.0.0",
+    "description": "KeePass Languages (已包含简体中文, 繁体中文, 日语)",
+    "homepage": "https://github.com/gendloop/keepass-languages",
+    "license": "LGPL-2.1-or-later",
+    "depends": "extras/keepass",
+    "notes": [
+        "<Portable>"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gendloop/keepass-languages/releases/download/v1.0.0/keepass-languages-1.0.0-win64.7z",
+            "hash": "5fefa344b7190b3591ea870001c5c31a09da85743afa08da18f3b395decfce81"
+        }
+    },
+    "installer": {
+        "script": [
+            "Get-ChildItem -Path \"$dir\" -Filter *.lngx | Copy-Item -Destination \"$(appdir keepass $global)\\current\\Languages\" -Force"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Get-ChildItem -Path \"$(appdir keepass $global)\\current\\Languages\" -Filter *.lngx | Remove-Item -Force"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gendloop/keepass-languages/releases/download/v$version/keepass-languages-$version-win64.7z"
+            }
+        }
+    }
+}

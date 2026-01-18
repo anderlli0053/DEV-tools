@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "2.3.41",
     "description": "The AI Code Editor",
     "homepage": "https://www.cursor.com/",
     "license": {
@@ -9,12 +9,12 @@
     "innosetup": true,
     "architecture": {
         "64bit": {
-            "url": "https://downloads.cursor.com/production/53b99ce608cba35127ae3a050c1738a959750865/win32/x64/user-setup/CursorUserSetup-x64-1.0.0.exe",
-            "hash": "97daa3046c2af5be2937b23beab94854fed5f510d6f3e07bba812545e461a786"
+            "url": "https://downloads.cursor.com/production/2ca326e0d1ce10956aea33d54c0e2d8c13c58a32/win32/x64/user-setup/CursorUserSetup-x64-2.3.41.exe",
+            "hash": "fdaa991e8155b5fc03b72ba55cf43cd894aedc49724161461c0b647a051131ad"
         },
         "arm64": {
-            "url": "https://downloads.cursor.com/production/53b99ce608cba35127ae3a050c1738a959750865/win32/arm64/user-setup/CursorUserSetup-arm64-1.0.0.exe",
-            "hash": "11b591474d0dbc13a7fe064a5f2727678f6ac1c6ec88ab872e1e946c3763ca2b"
+            "url": "https://downloads.cursor.com/production/2ca326e0d1ce10956aea33d54c0e2d8c13c58a32/win32/arm64/user-setup/CursorUserSetup-arm64-2.3.41.exe",
+            "hash": "9a71aa7598f69581e7959c7ddef4e9a2b31e4bef520ee05d3549292ee5460307"
         }
     },
     "extract_dir": "{code_GetDestDir}",
@@ -34,7 +34,13 @@
         "    (Get-Content \"$extensions_file\") -replace '(?<=cursor(/|\\\\\\\\)).*?(?=(/|\\\\\\\\)data(/|\\\\\\\\)extensions)', $version | Set-Content \"$extensions_file\"",
         "}"
     ],
-    "bin": "resources\\app\\bin\\cursor.cmd",
+    "bin": [
+        [
+            "resources\\app\\bin\\cursor.cmd",
+            "",
+            "--user-data-dir=\"$dir\\data\\user-data\" --extensions-dir=\"$dir\\data\\extensions\""
+        ]
+    ],
     "shortcuts": [
         [
             "Cursor.exe",
@@ -45,7 +51,7 @@
     "persist": "data",
     "checkver": {
         "url": "https://www.cursor.com/api/download?platform=win32-x64-user&releaseTrack=stable",
-        "regex": "version\":\"([\\d.]+).*production/(?<Code>[\\w]+)/win32"
+        "regex": "production/(?<Code>[\\w]+)/win32.*-([\\d.]+)\\.exe"
     },
     "autoupdate": {
         "architecture": {

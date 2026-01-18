@@ -1,61 +1,61 @@
 {
-  "version": "8.3.20",
-  "description": "A popular general-purpose scripting language that is especially suited to web development. (non-thread safe)",
-  "homepage": "https://windows.php.net/",
-  "license": "PHP-3.01",
-  "architecture": {
-    "64bit": {
-      "url": "https://windows.php.net/downloads/releases/php-8.3.20-nts-Win32-vs16-x64.zip",
-      "hash": "6936a823dcd3e6d6ae0a10a21b2d4bb0d9fd69873d5aa036e7a30b24582f2a11"
-    },
-    "32bit": {
-      "url": "https://windows.php.net/downloads/releases/php-8.3.20-nts-Win32-vs16-x86.zip",
-      "hash": "55eb03967d295e4792c5bacf433b78e6f5f2252d9c0c649dad2cd3da66aa4346"
-    }
-  },
-  "pre_install": [
-    "# Create directory for custom PHP configuration",
-    "if (!(Test-Path \"$dir\\cli\\conf.d\")) {",
-    "    (New-Item -Type directory \"$dir\\cli\\conf.d\") | Out-Null",
-    "}"
-  ],
-  "post_install": [
-    "# Enable extensions to be found in installation-relative folder (the default is to search C:/php)",
-    "(Get-Content \"$dir\\cli\\php.ini\") | % { $_ -replace ';\\s?(extension_dir = \"ext\")', '$1' } | Set-Content \"$dir\\cli\\php.ini\""
-  ],
-  "bin": [
-    "php.exe",
-    "php-cgi.exe",
-    "phpdbg.exe"
-  ],
-  "env_set": {
-    "PHP_INI_SCAN_DIR": "$dir\\cli;$dir\\cli\\conf.d;"
-  },
-  "persist": [
-    "cli",
-    [
-      "php.ini-production",
-      "cli\\php.ini"
-    ]
-  ],
-  "suggest": {
-    "vcredist": "extras/vcredist2022"
-  },
-  "checkver": {
-    "url": "https://windows.php.net/downloads/releases/releases.json",
-    "jsonpath": "$['8.3'].version"
-  },
-  "autoupdate": {
+    "version": "8.3.29",
+    "description": "A popular general-purpose scripting language that is especially suited to web development. (non-thread safe)",
+    "homepage": "https://windows.php.net/",
+    "license": "PHP-3.01",
     "architecture": {
-      "64bit": {
-        "url": "https://windows.php.net/downloads/releases/php-$version-nts-Win32-vs16-x64.zip"
-      },
-      "32bit": {
-        "url": "https://windows.php.net/downloads/releases/php-$version-nts-Win32-vs16-x86.zip"
-      }
+        "64bit": {
+            "url": "https://windows.php.net/downloads/releases/php-8.3.29-nts-Win32-vs16-x64.zip",
+            "hash": "20bbc441b4b88c3c94e08bbaa75029c5f8dc8d9cba8a515381722239818e2557"
+        },
+        "32bit": {
+            "url": "https://windows.php.net/downloads/releases/php-8.3.29-nts-Win32-vs16-x86.zip",
+            "hash": "f53521705d6a7ec58932c79ddbbd9ee430b8c7e058fd3874e1a68c6694e535fe"
+        }
     },
-    "hash": {
-      "url": "$baseurl/sha256sum.txt"
+    "pre_install": [
+        "# Create directory for custom PHP configuration",
+        "if (!(Test-Path \"$dir\\cli\\conf.d\")) {",
+        "    (New-Item -Type directory \"$dir\\cli\\conf.d\") | Out-Null",
+        "}"
+    ],
+    "post_install": [
+        "# Enable extensions to be found in installation-relative folder (the default is to search C:/php)",
+        "(Get-Content \"$dir\\cli\\php.ini\") | % { $_ -replace ';\\s?(extension_dir = \"ext\")', '$1' } | Set-Content \"$dir\\cli\\php.ini\""
+    ],
+    "bin": [
+        "php.exe",
+        "php-cgi.exe",
+        "phpdbg.exe"
+    ],
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$dir\\cli;$dir\\cli\\conf.d;"
+    },
+    "persist": [
+        "cli",
+        [
+            "php.ini-production",
+            "cli\\php.ini"
+        ]
+    ],
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
+    "checkver": {
+        "url": "https://windows.php.net/downloads/releases/releases.json",
+        "jsonpath": "$['8.3'].version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://windows.php.net/downloads/releases/php-$version-nts-Win32-vs16-x64.zip"
+            },
+            "32bit": {
+                "url": "https://windows.php.net/downloads/releases/php-$version-nts-Win32-vs16-x86.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sum.txt"
+        }
     }
-  }
 }

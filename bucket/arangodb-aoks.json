@@ -1,10 +1,10 @@
 {
-    "version": "3.11.3",
+    "version": "3.11.9",
     "description": "Highly available and scalable multi-model database to natively work with graphs, documents and fulltext search with one engine & query language.",
     "homepage": "https://www.arangodb.com/",
     "license": {
         "identifier": "Apache-2.0",
-        "url": "https://ghproxy.com/https://raw.githubusercontent.com/arangodb/arangodb/devel/LICENSE"
+        "url": "https://raw.githubusercontent.com/arangodb/arangodb/devel/LICENSE"
     },
     "suggest": {
         "java": [
@@ -13,9 +13,9 @@
             "java/openjdk11"
         ]
     },
-    "url": "https://download.arangodb.com/arangodb311/Community/Windows/ArangoDB3-3.11.3_win64.zip",
-    "hash": "0a74dbb0c71fb539e9cb41fd134361aaab59b1ced74d6e6f884dbf37e813802c",
-    "extract_dir": "ArangoDB3-3.11.3_win64",
+    "url": "https://download.arangodb.com/arangodb311/Community/Windows/ArangoDB3-3.11.9_win64.zip",
+    "hash": "e0fbb2be9e8fb35b1f4f43f9ff1335fcab5417f154c759c82952a52b5e05f627",
+    "extract_dir": "ArangoDB3-3.11.9_win64",
     "persist": [
         "etc/arangodb3",
         "var/lib/arangodb3-apps"
@@ -25,8 +25,9 @@
         "ICU_DATA": "$dir\\usr\\share\\arangodb3"
     },
     "checkver": {
-        "url": "https://www.arangodb.com/download-major/windows/",
-        "regex": "Server\\W*(\\d+\\.\\d+\\.\\d+)"
+        "url": "https://download.arangodb.com/arangodb311/Community/Windows/index.html",
+        "regex": ">ArangoDB3-(\\d+\\.\\d+\\.\\d+)_win64.zip<",
+        "reverse": true
     },
     "autoupdate": {
         "url": "https://download.arangodb.com/arangodb$majorVersion$minorVersion/Community/Windows/ArangoDB$majorVersion-$version_win64.zip",
@@ -37,4 +38,3 @@
         }
     }
 }
-

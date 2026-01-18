@@ -1,0 +1,30 @@
+{
+    "version": "6.0.8168",
+    "description": "Visual C++ 6.0",
+    "homepage": "https://github.com/gendloop/VisualCplusplus6.0",
+    "license": "LGPL-2.1-or-later",
+    "notes": [
+        "<Installer>"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gendloop/VisualCplusplus6.0/releases/download/v6.0.8168/VisualCplusplus6.0-6.0.8168-win64.7z",
+            "hash": "13762d00cd7c694c1ca095e39828ea9cad56f2013795a34163e0e139f0f721c6"
+        }
+    },
+    "installer": {
+        "script": [
+            "Push-Location \"$dir\"",
+            "Start-Process VisualCplusplus6.0-$version-win64.exe",
+            "Pop-Location"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gendloop/VisualCplusplus6.0/releases/download/v$version/VisualCplusplus6.0-$version-win64.7z"
+            }
+        }
+    }
+}

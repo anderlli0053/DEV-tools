@@ -1,27 +1,41 @@
 {
-  "version": "5.4.0",
-  "description": "A completion manager for better and simpler use and Manage completions.(一个补全管理模块，更好、更简单、更方便的使用和管理补全)",
-  "homepage": "https://github.com/abgox/PSCompletions",
-  "license": {
-    "identifier": "MIT license",
-    "url": "https://github.com/abgox/PSCompletions/blob/main/LICENSE"
-  },
-  "notes": [
-    "Use the module by running: 'Import-Module PSCompletions'",
-    "Add it to your $PROFILE to make it permanent"
-  ],
-  "url": "https://psg-prod-eastus.azureedge.net/packages/pscompletions.5.4.0.nupkg",
-  "hash": "ec4c82ff6fe05b8c11f4b65cbd9db9304e9c39b8c8bf66b53e026e552dc3d2be",
-  "pre_install": "Remove-Item \"$dir\\_rels\", \"$dir\\package\", \"$dir\\*Content*.xml\" -Recurse",
-  "psmodule": {
-    "name": "PSCompletions"
-  },
-  "persist": "completions",
-  "checkver": {
-    "url": "https://www.powershellgallery.com/packages/PSCompletions",
-    "regex": "<h2>([\\d.]+)</h2>"
-  },
-  "autoupdate": {
-    "url": "https://psg-prod-eastus.azureedge.net/packages/pscompletions.$version.nupkg"
-  }
+    "version": "6.3.1",
+    "description": "A completion manager for a better and simpler tab-completion experience in PowerShell.",
+    "homepage": "https://pscompletions.abgox.com/",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/abgox/PSCompletions/blob/main/LICENSE"
+    },
+    "notes": [
+        "Use the module by running: 'Import-Module PSCompletions'.",
+        "Add it to your $Profile to make it permanent."
+    ],
+    "url": "https://cdn.powershellgallery.com/packages/pscompletions.6.3.1.nupkg",
+    "hash": "219f10cbfb182755960528a5c7c04920d947498f615ab5f444fc01fedd05ff4a",
+    "pre_install": [
+        "Remove-Item \"$dir\\_rels\", \"$dir\\package\", \"$dir\\*Content*.xml\" -Recurse",
+        "if (-not (Test-Path -Path \"$persist_dir\\data.json\")) {",
+        "    '{}' | Out-File -FilePath \"$dir\\data.json\" -Encoding utf8 -Force",
+        "}"
+    ],
+    "post_install": [
+        "if (Test-Path \"$dir\\completions.original\") {",
+        "    Copy-Item -Path \"$dir\\completions.original\\*\" -Destination \"$dir\\completions\" -Force -Recurse",
+        "    Remove-Item \"$dir\\completions.original\" -Force -Recurse | Out-Null",
+        "}"
+    ],
+    "psmodule": {
+        "name": "PSCompletions"
+    },
+    "persist": [
+        "completions",
+        "data.json"
+    ],
+    "checkver": {
+        "url": "https://www.powershellgallery.com/packages/PSCompletions",
+        "regex": "<h2>([\\d.]+)</h2>"
+    },
+    "autoupdate": {
+        "url": "https://cdn.powershellgallery.com/packages/pscompletions.$version.nupkg"
+    }
 }

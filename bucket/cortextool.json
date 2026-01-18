@@ -1,0 +1,27 @@
+{
+    "version": "0.11.3",
+    "description": "A tool for interacting with the various user-facing APIs provided by Cortex.",
+    "homepage": "https://github.com/grafana/cortex-tools",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/grafana/cortex-tools/releases/download/v0.11.3/cortextool_v0.11.3_Windows_x86_64.zip",
+            "hash": "47e4dee2557e558a7422de821a81504189c7958a96262ae8deb6e0c3f15b50c0"
+        }
+    },
+    "bin": "cortextool.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/grafana/cortex-tools/releases/download/v$version/cortextool_v$version_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/grafana/cortex-tools/releases/download/v$version/cortextool_v$version_Windows_i386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

@@ -1,24 +1,23 @@
 {
     "version": "1.71.0",
-    "homepage": "https://github.com/autobrr/autobrr",
+    "homepage": "https://autobrr.com/",
     "description": "Modern, easy to use download automation for torrents and usenet.",
-    "license": "GPL-2.0",
-    "architecture": {
-        "64bit": {
-            "url": "https://ghproxy.com/https://github.com/autobrr/autobrr/releases/download/v1.71.0/autobrr_1.71.0_windows_x86_64.tar.gz",
-            "hash": "67d6a3aea84c3602311a606abbf599eb5d0aef36232f1164a25aa2e495974c8f"
-        }
-    },
+    "license": "GPL-2.0-or-later",
+    "url": "https://github.com/autobrr/autobrr/releases/download/v1.71.0/autobrr_1.71.0_windows_x86_64.zip",
+    "hash": "e1907c1ca3b909500709387476d83f6dbd3d3c924bede90eee9a46545c2e4f0a",
     "bin": [
-        "autobrr.exe",
+        [
+            "autobrr.exe",
+            "autobrr",
+            "--config $dir\\config"
+        ],
         "autobrrctl.exe"
     ],
-    "checkver": "github",
+    "persist": "config",
+    "checkver": {
+        "github": "https://github.com/autobrr/autobrr"
+    },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://ghproxy.com/https://github.com/autobrr/autobrr/releases/download/v$version/autobrr_$version_windows_x86_64.tar.gz"
-            }
-        }
+        "url": "https://github.com/autobrr/autobrr/releases/download/v$version/autobrr_$version_windows_x86_64.zip"
     }
 }

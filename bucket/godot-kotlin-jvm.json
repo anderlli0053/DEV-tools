@@ -1,23 +1,31 @@
 {
-  "version": "0.6.2-3.5.2",
-  "description": "Godot Kotlin JVM, Kotlin/JVM binding for the Godot Game Engine",
-  "homepage": "https://github.com/utopia-rise/godot-kotlin-jvm",
-  "license": "MIT",
-  "url": "https://ghproxy.com/https://github.com/utopia-rise/godot-kotlin-jvm/releases/download/0.6.2-3.5.2/godot-kotlin-jvm_editor_windows_0.6.2-3.5.2.zip",
-  "hash": "sha512:cb7647a5dccdfe6f4fad5e2c182d0136382fbc3c7b20ed2692e1e68b05ccee2513922b317703aa08b98a0d780d61f9e2817e2eb8254aad57520d891d4875fd08",
-  "pre_install": [
-    "Remove-Item \"$dir\\Godot_*_console.*\"",
-    "Get-Item \"$dir\\Godot_*.exe\" | Rename-Item -NewName 'godot.exe'"
-  ],
-  "bin": "godot.windows.opt.tools.64.exe",
-  "shortcuts": [
-    [
-      "godot.windows.opt.tools.64.exe",
-      "Godot Kotlin JVM"
-    ]
-  ],
-  "checkver": "github",
-  "autoupdate": {
-    "url": "https://ghproxy.com/https://github.com/utopia-rise/godot-kotlin-jvm/releases/download/$version/godot-kotlin-jvm_editor_windows_$version.zip"
-  }
+    "version": "0.14.3-4.5.1",
+    "description": "Godot Kotlin JVM, Kotlin/JVM binding for the Godot Game Engine",
+    "homepage": "https://github.com/utopia-rise/godot-kotlin-jvm",
+    "license": "MIT",
+    "url": "https://github.com/utopia-rise/godot-kotlin-jvm/releases/download/0.14.3-4.5.1/godot-kotlin-jvm_editor_windows_x86_64_release_0.14.3-4.5.1.zip",
+    "hash": "505fcb776280ec250493f6166ddb763aa06973d91a169eaf97fcd4b0ee02b205",
+    "pre_install": [
+        "Remove-Item \"$dir\\godot.*console.exe\" -ErrorAction SilentlyContinue",
+        "Get-Item \"$dir\\godot.windows.editor.x86_64.jvm.*.exe\" | Rename-Item -NewName 'godot-jvm.exe'"
+    ],
+    "bin": [
+        [
+            "godot-jvm.exe",
+            "godot-jvm"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "godot-jvm.exe",
+            "Godot Kotlin JVM"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/utopia-rise/godot-kotlin-jvm/releases",
+        "regex": "/releases/tag/([\\d.-]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/utopia-rise/godot-kotlin-jvm/releases/download/$version/godot-kotlin-jvm_editor_windows_x86_64_release_$version.zip"
+    }
 }

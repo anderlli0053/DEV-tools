@@ -1,0 +1,40 @@
+{
+    "version": "1.7.17",
+    "description": "A secure, cross-platform, open source, encrypted photo storage app.",
+    "homepage": "https://ente.io/",
+    "license": "AGPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ente-io/photos-desktop/releases/download/v1.7.17/ente-1.7.17-x64.exe#/dl.7z",
+            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+            "hash": "ef03d62c942cd8f9a10686ef4d782d279b732dc6b3836814f5ded3239ecec623"
+        },
+        "arm64": {
+            "url": "https://github.com/ente-io/photos-desktop/releases/download/v1.7.17/ente-1.7.17-arm64.exe#/dl.7z",
+            "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\"",
+            "hash": "177074c4832b4d5a2e558022393ed27f5b8e55eb25e0196d04ed46b392346939"
+        }
+    },
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\", \"$dir\\resources\\app-update.yml\" -Force -Recurse",
+    "shortcuts": [
+        [
+            "ente.exe",
+            "Ente Photos",
+            "--user-data-dir=\"User Data\""
+        ]
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "github": "https://github.com/ente-io/photos-desktop"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ente-io/photos-desktop/releases/download/v$version/ente-$version-x64.exe#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://github.com/ente-io/photos-desktop/releases/download/v$version/ente-$version-arm64.exe#/dl.7z"
+            }
+        }
+    }
+}

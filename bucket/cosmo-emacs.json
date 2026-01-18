@@ -1,0 +1,34 @@
+{
+    "version": "4.0.2",
+    "description": "(Cosmopolitan Executable) An extensible, customizable, free/libre text editor.",
+    "homepage": "https://www.gnu.org/software/emacs/",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://cosmo.zip/pub/cosmos/v/4.0.2/bin/emacs#/emacs.exe",
+                "https://cosmo.zip/pub/cosmos/v/4.0.2/bin/emacsclient#/emacsclient.exe"
+            ],
+            "hash": [
+                "bdf5a54969551fbd54938c29fcb847efc0ff525fa1965056b17c00123dbb2567",
+                "13cb61282a6393183d2b1089bbb661b51aef6c8ec155e182a54841cc4e7ecebc"
+            ]
+        }
+    },
+    "bin": "emacs.exe",
+    "checkver": {
+        "url": "https://cosmo.zip/pub/cosmos/v/",
+        "regex": "href=\"([\\d.]+)/\"",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://cosmo.zip/pub/cosmos/v/$version/bin/emacs#/emacs.exe",
+                    "https://cosmo.zip/pub/cosmos/v/$version/bin/emacsclient#/emacsclient.exe"
+                ]
+            }
+        }
+    }
+}

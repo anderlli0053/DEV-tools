@@ -1,0 +1,39 @@
+{
+    "version": "0.9.3",
+    "description": "Custom protocol network proxy",
+    "homepage": "https://github.com/Watfaq/clash-rs",
+    "license": {
+        "identifier": "Apache-2.0",
+        "url": "https://github.com/Watfaq/clash-rs/blob/master/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Watfaq/clash-rs/releases/download/v0.9.3/clash-x86_64-pc-windows-msvc-static-crt.exe#/clash-rs.exe",
+            "hash": "f71cc8dc1e353ea2003da2570a5af26432d30f5cc2a36428aefa929fdd1858bd"
+        },
+        "32bit": {
+            "url": "https://github.com/Watfaq/clash-rs/releases/download/v0.9.3/clash-i686-pc-windows-msvc-static-crt.exe#/clash-rs.exe",
+            "hash": "c0fdb3dd38ccf255d4f0a5b309876ffc44aa24d765efc242477304802de33f89"
+        },
+        "arm64": {
+            "url": "https://github.com/Watfaq/clash-rs/releases/download/v0.9.3/clash-aarch64-pc-windows-msvc-static-crt.exe#/clash-rs.exe",
+            "hash": "678d83726973f33010127639a6413c21abd7e23b98889eab0e011b15c0081d6f"
+        }
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Watfaq/clash-rs/releases/download/v$version/clash-x86_64-pc-windows-msvc-static-crt.exe#/clash-rs.exe"
+            },
+            "32bit": {
+                "url": "https://github.com/Watfaq/clash-rs/releases/download/v$version/clash-i686-pc-windows-msvc-static-crt.exe#/clash-rs.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/Watfaq/clash-rs/releases/download/v$version/clash-aarch64-pc-windows-msvc-static-crt.exe#/clash-rs.exe"
+            }
+        }
+    },
+    "bin": "clash-rs.exe",
+    "depends": "wintun"
+}

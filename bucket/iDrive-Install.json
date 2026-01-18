@@ -1,51 +1,51 @@
 {
-  "version": "7.0.0.34            ",
-  "description": "iDrive. Online cloud backup for your PC's, Macs and Mobile devices",
-  "homepage": "https://idriveonlinebackup.com/",
-  "license": "Proprietary",
-  "changelog": "https://idriveonlinebackup.com/release-info#win",
-  "url": "https://static.idriveonlinebackup.com/downloads/IDriveWinSetup.exe#/setup.exe",
-  "hash": "7ddd6ef721b2fbc47a09c6e353b3b1a56abbb2c816492e6ab6c9dbb9df45b2de",
-  "pre_download": "Assert-Administrator",
-  "pre_install": [
-    "$processname = \"id_win\"",
-    "$process = Get-Process $processname -ErrorAction SilentlyContinue",
-    "if ($process) {",
-    "   $process.CloseMainWindow()",
-    "   Start-Sleep -Seconds 5",
-    "   if (!$process.HasExited) {",
-    "       Start-Sleep -Seconds 25",
-    "       $process | Stop-Process -Force",
-    "   }",
-    "}"
-  ],
-  "installer": {
-    "script": [
-      "$programname = \"id_win*\"",
-      "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFilesX86\")",
-      "$filepath = \"$ProgramFiles\\IDriveWindows\\id_win.exe\"",
-      "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-      "{",
-      "   &\"$dir\\setup.exe\" /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /CLOSEAPPLICATIONS /SP- | Out-Null",
-      "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
-      "   {",
-      "       exit 1",
-      "   }",
-      "}",
-      "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
-    ]
-  },
-  "checkver": {
-    "script": [
-      "$dl_url = 'https://static.idriveonlinebackup.com/downloads/IDriveWinSetup.exe'",
-      "$dl = cache_path 'app_name' 'unknown' $dl_url",
-      "Start-BitsTransfer $dl_url $dl",
-      "$version = (Get-Item $dl).VersionInfo.FileVersion",
-      "return $version"
+    "version": "7.0.0.56            ",
+    "description": "iDrive. Online cloud backup for your PC's, Macs and Mobile devices",
+    "homepage": "https://idriveonlinebackup.com/",
+    "license": "Proprietary",
+    "changelog": "https://idriveonlinebackup.com/release-info#win",
+    "url": "https://static.idriveonlinebackup.com/downloads/IDriveWinSetup.exe#/setup.exe",
+    "hash": "9c4a07807d79a73e48585590c14910f1cf10dc8489f616ea7e72f3a6a8dd5d4a",
+    "pre_download": "Assert-Administrator",
+    "pre_install": [
+        "$processname = \"id_win\"",
+        "$process = Get-Process $processname -ErrorAction SilentlyContinue",
+        "if ($process) {",
+        "   $process.CloseMainWindow()",
+        "   Start-Sleep -Seconds 5",
+        "   if (!$process.HasExited) {",
+        "       Start-Sleep -Seconds 25",
+        "       $process | Stop-Process -Force",
+        "   }",
+        "}"
     ],
-    "regex": "([\\d.]+)"
-  },
-  "autoupdate": {
-    "url": "https://static.idriveonlinebackup.com/downloads/IDriveWinSetup.exe#/setup.exe"
-  }
+    "installer": {
+        "script": [
+            "$programname = \"id_win*\"",
+            "$ProgramFiles = [Environment]::GetFolderPath(\"ProgramFilesX86\")",
+            "$filepath = \"$ProgramFiles\\IDriveWindows\\id_win.exe\"",
+            "if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "{",
+            "   &\"$dir\\setup.exe\" /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /CLOSEAPPLICATIONS /SP- | Out-Null",
+            "   if(((Test-Path -Path $filepath -PathType Leaf) -eq $false) -or ((Get-Command $filepath).Version -lt [System.Version]\"$version\"))",
+            "   {",
+            "       exit 1",
+            "   }",
+            "}",
+            "if (Test-Path -Path \"$dir\\setup.exe\") { Remove-Item \"$dir\\setup.exe\" -Force }"
+        ]
+    },
+    "checkver": {
+        "script": [
+            "$dl_url = 'https://static.idriveonlinebackup.com/downloads/IDriveWinSetup.exe'",
+            "$dl = cache_path 'app_name' 'unknown' $dl_url",
+            "Start-BitsTransfer $dl_url $dl",
+            "$version = (Get-Item $dl).VersionInfo.FileVersion",
+            "return $version"
+        ],
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://static.idriveonlinebackup.com/downloads/IDriveWinSetup.exe#/setup.exe"
+    }
 }

@@ -1,0 +1,31 @@
+{
+    "version": "0.1.0",
+    "description": "A fast and customizable subdomain wordlist generator using DSL.",
+    "homepage": "https://github.com/projectdiscovery/alterx",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/projectdiscovery/alterx/releases/download/v0.1.0/alterx_0.1.0_windows_amd64.zip",
+            "hash": "d50bd6d18bc3333300e30e78b1419afbaeab50633232423c585667182c311c37"
+        },
+        "32bit": {
+            "url": "https://github.com/projectdiscovery/alterx/releases/download/v0.1.0/alterx_0.1.0_windows_386.zip",
+            "hash": "86704abe1453fd80f7dd66e51ec4e23872e88a90887daf9ad03dc1c53f812532"
+        }
+    },
+    "bin": "alterx.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/projectdiscovery/alterx/releases/download/v$version/alterx_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/projectdiscovery/alterx/releases/download/v$version/alterx_$version_windows_386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/alterx_$version_checksums.txt"
+        }
+    }
+}

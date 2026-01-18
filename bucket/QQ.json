@@ -1,49 +1,85 @@
 {
-    "version": "9.7.23.29406",
-    "description": "An instant messaging tool that gives you the best way to keep in touch with your friends and family.",
-    "homepage": "https://im.qq.com",
-    "license": {
-        "identifier": "Proprietary",
-        "url": "https://ti.qq.com/agreement/index.html"
+    "version": "9.9.19.35469",
+    "description": "(NT版本) 一款能让你与你的朋友和家人保持联系的即时通讯工具。(NT version) An instant messaging tool that gives you the best way to keep in touch with your friends and family.",
+    "homepage": "https://im.qq.com/",
+    "license": "Unknown",
+    "architecture": {
+        "64bit": {
+            "url": "https://dldir1v6.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.19_250523_x64_01.exe#/dl.7z",
+            "hash": "0174f703d02d8389f3228e6aa39aacf9688b5ac31a7d8aa2ebb1afd1a7c3ade7"
+        },
+        "32bit": {
+            "url": "https://dldir1v6.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.19_250523_x86_01.exe#/dl.7z",
+            "hash": "bd31a48c294579e77cae54488b5d6424e72ac45c95e4c78e0cc65fce0e254db5"
+        }
     },
-    "notes": [
-        "Scoop doesn't persist your QQ data, by default they are stored in:",
-        "'%UserProfile%\\Documents\\Tencent Files'.",
-        "Files produced at runtime are left in '%AppData%\\Tencent'."
-    ],
-    "url": "https://dldir1.qq.com/qqfile/qq/PCQQ9.7.23/QQ9.7.23.29406.exe#/dl.7z",
-    "hash": "8de2ab423b1a5fc49204d03fe922219a09194efbbdddcf154e632c3c4b9f8478",
     "shortcuts": [
         [
-            "Bin\\QQScLauncher.exe",
+            "Files\\QQ.exe",
             "QQ"
         ]
     ],
-    "installer": {
-        "script": [
-            "Get-Item \"$dir\\*\" -Exclude .rsrc | Remove-Item",
-            "Expand-7zipArchive \"$dir\\.rsrc\\2052\\MSI\\101\" \"$dir\" -ExtractDir 'Files'",
-            "Expand-7zipArchive \"$dir\\.rsrc\\2052\\MSI\\102\" \"$dir\\temp\"",
-            "'vcruntime140.dll', 'msvcp140.dll', 'msvcr100.dll', 'vcomp140.dll', 'msvcp100.dll' | ForEach-Object {",
-            "  Move-Item \"$dir\\temp\\$_\" \"$dir\\Bin\\\"",
-            "}",
-            "Expand-7zipArchive \"$dir\\temp\\TXSSO\\TXSSOSetup.exe\" \"$dir\\Bin\\TXSSO\" -ExtractDir 'TXSSO'",
-            "Remove-Item \"$dir\\.rsrc\", \"$dir\\temp\" -Recurse"
-        ]
-    },
+    "pre_install": [
+        ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
+        "$tencent_path=\"$user_Documents\\Tencent Files\"",
+        "$accountList=[array](Get-ChildItem $tencent_path | Where-Object { $_.BaseName -match \"\\d+\" -and (Test-Path \"$($_.FullName)\\nt_qq\") })",
+        "$persist_accountList=[array](Get-ChildItem \"$persist_dir\" | Where-Object { $_.BaseName -match \"\\d+\" -and (Test-Path \"$($_.FullName)\\nt_qq\") })",
+        "if($accountList){",
+        "   $account_dir=$accountList.FullName | ForEach-Object { \"$($_)\\nt_qq\" }",
+        "   $persist_account_dir=$accountList.BaseName | ForEach-Object { \"$($persist_dir)\\$($_)\\nt_qq\" }",
+        "}else{",
+        "   $account_dir=@()",
+        "   $persist_account_dir=@()",
+        "}",
+        "if($persist_accountList){",
+        "   $account_dir2=[array]($persist_accountList.BaseName | ForEach-Object { \"$($tencent_path)\\$($_)\\nt_qq\" })",
+        "   $persist_account_dir2=[array]($persist_accountList.FullName | ForEach-Object { \"$($_)\\nt_qq\" })",
+        "}else{",
+        "   $account_dir2=@()",
+        "   $persist_account_dir2=@()",
+        "}",
+        "$data_list=@(\"$user_Documents\\Tencent Files\\nt_qq\",\"$user_AppData\\QQ\") + $account_dir + $account_dir2",
+        "$persist_list= @(\"$persist_dir\\nt_qq\",\"$persist_dir\\QQ\") + $persist_account_dir + $persist_account_dir2",
+        "persist_file -dir $data_list $persist_list",
+        "handle_app_lnk",
+        "do_some_things"
+    ],
+    "pre_uninstall": [
+        "$bucket = (Get-Content \"$dir\\install.json\" | ConvertFrom-Json).bucket",
+        ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
+        "stop_process",
+        "$tencent_path=\"$user_Documents\\Tencent Files\"",
+        "$accountList=Get-ChildItem $tencent_path | Where-Object { $_.BaseName -match \"\\d+\" -and (Test-Path \"$($_.FullName)\\nt_qq\") -and (Test-Path \"$persist_dir\\$($_.BaseName)\\nt_qq\") }",
+        "$account_dir=if($accountList){$accountList.FullName | ForEach-Object { \"$($_)\\nt_qq\" } }else{ @() }",
+        "$need_remove_files=@(\"$user_Documents\\Tencent Files\\nt_qq\",\"$user_AppData\\QQ\") + $account_dir",
+        "remove_files $need_remove_files"
+    ],
     "checkver": {
         "script": [
-            "$url = 'https://im.qq.com/pcqq/index.shtml'",
-            "$resp = Invoke-WebRequest -Uri $url",
-            "$cont = $resp.Content",
-            "$pattern = 'https://qq-web.cdn-go.cn.*windowsDownloadUrl.js'",
-            "$jsUrl = [regex]::Match($cont, $pattern).Value",
-            "Invoke-WebRequest -Uri $jsUrl"
+            ". \"$pwd\\bin\\utils.ps1\"",
+            "$dl_info = get_installer_info 'Tencent/QQ/NT'",
+            "\"ver:$($dl_info.PackageVersion);\"",
+            "\"x64:$($dl_info.x64_exe.InstallerUrl);\"",
+            "\"x86:$($dl_info.x86_exe.InstallerUrl);\""
         ],
-        "regex": "PCQQ([\\d\\.]+)/QQ([\\d\\.]+).exe",
-        "replace": "${2}"
+        "regex": "ver:(?<version>.+?); x64:(?<x64>.+?); x86:(?<x86>.+?);"
     },
     "autoupdate": {
-        "url": "https://dldir1.qq.com/qqfile/qq/PCQQ$matchHead/QQ$version.exe#/dl.7z"
+        "architecture": {
+            "64bit": {
+                "url": "$matchX64#/dl.7z",
+                "hash": {
+                    "url": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/t/Tencent/QQ/NT/$version/Tencent.QQ.NT.installer.yaml",
+                    "regex": "Architecture: x64[\\s\\S]+?InstallerSha256:\\s?(.+)"
+                }
+            },
+            "32bit": {
+                "url": "$matchX86#/dl.7z",
+                "hash": {
+                    "url": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/t/Tencent/QQ/NT/$version/Tencent.QQ.NT.installer.yaml",
+                    "regex": "Architecture: x86[\\s\\S]+?InstallerSha256:\\s?(.+)"
+                }
+            }
+        }
     }
 }

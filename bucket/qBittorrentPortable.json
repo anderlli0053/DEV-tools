@@ -1,28 +1,28 @@
 {
-  "autoupdate": {
-    "hash": {
-      "regex": "MD5 Hash: +[\\w]{32}",
-      "url": "https://portableapps.com/apps/internet/qbittorrent_portable"
+    "homepage": "https://portableapps.com/apps/internet/qbittorrent_portable",
+    "description": "Lightweight bittorrent client",
+    "version": "4.2.5",
+    "license": "",
+    "url": "https://versaweb.dl.sourceforge.net/project/portableapps/qBittorrent%20Portable/qBittorrentPortable_4.2.5.paf.exe#/dl.7z",
+    "hash": "md5:7a3640c277f15a9168a283485d1ce85d",
+    "bin": "qBittorrentPortable.exe",
+    "shortcuts": [
+        [
+            "qBittorrentPortable.exe",
+            "qBittorrentPortable"
+        ]
+    ],
+    "persist": "Data",
+    "checkver": {
+        "url": "https://portableapps.com/apps/internet/qbittorrent_portable",
+        "re": "Version \\s+([\\w\\.]* for Win"
     },
-    "url": "https://versaweb.dl.sourceforge.net/project/portableapps/qBittorrent%20Portable/qBittorrentPortable_$version.paf.exe"
-  },
-  "bin": "qBittorrentPortable.exe",
-  "checkver": {
-    "re": "Version \\s+([\\w\\.]* for Win",
-    "url": "https://portableapps.com/apps/internet/qbittorrent_portable"
-  },
-  "description": "Lightweight bittorrent client",
-  "hash": "26d1d2d1ddfb868449d52c02710082572f7b5bc04570fc04527c865d8ebbb2fb",
-  "homepage": "https://portableapps.com/apps/internet/qbittorrent_portable",
-  "license": "",
-  "persist": "Data",
-  "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
-  "shortcuts": [
-    [
-      "qBittorrentPortable.exe",
-      "qBittorrentPortable"
-    ]
-  ],
-  "url": "https://versaweb.dl.sourceforge.net/project/portableapps/qBittorrent%20Portable/qBittorrentPortable_4.5.0.paf.exe",
-  "version": "4.5.0"
+    "autoupdate": {
+        "url": "https://versaweb.dl.sourceforge.net/project/portableapps/qBittorrent%20Portable/qBittorrentPortable_$version.paf.exe",
+        "hash": {
+            "url": "https://portableapps.com/apps/internet/qbittorrent_portable",
+            "regex": "MD5 Hash: +[\\w]{32}"
+        }
+    },
+    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
 }

@@ -1,0 +1,35 @@
+{
+    "version": "1.13",
+    "description": "Flash Collector （小游戏收集器），支持小游戏一键下载、本地启动、进度管理等功能",
+    "homepage": "https://github.com/Cnotech/flash-collector",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Cnotech/flash-collector/releases/download/v1.13/Flash.Collector_1.13.0_win-x64.7z",
+            "hash": "0a5aa926b5c44da1c17dde5d69a1a3bb776be1f8879f698690a2b3bae4078b33"
+        }
+    },
+    "pre_install": "Remove-Item \"$dir\\resources\\app-update.yml\"  -Force -Recurse",
+    "shortcuts": [
+        [
+            "flash-collector.exe",
+            "Flash Collector",
+            "--user-data-dir=\"data\""
+        ]
+    ],
+    "persist": [
+        "data",
+        "games"
+    ],
+    "checkver": {
+        "url": "https://github.com/Cnotech/flash-collector/releases.atom",
+        "regex": "Repository/\\d+/v(.+?)<"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Cnotech/flash-collector/releases/download/v$matchHead/Flash.Collector_$matchHead.0_win-x64.7z"
+            }
+        }
+    }
+}

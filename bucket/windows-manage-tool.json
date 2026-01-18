@@ -1,0 +1,33 @@
+{
+    "version": "2.2.2",
+    "description": "一个批处理Windows管理小工具",
+    "homepage": "https://github.com/Zhu-junwei/Windows-Manage-Tool",
+    "license": {
+        "identifier": "Unknown"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Zhu-junwei/Windows-Manage-Tool/releases/download/v2.2.2/Windows_v2.2.2.zip",
+            "hash": "20d8367c4c3cbef462beb7249b681f693be6d07f2f1082261560f7660f165971"
+        }
+    },
+    "bin": "WindowsManageTool.bat",
+    "shortcuts": [
+        [
+            "WindowsManageTool.bat",
+            "WindowsManageTool"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/Zhu-junwei/Windows-Manage-Tool/releases",
+        "jp": "$[0].assets[*].browser_download_url",
+        "regex": "/releases/download/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Zhu-junwei/Windows-Manage-Tool/releases/download/v$version/Windows_v$version.zip"
+            }
+        }
+    }
+}

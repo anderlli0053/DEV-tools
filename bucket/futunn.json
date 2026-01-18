@@ -1,26 +1,26 @@
 {
-  "homepage": "https://www.futunn.com/",
-  "description": "Powerful tool facilitating trading and providing market information and data for Hong Kong, US and China A-Share Stocks",
-  "license": "Proprietary",
-  "version": "15.13.17958",
-  "url": "https://softwaredownload.futunn.com/FTNN_15.13.17958.exe#/ftnn_15.13.17958.7z",
-  "hash": "cb61c1a16a3e8e1640c1872ae0a6df6f4ed5fcd7742254864fe8cbb5c0f4a174",
-  "post_install": [
-    "@('$PLUGINSDIR', '$_14_') | ForEach-Object {",
-    "    Remove-Item \"$dir\\$_\" -Recurse -Force",
-    "}"
-  ],
-  "shortcuts": [
-    [
-      "FTNN.exe",
-      "富途牛牛"
-    ]
-  ],
-  "checkver": {
-    "url": "https://www.futunn.com/api/futunn/download/fetch-lasted-link?clientType=10",
-    "regex": "FTNN_([\\d.]+).exe"
-  },
-  "autoupdate": {
-    "url": "https://softwaredownload.futunn.com/FTNN_$version.exe#/ftnn_$version.7z"
-  }
+    "homepage": "https://www.futunn.com/",
+    "description": "Powerful tool facilitating trading and providing market information and data for Hong Kong, US and China A-Share Stocks",
+    "license": "Proprietary",
+    "version": "16.1.21358",
+    "url": "https://softwaredownload.futunn.com/FTNN_legacy_16.1.21358.exe#/ftnn_16.1.21358.7z",
+    "hash": "5afd64bbd668664b55990b76afb34fcbb9e169df0dc118f5cef74bc27dc7503a",
+    "post_install": [
+        "@('$PLUGINSDIR', '$_14_') | ForEach-Object {",
+        "    Remove-Item \"$dir\\$_\" -Recurse -Force",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "FTNN.exe",
+            "富途牛牛"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.futunn.com/api/futunn/download/fetch-lasted-link?clientType=10",
+        "regex": "FTNN_legacy_([\\d.]+).exe"
+    },
+    "autoupdate": {
+        "url": "https://softwaredownload.futunn.com/FTNN_legacy_$version.exe#/ftnn_$version.7z"
+    }
 }

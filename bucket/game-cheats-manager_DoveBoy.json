@@ -1,42 +1,42 @@
 {
-  "version": "2.2.1",
-  "description": "Easily download and manage game cheats for your convenience",
-  "homepage": "https://github.com/dyang886/Game-Cheats-Manager",
-  "license": {
-    "identifier": "GPL-3.0 license",
-    "url": "https://github.com/dyang886/Game-Cheats-Manager#GPL-3.0-1-ov-file"
-  },
-  "url": "https://github.com/dyang886/Game-Cheats-Manager/releases/download/v2.2.1/Game.Cheats.Manager.Setup.2.2.1.exe",
-  "hash": "445585f6ab2da56309f3034880fd736bfc7464263d06481ae82e413b426bfd6d",
-  "innosetup": true,
-  "installer": {
-    "script": [
-      "# handle runtime cache",
-      "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
-      "Mount-ExternalRuntimeData -Source \"$persist_dir\\settings\" -Target \"$env:APPDATA\\GCM Settings\"",
-      "Mount-ExternalRuntimeData -Source \"$persist_dir\\trainers\" -Target \"$env:APPDATA\\GCM Trainers\"",
-      "Remove-Module -Name AppsUtils"
-    ]
-  },
-  "uninstaller": {
-    "script": [
-      "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
-      "Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\GCM Settings\"",
-      "Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\GCM Trainers\"",
-      "Remove-Module -Name AppsUtils"
-    ]
-  },
-  "shortcuts": [
-    [
-      "Game Cheats Manager.exe",
-      "Game Cheats Manager"
-    ]
-  ],
-  "checkver": {
-    "url": "https://api.github.com/repos/dyang886/Game-Cheats-Manager/releases",
-    "regex": "/releases/tag/v([\\d.]+)"
-  },
-  "autoupdate": {
-    "url": "https://github.com/dyang886/Game-Cheats-Manager/releases/download/v$version/Game.Cheats.Manager.Setup.$version.exe"
-  }
+    "version": "2.3.4",
+    "description": "Easily download and manage game cheats for your convenience",
+    "homepage": "https://github.com/dyang886/Game-Cheats-Manager",
+    "license": {
+        "identifier": "GPL-3.0 license",
+        "url": "https://github.com/dyang886/Game-Cheats-Manager#GPL-3.0-1-ov-file"
+    },
+    "url": "https://github.com/dyang886/Game-Cheats-Manager/releases/download/v2.3.4/Game.Cheats.Manager.Setup.2.3.4.exe",
+    "hash": "840213e2f17a1144671bab4f1fee8a94a24b5b5d75bb2ec88c10a4222c0b9fee",
+    "innosetup": true,
+    "installer": {
+        "script": [
+            "# handle runtime cache",
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
+            "Mount-ExternalRuntimeData -Source \"$persist_dir\\settings\" -Target \"$env:APPDATA\\GCM Settings\"",
+            "Mount-ExternalRuntimeData -Source \"$persist_dir\\trainers\" -Target \"$env:APPDATA\\GCM Trainers\"",
+            "Remove-Module -Name AppsUtils"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
+            "Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\GCM Settings\"",
+            "Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\GCM Trainers\"",
+            "Remove-Module -Name AppsUtils"
+        ]
+    },
+    "shortcuts": [
+        [
+            "Game Cheats Manager.exe",
+            "Game Cheats Manager"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/dyang886/Game-Cheats-Manager/releases",
+        "regex": "/releases/tag/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://github.com/dyang886/Game-Cheats-Manager/releases/download/v$version/Game.Cheats.Manager.Setup.$version.exe"
+    }
 }

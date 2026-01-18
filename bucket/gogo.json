@@ -1,40 +1,39 @@
 {
-  "version": "2.13.7",
-  "description": "面向红队的, 高度可控可拓展的自动化引擎(Scoop bucket for Cybersecurity by whoopscs)",
-  "homepage": "https://github.com/chainreactors/gogo",
-  "license": "MIT",
-  "notes": "Scoop bucket for Cybersecurity by whoopscs(https://github.com/whoopscs/scoop-security).",
-  "architecture": {
-    "32bit": {
-      "url": "https://github.com/chainreactors/gogo/releases/download/v2.13.7/gogo_windows_386.exe",
-      "hash": "b83424c6a96935ae3e5c3e21e1ad867674ac783db8bf4b79429e9b0bfd127ffc"
-    },
-    "64bit": {
-      "url": "https://github.com/chainreactors/gogo/releases/download/v2.13.7/gogo_windows_amd64.exe",
-      "hash": "0d9288308598a59e6c67620fef0175aaa9b5b1da9355b9c36d5e7c00a060cbfe"
-    }
-  },
-  "pre_install": [
-    "if (Test-Path \"$dir\\gogo_windows_amd64.exe\") {",
-    "    Rename-Item \"$dir\\gogo_windows_amd64.exe\" \"$dir\\gogo.exe\"",
-    "} elseif (Test-Path \"$dir\\gogo_windows_386.exe\") {",
-    "    Rename-Item \"$dir\\gogo_windows_386.exe\" \"$dir\\gogo.exe\"",
-    "}"
-  ],
-  "bin": "gogo.exe",
-  "checkver": {
-    "url": "https://api.github.com/repos/chainreactors/gogo/releases/latest",
-    "jsonpath": "$.tag_name",
-    "regex": "v([\\d.]+)"
-  },
-  "autoupdate": {
+    "version": "2.14.1",
+    "description": "面向红队的, 高度可控可拓展的自动化引擎",
+    "homepage": "https://github.com/chainreactors/gogo",
+    "license": "MIT",
     "architecture": {
-      "32bit": {
-        "url": "https://github.com/chainreactors/gogo/releases/download/v$version/gogo_windows_386.exe"
-      },
-      "64bit": {
-        "url": "https://github.com/chainreactors/gogo/releases/download/v$version/gogo_windows_amd64.exe"
-      }
+        "32bit": {
+            "url": "https://github.com/chainreactors/gogo/releases/download/v2.14.1/gogo_windows_386.exe",
+            "hash": "9c6f3dc337ca451e316dc41e5699a9d81718943cda5ad418f229cf54db9135c9"
+        },
+        "64bit": {
+            "url": "https://github.com/chainreactors/gogo/releases/download/v2.14.1/gogo_windows_amd64.exe",
+            "hash": "d19452d7ebb454a3eb01e84ccc4f25facd9c0db6fc4c480e63daa69bb73da537"
+        }
+    },
+    "pre_install": [
+        "if (Test-Path \"$dir\\gogo_windows_amd64.exe\") {",
+        "    Rename-Item \"$dir\\gogo_windows_amd64.exe\" \"$dir\\gogo.exe\"",
+        "} elseif (Test-Path \"$dir\\gogo_windows_386.exe\") {",
+        "    Rename-Item \"$dir\\gogo_windows_386.exe\" \"$dir\\gogo.exe\"",
+        "}"
+    ],
+    "bin": "gogo.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/chainreactors/gogo/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://github.com/chainreactors/gogo/releases/download/v$version/gogo_windows_386.exe"
+            },
+            "64bit": {
+                "url": "https://github.com/chainreactors/gogo/releases/download/v$version/gogo_windows_amd64.exe"
+            }
+        }
     }
-  }
 }

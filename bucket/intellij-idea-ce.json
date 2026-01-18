@@ -1,37 +1,37 @@
 {
-  "homepage": "https://www.jetbrains.com/idea/",
-  "description": "The Java IDE for Professional Developers by JetBrains",
-  "version": "2025.1",
-  "license": "Apache-2.0",
-  "url": "https://download.jetbrains.com/idea/ideaIC-2025.1.win.zip",
-  "hash": "7dc25f00d25c76fe2881eda77e36d3bec1aef3097054f6b00f37dba20660abb7",
-  "bin": "bin\\idea.bat",
-  "architecture": {
-    "64bit": {
-      "shortcuts": [
-        [
-          "bin\\idea64.exe",
-          "IntelliJ IDEA Community Edition"
-        ]
-      ]
+    "homepage": "https://www.jetbrains.com/idea/",
+    "description": "The Java IDE for Professional Developers by JetBrains",
+    "version": "2025.2.6.1",
+    "license": "Apache-2.0",
+    "url": "https://download.jetbrains.com/idea/ideaIC-2025.2.6.1.win.zip",
+    "hash": "7fa549bcbcf65de2678b34c7fc75c250e11c37ba3a409274fc7dd9d9743b6504",
+    "bin": "bin\\idea.bat",
+    "architecture": {
+        "64bit": {
+            "shortcuts": [
+                [
+                    "bin\\idea64.exe",
+                    "IntelliJ IDEA Community Edition"
+                ]
+            ]
+        },
+        "32bit": {
+            "shortcuts": [
+                [
+                    "bin\\idea.exe",
+                    "IntelliJ IDEA Community Edition"
+                ]
+            ]
+        }
     },
-    "32bit": {
-      "shortcuts": [
-        [
-          "bin\\idea.exe",
-          "IntelliJ IDEA Community Edition"
-        ]
-      ]
+    "checkver": {
+        "url": "https://data.services.jetbrains.com/products/releases?code=IIC&latest=true&type=release",
+        "jp": "$..version"
+    },
+    "autoupdate": {
+        "url": "https://download.jetbrains.com/idea/ideaIC-$version.win.zip",
+        "hash": {
+            "url": "$url.sha256"
+        }
     }
-  },
-  "checkver": {
-    "url": "https://data.services.jetbrains.com/products/releases?code=IIC&latest=true&type=release",
-    "jp": "$..version"
-  },
-  "autoupdate": {
-    "url": "https://download.jetbrains.com/idea/ideaIC-$version.win.zip",
-    "hash": {
-      "url": "$url.sha256"
-    }
-  }
 }

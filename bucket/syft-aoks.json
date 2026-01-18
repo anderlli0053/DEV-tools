@@ -1,0 +1,25 @@
+{
+    "##": "see https://github.com/ScoopInstaller/Main/blob/master/bucket/syft.json",
+    "version": "1.40.1",
+    "description": "A CLI tool and Go library for generating a Software Bill of Materials (SBOM) from container images and filesystems.",
+    "homepage": "https://github.com/anchore/syft",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/anchore/syft/releases/download/v1.40.1/syft_1.40.1_windows_amd64.zip",
+            "hash": "eedac363e277dfecac420b6e4ed0a861bc2c9c84a7544157f52807a99bff07cd"
+        }
+    },
+    "bin": "syft.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/anchore/syft/releases/download/v$version/syft_$version_windows_amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/anchore/syft/releases/download/v$version/syft_$version_checksums.txt"
+        }
+    }
+}

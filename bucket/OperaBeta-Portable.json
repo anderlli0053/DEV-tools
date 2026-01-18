@@ -1,47 +1,47 @@
 {
-  "version": "119.0.5497.20",
-  "description": "Opera Beta. Fast, secure, easy-to-use browser.",
-  "homepage": "https://www.opera.com/browsers/opera/beta",
-  "license": {
-    "identifier": "Freeware",
-    "url": "https://www.opera.com/eula/computers"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://download1.operacdn.com/pub/opera-beta/119.0.5497.20/win/Opera_beta_119.0.5497.20_Setup_x64.exe#/dl.7z",
-      "hash": "95bfc3cb46adafba4ac2eca30dce86940da80e5955c6077ec8d75bb268357afa"
-    }
-  },
-  "installer": {
-    "script": [
-      "Remove-Item -Path \"$dir\\*_list\" -Force",
-      "Move-Item -Path \"$dir\\*\" -Destination \"$dir\\$version\" -Exclude 'Assets', 'launcher*', 'Resources.pri' -ErrorAction Ignore",
-      "if (!(Test-Path \"$dir\\$version\\localization\")) {",
-      "   New-Item -Path \"$dir\\$version\\localization\" -ItemType Directory | Out-Null",
-      "   Move-Item -Path \"$dir\\$version\\*.pak\" -Destination \"$dir\\$version\\localization\" -Exclude 'opera*' -ErrorAction Ignore",
-      "}",
-      "Set-Content -Path \"$dir\\installer_prefs.json\" -Value (@{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json) -Encoding ASCII"
-    ]
-  },
-  "shortcuts": [
-    [
-      "launcher.exe",
-      "Opera Beta"
-    ]
-  ],
-  "persist": "profile",
-  "checkver": {
-    "url": "https://fossies.org/windows/www/",
-    "regex": "Opera_beta_([\\d.]+)_Setup"
-  },
-  "autoupdate": {
+    "version": "126.0.5750.30",
+    "description": "Opera Beta. Fast, secure, easy-to-use browser.",
+    "homepage": "https://www.opera.com/browsers/opera/beta",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.opera.com/eula/computers"
+    },
     "architecture": {
-      "64bit": {
-        "url": "https://download1.operacdn.com/pub/opera-beta/$version/win/Opera_beta_$version_Setup_x64.exe#/dl.7z"
-      },
-      "hash": {
-        "url": "$url.sha256sum"
-      }
+        "64bit": {
+            "url": "https://download1.operacdn.com/pub/opera-beta/126.0.5750.30/win/Opera_beta_126.0.5750.30_Setup_x64.exe#/dl.7z",
+            "hash": "a025984a70b63ce7914fcb3317976083b66682c811d06d3b8ff86c792e8efd04"
+        }
+    },
+    "installer": {
+        "script": [
+            "Remove-Item -Path \"$dir\\*_list\" -Force",
+            "Move-Item -Path \"$dir\\*\" -Destination \"$dir\\$version\" -Exclude 'Assets', 'launcher*', 'Resources.pri' -ErrorAction Ignore",
+            "if (!(Test-Path \"$dir\\$version\\localization\")) {",
+            "   New-Item -Path \"$dir\\$version\\localization\" -ItemType Directory | Out-Null",
+            "   Move-Item -Path \"$dir\\$version\\*.pak\" -Destination \"$dir\\$version\\localization\" -Exclude 'opera*' -ErrorAction Ignore",
+            "}",
+            "Set-Content -Path \"$dir\\installer_prefs.json\" -Value (@{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json) -Encoding ASCII"
+        ]
+    },
+    "shortcuts": [
+        [
+            "launcher.exe",
+            "Opera Beta"
+        ]
+    ],
+    "persist": "profile",
+    "checkver": {
+        "url": "https://fossies.org/windows/www/",
+        "regex": "Opera_beta_([\\d.]+)_Setup"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download1.operacdn.com/pub/opera-beta/$version/win/Opera_beta_$version_Setup_x64.exe#/dl.7z"
+            },
+            "hash": {
+                "url": "$url.sha256sum"
+            }
+        }
     }
-  }
 }

@@ -1,28 +1,28 @@
 {
-    "autoupdate": {
-        "hash": {
-            "regex": "MD5 Hash: +[\\w]{32}",
-            "url": "https://portableapps.com/apps/office/calibre-portable"
-        },
-        "url": "https://gigenet.dl.sourceforge.net/project/portableapps/calibre%20Portable/calibrePortable_$version.paf.exe"
-    },
-    "bin": "calibrePortable.exe",
-    "checkver": {
-        "re": "Version \\s+([\\w\\.]* for Win",
-        "url": "https://portableapps.com/apps/office/calibre-portable"
-    },
-    "description": "Ebook manager, viewer",
-    "hash": "f8eff8295b5f3426545ce33bceaf028d23ef24c1135697d497eea17da9e4f629",
     "homepage": "https://portableapps.com/apps/office/calibre-portable",
+    "description": "Ebook manager, viewer",
+    "version": "4.17.0",
     "license": "",
-    "persist": "Data",
-    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+    "url": "https://gigenet.dl.sourceforge.net/project/portableapps/calibre%20Portable/calibrePortable_4.17.0.paf.exe#/dl.7z",
+    "hash": "md5:8bd822dc81e1dc57a661ee55566fdcd5",
+    "bin": "calibrePortable.exe",
     "shortcuts": [
         [
             "calibrePortable.exe",
             "calibrePortable"
         ]
     ],
-    "url": "https://gigenet.dl.sourceforge.net/project/portableapps/calibre%20Portable/calibrePortable_8.16.2.paf.exe",
-    "version": "8.16.2"
+    "persist": "Data",
+    "checkver": {
+        "url": "https://portableapps.com/apps/office/calibre-portable",
+        "re": "Version \\s+([\\w\\.]* for Win"
+    },
+    "autoupdate": {
+        "url": "https://gigenet.dl.sourceforge.net/project/portableapps/calibre%20Portable/calibrePortable_$version.paf.exe",
+        "hash": {
+            "url": "https://portableapps.com/apps/office/calibre-portable",
+            "regex": "MD5 Hash: +[\\w]{32}"
+        }
+    },
+    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
 }

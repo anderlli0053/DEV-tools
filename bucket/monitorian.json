@@ -1,27 +1,38 @@
 {
-  "autoupdate": {
-    "url": "https://ghproxy.com/https://github.com/emoacht/Monitorian/releases/download/$matchTag/MonitorianInstaller$cleanVersion.zip"
-  },
-  "bin": "Monitorian.exe",
-  "checkver": {
-    "jsonpath": "$.tag_name",
-    "regex": "(?<tag>([\\d.]+)-Installer)",
-    "url": "https://api.github.com/repos/emoacht/Monitorian/releases/latest"
-  },
-  "description": "Monitorian is a Windows desktop tool to adjust the brightness of multiple monitors with ease.",
-  "hash": "604ca7f51062b385e31ce4576d5e8a265463808deb86cd1374c9d96b0c35352f",
-  "homepage": "https://github.com/emoacht/Monitorian",
-  "license": {
-    "identifier": "MIT",
-    "url": "https://github.com/emoacht/Monitorian/blob/master/LICENSE.txt"
-  },
-  "pre_install": "Expand-MsiArchive \"$dir\\Monitorian.Installer.msi\" \"$dir\" -ExtractDir 'Monitorian' -Removal",
-  "shortcuts": [
-    [
-      "Monitorian.exe",
-      "Monitorian"
-    ]
-  ],
-  "url": "https://ghproxy.com/https://github.com/emoacht/Monitorian/releases/download/4.3.0-Installer/MonitorianInstaller430.zip",
-  "version": "4.3.0"
+    "version": "4.13.0",
+    "homepage": "https://github.com/emoacht/Monitorian",
+    "description": "A Windows desktop tool to adjust the brightness of multiple monitors with ease.",
+    "license": "MIT",
+    "url": "https://github.com/emoacht/Monitorian/releases/download/4.13.0-Installer/MonitorianInstaller4130.zip",
+    "hash": "73029da1613dec199ab79aa1b0ce6e77db40379edc4c380904799ace1cdefddc",
+    "pre_install": "Expand-MsiArchive \"$dir\\Monitorian.Installer.msi\" $dir -ExtractDir 'PFiles\\Monitorian' -Removal",
+    "post_install": [
+        "$appData = \"$env:LocalAppData\\Monitorian\"",
+        "ensure \"$persist_dir\" | Out-Null",
+        "if (Test-Path \"$appData\") {",
+        "    Copy-Item -Path \"$appData\\*\" -Destination \"$persist_dir\" -Force -ErrorAction SilentlyContinue",
+        "    Remove-Item -Path \"$appData\" -Force -Recurse -ErrorAction SilentlyContinue",
+        "}",
+        "New-DirectoryJunction \"$appData\" \"$persist_dir\" | Out-Null"
+    ],
+    "bin": "Monitorian.exe",
+    "shortcuts": [
+        [
+            "Monitorian.exe",
+            "Monitorian"
+        ]
+    ],
+    "pre_uninstall": [
+        "$rkey = 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run'",
+        "if ($cmd -eq 'uninstall') {",
+        "    Remove-ItemProperty $rkey -Name 'Monitorian' -ErrorAction SilentlyContinue",
+        "}"
+    ],
+    "checkver": {
+        "github": "https://github.com/emoacht/Monitorian",
+        "regex": "([\\d.]+)-Installer"
+    },
+    "autoupdate": {
+        "url": "https://github.com/emoacht/Monitorian/releases/download/$version-Installer/MonitorianInstaller$cleanVersion.zip"
+    }
 }

@@ -1,7 +1,7 @@
 {
-    "version": "139.0b2",
+    "version": "148.0b3",
     "description": "Developer builds of Firefox: the popular open source web browser",
-    "homepage": "https://www.mozilla.org/en-US/firefox/developer/",
+    "homepage": "https://www.firefox.com/en-US/channel/desktop/developer",
     "license": "MPL-2.0",
     "notes": [
         "To set profile 'Scoop-Dev' as *DEFAULT*, or profiles/settings was lost after update:",
@@ -11,12 +11,12 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://archive.mozilla.org/pub/devedition/releases/139.0b2/win64/en-US/Firefox%20Setup%20139.0b2.exe#/dl.7z",
-            "hash": "sha512:3e849111f448528a596e510417cb7bffa8f84d43a6fbbc4a772cbb75da3c1767aba5771d649752edf4c595c7a09790b4ed808defbfbef77bd632b8b7cd6a8252"
+            "url": "https://archive.mozilla.org/pub/devedition/releases/148.0b3/win64/en-US/Firefox%20Setup%20148.0b3.exe#/dl.7z",
+            "hash": "sha512:a1ad5f68415293889ae6ae52319c874cab640d63af30b9fa68e68a85b91f9f3e08a26b9d82b51c207f3329fe9f44abdeaf4814c716e2219f24ef0428122aba33"
         },
         "32bit": {
-            "url": "https://archive.mozilla.org/pub/devedition/releases/139.0b2/win32/en-US/Firefox%20Setup%20139.0b2.exe#/dl.7z",
-            "hash": "sha512:78900fc98e00f9f767707a19768e52dc1b74ada81fe12efc3bbd6970e94522608ce1aeb550962a516ff844d6eb6a394c726281911535657e7c472f65f54f9a62"
+            "url": "https://archive.mozilla.org/pub/devedition/releases/148.0b3/win32/en-US/Firefox%20Setup%20148.0b3.exe#/dl.7z",
+            "hash": "sha512:f246caae77b2e897d8eb6c310fa44e52c7ebba4421d08878957e926023f1e3dcfc21603319ba368a20f09ebb58f19209debf952e8c920f1d586aa99258dd8dea"
         }
     },
     "extract_dir": "core",
@@ -54,9 +54,8 @@
         "profile"
     ],
     "checkver": {
-        "url": "https://aus5.mozilla.org/update/6/Firefox/93.0/_/WINNT_x86_64-msvc-x64/en-US/aurora/_/_/_/_/update.xml",
-        "xpath": "/updates/update/patch/@URL",
-        "regex": "devedition-([\\db.]+)-"
+        "url": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+        "jsonpath": "$.FIREFOX_DEVEDITION"
     },
     "autoupdate": {
         "architecture": {

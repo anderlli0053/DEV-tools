@@ -1,5 +1,5 @@
 {
-    "version": "3.12.0",
+    "version": "3.15.4",
     "description": "Management tool for Unity installations and projects",
     "homepage": "https://docs.unity3d.com/Manual/GettingStartedInstallingHub.html",
     "license": {
@@ -9,13 +9,13 @@
     "architecture": {
         "64bit": {
             "url": "https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe#/setup.exe",
-            "hash": "14e95d1121ee54c6ff8e1501190febebc4298a018bfc189b71dd59c68b164ff5"
+            "hash": "e63e78a347fc60e200e1d417e3da73fbef0f28ded5b08f3a7e816f6685f85e59"
         }
     },
     "installer": {
         "script": [
             "if(!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-            "Start-Process \"$dir\\setup.exe\" -ArgumentList @('/S', \"/D=`\"$dir`\"\") -Wait -Verb RunAs | Out-Null",
+            "Start-Process \"$dir\\setup.exe\" -ArgumentList @('/S', \"/D=$dir\") -Wait -Verb RunAs | Out-Null",
             "Remove-Item \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\Unity Hub.lnk\"",
             "Remove-Item \"$Env:Public\\Desktop\\Unity Hub.lnk\"",
             "Remove-Item \"$dir\\setup.exe\""

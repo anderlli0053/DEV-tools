@@ -1,42 +1,28 @@
 {
-  "version": "25.0417",
-  "description": "bookget 数字古籍图书下载工具",
-  "homepage": "https://github.com/deweizhu/bookget",
-  "license": {
-    "identifier": "GPL-3.0 license",
-    "url": "https://github.com/deweizhu/bookget/blob/master/LICENSE"
-  },
-  "architecture": {
-    "64bit": {
-      "url": "https://github.com/deweizhu/bookget/releases/download/25.0417/bookget-25.0417.windows-amd64.7z",
-      "extract_dir": "bookget-25.0417.windows-amd64",
-      "hash": "4276e73a8c9c87baf48b69b3d17fda1cb6c5d77baee441da7f44357daa63e5bc"
-    }
-  },
-  "bin": [
-    [
-      "bookget-gui.exe",
-      "bookget"
-    ]
-  ],
-  "shortcuts": [
-    [
-      "bookget-gui.exe",
-      "bookget"
-    ]
-  ],
-  "persist": "config.ini",
-  "checkver": {
-    "url": "https://api.github.com/repos/deweizhu/bookget/releases",
-    "jsonpath": "$[0].assets[*].browser_download_url",
-    "regex": "/releases/download/(?<tag>[\\d.]+)/bookget-([\\d.]+).windows-amd64\\.7z"
-  },
-  "autoupdate": {
+    "version": "25.0701",
+    "description": "bookget 数字古籍图书下载工具",
+    "homepage": "https://github.com/deweizhu/bookget",
+    "license": {
+        "identifier": "GPL-3.0 license",
+        "url": "https://github.com/deweizhu/bookget/blob/master/LICENSE"
+    },
     "architecture": {
-      "64bit": {
-        "url": "https://github.com/deweizhu/bookget/releases/download/$matchTag/bookget-$version.windows-amd64.7z",
-        "extract_dir": "bookget-$version.windows-amd64"
-      }
+        "64bit": {
+            "url": "https://github.com/deweizhu/bookget/releases/download/v25.0701/bookget.exe",
+            "hash": "c133630766b8a27067cb0d681780fc4f1a8619007ad63401988cf928add190c3"
+        }
+    },
+    "bin": "bookget.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/deweizhu/bookget/releases",
+        "jsonpath": "$[0].assets[*].browser_download_url",
+        "regex": "/releases/download/v([\\d.]+)/bookget\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/deweizhu/bookget/releases/download/v$version/bookget.exe"
+            }
+        }
     }
-  }
 }

@@ -1,70 +1,70 @@
 {
-  "version": "139.0b1",
-  "description": "Firefox Beta: open source web browser. Custom policies.json file. Italian Language Pack.",
-  "homepage": "https://www.mozilla.org/it/firefox/beta/",
-  "license": "MPL-2.0",
-  "architecture": {
-    "64bit": {
-      "url": [
-        "https://archive.mozilla.org/pub/firefox/releases/139.0b1/win64/it/Firefox%20Setup%20139.0b1.exe#/dl.7z",
-        "https://raw.githubusercontent.com/starise/scoop-confetti/master/scripts/firefox-policies.json#/policies.json"
-      ],
-      "hash": [
-        "sha512:fb2b0250f82c681297c7690a5fe2a4ce2b93aa3ba638e43c5c50209e1d6abe697bfdee3f1a49044abccb80f5549fe77aa1f8146cbead88d409296c2bb26325d7",
-        "cb75fbc7489904edf08041213b70c67c8dad3f54fdecdadd623fdb0f44cbaef6"
-      ]
-    },
-    "32bit": {
-      "url": [
-        "https://archive.mozilla.org/pub/firefox/releases/139.0b1/win32/it/Firefox%20Setup%20139.0b1.exe#/dl.7z",
-        "https://raw.githubusercontent.com/starise/scoop-confetti/master/scripts/firefox-policies.json#/policies.json"
-      ],
-      "hash": [
-        "sha512:150dfdba85329da2d3c45681ed72449458067ee9ca7685e7c25abe72acaa528fa64aed94e7869f4f9d878a3793ff914f4c451d00a9d60ead4af3f2d5a6eec82b",
-        "cb75fbc7489904edf08041213b70c67c8dad3f54fdecdadd623fdb0f44cbaef6"
-      ]
-    }
-  },
-  "extract_dir": "core",
-  "pre_install": [
-    "if(!(Test-Path \"$persist_dir\\distribution\")) {",
-    "  New-Item \"$persist_dir\\distribution\" -Type Directory -Force | Out-Null",
-    "  Move-Item \"$dir\\policies.json\" \"$persist_dir\\distribution\\policies.json\"",
-    "}"
-  ],
-  "persist": "distribution",
-  "bin": [
-    [
-      "firefox.exe",
-      "firefox-beta"
-    ]
-  ],
-  "shortcuts": [
-    [
-      "firefox.exe",
-      "Firefox Beta"
-    ]
-  ],
-  "checkver": {
-    "url": "https://product-details.mozilla.org/1.0/firefox_versions.json",
-    "jsonpath": "$.LATEST_FIREFOX_RELEASED_DEVEL_VERSION"
-  },
-  "autoupdate": {
+    "version": "148.0b3",
+    "description": "Firefox Beta: open source web browser. Custom policies.json file. Italian Language Pack.",
+    "homepage": "https://www.mozilla.org/it/firefox/beta/",
+    "license": "MPL-2.0",
     "architecture": {
-      "64bit": {
-        "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/it/Firefox%20Setup%20$version.exe#/dl.7z",
-        "hash": {
-          "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
-          "regex": "$sha512\\s+win64/it/$basename"
+        "64bit": {
+            "url": [
+                "https://archive.mozilla.org/pub/firefox/releases/148.0b3/win64/it/Firefox%20Setup%20148.0b3.exe#/dl.7z",
+                "https://raw.githubusercontent.com/starise/scoop-confetti/master/scripts/firefox-policies.json#/policies.json"
+            ],
+            "hash": [
+                "sha512:07d4c33b91200dfca71a20e3d8fde43ded500a5be59e3d4e301e38f5425496f45708446ff74e559ff9c958db27d3a6a160028bf8b6bd61eeb366eec4f6615514",
+                "cb75fbc7489904edf08041213b70c67c8dad3f54fdecdadd623fdb0f44cbaef6"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://archive.mozilla.org/pub/firefox/releases/148.0b3/win32/it/Firefox%20Setup%20148.0b3.exe#/dl.7z",
+                "https://raw.githubusercontent.com/starise/scoop-confetti/master/scripts/firefox-policies.json#/policies.json"
+            ],
+            "hash": [
+                "sha512:0ba789106bd2847dada03b6259846906b4d653da02afb9d7d1dc2ceed8b97d6ad0ea0ab75a6b2fd9036041ede82c0b77f94b4bcaa70231eb6387c7fd29c1979a",
+                "cb75fbc7489904edf08041213b70c67c8dad3f54fdecdadd623fdb0f44cbaef6"
+            ]
         }
-      },
-      "32bit": {
-        "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/it/Firefox%20Setup%20$version.exe#/dl.7z",
-        "hash": {
-          "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
-          "regex": "$sha512\\s+win32/it/$basename"
+    },
+    "extract_dir": "core",
+    "pre_install": [
+        "if(!(Test-Path \"$persist_dir\\distribution\")) {",
+        "  New-Item \"$persist_dir\\distribution\" -Type Directory -Force | Out-Null",
+        "  Move-Item \"$dir\\policies.json\" \"$persist_dir\\distribution\\policies.json\"",
+        "}"
+    ],
+    "persist": "distribution",
+    "bin": [
+        [
+            "firefox.exe",
+            "firefox-beta"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "firefox.exe",
+            "Firefox Beta"
+        ]
+    ],
+    "checkver": {
+        "url": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+        "jsonpath": "$.LATEST_FIREFOX_RELEASED_DEVEL_VERSION"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/it/Firefox%20Setup%20$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win64/it/$basename"
+                }
+            },
+            "32bit": {
+                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/it/Firefox%20Setup%20$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win32/it/$basename"
+                }
+            }
         }
-      }
     }
-  }
 }

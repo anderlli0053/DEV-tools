@@ -1,0 +1,47 @@
+{
+    "version": "0.11.0",
+    "description": "An AI-powered IDE",
+    "homepage": "https://comate.baidu.com/",
+    "license": "Proprietary",
+    "architecture": {
+        "64bit": {
+            "url": "https://comate-ide.cdn.bcebos.com/download/stable/5ba6cb97aef76853299708b380b81855dbea83f2-235971649/Comate-win32-x64.zip",
+            "hash": "2e58ac6b0ca2a485904d8bec044e55b33fca7c6985305d52b1c20e587bf76c1f",
+            "extract_dir": "VSCode-win32-x64"
+        },
+        "arm64": {
+            "url": "https://comate-ide.cdn.bcebos.com/download/stable/5ba6cb97aef76853299708b380b81855dbea83f2-235971649/Comate-win32-arm64.zip",
+            "hash": "8fc910d442fcbb2f0101f3de1f9153d4829a564beef6be31b38d5674d74ed541",
+            "extract_dir": "VSCode-win32-arm64"
+        }
+    },
+    "post_install": [
+        "if (!(Test-Path \"$dir\\data\\extensions\") -and (Test-Path \"$env:USERPROFILE\\.comate\\extensions\")) {",
+        "    info '[Portable Mode] Copying extensions...'",
+        "    Copy-Item \"$env:USERPROFILE\\.comate\\extensions\" \"$dir\\data\" -Recurse",
+        "}",
+        "if (!(Test-Path \"$dir\\data\\user-data\") -and (Test-Path \"$env:AppData\\Comate\")) {",
+        "    info '[Portable Mode] Copying user data...'",
+        "    Copy-Item \"$env:AppData\\Comate\" \"$dir\\data\\user-data\" -Recurse",
+        "}",
+        "$extensions_file = \"$dir\\data\\extensions\\extensions.json\"",
+        "if ((Test-Path \"$extensions_file\")) {",
+        "    info 'Adjusting path in extensions file...'",
+        "    (Get-Content \"$extensions_file\") -replace '(?<=comate(/|\\\\\\\\)).*?(?=(/|\\\\\\\\)data(/|\\\\\\\\)extensions)', $version | Set-Content \"$extensions_file\"",
+        "}"
+    ],
+    "bin": [
+        [
+            "bin/Comate.cmd",
+            "comate"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "Comate.exe",
+            "Comate",
+            "--user-data-dir=\"$dir\\data\\user-data\" --extensions-dir=\"$dir\\data\\extensions\""
+        ]
+    ],
+    "persist": "data"
+}

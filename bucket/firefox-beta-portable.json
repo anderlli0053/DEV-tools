@@ -1,54 +1,54 @@
 {
-  "version": "138.0b9",
-  "description": "Beta builds of Firefox: the popular open source web browser.",
-  "homepage": "https://www.mozilla.org/en-US/firefox/beta/",
-  "license": "MPL-2.0",
-  "architecture": {
-    "64bit": {
-      "url": "https://archive.mozilla.org/pub/firefox/releases/138.0b9/win64/en-US/Firefox%20Setup%20138.0b9.exe#/dl.7z",
-      "hash": "sha512:e136ff496656a2ebf701bcaaaf44631d66d75e214ead336523db2a62eb0bc547e32594a40bd513e665d672139e13afd6f8887df92a8706ecff59be49b0696a73"
-    },
-    "32bit": {
-      "url": "https://archive.mozilla.org/pub/firefox/releases/138.0b9/win32/en-US/Firefox%20Setup%20138.0b9.exe#/dl.7z",
-      "hash": "sha512:b3d4748d7699e96009cd5722e50058d55c77b19f567e10556267aed329549bff38e06b409fe588e504843ee8dfe4cb03b01405efbb4b8199c03429eb70effb02"
-    }
-  },
-  "extract_dir": "core",
-  "bin": [
-    [
-      "firefox.exe",
-      "firefox-beta",
-      "-profile \"$dir\\profile\""
-    ]
-  ],
-  "shortcuts": [
-    [
-      "firefox.exe",
-      "Firefox Beta",
-      "-profile \"$dir\\profile\""
-    ]
-  ],
-  "persist": "profile",
-  "checkver": {
-    "url": "https://product-details.mozilla.org/1.0/firefox_versions.json",
-    "jsonpath": "$.LATEST_FIREFOX_DEVEL_VERSION"
-  },
-  "autoupdate": {
+    "version": "148.0b2",
+    "description": "Beta builds of Firefox: the popular open source web browser.",
+    "homepage": "https://www.mozilla.org/en-US/firefox/beta/",
+    "license": "MPL-2.0",
     "architecture": {
-      "64bit": {
-        "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/en-US/Firefox%20Setup%20$version.exe#/dl.7z",
-        "hash": {
-          "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
-          "regex": "$sha512\\s+win64/en-US/$basename"
+        "64bit": {
+            "url": "https://archive.mozilla.org/pub/firefox/releases/148.0b2/win64/en-US/Firefox%20Setup%20148.0b2.exe#/dl.7z",
+            "hash": "sha512:9ffb3e65870801c568f8547f58f6762f767748188cd756203302261266b519e0a9d63f2c9205fc711b66e3ff96c38f8db523d84928226041e6261f79b52af639"
+        },
+        "32bit": {
+            "url": "https://archive.mozilla.org/pub/firefox/releases/148.0b2/win32/en-US/Firefox%20Setup%20148.0b2.exe#/dl.7z",
+            "hash": "sha512:ecf5b87b7412e5a7aeaf983def8986dd625d05178ccb147ff88edabea2ed66a8fc54bd30dd4a1e1428d5ed44cf9da10961a674844051fb2dcc205deded3d726c"
         }
-      },
-      "32bit": {
-        "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/en-US/Firefox%20Setup%20$version.exe#/dl.7z",
-        "hash": {
-          "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
-          "regex": "$sha512\\s+win32/en-US/$basename"
+    },
+    "extract_dir": "core",
+    "bin": [
+        [
+            "firefox.exe",
+            "firefox-beta",
+            "-profile \"$dir\\profile\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "firefox.exe",
+            "Firefox Beta",
+            "-profile \"$dir\\profile\""
+        ]
+    ],
+    "persist": "profile",
+    "checkver": {
+        "url": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+        "jsonpath": "$.LATEST_FIREFOX_DEVEL_VERSION"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win64/en-US/Firefox%20Setup%20$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win64/en-US/$basename"
+                }
+            },
+            "32bit": {
+                "url": "https://archive.mozilla.org/pub/firefox/releases/$version/win32/en-US/Firefox%20Setup%20$version.exe#/dl.7z",
+                "hash": {
+                    "url": "https://archive.mozilla.org/pub/firefox/releases/$version/SHA512SUMS",
+                    "regex": "$sha512\\s+win32/en-US/$basename"
+                }
+            }
         }
-      }
     }
-  }
 }

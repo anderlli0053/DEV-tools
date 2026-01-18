@@ -1,0 +1,28 @@
+{
+    "version": "4.49.0",
+    "description": "Docker 一体化管理工具",
+    "homepage": "https://github.com/gendloop/DockerDesktop",
+    "license": "LGPL-2.1-or-later",
+    "notes": "<Installer>",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gendloop/DockerDesktop/releases/download/v4.49.0/DockerDesktop-4.49.0-win64.7z",
+            "hash": "328d6f1aa0f436c803b491fac05fa519016b7a50164cae9e60d07c0177b9c6c6"
+        }
+    },
+    "installer": {
+        "script": [
+            "Push-Location \"$dir\"",
+            "Start-Process DockerDesktop-$version-win64.exe",
+            "Pop-Location"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/gendloop/DockerDesktop/releases/download/v$version/DockerDesktop-$version-win64.7z"
+            }
+        }
+    }
+}

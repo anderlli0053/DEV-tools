@@ -1,0 +1,46 @@
+{
+    "version": "20260000",
+    "description": "🔄 mpv player 播放器折腾记录 windows conf ； 中文注释配置 汉化文档 快速帮助入门 ； mpv-lazy 懒人包 win10 x64 config ； 着色器 shader 滤镜 filter 整合方案",
+    "homepage": "https://github.com/hooke007/mpv_PlayKit",
+    "license": {
+        "url": "https://github.com/hooke007/mpv_PlayKit?tab=License-1-ov-file"
+    },
+    "notes": [
+        "维护非常杂乱的项目, 将就用吧别折腾调参, 个人推荐配置 (加到 mpv.conf):",
+        "vf = vapoursynth=\"~~/vs/MEMC_MVT_LQ.vpy\"",
+        "glsl-shaders-append = \"~~/shaders/Anime4K_AIO_optQ.glsl\"",
+        "glsl-shaders-append = \"~~/shaders/Adaptive_sharpen_lite_RT.glsl\""
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/hooke007/mpv_PlayKit/releases/download/20260000/mpv-lazy-20260000.exe#/dl.7z",
+            "hash": "6e90da16b21a4d429120b81dea6186463d628d74f6b4e6c32167f1fb57a165cd",
+            "extract_dir": "mpv-lazy"
+        }
+    },
+    "extract_dir": "mpv-lazy",
+    "post_install": [
+        "cmd /c $dir\\installer\\mpv-register.bat"
+    ],
+    "pre_uninstall": [
+        "cmd /c installer/mpv-unregister.bat"
+    ],
+    "shortcuts": [
+        [
+            "mpv.exe",
+            "mpv_PlayKit (mpv-lazy)"
+        ]
+    ],
+    "persist": "portable_config",
+    "checkver": {
+        "github": "https://github.com/hooke007/mpv_PlayKit"
+    },
+    "autoupdate": {
+        "url": "https://github.com/hooke007/mpv_PlayKit/releases/download/$version/mpv-lazy-$version.exe#/dl.7z",
+        "hash": {
+            "mode": "extract",
+            "url": "https://github.com/hooke007/mpv_PlayKit/releases/expanded_assets/$version",
+            "regex": "mpv-lazy.*\\.exe.*?sha256:$sha256"
+        }
+    }
+}

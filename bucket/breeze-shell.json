@@ -1,0 +1,29 @@
+{
+    "version": "0.1.32",
+    "description": "An alternative Windows context menu, and more.",
+    "homepage": "https://github.com/std-microblock/breeze-shell",
+    "license": "AGPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/std-microblock/breeze-shell/releases/download/0.1.32/windows-build.zip",
+            "extract_dir": "x64\\releasedbg",
+            "hash": "ed29578f53d597b91de7f03647ac46ba9216aefac0db70de242aca2dd96225ab"
+        }
+    },
+    "shortcuts": [
+        [
+            "breeze.exe",
+            "breeze-shell"
+        ]
+    ],
+    "post_uninstall": "if ($purge) { Remove-Item \"$env:USERPROFILE\\.breeze-shell\" -Force -Recurse -ErrorAction SilentlyContinue }",
+    "notes": "breeze-shell is NOT portable. Settings are stored in '%USERPROFILE%\\.breeze-shell', and will be purged during uninstallation.",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/std-microblock/breeze-shell/releases/download/$version/windows-build.zip"
+            }
+        }
+    }
+}

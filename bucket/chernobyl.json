@@ -1,0 +1,31 @@
+{
+    "version": "0.1.0",
+    "description": "Chernobyl Simulator is a port of the simulation game 'Chernobyl: The Legacy Continues' to modern 64-bit windows.",
+    "homepage": "https://aluigi.altervista.org/quickbms.htm",
+    "license": "Proprietary",
+    "notes": "All rights go to original authors, except for otvdm which is GPLv2",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/gdzx/chernobyl-simulator/releases/download/v0.1.0/chernobyl-setup.exe",
+            "hash": "5f97dc87dd7d650c43050ca053769566770a14922b3f7c5d3e08f368f9bf15d4"
+        }
+    },
+    "installer": {
+        "script": [
+            "Move-Item \"$dir\\$fname\" \"$dir\\..\\$fname\"",
+            "Start-Process -Wait \"$dir\\..\\$fname\" -ArgumentList @('/S', \"/D=$dir\")",
+            "Remove-Item \"$dir\\..\\$fname\""
+        ]
+    },
+    "post_install": [
+        "$tgt=\"$dir\\Chrnobyl.ini\"",
+        "(Get-Content $tgt) -replace 'C:\\\\CHRNOBYL',$dir | Set-Content $tgt"
+    ],
+
+    "uninstaller": {
+        "script": [
+            "Start-Process -Wait \"$dir\\uninstall.exe\" -ArgumentList('/S')"
+        ]
+    },
+    "persist": "FILES\\SAVED"
+}

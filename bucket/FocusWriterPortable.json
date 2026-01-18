@@ -1,28 +1,28 @@
 {
-  "autoupdate": {
-    "hash": {
-      "regex": "MD5 Hash: +[\\w]{32}",
-      "url": "https://portableapps.com/apps/office/focuswriter_portable"
+    "homepage": "https://portableapps.com/apps/office/focuswriter_portable",
+    "description": "Distraction-free word processor",
+    "version": "1.7.6",
+    "license": "",
+    "url": "https://pilotfiber.dl.sourceforge.net/project/portableapps/FocusWriter%20Portable/FocusWriterPortable_1.7.6.paf.exe#/dl.7z",
+    "hash": "md5:50c00f50a1c32df43def5b4516f160fe",
+    "bin": "FocusWriterPortable.exe",
+    "shortcuts": [
+        [
+            "FocusWriterPortable.exe",
+            "FocusWriterPortable"
+        ]
+    ],
+    "persist": "Data",
+    "checkver": {
+        "url": "https://portableapps.com/apps/office/focuswriter_portable",
+        "re": "Version \\s+([\\w\\.]* for Win"
     },
-    "url": "https://pilotfiber.dl.sourceforge.net/project/portableapps/FocusWriter%20Portable/FocusWriterPortable_$version.paf.exe"
-  },
-  "bin": "FocusWriterPortable.exe",
-  "checkver": {
-    "re": "Version \\s+([\\w\\.]* for Win",
-    "url": "https://portableapps.com/apps/office/focuswriter_portable"
-  },
-  "description": "Distraction-free word processor",
-  "hash": "7260682348b19c9201bddd2c00d39f0cc7eb632175e3ff7594b6aeb08e695b92",
-  "homepage": "https://portableapps.com/apps/office/focuswriter_portable",
-  "license": "",
-  "persist": "Data",
-  "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
-  "shortcuts": [
-    [
-      "FocusWriterPortable.exe",
-      "FocusWriterPortable"
-    ]
-  ],
-  "url": "https://pilotfiber.dl.sourceforge.net/project/portableapps/FocusWriter%20Portable/FocusWriterPortable_1.8.4.paf.exe",
-  "version": "1.8.4"
+    "autoupdate": {
+        "url": "https://pilotfiber.dl.sourceforge.net/project/portableapps/FocusWriter%20Portable/FocusWriterPortable_$version.paf.exe",
+        "hash": {
+            "url": "https://portableapps.com/apps/office/focuswriter_portable",
+            "regex": "MD5 Hash: +[\\w]{32}"
+        }
+    },
+    "post_install": "Remove-Item -LiteralPath \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
 }
