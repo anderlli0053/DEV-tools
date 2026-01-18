@@ -17,25 +17,25 @@
         }
     },
     "bin": [
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\gdbus.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\gdk-pixbuf-csource.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\gdk-pixbuf-query-loaders.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\ges-launch-1.0.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\gio-querymodules.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\glib-compile-schemas.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\gsettings.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\gst-device-monitor-1.0.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\gst-discoverer-1.0.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\gst-inspect-1.0.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\gst-launch-1.0.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\gst-play-1.0.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\gst-typefind-1.0.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\gst-validate-1.0.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\gst-validate-media-check-1.0.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\gst-validate-rtsp-server-1.0.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\gst-validate-transcoding-1.0.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\json-glib-format.exe",
-        "PFiles64\\gstreamer\\1.0\\msvc_x86_64\\bin\\json-glib-validate.exe"
+        "bin\\gdbus.exe",
+        "bin\\gdk-pixbuf-csource.exe",
+        "bin\\gdk-pixbuf-query-loaders.exe",
+        "bin\\ges-launch-1.0.exe",
+        "bin\\gio-querymodules.exe",
+        "bin\\glib-compile-schemas.exe",
+        "bin\\gsettings.exe",
+        "bin\\gst-device-monitor-1.0.exe",
+        "bin\\gst-discoverer-1.0.exe",
+        "bin\\gst-inspect-1.0.exe",
+        "bin\\gst-launch-1.0.exe",
+        "bin\\gst-play-1.0.exe",
+        "bin\\gst-typefind-1.0.exe",
+        "bin\\gst-validate-1.0.exe",
+        "bin\\gst-validate-media-check-1.0.exe",
+        "bin\\gst-validate-rtsp-server-1.0.exe",
+        "bin\\gst-validate-transcoding-1.0.exe",
+        "bin\\json-glib-format.exe",
+        "bin\\json-glib-validate.exe"
     ],
     "env_add_path": "bin",
     "env_set": {
@@ -60,7 +60,19 @@
         }
     },
     "pre_install": [
-        "if ($architecture -eq \"64bit\") { Move-Item -Path $dir/gstreamer/1.0/msvc_x86_64/* $dir  } elseif ($architecture -eq \"32bit\") { Move-Item -Path $dir/gstreamer/1.0/msvc_x86/* $dir }",
-        "Remove-Item -Path $dir/gstreamer -Force -Recurse"
+        "$msiContents = Get-ChildItem $dir -Recurse -Directory | Where-Object { $_.Name -match 'msvc_x86(_64)?' } | Select-Object -First 1",
+        "if ($msiContents) {",
+        "    $gstreamerDir = Get-Item $msiContents.FullName",
+        "    Get-ChildItem $gstreamerDir | ForEach-Object { Move-Item $_.FullName $dir -Force }",
+        "    Remove-Item $gstreamerDir.Parent.Parent -Recurse -Force -ErrorAction SilentlyContinue",
+        "}",        
+        "$pfiles = Get-ChildItem $dir -Directory -Filter '*PFiles*' -ErrorAction SilentlyContinue",
+        "if ($pfiles) {",
+        "    $gstDir = Get-ChildItem \"$($pfiles.FullName)\\gstreamer\\1.0\\msvc_x86_64\" -ErrorAction SilentlyContinue",
+        "    if ($gstDir) {",
+        "        Get-ChildItem $gstDir.FullName | ForEach-Object { Move-Item $_.FullName $dir -Force }",
+        "        Remove-Item \"$($pfiles.FullName)\\gstreamer\" -Recurse -Force -ErrorAction SilentlyContinue",
+        "    }",
+        "}"
     ]
 }
