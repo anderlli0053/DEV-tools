@@ -1,35 +1,68 @@
 {
     "homepage": "http://www.codesector.com/teracopy",
     "version": "4",
-    "license": "free for home users",
-    "url": "http://www.codesector.com/files/teracopy.exe#tera.exe",
+    "license": "Freeware",
+    "url": "http://www.codesector.com/files/teracopy.exe",
     "hash": "ac03db52bb68a013d3a8bf4db703ec11976fa1d0aa557eb988e3f926a26656cf",
-    "innosetup": true,
-    "bin": "TeraCopy.exe",
-    "architecture": {
-        "64bit": {
-            "installer": {
-                "script": [
-                    "Rename-Item \"$dir\\TeraCopy,1.exe\" \"TeraCopy.exe\"",
-                    "Rename-Item \"$dir\\TeraCopyService,1.exe\" \"TeraCopyService.exe\"",
-                    "Rename-Item \"$dir\\TeraCopy,1.dll\" \"TeraCopyExt.dll\"",
-                    "Rename-Item \"$dir\\Context,1.dll\" \"Context.dll\"",
-                    "Remove-Item \"$dir\\TeraCopy,2.exe\",\"$dir\\TeraCopy,2.dll\",\"$dir\\TeraCopyService,2.exe\",\"$dir\\Context,2.dll\" -Force"
-                ]
-            }
-        },
-        "32bit": {
-            "installer": {
-                "script": [
-                    "Rename-Item \"$dir\\TeraCopy,2.exe\" \"TeraCopy.exe\"",
-                    "Rename-Item \"$dir\\TeraCopyService,2.exe\" \"TeraCopyService.exe\"",
-                    "Rename-Item \"$dir\\TeraCopy,2.dll\" \"TeraCopyExt.dll\"",
-                    "Rename-Item \"$dir\\Context,2.dll\" \"Context.dll\"",
-                    "Remove-Item \"$dir\\TeraCopy,1.exe\",\"$dir\\TeraCopy,1.dll\",\"$dir\\TeraCopyService,1.exe\",\"$dir\\Context,1.dll\""
-                ]
-            }
-        }
+    "installer": {
+        "script": [
+            "$tempInstaller = \"$env:TEMP\\teracopy_installer.exe\"",
+            "Move-Item \"$dir\\teracopy.exe\" $tempInstaller -Force",
+            "",
+            "$extractDir = \"$dir\\_extracted\"",
+            "New-Item -ItemType Directory -Path $extractDir -Force | Out-Null",
+            "",
+            "Start-Process -FilePath $tempInstaller -ArgumentList \"/extract:$extractDir /silent\" -Wait -NoNewWindow",
+            "",
+            "Remove-Item $tempInstaller -Force -ErrorAction SilentlyContinue",
+            "",
+            "$extractedFolder = Get-ChildItem $extractDir -Directory | Select-Object -First 1",
+            "",
+            "if ($extractedFolder) {",
+            "    $sourcePath = $extractedFolder.FullName",
+            "    ",
+            "    if ($architecture -eq '64bit') {",
+            "        Get-ChildItem $sourcePath -File | Copy-Item -Destination $dir -Force",
+            "        if (Test-Path \"$sourcePath\\App\") {",
+            "            Copy-Item \"$sourcePath\\App\" -Destination $dir -Recurse -Force",
+            "        }",
+            "        if (Test-Path \"$sourcePath\\AppDataFolder\") {",
+            "            Copy-Item \"$sourcePath\\AppDataFolder\" -Destination $dir -Recurse -Force",
+            "        }",
+            "        Remove-Item \"$dir\\32-bit\" -Recurse -Force -ErrorAction SilentlyContinue",
+            "    } else {",
+            "        if (Test-Path \"$sourcePath\\32-bit\") {",
+            "            Get-ChildItem \"$sourcePath\\32-bit\" -File | Copy-Item -Destination $dir -Force",
+            "            if (Test-Path \"$sourcePath\\App\") {",
+            "                Copy-Item \"$sourcePath\\App\" -Destination $dir -Recurse -Force",
+            "            }",
+            "            if (Test-Path \"$sourcePath\\AppDataFolder\") {",
+            "                Copy-Item \"$sourcePath\\AppDataFolder\" -Destination $dir -Recurse -Force",
+            "            }",
+            "            $sharedFiles = 'License.rtf', 'License.txt', 'Readme.txt', 'Whatsnew.txt', 'Portable.txt', 'Directory Opus.txt', 'Total Commander.txt', 'XYplorer.txt', 'share.html', 'sorttable.js'",
+            "            foreach ($file in $sharedFiles) {",
+            "                if (Test-Path \"$sourcePath\\$file\") {",
+            "                    Copy-Item \"$sourcePath\\$file\" -Destination $dir -Force",
+            "                }",
+            "            }",
+            "        }",
+            "    }",
+            "}",
+            "",
+            "Remove-Item $extractDir -Recurse -Force -ErrorAction SilentlyContinue",
+            "",
+            "Remove-Item \"$dir\\*.msi\" -Force -ErrorAction SilentlyContinue",
+            "Remove-Item \"$dir\\updater.exe\" -Force -ErrorAction SilentlyContinue",
+            "",
+            "if (!(Test-Path \"$dir\\TeraCopy.exe\")) {",
+            "    $exeFile = Get-ChildItem $dir -Filter *.exe | Where-Object { $_.Name -match '^TeraCopy' } | Select-Object -First 1",
+            "    if ($exeFile) {",
+            "        Rename-Item $exeFile.FullName \"TeraCopy.exe\" -Force",
+            "    }",
+            "}"
+        ]
     },
+    "bin": "TeraCopy.exe",
     "persist": [
         "Options.ini",
         "main.db"
@@ -42,6 +75,6 @@
     ],
     "checkver": "TeraCopy ([\\d.]+)",
     "autoupdate": {
-        "url": "http://www.codesector.com/files/teracopy.exe#tera.exe"
+        "url": "http://www.codesector.com/files/teracopy.exe"
     }
 }
