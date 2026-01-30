@@ -1,30 +1,55 @@
 {
-    "version": "1.7.0",
-    "description": "\"Sigma File Manager\" is a free, open-source, quickly evolving, modern file manager (explorer / browser) app for Windows and Linux.",
     "homepage": "https://github.com/aleksey-hoffman/sigma-file-manager",
-    "license": "Unknown",
+    "description": "A free, open-source, quickly evolving, modern file manager.",
+    "version": "2.0.0-alpha.6",
+    "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/aleksey-hoffman/sigma-file-manager/releases/download/v1.7.0/Sigma-File-Manager-1.7.0-Windows-Setup.exe#/dl.7z",
-            "hash": "418285100afe0b9a2624740b94f1fa7d483bd24d88327fb99d930aef26805a3f"
+            "url": "https://github.com/aleksey-hoffman/sigma-file-manager/releases/download/v2.0.0-alpha.6/Sigma.File.Manager_2.0.0-alpha.6_x64-setup.exe",
+            "hash": "sha256:30edd5d3bdeccd545e3880d40c706cf0cf62c3c12357c46d36746afca6377be1"
         }
     },
-    "pre_install": [
-        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-        "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
-    ],
-    "bin": "Sigma file manager.exe",
+    "installer": {
+        "script": [
+            "$7zip = \"$(appdir '7zip')\\current\\7z.exe\"",
+            "",
+            "if (!(Test-Path $7zip)) {",
+            "    $7zip = \"$env:ProgramFiles\\7-Zip\\7z.exe\"",
+            "    if (!(Test-Path $7zip)) {",
+            "        error '7-Zip is required'",
+            "        exit 1",
+            "    }",
+            "}",
+            "",
+            "$installerFile = Get-ChildItem \"$dir\" -Filter *.exe | Select-Object -First 1",
+            "& $7zip x \"$installerFile\" -o\"$dir\\_tmp\" -y | Out-Null",
+            "",
+            "$sigmaExe = Get-ChildItem \"$dir\\_tmp\" -Recurse -Filter sigma-file-manager.exe | Select-Object -First 1",
+            "if ($sigmaExe) {",
+            "    Move-Item $sigmaExe.FullName \"$dir\\sigma-file-manager.exe\" -Force",
+            "}",
+            "",
+            "Remove-Item \"$dir\\_tmp\" -Recurse -Force -ErrorAction SilentlyContinue",
+            "Remove-Item \"$installerFile\" -Force -ErrorAction SilentlyContinue"
+        ]
+    },
+    "bin": "sigma-file-manager.exe",
     "shortcuts": [
         [
-            "Sigma file manager.exe",
-            "Sigma file manager"
+            "sigma-file-manager.exe",
+            "Sigma File Manager"
         ]
     ],
     "checkver": {
-        "github": "https://github.com/aleksey-hoffman/sigma-file-manager"
+        "url": "https://github.com/aleksey-hoffman/sigma-file-manager/releases",
+        "regex": "Sigma\\.File\\.Manager_([\\w.-]+)_x64-setup\\.exe"
     },
     "autoupdate": {
-        "url": "https://github.com/aleksey-hoffman/sigma-file-manager/releases/download/v$version/Sigma-File-Manager-$version-Windows-Setup.exe#/dl.7z",
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/aleksey-hoffman/sigma-file-manager/releases/download/v$version/Sigma.File.Manager_$version_x64-setup.exe"
+            }
+        },
         "hash": {
             "mode": "download"
         }
