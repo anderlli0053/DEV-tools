@@ -1,0 +1,48 @@
+{
+    "homepage": "https://phcode.io/",
+    "description": "The text editor designed to make coding as simple and fun as playing a video game",
+    "version": "5.0.5",
+    "license": "AGPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/phcode-dev/phoenix-desktop/releases/download/prod-app-v5.0.5/Phoenix.Code_5.0.5_x64-setup.exe",
+            "hash": "sha256:427491abc6002ba14b32a6c6654fe3625b61af465ed5db25be6c02d71b2b1fe6"
+        }
+    },
+    "installer": {
+        "script": [
+            "$7zip = \"$(appdir '7zip')\\current\\7z.exe\"",
+            "",
+            "if (!(Test-Path $7zip)) {",
+            "    $7zip = \"$env:ProgramFiles\\7-Zip\\7z.exe\"",
+            "    if (!(Test-Path $7zip)) {",
+            "        Write-Error '7-Zip is required'",
+            "        exit 1",
+            "    }",
+            "}",
+            "",
+            "$installerFile = Get-ChildItem \"$dir\" -Filter *.exe | Select-Object -First 1",
+            "& $7zip x \"$installerFile\" -o\"$dir\" -y | Out-Null"
+        ]
+    },
+    "post_install": [
+        "Remove-Item \"$dir\\Phoenix.Code_*.exe\" -Force -ErrorAction SilentlyContinue",
+        "Remove-Item \"$dir\\uninstall.exe\" -Force -ErrorAction SilentlyContinue",
+        "Remove-Item \"$dir\\$PLUGINSDIR\" -Recurse -Force -ErrorAction SilentlyContinue"
+    ],
+    "bin": "Phoenix Code.exe",
+    "shortcuts": [
+        [
+            "Phoenix Code.exe",
+            "Phoenix Code"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/phcode-dev/phoenix-desktop/releases/download/prod-app-v$version/Phoenix.Code_$version_x64-setup.exe"
+            }
+        }
+    }
+}
