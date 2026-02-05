@@ -1,0 +1,61 @@
+name: Critical Updates
+on:
+  workflow_dispatch:
+  schedule:
+    # Every 15 minutes for critical apps
+    - cron: '*/15 * * * *'
+
+jobs:
+  update-critical:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Update critical apps
+        run: |
+          # Define your most critical apps (50 max)
+          $criticalApps = @(
+            "hydra-launcher",
+            "sigma-file-manager",
+            "7zip",
+            "git",
+            "vscode",
+            "nodejs",
+            "python",
+            "firefox",
+            "chrome",
+            "docker"
+            # Add more as needed, but keep under 50
+          )
+          
+          # Setup Scoop
+          if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
+            Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+          }
+          
+          scoop bucket add local .
+          
+          $updated = @()
+          foreach ($app in $criticalApps) {
+            Write-Host "Checking $app..." -ForegroundColor Cyan
+            $result = scoop checkver $app --force 2>&1
+            if ($result -match "->") {
+              Write-Host "  Update found!" -ForegroundColor Green
+              $updated += $app
+            }
+          }
+          
+          if ($updated.Count -gt 0) {
+            Write-Host "Updated apps: $($updated -join ', ')" -ForegroundColor Green
+            
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add .
+            git commit -m "ci(critical): update $($updated -join ', ')"
+            git push
+            
+            # Special exit code
+            exit 100
+          }
