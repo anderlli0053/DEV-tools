@@ -1,3 +1,6 @@
+[![Smart Updater](https://github.com/anderlli0053/DEV-tools/actions/workflows/smart-updater.yml/badge.svg)](https://github.com/anderlli0053/DEV-tools/actions/workflows/smart-updater.yml)
+
+
 # 📦 DEV-tools Scoop Bucket
 
 ![Wooden Box Banner](https://user-images.githubusercontent.com/22171451/210179607-af7ce307-de94-40cd-8975-b3f18d0cfdda.png)
