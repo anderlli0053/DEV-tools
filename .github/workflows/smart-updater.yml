@@ -15,22 +15,16 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
       
-      - name: Setup PowerShell
-        run: |
-          # Ensure PowerShell is ready
-          pwsh --version
-      
       - name: Run Smart Updater
         id: updater
         run: |
-          pwsh -File .github/scripts/smart-updater.ps1 -MaxAppsPerRun 50
-          $exitCode = $LASTEXITCODE
-          echo "exitCode=$exitCode" >> $env:GITHUB_OUTPUT
+          pwsh -File .github/scripts/smart-updater.ps1 -MaxAppsPerRun 30
+          echo "exitCode=$LASTEXITCODE" >> $env:GITHUB_OUTPUT
       
       - name: Check for updates
         if: steps.updater.outputs.exitCode == '100'
         run: |
-          echo "Updates were found, checking what changed..."
+          echo "Updates were found!"
           
       - name: Commit and push changes
         if: steps.updater.outputs.exitCode == '100'
