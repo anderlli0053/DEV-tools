@@ -8,6 +8,11 @@ on:
 jobs:
   update:
     runs-on: windows-latest
+    outputs:
+      apps_updated: ${{ steps.updater.outputs.apps_updated }}
+      apps_checked: ${{ steps.updater.outputs.apps_checked }}
+      has_updates: ${{ steps.updater.outputs.has_updates }}
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -19,18 +24,32 @@ jobs:
         id: updater
         run: |
           pwsh -File .github/scripts/smart-updater.ps1 -MaxAppsPerRun 30
-          echo "exitCode=$LASTEXITCODE" >> $env:GITHUB_OUTPUT
+          echo "exitCode=$LASTEXITCODE" >> $GITHUB_OUTPUT
+          # Capture additional outputs (they're set via ##[set-output] in the script)
+      
+      - name: Display Summary
+        if: always()
+        run: |
+          echo "=== Workflow Summary ==="
+          echo "Exit Code: ${{ steps.updater.outputs.exitCode }}"
+          echo "Apps Checked: ${{ steps.updater.outputs.apps_checked }}"
+          echo "Apps Updated: ${{ steps.updater.outputs.apps_updated }}"
+          echo "Has Updates: ${{ steps.updater.outputs.has_updates }}"
       
       - name: Check for updates
         if: steps.updater.outputs.exitCode == '100'
         run: |
-          echo "Updates were found!"
+          echo "📦 Updates were found! Committing changes..."
           
       - name: Commit and push changes
         if: steps.updater.outputs.exitCode == '100'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Show what changed
+          echo "Changes to commit:"
+          git status --porcelain
           
           git add .
           git commit -m "ci(smart): auto-update $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
