@@ -1,25 +1,29 @@
 {
-    "version": "0.1",
-    "description": "Multi-cursor structural editor",
     "homepage": "https://ki-editor.github.io/ki-editor/",
+    "description": "Multi-cursor structural editor",
+    "version": "0.1",
     "license": "MPL-2.0",
-    "url": "https://github.com/ki-editor/ki-editor/releases/download/0.1/ki-win32-x64.exe",
-    "hash": "29c0a1d3be61b7b9972d52aecdd8312fbaf9182e36a71bc019bfd8c1519f4df4",
-    "pre_install": [
-        "Rename-Item \"$dir\\ki-win32-x64.exe\" \"ki-editor.exe\" -Force"
-    ],
-    "bin": "ki-editor.exe",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ki-editor/ki-editor/releases/download/0.1/ki-win32-x64.exe#/ki.exe",
+            "hash": "sha256:29c0a1d3be61b7b9972d52aecdd8312fbaf9182e36a71bc019bfd8c1519f4df4"
+        }
+    },
+    "bin": "ki.exe",
     "shortcuts": [
         [
-            "ki-editor.exe",
-            "ki-editor"
+            "ki.exe",
+            "ki Editor"
         ]
     ],
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/ki-editor/ki-editor"
+    },
     "autoupdate": {
-        "url": "https://github.com/ki-editor/ki-editor/releases/download/$version/ki-win32-x64.exe",
-        "hash": {
-            "mode": "download"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ki-editor/ki-editor/releases/download/$version/ki-win32-x64.exe#/ki.exe"
+            }
         }
     }
 }
