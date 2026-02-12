@@ -1,31 +1,43 @@
 {
-  "version": "0.7.3",
-  "description": "A homebrew lightweight image viewer.",
-  "homepage": "https://github.com/BLumia/pineapple-pictures",
-  "license": "MIT",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/BLumia/pineapple-pictures/releases/download/0.7.3/pineapple-pictures-0.7.3-Windows-qt6.5-x86_64.zip",
-      "hash": "35b89e9becc2b7335aab36c6740fcd5a2aa97d45cf8877a19a0bbd598a0b4450"
-    }
-  },
-  "bin": "ppic.exe",
-  "shortcuts": [
-    [
-      "ppic.exe",
-      "Pineapple Pictures"
-    ]
-  ],
-  "persist": "data",
-  "checkver": "github",
-  "autoupdate": {
+    "homepage": "https://github.com/BLumia/pineapple-pictures",
+    "description": "A homebrew lightweight image viewer",
+    "version": "1.4.0",
+    "license": "MIT",
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.com/https://github.com/BLumia/pineapple-pictures/releases/download/$version/pineapple-pictures-$version-Windows-qt6.5-x86_64.zip"
-      }
+        "64bit": {
+            "url": "https://github.com/BLumia/pineapple-pictures/releases/download/1.4.0/pineapple-pictures-1.4.0-Windows-msvc2022-x86_64.zip",
+            "hash": "sha256:72432274e20debbfaea43cb0ee009c26dd7609d2ca3b9ec6c35192c8e11231be"
+        }
     },
-    "hash": {
-      "url": "$url.sha256"
+    "installer": {
+        "script": [
+            "$subfolder = Get-ChildItem \"$dir\" -Directory | Select-Object -First 1",
+            "if ($subfolder) {",
+            "    Move-Item \"$subfolder\\*\" \"$dir\" -Force",
+            "    Remove-Item \"$subfolder\" -Force",
+            "}"
+        ]
+    },
+    "bin": [
+        "ppic.exe",
+        "passoc.exe"
+    ],
+    "shortcuts": [
+        [
+            "ppic.exe",
+            "Pineapple Pictures"
+        ],
+        [
+            "passoc.exe",
+            "Pineapple Pictures Association Tool"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/BLumia/pineapple-pictures/releases/download/$version/pineapple-pictures-$version-Windows-msvc2022-x86_64.zip"
+            }
+        }
     }
-  }
 }
