@@ -1,0 +1,38 @@
+{
+    "homepage": "https://github.com/AlienCowEatCake/ImageViewer",
+    "description": "Simple, cross-platform image viewer inspired by GPicView. Features support for a large number of image formats, embedded ICC profiles, EXIF/XMP metadata, and is lightweight and fast.",
+    "version": "1.9.0",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/AlienCowEatCake/ImageViewer/releases/download/v1.9.0/ImageViewer_qt6_msvc2026_x64.zip",
+            "hash": "sha256:1d9659ceb132e5fa354ecc2101b2c67795d5b5f2e196a0593a51ac52503fb2ed"
+        }
+    },
+    "installer": {
+        "script": [
+            "$subfolder = Get-ChildItem \"$dir\" -Directory | Select-Object -First 1",
+            "if ($subfolder) {",
+            "    Move-Item \"$subfolder\\*\" \"$dir\" -Force",
+            "    Remove-Item \"$subfolder\" -Force",
+            "}"
+        ]
+    },
+    "bin": "ImageViewer.exe",
+    "shortcuts": [
+        [
+            "ImageViewer.exe",
+            "ImageViewer"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/AlienCowEatCake/ImageViewer"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/AlienCowEatCake/ImageViewer/releases/download/v$version/ImageViewer_qt6_msvc2026_x64.zip"
+            }
+        }
+    }
+}
