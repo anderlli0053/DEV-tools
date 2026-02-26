@@ -1,27 +1,54 @@
 {
-  "version": "4.8.3.0",
-  "description": "A simple utility that allows you to extract multiple archives quickly and easily.",
-  "homepage": "http://www.extractnow.com/",
-  "license": "Freeware",
-  "url": "http://www.extractnow.com/extractnow.zip",
-  "hash": "1acf09296f89603ddf88f57f914c1fb015a8a275c6d61f6a0e7d134953eaba25",
-  "bin": "extractnow.exe",
-  "shortcuts": [
-    [
-      "extractnow.exe",
-      "ExtractNow"
-    ]
-  ],
-  "persist": [
-    "extractnow.ini",
-    "monitor.dat"
-  ],
-  "pre_install": "if (!(Test-Path \"$persist_dir\\monitor.dat\")) { Set-Content -Encoding ASCII -Path \"$dir\\monitor.dat\" -Value $null }",
-  "checkver": {
-    "url": "http://www.extractnow.com/home.html",
-    "regex": "Latest Version ([\\d.]+)"
-  },
-  "autoupdate": {
-    "url": "http://www.extractnow.com/extractnow.zip"
-  }
+    "homepage": "https://extractnow.com/",
+    "description": "ExtractNow is a simple utility that allows you to extract multiple archives quickly and easily. It supports ZIP, RAR, and other formats, with features like password lists and folder monitoring.",
+    "version": "4.8.3.0",
+    "license": "freeware",
+    "url": "https://extractnow.com/extractnow.exe",
+    "hash": "sha256:539c28b4fe59cf8969f2347463aa791e2cf434275084cdf9ff7084ebe3a4c232",    
+    "installer": {
+        "script": [
+            "$installerFile = Get-ChildItem \"$dir\" -Filter *.exe | Select-Object -First 1",
+            "",
+            "$7zip = \"$(appdir '7zip')\\current\\7z.exe\"",
+            "if (!(Test-Path $7zip)) { $7zip = \"$env:ProgramFiles\\7-Zip\\7z.exe\" }",
+            "",
+            "if (Test-Path $7zip) {",
+            "    & $7zip x \"$installerFile\" -o\"$dir\\_tmp\" -y | Out-Null",
+            "} else {",
+            "    error '7-Zip is required to extract ExtractNow.'",
+            "    exit 1",
+            "}",
+            "",
+            "if (Test-Path \"$dir\\_tmp\") {",
+            "    Get-ChildItem \"$dir\\_tmp\" -File | Move-Item -Destination \"$dir\" -Force -ErrorAction SilentlyContinue",
+            "    Get-ChildItem \"$dir\\_tmp\" -Directory | Where-Object { $_.Name -notmatch '^\\$PLUGINSDIR$|^\\$LOCALAPPDATA$' } | ForEach-Object {",
+            "        Move-Item $_.FullName \"$dir\" -Force -ErrorAction SilentlyContinue",
+            "    }",
+            "}",
+            "",
+            "Remove-Item \"$dir\\_tmp\" -Recurse -Force -ErrorAction SilentlyContinue"
+        ]
+    },
+    "post_install": [
+        "Remove-Item \"$dir\\uninstall.exe\" -Force -ErrorAction SilentlyContinue",
+        "Remove-Item \"$dir\\$PLUGINSDIR\" -Recurse -Force -ErrorAction SilentlyContinue",
+        "Remove-Item \"$dir\\$LOCALAPPDATA\" -Recurse -Force -ErrorAction SilentlyContinue"
+    ],
+    "bin": "extractnow.exe",
+    "shortcuts": [
+        [
+            "extractnow.exe",
+            "ExtractNow"
+        ]
+    ],
+    "checkver": {
+        "url": "https://extractnow.com/#/home",
+        "regex": "Latest Version ([\\d.]+)\\s*/"
+    },
+    "autoupdate": {
+        "url": "https://extractnow.com/extractnow.exe",
+        "hash": {
+            "mode": "download"
+        }
+    }
 }
