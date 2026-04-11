@@ -1,32 +1,31 @@
 {
-    "version": "1.11.1",
-    "description": "An enhanced audio panel for Windows.",
-    "homepage": "https://github.com/Odizinne/QontrolPanel",
+    "homepage": "https://github.com/ChrisLauinger77/QontrolPanel",
+    "description": "Custom windows sound panel. It provides output and input volume / device / mute control as well as application volume mixer.",
+    "version": "1.12.0",
     "license": "GPL-3.0-only",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/Odizinne/QontrolPanel/releases/download/1.11.1/QontrolPanel_win64_msvc2022.zip",
-            "hash": "26d23bf981e09dcfe89d3ac0ca3e58a2e822d0e58988b0593884e7c64f648253"
-        }
-    },
-    "extract_dir": "QontrolPanel",
+    "url": "https://github.com/ChrisLauinger77/QontrolPanel/releases/download/1.12.0/QontrolPanel_win64_msvc2022.zip",
+    "hash": "sha256:93636b1b89a6867b8b83bbb74eeba82b67d6bcde03dfff113432f666a8608c4f",
+    "pre_install": [
+        "$subfolder = Get-ChildItem \"$dir\" -Directory | Select-Object -First 1",
+        "if ($subfolder) {",
+        "    Move-Item \"$subfolder\\*\" \"$dir\" -Force",
+        "    Remove-Item \"$subfolder\" -Force",
+        "}"
+    ],
+    "bin": "bin\\QontrolPanel.exe",
     "shortcuts": [
         [
             "bin\\QontrolPanel.exe",
             "QontrolPanel"
         ]
     ],
-    "post_uninstall": "if ($purge) { Remove-Item \"$env:APPDATA\\Odizinne\\QontrolPanel\", \"$env:LOCALAPPDATA\\Odizinne\\QontrolPanel\" -Force -Recurse -ErrorAction SilentlyContinue }",
-    "notes": [
-        "QontrolPanel is NOT portable.",
-        "Settings are stored in '%APPDATA%\\Odizinne\\QontrolPanel', and will be purged during uninstallation."
-    ],
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/ChrisLauinger77/QontrolPanel"
+    },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/Odizinne/QontrolPanel/releases/download/$version/QontrolPanel_win64_msvc2022.zip"
-            }
+        "url": "https://github.com/ChrisLauinger77/QontrolPanel/releases/download/$version/QontrolPanel_win64_msvc2022.zip",
+        "hash": {
+            "mode": "download"
         }
     }
 }
