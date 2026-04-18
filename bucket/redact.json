@@ -1,0 +1,28 @@
+{
+    "version": "0.21.18",
+    "description": "Bulk delete from all social media platforms in minutes",
+    "homepage": "https://redact.dev/",
+    "license": "Unknown",
+    "url": "https://update-desktop.redact.dev/build/Redact-Setup-0.21.18.exe",
+    "hash": "29118036f7ca58f4d4628168788f73469c60a0f25d612dc20784cb815b21bd9d",
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\$fname\" -Removal",
+        "$pluginsDir = Get-ChildItem \"$dir\" -Directory | Where-Object { $_.Name -eq '$PLUGINSDIR' } | Select-Object -First 1",
+        "if ($pluginsDir) { Expand-7zipArchive \"$pluginsDir\\app-64.7z\" -DestinationPath \"$dir\" -Removal }",
+        "Get-ChildItem \"$dir\" -Directory | Where-Object { $_.Name -in @('$PLUGINSDIR', '$R0') } | Remove-Item -Recurse -Force"
+    ],
+    "bin": "Redact.exe",
+    "shortcuts": [
+        [
+            "Redact.exe",
+            "Redact"
+        ]
+    ],
+    "checkver": {
+        "url": "https://update-desktop.redact.dev/build/latest.yml",
+        "regex": "version:\\s+([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://update-desktop.redact.dev/build/Redact-Setup-$version.exe"
+    }
+}
