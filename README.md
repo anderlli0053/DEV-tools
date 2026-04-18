@@ -60,3 +60,5 @@ What started as a personal collection of manifests for development tools has gro
 - [Official Scoop repository](https://github.com/ScoopInstaller/Scoop/)  
 
 📦
+
+_Brought to you by Andrew Poženel_
