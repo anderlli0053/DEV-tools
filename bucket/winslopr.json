@@ -1,0 +1,36 @@
+{
+    "version": "26.04.04",
+    "description": "Windows Slop Remover",
+    "homepage": "https://github.com/builtbybel/Winslopr",
+    "license": "MIT",
+    "url": "https://github.com/builtbybel/Winslopr/releases/download/26.04.04/Winslopr-26.04.04-win-x64.zip",
+    "hash": "767717646b43787ac19f698fbc1086d91f7c69fae7a470cd4ef78f31d4a4166f",
+    "pre_install": [
+        "Get-ChildItem \"$dir\" -Directory | ForEach-Object { Get-ChildItem $_.FullName | Move-Item -Destination \"$dir\" -Force; Remove-Item $_ -Force }"
+    ],
+    "bin": [
+        "createdump.exe",
+        "Winslopr.exe",
+        "Winslopr.Legacy.exe"
+    ],
+    "shortcuts": [
+        [
+            "Winslopr.exe",
+            "Winslopr"
+        ],
+        [
+            "Winslopr.Legacy.exe",
+            "Winslopr Legacy"
+        ],
+        [
+            "createdump.exe",
+            "Winslopr createdump"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/builtbybel/Winslopr"
+    },
+    "autoupdate": {
+        "url": "https://github.com/builtbybel/Winslopr/releases/download/$version/Winslopr-$version-win-x64.zip"
+    }
+}
