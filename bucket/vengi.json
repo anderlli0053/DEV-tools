@@ -1,0 +1,59 @@
+{
+    "version": "0.5.0",
+    "description": "Free and open source voxel art tools - editor, thumbnailer and format converter",
+    "homepage": "https://vengi-voxel.github.io/vengi/",
+    "license": "MIT",
+    "depends": "lessmsi",
+    "url": [
+        "https://github.com/vengi-voxel/vengi/releases/download/v0.5.0/win-voxedit.zip",
+        "https://github.com/vengi-voxel/vengi/releases/download/v0.5.0/win-voxconvert.zip",
+        "https://github.com/vengi-voxel/vengi/releases/download/v0.5.0/win-vengi-msi.zip",
+        "https://github.com/vengi-voxel/vengi/releases/download/v0.5.0/win-thumbnailer.zip",
+        "https://github.com/vengi-voxel/vengi/releases/download/v0.5.0/win-palconvert.zip"
+    ],
+    "hash": [
+        "b2e6e87d418f7f04a4ab70634254ea588fc5bb4b58aab1bcdec0463024d46511",
+        "77be07173b4e9e65d48bb3ab746f2a2979697240975a36daa8df3dd12700d8d3",
+        "d47bfc292af48f1cdff727bd06f880d9b96aa6729b328ffcba91771b49713a2a",
+        "c40f0722ddb98b6954ea68163c5bfe3616933bd8204fb20bf1371c4a6331850a",
+        "a2da415cbce89670d02f48d43de9a4bcd1a18384c7b970ee6abca8778e1e3f71"
+    ],
+    "pre_install": [
+        "lessmsi x \"$dir\\vengi.msi\" \"$dir\\msi_extract\\\"",
+        "Get-ChildItem \"$dir\\msi_extract\\SourceDir\" -Recurse -File | Move-Item -Destination \"$dir\\\" -Force -ErrorAction SilentlyContinue",
+        "Remove-Item \"$dir\\msi_extract\" -Recurse -Force",
+        "Remove-Item \"$dir\\vengi.msi\" -Force"
+    ],
+    "post_install": [
+        "Remove-Item \"$dir\\win-*.zip\" -Force"
+    ],
+    "bin": [
+        "vengi-palconvert.exe",
+        "vengi-thumbnailer.exe",
+        "vengi-voxconvert.exe",
+        "vengi-voxconvertui.exe",
+        "vengi-voxedit.exe"
+    ],
+    "shortcuts": [
+        [
+            "vengi-voxedit.exe",
+            "vengi - VoxEdit"
+        ],
+        [
+            "vengi-voxconvertui.exe",
+            "vengi - VoxConvertUI"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/vengi-voxel/vengi"
+    },
+    "autoupdate": {
+        "url": [
+            "https://github.com/vengi-voxel/vengi/releases/download/v$version/win-voxedit.zip",
+            "https://github.com/vengi-voxel/vengi/releases/download/v$version/win-voxconvert.zip",
+            "https://github.com/vengi-voxel/vengi/releases/download/v$version/win-vengi-msi.zip",
+            "https://github.com/vengi-voxel/vengi/releases/download/v$version/win-thumbnailer.zip",
+            "https://github.com/vengi-voxel/vengi/releases/download/v$version/win-palconvert.zip"
+        ]
+    }
+}
