@@ -1,14 +1,14 @@
 {
+    "version": "1.0.3",
+    "description": "Cross-platform 3D modeling software that makes it easy to create low poly 3D models for video games, 3D printing, and more",
     "homepage": "https://dust3d.org/",
-    "description": "Cross-platform open-source 3D modeling software",
     "license": "MIT",
-    "version": "1.0.0-rc.7",
-    "architecture": {
-        "64bit": {
-            "url": "https://github.com/huxingyi/dust3d/releases/download/1.0.0-rc.7/dust3d-1.0.0-rc.7.zip",
-            "hash": "25a6904aa3bb4ba2d6432e922d86b54859773ac93ae1635f18e8e965df18cd88"
-        }
-    },
+    "url": "https://github.com/huxingyi/dust3d/releases/download/1.0.3/dust3d-1.0.3.zip",
+    "hash": "a1ff31375a12187d303c0fd2efd96c79e389df28c3122277b5e24d1931a6f906",
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\Dust3D-win32-x86_64.zip\" -DestinationPath \"$dir\" -Removal"
+    ],
+    "bin": "dust3d.exe",
     "shortcuts": [
         [
             "dust3d.exe",
@@ -19,10 +19,6 @@
         "github": "https://github.com/huxingyi/dust3d"
     },
     "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://github.com/huxingyi/dust3d/releases/download/$version/dust3d-$version.zip"
-            }
-        }
+        "url": "https://github.com/huxingyi/dust3d/releases/download/$version/dust3d-$version.zip"
     }
 }
