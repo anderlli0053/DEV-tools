@@ -1,26 +1,26 @@
 {
-    "version": "0.0.88",
-    "description": "Browser extension and cross-platform desktop application for translation based on ChatGPT API",
-    "homepage": "https://github.com/yetone/openai-translator",
-    "license": "MIT",
+    "version": "0.6.17",
+    "description": "Browser extension and cross-platform desktop application for translation based on ChatGPT API.",
+    "homepage": "https://github.com/nextai-translator/nextai-translator",
+    "license": "AGPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/yetone/openai-translator/releases/download/v0.0.88/OpenAI.Translator_0.0.88_x64_en-US.msi",
-            "hash": "4202973ad512481823c4d95e45732b0ffb99b506989971ad83141f9ead1da046"
+            "url": "https://github.com/nextai-translator/nextai-translator/releases/download/v0.6.17/NextAI.Translator_0.6.17_x64-setup.exe#/dl.7z",
+            "hash": "0f062132d7f7811742a8df13bbcf2928b1d9f1f4d7443ed2195048cee47f552b"
         }
     },
-    "extract_dir": "PFiles\\OpenAI Translator",
+    "post_install": "@('$PLUGINSDIR', '$TEMP', 'uninstall.exe') | ForEach-Object { Remove-Item \"$dir\\$_\" -Recurse -Force }",
     "shortcuts": [
         [
-            "OpenAI Translator.exe",
-            "OpenAI Translator"
+            "app.exe",
+            "NextAI Translator"
         ]
     ],
     "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/yetone/openai-translator/releases/download/v$version/OpenAI.Translator_$version_x64_en-US.msi"
+                "url": "https://github.com/nextai-translator/nextai-translator/releases/download/v$version/NextAI.Translator_$version_x64-setup.exe#/dl.7z"
             }
         }
     }

@@ -1,14 +1,19 @@
 {
-    "version": "25.3.0",
+    "version": "26.2.0",
     "description": "JavaScript runtime environment.",
     "homepage": "https://nodejs.org",
     "license": "MIT",
     "notes": "npm global prefix set to: $env:APPDATA\\npm",
     "architecture": {
         "64bit": {
-            "url": "https://nodejs.org/dist/v25.3.0/node-v25.3.0-win-x64.7z",
-            "hash": "61eac0c670c86a34c3764a0e9c301aa2f7260ccb80adc13c3e53280fdff2f04f",
-            "extract_dir": "node-v25.3.0-win-x64"
+            "url": "https://nodejs.org/dist/v26.2.0/node-v26.2.0-win-x64.7z",
+            "hash": "c617934f4d9fca2df0eb77f6bf924dc44d70fd787da578131d17a6001709f76c",
+            "extract_dir": "node-v26.2.0-win-x64"
+        },
+        "arm64": {
+            "url": "https://nodejs.org/dist/v26.2.0/node-v26.2.0-win-arm64.7z",
+            "hash": "90226d28eadd3d94e33f585c5835631bdd52c05027df2b0ed00fd4068dccc375",
+            "extract_dir": "node-v26.2.0-win-arm64"
         }
     },
     "installer": {
@@ -25,14 +30,19 @@
         "npm.cmd"
     ],
     "checkver": {
-        "url": "https://nodejs.org/dist/latest/",
-        "regex": "node-v([\\d.]+)-win-x64\\.7z"
+        "url": "https://nodejs.org/dist/index.json",
+        "jsonpath": "$[0].version",
+        "regex": "v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://nodejs.org/dist/v$version/node-v$version-win-x64.7z",
                 "extract_dir": "node-v$version-win-x64"
+            },
+            "arm64": {
+                "url": "https://nodejs.org/dist/v$version/node-v$version-win-arm64.7z",
+                "extract_dir": "node-v$version-win-arm64"
             }
         },
         "hash": {

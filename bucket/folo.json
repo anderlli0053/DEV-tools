@@ -1,12 +1,12 @@
 {
-    "version": "1.2.6",
+    "version": "1.9.0",
     "description": "Follow everything in one place",
     "homepage": "https://folo.is/",
     "license": "GPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/RSSNext/Folo/releases/download/desktop%2Fv1.2.6/Folo-1.2.6-windows-x64.exe#/dl.7z",
-            "hash": "sha512:5c85766ba0fd98558eb3b419d72f1986f864ad58cb899afd477d7731e740645954d37290636aa98ccdf852df989dd6e95d8e8a0c5cfaff309a73e39925c9ce02"
+            "url": "https://github.com/RSSNext/Folo/releases/download/desktop%2Fv1.9.0/Folo-1.9.0-windows-x64.exe#/dl.7z",
+            "hash": "sha512:bac8dab2b2e9a36d7ec7c371c38bd0a29b2d048099bc3422d20db35a32ea51566e185af80825a47af103a349c585940e93a240b679cfaed04c35d557387df15b"
         }
     },
     "pre_install": [
@@ -32,7 +32,8 @@
     ],
     "persist": "UserData",
     "checkver": {
-        "url": "https://api.github.com/repositories/783512367/releases",
+        "github": "https://api.github.com/repos/RSSNext/Folo/releases",
+        "jsonpath": "$[*].tag_name",
         "regex": "desktop/v([\\d.]+)"
     },
     "autoupdate": {

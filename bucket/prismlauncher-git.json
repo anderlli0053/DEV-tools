@@ -1,6 +1,6 @@
 {
     "##": "Please keep the key properties of games/prismlauncher and versions/prismlauncher-git in sync.",
-    "version": "10.0-e8b5d49",
+    "version": "11.0-2338455",
     "description": "An open source Minecraft launcher with the ability to manage multiple instances, accounts and mods. Focused on user freedom and free redistributability.",
     "homepage": "https://prismlauncher.org/",
     "license": "GPL-3.0-only",
@@ -13,12 +13,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-w64-Portable-e8b5d49-Debug.zip",
-            "hash": "41e12b77cabf86ccff430cefbfe9981a1deaad051e7102d3aa4619825b7701a6"
+            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-w64-Portable-2338455-Debug.zip",
+            "hash": "50d6fae7147252222239206d0005647ac0866c16e38d1592c8cbd333b527cdaf"
         },
         "arm64": {
-            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-arm64-Portable-e8b5d49-Debug.zip",
-            "hash": "f54fbe14740e79c2411ba192cf7fd45aa7f1b2b824e7879c559e3785e7c6665c"
+            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-arm64-Portable-2338455-Debug.zip",
+            "hash": "649a28b29771e5720cde226d567e60579471ff21cb0dc2b023e05fb01694922f"
         }
     },
     "pre_install": [
@@ -80,15 +80,18 @@
         "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-associations.reg\" }"
     ],
     "checkver": {
+        "github": "https://api.github.com/repos/PrismLauncher/PrismLauncher/actions/workflows/build.yml/runs?branch=develop&status=success&event=push",
         "script": [
-            "$apiUrl = 'https://api.github.com/repositories/553135896/actions/workflows/build.yml/runs?branch=develop&status=success&event=push'",
-            "$fullSha = (Invoke-RestMethod -Uri $apiUrl).workflow_runs[0].head_sha",
-            "$cmakeContent = Invoke-WebRequest \"https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/$fullSha/CMakeLists.txt\" | Select-Object -ExpandProperty Content",
+            "$workflows = $page | ConvertFrom-Json",
+            "$fullSha = $workflows.workflow_runs[0].head_sha",
+            "$cmakeContent = Invoke-WebRequest \"https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/$fullSha/CMakeLists.txt\" -UseBasicParsing | Select-Object -ExpandProperty Content",
             "$majorVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_MAJOR (\\d+)\\)').Groups[1].Value",
             "$minorVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_MINOR (\\d+)\\)').Groups[1].Value",
             "$version = \"$majorVersion.$minorVersion-$fullSha\"",
-            "$version"
+            "$output = @{'result' = \"$version\"} | ConvertTo-Json -Compress",
+            "Write-Output $output"
         ],
+        "jsonpath": "$.result",
         "regex": "(?<version>[\\d.]+)-(?<sha>[a-f0-9]{7,7})",
         "replace": "${version}-${sha}"
     },

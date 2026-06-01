@@ -1,29 +1,32 @@
 {
-    "version": "3.133.01",
-    "description": "Video, Image and GIF upscale/enlarge(Super-Resolution) and Video frame interpolation. Achieved with Waifu2x, Real-ESRGAN, SRMD, RealSR, Anime4K, RIFE, CAIN, DAIN, and ACNet.",
+    "version": "3.137.01",
+    "description": "Video, Image and GIF upscale/enlarge(Super-Resolution) and Video frame interpolation. Achieved with Waifu2x, Real-ESRGAN, Real-CUGAN, SRMD, RealSR, Anime4K, RIFE, CAIN, DAIN, and ACNet.",
     "homepage": "https://github.com/AaronFeng753/Waifu2x-Extension-GUI",
     "license": {
-        "identifier": "Shareware",
-        "url": "https://github.com/AaronFeng753/Waifu2x-Extension-GUI?tab=License-1-ov-file"
+        "identifier": "Freeware",
+        "url": "https://github.com/AaronFeng753/Waifu2x-Extension-GUI/blob/master/LICENSE"
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/AaronFeng753/Waifu2x-Extension-GUI/releases/download/v3.133.01/Waifu2x-Extension-GUI-v3.133.01-Win64.7z",
-            "hash": "e9783d94143a73befbc76d756902b73365f14dfa08f110cec44ec9ff053cdb31",
-            "pre_install": [
-                "Move-Item $dir\\waifu2x-extension-gui\\* $dir -Force",
-                "Remove-Item $dir\\waifu2x-extension-gui"
-            ]
+            "url": "https://github.com/AaronFeng753/Waifu2x-Extension-GUI/releases/download/v3.137.01/Waifu2x-Extension-GUI-v3.137.01-Win64.7z",
+            "hash": "48b0f69d1f87322e76e5f1e6387db0a9e4617dfd8b8509ab46ec375703721c1c",
+            "extract_dir": "waifu2x-extension-gui"
         }
     },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\settings.ini\")) { New-Item \"$dir\\settings.ini\" | Out-Null }",
+        "if (!(Test-Path \"$persist_dir\\FirstTimeStart\")) { New-Item \"$dir\\FirstTimeStart\" | Out-Null }"
+    ],
     "shortcuts": [
         [
             "Waifu2x-Extension-GUI.exe",
             "Waifu2x-Extension-GUI"
         ]
     ],
-    "bin": "Waifu2x-Extension-GUI.exe",
-    "persist": "settings.ini",
+    "persist": [
+        "settings.ini",
+        "FirstTimeStart"
+    ],
     "checkver": {
         "github": "https://github.com/AaronFeng753/Waifu2x-Extension-GUI"
     },
@@ -33,8 +36,7 @@
                 "url": "https://github.com/AaronFeng753/Waifu2x-Extension-GUI/releases/download/v$version/Waifu2x-Extension-GUI-v$version-Win64.7z",
                 "hash": {
                     "url": "https://github.com/AaronFeng753/Waifu2x-Extension-GUI/releases/tag/v$version",
-                    "mode": "extract",
-                    "regex": "Waifu2x-Extension-GUI-v$version-Win64.7z\\n$sha256"
+                    "regex": "$basename\\n$sha256"
                 }
             }
         }

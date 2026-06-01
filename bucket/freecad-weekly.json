@@ -1,15 +1,15 @@
 {
-    "version": "2026.01.14",
+    "version": "2026.05.27",
     "description": "A free and open-source multi-platform parametric 3D modeler.",
     "homepage": "https://www.freecadweb.org",
     "license": "LGPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/FreeCAD/FreeCAD/releases/download/weekly-2026.01.14/FreeCAD_weekly-2026.01.14-Windows-x86_64-py311.7z",
-            "hash": "61bf8298d21d556a7982ded063f98a295065898f552067116521ce16012a3ab4"
+            "url": "https://github.com/FreeCAD/FreeCAD/releases/download/weekly-2026.05.27/FreeCAD_weekly-2026.05.27-Windows-x86_64.7z",
+            "hash": "cfce454adf4892f23583602a943781e32b3d7650512871c2d70b7f6a335d932d",
+            "extract_dir": "FreeCAD_weekly-2026.05.27-Windows-x86_64"
         }
     },
-    "extract_dir": "FreeCAD_weekly-2026.01.14-Windows-x86_64-py311",
     "bin": "bin\\FreeCADCmd.exe",
     "shortcuts": [
         [
@@ -18,15 +18,19 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/FreeCAD/FreeCAD/releases",
-        "regex": "FreeCAD_weekly-([\\d.]+)-Windows-x86_64"
+        "github": "https://api.github.com/repos/FreeCAD/FreeCAD/releases",
+        "jsonpath": "$[?(@.tag_name =~ /weekly/)].tag_name",
+        "regex": "weekly-([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/FreeCAD/FreeCAD/releases/download/weekly-$version/FreeCAD_weekly-$version-Windows-x86_64-py311.7z"
+                "url": "https://github.com/FreeCAD/FreeCAD/releases/download/weekly-$version/FreeCAD_weekly-$version-Windows-x86_64.7z",
+                "extract_dir": "FreeCAD_weekly-$version-Windows-x86_64"
             }
         },
-        "extract_dir": "FreeCAD_weekly-$version-Windows-x86_64-py311"
+        "hash": {
+            "url": "$url-SHA256.txt"
+        }
     }
 }

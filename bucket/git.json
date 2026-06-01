@@ -1,5 +1,5 @@
 {
-    "version": "2.52.0",
+    "version": "2.54.0",
     "description": "A free and open source distributed version control system.",
     "homepage": "https://gitforwindows.org",
     "license": {
@@ -14,18 +14,29 @@
         "reg import \"$dir\\install-context.reg\"",
         "",
         "To set Git Credential Manager Core for portable Git, please execute the following command:",
-        "git config --global credential.helper manager"
+        "git config --system credential.helper manager"
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.52.0.windows.1/PortableGit-2.52.0-64-bit.7z.exe#/dl.7z",
-            "hash": "1dc4046dcfb138f62aa04a46b5529adc8abed5033b2af29bb60b66872a836cf8"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.54.0.windows.1/PortableGit-2.54.0-64-bit.7z.exe#/dl.7z",
+            "hash": "bea006a6cc69673f27b1647e84ab3a68e912fbc175ab6320c5987e012897f311"
         },
         "arm64": {
-            "url": "https://github.com/git-for-windows/git/releases/download/v2.52.0.windows.1/PortableGit-2.52.0-arm64.7z.exe#/dl.7z",
-            "hash": "bdc2884b321152225498fadc97cad68c244e047310ea686e4fe18ad7257e5b72"
+            "url": "https://github.com/git-for-windows/git/releases/download/v2.54.0.windows.1/PortableGit-2.54.0-arm64.7z.exe#/dl.7z",
+            "hash": "f8e92cd3359fcbb96998cfd606a536ccc6dbfb23c04e12b29042f9ba45b6b0c7"
         }
     },
+    "pre_install": [
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing the existing config file.",
+        "$config_path = Join-Path -Path $dir -ChildPath 'etc\\gitconfig'",
+        "$config_path_persisted = Join-Path -Path $persist_dir -ChildPath 'etc\\gitconfig'",
+        "if (Test-Path -LiteralPath $config_path_persisted -PathType Leaf) {",
+        "    info \"Restoring system-level config from $config_path_persisted...\"",
+        "    Copy-Item -Path $config_path_persisted -Destination $config_path -Force",
+        "    info \"Adjusting paths in $config_path...\"",
+        "    (Get-Content -Path $config_path -Encoding UTF8) -replace '(?<=git/)[\\d.]+(?=/)', $version | Set-Content -Path $config_path -Encoding UTF8",
+        "}"
+    ],
     "post_install": [
         "$git_path = $dir -replace '\\\\', '\\\\'",
         "Get-ChildItem -Path \"$bucketsdir\\$bucket\\scripts\\$app\" -Filter '*.reg' -File | ForEach-Object {",
@@ -40,6 +51,7 @@
     },
     "bin": [
         "bin\\sh.exe",
+        "bin\\git.exe",
         "git-bash.exe",
         "usr\\bin\\gpg.exe",
         "usr\\bin\\gpg-agent.exe",
@@ -63,6 +75,16 @@
             "Git\\Git GUI"
         ]
     ],
+    "pre_uninstall": [
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing the existing config file.",
+        "$config_path = Join-Path -Path $dir -ChildPath 'etc\\gitconfig'",
+        "$config_path_persisted = Join-Path -Path $persist_dir -ChildPath 'etc\\gitconfig'",
+        "if (Test-Path -LiteralPath $config_path -PathType Leaf) {",
+        "    ensure (Split-Path -Path $config_path_persisted -Parent) | Out-Null",
+        "    info \"Saving system-level config to $config_path_persisted...\"",
+        "    Copy-Item -Path $config_path -Destination $config_path_persisted -Force",
+        "}"
+    ],
     "uninstaller": {
         "script": [
             "if ($cmd -eq 'uninstall') {",
@@ -72,7 +94,7 @@
         ]
     },
     "checkver": {
-        "url": "https://api.github.com/repositories/23216272/releases/latest",
+        "github": "https://api.github.com/repos/git-for-windows/git/releases/latest",
         "jsonpath": "$.assets[?(@.name =~ /Portable/i)].browser_download_url",
         "regex": "(?i)download/(?<tag>v?[\\d.]+windows[\\d.]+)/PortableGit-([\\d.]+)"
     },

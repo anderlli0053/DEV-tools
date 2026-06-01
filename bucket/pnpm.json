@@ -1,25 +1,50 @@
 {
-    "version": "10.28.0",
+    "version": "11.5.0",
     "description": "A fast and disk space efficient Node package manager.",
     "homepage": "https://pnpm.io/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/pnpm/pnpm/releases/download/v10.28.0/pnpm-win-x64.exe#/pnpm.exe",
-            "hash": "daed0979c3754cdc2e467ca6a298d48fedbc0fad92f14f4396f44a0a3dd2b730"
+            "url": "https://github.com/pnpm/pnpm/releases/download/v11.5.0/pnpm-win32-x64.zip",
+            "hash": "f85f5c399caa41e2fbce8a2127b69ea4d2ab9b45296756a557b26110d01dcefd"
         },
         "arm64": {
-            "url": "https://github.com/pnpm/pnpm/releases/download/v10.28.0/pnpm-win-arm64.exe#/pnpm.exe",
-            "hash": "f265b8a47eb4f64fe1b544af51e1245c7952b1710699eb03ae4df86e3e0cc461"
+            "url": "https://github.com/pnpm/pnpm/releases/download/v11.5.0/pnpm-win32-arm64.zip",
+            "hash": "9c3475645cc150b3ffdadb5ef8e995d4f2e95f89875a4d3dc005122a9ff2572f"
         }
     },
     "bin": [
         "pnpm.exe",
         [
             "pnpm.exe",
+            "pn"
+        ],
+        [
+            "pnpm.exe",
             "pnpx",
             "dlx"
+        ],
+        [
+            "pnpm.exe",
+            "pnx",
+            "dlx"
         ]
+    ],
+    "post_install": [
+        "pnpm config set storeDir \"$dir\\store\"",
+        "pnpm config set cacheDir \"$dir\\cache\"",
+        "pnpm config set stateDir \"$dir\\state\""
+    ],
+    "env_add_path": "bin",
+    "env_set": {
+        "PNPM_HOME": "$dir"
+    },
+    "persist": [
+        "bin",
+        "global",
+        "store",
+        "cache",
+        "state"
     ],
     "checkver": {
         "script": [
@@ -27,7 +52,7 @@
             "$auth = Get-GitHubToken",
             "$head = @{}",
             "if($auth) { $head.add('authorization', \"Bearer $auth\") }",
-            "$url = 'https://api.github.com/repositories/50565430/releases'",
+            "$url = 'https://api.github.com/repos/pnpm/pnpm/releases'",
             "$latest_ver = [Version]::new(0,0,0,0) # note: Powershell 5 does not support casting 'int' or 'float' to 'System.Version'",
             "$releases = $(Invoke-WebRequest -Headers $head $url).Content | ConvertFrom-Json",
             "$releases | ForEach-Object {",
@@ -44,10 +69,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-x64.exe#/pnpm.exe"
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win32-x64.zip"
             },
             "arm64": {
-                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-arm64.exe#/pnpm.exe"
+                "url": "https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win32-arm64.zip"
             }
         }
     }

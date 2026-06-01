@@ -1,8 +1,7 @@
 {
     "version": "0.107.76",
-    "description": "AdGuardHome. Network-wide ads & trackers blocking DNS server",
-    "homepage": "https://github.com/AdguardTeam/AdGuardHome",
-    "notes": "Running as a service: AdGuardHome -s install (https://adguard-dns.io/kb/zh-CN/adguard-home/getting-started/#service)",
+    "description": "Network-wide ads & trackers blocking DNS server",
+    "homepage": "https://adguard.com/en/adguard-home/overview.html",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
@@ -12,21 +11,14 @@
         "32bit": {
             "url": "https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.107.76/AdGuardHome_windows_386.zip",
             "hash": "c3ad01d1eef8e1e28168c6e0059e8c94253bb4ce8fbd4601c11918b8b8f3f93c"
+        },
+        "arm64": {
+            "url": "https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.107.76/AdGuardHome_windows_arm64.zip",
+            "hash": "fed6bf153c2f5162717db8bcd7b40a70553794873ae15a8d054c3a7f7abf27eb"
         }
     },
-    "pre_install": "if (!(Test-Path \"$persist_dir\\AdGuardHome.yaml\")) { New-Item \"$dir\\AdGuardHome.yaml\" | Out-Null }",
-    "pre_uninstall": [
-        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-        "if (!(Test-Path \"$persist_dir\\vicrac.test\")) { }",
-        "Start-Process -Wait \"$dir\\AdGuardHome.exe\" -ArgumentList '-s stop' | Out-Null",
-        "Start-Process -Wait \"$dir\\AdGuardHome.exe\" -ArgumentList '-s uninstall' | Out-Null"
-    ],
     "extract_dir": "AdGuardHome",
     "bin": "AdGuardHome.exe",
-    "persist": [
-        "data",
-        "AdGuardHome.yaml"
-    ],
     "checkver": {
         "github": "https://github.com/AdguardTeam/AdGuardHome"
     },
@@ -37,7 +29,13 @@
             },
             "32bit": {
                 "url": "https://github.com/AdguardTeam/AdGuardHome/releases/download/v$version/AdGuardHome_windows_386.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/AdguardTeam/AdGuardHome/releases/download/v$version/AdGuardHome_windows_arm64.zip"
             }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
         }
     }
 }

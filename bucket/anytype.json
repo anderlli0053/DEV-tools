@@ -24,8 +24,9 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/anyproto/anytype-ts/releases",
-        "regex": "Anytype\\.Setup\\.([\\d.]+)\\.exe\""
+        "github": "https://api.github.com/repos/anyproto/anytype-ts/releases",
+        "jsonpath": "$[*].assets[*].browser_download_url",
+        "regex": "Anytype\\.Setup\\.([\\d.]+)\\.exe"
     },
     "autoupdate": {
         "architecture": {

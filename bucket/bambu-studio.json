@@ -16,14 +16,14 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repositories/511797274/releases/latest",
+        "github": "https://api.github.com/repos/bambulab/BambuStudio/releases/latest",
         "jsonpath": "$..assets[?(@.browser_download_url =~ /Bambu_Studio_win-.*\\.zip/i)].browser_download_url",
-        "regex": "download/(?<tag>[\\w.]+)/Bambu_Studio_win-v([\\d.]+)-(?<date>[0-9]+)\\.zip"
+        "regex": "download/(?<tag>(?:v|V)?(?<version>[\\d.]+))/(?<filename>Bambu_Studio_win-.*\\.zip)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/bambulab/BambuStudio/releases/download/$matchTag/Bambu_Studio_win-v$version-$matchDate.zip"
+                "url": "https://github.com/bambulab/BambuStudio/releases/download/$matchTag/$matchFilename"
             }
         }
     }

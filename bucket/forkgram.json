@@ -1,13 +1,21 @@
 {
-    "version": "6.4.2",
-    "description": "Fork of Telegram Desktop messaging app.",
+    "version": "6.8.4",
+    "description": "Fork of Telegram Desktop with quality-of-life enhancements.",
     "homepage": "https://t.me/forkgram",
     "license": {
         "identifier": "GPL-3.0-openssl-exception",
-        "url": "https://github.com/Forkgram/tdesktop/blob/dev/LICENSE"
+        "url": "https://github.com/forkgram/tdesktop/blob/dev/LICENSE"
     },
-    "url": "https://github.com/Forkgram/tdesktop/releases/download/v6.4.2/Telegram.zip",
-    "hash": "b3277bd3ccc6c8bffcbcc1028f8b83b85b138a4a6260b89332dd30f79a1b68cd",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/forkgram/tdesktop/releases/download/v6.8.4/Telegram.zip",
+            "hash": "bece623ae1b53032e30dfd2b66b0d84bd8d9acc3b228f4c8a2defadcad5abd46"
+        },
+        "32bit": {
+            "url": "https://github.com/forkgram/tdesktop/releases/download/v6.8.4/Telegram_x86.zip",
+            "hash": "e153e06b23ce9ac02a02b56078aacd54a5d6e3db341a10e19c97c4d394f91588"
+        }
+    },
     "pre_install": "if (Test-Path \"$persist_dir\\log.txt\") { Copy-Item \"$persist_dir\\log.txt\" \"$dir\\\" }",
     "pre_uninstall": "if (Test-Path \"$dir\\log.txt\") { Copy-Item \"$dir\\log.txt\" \"$persist_dir\\\" }",
     "bin": [
@@ -25,9 +33,16 @@
     ],
     "persist": "tdata",
     "checkver": {
-        "github": "https://github.com/Forkgram/tdesktop"
+        "github": "https://github.com/forkgram/tdesktop"
     },
     "autoupdate": {
-        "url": "https://github.com/Forkgram/tdesktop/releases/download/v$version/Telegram.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/forkgram/tdesktop/releases/download/v$version/Telegram.zip"
+            },
+            "32bit": {
+                "url": "https://github.com/forkgram/tdesktop/releases/download/v$version/Telegram_x86.zip"
+            }
+        }
     }
 }

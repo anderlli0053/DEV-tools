@@ -1,19 +1,19 @@
 {
-    "version": "22.21.0",
+    "version": "24.16.0",
     "description": "JavaScript runtime environment.",
     "homepage": "https://nodejs.org",
     "license": "MIT",
     "notes": "npm global prefix set to: $env:APPDATA\\npm",
     "architecture": {
         "64bit": {
-            "url": "https://nodejs.org/dist/v22.21.0/node-v22.21.0-win-x64.7z",
-            "hash": "31a82a950fd2524651f0409307afe3276ae68a13a131e8b72945a3931109c8c3",
-            "extract_dir": "node-v22.21.0-win-x64"
+            "url": "https://nodejs.org/dist/v24.16.0/node-v24.16.0-win-x64.7z",
+            "hash": "9f0ad977a75a1ca1a2ebe1294caf64e6c6b4de89d3b6dff218455de3fa0a3211",
+            "extract_dir": "node-v24.16.0-win-x64"
         },
-        "32bit": {
-            "url": "https://nodejs.org/dist/v22.21.0/node-v22.21.0-win-x86.7z",
-            "hash": "d2767e24741f915477002d6325dda40f7554ce9e5176c8d2e824dc127d273725",
-            "extract_dir": "node-v22.21.0-win-x86"
+        "arm64": {
+            "url": "https://nodejs.org/dist/v24.16.0/node-v24.16.0-win-arm64.7z",
+            "hash": "e4357cd1ef3b6c67fb99547c4b736aa6732e2b4abd38ece252e119332fb49621",
+            "extract_dir": "node-v24.16.0-win-arm64"
         }
     },
     "installer": {
@@ -31,8 +31,8 @@
     ],
     "checkver": {
         "url": "https://nodejs.org/dist/index.json",
-        "jsonpath": "$..[?(@.lts != false)].version",
-        "regex": "v([\\d\\.]+).*"
+        "jsonpath": "$[?(@.lts != false)].version",
+        "regex": "v([\\d\\.]+)"
     },
     "autoupdate": {
         "architecture": {
@@ -40,9 +40,9 @@
                 "url": "https://nodejs.org/dist/v$version/node-v$version-win-x64.7z",
                 "extract_dir": "node-v$version-win-x64"
             },
-            "32bit": {
-                "url": "https://nodejs.org/dist/v$version/node-v$version-win-x86.7z",
-                "extract_dir": "node-v$version-win-x86"
+            "arm64": {
+                "url": "https://nodejs.org/dist/v$version/node-v$version-win-arm64.7z",
+                "extract_dir": "node-v$version-win-arm64"
             }
         },
         "hash": {

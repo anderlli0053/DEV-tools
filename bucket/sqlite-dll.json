@@ -1,15 +1,40 @@
 {
-  "version": "3.42.0",
-  "description": "A small, fast, self-contained, high-reliability and full-featured SQL database engine",
-  "homepage": "https://www.sqlite.org/",
-  "license": "blessing",
-  "url": "https://www.sqlite.org/2023/sqlite-dll-win32-x86-3420000.zip",
-  "hash": "8826930435e8b91a6f978051064f793e433f64fa605b0f8d300af0a7e2a7d731",
-  "checkver": {
-    "url": "https://www.sqlite.org/download.html",
-    "regex": "(?sm)\\d+-bit DLL \\(x\\d+\\) for SQLite version ([\\d.]+)\\..*?(?<year>\\d+)/sqlite-dll-win32-x86-(?<clean>\\d+)"
-  },
-  "autoupdate": {
-    "url": "https://www.sqlite.org/$matchYear/sqlite-dll-win32-x86-$matchClean.zip"
-  }
+    "version": "3.53.1",
+    "description": "Precompiled DLLs for SQLite, a small, fast, self-contained, high-reliability and full-featured SQL database engine",
+    "homepage": "https://www.sqlite.org/",
+    "license": {
+        "identifier": "Public Domain",
+        "url": "https://www.sqlite.org/src/file?name=LICENSE.md"
+    },
+    "architecture": {
+        "arm64": {
+            "url": "https://www.sqlite.org/2026/sqlite-dll-win-arm64-3530100.zip",
+            "hash": "40ad0e2beeb17294f6c24964433b7b48135c60d551db99408187bdecbac8aa94"
+        },
+        "32bit": {
+            "url": "https://www.sqlite.org/2026/sqlite-dll-win-x86-3530100.zip",
+            "hash": "8968dcf378a9888f593fab4d3454f77a5ed6a0c37f68a2c731eaeeb5a6d639cf"
+        },
+        "64bit": {
+            "url": "https://www.sqlite.org/2026/sqlite-dll-win-x64-3530100.zip",
+            "hash": "24bf0618a0a415c8a5c1bf646a19673cd5131fb920902a707659f375600917cd"
+        }
+    },
+    "checkver": {
+        "url": "https://www.sqlite.org/download.html",
+        "regex": "PRODUCT,([\\d.]+),(?<year>\\d+)/sqlite-dll-win-x64-(?<clean>\\d+)\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "arm64": {
+                "url": "https://www.sqlite.org/$matchYear/sqlite-dll-win-arm64-$matchClean.zip"
+            },
+            "64bit": {
+                "url": "https://www.sqlite.org/$matchYear/sqlite-dll-win-x64-$matchClean.zip"
+            },
+            "32bit": {
+                "url": "https://www.sqlite.org/$matchYear/sqlite-dll-win-x86-$matchClean.zip"
+            }
+        }
+    }
 }

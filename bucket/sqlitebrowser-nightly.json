@@ -1,16 +1,20 @@
 {
-    "version": "20260104",
+    "version": "20260517-6cba47e",
     "description": "DB Browser for SQLite (DB4S) project (nightly build)",
     "homepage": "https://github.com/sqlitebrowser/sqlitebrowser",
     "license": "MPL-2.0|GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/sqlitebrowser/sqlitebrowser/releases/download/nightly/DB.Browser.for.SQLite-20260104-x64.zip",
-            "hash": "7ec5ed61b7f40f2654596faba226b8e93d6dae59b2c835d27c8f9189b35acc2b"
+            "url": "https://github.com/sqlitebrowser/sqlitebrowser/releases/download/continuous/DB.Browser.for.SQLite-dev-6cba47e-win-x64.zip",
+            "hash": "5bc3f92b8dd3a2df2ae0317bd57d576c4a3bb8551e8dd2eac9a448794702a724"
         },
         "32bit": {
-            "url": "https://github.com/sqlitebrowser/sqlitebrowser/releases/download/nightly/DB.Browser.for.SQLite-20260104-x86.zip",
-            "hash": "6f6ab22d3b435918d1e781b8c77419e1ead745566917fafb0780e1ca5149c1c4"
+            "url": "https://github.com/sqlitebrowser/sqlitebrowser/releases/download/continuous/DB.Browser.for.SQLite-dev-6cba47e-win-x86.zip",
+            "hash": "a8e4e5d37328e6ba71ce3a01a1443f7b1dea10111723f71e6f1a25845ec6ad11"
+        },
+        "arm64": {
+            "url": "https://github.com/sqlitebrowser/sqlitebrowser/releases/download/continuous/DB.Browser.for.SQLite-dev-6cba47e-win-arm64.zip",
+            "hash": "10bbfcb962dce3929203cbd91d0ad245adea13e44b969b575c23ee739a2007a0"
         }
     },
     "bin": [
@@ -29,18 +33,27 @@
     ],
     "persist": "Data",
     "checkver": {
-        "url": "https://api.github.com/repos/sqlitebrowser/sqlitebrowser/releases/tags/nightly",
-        "jsonpath": "$.assets..browser_download_url",
-        "regex": "SQLite-(?<version>\\d{8})-x64\\.",
-        "reverse": true
+        "github": "https://api.github.com/repos/sqlitebrowser/sqlitebrowser/releases/tags/continuous",
+        "script": [
+            "$release = $page | ConvertFrom-Json",
+            "$date = Get-Date $release.updated_at -Format 'yyyyMMdd'",
+            "$page -match 'SQLite-dev-(?<commit>[0-9a-f]{7})-win-x64.zip' | Out-Null",
+            "$output = @{'result' = \"$date-$($matches['commit'])\"} | ConvertTo-Json -Compress",
+            "Write-Output $output"
+        ],
+        "jsonpath": "$.result",
+        "regex": "^(?<version>\\d{8}-(?<commit>[0-9a-f]{7}))$"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/sqlitebrowser/sqlitebrowser/releases/download/nightly/DB.Browser.for.SQLite-$matchVersion-x64.zip"
+                "url": "https://github.com/sqlitebrowser/sqlitebrowser/releases/download/continuous/DB.Browser.for.SQLite-dev-$matchCommit-win-x64.zip"
             },
             "32bit": {
-                "url": "https://github.com/sqlitebrowser/sqlitebrowser/releases/download/nightly/DB.Browser.for.SQLite-$matchVersion-x86.zip"
+                "url": "https://github.com/sqlitebrowser/sqlitebrowser/releases/download/continuous/DB.Browser.for.SQLite-dev-$matchCommit-win-x86.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/sqlitebrowser/sqlitebrowser/releases/download/continuous/DB.Browser.for.SQLite-dev-$matchCommit-win-arm64.zip"
             }
         }
     }

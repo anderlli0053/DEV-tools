@@ -36,8 +36,9 @@
         "}"
     ],
     "checkver": {
-        "url": "https://api.github.com/repositories/3228505/releases",
-        "regex": "/releases/tag/(?:v)?([\\d.]+(-beta\\d+)?)"
+        "github": "https://api.github.com/repos/atom/atom/releases",
+        "jsonpath": "$..tag_name",
+        "regex": "(?:v)?([\\d.]+(-beta\\d+)?)"
     },
     "autoupdate": {
         "architecture": {

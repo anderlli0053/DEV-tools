@@ -1,10 +1,10 @@
 {
     "version": "2.7.0",
-    "description": "A professional cross-platform SSH/Sftp/Shell/Telnet/Serial terminal. ",
-    "homepage": "https://github.com/kingToolbox/WindTerm",
+    "description": "SSH/Sftp/Shell/Telnet/Serial client",
+    "homepage": "https://kingtoolbox.github.io/",
     "license": "Apache-2.0",
     "suggest": {
-        "vcredist2019": "extras/vcredist2019"
+        "vcredist": "extras/vcredist2022"
     },
     "architecture": {
         "64bit": {
@@ -16,7 +16,13 @@
             "hash": "d04b2742c33773c0a0a5761889ca599ad5c443224dbc6198fe0e9e8de84f62c7"
         }
     },
-    "pre_install": "if(!(Test-Path \"$dir\\profiles.config\")) { Add-Content \"$dir\\profiles.config\" '{\"path\":\".\"}' }",
+    "extract_dir": "WindTerm_2.7.0",
+    "shortcuts": [
+        [
+            "WindTerm.exe",
+            "WindTerm"
+        ]
+    ],
     "post_install": [
         "info '[Portable Mode] Configuring profiles directory...'",
         "'{ \"path\" : \".\" }' | Set-Content -Path \"$dir\\profiles.config\"",
@@ -25,17 +31,10 @@
         "    Copy-Item \"$persist_dir\\profiles\" \"$dir\\.wind\" -Recurse",
         "}"
     ],
-    "extract_dir": "WindTerm_2.7.0",
-    "shortcuts": [
-        [
-            "WindTerm.exe",
-            "WindTerm"
-        ]
-    ],
     "persist": ".wind",
     "checkver": {
-        "url": "https://api.github.com/repositories/214011414/releases/latest",
-        "jsonpath": "$..browser_download_url",
+        "github": "https://api.github.com/repos/kingToolbox/WindTerm/releases/latest",
+        "jsonpath": "$.assets[*].browser_download_url",
         "regex": "WindTerm_([\\d.]+)_Windows_Portable"
     },
     "autoupdate": {

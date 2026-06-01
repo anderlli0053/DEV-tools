@@ -1,0 +1,35 @@
+{
+    "version": "0.9.26-alpha",
+    "description": "A native, user-mode, multi-process, graphical debugger.",
+    "homepage": "https://github.com/EpicGamesExt/raddebugger",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/EpicGamesExt/raddebugger/releases/download/v0.9.26-alpha/raddbg.zip",
+            "hash": "7a7022f9ad4a9e3ede137dc6414da8ec8d5de4c17a2823e514bf6239383219e4"
+        }
+    },
+    "bin": [
+        "radbin.exe",
+        "raddbg.exe",
+        "radlink.exe"
+    ],
+    "shortcuts": [
+        [
+            "raddbg.exe",
+            "RAD Debugger"
+        ]
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/EpicGamesExt/raddebugger/releases",
+        "jsonpath": "$.[?(@.tag_name =~ /v[\\d.]+-alpha/)].tag_name",
+        "regex": "v([\\d.]+-alpha)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/EpicGamesExt/raddebugger/releases/download/v$version/raddbg.zip"
+            }
+        }
+    }
+}

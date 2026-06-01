@@ -1,12 +1,12 @@
 {
-    "version": "3.5.4",
+    "version": "3.5.11",
     "description": "Extend your GitHub workflow beyond your browser.",
     "homepage": "https://desktop.github.com/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/desktop/desktop/releases/download/release-3.5.4/GitHubDesktop-3.5.4-x64-full.nupkg",
-            "hash": "504828131cd3134e2f52cb062f1203b18bd299fa7c57935ccb34182237269e31"
+            "url": "https://github.com/desktop/desktop/releases/download/release-3.5.11/GitHubDesktop-3.5.11-x64-full.nupkg",
+            "hash": "5be1961b189b754615f0f3e98e412a557c73c29919169dc4ca2a9fcc8c0cb02c"
         }
     },
     "extract_dir": "lib\\net45",
@@ -18,8 +18,9 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repositories/58559694/tags",
-        "regex": "tags/release-([\\d.]+)\""
+        "github": "https://github.com/desktop/desktop",
+        "jsonpath": "$.tag_name",
+        "regex": "release-([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {

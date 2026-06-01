@@ -1,23 +1,27 @@
 {
-    "version": "0.5.3",
+    "version": "1.1",
     "description": "VPN client",
     "homepage": "https://www.wireguard.com",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://download.wireguard.com/windows-client/wireguard-amd64-0.5.3.msi#/setup.msi_",
-            "hash": "76fcec042c5989c5b816cd32eaed1e5b1c3b998a4b1c9eca55f299e3314ef7e4"
+            "url": "https://download.wireguard.com/windows-client/wireguard-amd64-1.1.msi#/setup.msi_",
+            "hash": "6daa5d37a9e2950dfb8c48b95ab8e562cb2bad1c785d020f38f97bea4c6a5566"
         },
         "32bit": {
-            "url": "https://download.wireguard.com/windows-client/wireguard-x86-0.5.3.msi#/setup.msi_",
-            "hash": "ad1af1ae3474ef35de3809979aee98758430881b270e47e89e027b3490791d0d"
+            "url": "https://download.wireguard.com/windows-client/wireguard-x86-1.1.msi#/setup.msi_",
+            "hash": "71811698d544607e6bd94bbfff14e936b186da53b2934ff74d736daa74105481"
+        },
+        "arm64": {
+            "url": "https://download.wireguard.com/windows-client/wireguard-arm64-1.1.msi#/setup.msi_",
+            "hash": "a2a67fbb2db199525c35ce79ea6dd9031b116ba46561f2b993fb858668440131"
         }
     },
     "installer": {
         "script": [
             "if (!(is_admin)) {",
             "    error \"Administrator rights are required to install $app.\"",
-            "    exit 1",
+            "    break",
             "}",
             "",
             "Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn', '/norestart') | Out-Null",
@@ -45,6 +49,9 @@
             },
             "32bit": {
                 "url": "https://download.wireguard.com/windows-client/wireguard-x86-$version.msi#/setup.msi_"
+            },
+            "arm64": {
+                "url": "https://download.wireguard.com/windows-client/wireguard-arm64-$version.msi#/setup.msi_"
             }
         }
     }

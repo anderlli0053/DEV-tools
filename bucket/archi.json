@@ -18,13 +18,14 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repositories/1062861973/releases",
+        "github": "https://api.github.com/repos/archimatetool/archi.io/releases",
+        "jsonpath": "$[*].assets[*].browser_download_url",
         "regex": "download/(?<tag>[^/]+)/Archi-Win64-(?<version>[\\d.]+)\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/archimatetool/archi.io/releases/download/$matchTag/Archi-Win64-$version.zip"
+                "url": "https://github.com/archimatetool/archi.io/releases/download/$version/Archi-Win64-$version.zip"
             }
         },
         "hash": {

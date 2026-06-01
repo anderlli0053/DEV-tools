@@ -1,38 +1,34 @@
 {
-  "version": "1.8.5",
-  "description": "Open-source mod manager from Nexus Mods",
-  "homepage": "https://www.nexusmods.com/about/vortex/",
-  "license": "GPL-3.0-or-later",
-  "architecture": {
-    "64bit": {
-      "url": "https://ghproxy.com/https://github.com/Nexus-Mods/Vortex/releases/download/v1.8.5/vortex-setup-1.8.5.exe#/dl.7z",
-      "hash": "549219c537610ec9d3ea6177ae8ff323d2d0a62d799dcfa31f2159e00599efd0",
-      "installer": {
-        "script": [
-          "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-          "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
-        ]
-      }
-    }
-  },
-  "shortcuts": [
-    [
-      "Vortex.exe",
-      "Vortex"
-    ]
-  ],
-  "checkver": {
-    "github": "https://github.com/Nexus-Mods/Vortex"
-  },
-  "autoupdate": {
+    "version": "2.0.2",
+    "description": "Open-source mod manager from Nexus Mods",
+    "homepage": "https://nexusmods.com/about/vortex",
+    "license": "GPL-3.0",
+    "suggest": {
+        "vcredist": "extras/vcredist2022",
+        "windowsdesktop-runtime": "versions/windowsdesktop-runtime-6.0"
+    },
     "architecture": {
-      "64bit": {
-        "url": "https://ghproxy.com/https://github.com/Nexus-Mods/Vortex/releases/download/v$version/vortex-setup-$version.exe#/dl.7z",
-        "hash": {
-          "url": "https://ghproxy.com/https://github.com/Nexus-Mods/Vortex/releases/download/v$version/latest.yml",
-          "find": "sha2: $sha256"
+        "64bit": {
+            "url": "https://github.com/Nexus-Mods/Vortex/releases/download/v2.0.2/vortex-setup-2.0.2.exe#/dl.7z",
+            "hash": "f5f36dd3bcf26b0e966523bbc2edc412d55f43efcb93f01c6865c70fe19879eb"
         }
-      }
+    },
+    "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\", \"$dir\\`$TEMP\" -Recurse -Force",
+    "shortcuts": [
+        [
+            "Vortex.exe",
+            "Vortex"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/Nexus-Mods/Vortex"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Nexus-Mods/Vortex/releases/download/v$version/vortex-setup-$version.exe#/dl.7z"
+            }
+        }
     }
-  }
 }

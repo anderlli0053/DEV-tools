@@ -1,22 +1,32 @@
 {
     "version": "1.5.2",
-    "description": "BandcampDownloader is a Windows application that helps downloading albums from bandcamp.com by retrieving the 128 kbps MP3 files streamed on the website.",
-    "url": "https://ghproxy.com/https://github.com/Otiel/BandcampDownloader/releases/download/v1.5.2/BandcampDownloader.zip",
+    "description": "A Windows app used to download albums from Bandcamp.",
     "homepage": "https://github.com/Otiel/BandcampDownloader",
-    "checkver": "github",
-    "bin": [
-        [
-            "BandcampDownloader.exe",
-            "bandcampdownloader"
-        ]
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Otiel/BandcampDownloader/releases/download/v1.5.2/BandcampDownloader.zip",
+            "hash": "c7a1711fc1041d07e5b8bd8367a23bf23220e7a10d6439d4233817794c3682ac"
+        }
+    },
+    "pre_install": [
+        "if(!(Test-Path \"$persist_dir\\BandcampDownloader.ini\")) {",
+        "    Set-Content -Path \"$dir\\BandcampDownloader.ini\" -Value 'CheckForUpdates=false' -Encoding Ascii",
+        "}"
     ],
     "shortcuts": [
         [
             "BandcampDownloader.exe",
-            "BandcampDownloader"
+            "Bandcamp Downloader"
         ]
     ],
+    "persist": "BandcampDownloader.ini",
+    "checkver": "github",
     "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/Otiel/BandcampDownloader/releases/download/v$version/BandcampDownloader.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Otiel/BandcampDownloader/releases/download/v$version/BandcampDownloader.zip"
+            }
+        }
     }
 }

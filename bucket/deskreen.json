@@ -1,61 +1,39 @@
 {
-    "version": "3.2.1",
-    "description": "Deskreen turns any device with a web browser into a secondary screen for your computer. ⭐️ Star to support our work!",
+    "version": "3.2.15",
+    "description": "Turn any device into a secondary screen for your computer (Community edition).",
     "homepage": "https://deskreen.com/",
     "license": {
-        "identifier": "AGPL-3.0 license",
-        "url": "https://github.com/pavlobu/deskreen#AGPL-3.0-1-ov-file"
+        "identifier": "AGPL-3.0-or-later",
+        "url": "https://github.com/pavlobu/deskreen/blob/master/LICENSE"
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/pavlobu/deskreen/releases/download/v3.2.1/deskreen-ce-3.2.1-x64.exe#/dl.7z",
-            "hash": "bd94fc5bec453b4a28f50c824d742ab2d07b2c5bd1c88b6e7ba91b84c5a13388",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$*\" -Force -Recurse"
-            ]
+            "url": "https://github.com/pavlobu/deskreen/releases/download/v3.2.15/deskreen-ce-3.2.15-x64.exe#/dl.7z",
+            "hash": "c567b8dcb9914fa6257572c674c21fd329f5de0c5c1025a67957fa71f22c3a47"
         },
         "32bit": {
-            "url": "https://github.com/pavlobu/deskreen/releases/download/v3.2.1/deskreen-ce-3.2.1-ia32.exe#/dl.7z",
-            "hash": "cc9afce32ad995307012133f106fbf7f1ac55c2ac2b06dbfb2ad835aad0da8a2",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$*\" -Force -Recurse"
-            ]
+            "url": "https://github.com/pavlobu/deskreen/releases/download/v3.2.15/deskreen-ce-3.2.15-ia32.exe#/dl.7z",
+            "hash": "5499fe1c5005b46c79eb29d5c58d06b5d6795d1cc37abcc7ff4bdd22f3feeceb"
         },
         "arm64": {
-            "url": "https://github.com/pavlobu/deskreen/releases/download/v3.2.1/deskreen-ce-3.2.1-arm64.exe#/dl.7z",
-            "hash": "77993f423d453dd165507f514da55e7defe5c394e9a1b63beb71e6b3c72d55d1",
-            "pre_install": [
-                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\"",
-                "Remove-Item \"$dir\\`$*\" -Force -Recurse"
-            ]
+            "url": "https://github.com/pavlobu/deskreen/releases/download/v3.2.15/deskreen-ce-3.2.15-arm64.exe#/dl.7z",
+            "hash": "5a96b2343e578034aebd2d20b60f23080a1d0ab6d3576782473c46c2d31851dd"
         }
     },
     "installer": {
         "script": [
-            "# handle runtime cache",
-            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
-            "Mount-ExternalRuntimeData -Source \"$persist_dir\\appdata\" -Target \"$env:APPDATA\\Deskreen\"",
-            "Remove-Module -Name AppsUtils"
-        ]
-    },
-    "uninstaller": {
-        "script": [
-            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name apps) scripts/AppsUtils.psm1)",
-            "Dismount-ExternalRuntimeData -Target \"$env:APPDATA\\Deskreen\"",
-            "Remove-Module -Name AppsUtils"
+            "Get-Item \"$dir\\`$PLUGINSDIR\\app*.7z\" | Expand-7zipArchive -DestinationPath $dir",
+            "Remove-Item \"$dir\\`$*\" -Force -Recurse"
         ]
     },
     "shortcuts": [
         [
-            "Deskreen.exe",
-            "Deskreen"
+            "Deskreen CE.exe",
+            "Deskreen (Community Edition)"
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/pavlobu/deskreen/releases",
-        "regex": "/releases/tag/v([\\d.]+)"
+        "github": "https://github.com/pavlobu/deskreen"
     },
     "autoupdate": {
         "architecture": {

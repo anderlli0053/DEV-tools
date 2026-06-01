@@ -12,6 +12,15 @@
             "hash": "d1b7aabf622b4804ea50a8d5969aa4c2240322942e05be3dc7190003758120b8"
         }
     },
+    "pre_install": [
+        "# The executable is sometimes nested within a subdirectory of the archive.",
+        "$topLevelItems = Get-ChildItem -Path $dir",
+        "if (($topLevelItems.Count -eq 1) -and ($topLevelItems[0].PSIsContainer)) {",
+        "    $subfolder = $topLevelItems[0].FullName",
+        "    Copy-Item -Path \"$subfolder\\*\" -Destination $dir -Recurse",
+        "    Remove-Item -Path $subfolder -Recurse -Force",
+        "}"
+    ],
     "bin": "CapFrameX.exe",
     "shortcuts": [
         [
@@ -20,7 +29,7 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repositories/142042657/releases",
+        "github": "https://api.github.com/repos/CXWorld/CapFrameX/releases",
         "jsonpath": "$[?(@.tag_name =~ /^(?!.*beta).+$/)].tag_name",
         "regex": "(?<tag>v(?<version>[\\d.]+)[^\"]*)"
     },

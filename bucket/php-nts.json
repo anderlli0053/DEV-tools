@@ -1,19 +1,19 @@
 {
-    "version": "8.5.1",
+    "version": "8.5.6",
     "description": "A popular general-purpose scripting language that is especially suited to web development. (non-thread safe)",
-    "homepage": "https://windows.php.net/",
+    "homepage": "https://www.php.net/",
     "license": "PHP-3.01",
     "suggest": {
         "vcredist": "extras/vcredist2022"
     },
     "architecture": {
         "64bit": {
-            "url": "https://windows.php.net/downloads/releases/php-8.5.1-nts-Win32-vs17-x64.zip",
-            "hash": "b80175dc14753e0645b0a2637782c02583aa5d25d487721129501a25796526db"
+            "url": "https://downloads.php.net/~windows/releases/archives/php-8.5.6-nts-Win32-vs17-x64.zip",
+            "hash": "e25cc9400a7d176f18074f677ef0159d6b04aecfb255c924d808b7144075092f"
         },
         "32bit": {
-            "url": "https://windows.php.net/downloads/releases/php-8.5.1-nts-Win32-vs17-x86.zip",
-            "hash": "de3747b785af34f8978afbadf0dfe81004bfc3c0e4850416dd618c327c5c3a6c"
+            "url": "https://downloads.php.net/~windows/releases/archives/php-8.5.6-nts-Win32-vs17-x86.zip",
+            "hash": "8f56f338afc366164bb675b0f6206db5dabcdd608c5fd176ff874aca78e9a056"
         }
     },
     "pre_install": [
@@ -42,20 +42,21 @@
         ]
     ],
     "checkver": {
-        "url": "https://windows.php.net/download/",
-        "regex": "<h3 id=\"php-[\\d.]+\".*?>.*?\\(([\\d.]+)\\)</h3>"
+        "url": "https://www.php.net/releases/branches.php",
+        "jsonpath": "$[0].latest"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://windows.php.net/downloads/releases/php-$version-nts-Win32-vs17-x64.zip"
+                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-nts-Win32-vs17-x64.zip"
             },
             "32bit": {
-                "url": "https://windows.php.net/downloads/releases/php-$version-nts-Win32-vs17-x86.zip"
+                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-nts-Win32-vs17-x86.zip"
             }
         },
         "hash": {
-            "url": "$baseurl/sha256sum.txt"
+            "url": "https://www.php.net/backend/win-releases.json",
+            "jsonpath": "$..[?(@.path == '$basename')].sha256"
         }
     }
 }

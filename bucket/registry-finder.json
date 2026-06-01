@@ -1,43 +1,56 @@
 {
+    "version": "2.62.0.0",
+    "description": "Registry Finder is an improved replacement for the built-in Windows registry editor",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://registry-finder.com/License.txt"
+    },
     "homepage": "https://registry-finder.com/",
-    "description": "Registry Finder is an improved replacement for the built-in Windows registry editor.",
-    "version": "2.60.0.0",
     "architecture": {
         "64bit": {
-            "url": "https://registry-finder.com/bin/2.60.0.0/RegistryFinder64.zip",
-            "hash": "b9afd948dac5cf022e455b1838324398ec8716da2ee9f95515be0e8db72259b6"
+            "url": "https://registry-finder.com/bin/2.62.0.0/RegistryFinder64.zip",
+            "hash": "886731ba7c86e28273910397cdc882c151a8d069c57338b4a2eb7ae4d41239b1"
         },
         "32bit": {
-            "url": "https://registry-finder.com/bin/2.60.0.0/RegistryFinder.zip",
-            "hash": "559e0229efa45a8d78e305ed80434a271511da9a37c290895e07b831c620b398"
+            "url": "https://registry-finder.com/bin/2.62.0.0/RegistryFinder.zip",
+            "hash": "9ad2b7417ebe932d55231836d3f82c39bd4900d3980e333a2519bc02b9fd3227"
         }
     },
+    "post_install": [
+        "'favorites.txt', 'RegistryFinder.config', 'UndoHistory', 'VisitationHistory' | ForEach-Object {",
+        "Copy-Item \"$persist_dir\\$_\" \"$dir\" -Recurse -ErrorAction SilentlyContinue }"
+    ],
+    "bin": "registryfinder.exe",
+    "shortcuts": [
+        [
+            "RegistryFinder.exe",
+            "Registry Finder"
+        ]
+    ],
+    "persist": "res",
     "checkver": {
-        "url": "https://registry-finder.com/",
-        "regex": "sendEvent.+(\\d+\\.\\d+.\\d+.\\d+)"
+        "regex": "bin/([\\d.]+)/"
     },
+    "pre_uninstall": [
+        "'favorites.txt', 'RegistryFinder.config', 'UndoHistory', 'VisitationHistory' | ForEach-Object {",
+        "Copy-Item \"$dir\\$_\" \"$persist_dir\" -Recurse -ErrorAction SilentlyContinue }"
+    ],
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://registry-finder.com/bin/$version/RegistryFinder64.zip",
                 "hash": {
                     "url": "https://registry-finder.com/",
-                    "regex": "Archive 64-bit</a> SHA-256: ($sha256)"
+                    "regex": "Archive 64-bit</a> SHA-256: $sha256"
                 }
             },
             "32bit": {
                 "url": "https://registry-finder.com/bin/$version/RegistryFinder.zip",
                 "hash": {
                     "url": "https://registry-finder.com/",
-                    "regex": "Archive 32-bit</a> SHA-256: ($sha256)"
+                    "regex": "Archive 32-bit</a> SHA-256: $sha256"
                 }
             }
         }
-    },
-    "shortcuts": [
-        [
-            "RegistryFinder.exe",
-            "Registry Finder"
-        ]
-    ]
+    }
 }

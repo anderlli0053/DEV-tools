@@ -1,26 +1,38 @@
 {
-    "version": "1.1.40",
-    "description": "An open source agent that helps you write and run code with any AI model as a desktop app",
-    "homepage": "http://opencode.ai/",
-    "license": "unknown",
+    "version": "1.15.13",
+    "description": "The open source AI coding agent.",
+    "homepage": "https://opencode.ai/",
+    "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://opencode.ai/download/windows-x64-nsis#/dl.7z",
-            "hash": "b922ce51cee91da5046a79326231a1793314813cbe29ea09c7781b40d0801964"
+            "url": "https://github.com/anomalyco/opencode/releases/download/v1.15.13/opencode-desktop-win-x64.exe#/dl.7z",
+            "hash": "e19e97c5ca15767523ecfe502fbd6058738a68919d2d142574501820b489e775"
+        },
+        "arm64": {
+            "url": "https://github.com/anomalyco/opencode/releases/download/v1.15.13/opencode-desktop-win-arm64.exe#/dl.7z",
+            "hash": "13767d5c2c01d879141a40f24d6222527669ebc5563c261cc751c35354a7f03a"
         }
     },
-    "bin": "opencode-cli.exe",
-    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninstall.exe\" -Force -Recurse",
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-*.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse -ErrorAction Ignore"
+    ],
     "shortcuts": [
         [
             "OpenCode.exe",
-            "OpenCode Desktop"
+            "OpenCode"
         ]
     ],
+    "checkver": {
+        "github": "https://github.com/anomalyco/opencode"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://opencode.ai/download/windows-x64-nsis#/dl.7z"
+                "url": "https://github.com/anomalyco/opencode/releases/download/v$version/opencode-desktop-win-x64.exe#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://github.com/anomalyco/opencode/releases/download/v$version/opencode-desktop-win-arm64.exe#/dl.7z"
             }
         }
     }

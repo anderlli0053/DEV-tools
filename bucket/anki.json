@@ -35,7 +35,8 @@
         "programfiles"
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/ankitects/anki/releases",
+        "github": "https://api.github.com/repos/ankitects/anki/releases",
+        "jsonpath": "$[*].assets[*].browser_download_url",
         "regex": "download/(?<version>[\\d.]+)/anki-launcher-\\k<version>-windows\\.exe"
     },
     "autoupdate": {

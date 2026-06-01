@@ -1,26 +1,26 @@
 {
     "description": "BellSoft Liberica is a 100% open-source Java implementation",
     "homepage": "https://bell-sw.com/java",
-    "version": "25.0.1-13",
+    "version": "25.0.3-11",
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/bell-sw/Liberica/releases/download/25.0.1%2B13/bellsoft-jdk25.0.1%2B13-windows-amd64.zip",
-            "hash": "sha1:0b5ca064fc7d9111fdacc211656be1191a68d25a"
+            "url": "https://github.com/bell-sw/Liberica/releases/download/25.0.3%2B11/bellsoft-jdk25.0.3%2B11-windows-amd64.zip",
+            "hash": "sha1:50d401f0ebd6038befda3aae6eddf06b4f1f8aac"
         },
         "arm64": {
-            "url": "https://github.com/bell-sw/Liberica/releases/download/25.0.1%2B13/bellsoft-jdk25.0.1%2B13-windows-aarch64.zip",
-            "hash": "sha1:569c6ded6f6f46a30f0508b7681ac16d4c7406fb"
+            "url": "https://github.com/bell-sw/Liberica/releases/download/25.0.3%2B11/bellsoft-jdk25.0.3%2B11-windows-aarch64.zip",
+            "hash": "sha1:b6520c6c486969f83b4220d53c7beed25fefa99a"
         }
     },
-    "extract_dir": "jdk-25.0.1",
+    "extract_dir": "jdk-25.0.3",
     "env_add_path": "bin",
     "env_set": {
         "JAVA_HOME": "$dir"
     },
     "checkver": {
         "url": "https://api.bell-sw.com/v1/liberica/releases?version-feature=25&bundle-type=jdk&version-modifier=latest&release-type=lts&os=windows&arch=x86&installation-type=archive&package-type=zip&output=json&fields=version",
-        "jsonpath": "$.version",
+        "jsonpath": "$[*].version",
         "regex": "(?<major>[\\d.]+)(?:\\+)(?<build>[\\d]+)",
         "replace": "${major}-${build}"
     },

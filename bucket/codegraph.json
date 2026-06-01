@@ -1,0 +1,35 @@
+{
+    "version": "0.9.8",
+    "description": "A local-first code-intelligence tool that turns any codebase into a queryable knowledge graph for AI coding agents.",
+    "homepage": "https://colbymchenry.github.io/codegraph/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/colbymchenry/codegraph/releases/download/v0.9.8/codegraph-win32-x64.zip",
+            "hash": "71e3e42feddd97452721c1fa52c5de3a310be481f0b9bded81672c9567add7e3",
+            "extract_dir": "codegraph-win32-x64"
+        },
+        "arm64": {
+            "url": "https://github.com/colbymchenry/codegraph/releases/download/v0.9.8/codegraph-win32-arm64.zip",
+            "hash": "8442c3f913f6fb1f40309021b35c49e2227257666aa81a12dc46efd06805b782",
+            "extract_dir": "codegraph-win32-arm64"
+        }
+    },
+    "bin": "bin\\codegraph.cmd",
+    "checkver": {
+        "github": "https://github.com/colbymchenry/codegraph"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/colbymchenry/codegraph/releases/download/v$version/codegraph-win32-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/colbymchenry/codegraph/releases/download/v$version/codegraph-win32-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
+    }
+}

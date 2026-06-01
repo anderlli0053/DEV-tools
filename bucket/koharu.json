@@ -1,27 +1,40 @@
 {
-    "version": "0.25.4",
-    "description": "ML-powered manga translator, written in Rust",
-    "homepage": "https://github.com/mayocream/koharu",
-    "license": "GPL-3.0-only|Apache-2.0",
+    "version": "0.59.2",
+    "description": "ML-powered manga translator, written in Rust.",
+    "homepage": "https://koharu.rs/",
+    "license": "GPL-3.0-only",
+    "suggest": {
+        "vcredist": "extras/vcredist2022"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/mayocream/koharu/releases/download/0.25.4/Koharu-win-CUDA-Bundled.7z",
-            "hash": "fb1af2fdceb59c7eb20b1dc668dc166a9041d58409efe2646e8896aad76867f5"
+            "url": "https://github.com/mayocream/koharu/releases/download/0.59.2/koharu_windows_x64.exe#/koharu.exe",
+            "hash": "43648c45dbc2d0df4540f7255502ddefa5c5029fcc1b02f1fd6872299fb032ff"
         }
     },
-    "bin": "Koharu.exe",
+    "pre_install": "if (!(Test-Path \"$persist_dir\\config.toml\")) { New-Item \"$dir\\config.toml\" -ItemType File | Out-Null }",
+    "bin": "koharu.exe",
     "shortcuts": [
         [
-            "Koharu.exe",
+            "koharu.exe",
             "Koharu"
         ]
     ],
-    "persist": "models",
-    "checkver": "github",
+    "persist": [
+        "blobs",
+        "fonts",
+        "models",
+        "projects",
+        "runtime",
+        "config.toml"
+    ],
+    "checkver": {
+        "github": "https://github.com/mayocream/koharu"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/mayocream/koharu/releases/download/$version/Koharu-win-CUDA-Bundled.7z"
+                "url": "https://github.com/mayocream/koharu/releases/download/$version/koharu_windows_x64.exe#/koharu.exe"
             }
         }
     }

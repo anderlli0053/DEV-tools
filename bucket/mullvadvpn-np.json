@@ -1,12 +1,19 @@
 {
-    "version": "2025.14",
+    "version": "2026.3-beta1",
     "homepage": "https://mullvad.net/en/",
     "description": "The official desktop client for Mullvad VPN, a privacy-respecting VPN service.",
-    "license": "GPL-3.0",
+    "license": {
+        "identifier": "GPL-3.0-or-later",
+        "url": "https://github.com/mullvad/mullvadvpn-app/blob/HEAD/LICENSE.md"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/mullvad/mullvadvpn-app/releases/download/2025.14/MullvadVPN-2025.14_x64.exe",
-            "hash": "332a1f05bc367a199f0a17fb1e19d3ffcbf79a5024bced619c9e771d31281830"
+            "url": "https://github.com/mullvad/mullvadvpn-app/releases/download/2026.3-beta1/MullvadVPN-2026.3-beta1_x64.exe",
+            "hash": "a8a75793a697de11571a4a2a6a1c406785b9106c903866be7ad3bd01bc639651"
+        },
+        "arm64": {
+            "url": "https://github.com/mullvad/mullvadvpn-app/releases/download/2026.3-beta1/MullvadVPN-2026.3-beta1_arm64.exe",
+            "hash": "de63346f22ae6d7731bd30261dacc77a3e058f8699dfbdab6f174ca68dbcdbb0"
         }
     },
     "installer": {
@@ -23,12 +30,17 @@
         ]
     },
     "checkver": {
-        "github": "https://github.com/mullvad/mullvadvpn-app"
+        "url": "https://api.github.com/repositories/114742422/releases",
+        "jsonpath": "$[*].assets[?(@.name =~ /\\.exe$/i)].browser_download_url",
+        "regex": "(?i)download/(?<tag>[^/]+)/MullvadVPN-([\\w.-]+)_(?:x|arm)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://github.com/mullvad/mullvadvpn-app/releases/download/$version/MullvadVPN-$version_x64.exe"
+            },
+            "arm64": {
+                "url": "https://github.com/mullvad/mullvadvpn-app/releases/download/$version/MullvadVPN-$version_arm64.exe"
             }
         }
     }

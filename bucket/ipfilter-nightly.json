@@ -1,12 +1,18 @@
 {
-    "version": "1768626540",
+    "version": "1780209166",
     "description": "Protects privacy and security when using Bit Torrent by blocking a list of potentially malicious peers.",
     "homepage": "https://www.ipfilter.app/",
     "license": "MIT",
     "url": "https://github.com/DavidMoore/ipfilter/releases/download/lists/ipfilter.zip",
-    "hash": "036e525a340d7d716eea9a58cbd40625062df1f0df11ab1aad7e556727e9b99d",
+    "hash": "d325640cf24a2d8e97ec8c16738bbc92a79b0c637699ec07d8790850994f665f",
     "checkver": {
-        "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repositories/487352/releases/tags/lists).assets[0].updated_at -UFormat %s } catch { '' }",
+        "github": "https://api.github.com/repos/DavidMoore/ipfilter/releases/tags/lists",
+        "script": [
+            "$release = $page | ConvertFrom-Json",
+            "$output = @{'result' = \"$(Get-Date $release.assets[0].updated_at -UFormat %s)\"} | ConvertTo-Json -Compress",
+            "Write-Output $output"
+        ],
+        "jsonpath": "$.result",
         "regex": "\\A(\\d+)\\Z"
     },
     "autoupdate": {

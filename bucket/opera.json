@@ -1,5 +1,5 @@
 {
-    "version": "126.0.5750.43",
+    "version": "132.0.5905.11",
     "description": "A fast, secure, easy-to-use browser.",
     "homepage": "https://www.opera.com",
     "license": {
@@ -8,31 +8,28 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://get.geo.opera.com/pub/opera/desktop/126.0.5750.43/win/Opera_126.0.5750.43_Setup_x64.exe",
-            "hash": "53b9d3786a8538e84f90d3428e2ab05dc569955bdd34727a87f0b0ad3453bbe7"
+            "url": "https://get.geo.opera.com/pub/opera/desktop/132.0.5905.11/win/Opera_132.0.5905.11_Setup_x64.exe",
+            "hash": "2b3138763aa31e5ecceb5a5c1b21ce0113c7efcea5763f7e8545f2bf506214f7"
         },
         "32bit": {
-            "url": "https://get.geo.opera.com/pub/opera/desktop/126.0.5750.43/win/Opera_126.0.5750.43_Setup.exe",
-            "hash": "acce50a712e02329baf1f9d718cf4a8d963583aece93b6a9b247e3ff30a00e40"
+            "url": "https://get.geo.opera.com/pub/opera/desktop/132.0.5905.11/win/Opera_132.0.5905.11_Setup.exe",
+            "hash": "03c2589e16cd6e41d438d2ff8edcaa3c5b22ebee6a1c64e0f00479f40eabb512"
         },
         "arm64": {
-            "url": "https://get.geo.opera.com/pub/opera/desktop/126.0.5750.43/win/Opera_126.0.5750.43_Setup_arm64.exe",
-            "hash": "a0271ad2e29539012f6d8409c150156fc822b7f3a3d20be03ce541184ca4e454"
+            "url": "https://get.geo.opera.com/pub/opera/desktop/132.0.5905.11/win/Opera_132.0.5905.11_Setup_arm64.exe",
+            "hash": "681283a7ce6191fdfd4c2273a215a6d1ead666fbedb501baa36334595915a1bc"
         }
     },
     "installer": {
         "script": [
-            "Expand-7zipArchive -Path \"$dir\\$fname\" -DestinationPath $dir -Removal",
             "$version, 'autoupdate' | ForEach-Object { ensure \"$dir\\$_\" | Out-Null }",
+            "Expand-7zipArchive -Path \"$dir\\$fname\" -Switches '-x!*_list -xr!unins*' -Removal",
             "Move-Item -Path \"$dir\\opera_autoupdate*\" -Destination \"$dir\\autoupdate\" -Force",
-            "Remove-Item -Path \"$dir\\*\" -Include '*_list' -Force -ErrorAction SilentlyContinue",
             "$exclude_list = @('Assets', $version, 'autoupdate', 'Resources.pri', 'opera.visualelementsmanifest.xml')",
-            "Get-ChildItem -Path $dir | Where-Object { $exclude_list -notcontains $_.Name } | ForEach-Object {",
-            "    Move-Item -Path $_.FullName -Destination \"$dir\\$version\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
-            "}",
-            "Copy-Item -Path \"$dir\\$version\\opera.exe\" -Destination $dir",
-            "$cfg = @{ 'autoupdate'= $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json -Depth 5",
-            "Set-Content -Path \"$dir\\installer_prefs.json\" -Value $cfg -Encoding ascii"
+            "Move-Item -Path \"$dir\\*\" -Destination \"$dir\\$version\" -Exclude $exclude_list -Force -ErrorAction SilentlyContinue",
+            "Copy-Item -Path \"$dir\\$version\\opera.exe\" -Destination $dir -Force",
+            "$cfg = @{ 'autoupdate' = $false; 'enable_stats' = $false; 'single_profile' = $true } | ConvertTo-Json -Depth 5 -Compress",
+            "Set-Content -Path \"$dir\\installer_prefs.json\" -Value $cfg -NoNewline -Encoding utf8"
         ]
     },
     "shortcuts": [
