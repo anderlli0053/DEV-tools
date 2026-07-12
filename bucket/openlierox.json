@@ -1,9 +1,9 @@
 {
-    "version": "20260704.1",
+    "version": "20260710.14",
     "description": "Liero clone / Worms realtime / 2D shooter",
     "homepage": "https://openlierox.net/",
     "license": "LGPL",
-    "url": "https://github.com/openlierox/openlierox/releases/download/20260704.1/openlierox-20260704.1-windows.zip",
+    "url": "https://github.com/openlierox/openlierox/releases/download/20260710.14/openlierox-20260710.14-windows.zip",
     "hash": "2ba53b152d98d492a6612ddaac1bb7b524b051c26a943f6330925ac98c46bf4e",
     "pre_install": [
         "Write-Host 'Flattening directory structure...' -ForegroundColor Cyan",
@@ -33,7 +33,9 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/openlierox/openlierox"
+        "url": "https://api.github.com/repos/openlierox/openlierox/releases/latest",
+        "json": "tag_name",
+        "re": "([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://github.com/openlierox/openlierox/releases/download/$version/openlierox-$version-windows.zip"
