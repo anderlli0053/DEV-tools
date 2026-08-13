@@ -3,33 +3,28 @@
     "description": "sebaxakerhtc 维护的 RDP Wrapper，可以自动下载最新的 rdpwrap.ini，开箱即用。安装需要管理员权限。",
     "license": "Apache-2.0",
     "version": "1.8.9.9",
-    "url": [
-        "https://ghproxy.com/https://github.com/sebaxakerhtc/rdpwrap/releases/download/v1.8.9.9/RDPW_Uninstaller.exe",
-        "https://ghproxy.com/https://github.com/sebaxakerhtc/rdpwrap/releases/download/v1.8.9.9/RDPW_installer.exe"
-    ],
-    "hash": [
-        "94176d686473f905c7e64a2ef0a5a52e7194e02b7b8442b4ba7c941f10d589db",
-        "94176d686473f905c7e64a2ef0a5a52e7194e02b7b8442b4ba7c941f10d589db"
-    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sebaxakerhtc/rdpwrap/releases/download/v1.8.9.9/RDPW_installer.exe",
+            "hash": "932bcf6c68e34fb99ffafb5ae62a1473fe761d961034cb5630dc3a9ba9155ccb"
+        }
+    },
     "pre_install": [
-        "if (!(is_admin)) {",
-        "    error \"Administrator rights are required to install $app.\"",
-        "    exit 1",
-        "}",
-        "SCHTASKS /DELETE /TN RDPWUpdater /F"
+        "if (!(is_admin)) { error 'Administrator rights are required to install $app.'; exit 1 }",
+        "try { SCHTASKS /DELETE /TN RDPWUpdater /F 2>$null } catch {}"
     ],
     "installer": {
-        "file": "RDPW_installer.exe",
-        "keep": true
+        "script": "Start-Process -FilePath \"$dir\\RDPW_installer.exe\" -ArgumentList '/VERYSILENT /SUPPRESSMSGBOXES /NORESTART' -Wait"
     },
-    "uninstaller": {
-        "file": "RDPW_Uninstaller.exe"
+    "checkver": {
+        "github": "https://github.com/sebaxakerhtc/rdpwrap",
+        "regex": "tag/v([\\d.]+)"
     },
-    "checkver": "github",
     "autoupdate": {
-        "url": [
-            "https://ghproxy.com/https://github.com/sebaxakerhtc/rdpwrap/releases/download/v$version/RDPW_Uninstaller.exe",
-            "https://ghproxy.com/https://github.com/sebaxakerhtc/rdpwrap/releases/download/v$version/RDPW_installer.exe"
-        ]
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sebaxakerhtc/rdpwrap/releases/download/v$version/RDPW_installer.exe"
+            }
+        }
     }
 }
